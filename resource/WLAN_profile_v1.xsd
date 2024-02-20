@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema targetNamespace="http://www.microsoft.com/networking/WLAN/profile/v1"
+    xmlns="http://www.microsoft.com/networking/WLAN/profile/v1"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+
+  <!-- type definition section -->
+  <xs:simpleType name="nameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="255" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="WLANProfile">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Profile name is required. -->
+        <xs:element name="name" type="nameType" />
+
+        <!-- WLAN network settings -->
+        <!-- SSID's and connectionType are required. -->
+        <xs:element name="SSIDConfig" maxOccurs="256">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:annotation>
+                <xs:documentation>
+                  This element supports up to 256 SSIDs in the v1 namespace and up to 10000 additional SSIDs in the v2 namespace.
+                  The v2 namespace also supports SSID prefixes.
+                </xs:documentation>
+              </xs:annotation>
+              <!-- In this version, only one <SSID> is supported from UI -->
+              <xs:element name="SSID" maxOccurs="256">
+                <xs:complexType>
+                  <xs:sequence>
+                    <!-- Either Hex or named SSID must be present. -->
+                    <!-- Hex SSID takes precedence over named SSID. -->
+                    <xs:element name="hex" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:hexBinary">
+                          <xs:minLength value="1" />
+                          <xs:maxLength value="32" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+
+                    <xs:element name="name" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:minLength value="1" />
+                          <xs:maxLength value="32" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+
+                    <!-- extension point for other namespaces -->
+                    <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <!--
+                  Flag to indicate whether SSIDs within the same SSIDConfig group will be
+                  broadcasted or not. Default value is "false"
+              -->
+              <xs:element name="nonBroadcast" type="xs:boolean" minOccurs="0" />
+
+              <!-- SSID and SSIDPrefix elements from v2 namespace can be set here.
+              <xs:element name="SSID" minOccurance="0" maxOccurance="10000"
+                namespace="http://www.microsoft.com/networking/WLAN/profile/v2"/>
+              <xs:element name="SSIDPrefix" minOccurance="0" maxOccurance="32"
+                namespace="http://www.microsoft.com/networking/WLAN/profile/v2"/>
+              -->
+
+              <!-- extension point for other namespaces -->
+              <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- Hotspot2.0 is optional. -->
+        <xs:element name="Hotspot2" minOccurs="0">
+         <xs:complexType>
+           <xs:sequence>
+             <xs:element name="DomainName" minOccurs="0">
+               <xs:simpleType>
+                 <xs:restriction base="xs:string">
+                   <xs:minLength value="1" />
+                   <xs:maxLength value="255" />
+                 </xs:restriction>
+               </xs:simpleType>
+             </xs:element>
+
+             <xs:element name="NAIRealm" minOccurs="0">
+               <xs:complexType>
+                 <xs:sequence> 
+                    <xs:element name="name" minOccurs="0" maxOccurs="256">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:minLength value="1" />
+                          <xs:maxLength value="255" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                 </xs:sequence>
+               </xs:complexType>
+             </xs:element>
+
+             <xs:element name="Network3GPP" minOccurs="0">
+               <xs:complexType>
+                 <xs:sequence> 
+                    <xs:element name="PLMNID" minOccurs="0" maxOccurs="256">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:minLength value="5" />
+                          <xs:maxLength value="6" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                 </xs:sequence>
+               </xs:complexType>
+             </xs:element>
+
+             <xs:element name="RoamingConsortium" minOccurs="0">
+               <xs:complexType>
+                 <xs:sequence> 
+                    <xs:element name="OUI" minOccurs="0" maxOccurs="256">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:hexBinary">
+                          <xs:minLength value="3" />
+                          <xs:maxLength value="5" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                 </xs:sequence>
+               </xs:complexType>
+             </xs:element>
+
+           </xs:sequence>
+         </xs:complexType>
+        </xs:element>
+
+        <xs:element name="connectionType">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="IBSS" />
+              <xs:enumeration value="ESS" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <!--
+            Specify connection mode when a network is in range
+            Default value = "auto"
+        -->
+        <xs:element name="connectionMode" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="auto" />
+              <xs:enumeration value="manual" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <!--
+            Flag to determine roaming behavior when a more preferred network is in range
+            Default value = "true"
+        -->
+        <xs:element name="autoSwitch" type="xs:boolean" minOccurs="0" />
+
+        <!-- wireless LAN MSM settings -->
+        <xs:element name="MSM" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="connectivity" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="phyType" minOccurs="0" maxOccurs="6">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="a"  />
+                          <xs:enumeration value="b"  />
+                          <xs:enumeration value="g"  />
+                          <!-- this value is reserved for future use -->
+                          <xs:enumeration value="n"  />
+                          <xs:enumeration value="ac" />
+                          <xs:enumeration value="ax" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+
+                    <!-- extension point for other namespaces -->
+                    <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <!-- security settings -->
+              <xs:element name="security" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <!-- AuthEncryptions is required except for when IHV extensibility uses 1X. -->
+                    <xs:element name="authEncryption" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <!-- valid authentication methods -->
+                          <xs:element name="authentication">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="open" />
+                                <xs:enumeration value="shared" />
+                                <xs:enumeration value="WPA" />
+                                <xs:enumeration value="WPAPSK" />
+                                <xs:enumeration value="WPA2" />
+                                <xs:enumeration value="WPA2PSK" />
+                                <xs:enumeration value="WPA3" />
+                                <xs:enumeration value="WPA3SAE" />
+                                <xs:enumeration value="OWE" />                                
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+
+                          <!-- valid encryption methods -->
+                          <xs:element name="encryption">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="none" />
+                                <xs:enumeration value="WEP" />
+                                <xs:enumeration value="TKIP" />
+                                <xs:enumeration value="AES" />
+                                <xs:enumeration value="GCMP256" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+
+                          <!-- flag indicating use of 802.1X -->
+                          <xs:element name="useOneX" type="xs:boolean" minOccurs="0" />
+
+                          <!-- flag indicating FIPS mode (v2 namespace) -->
+                          <!--
+                          <xs:element name="FIPSMode" type="xs:boolean" minOccurs="0"
+                            namespace = "http://www.microsoft.com/networking/WLAN/profile/v2"/>
+                          -->
+
+                          <!-- extension point for other namespaces -->
+                          <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+
+                    <!-- Optional MSM security settings. -->
+                    <!-- there is no default value for shareKey if absent -->
+                    <xs:element name="sharedKey" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="keyType">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="networkKey" />
+                                <xs:enumeration value="passPhrase" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="protected" type="xs:boolean" />
+                          <xs:element name="keyMaterial" type="xs:string" />
+
+                          <!-- extension point for other namespaces -->
+                          <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+
+                    <!-- the default value is 0 when the shared key is present -->
+                    <xs:element name="keyIndex" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                          <xs:minInclusive value="0" />
+                          <xs:maxInclusive value="3" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+
+                    <!--
+                        For WPA2 or WPA3, the default value is "enabled"
+                        for all others, the default value is "disabled"
+                    -->
+                    <xs:element name="PMKCacheMode" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="disabled" />
+                          <xs:enumeration value="enabled" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+
+                    <!-- the default value is 720 minutes -->
+                    <xs:element name="PMKCacheTTL" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                          <xs:minInclusive value="5" />
+                          <xs:maxInclusive value="1440" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+
+                    <!-- the default value is 128 entries -->
+                    <xs:element name="PMKCacheSize" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                          <xs:minInclusive value="1" />
+                          <xs:maxInclusive value="255" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+
+                    <!-- the default value is "disabled" -->
+                    <xs:element name="preAuthMode" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="disabled" />
+                          <xs:enumeration value="enabled" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+
+                    <!-- the default value is 3 times -->
+                    <xs:element name="preAuthThrottle" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                          <xs:minInclusive value="1" />
+                          <xs:maxInclusive value="16" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+
+                    <!-- extension point for other namespaces -->
+                    <!-- this is also the insertion point for OneX namespace -->
+                    <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <!-- extension point for other namespaces -->
+              <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- IHV specific settings -->
+        <xs:element name="IHV" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <!--
+                  OUI info of the IHV. Required. First three (3) bytes represented by eight (6)
+                  hex chars (0-9, A-F)indicates the OUI, the 4th byte represented by two (2) hex
+                  chars (0-9, A-F) indicates the type of the OUI.
+              -->
+              <xs:element name="OUIHeader">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="OUI">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:hexBinary">
+                          <xs:length value="3" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="type">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:hexBinary">
+                          <xs:length value="1" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+
+                    <!-- extension point for other namespaces -->
+                    <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <!-- Either <connectivity> or <security> must be present -->
+              <!-- IHV specific connectivity settings -->
+              <xs:element name="connectivity" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <!-- Must be a single top-level element -->
+                    <xs:any namespace="##other" processContents="lax" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <!-- IHV specific security settings -->
+              <xs:element name="security" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <!-- Must be a single top-level element -->
+                    <xs:any namespace="##other" processContents="lax" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <!-- optional flag indicating whether IHV security uses MS 1X settings (default false) -->
+              <xs:element name="useMSOneX" type="xs:boolean" minOccurs="0" />
+
+              <!-- extension point for other namespaces -->
+              <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- extension point for other namespaces -->
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

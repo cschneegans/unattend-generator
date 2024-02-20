@@ -1,0 +1,555 @@
+[
+  {
+    "Component": "Microsoft-Windows-Audio-AudioCore",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Audio-VolumeControl",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Authentication-AuthUI",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-BLB-WSB-Online-Main",
+    "Passes": [
+      "specialize",
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-BrowserService",
+    "Passes": [
+      "generalize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-CodeIntegrity",
+    "Passes": [
+      "offlineServicing"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-CoreMmRes",
+    "Passes": [
+      "generalize",
+      "specialize",
+      "auditSystem",
+      "auditUser",
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Deployment",
+    "Passes": [
+      "generalize",
+      "specialize",
+      "auditSystem",
+      "auditUser",
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-DeviceAccess",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-DeviceGuard-Unattend",
+    "Passes": [
+      "offlineServicing"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-DiagCpl",
+    "Passes": [
+      "offlineServicing",
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Disk-Failure-Diagnostic-Module",
+    "Passes": [
+      "offlineServicing",
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-DNS-Client",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Embedded-BootExp",
+    "Passes": [
+      "specialize",
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Embedded-EmbeddedLogon",
+    "Passes": [
+      "offlineServicing",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Embedded-KeyboardFilterService",
+    "Passes": [
+      "offlineServicing"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Embedded-ShellLauncher",
+    "Passes": [
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Embedded-UnifiedWriteFilter",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-EnhancedStorage-Adm",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-ErrorReportingCore",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Fax-Service",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-GPIOButtons",
+    "Passes": [
+      "offlineServicing",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-HelpAndSupport",
+    "Passes": [
+      "specialize",
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-IE-ClientNetworkProtocolImplementation",
+    "Passes": [
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-IE-ESC",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-IE-InternetExplorer",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-International-Core",
+    "Passes": [
+      "specialize",
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-International-Core-WinPE",
+    "Passes": [
+      "windowsPE"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-LUA-Settings",
+    "Passes": [
+      "offlineServicing"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-MapControl-Desktop",
+    "Passes": [
+      "specialize",
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-MediaPlayer-Core",
+    "Passes": [
+      "offlineServicing"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-MicrosoftEdgeBrowser",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-MobilePC-Sensors-API",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-NetBT",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-NetworkBridge",
+    "Passes": [
+      "generalize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-NetworkLoadBalancing-Core",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-OutOfBoxExperience",
+    "Passes": [
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-PartitionManager",
+    "Passes": [
+      "offlineServicing"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-PnpCustomizationsNonWinPE",
+    "Passes": [
+      "offlineServicing",
+      "auditSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-PnpCustomizationsWinPE",
+    "Passes": [
+      "windowsPE"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-PnpSysprep",
+    "Passes": [
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-PowerCPL",
+    "Passes": [
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Printing-Spooler-Core",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-RasServer",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-RemoteAssistance-Exe",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-SecureStartup-FilterDriver",
+    "Passes": [
+      "offlineServicing",
+      "specialize",
+      "auditSystem",
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Security-SPP",
+    "Passes": [
+      "generalize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Security-SPP-UX",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-ServerManager-SvrMgrNc",
+    "Passes": [
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Setup",
+    "Passes": [
+      "windowsPE"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-SharedAccess",
+    "Passes": [
+      "generalize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Shell-Setup",
+    "Passes": [
+      "offlineServicing",
+      "windowsPE",
+      "generalize",
+      "specialize",
+      "auditSystem",
+      "auditUser",
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-SHWebSVC",
+    "Passes": [
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-SMBServer",
+    "Passes": [
+      "generalize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-SNMP-Agent-Service",
+    "Passes": [
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-SQMAPI",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-STObject",
+    "Passes": [
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-StorPort-RegistrySettings",
+    "Passes": [
+      "specialize",
+      "auditSystem",
+      "auditUser",
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-SystemMaintenanceService",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-SystemRestore-Main",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-SystemSettingsThreshold",
+    "Passes": [
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-TabletPC-Platform-Input-Core",
+    "Passes": [
+      "offlineServicing",
+      "specialize",
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-TapiSetup",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-TCPIP",
+    "Passes": [
+      "windowsPE",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-TerminalServices-CentralPublishing",
+    "Passes": [
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-TerminalServices-LicenseServer",
+    "Passes": [
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-TerminalServices-LocalSessionManager",
+    "Passes": [
+      "offlineServicing",
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-TerminalServices-Publishing-WMIProvider",
+    "Passes": [
+      "offlineServicing",
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-TerminalServices-RDP-WinStationExtensions",
+    "Passes": [
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-TerminalServices-RemoteConnectionManager",
+    "Passes": [
+      "offlineServicing",
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-Tpm-Tasks",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-TwinUI",
+    "Passes": [
+      "offlineServicing",
+      "specialize",
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-UnattendedJoin",
+    "Passes": [
+      "offlineServicing",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-WDF-KernelLibrary",
+    "Passes": [
+      "offlineServicing"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-WiFiNetworkManager",
+    "Passes": [
+      "offlineServicing",
+      "specialize",
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-WinRE-RecoveryAgent",
+    "Passes": [
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-WLANSVC",
+    "Passes": [
+      "offlineServicing",
+      "windowsPE",
+      "specialize",
+      "oobeSystem"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-WorkstationService",
+    "Passes": [
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-WPD-BusEnumService",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Microsoft-Windows-WWANUI",
+    "Passes": [
+      "generalize",
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Networking-MPSSVC-Svc",
+    "Passes": [
+      "specialize"
+    ]
+  },
+  {
+    "Component": "Security-Malware-Windows-Defender",
+    "Passes": [
+      "offlineServicing",
+      "specialize",
+      "oobeSystem"
+    ]
+  }
+]

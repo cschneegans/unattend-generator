@@ -1,0 +1,25 @@
+﻿<WLANProfile xmlns='http://www.microsoft.com/networking/WLAN/profile/v1'>
+	<name>WLAN-1234</name>
+	<SSIDConfig>
+		<SSID>
+			<hex>574C414E2D31323334</hex>
+			<name>WLAN-1234</name>
+		</SSID>
+	</SSIDConfig>
+	<connectionType>ESS</connectionType>
+	<connectionMode>auto</connectionMode>
+	<MSM>
+		<security>
+			<authEncryption>
+				<authentication>WPA2PSK</authentication>
+				<encryption>AES</encryption>
+				<useOneX>false</useOneX>
+			</authEncryption>
+			<sharedKey>
+				<keyType>passPhrase</keyType>
+				<protected>false</protected>
+				<keyMaterial>secret</keyMaterial>
+			</sharedKey>
+		</security>
+	</MSM>
+</WLANProfile>

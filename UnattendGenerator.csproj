@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+	<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Schneegans.Unattend</RootNamespace>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="resource\autounattend.xml" />
+    <EmbeddedResource Include="resource\autounattend.xsd" />
+    <EmbeddedResource Include="resource\Component.json" />
+    <EmbeddedResource Include="resource\ImageLanguage.json" />
+    <EmbeddedResource Include="resource\KeyboardIdentifier.json" />
+    <EmbeddedResource Include="resource\Bloatware.json" />
+    <EmbeddedResource Include="resource\known-writeable-folders.txt" />
+    <EmbeddedResource Include="resource\TimeOffset.json" />
+    <EmbeddedResource Include="resource\UserLocale.json" />
+    <EmbeddedResource Include="resource\WindowsEdition.json" />
+    <EmbeddedResource Include="resource\WLANProfile.xml" />
+    <EmbeddedResource Include="resource\WLAN_profile_v1.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+</Project>

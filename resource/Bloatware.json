@@ -1,0 +1,659 @@
+[
+  {
+    "DisplayName": "Internet Explorer",
+    "Steps": [
+      {
+        "Selector": "Browser.InternetExplorer",
+        "Type": "Capability",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Windows Media Player (classic)",
+    "Token": "WindowsMediaPlayer",
+    "Steps": [
+      {
+        "Selector": "Media.WindowsMediaPlayer",
+        "Type": "Capability",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Windows Media Player (modern)",
+    "Token": "ZuneMusic",
+    "Steps": [
+      {
+        "Selector": "Microsoft.ZuneMusic",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "WordPad",
+    "Steps": [
+      {
+        "Selector": "Microsoft.Windows.WordPad",
+        "Type": "Capability",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Notepad (classic)",
+    "Token": "NotepadClassic",
+    "Steps": [
+      {
+        "Selector": "Microsoft.Windows.Notepad",
+        "Type": "Capability",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Notepad (modern)",
+    "Token": "Notepad",
+    "Steps": [
+      {
+        "Selector": "Microsoft.WindowsNotepad",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          11
+        ]
+      },
+      {
+        "Type": "Custom",
+        "Versions": [
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Steps Recorder",
+    "Steps": [
+      {
+        "Selector": "App.StepsRecorder",
+        "Type": "Capability",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Paint",
+    "Steps": [
+      {
+        "Selector": "Microsoft.Windows.MSPaint",
+        "Type": "Capability",
+        "Versions": [
+          10
+        ]
+      },
+      {
+        "Selector": "Microsoft.Paint",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Paint 3D",
+    "Steps": [
+      {
+        "Selector": "Microsoft.MSPaint",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Skype",
+    "Steps": [
+      {
+        "Selector": "Microsoft.SkypeApp",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Snipping Tool",
+    "Steps": [
+      {
+        "Selector": "Microsoft.ScreenSketch",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Movies & TV",
+    "Token": "ZuneVideo",
+    "Steps": [
+      {
+        "Selector": "Microsoft.ZuneVideo",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Xbox Apps",
+    "Steps": [
+      {
+        "Selector": "Microsoft.Xbox.TCUI",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      },
+      {
+        "Selector": "Microsoft.XboxApp",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10
+        ]
+      },
+      {
+        "Selector": "Microsoft.XboxGameOverlay",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      },
+      {
+        "Selector": "Microsoft.XboxGamingOverlay",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      },
+      {
+        "Selector": "Microsoft.XboxIdentityProvider",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      },
+      {
+        "Selector": "Microsoft.XboxSpeechToTextOverlay",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      },
+      {
+        "Selector": "Microsoft.GamingApp",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Photos",
+    "Steps": [
+      {
+        "Selector": "Microsoft.Windows.Photos",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "News",
+    "Steps": [
+      {
+        "Selector": "Microsoft.BingNews",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Weather",
+    "Steps": [
+      {
+        "Selector": "Microsoft.BingWeather",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "People",
+    "Steps": [
+      {
+        "Selector": "Microsoft.People",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "To Do",
+    "Steps": [
+      {
+        "Selector": "Microsoft.Todos",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Solitaire Collection",
+    "Token": "Solitaire",
+    "Steps": [
+      {
+        "Selector": "Microsoft.MicrosoftSolitaireCollection",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Sticky Notes",
+    "Steps": [
+      {
+        "Selector": "Microsoft.MicrosoftStickyNotes",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "3D Viewer",
+    "Steps": [
+      {
+        "Selector": "Microsoft.Microsoft3DViewer",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Maps",
+    "Steps": [
+      {
+        "Selector": "Microsoft.WindowsMaps",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Voice Recorder",
+    "Steps": [
+      {
+        "Selector": "Microsoft.WindowsSoundRecorder",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Clipchamp",
+    "Steps": [
+      {
+        "Selector": "Clipchamp.Clipchamp",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Power Automate",
+    "Steps": [
+      {
+        "Selector": "Microsoft.PowerAutomateDesktop",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Windows Terminal",
+    "Steps": [
+      {
+        "Selector": "Microsoft.WindowsTerminal",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "OneNote",
+    "Steps": [
+      {
+        "Selector": "Microsoft.Office.OneNote",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Clock",
+    "Steps": [
+      {
+        "Selector": "Microsoft.WindowsAlarms",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Calculator",
+    "Steps": [
+      {
+        "Selector": "Microsoft.WindowsCalculator",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Camera",
+    "Steps": [
+      {
+        "Selector": "Microsoft.WindowsCamera",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Your Phone",
+    "Steps": [
+      {
+        "Selector": "Microsoft.YourPhone",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Get Help",
+    "Steps": [
+      {
+        "Selector": "Microsoft.GetHelp",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Feedback Hub",
+    "Steps": [
+      {
+        "Selector": "Microsoft.WindowsFeedbackHub",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Office 365",
+    "Steps": [
+      {
+        "Selector": "Microsoft.MicrosoftOfficeHub",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Tips",
+    "Token": "GetStarted",
+    "Steps": [
+      {
+        "Selector": "Microsoft.Getstarted",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Cortana",
+    "Steps": [
+      {
+        "Selector": "Microsoft.549981C3F5F10",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Math Input Panel",
+    "Steps": [
+      {
+        "Selector": "MathRecognizer",
+        "Type": "Capability",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "PowerShell ISE",
+    "Steps": [
+      {
+        "Selector": "Microsoft.Windows.PowerShell.ISE",
+        "Type": "Capability",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "OpenSSH Client",
+    "Steps": [
+      {
+        "Selector": "OpenSSH.Client",
+        "Type": "Capability",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "OneDrive",
+    "Steps": [
+      {
+        "Selector": null,
+        "Type": "Custom",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Teams",
+    "Steps": [
+      {
+        "Selector": null,
+        "Type": "Custom",
+        "Versions": [
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Quick Assist",
+    "Steps": [
+      {
+        "Selector": "App.Support.QuickAssist",
+        "Type": "Capability",
+        "Versions": [
+          10
+        ]
+      },
+      {
+        "Selector": "MicrosoftCorporationII.QuickAssist",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Family",
+    "Steps": [
+      {
+        "Selector": "MicrosoftCorporationII.MicrosoftFamily",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Mail and Calendar",
+    "Token": "MailCalendar",
+    "Steps": [
+      {
+        "Selector": "microsoft.windowscommunicationsapps",
+        "Type": "ProvisionedPackage",
+        "Versions": [
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Outlook for Windows",
+    "Token": "Outlook",
+    "Since": "23H2",
+    "Steps": [
+      {
+        "Type": "Custom",
+        "Versions": [
+          11
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Dev Home",
+    "Since": "23H2",
+    "Steps": [
+      {
+        "Type": "Custom",
+        "Versions": [
+          11
+        ]
+      }
+    ]
+  }
+]

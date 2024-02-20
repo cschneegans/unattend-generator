@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xsd:schema targetNamespace="urn:schemas-microsoft-com:unattend" xmlns="urn:schemas-microsoft-com:unattend"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <!--Root Elements-->
+    <xsd:element name="unattend">
+        <xsd:annotation>
+            <xsd:documentation>Unattend</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="unattendType" />
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="unattendType">
+       <xsd:sequence>
+          <xsd:element name="servicing" type="servicingType" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="settings" type="settingType" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+       </xsd:sequence>
+       <xsd:attribute name="author" type="xsd:string" use="optional"/>
+       <xsd:attribute name="description" type="xsd:string" use="optional"/>
+       <xsd:attribute name="creationTimeStamp" type="xsd:dateTime" use="optional"/>
+       <xsd:attribute name="lastUpdateTimeStamp" type="xsd:dateTime" use="optional"/>
+       <xsd:attribute name="ConfigurationSetTimeStamp" type="xsd:dateTime" use="optional"/>
+       <xsd:anyAttribute namespace="##other" processContents="lax"/>
+    </xsd:complexType>
+
+      <xsd:complexType name="servicingType">
+         <xsd:sequence>
+            <xsd:element name="package" type="packageType" minOccurs="0" maxOccurs="unbounded"/>
+         </xsd:sequence>
+      </xsd:complexType>
+
+   <xsd:complexType name="settingType">
+       <xsd:sequence>
+        <xsd:element name="component" type="componentSettingType" minOccurs="0" maxOccurs="unbounded"/>
+       </xsd:sequence>
+       <xsd:attribute name="pass" type="passType" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="componentSettingType">
+       <xsd:sequence>
+          <xsd:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+       </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="version" type="fourPartVersionType" use="optional"/>
+      <xsd:attribute name="processorArchitecture" type="processorArchitectureType" use="required"/>
+      <xsd:attribute name="publicKeyToken" type="publicKeyTokenType" use="required"/>
+      <xsd:attribute name="language" type="xsd:string" use="required"/>
+      <xsd:attribute name="versionScope" type="versionScopeType" use="optional" default="nonSxS"/>
+   </xsd:complexType>
+
+   <xsd:simpleType name="passType">
+      <xsd:annotation>
+         <xsd:documentation>Installation phase to perform setting</xsd:documentation>
+      </xsd:annotation>
+         <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="offlineServicing"/>
+         <xsd:enumeration value="windowsPE"/>
+         <xsd:enumeration value="generalize"/>
+         <xsd:enumeration value="specialize"/>
+         <xsd:enumeration value="auditSystem"/>
+         <xsd:enumeration value="auditUser"/>
+         <xsd:enumeration value="oobeSystem"/>
+         <xsd:enumeration value="oobeUser"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:complexType name="packageType">
+      <xsd:sequence>
+         <xsd:element name="assemblyIdentity" type="identityType" />
+         <xsd:choice minOccurs="0" maxOccurs="unbounded">
+           <xsd:element name="source" type="sourceType"/>
+           <xsd:element name="selection" type="selectionType"/>
+         </xsd:choice>
+      </xsd:sequence>
+      <xsd:attribute name="action" type="actionType" use="required"/>
+      <xsd:attribute name="permanence" type="permanenceType" use="optional" default="removable"/>
+      <xsd:anyAttribute namespace="##other" processContents="lax"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="sourceType">
+      <xsd:annotation>
+         <xsd:documentation>Package source specification.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:attribute name="location" type="xsd:string" use="required">
+         <xsd:annotation>
+            <xsd:documentation>Path to source location for package to install.</xsd:documentation>
+         </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="permanence" type="permanenceType" use="optional" default="permanent"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="selectionType">
+      <xsd:annotation>
+         <xsd:documentation>Selection state override for nested child packages.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:attribute name="name" type="xsd:string" use="required">
+         <xsd:annotation>
+            <xsd:documentation>Name of selectable update within child package.</xsd:documentation>
+         </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="state" type="xsd:boolean" use="required">
+         <xsd:annotation>
+            <xsd:documentation>Boolean initial state for selection.</xsd:documentation>
+         </xsd:annotation>
+      </xsd:attribute>
+   </xsd:complexType>
+
+   <xsd:simpleType name="actionType">
+      <xsd:annotation>
+         <xsd:documentation>Installation action to perform on package.</xsd:documentation>
+      </xsd:annotation>
+         <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="remove"/>      <!-- remove package from system -->
+         <xsd:enumeration value="stage"/>       <!-- fully stage package, ready for installation -->
+         <xsd:enumeration value="install"/>     <!-- install package on system, then configure -->
+         <xsd:enumeration value="configure"/>   <!-- configure currently installed package -->
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="permanenceType">
+      <xsd:annotation>
+         <xsd:documentation>Uninstall options.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="removable"/>   <!-- normal uninstall behavior -->
+         <xsd:enumeration value="permanent"/>   <!-- cannot be removed -->
+         <xsd:enumeration value="temporary"/>   <!-- removed when any component updated -->
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:complexType name="identityType">
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="version" type="fourPartVersionType" use="required"/>
+      <xsd:attribute name="processorArchitecture" type="processorArchitectureType" use="required"/>
+      <xsd:attribute name="publicKeyToken" type="publicKeyTokenType" use="required"/>
+      <xsd:attribute name="language" type="xsd:string" use="required"/>
+      <xsd:attribute name="versionScope" type="xsd:string" use="optional" fixed="nonSxS"/>
+   </xsd:complexType>
+
+   <xsd:simpleType name="versionScopeType">
+      <xsd:restriction base="xsd:string">
+         <xsd:pattern value="((N|n)(E|e)(U|u)(T|t)(R|r)(A|a)(L|l))|((N|n)(O|o)(N|n)(S|s)(X|x)(S|s))"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="fourPartVersionType">
+      <xsd:restriction base="xsd:string">
+         <xsd:pattern value="(0*[0-9]{0,4}|0*[1-5][0-9]{4}|0*6[0-4][0-9]{3}|0*65[0-4][0-9]{2}|0*655[0-2][0-9]|0*6553[0-5])\.(0*[0-9]{0,4}|0*[1-5][0-9]{4}|0*6[0-4][0-9]{3}|0*65[0-4][0-9]{2}|0*655[0-2][0-9]|0*6553[0-5])\.(0*[0-9]{0,4}|0*[1-5][0-9]{4}|0*6[0-4][0-9]{3}|0*65[0-4][0-9]{2}|0*655[0-2][0-9]|0*6553[0-5])\.(0*[0-9]{0,4}|0*[1-5][0-9]{4}|0*6[0-4][0-9]{3}|0*65[0-4][0-9]{2}|0*655[0-2][0-9]|0*6553[0-5])$"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="publicKeyTokenType">
+      <xsd:restriction base="xsd:string">
+         <xsd:pattern value="([0-9]|[a-f]|[A-F]){16}"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="processorArchitectureType">
+      <xsd:restriction base="xsd:string">
+         <xsd:pattern value="((X|x)86)|((I|i)(A|a)64)|((A|a)(M|m)(D|d)64)|((W|w)(O|o)(W|w)64)|((M|m)(S|s)(I|i)(L|l))|((S|s)(H|h)(X|x))|((A|a)(R|r)(M|m))|((D|d)(A|a)(T|t)(A|a))|((N|n)(E|e)(U|u)(T|t)(R|r)(A|a)(L|l))|((A|a)(R|r)(M|m))64"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+</xsd:schema>

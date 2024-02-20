@@ -1,0 +1,154 @@
+[
+  {
+    "Tag": "ar-SA",
+    "DisplayName": "Arabic"
+  },
+  {
+    "Tag": "pt-BR",
+    "DisplayName": "Brazilian Portuguese"
+  },
+  {
+    "Tag": "bg-BG",
+    "DisplayName": "Bulgarian"
+  },
+  {
+    "Tag": "zh-Hans-CN",
+    "DisplayName": "Chinese Simplified"
+  },
+  {
+    "Tag": "zh-Hant-CN",
+    "DisplayName": "Chinese Traditional"
+  },
+  {
+    "Tag": "hr-HR",
+    "DisplayName": "Croatian"
+  },
+  {
+    "Tag": "cs-CZ",
+    "DisplayName": "Czech"
+  },
+  {
+    "Tag": "da-DK",
+    "DisplayName": "Danish"
+  },
+  {
+    "Tag": "nl-NL",
+    "DisplayName": "Dutch"
+  },
+  {
+    "Tag": "en-US",
+    "DisplayName": "English"
+  },
+  {
+    "Tag": "en-GB",
+    "DisplayName": "English International"
+  },
+  {
+    "Tag": "et-EE",
+    "DisplayName": "Estonian"
+  },
+  {
+    "Tag": "fi-FI",
+    "DisplayName": "Finnish"
+  },
+  {
+    "Tag": "fr-FR",
+    "DisplayName": "French"
+  },
+  {
+    "Tag": "fr-CA",
+    "DisplayName": "French Canadian"
+  },
+  {
+    "Tag": "de-DE",
+    "DisplayName": "German"
+  },
+  {
+    "Tag": "el-GR",
+    "DisplayName": "Greek"
+  },
+  {
+    "Tag": "he-IL",
+    "DisplayName": "Hebrew"
+  },
+  {
+    "Tag": "hu-HU",
+    "DisplayName": "Hungarian"
+  },
+  {
+    "Tag": "it-IT",
+    "DisplayName": "Italian"
+  },
+  {
+    "Tag": "ja-JP",
+    "DisplayName": "Japanese"
+  },
+  {
+    "Tag": "ko-KR",
+    "DisplayName": "Korean"
+  },
+  {
+    "Tag": "lv-LV",
+    "DisplayName": "Latvian"
+  },
+  {
+    "Tag": "lt-LT",
+    "DisplayName": "Lithuanian"
+  },
+  {
+    "Tag": "nb-NO",
+    "DisplayName": "Norwegian"
+  },
+  {
+    "Tag": "pl-PL",
+    "DisplayName": "Polish"
+  },
+  {
+    "Tag": "pt-PT",
+    "DisplayName": "Portuguese"
+  },
+  {
+    "Tag": "ro-RO",
+    "DisplayName": "Romanian"
+  },
+  {
+    "Tag": "ru-RU",
+    "DisplayName": "Russian"
+  },
+  {
+    "Tag": "sr-Latn-RS",
+    "DisplayName": "Serbian Latin"
+  },
+  {
+    "Tag": "sk-SK",
+    "DisplayName": "Slovak"
+  },
+  {
+    "Tag": "sl-SI",
+    "DisplayName": "Slovenian"
+  },
+  {
+    "Tag": "es-ES",
+    "DisplayName": "Spanish"
+  },
+  {
+    "Tag": "es-MX",
+    "DisplayName": "Spanish (Mexico)"
+  },
+  {
+    "Tag": "sv-SE",
+    "DisplayName": "Swedish"
+  },
+  {
+    "Tag": "th-TH",
+    "DisplayName": "Thai"
+  },
+  {
+    "Tag": "tr-TR",
+    "DisplayName": "Turkish"
+  },
+  {
+    "Tag": "uk-UA",
+    "DisplayName": "Ukrainian"
+  }
+]

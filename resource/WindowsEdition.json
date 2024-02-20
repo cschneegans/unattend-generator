@@ -1,0 +1,68 @@
+[
+  {
+    "Visible": true,
+    "Value": "home",
+    "DisplayName": "Home",
+    "ProductKey": "YTMG3-N6DKC-DKB77-7M9GH-8HVX7"
+  },
+  {
+    "Visible": true,
+    "Value": "home_n",
+    "DisplayName": "Home N",
+    "ProductKey": "4CPRK-NM3K3-X6XXQ-RXX86-WXCHW"
+  },
+  {
+    "Visible": true,
+    "Value": "education",
+    "DisplayName": "Education",
+    "ProductKey": "YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY"
+  },
+  {
+    "Visible": true,
+    "Value": "education_n",
+    "DisplayName": "Education N",
+    "ProductKey": "84NGF-MHBT6-FXBX8-QWJK7-DRR8H"
+  },
+  {
+    "Visible": true,
+    "Value": "pro",
+    "DisplayName": "Pro",
+    "ProductKey": "VK7JG-NPHTM-C97JM-9MPGT-3V66T"
+  },
+  {
+    "Visible": true,
+    "Value": "pro_n",
+    "DisplayName": "Pro N",
+    "ProductKey": "2B87N-8KFHP-DKV6R-Y2C8J-PKCKT"
+  },
+  {
+    "Visible": true,
+    "Value": "pro_education",
+    "DisplayName": "Pro Education",
+    "ProductKey": "8PTT6-RNW4C-6V7J2-C2D3X-MHBPB"
+  },
+  {
+    "Visible": true,
+    "Value": "pro_education_n",
+    "DisplayName": "Pro Education N",
+    "ProductKey": "GJTYN-HDMQY-FRR76-HVGC7-QPF8P"
+  },
+  {
+    "Visible": true,
+    "Value": "pro_workstations",
+    "DisplayName": "Pro for Workstations",
+    "ProductKey": "DXG7C-N36C4-C4HTG-X4T3X-2YV77"
+  },
+  {
+    "Visible": true,
+    "Value": "pro_workstations_n",
+    "DisplayName": "Pro N for Workstations",
+    "ProductKey": "WYPNQ-8C467-V2W6J-TX4WX-WT2RQ"
+  },
+  {
+    "Visible": false,
+    "Value": "enterprise",
+    "DisplayName": "Enterprise",
+    "ProductKey": "XGVPP-NMH47-7TTHJ-W3FW7-8HV2C"
+  }
+]
