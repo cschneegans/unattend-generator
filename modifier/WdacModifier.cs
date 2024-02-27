@@ -5,6 +5,25 @@ using System.Text;
 
 namespace Schneegans.Unattend;
 
+public interface IWdacSettings;
+
+public class SkipWdacSettings : IWdacSettings;
+
+public enum WdacScriptModes
+{
+  Restricted, Unrestricted
+}
+
+public enum WdacAuditModes
+{
+  Auditing, AuditingOnBootFailure, Enforcement
+}
+
+public record class ConfigureWdacSettings(
+  WdacAuditModes AuditMode,
+  WdacScriptModes ScriptMode
+) : IWdacSettings;
+
 enum RuleType
 {
   Allow, Deny
@@ -97,8 +116,7 @@ class WdacModifier(ModifierContext context) : Modifier(context)
               encoding: Encoding.UTF8
             );
 
-            string? line;
-            while ((line = sr.ReadLine()) != null)
+            foreach (string line in Util.SplitLines(sr))
             {
               yield return NewPathRule(line, RuleType.Deny);
             }

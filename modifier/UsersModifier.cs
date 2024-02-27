@@ -1,26 +1,158 @@
 ﻿using System;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Xml;
 
 namespace Schneegans.Unattend;
 
+public interface IAccountSettings;
+
+public class InteractiveAccountSettings : IAccountSettings;
+
+public class UnattendedAccountSettings : IAccountSettings
+{
+  public UnattendedAccountSettings(
+    ImmutableList<Account> accounts,
+    IAutoLogonSettings autoLogonSettings
+  )
+  {
+    Accounts = accounts;
+    AutoLogonSettings = autoLogonSettings;
+
+    CheckAdministratorAccount();
+    CheckUniqueNames();
+  }
+
+  private void CheckUniqueNames()
+  {
+    var collisions = Accounts
+      //.Where(account => account.HasName)
+      .GroupBy(keySelector: account => account.Name, comparer: StringComparer.OrdinalIgnoreCase)
+      .Where(group => group.Count() > 1)
+      .Select(group => $"'{group.Key}'");
+
+    if (collisions.Any())
+    {
+      throw new ConfigurationException($"Account name(s) {string.Join(", ", collisions)} specified more than once.");
+    }
+  }
+
+  public ImmutableList<Account> Accounts { get; }
+
+  public IAutoLogonSettings AutoLogonSettings { get; }
+
+  private void CheckAdministratorAccount()
+  {
+    if (AutoLogonSettings is BuiltinAutoLogonSettings)
+    {
+      return;
+    }
+    foreach (var account in Accounts)
+    {
+      if (account.Group == Constants.AdministratorsGroup) // && account.HasName)
+      {
+        return;
+      }
+    }
+
+    throw new ConfigurationException("Must have at least one administrator account.");
+  }
+}
+
+public interface IAutoLogonSettings;
+
+public class NoneAutoLogonSettings : IAutoLogonSettings;
+
+public class BuiltinAutoLogonSettings(
+  string password
+) : IAutoLogonSettings
+{
+  public string Password => Validation.StringNotEmpty(password);
+}
+
+public class OwnAutoLogonSettings : IAutoLogonSettings;
+
+public class Account
+{
+  public Account(
+    string name,
+    string password,
+    string group
+  )
+  {
+    Name = name;
+    Password = password;
+    Group = group;
+    ValidateUsername();
+  }
+
+  public string Name { get; }
+
+  public string Password { get; }
+
+  public string Group { get; }
+
+  private void ValidateUsername()
+  {
+    void Throw()
+    {
+      throw new ConfigurationException($"Username '{Name}' is invalid.");
+    }
+
+    if (string.IsNullOrWhiteSpace(Name))
+    {
+      Throw();
+    }
+
+    if (Name != Name.Trim())
+    {
+      Throw();
+    }
+
+    if (Name.Length > 20)
+    {
+      Throw();
+    }
+
+    if (Name.IndexOfAny(['/', '\\', '[', ']', ':', ';', '|', '=', ',', '+', '*', '?', '<', '>']) > -1)
+    {
+      Throw();
+    }
+
+    {
+      string[] existing = [
+        "administrator",
+        "guest",
+        "defaultaccount",
+        "system",
+        "network service",
+        "local service"
+      ];
+
+      if (existing.Contains(Name, StringComparer.OrdinalIgnoreCase))
+      {
+        Throw();
+      }
+    }
+  }
+}
+
 class UsersModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
-    if (Configuration.AccountSettings is UnattendedAccountSettings settings)
+    switch (Configuration.AccountSettings)
     {
-      AddAutoLogon((XmlElement)Document.SelectSingleNodeOrThrow("//u:AutoLogon", NamespaceManager), settings);
-      AddUserAccounts((XmlElement)Document.SelectSingleNodeOrThrow("//u:UserAccounts", NamespaceManager), settings);
-    }
-    else if (Configuration.AccountSettings is InteractiveAccountSettings)
-    {
-      Document.SelectSingleNodeOrThrow("//u:AutoLogon", NamespaceManager).RemoveSelf();
-      Document.SelectSingleNodeOrThrow("//u:UserAccounts", NamespaceManager).RemoveSelf();
-    }
-    else
-    {
-      throw new NotSupportedException();
+      case UnattendedAccountSettings settings:
+        AddAutoLogon((XmlElement)Document.SelectSingleNodeOrThrow("//u:AutoLogon", NamespaceManager), settings);
+        AddUserAccounts((XmlElement)Document.SelectSingleNodeOrThrow("//u:UserAccounts", NamespaceManager), settings);
+        break;
+      case InteractiveAccountSettings:
+        Document.SelectSingleNodeOrThrow("//u:AutoLogon", NamespaceManager).RemoveSelf();
+        Document.SelectSingleNodeOrThrow("//u:UserAccounts", NamespaceManager).RemoveSelf();
+        break;
+      default:
+        throw new NotSupportedException();
     }
   }
 
@@ -33,18 +165,15 @@ class UsersModifier(ModifierContext context) : Modifier(context)
 
     (string, string) GetAutoLogonCredentials()
     {
-      if (settings.AutoLogonSettings is BuiltinAutoLogonSettings bals)
+      switch (settings.AutoLogonSettings)
       {
-        return ("Administrator", bals.Password);
-      }
-      else if (settings.AutoLogonSettings is OwnAutoLogonSettings oals)
-      {
-        Account first = settings.Accounts.Where(a => a.Group == Constants.AdministratorsGroup).First();
-        return (first.Name, first.Password);
-      }
-      else
-      {
-        throw new NotSupportedException();
+        case BuiltinAutoLogonSettings bals:
+          return ("Administrator", bals.Password);
+        case OwnAutoLogonSettings oals:
+          Account first = settings.Accounts.Where(a => a.Group == Constants.AdministratorsGroup).First();
+          return (first.Name, first.Password);
+        default:
+          throw new NotSupportedException();
       }
     }
 
@@ -74,7 +203,7 @@ class UsersModifier(ModifierContext context) : Modifier(context)
     }
     {
       XmlElement localAccounts = NewElement("LocalAccounts", container);
-      foreach (Account account in settings.Accounts.Where(account => account.HasName))
+      foreach (Account account in settings.Accounts) //.Where(account => account.HasName))
       {
         XmlElement localAccount = NewElement("LocalAccount", localAccounts);
         localAccount.SetAttribute("action", NamespaceManager.LookupNamespace("wcm"), "add");

@@ -2,6 +2,14 @@
 
 namespace Schneegans.Unattend;
 
+public interface IEditionSettings;
+
+public record class UnattendedEditionSettings(
+  WindowsEdition Edition
+) : IEditionSettings;
+
+public class InteractiveEditionSettings : IEditionSettings;
+
 class ProductKeyModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()

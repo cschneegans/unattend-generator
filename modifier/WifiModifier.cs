@@ -4,6 +4,25 @@ using System.Xml;
 
 namespace Schneegans.Unattend;
 
+public interface IWifiSettings;
+
+public class SkipWifiSettings : IWifiSettings;
+
+public class InteractiveWifiSettings : IWifiSettings;
+
+public enum WifiAuthentications
+{
+  Open, WPA2PSK, WPA3SAE
+}
+
+public record class UnattendedWifiSettings(
+  string Name,
+  string Password,
+  bool ConnectAutomatically,
+  WifiAuthentications Authentication,
+  bool NonBroadcast
+) : IWifiSettings;
+
 class WifiModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()

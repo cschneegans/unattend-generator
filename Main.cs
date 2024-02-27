@@ -8,9 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
-using System.Xml.Schema;
 
 namespace Schneegans.Unattend;
+
+public enum Pass
+{
+  offlineServicing,
+  windowsPE,
+  generalize,
+  specialize,
+  auditSystem,
+  auditUser,
+  oobeSystem
+}
 
 public enum RecoveryModes
 {
@@ -32,164 +42,73 @@ public enum ExpressSettingsMode
   Interactive, EnableAll, DisableAll
 }
 
-internal static class Util
-{
-  internal static MemoryStream LoadFromResource(string name)
-  {
-    Type type = typeof(Util);
-    using var stream = type.Assembly.GetManifestResourceStream(type, "resource." + name) ?? throw new ArgumentException($"Resource '{name}' not found.");
-    var mstr = new MemoryStream();
-    stream.CopyTo(mstr);
-    mstr.Seek(0, SeekOrigin.Begin);
-    return mstr;
-  }
-
-  internal static string StringFromResource(string name)
-  {
-    using var mstr = LoadFromResource(name);
-    return new StreamReader(mstr, Encoding.UTF8).ReadToEnd();
-  }
-
-  internal static XmlReader XmlReaderFromResource(string name)
-  {
-    return XmlReader.Create(LoadFromResource(name));
-  }
-
-  internal static XmlDocument XmlDocumentFromResource(string name)
-  {
-    var doc = new XmlDocument();
-    doc.Load(XmlReaderFromResource(name));
-    return doc;
-  }
-
-  internal static XmlSchemaSet XmlSchemaSetFromResource(string name)
-  {
-    XmlSchema schema = XmlSchema.Read(XmlReaderFromResource(name), null) ?? throw new NullReferenceException();
-    var schemas = new XmlSchemaSet();
-    schemas.Add(schema);
-    return schemas;
-  }
-
-  internal static void ValidateAgainstSchema(XmlDocument doc, string schemaName)
-  {
-    var settings = new XmlReaderSettings()
-    {
-      ValidationType = ValidationType.Schema,
-      Schemas = XmlSchemaSetFromResource(schemaName),
-    };
-    using var reader = XmlReader.Create(new XmlNodeReader(doc), settings);
-    while (reader.Read())
-    {
-    }
-  }
-
-  public static XmlElement GetOrCreateElement(Pass pass, string component, XmlDocument doc, XmlNamespaceManager ns)
-  {
-    var setting = doc.SelectSingleNodeOrThrow($"/u:unattend/u:settings[@pass='{pass}']", ns);
-    XmlElement? elem = (XmlElement?)setting.SelectSingleNode($"u:component[@name='{component}']", ns);
-    if (elem == null)
-    {
-      elem = doc.CreateElement("component", ns.LookupNamespace("u"));
-      elem.SetAttribute("name", component);
-      elem.SetAttribute("processorArchitecture", "x86");
-      elem.SetAttribute("publicKeyToken", "31bf3856ad364e35");
-      elem.SetAttribute("language", "neutral");
-      elem.SetAttribute("versionScope", "nonSxS");
-      setting.AppendChild(elem);
-    }
-    return elem;
-  }
-
-  public static XmlElement GetOrCreateElement(Pass pass, string component, string element, XmlDocument doc, XmlNamespaceManager ns)
-  {
-    XmlElement comp = GetOrCreateElement(pass, component, doc, ns);
-    XmlElement? elem = (XmlElement?)comp.SelectSingleNode($"u:{element}", ns);
-    if (elem == null)
-    {
-      elem = doc.CreateElement(element, ns.LookupNamespace("u"));
-      comp.AppendChild(elem);
-    }
-    return elem;
-  }
-
-  public static XmlElement NewSimpleElement(string name, XmlElement parent, string innerText, XmlDocument doc, XmlNamespaceManager ns)
-  {
-    XmlElement element = doc.CreateElement(name, ns.LookupNamespace("u"));
-    element.InnerText = innerText;
-    parent.AppendChild(element);
-    return element;
-  }
-
-  public static XmlElement NewElement(string name, XmlElement parent, XmlDocument doc, XmlNamespaceManager ns)
-  {
-    XmlElement element = doc.CreateElement(name, ns.LookupNamespace("u"));
-    parent.AppendChild(element);
-    return element;
-  }
-}
-
 record class CommandConfig(
-  Pass Pass,
-  string Component,
-  string Element1,
-  string Element2,
-  string Element3
+  Func<XmlDocument, XmlNamespaceManager, XmlElement> CreateElement
 )
 {
-  // <settings pass="windowsPE">
-  //   <component name="Microsoft-Windows-Setup">
-  //     <RunSynchronous>
-  //       <RunSynchronousCommand>
-  //         <Path>
+  /// <summary>
+  /// Inserts a command using this markup:
+  /// <code>
+  /// &lt;settings pass=&quot;windowsPE&quot;&gt;
+  ///   &lt;component name=&quot;Microsoft-Windows-Setup&quot;&gt;
+  ///     &lt;RunSynchronous&gt;
+  ///       &lt;RunSynchronousCommand&gt;
+  ///         &lt;Path&gt;
+  /// </code>
+  /// </summary>
   public static CommandConfig WindowsPE = new(
-    Pass: Pass.windowsPE,
-    Component: "Microsoft-Windows-Setup",
-    Element1: "RunSynchronous",
-    Element2: "RunSynchronousCommand",
-    Element3: "Path"
+    CreateElement: (doc, ns) =>
+    {
+      var container = Util.GetOrCreateElement(Pass.windowsPE, "Microsoft-Windows-Setup", "RunSynchronous", doc, ns);
+      var outer = Util.NewElement("RunSynchronousCommand", container, doc, ns);
+      return Util.NewElement("Path", outer, doc, ns);
+    }
   );
 
-  // <settings pass="specialize">
-  //   <component name="Microsoft-Windows-Deployment">
-  //     <RunSynchronous>
-  //       <RunSynchronousCommand>
-  //         <Path>
+  /// <summary>
+  /// Inserts a command using this markup:
+  /// <code>
+  /// &lt;settings pass=&quot;specialize&quot;&gt;
+  ///   &lt;component name=&quot;Microsoft-Windows-Deployment&quot;&gt;
+  ///     &lt;RunSynchronous&gt;
+  ///       &lt;RunSynchronousCommand&gt;
+  ///         &lt;Path&gt;
+  /// </code>
+  /// </summary>
   public static CommandConfig Specialize = new(
-    Pass: Pass.specialize,
-    Component: "Microsoft-Windows-Deployment",
-    Element1: "RunSynchronous",
-    Element2: "RunSynchronousCommand",
-    Element3: "Path"
+    CreateElement: (doc, ns) =>
+    {
+      var container = Util.GetOrCreateElement(Pass.specialize, "Microsoft-Windows-Deployment", "RunSynchronous", doc, ns);
+      var outer = Util.NewElement("RunSynchronousCommand", container, doc, ns);
+      return Util.NewElement("Path", outer, doc, ns);
+    }
   );
 
-  // <settings pass="oobeSystem">
-  //   <component name="Microsoft-Windows-Shell-Setup">
-  //     <FirstLogonCommands>
-  //       <SynchronousCommand>
-  //         <CommandLine>
+  /// <summary>
+  /// Inserts a command using this markup:
+  /// <code>
+  /// &lt;settings pass=&quot;oobeSystem&quot;&gt;
+  ///   &lt;component name=&quot;Microsoft-Windows-Shell-Setup&quot;&gt;
+  ///     &lt;FirstLogonCommands&gt;
+  ///       &lt;SynchronousCommand&gt;
+  ///         &lt;CommandLine&gt;
+  /// </code>
+  /// </summary>
   public static CommandConfig Oobe = new(
-    Pass: Pass.oobeSystem,
-    Component: "Microsoft-Windows-Shell-Setup",
-    Element1: "FirstLogonCommands",
-    Element2: "SynchronousCommand",
-    Element3: "CommandLine"
+    CreateElement: (doc, ns) =>
+    {
+      var container = Util.GetOrCreateElement(Pass.oobeSystem, "Microsoft-Windows-Shell-Setup", "FirstLogonCommands", doc, ns);
+      var outer = Util.NewElement("RunSynchronousCommand", container, doc, ns);
+      return Util.NewElement("CommandLine", outer, doc, ns);
+    }
   );
 }
 
 class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig config)
 {
-  private readonly Lazy<XmlElement> container = new(() =>
-  {
-    return Util.GetOrCreateElement(config.Pass, config.Component, config.Element1, doc, ns);
-  });
-
   public void Command(string value)
   {
-    var commandElement = doc.CreateElement(config.Element2, ns.LookupNamespace("u"));
-    container.Value.AppendChild(commandElement);
-    var pathElement = doc.CreateElement(config.Element3, ns.LookupNamespace("u"));
-    commandElement.AppendChild(pathElement);
-    pathElement.InnerText = value;
+    config.CreateElement(doc, ns).InnerText = value;
   }
 
   public void ShellCommand(string command)
@@ -198,7 +117,7 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
   }
 
   /// <summary>
-  /// Runs a command and redirects its errors and output to a file.
+  /// Runs a command and redirects its <c>stdout</c> and <c>stderr</c> to a file.
   /// </summary>
   public void ShellCommand(string command, string outFile)
   {
@@ -281,9 +200,7 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
     doc.WriteTo(writer);
     writer.Close();
 
-    using var sr = new StringReader(sb.ToString());
-    string? line;
-    while ((line = sr.ReadLine()) != null)
+    foreach (string line in Util.SplitLines(sb.ToString()))
     {
       WriteToFile(path, line);
     }
@@ -291,7 +208,7 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
 
   public void WriteToFile(string path, string line)
   {
-    this.Command($@"cmd.exe /c "">>""{path}"" echo {EscapeShell(line)}""");
+    Command($@"cmd.exe /c "">>""{path}"" echo {EscapeShell(line)}""");
   }
 
   public void WriteToFile(string path, IEnumerable<string> lines)
@@ -303,215 +220,7 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
   }
 }
 
-public static class Extensions
-{
-  public static XmlNode SelectSingleNodeOrThrow(this XmlNode node, string xpath, XmlNamespaceManager nsmgr)
-  {
-    return node.SelectSingleNode(xpath, nsmgr) ?? throw new NullReferenceException($"No node matches XPath '{xpath}'.");
-  }
-
-  public static XmlNode SelectSingleNodeOrThrow(this XmlNode node, string xpath)
-  {
-    return node.SelectSingleNode(xpath) ?? throw new NullReferenceException($"No node matches XPath '{xpath}'.");
-  }
-
-  public static IEnumerable<XmlNode> SelectNodesOrEmpty(this XmlNode node, string xpath)
-  {
-    XmlNodeList? result = node.SelectNodes(xpath);
-    return result == null ? Array.Empty<XmlNode>() : result.Cast<XmlNode>();
-  }
-
-  public static IEnumerable<XmlNode> SelectNodesOrEmpty(this XmlNode node, string xpath, XmlNamespaceManager nsmgr)
-  {
-    XmlNodeList? result = node.SelectNodes(xpath, nsmgr);
-    return result == null ? Array.Empty<XmlNode>() : result.Cast<XmlNode>();
-  }
-
-  public static void RemoveSelf(this XmlNode node)
-  {
-    node.ParentNode.RemoveChild(node);
-  }
-
-  public static string Description(this WifiAuthentications value)
-  {
-    return value switch
-    {
-      WifiAuthentications.Open => "Open",
-      WifiAuthentications.WPA2PSK => "WPA2-Personal AES",
-      WifiAuthentications.WPA3SAE => "WPA3-Personal AES",
-      _ => throw new ArgumentException($"Illegal value '{value}'.", nameof(value)),
-    };
-  }
-
-  public static string Description(this ProcessorArchitectures value)
-  {
-    string slashWithThinspaces = "\u2009/\u2009";
-
-    return value switch
-    {
-      ProcessorArchitectures.x86 => $"Intel{slashWithThinspaces}AMD 32-bit",
-      ProcessorArchitectures.amd64 => $"Intel{slashWithThinspaces}AMD 64-bit",
-      ProcessorArchitectures.arm64 => "Windows on Arm64",
-      _ => throw new ArgumentException($"Illegal value '{value}'.", nameof(value)),
-    };
-  }
-}
-
-public enum Pass
-{
-  offlineServicing,
-  windowsPE,
-  generalize,
-  specialize,
-  auditSystem,
-  auditUser,
-  oobeSystem
-}
-
-public interface IProcessAuditSettings;
-
-public record class EnabledProcessAuditSettings(
-  bool IncludeCommandLine
-) : IProcessAuditSettings;
-
-public class DisabledProcessAuditSettings : IProcessAuditSettings;
-
-public interface IWifiSettings;
-
-public class SkipWifiSettings : IWifiSettings;
-
-public class InteractiveWifiSettings : IWifiSettings;
-
-public enum WifiAuthentications
-{
-  Open, WPA2PSK, WPA3SAE
-}
-
-public record class UnattendedWifiSettings(
-  string Name,
-  string Password,
-  bool ConnectAutomatically,
-  WifiAuthentications Authentication,
-  bool NonBroadcast
-) : IWifiSettings;
-
-public interface IWdacSettings;
-
-public class SkipWdacSettings : IWdacSettings;
-
-public enum WdacScriptModes
-{
-  Restricted, Unrestricted
-}
-
-public enum WdacAuditModes
-{
-  Auditing, AuditingOnBootFailure, Enforcement
-}
-
-public record class ConfigureWdacSettings(
-  WdacAuditModes AuditMode,
-  WdacScriptModes ScriptMode
-) : IWdacSettings;
-
-public interface ILockoutSettings;
-
-public class DefaultLockoutSettings : ILockoutSettings;
-
-public class DisableLockoutSettings : ILockoutSettings;
-
-public record class CustomLockoutSettings(
-  int LockoutThreshold,
-  int LockoutDuration,
-  int LockoutWindow
-) : ILockoutSettings;
-
-public interface ILanguageSettings;
-
-public class InteractiveLanguageSettings : ILanguageSettings;
-
-public record class UnattendedLanguageSettings(
-  ImageLanguage ImageLanguage,
-  UserLocale UserLocale,
-  KeyboardIdentifier InputLocale
-) : ILanguageSettings;
-
-public interface IPartitionSettings;
-
-public class InteractivePartitionSettings : IPartitionSettings;
-
-public interface IInstallToSettings;
-
-public class AvailableInstallToSettings : IInstallToSettings;
-
-public record class CustomInstallToSettings(
-  int InstallToDisk,
-  int InstallToPartition
-) : IInstallToSettings;
-
-public record class CustomPartitionSettings(
-  string Script,
-  IInstallToSettings InstallTo
-) : IPartitionSettings;
-
-public record class UnattendedPartitionSettings(
-  PartitionLayouts PartitionLayout,
-  RecoveryModes RecoveryMode,
-  int EspSize,
-  int RecoverySize
-) : IPartitionSettings;
-
-public interface IComputerNameSettings;
-
-public class RandomComputerNameSettings : IComputerNameSettings;
-
-public record class CustomComputerNameSettings(
-  string ComputerName
-) : IComputerNameSettings;
-
-public interface ITimeZoneSettings;
-
-public class ImplicitTimeZoneSettings : ITimeZoneSettings;
-
-public record class ExplicitTimeZoneSettings(
-  TimeOffset TimeZone
-) : ITimeZoneSettings;
-
-public interface IEditionSettings;
-
-public record class UnattendedEditionSettings(
-  WindowsEdition Edition
-) : IEditionSettings;
-
-public class InteractiveEditionSettings : IEditionSettings;
-
-public interface IAccountSettings;
-
-public class InteractiveAccountSettings : IAccountSettings;
-
-public record class UnattendedAccountSettings(
-  ImmutableList<Account> Accounts,
-  IAutoLogonSettings AutoLogonSettings
-) : IAccountSettings;
-
-public interface IAutoLogonSettings;
-
-public class NoneAutoLogonSettings : IAutoLogonSettings;
-
-public record BuiltinAutoLogonSettings(
-  string Password
-) : IAutoLogonSettings;
-
-public class OwnAutoLogonSettings : IAutoLogonSettings;
-
-public record class Account(
-  string Name,
-  string Password,
-  string Group
-)
-{
-  public bool HasName => !string.IsNullOrWhiteSpace(Name);
-}
+public class ConfigurationException(string? message) : Exception(message);
 
 public record class Configuration(
   ILanguageSettings LanguageSettings,
@@ -544,24 +253,9 @@ public record class Configuration(
   bool DisableWidgets
 );
 
-public class JsonBloatwareStep
+public interface IKeyed
 {
-  public string? Type { get; set; }
-
-  public string? Selector { get; set; }
-
-  public byte[]? Versions { get; set; }
-}
-
-public class JsonBloatware : IJson
-{
-  public string? DisplayName { get; set; }
-
-  public string? Token { get; set; }
-
-  public JsonBloatwareStep[]? Steps { get; set; }
-
-  public string? Since { get; set; }
+  string Key { get; }
 }
 
 public abstract class BloatwareStep(
@@ -594,13 +288,13 @@ public class CustomBloatwareStep(
 ) : BloatwareStep(versions);
 
 public class Bloatware(
-  string? displayName,
+  string displayName,
   string? token,
   ImmutableList<BloatwareStep> steps,
   string? since
 ) : IKeyed
 {
-  public string DisplayName { get; } = displayName ?? throw new ArgumentNullException(nameof(displayName));
+  public string DisplayName { get; } = displayName;
 
   public string Key { get; } = $"Remove{token ?? displayName.Replace(" ", "")}";
 
@@ -608,6 +302,7 @@ public class Bloatware(
 
   public ImmutableList<BloatwareStep> Steps { get; } = steps;
 
+  [JsonIgnore]
   public string? StepsLabel
   {
     get
@@ -633,21 +328,16 @@ public class Bloatware(
   }
 }
 
-public class JsonComponent : IJson
-{
-  public string? Component { get; set; }
-
-  public string[]? Passes { get; set; }
-}
-
 public class Component(
-  string? name,
-  IEnumerable<string>? passes
+  string name,
+  ImmutableSortedSet<Pass> passes
 ) : IKeyed
 {
   public string Name { get; } = ValidateName(name);
 
-  private static string ValidateName(string? name)
+  private static readonly Regex Pattern = new("^[a-z-]+$", RegexOptions.IgnoreCase);
+
+  private static string ValidateName(string name)
   {
     ArgumentNullException.ThrowIfNull(name);
     if (!Pattern.IsMatch(name))
@@ -657,17 +347,7 @@ public class Component(
     return name;
   }
 
-  private static readonly Regex Pattern = new("^[a-z-]+$", RegexOptions.IgnoreCase);
-
-  public ImmutableSortedSet<Pass> Passes { get; } = ValidatePasses(passes);
-
-  private static ImmutableSortedSet<Pass> ValidatePasses(IEnumerable<string>? passes)
-  {
-    ArgumentNullException.ThrowIfNull(passes);
-    return ImmutableSortedSet.CreateRange(
-      passes.Select(Enum.Parse<Pass>)
-    );
-  }
+  public ImmutableSortedSet<Pass> Passes { get; } = passes;
 
   public string Key => Name;
 
@@ -675,48 +355,29 @@ public class Component(
   {
     get
     {
-      string name = Name;
-      if (name == "Microsoft-Windows-WDF-KernelLibrary")
+      string name = Name switch
       {
-        name = "microsoft-windows-wdf-kernel-library";
-      }
-      else if (name == "Microsoft-Windows-MapControl-Desktop")
-      {
-        name = "microsoft-windows-mapcontrol";
-      }
-      else
-      {
-        name = Name.ToLowerInvariant();
-      }
-
+        "Microsoft-Windows-WDF-KernelLibrary" => "microsoft-windows-wdf-kernel-library",
+        "Microsoft-Windows-MapControl-Desktop" => "microsoft-windows-mapcontrol",
+        _ => Name.ToLowerInvariant(),
+      };
       return $"https://learn.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/{name}";
     }
   }
 }
 
-public class JsonWindowsEdition : IJson
-{
-  public string? Value { get; set; }
-
-  public string? DisplayName { get; set; }
-
-  public string? ProductKey { get; set; }
-
-  public bool Visible { get; set; }
-}
-
 public class WindowsEdition(
-  string? value,
-  string? displayName,
-  string? productKey,
+  string value,
+  string displayName,
+  string productKey,
   bool visible
 ) : IKeyed
 {
-  public string Value { get; } = value ?? throw new ArgumentNullException(nameof(value));
+  public string Value { get; } = value;
 
-  public string DisplayName { get; } = displayName ?? throw new ArgumentNullException(nameof(displayName));
+  public string DisplayName { get; } = displayName;
 
-  public string ProductKey { get; } = productKey ?? throw new ArgumentNullException(nameof(productKey));
+  public string ProductKey { get; } = productKey;
 
   [JsonIgnore]
   public string Key => Value;
@@ -724,95 +385,43 @@ public class WindowsEdition(
   public bool Visible = visible;
 }
 
-public interface IJson;
-
-public interface IKeyed
-{
-  string Key { get; }
-}
-
-public class JsonImageLanguage : IJson
-{
-  public string? Tag { get; set; }
-
-  public string? DisplayName { get; set; }
-}
-
 public class ImageLanguage(
-  string? tag,
-  string? displayName
+  string tag,
+  string displayName
 ) : IKeyed
 {
-  public string Tag { get; } = tag ?? throw new ArgumentNullException(nameof(tag));
+  public string Tag { get; } = tag;
 
-  public string DisplayName { get; } = displayName ?? throw new ArgumentNullException(nameof(displayName));
+  public string DisplayName { get; } = displayName;
 
   [JsonIgnore]
   public string Key => Tag;
 }
 
-public class JsonKeyboardIdentifier : IJson
-{
-  public string? Code { get; set; }
-
-  public string? DisplayName { get; set; }
-}
-
 public class KeyboardIdentifier(
-  string? code,
-  string? displayName
+  string code,
+  string displayName
 ) : IKeyed
 {
-  public string Code { get; } = code ?? throw new ArgumentNullException(nameof(code));
+  public string Code { get; } = code;
 
-  public string DisplayName { get; } = displayName ?? throw new ArgumentNullException(nameof(displayName));
+  public string DisplayName { get; } = displayName;
 
   [JsonIgnore]
   public string Key => Code;
 }
 
-public class JsonTimeOffset : IJson
-{
-  public string? Id { get; set; }
-  public string? DisplayName { get; set; }
-}
-
 public class TimeOffset(
-  string? id,
-  string? displayName
+  string id,
+  string displayName
 ) : IKeyed
 {
-  public string Id { get; } = id ?? throw new ArgumentNullException(nameof(id));
+  public string Id { get; } = id;
 
-  public string DisplayName { get; } = displayName ?? throw new ArgumentNullException(nameof(displayName));
+  public string DisplayName { get; } = displayName;
 
+  [JsonIgnore]
   public string Key => Id;
-}
-
-public class JsonFormattingExamples : IJson
-{
-  public string? LongDate { get; set; }
-
-  public string? ShortDate { get; set; }
-
-  public string? LongTime { get; set; }
-
-  public string? ShortTime { get; set; }
-
-  public string? Currency { get; set; }
-
-  public string? Number { get; set; }
-}
-
-public class JsonUserLocale : IJson
-{
-  public string? Code { get; set; }
-
-  public string? DisplayName { get; set; }
-
-  public string? KeyboardLayout { get; set; }
-
-  public JsonFormattingExamples FormattingExamples { get; set; } = new();
 }
 
 public record class FormattingExamples(
@@ -825,15 +434,15 @@ public record class FormattingExamples(
 );
 
 public class UserLocale(
-  string? code,
-  string? displayName,
+  string code,
+  string displayName,
   KeyboardIdentifier? defaultKeyboardLayout,
   FormattingExamples? formattingExamples
 ) : IKeyed
 {
-  public string Code { get; } = code ?? throw new ArgumentNullException(nameof(code));
+  public string Code { get; } = code;
 
-  public string DisplayName { get; } = displayName ?? throw new ArgumentNullException(nameof(displayName));
+  public string DisplayName { get; } = displayName;
 
   [JsonIgnore]
   public KeyboardIdentifier? DefaultKeyboardLayout { get; } = defaultKeyboardLayout;
@@ -869,106 +478,77 @@ public class UnattendGenerator
   {
     {
       string json = Util.StringFromResource("Bloatware.json");
-      var array = JsonConvert.DeserializeObject<JsonBloatware[]>(json) ?? throw new NullReferenceException();
+      JsonSerializerSettings settings = new()
+      {
+        TypeNameHandling = TypeNameHandling.Auto,
+      };
       Bloatwares = ImmutableList.CreateRange(
-        array.Select(j =>
-        {
-          IEnumerable<BloatwareStep> steps = (j.Steps ?? []).Select<JsonBloatwareStep, BloatwareStep>(s =>
-          {
-            return s.Type switch
-            {
-              "ProvisionedPackage" => new PackageBloatwareStep(s.Versions, s.Selector),
-              "Capability" => new CapabilityBloatwareStep(s.Versions, s.Selector),
-              "Custom" => new CustomBloatwareStep(s.Versions),
-              _ => throw new NotSupportedException($"Unsupported type '{s.Type}'.")
-            };
-          });
-          return new Bloatware(j.DisplayName, j.Token, ImmutableList.CreateRange(steps), j.Since);
-        })
+        JsonConvert.DeserializeObject<Bloatware[]>(json, settings) ?? throw new NullReferenceException()
       );
     }
     {
       string json = Util.StringFromResource("Component.json");
-      var array = JsonConvert.DeserializeObject<JsonComponent[]>(json) ?? throw new NullReferenceException();
       Components = ImmutableList.CreateRange(
-        array.Select(j => new Component(j.Component, j.Passes))
+        JsonConvert.DeserializeObject<Component[]>(json) ?? throw new NullReferenceException()
       );
     }
     {
       string json = Util.StringFromResource("ImageLanguage.json");
-      var array = JsonConvert.DeserializeObject<JsonImageLanguage[]>(json) ?? throw new NullReferenceException();
       ImageLanguages = ImmutableList.CreateRange(
-        array.Select(j => new ImageLanguage(j.Tag, j.DisplayName))
+        JsonConvert.DeserializeObject<ImageLanguage[]>(json) ?? throw new NullReferenceException()
       );
     }
     {
       string json = Util.StringFromResource("KeyboardIdentifier.json");
-      var array = JsonConvert.DeserializeObject<JsonKeyboardIdentifier[]>(json) ?? throw new NullReferenceException();
       KeyboardIdentifiers = ImmutableList.CreateRange(
-        array.Select(j => new KeyboardIdentifier(j.Code, j.DisplayName))
+        JsonConvert.DeserializeObject<KeyboardIdentifier[]>(json) ?? throw new NullReferenceException()
       );
     }
     {
       string json = Util.StringFromResource("UserLocale.json");
-      var array = JsonConvert.DeserializeObject<JsonUserLocale[]>(json) ?? throw new NullReferenceException();
-
       UserLocales = ImmutableList.CreateRange(
-        array.Select(j =>
-        {
-          FormattingExamples examples = new(
-            Currency: j.FormattingExamples.Currency ?? throw new NullReferenceException("currency"),
-            ShortTime: j.FormattingExamples.ShortTime ?? throw new NullReferenceException("shortTime"),
-            LongTime: j.FormattingExamples.LongTime ?? throw new NullReferenceException("longTime"),
-            ShortDate: j.FormattingExamples.ShortDate ?? throw new NullReferenceException("shortDate"),
-            LongDate: j.FormattingExamples.LongDate ?? throw new NullReferenceException("longDate"),
-            Number: j.FormattingExamples.Number ?? throw new NullReferenceException("number")
-          );
-          KeyboardIdentifier? kid = j.KeyboardLayout == null ? null : Lookup<KeyboardIdentifier>(j.KeyboardLayout);
-          return new UserLocale(j.Code, j.DisplayName, kid, examples);
-        })
+        JsonConvert.DeserializeObject<UserLocale[]>(json) ?? throw new NullReferenceException()
       );
     }
     {
       string json = Util.StringFromResource("WindowsEdition.json");
-      var array = JsonConvert.DeserializeObject<JsonWindowsEdition[]>(json) ?? throw new NullReferenceException();
       WindowsEditions = ImmutableList.CreateRange(
-        array.Select(j => new WindowsEdition(j.Value, j.DisplayName, j.ProductKey, j.Visible))
+        JsonConvert.DeserializeObject<WindowsEdition[]>(json) ?? throw new NullReferenceException()
       );
     }
     {
       string json = Util.StringFromResource("TimeOffset.json");
-      var array = JsonConvert.DeserializeObject<JsonTimeOffset[]>(json) ?? throw new NullReferenceException();
       TimeZones = ImmutableList.CreateRange(
-        array.Select(j => new TimeOffset(j.Id, j.DisplayName))
+        JsonConvert.DeserializeObject<TimeOffset[]>(json) ?? throw new NullReferenceException()
       );
     }
 
     {
-      VerifyUniqueKeys(this.Components, e => e.Key);
+      VerifyUniqueKeys(Components, e => e.Key);
     }
     {
-      VerifyUniqueKeys(this.WindowsEditions, e => e.DisplayName);
-      VerifyUniqueKeys(this.WindowsEditions, e => e.Value);
-      VerifyUniqueKeys(this.WindowsEditions, e => e.ProductKey);
+      VerifyUniqueKeys(WindowsEditions, e => e.DisplayName);
+      VerifyUniqueKeys(WindowsEditions, e => e.Value);
+      VerifyUniqueKeys(WindowsEditions, e => e.ProductKey);
     }
     {
-      VerifyUniqueKeys(this.UserLocales, e => e.Code);
-      VerifyUniqueKeys(this.UserLocales, e => e.DisplayName);
+      VerifyUniqueKeys(UserLocales, e => e.Code);
+      VerifyUniqueKeys(UserLocales, e => e.DisplayName);
     }
     {
-      VerifyUniqueKeys(this.KeyboardIdentifiers, e => e.Code);
-      VerifyUniqueKeys(this.KeyboardIdentifiers, e => e.DisplayName);
+      VerifyUniqueKeys(KeyboardIdentifiers, e => e.Code);
+      VerifyUniqueKeys(KeyboardIdentifiers, e => e.DisplayName);
     }
     {
-      VerifyUniqueKeys(this.ImageLanguages, e => e.Tag);
-      VerifyUniqueKeys(this.ImageLanguages, e => e.DisplayName);
+      VerifyUniqueKeys(ImageLanguages, e => e.Tag);
+      VerifyUniqueKeys(ImageLanguages, e => e.DisplayName);
     }
     {
-      VerifyUniqueKeys(this.TimeZones, e => e.Id);
-      VerifyUniqueKeys(this.TimeZones, e => e.DisplayName);
+      VerifyUniqueKeys(TimeZones, e => e.Id);
+      VerifyUniqueKeys(TimeZones, e => e.DisplayName);
     }
     {
-      VerifyUniqueKeys(Enum.GetValues<ProcessorArchitectures>(), e => e.Description());
+      //VerifyUniqueKeys(Enum.GetValues<ProcessorArchitectures>(), e => e.Description());
     }
   }
 
@@ -1021,7 +601,7 @@ public class UnattendGenerator
     {
       return string.Equals(item.Key, key, StringComparison.OrdinalIgnoreCase);
     });
-    return found ?? throw new ArgumentException($"Could not find an element with key '{key}'.");
+    return found ?? throw new ArgumentException($"Could not find an element of type '{nameof(T)}' with key '{key}'.");
   }
 
   [return: NotNull]
@@ -1029,27 +609,27 @@ public class UnattendGenerator
   {
     if (typeof(T) == typeof(WindowsEdition))
     {
-      return (T)(object)Lookup(this.WindowsEditions, key);
+      return (T)(object)Lookup(WindowsEditions, key);
     }
     if (typeof(T) == typeof(UserLocale))
     {
-      return (T)(object)Lookup(this.UserLocales, key);
+      return (T)(object)Lookup(UserLocales, key);
     }
     if (typeof(T) == typeof(ImageLanguage))
     {
-      return (T)(object)Lookup(this.ImageLanguages, key);
+      return (T)(object)Lookup(ImageLanguages, key);
     }
     if (typeof(T) == typeof(KeyboardIdentifier))
     {
-      return (T)(object)Lookup(this.KeyboardIdentifiers, key);
+      return (T)(object)Lookup(KeyboardIdentifiers, key);
     }
     if (typeof(T) == typeof(TimeOffset))
     {
-      return (T)(object)Lookup(this.TimeZones, key);
+      return (T)(object)Lookup(TimeZones, key);
     }
     if (typeof(T) == typeof(Bloatware))
     {
-      return (T)(object)Lookup(this.Bloatwares, key);
+      return (T)(object)Lookup(Bloatwares, key);
     }
     throw new NotSupportedException();
   }
@@ -1081,6 +661,8 @@ public class UnattendGenerator
       new LockoutModifier(context),
       new OptimizationsModifier(context),
       new ComponentsModifier(context),
+      new TimeZoneModifier(context),
+      new ComputerNameModifier(context),
       new WdacModifier(context),
       new OrderModifier(context),
       new ProcessorArchitectureModifier(context),

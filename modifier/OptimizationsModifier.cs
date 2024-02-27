@@ -1,7 +1,14 @@
 ﻿using System.Collections.Generic;
-using System.Xml;
 
 namespace Schneegans.Unattend;
+
+public interface IProcessAuditSettings;
+
+public record class EnabledProcessAuditSettings(
+  bool IncludeCommandLine
+) : IProcessAuditSettings;
+
+public class DisabledProcessAuditSettings : IProcessAuditSettings;
 
 class OptimizationsModifier(ModifierContext context) : Modifier(context)
 {
@@ -59,22 +66,6 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     if (Configuration.AllowPowerShellScripts)
     {
       appender.PowerShellCommand(@"Set-ExecutionPolicy -Scope 'LocalMachine' -ExecutionPolicy 'RemoteSigned' -Force;");
-    }
-
-    {
-      if (Configuration.ComputerNameSettings is CustomComputerNameSettings settings)
-      {
-        XmlElement component = Util.GetOrCreateElement(Pass.specialize, "Microsoft-Windows-Shell-Setup", Document, NamespaceManager);
-        NewSimpleElement("ComputerName", component, settings.ComputerName);
-      }
-    }
-
-    {
-      if (Configuration.TimeZoneSettings is ExplicitTimeZoneSettings settings)
-      {
-        XmlElement component = Util.GetOrCreateElement(Pass.specialize, "Microsoft-Windows-Shell-Setup", Document, NamespaceManager);
-        NewSimpleElement("TimeZone", component, settings.TimeZone.Id);
-      }
     }
 
     if (Configuration.DisableLastAccess)

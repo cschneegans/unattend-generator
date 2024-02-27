@@ -4,6 +4,31 @@ using System.IO;
 
 namespace Schneegans.Unattend;
 
+public interface IPartitionSettings;
+
+public class InteractivePartitionSettings : IPartitionSettings;
+
+public interface IInstallToSettings;
+
+public class AvailableInstallToSettings : IInstallToSettings;
+
+public record class CustomInstallToSettings(
+  int InstallToDisk,
+  int InstallToPartition
+) : IInstallToSettings;
+
+public record class CustomPartitionSettings(
+  string Script,
+  IInstallToSettings InstallTo
+) : IPartitionSettings;
+
+public record class UnattendedPartitionSettings(
+  PartitionLayouts PartitionLayout,
+  RecoveryModes RecoveryMode,
+  int EspSize,
+  int RecoverySize
+) : IPartitionSettings;
+
 class DiskModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
@@ -40,17 +65,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
       case CustomPartitionSettings settings:
         {
-          static IEnumerable<string> Split(string s)
-          {
-            using StringReader reader = new(s);
-            string? line;
-            while ((line = reader.ReadLine()) != null)
-            {
-              yield return line;
-            }
-          }
-
-          WriteScript(Split(settings.Script));
+          WriteScript(Util.SplitLines(settings.Script));
           switch (settings.InstallTo)
           {
             case AvailableInstallToSettings:

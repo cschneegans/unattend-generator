@@ -18,10 +18,8 @@ class ComponentsModifier(ModifierContext context) : Modifier(context)
           elem.SetAttribute("publicKeyToken", "31bf3856ad364e35");
           elem.SetAttribute("language", "neutral");
           elem.SetAttribute("versionScope", "nonSxS");
+          elem.AppendChild(Document.CreateComment("Placeholder"));
           setting.AppendChild(elem);
-
-          var comment = Document.CreateComment("Placeholder");
-          elem.AppendChild(comment);
         }
       }
     }

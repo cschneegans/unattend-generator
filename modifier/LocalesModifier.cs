@@ -3,6 +3,16 @@ using System.Xml;
 
 namespace Schneegans.Unattend;
 
+public interface ILanguageSettings;
+
+public class InteractiveLanguageSettings : ILanguageSettings;
+
+public record class UnattendedLanguageSettings(
+  ImageLanguage ImageLanguage,
+  UserLocale UserLocale,
+  KeyboardIdentifier InputLocale
+) : ILanguageSettings;
+
 class LocalesModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()

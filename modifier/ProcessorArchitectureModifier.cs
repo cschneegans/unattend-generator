@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Xml;
 
 namespace Schneegans.Unattend;
@@ -8,19 +7,24 @@ class ProcessorArchitectureModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
-    var archs = Configuration.ProcessorArchitectures.ToList().ConvertAll(pa => pa.ToString());
-    if (archs.Count == 0)
-    {
-      throw new Exception("Must specify at least one processor architecture.");
-    }
-
     foreach (XmlElement component in Document.SelectNodesOrEmpty("//*[@processorArchitecture]").Cast<XmlElement>())
     {
-      component.SetAttribute("processorArchitecture", archs[0]);
-      for (int i = 1; i < archs.Count; i++)
+      var archs = Configuration.ProcessorArchitectures.GetEnumerator();
+      if (!archs.MoveNext())
       {
-        var copy = component.CloneNode(true) as XmlElement;
-        copy.SetAttribute("processorArchitecture", archs[i]);
+        throw new ConfigurationException("At least one processor architecture must be selected.");
+      }
+
+      void SetAttribute(XmlElement element)
+      {
+        element.SetAttribute("processorArchitecture", archs.Current.ToString());
+      }
+
+      SetAttribute(component);
+      while (archs.MoveNext())
+      {
+        var copy = (XmlElement)component.CloneNode(true);
+        SetAttribute(copy);
         component.ParentNode.InsertAfter(copy, component);
       }
     }
