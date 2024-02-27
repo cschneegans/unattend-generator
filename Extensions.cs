@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Xml;
 
@@ -32,5 +33,14 @@ public static class Extensions
   public static void RemoveSelf(this XmlNode node)
   {
     node.ParentNode.RemoveChild(node);
+  }
+
+  public static ImmutableDictionary<string, T> ToKeyedDictionary<T>(this IEnumerable<T>? enumerable) where T : IKeyed
+  {
+    if (enumerable == null)
+    {
+      throw new NullReferenceException();
+    }
+    return enumerable.ToImmutableDictionary(keySelector: value => value.Key, keyComparer: StringComparer.OrdinalIgnoreCase);
   }
 }

@@ -226,23 +226,23 @@ public record class Configuration(
   ILanguageSettings LanguageSettings,
   IAccountSettings AccountSettings,
   IPartitionSettings PartitionSettings,
-  ExpressSettingsMode ExpressSettings,
   IEditionSettings EditionSettings,
-  ImmutableHashSet<ProcessorArchitectures> ProcessorArchitectures,
-  ImmutableDictionary<string, ImmutableSortedSet<Pass>> Components,
-  ImmutableList<Bloatware> Bloatwares,
-  bool BypassRequirementsCheck,
-  bool BypassNetworkCheck,
-  bool EnableLongPaths,
-  bool EnableRemoteDesktop,
   ILockoutSettings LockoutSettings,
   IProcessAuditSettings ProcessAuditSettings,
-  bool HardenSystemDriveAcl,
-  bool AllowPowerShellScripts,
   IComputerNameSettings ComputerNameSettings,
   ITimeZoneSettings TimeZoneSettings,
   IWifiSettings WifiSettings,
   IWdacSettings WdacSettings,
+  ImmutableHashSet<ProcessorArchitectures> ProcessorArchitectures,
+  ImmutableDictionary<string, ImmutableSortedSet<Pass>> Components,
+  ImmutableList<Bloatware> Bloatwares,
+  ExpressSettingsMode ExpressSettings,
+  bool BypassRequirementsCheck,
+  bool BypassNetworkCheck,
+  bool EnableLongPaths,
+  bool EnableRemoteDesktop,
+  bool HardenSystemDriveAcl,
+  bool AllowPowerShellScripts,
   bool DisableLastAccess,
   bool NoAutoRebootWithLoggedOnUsers,
   bool DisableDefender,
@@ -251,7 +251,39 @@ public record class Configuration(
   bool RunScriptOnFirstLogon,
   bool DisableAppSuggestions,
   bool DisableWidgets
-);
+)
+{
+  public static Configuration Default => new(
+    LanguageSettings: new InteractiveLanguageSettings(),
+    AccountSettings: new InteractiveAccountSettings(),
+    PartitionSettings: new InteractivePartitionSettings(),
+    EditionSettings: new InteractiveEditionSettings(),
+    LockoutSettings: new DefaultLockoutSettings(),
+    ProcessAuditSettings: new DisabledProcessAuditSettings(),
+    ComputerNameSettings: new RandomComputerNameSettings(),
+    TimeZoneSettings: new ImplicitTimeZoneSettings(),
+    WifiSettings: new InteractiveWifiSettings(),
+    WdacSettings: new SkipWdacSettings(),
+    ProcessorArchitectures: [Unattend.ProcessorArchitectures.amd64],
+    Components: ImmutableDictionary.Create<string, ImmutableSortedSet<Pass>>(),
+    Bloatwares: [],
+    ExpressSettings: ExpressSettingsMode.DisableAll,
+    BypassRequirementsCheck: false,
+    BypassNetworkCheck: false,
+    EnableLongPaths: false,
+    EnableRemoteDesktop: false,
+    HardenSystemDriveAcl: false,
+    AllowPowerShellScripts: false,
+    DisableLastAccess: false,
+    NoAutoRebootWithLoggedOnUsers: false,
+    DisableDefender: false,
+    DisableSystemRestore: false,
+    TurnOffSystemSounds: false,
+    RunScriptOnFirstLogon: false,
+    DisableAppSuggestions: false,
+    DisableWidgets: false
+  );
+}
 
 public interface IKeyed
 {
@@ -491,73 +523,59 @@ public class UnattendGenerator
       {
         TypeNameHandling = TypeNameHandling.Auto,
       };
-      Bloatwares = ImmutableList.CreateRange(
-        JsonConvert.DeserializeObject<Bloatware[]>(json, settings) ?? throw new NullReferenceException()
-      );
+      Bloatwares = JsonConvert.DeserializeObject<Bloatware[]>(json, settings).ToKeyedDictionary();
     }
     {
       string json = Util.StringFromResource("Component.json");
-      Components = ImmutableList.CreateRange(
-        JsonConvert.DeserializeObject<Component[]>(json) ?? throw new NullReferenceException()
-      );
+      Components = JsonConvert.DeserializeObject<Component[]>(json).ToKeyedDictionary();
     }
     {
       string json = Util.StringFromResource("ImageLanguage.json");
-      ImageLanguages = ImmutableList.CreateRange(
-        JsonConvert.DeserializeObject<ImageLanguage[]>(json) ?? throw new NullReferenceException()
-      );
+      ImageLanguages = JsonConvert.DeserializeObject<ImageLanguage[]>(json).ToKeyedDictionary();
     }
     {
       string json = Util.StringFromResource("KeyboardIdentifier.json");
-      KeyboardIdentifiers = ImmutableList.CreateRange(
-        JsonConvert.DeserializeObject<KeyboardIdentifier[]>(json) ?? throw new NullReferenceException()
-      );
+      KeyboardIdentifiers = JsonConvert.DeserializeObject<KeyboardIdentifier[]>(json).ToKeyedDictionary();
     }
     {
       string json = Util.StringFromResource("UserLocale.json");
       JsonConverter[] converters = [
         new KeyboardConverter(this)
       ];
-      UserLocales = ImmutableList.CreateRange(
-        JsonConvert.DeserializeObject<UserLocale[]>(json, converters) ?? throw new NullReferenceException()
-      );
+      UserLocales = JsonConvert.DeserializeObject<UserLocale[]>(json, converters).ToKeyedDictionary();
     }
     {
       string json = Util.StringFromResource("WindowsEdition.json");
-      WindowsEditions = ImmutableList.CreateRange(
-        JsonConvert.DeserializeObject<WindowsEdition[]>(json) ?? throw new NullReferenceException()
-      );
+      WindowsEditions = JsonConvert.DeserializeObject<WindowsEdition[]>(json).ToKeyedDictionary();
     }
     {
       string json = Util.StringFromResource("TimeOffset.json");
-      TimeZones = ImmutableList.CreateRange(
-        JsonConvert.DeserializeObject<TimeOffset[]>(json) ?? throw new NullReferenceException()
-      );
+      TimeZones = JsonConvert.DeserializeObject<TimeOffset[]>(json).ToKeyedDictionary();
     }
 
     {
-      VerifyUniqueKeys(Components, e => e.Key);
+      VerifyUniqueKeys(Components.Values, e => e.Name);
     }
     {
-      VerifyUniqueKeys(WindowsEditions, e => e.DisplayName);
-      VerifyUniqueKeys(WindowsEditions, e => e.Value);
-      VerifyUniqueKeys(WindowsEditions, e => e.ProductKey);
+      VerifyUniqueKeys(WindowsEditions.Values, e => e.DisplayName);
+      VerifyUniqueKeys(WindowsEditions.Values, e => e.Value);
+      VerifyUniqueKeys(WindowsEditions.Values, e => e.ProductKey);
     }
     {
-      VerifyUniqueKeys(UserLocales, e => e.Code);
-      VerifyUniqueKeys(UserLocales, e => e.DisplayName);
+      VerifyUniqueKeys(UserLocales.Values, e => e.Code);
+      VerifyUniqueKeys(UserLocales.Values, e => e.DisplayName);
     }
     {
-      VerifyUniqueKeys(KeyboardIdentifiers, e => e.Code);
-      VerifyUniqueKeys(KeyboardIdentifiers, e => e.DisplayName);
+      VerifyUniqueKeys(KeyboardIdentifiers.Values, e => e.Code);
+      VerifyUniqueKeys(KeyboardIdentifiers.Values, e => e.DisplayName);
     }
     {
-      VerifyUniqueKeys(ImageLanguages, e => e.Tag);
-      VerifyUniqueKeys(ImageLanguages, e => e.DisplayName);
+      VerifyUniqueKeys(ImageLanguages.Values, e => e.Tag);
+      VerifyUniqueKeys(ImageLanguages.Values, e => e.DisplayName);
     }
     {
-      VerifyUniqueKeys(TimeZones, e => e.Id);
-      VerifyUniqueKeys(TimeZones, e => e.DisplayName);
+      VerifyUniqueKeys(TimeZones.Values, e => e.Id);
+      VerifyUniqueKeys(TimeZones.Values, e => e.DisplayName);
     }
     {
       //VerifyUniqueKeys(Enum.GetValues<ProcessorArchitectures>(), e => e.Description());
@@ -575,45 +593,31 @@ public class UnattendGenerator
     });
   }
 
-  public ImmutableList<TimeOffset> TimeZones { get; }
+  public ImmutableDictionary<string, TimeOffset> TimeZones { get; }
 
-  public ImmutableList<Component> Components { get; }
+  public ImmutableDictionary<string, Component> Components { get; }
 
-  public ImmutableList<Bloatware> Bloatwares { get; }
+  public ImmutableDictionary<string, Bloatware> Bloatwares { get; }
 
-  public ImmutableList<KeyboardIdentifier> KeyboardIdentifiers { get; }
+  public ImmutableDictionary<string, KeyboardIdentifier> KeyboardIdentifiers { get; }
 
-  public ImmutableList<UserLocale> UserLocales { get; }
+  public ImmutableDictionary<string, UserLocale> UserLocales { get; }
 
-  public ImmutableList<ImageLanguage> ImageLanguages { get; }
+  public ImmutableDictionary<string, ImageLanguage> ImageLanguages { get; }
 
-  public ImmutableList<WindowsEdition> WindowsEditions { get; }
-
-  public byte[] GenerateBytes(Configuration config)
-  {
-    var doc = Generate(config);
-    using var mstr = new MemoryStream();
-    using var writer = XmlWriter.Create(mstr, new XmlWriterSettings()
-    {
-      CloseOutput = true,
-      Indent = true,
-      IndentChars = "\t",
-      NewLineChars = "\r\n",
-    });
-    doc.Save(writer);
-    writer.Close();
-    return mstr.ToArray();
-  }
+  public ImmutableDictionary<string, WindowsEdition> WindowsEditions { get; }
 
   [return: NotNull]
-  private static T Lookup<T>(ImmutableList<T> list, string key) where T : class, IKeyed
+  private static T Lookup<T>(ImmutableDictionary<string, T> dic, string key) where T : IKeyed
   {
-    _ = key ?? throw new ArgumentNullException(nameof(key));
-    T? found = list.Find(item =>
+    if (dic.TryGetValue(key, out T? value))
     {
-      return string.Equals(item.Key, key, StringComparison.OrdinalIgnoreCase);
-    });
-    return found ?? throw new ArgumentException($"Could not find an element of type '{nameof(T)}' with key '{key}'.");
+      return value;
+    }
+    else
+    {
+      throw new ConfigurationException($"Could not find an element of type '{nameof(T)}' with key '{key}'.");
+    }
   }
 
   [return: NotNull]
@@ -646,7 +650,7 @@ public class UnattendGenerator
     throw new NotSupportedException();
   }
 
-  public XmlDocument Generate(Configuration config)
+  public XmlDocument GenerateXml(Configuration config)
   {
     var doc = Util.XmlDocumentFromResource("autounattend.xml");
     var ns = new XmlNamespaceManager(doc.NameTable);
@@ -687,6 +691,22 @@ public class UnattendGenerator
     Util.ValidateAgainstSchema(doc, "autounattend.xsd");
 
     return doc;
+  }
+
+  public byte[] GenerateBytes(Configuration config)
+  {
+    var doc = GenerateXml(config);
+    using var mstr = new MemoryStream();
+    using var writer = XmlWriter.Create(mstr, new XmlWriterSettings()
+    {
+      CloseOutput = true,
+      Indent = true,
+      IndentChars = "\t",
+      NewLineChars = "\r\n",
+    });
+    doc.Save(writer);
+    writer.Close();
+    return mstr.ToArray();
   }
 }
 
