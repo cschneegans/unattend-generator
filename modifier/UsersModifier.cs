@@ -26,7 +26,6 @@ public class UnattendedAccountSettings : IAccountSettings
   private void CheckUniqueNames()
   {
     var collisions = Accounts
-      //.Where(account => account.HasName)
       .GroupBy(keySelector: account => account.Name, comparer: StringComparer.OrdinalIgnoreCase)
       .Where(group => group.Count() > 1)
       .Select(group => $"'{group.Key}'");
@@ -49,7 +48,7 @@ public class UnattendedAccountSettings : IAccountSettings
     }
     foreach (var account in Accounts)
     {
-      if (account.Group == Constants.AdministratorsGroup) // && account.HasName)
+      if (account.Group == Constants.AdministratorsGroup)
       {
         return;
       }
@@ -170,7 +169,9 @@ class UsersModifier(ModifierContext context) : Modifier(context)
         case BuiltinAutoLogonSettings bals:
           return ("Administrator", bals.Password);
         case OwnAutoLogonSettings oals:
-          Account first = settings.Accounts.Where(a => a.Group == Constants.AdministratorsGroup).First();
+          Account first = settings.Accounts
+            .Where(a => a.Group == Constants.AdministratorsGroup)
+            .First();
           return (first.Name, first.Password);
         default:
           throw new NotSupportedException();
@@ -203,7 +204,7 @@ class UsersModifier(ModifierContext context) : Modifier(context)
     }
     {
       XmlElement localAccounts = NewElement("LocalAccounts", container);
-      foreach (Account account in settings.Accounts) //.Where(account => account.HasName))
+      foreach (Account account in settings.Accounts)
       {
         XmlElement localAccount = NewElement("LocalAccount", localAccounts);
         localAccount.SetAttribute("action", NamespaceManager.LookupNamespace("wcm"), "add");

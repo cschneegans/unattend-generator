@@ -60,8 +60,7 @@ internal static class Util
 
   internal static IEnumerable<string> SplitLines(string s)
   {
-    using StringReader reader = new(s);
-    return SplitLines(reader);
+    return SplitLines(new StringReader(s));
   }
 
   internal static IEnumerable<string> SplitLines(TextReader reader)

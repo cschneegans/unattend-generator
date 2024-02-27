@@ -98,7 +98,7 @@ record class CommandConfig(
     CreateElement: (doc, ns) =>
     {
       var container = Util.GetOrCreateElement(Pass.oobeSystem, "Microsoft-Windows-Shell-Setup", "FirstLogonCommands", doc, ns);
-      var outer = Util.NewElement("RunSynchronousCommand", container, doc, ns);
+      var outer = Util.NewElement("SynchronousCommand", container, doc, ns);
       return Util.NewElement("CommandLine", outer, doc, ns);
     }
   );
@@ -259,32 +259,32 @@ public interface IKeyed
 }
 
 public abstract class BloatwareStep(
-  byte[]? versions
+  byte[] versions
 )
 {
-  public ImmutableSortedSet<byte> Versions { get; } = (versions == null) ? throw new ArgumentNullException(nameof(versions)) : ImmutableSortedSet.CreateRange(versions);
+  public ImmutableSortedSet<byte> Versions { get; } = ImmutableSortedSet.CreateRange(versions);
 }
 
 public class SelectorBloatwareStep(
-  byte[]? versions,
-  string? selector
+  byte[] versions,
+  string selector
 ) : BloatwareStep(versions)
 {
-  public string Selector { get; } = selector ?? throw new ArgumentNullException(nameof(selector));
+  public string Selector { get; } = selector;
 }
 
 public class PackageBloatwareStep(
-  byte[]? versions,
-  string? selector
+  byte[] versions,
+  string selector
 ) : SelectorBloatwareStep(versions, selector);
 
 public class CapabilityBloatwareStep(
-  byte[]? versions,
-  string? selector
+  byte[] versions,
+  string selector
 ) : SelectorBloatwareStep(versions, selector);
 
 public class CustomBloatwareStep(
-  byte[]? versions
+  byte[] versions
 ) : BloatwareStep(versions);
 
 public class Bloatware(
@@ -307,23 +307,14 @@ public class Bloatware(
   {
     get
     {
-      IEnumerable<string?> selects = Steps.Select(s =>
-      {
-        return s switch
+      IEnumerable<string> strings = Steps.SelectMany<BloatwareStep, string>(s => s switch
         {
-          SelectorBloatwareStep sel => sel.Selector,
-          CustomBloatwareStep => null,
+          SelectorBloatwareStep sel => [sel.Selector],
+          CustomBloatwareStep => [],
           _ => throw new NotImplementedException(),
-        };
-      }).Where(s => !string.IsNullOrWhiteSpace(s));
-      if (selects.Any())
-      {
-        return string.Join(", ", selects);
-      }
-      else
-      {
-        return null;
-      }
+        }
+      );
+      return strings.Any() ? string.Join(", ", strings) : null;
     }
   }
 }
@@ -339,7 +330,6 @@ public class Component(
 
   private static string ValidateName(string name)
   {
-    ArgumentNullException.ThrowIfNull(name);
     if (!Pattern.IsMatch(name))
     {
       throw new ArgumentException($"Name '{name}' contains illegal characters.", nameof(name));
@@ -433,26 +423,45 @@ public record class FormattingExamples(
   string Number
 );
 
+public class KeyboardConverter(
+  UnattendGenerator generator
+) : JsonConverter<KeyboardIdentifier>
+{
+  public override bool CanWrite => false;
+
+  public override KeyboardIdentifier? ReadJson(JsonReader reader, Type objectType, KeyboardIdentifier? existingValue, bool hasExistingValue, JsonSerializer serializer)
+  {
+    return reader.TokenType switch
+    {
+      JsonToken.String => generator.Lookup<KeyboardIdentifier>("" + reader.Value),
+      JsonToken.Null => null,
+      _ => throw new NotSupportedException(),
+    };
+  }
+
+  public override void WriteJson(JsonWriter writer, KeyboardIdentifier? value, JsonSerializer serializer)
+  {
+    throw new NotImplementedException();
+  }
+}
+
 public class UserLocale(
   string code,
   string displayName,
-  KeyboardIdentifier? defaultKeyboardLayout,
-  FormattingExamples? formattingExamples
+  KeyboardIdentifier? keyboardLayout,
+  FormattingExamples formattingExamples
 ) : IKeyed
 {
   public string Code { get; } = code;
 
   public string DisplayName { get; } = displayName;
 
-  [JsonIgnore]
-  public KeyboardIdentifier? DefaultKeyboardLayout { get; } = defaultKeyboardLayout;
-
-  public string? KeyboardLayout => DefaultKeyboardLayout?.Code;
+  public KeyboardIdentifier? KeyboardLayout { get; } = keyboardLayout;
 
   [JsonIgnore]
   public string Key => Code;
 
-  public FormattingExamples FormattingExamples { get; } = formattingExamples ?? throw new ArgumentNullException(nameof(formattingExamples));
+  public FormattingExamples FormattingExamples { get; } = formattingExamples;
 }
 
 public static class Constants
@@ -506,8 +515,11 @@ public class UnattendGenerator
     }
     {
       string json = Util.StringFromResource("UserLocale.json");
+      JsonConverter[] converters = [
+        new KeyboardConverter(this)
+      ];
       UserLocales = ImmutableList.CreateRange(
-        JsonConvert.DeserializeObject<UserLocale[]>(json) ?? throw new NullReferenceException()
+        JsonConvert.DeserializeObject<UserLocale[]>(json, converters) ?? throw new NullReferenceException()
       );
     }
     {
@@ -661,8 +673,8 @@ public class UnattendGenerator
       new LockoutModifier(context),
       new OptimizationsModifier(context),
       new ComponentsModifier(context),
-      new TimeZoneModifier(context),
       new ComputerNameModifier(context),
+      new TimeZoneModifier(context),
       new WdacModifier(context),
       new OrderModifier(context),
       new ProcessorArchitectureModifier(context),
