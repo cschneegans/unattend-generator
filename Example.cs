@@ -12,6 +12,7 @@ class Example
     XmlDocument xml = generator.GenerateXml(
       Configuration.Default with
       {
+        // LanguageSettings = generator.CreateUnattendedLanguageSettings("en-US", "en-US", "0409:00000409"),
         LanguageSettings = new UnattendedLanguageSettings(
           ImageLanguage: generator.Lookup<ImageLanguage>("en-US"),
           UserLocale: generator.Lookup<UserLocale>("en-US"),

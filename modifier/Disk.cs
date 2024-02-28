@@ -24,8 +24,8 @@ public record class CustomPartitionSettings(
 public record class UnattendedPartitionSettings(
   PartitionLayouts PartitionLayout,
   RecoveryModes RecoveryMode,
-  int EspSize,
-  int RecoverySize
+  int EspSize = Constants.EspDefaultSize,
+  int RecoverySize = Constants.RecoveryPartitionSize
 ) : IPartitionSettings;
 
 class DiskModifier(ModifierContext context) : Modifier(context)

@@ -389,20 +389,20 @@ public class Component(
 }
 
 public class WindowsEdition(
-  string value,
+  string id,
   string displayName,
   string productKey,
   bool visible
 ) : IKeyed
 {
-  public string Value { get; } = value;
+  public string Id { get; } = id;
 
   public string DisplayName { get; } = displayName;
 
   public string ProductKey { get; } = productKey;
 
   [JsonIgnore]
-  public string Key => Value;
+  public string Key => Id;
 
   public bool Visible = visible;
 }
@@ -506,9 +506,9 @@ public static class Constants
 
   public const string DefaultPassword = "password";
 
-  public static readonly ushort RecoveryPartitionSize = 1000;
+  public const int RecoveryPartitionSize = 1000;
 
-  public static readonly int EspDefaultSize = 300;
+  public const int EspDefaultSize = 300;
 
   public static readonly string DiskpartScript = DiskModifier.GetCustomDiskpartScript();
 }
@@ -539,9 +539,7 @@ public class UnattendGenerator
     }
     {
       string json = Util.StringFromResource("UserLocale.json");
-      JsonConverter[] converters = [
-        new KeyboardConverter(this)
-      ];
+      JsonConverter[] converters = [new KeyboardConverter(this)];
       UserLocales = JsonConvert.DeserializeObject<UserLocale[]>(json, converters).ToKeyedDictionary();
     }
     {
@@ -557,8 +555,8 @@ public class UnattendGenerator
       VerifyUniqueKeys(Components.Values, e => e.Name);
     }
     {
+      VerifyUniqueKeys(WindowsEditions.Values, e => e.Id);
       VerifyUniqueKeys(WindowsEditions.Values, e => e.DisplayName);
-      VerifyUniqueKeys(WindowsEditions.Values, e => e.Value);
       VerifyUniqueKeys(WindowsEditions.Values, e => e.ProductKey);
     }
     {
@@ -577,9 +575,6 @@ public class UnattendGenerator
       VerifyUniqueKeys(TimeZones.Values, e => e.Id);
       VerifyUniqueKeys(TimeZones.Values, e => e.DisplayName);
     }
-    {
-      //VerifyUniqueKeys(Enum.GetValues<ProcessorArchitectures>(), e => e.Description());
-    }
   }
 
   private static void VerifyUniqueKeys<T>(IEnumerable<T> items, Func<T, object> keySelector)
@@ -591,6 +586,39 @@ public class UnattendGenerator
         throw new ArgumentException($"'{group.Key}' occurs more than once.");
       }
     });
+  }
+
+  public UnattendedLanguageSettings CreateUnattendedLanguageSettings(string imageLanguage, string userLocale, string keyboardIdentifier)
+  {
+    return new UnattendedLanguageSettings(
+      ImageLanguage: Lookup<ImageLanguage>(imageLanguage),
+      UserLocale: Lookup<UserLocale>(userLocale),
+      InputLocale: Lookup<KeyboardIdentifier>(keyboardIdentifier)
+    );
+  }
+
+  public UnattendedEditionSettings CreateUnattendedEditionSettings(string edition)
+  {
+    return new UnattendedEditionSettings(
+      Edition: Lookup<WindowsEdition>(edition)
+    );
+  }
+
+  public UnattendedPartitionSettings CreateUnattendedPartitionSettings(PartitionLayouts layout, RecoveryModes recovery, int espSize = Constants.EspDefaultSize, int recoverySize = Constants.RecoveryPartitionSize)
+  {
+    return new UnattendedPartitionSettings(
+      PartitionLayout: layout,
+      RecoveryMode: recovery,
+      EspSize: espSize,
+      RecoverySize: recoverySize
+    );
+  }
+
+  public ExplicitTimeZoneSettings CreateExplicitTimeZoneSettings(string id)
+  {
+    return new ExplicitTimeZoneSettings(
+      TimeZone: Lookup<TimeOffset>(id)
+    );
   }
 
   public ImmutableDictionary<string, TimeOffset> TimeZones { get; }
