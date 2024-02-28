@@ -1,6 +1,6 @@
 [
   {
-    "Code": "aa-DJ",
+    "Id": "aa-DJ",
     "DisplayName": "Afar (Djibouti)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -13,7 +13,7 @@
     }
   },
   {
-    "Code": "aa-ER",
+    "Id": "aa-ER",
     "DisplayName": "Afar (Eritrea)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -26,7 +26,7 @@
     }
   },
   {
-    "Code": "aa-ET",
+    "Id": "aa-ET",
     "DisplayName": "Afar (Ethiopia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -39,7 +39,7 @@
     }
   },
   {
-    "Code": "af-NA",
+    "Id": "af-NA",
     "DisplayName": "Afrikaans (Namibia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -52,7 +52,7 @@
     }
   },
   {
-    "Code": "af-ZA",
+    "Id": "af-ZA",
     "DisplayName": "Afrikaans (South Africa)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -65,7 +65,7 @@
     }
   },
   {
-    "Code": "agq-CM",
+    "Id": "agq-CM",
     "DisplayName": "Aghem (Cameroon)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -78,7 +78,7 @@
     }
   },
   {
-    "Code": "ak-GH",
+    "Id": "ak-GH",
     "DisplayName": "Akan (Ghana)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -91,7 +91,7 @@
     }
   },
   {
-    "Code": "sq-AL",
+    "Id": "sq-AL",
     "DisplayName": "Albanian (Albania)",
     "KeyboardLayout": "041c:0000041c",
     "FormattingExamples": {
@@ -104,7 +104,7 @@
     }
   },
   {
-    "Code": "sq-XK",
+    "Id": "sq-XK",
     "DisplayName": "Albanian (Kosovo)",
     "KeyboardLayout": "041c:0000041c",
     "FormattingExamples": {
@@ -117,7 +117,7 @@
     }
   },
   {
-    "Code": "sq-MK",
+    "Id": "sq-MK",
     "DisplayName": "Albanian (North Macedonia)",
     "KeyboardLayout": "041c:0000041c",
     "FormattingExamples": {
@@ -130,7 +130,7 @@
     }
   },
   {
-    "Code": "am-ET",
+    "Id": "am-ET",
     "DisplayName": "Amharic (Ethiopia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -143,7 +143,7 @@
     }
   },
   {
-    "Code": "ar-DZ",
+    "Id": "ar-DZ",
     "DisplayName": "Arabic (Algeria)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -156,7 +156,7 @@
     }
   },
   {
-    "Code": "ar-BH",
+    "Id": "ar-BH",
     "DisplayName": "Arabic (Bahrain)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -169,7 +169,7 @@
     }
   },
   {
-    "Code": "ar-TD",
+    "Id": "ar-TD",
     "DisplayName": "Arabic (Chad)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -182,7 +182,7 @@
     }
   },
   {
-    "Code": "ar-KM",
+    "Id": "ar-KM",
     "DisplayName": "Arabic (Comoros)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -195,7 +195,7 @@
     }
   },
   {
-    "Code": "ar-DJ",
+    "Id": "ar-DJ",
     "DisplayName": "Arabic (Djibouti)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -208,7 +208,7 @@
     }
   },
   {
-    "Code": "ar-EG",
+    "Id": "ar-EG",
     "DisplayName": "Arabic (Egypt)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -221,7 +221,7 @@
     }
   },
   {
-    "Code": "ar-ER",
+    "Id": "ar-ER",
     "DisplayName": "Arabic (Eritrea)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -234,7 +234,7 @@
     }
   },
   {
-    "Code": "ar-IQ",
+    "Id": "ar-IQ",
     "DisplayName": "Arabic (Iraq)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -247,7 +247,7 @@
     }
   },
   {
-    "Code": "ar-IL",
+    "Id": "ar-IL",
     "DisplayName": "Arabic (Israel)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -260,7 +260,7 @@
     }
   },
   {
-    "Code": "ar-JO",
+    "Id": "ar-JO",
     "DisplayName": "Arabic (Jordan)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -273,7 +273,7 @@
     }
   },
   {
-    "Code": "ar-KW",
+    "Id": "ar-KW",
     "DisplayName": "Arabic (Kuwait)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -286,7 +286,7 @@
     }
   },
   {
-    "Code": "ar-LB",
+    "Id": "ar-LB",
     "DisplayName": "Arabic (Lebanon)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -299,7 +299,7 @@
     }
   },
   {
-    "Code": "ar-LY",
+    "Id": "ar-LY",
     "DisplayName": "Arabic (Libya)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -312,7 +312,7 @@
     }
   },
   {
-    "Code": "ar-MR",
+    "Id": "ar-MR",
     "DisplayName": "Arabic (Mauritania)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -325,7 +325,7 @@
     }
   },
   {
-    "Code": "ar-MA",
+    "Id": "ar-MA",
     "DisplayName": "Arabic (Morocco)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -338,7 +338,7 @@
     }
   },
   {
-    "Code": "ar-OM",
+    "Id": "ar-OM",
     "DisplayName": "Arabic (Oman)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -351,7 +351,7 @@
     }
   },
   {
-    "Code": "ar-PS",
+    "Id": "ar-PS",
     "DisplayName": "Arabic (Palestinian Authority)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -364,7 +364,7 @@
     }
   },
   {
-    "Code": "ar-QA",
+    "Id": "ar-QA",
     "DisplayName": "Arabic (Qatar)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -377,7 +377,7 @@
     }
   },
   {
-    "Code": "ar-SA",
+    "Id": "ar-SA",
     "DisplayName": "Arabic (Saudi Arabia)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -390,7 +390,7 @@
     }
   },
   {
-    "Code": "ar-SO",
+    "Id": "ar-SO",
     "DisplayName": "Arabic (Somalia)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -403,7 +403,7 @@
     }
   },
   {
-    "Code": "ar-SS",
+    "Id": "ar-SS",
     "DisplayName": "Arabic (South Sudan)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -416,7 +416,7 @@
     }
   },
   {
-    "Code": "ar-SD",
+    "Id": "ar-SD",
     "DisplayName": "Arabic (Sudan)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -429,7 +429,7 @@
     }
   },
   {
-    "Code": "ar-SY",
+    "Id": "ar-SY",
     "DisplayName": "Arabic (Syria)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -442,7 +442,7 @@
     }
   },
   {
-    "Code": "ar-TN",
+    "Id": "ar-TN",
     "DisplayName": "Arabic (Tunisia)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -455,7 +455,7 @@
     }
   },
   {
-    "Code": "ar-AE",
+    "Id": "ar-AE",
     "DisplayName": "Arabic (United Arab Emirates)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -468,7 +468,7 @@
     }
   },
   {
-    "Code": "ar-001",
+    "Id": "ar-001",
     "DisplayName": "Arabic (World)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -481,7 +481,7 @@
     }
   },
   {
-    "Code": "ar-YE",
+    "Id": "ar-YE",
     "DisplayName": "Arabic (Yemen)",
     "KeyboardLayout": "0401:00000401",
     "FormattingExamples": {
@@ -494,7 +494,7 @@
     }
   },
   {
-    "Code": "hy-AM",
+    "Id": "hy-AM",
     "DisplayName": "Armenian (Armenia)",
     "KeyboardLayout": "042b:0000042b",
     "FormattingExamples": {
@@ -507,7 +507,7 @@
     }
   },
   {
-    "Code": "as-IN",
+    "Id": "as-IN",
     "DisplayName": "Assamese (India)",
     "KeyboardLayout": "044d:0000044d",
     "FormattingExamples": {
@@ -520,7 +520,7 @@
     }
   },
   {
-    "Code": "ast-ES",
+    "Id": "ast-ES",
     "DisplayName": "Asturian (Spain)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -533,7 +533,7 @@
     }
   },
   {
-    "Code": "asa-TZ",
+    "Id": "asa-TZ",
     "DisplayName": "Asu (Tanzania)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -546,7 +546,7 @@
     }
   },
   {
-    "Code": "az-Cyrl-AZ",
+    "Id": "az-Cyrl-AZ",
     "DisplayName": "Azerbaijani (Cyrillic, Azerbaijan)",
     "KeyboardLayout": "082c:0000082c",
     "FormattingExamples": {
@@ -559,7 +559,7 @@
     }
   },
   {
-    "Code": "az-Latn-AZ",
+    "Id": "az-Latn-AZ",
     "DisplayName": "Azerbaijani (Latin, Azerbaijan)",
     "KeyboardLayout": "042c:0000042c",
     "FormattingExamples": {
@@ -572,7 +572,7 @@
     }
   },
   {
-    "Code": "ksf-CM",
+    "Id": "ksf-CM",
     "DisplayName": "Bafia (Cameroon)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -585,7 +585,7 @@
     }
   },
   {
-    "Code": "bm-Latn-ML",
+    "Id": "bm-Latn-ML",
     "DisplayName": "Bamanankan (Latin, Mali)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -598,7 +598,7 @@
     }
   },
   {
-    "Code": "bn-BD",
+    "Id": "bn-BD",
     "DisplayName": "Bangla (Bangladesh)",
     "KeyboardLayout": "0445:00000445",
     "FormattingExamples": {
@@ -611,7 +611,7 @@
     }
   },
   {
-    "Code": "bn-IN",
+    "Id": "bn-IN",
     "DisplayName": "Bangla (India)",
     "KeyboardLayout": "0445:00000445",
     "FormattingExamples": {
@@ -624,7 +624,7 @@
     }
   },
   {
-    "Code": "bas-CM",
+    "Id": "bas-CM",
     "DisplayName": "Basaa (Cameroon)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -637,7 +637,7 @@
     }
   },
   {
-    "Code": "ba-RU",
+    "Id": "ba-RU",
     "DisplayName": "Bashkir (Russia)",
     "KeyboardLayout": "046d:0000046d",
     "FormattingExamples": {
@@ -650,7 +650,7 @@
     }
   },
   {
-    "Code": "eu-ES",
+    "Id": "eu-ES",
     "DisplayName": "Basque (Spain)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -663,7 +663,7 @@
     }
   },
   {
-    "Code": "be-BY",
+    "Id": "be-BY",
     "DisplayName": "Belarusian (Belarus)",
     "KeyboardLayout": "0423:00000423",
     "FormattingExamples": {
@@ -676,7 +676,7 @@
     }
   },
   {
-    "Code": "bem-ZM",
+    "Id": "bem-ZM",
     "DisplayName": "Bemba (Zambia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -689,7 +689,7 @@
     }
   },
   {
-    "Code": "bez-TZ",
+    "Id": "bez-TZ",
     "DisplayName": "Bena (Tanzania)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -702,7 +702,7 @@
     }
   },
   {
-    "Code": "byn-ER",
+    "Id": "byn-ER",
     "DisplayName": "Blin (Eritrea)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -715,7 +715,7 @@
     }
   },
   {
-    "Code": "brx-IN",
+    "Id": "brx-IN",
     "DisplayName": "Bodo (India)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -728,7 +728,7 @@
     }
   },
   {
-    "Code": "bs-Cyrl-BA",
+    "Id": "bs-Cyrl-BA",
     "DisplayName": "Bosnian (Cyrillic, Bosnia & Herzegovina)",
     "KeyboardLayout": "201a:0000201a",
     "FormattingExamples": {
@@ -741,7 +741,7 @@
     }
   },
   {
-    "Code": "bs-Latn-BA",
+    "Id": "bs-Latn-BA",
     "DisplayName": "Bosnian (Latin, Bosnia & Herzegovina)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -754,7 +754,7 @@
     }
   },
   {
-    "Code": "br-FR",
+    "Id": "br-FR",
     "DisplayName": "Breton (France)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -767,7 +767,7 @@
     }
   },
   {
-    "Code": "bg-BG",
+    "Id": "bg-BG",
     "DisplayName": "Bulgarian (Bulgaria)",
     "KeyboardLayout": "0402:00000402",
     "FormattingExamples": {
@@ -780,7 +780,7 @@
     }
   },
   {
-    "Code": "my-MM",
+    "Id": "my-MM",
     "DisplayName": "Burmese (Myanmar)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -793,7 +793,7 @@
     }
   },
   {
-    "Code": "ca-AD",
+    "Id": "ca-AD",
     "DisplayName": "Catalan (Andorra)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -806,7 +806,7 @@
     }
   },
   {
-    "Code": "ca-FR",
+    "Id": "ca-FR",
     "DisplayName": "Catalan (France)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -819,7 +819,7 @@
     }
   },
   {
-    "Code": "ca-IT",
+    "Id": "ca-IT",
     "DisplayName": "Catalan (Italy)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -832,7 +832,7 @@
     }
   },
   {
-    "Code": "ca-ES-valencia",
+    "Id": "ca-ES-valencia",
     "DisplayName": "Catalan (Spain, Valencian)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -845,7 +845,7 @@
     }
   },
   {
-    "Code": "ca-ES",
+    "Id": "ca-ES",
     "DisplayName": "Catalan (Spain)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -858,7 +858,7 @@
     }
   },
   {
-    "Code": "ceb-Latn-PH",
+    "Id": "ceb-Latn-PH",
     "DisplayName": "Cebuano (Latin, Philippines)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -871,7 +871,7 @@
     }
   },
   {
-    "Code": "tzm-Latn-MA",
+    "Id": "tzm-Latn-MA",
     "DisplayName": "Central Atlas Tamazight (Latin, Morocco)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -884,7 +884,7 @@
     }
   },
   {
-    "Code": "ccp-Cakm-BD",
+    "Id": "ccp-Cakm-BD",
     "DisplayName": "Chakma (Chakma, Bangladesh)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -897,7 +897,7 @@
     }
   },
   {
-    "Code": "ccp-Cakm-IN",
+    "Id": "ccp-Cakm-IN",
     "DisplayName": "Chakma (Chakma, India)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -910,7 +910,7 @@
     }
   },
   {
-    "Code": "ce-RU",
+    "Id": "ce-RU",
     "DisplayName": "Chechen (Russia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -923,7 +923,7 @@
     }
   },
   {
-    "Code": "chr-Cher-US",
+    "Id": "chr-Cher-US",
     "DisplayName": "Cherokee (Cherokee, United States)",
     "KeyboardLayout": "045c:0000045c",
     "FormattingExamples": {
@@ -936,7 +936,7 @@
     }
   },
   {
-    "Code": "cgg-UG",
+    "Id": "cgg-UG",
     "DisplayName": "Chiga (Uganda)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -949,7 +949,7 @@
     }
   },
   {
-    "Code": "zh-CN",
+    "Id": "zh-CN",
     "DisplayName": "Chinese (China)",
     "KeyboardLayout": "0804:00000804",
     "FormattingExamples": {
@@ -962,7 +962,7 @@
     }
   },
   {
-    "Code": "zh-HK",
+    "Id": "zh-HK",
     "DisplayName": "Chinese (Hong Kong SAR)",
     "KeyboardLayout": "0c04:00000c04",
     "FormattingExamples": {
@@ -975,7 +975,7 @@
     }
   },
   {
-    "Code": "zh-MO",
+    "Id": "zh-MO",
     "DisplayName": "Chinese (Macao SAR)",
     "KeyboardLayout": "1404:00001404",
     "FormattingExamples": {
@@ -988,7 +988,7 @@
     }
   },
   {
-    "Code": "zh-Hans-HK",
+    "Id": "zh-Hans-HK",
     "DisplayName": "Chinese (Simplified, Hong Kong SAR)",
     "KeyboardLayout": "0804:00000804",
     "FormattingExamples": {
@@ -1001,7 +1001,7 @@
     }
   },
   {
-    "Code": "zh-Hans-MO",
+    "Id": "zh-Hans-MO",
     "DisplayName": "Chinese (Simplified, Macao SAR)",
     "KeyboardLayout": "0804:00000804",
     "FormattingExamples": {
@@ -1014,7 +1014,7 @@
     }
   },
   {
-    "Code": "zh-SG",
+    "Id": "zh-SG",
     "DisplayName": "Chinese (Singapore)",
     "KeyboardLayout": "1004:00001004",
     "FormattingExamples": {
@@ -1027,7 +1027,7 @@
     }
   },
   {
-    "Code": "zh-TW",
+    "Id": "zh-TW",
     "DisplayName": "Chinese (Taiwan)",
     "KeyboardLayout": "0404:00000404",
     "FormattingExamples": {
@@ -1040,7 +1040,7 @@
     }
   },
   {
-    "Code": "cu-RU",
+    "Id": "cu-RU",
     "DisplayName": "Church Slavic (Russia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -1053,7 +1053,7 @@
     }
   },
   {
-    "Code": "ksh-DE",
+    "Id": "ksh-DE",
     "DisplayName": "Colognian (Germany)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -1066,7 +1066,7 @@
     }
   },
   {
-    "Code": "kw-GB",
+    "Id": "kw-GB",
     "DisplayName": "Cornish (United Kingdom)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -1079,7 +1079,7 @@
     }
   },
   {
-    "Code": "co-FR",
+    "Id": "co-FR",
     "DisplayName": "Corsican (France)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -1092,7 +1092,7 @@
     }
   },
   {
-    "Code": "hr-BA",
+    "Id": "hr-BA",
     "DisplayName": "Croatian (Bosnia & Herzegovina)",
     "KeyboardLayout": "041a:0000041a",
     "FormattingExamples": {
@@ -1105,7 +1105,7 @@
     }
   },
   {
-    "Code": "hr-HR",
+    "Id": "hr-HR",
     "DisplayName": "Croatian (Croatia)",
     "KeyboardLayout": "041a:0000041a",
     "FormattingExamples": {
@@ -1118,7 +1118,7 @@
     }
   },
   {
-    "Code": "cs-CZ",
+    "Id": "cs-CZ",
     "DisplayName": "Czech (Czechia)",
     "KeyboardLayout": "0405:00000405",
     "FormattingExamples": {
@@ -1131,7 +1131,7 @@
     }
   },
   {
-    "Code": "da-DK",
+    "Id": "da-DK",
     "DisplayName": "Danish (Denmark)",
     "KeyboardLayout": "0406:00000406",
     "FormattingExamples": {
@@ -1144,7 +1144,7 @@
     }
   },
   {
-    "Code": "da-GL",
+    "Id": "da-GL",
     "DisplayName": "Danish (Greenland)",
     "KeyboardLayout": "0406:00000406",
     "FormattingExamples": {
@@ -1157,7 +1157,7 @@
     }
   },
   {
-    "Code": "dv-MV",
+    "Id": "dv-MV",
     "DisplayName": "Divehi (Maldives)",
     "KeyboardLayout": "0465:00000465",
     "FormattingExamples": {
@@ -1170,7 +1170,7 @@
     }
   },
   {
-    "Code": "dua-CM",
+    "Id": "dua-CM",
     "DisplayName": "Duala (Cameroon)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -1183,7 +1183,7 @@
     }
   },
   {
-    "Code": "nl-AW",
+    "Id": "nl-AW",
     "DisplayName": "Dutch (Aruba)",
     "KeyboardLayout": "0413:00000413",
     "FormattingExamples": {
@@ -1196,7 +1196,7 @@
     }
   },
   {
-    "Code": "nl-BE",
+    "Id": "nl-BE",
     "DisplayName": "Dutch (Belgium)",
     "KeyboardLayout": "0813:00000813",
     "FormattingExamples": {
@@ -1209,7 +1209,7 @@
     }
   },
   {
-    "Code": "nl-BQ",
+    "Id": "nl-BQ",
     "DisplayName": "Dutch (Bonaire, Sint Eustatius and Saba)",
     "KeyboardLayout": "0413:00000413",
     "FormattingExamples": {
@@ -1222,7 +1222,7 @@
     }
   },
   {
-    "Code": "nl-CW",
+    "Id": "nl-CW",
     "DisplayName": "Dutch (Curaçao)",
     "KeyboardLayout": "0413:00000413",
     "FormattingExamples": {
@@ -1235,7 +1235,7 @@
     }
   },
   {
-    "Code": "nl-NL",
+    "Id": "nl-NL",
     "DisplayName": "Dutch (Netherlands)",
     "KeyboardLayout": "0413:00000413",
     "FormattingExamples": {
@@ -1248,7 +1248,7 @@
     }
   },
   {
-    "Code": "nl-SX",
+    "Id": "nl-SX",
     "DisplayName": "Dutch (Sint Maarten)",
     "KeyboardLayout": "0413:00000413",
     "FormattingExamples": {
@@ -1261,7 +1261,7 @@
     }
   },
   {
-    "Code": "nl-SR",
+    "Id": "nl-SR",
     "DisplayName": "Dutch (Suriname)",
     "KeyboardLayout": "0413:00000413",
     "FormattingExamples": {
@@ -1274,7 +1274,7 @@
     }
   },
   {
-    "Code": "dz-BT",
+    "Id": "dz-BT",
     "DisplayName": "Dzongkha (Bhutan)",
     "KeyboardLayout": "0c51:00000c51",
     "FormattingExamples": {
@@ -1287,7 +1287,7 @@
     }
   },
   {
-    "Code": "ebu-KE",
+    "Id": "ebu-KE",
     "DisplayName": "Embu (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -1300,7 +1300,7 @@
     }
   },
   {
-    "Code": "en-AS",
+    "Id": "en-AS",
     "DisplayName": "English (American Samoa)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1313,7 +1313,7 @@
     }
   },
   {
-    "Code": "en-AI",
+    "Id": "en-AI",
     "DisplayName": "English (Anguilla)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1326,7 +1326,7 @@
     }
   },
   {
-    "Code": "en-AG",
+    "Id": "en-AG",
     "DisplayName": "English (Antigua & Barbuda)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1339,7 +1339,7 @@
     }
   },
   {
-    "Code": "en-AU",
+    "Id": "en-AU",
     "DisplayName": "English (Australia)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1352,7 +1352,7 @@
     }
   },
   {
-    "Code": "en-AT",
+    "Id": "en-AT",
     "DisplayName": "English (Austria)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1365,7 +1365,7 @@
     }
   },
   {
-    "Code": "en-BS",
+    "Id": "en-BS",
     "DisplayName": "English (Bahamas)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1378,7 +1378,7 @@
     }
   },
   {
-    "Code": "en-BB",
+    "Id": "en-BB",
     "DisplayName": "English (Barbados)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1391,7 +1391,7 @@
     }
   },
   {
-    "Code": "en-BE",
+    "Id": "en-BE",
     "DisplayName": "English (Belgium)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1404,7 +1404,7 @@
     }
   },
   {
-    "Code": "en-BZ",
+    "Id": "en-BZ",
     "DisplayName": "English (Belize)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1417,7 +1417,7 @@
     }
   },
   {
-    "Code": "en-BM",
+    "Id": "en-BM",
     "DisplayName": "English (Bermuda)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1430,7 +1430,7 @@
     }
   },
   {
-    "Code": "en-BW",
+    "Id": "en-BW",
     "DisplayName": "English (Botswana)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1443,7 +1443,7 @@
     }
   },
   {
-    "Code": "en-IO",
+    "Id": "en-IO",
     "DisplayName": "English (British Indian Ocean Territory)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1456,7 +1456,7 @@
     }
   },
   {
-    "Code": "en-VG",
+    "Id": "en-VG",
     "DisplayName": "English (British Virgin Islands)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1469,7 +1469,7 @@
     }
   },
   {
-    "Code": "en-BI",
+    "Id": "en-BI",
     "DisplayName": "English (Burundi)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1482,7 +1482,7 @@
     }
   },
   {
-    "Code": "en-CM",
+    "Id": "en-CM",
     "DisplayName": "English (Cameroon)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1495,7 +1495,7 @@
     }
   },
   {
-    "Code": "en-CA",
+    "Id": "en-CA",
     "DisplayName": "English (Canada)",
     "KeyboardLayout": "1009:00001009",
     "FormattingExamples": {
@@ -1508,7 +1508,7 @@
     }
   },
   {
-    "Code": "en-KY",
+    "Id": "en-KY",
     "DisplayName": "English (Cayman Islands)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1521,7 +1521,7 @@
     }
   },
   {
-    "Code": "en-CX",
+    "Id": "en-CX",
     "DisplayName": "English (Christmas Island)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1534,7 +1534,7 @@
     }
   },
   {
-    "Code": "en-CC",
+    "Id": "en-CC",
     "DisplayName": "English (Cocos [Keeling] Islands)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1547,7 +1547,7 @@
     }
   },
   {
-    "Code": "en-CK",
+    "Id": "en-CK",
     "DisplayName": "English (Cook Islands)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1560,7 +1560,7 @@
     }
   },
   {
-    "Code": "en-CY",
+    "Id": "en-CY",
     "DisplayName": "English (Cyprus)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1573,7 +1573,7 @@
     }
   },
   {
-    "Code": "en-DK",
+    "Id": "en-DK",
     "DisplayName": "English (Denmark)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1586,7 +1586,7 @@
     }
   },
   {
-    "Code": "en-DM",
+    "Id": "en-DM",
     "DisplayName": "English (Dominica)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1599,7 +1599,7 @@
     }
   },
   {
-    "Code": "en-ER",
+    "Id": "en-ER",
     "DisplayName": "English (Eritrea)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1612,7 +1612,7 @@
     }
   },
   {
-    "Code": "en-SZ",
+    "Id": "en-SZ",
     "DisplayName": "English (Eswatini)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1625,7 +1625,7 @@
     }
   },
   {
-    "Code": "en-150",
+    "Id": "en-150",
     "DisplayName": "English (Europe)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1638,7 +1638,7 @@
     }
   },
   {
-    "Code": "en-FK",
+    "Id": "en-FK",
     "DisplayName": "English (Falkland Islands)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1651,7 +1651,7 @@
     }
   },
   {
-    "Code": "en-FJ",
+    "Id": "en-FJ",
     "DisplayName": "English (Fiji)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1664,7 +1664,7 @@
     }
   },
   {
-    "Code": "en-FI",
+    "Id": "en-FI",
     "DisplayName": "English (Finland)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1677,7 +1677,7 @@
     }
   },
   {
-    "Code": "en-GM",
+    "Id": "en-GM",
     "DisplayName": "English (Gambia)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1690,7 +1690,7 @@
     }
   },
   {
-    "Code": "en-DE",
+    "Id": "en-DE",
     "DisplayName": "English (Germany)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1703,7 +1703,7 @@
     }
   },
   {
-    "Code": "en-GH",
+    "Id": "en-GH",
     "DisplayName": "English (Ghana)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1716,7 +1716,7 @@
     }
   },
   {
-    "Code": "en-GI",
+    "Id": "en-GI",
     "DisplayName": "English (Gibraltar)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1729,7 +1729,7 @@
     }
   },
   {
-    "Code": "en-GD",
+    "Id": "en-GD",
     "DisplayName": "English (Grenada)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1742,7 +1742,7 @@
     }
   },
   {
-    "Code": "en-GU",
+    "Id": "en-GU",
     "DisplayName": "English (Guam)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1755,7 +1755,7 @@
     }
   },
   {
-    "Code": "en-GG",
+    "Id": "en-GG",
     "DisplayName": "English (Guernsey)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1768,7 +1768,7 @@
     }
   },
   {
-    "Code": "en-GY",
+    "Id": "en-GY",
     "DisplayName": "English (Guyana)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1781,7 +1781,7 @@
     }
   },
   {
-    "Code": "en-HK",
+    "Id": "en-HK",
     "DisplayName": "English (Hong Kong SAR)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1794,7 +1794,7 @@
     }
   },
   {
-    "Code": "en-IN",
+    "Id": "en-IN",
     "DisplayName": "English (India)",
     "KeyboardLayout": "4009:00004009",
     "FormattingExamples": {
@@ -1807,7 +1807,7 @@
     }
   },
   {
-    "Code": "en-IE",
+    "Id": "en-IE",
     "DisplayName": "English (Ireland)",
     "KeyboardLayout": "1809:00001809",
     "FormattingExamples": {
@@ -1820,7 +1820,7 @@
     }
   },
   {
-    "Code": "en-IM",
+    "Id": "en-IM",
     "DisplayName": "English (Isle of Man)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1833,7 +1833,7 @@
     }
   },
   {
-    "Code": "en-IL",
+    "Id": "en-IL",
     "DisplayName": "English (Israel)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1846,7 +1846,7 @@
     }
   },
   {
-    "Code": "en-JM",
+    "Id": "en-JM",
     "DisplayName": "English (Jamaica)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1859,7 +1859,7 @@
     }
   },
   {
-    "Code": "en-JE",
+    "Id": "en-JE",
     "DisplayName": "English (Jersey)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1872,7 +1872,7 @@
     }
   },
   {
-    "Code": "en-KE",
+    "Id": "en-KE",
     "DisplayName": "English (Kenya)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1885,7 +1885,7 @@
     }
   },
   {
-    "Code": "en-KI",
+    "Id": "en-KI",
     "DisplayName": "English (Kiribati)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1898,7 +1898,7 @@
     }
   },
   {
-    "Code": "en-LS",
+    "Id": "en-LS",
     "DisplayName": "English (Lesotho)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1911,7 +1911,7 @@
     }
   },
   {
-    "Code": "en-LR",
+    "Id": "en-LR",
     "DisplayName": "English (Liberia)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1924,7 +1924,7 @@
     }
   },
   {
-    "Code": "en-MO",
+    "Id": "en-MO",
     "DisplayName": "English (Macao SAR)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1937,7 +1937,7 @@
     }
   },
   {
-    "Code": "en-MG",
+    "Id": "en-MG",
     "DisplayName": "English (Madagascar)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1950,7 +1950,7 @@
     }
   },
   {
-    "Code": "en-MW",
+    "Id": "en-MW",
     "DisplayName": "English (Malawi)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1963,7 +1963,7 @@
     }
   },
   {
-    "Code": "en-MY",
+    "Id": "en-MY",
     "DisplayName": "English (Malaysia)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1976,7 +1976,7 @@
     }
   },
   {
-    "Code": "en-MT",
+    "Id": "en-MT",
     "DisplayName": "English (Malta)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -1989,7 +1989,7 @@
     }
   },
   {
-    "Code": "en-MH",
+    "Id": "en-MH",
     "DisplayName": "English (Marshall Islands)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2002,7 +2002,7 @@
     }
   },
   {
-    "Code": "en-MU",
+    "Id": "en-MU",
     "DisplayName": "English (Mauritius)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2015,7 +2015,7 @@
     }
   },
   {
-    "Code": "en-FM",
+    "Id": "en-FM",
     "DisplayName": "English (Micronesia)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2028,7 +2028,7 @@
     }
   },
   {
-    "Code": "en-MS",
+    "Id": "en-MS",
     "DisplayName": "English (Montserrat)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2041,7 +2041,7 @@
     }
   },
   {
-    "Code": "en-NA",
+    "Id": "en-NA",
     "DisplayName": "English (Namibia)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2054,7 +2054,7 @@
     }
   },
   {
-    "Code": "en-NR",
+    "Id": "en-NR",
     "DisplayName": "English (Nauru)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2067,7 +2067,7 @@
     }
   },
   {
-    "Code": "en-NL",
+    "Id": "en-NL",
     "DisplayName": "English (Netherlands)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2080,7 +2080,7 @@
     }
   },
   {
-    "Code": "en-NZ",
+    "Id": "en-NZ",
     "DisplayName": "English (New Zealand)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2093,7 +2093,7 @@
     }
   },
   {
-    "Code": "en-NG",
+    "Id": "en-NG",
     "DisplayName": "English (Nigeria)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2106,7 +2106,7 @@
     }
   },
   {
-    "Code": "en-NU",
+    "Id": "en-NU",
     "DisplayName": "English (Niue)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2119,7 +2119,7 @@
     }
   },
   {
-    "Code": "en-NF",
+    "Id": "en-NF",
     "DisplayName": "English (Norfolk Island)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2132,7 +2132,7 @@
     }
   },
   {
-    "Code": "en-MP",
+    "Id": "en-MP",
     "DisplayName": "English (Northern Mariana Islands)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2145,7 +2145,7 @@
     }
   },
   {
-    "Code": "en-PK",
+    "Id": "en-PK",
     "DisplayName": "English (Pakistan)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2158,7 +2158,7 @@
     }
   },
   {
-    "Code": "en-PW",
+    "Id": "en-PW",
     "DisplayName": "English (Palau)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2171,7 +2171,7 @@
     }
   },
   {
-    "Code": "en-PG",
+    "Id": "en-PG",
     "DisplayName": "English (Papua New Guinea)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2184,7 +2184,7 @@
     }
   },
   {
-    "Code": "en-PH",
+    "Id": "en-PH",
     "DisplayName": "English (Philippines)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2197,7 +2197,7 @@
     }
   },
   {
-    "Code": "en-PN",
+    "Id": "en-PN",
     "DisplayName": "English (Pitcairn Islands)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2210,7 +2210,7 @@
     }
   },
   {
-    "Code": "en-PR",
+    "Id": "en-PR",
     "DisplayName": "English (Puerto Rico)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2223,7 +2223,7 @@
     }
   },
   {
-    "Code": "en-RW",
+    "Id": "en-RW",
     "DisplayName": "English (Rwanda)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2236,7 +2236,7 @@
     }
   },
   {
-    "Code": "en-WS",
+    "Id": "en-WS",
     "DisplayName": "English (Samoa)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2249,7 +2249,7 @@
     }
   },
   {
-    "Code": "en-SC",
+    "Id": "en-SC",
     "DisplayName": "English (Seychelles)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2262,7 +2262,7 @@
     }
   },
   {
-    "Code": "en-SL",
+    "Id": "en-SL",
     "DisplayName": "English (Sierra Leone)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2275,7 +2275,7 @@
     }
   },
   {
-    "Code": "en-SG",
+    "Id": "en-SG",
     "DisplayName": "English (Singapore)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2288,7 +2288,7 @@
     }
   },
   {
-    "Code": "en-SX",
+    "Id": "en-SX",
     "DisplayName": "English (Sint Maarten)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2301,7 +2301,7 @@
     }
   },
   {
-    "Code": "en-SI",
+    "Id": "en-SI",
     "DisplayName": "English (Slovenia)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2314,7 +2314,7 @@
     }
   },
   {
-    "Code": "en-SB",
+    "Id": "en-SB",
     "DisplayName": "English (Solomon Islands)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2327,7 +2327,7 @@
     }
   },
   {
-    "Code": "en-ZA",
+    "Id": "en-ZA",
     "DisplayName": "English (South Africa)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2340,7 +2340,7 @@
     }
   },
   {
-    "Code": "en-SS",
+    "Id": "en-SS",
     "DisplayName": "English (South Sudan)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2353,7 +2353,7 @@
     }
   },
   {
-    "Code": "en-SH",
+    "Id": "en-SH",
     "DisplayName": "English (St Helena, Ascension, Tristan da Cunha)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2366,7 +2366,7 @@
     }
   },
   {
-    "Code": "en-KN",
+    "Id": "en-KN",
     "DisplayName": "English (St. Kitts & Nevis)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2379,7 +2379,7 @@
     }
   },
   {
-    "Code": "en-LC",
+    "Id": "en-LC",
     "DisplayName": "English (St. Lucia)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2392,7 +2392,7 @@
     }
   },
   {
-    "Code": "en-VC",
+    "Id": "en-VC",
     "DisplayName": "English (St. Vincent & Grenadines)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2405,7 +2405,7 @@
     }
   },
   {
-    "Code": "en-SD",
+    "Id": "en-SD",
     "DisplayName": "English (Sudan)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2418,7 +2418,7 @@
     }
   },
   {
-    "Code": "en-SE",
+    "Id": "en-SE",
     "DisplayName": "English (Sweden)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2431,7 +2431,7 @@
     }
   },
   {
-    "Code": "en-CH",
+    "Id": "en-CH",
     "DisplayName": "English (Switzerland)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2444,7 +2444,7 @@
     }
   },
   {
-    "Code": "en-TZ",
+    "Id": "en-TZ",
     "DisplayName": "English (Tanzania)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2457,7 +2457,7 @@
     }
   },
   {
-    "Code": "en-TK",
+    "Id": "en-TK",
     "DisplayName": "English (Tokelau)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2470,7 +2470,7 @@
     }
   },
   {
-    "Code": "en-TO",
+    "Id": "en-TO",
     "DisplayName": "English (Tonga)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2483,7 +2483,7 @@
     }
   },
   {
-    "Code": "en-TT",
+    "Id": "en-TT",
     "DisplayName": "English (Trinidad & Tobago)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2496,7 +2496,7 @@
     }
   },
   {
-    "Code": "en-TC",
+    "Id": "en-TC",
     "DisplayName": "English (Turks & Caicos Islands)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2509,7 +2509,7 @@
     }
   },
   {
-    "Code": "en-TV",
+    "Id": "en-TV",
     "DisplayName": "English (Tuvalu)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2522,7 +2522,7 @@
     }
   },
   {
-    "Code": "en-UM",
+    "Id": "en-UM",
     "DisplayName": "English (U.S. Outlying Islands)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2535,7 +2535,7 @@
     }
   },
   {
-    "Code": "en-VI",
+    "Id": "en-VI",
     "DisplayName": "English (U.S. Virgin Islands)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2548,7 +2548,7 @@
     }
   },
   {
-    "Code": "en-UG",
+    "Id": "en-UG",
     "DisplayName": "English (Uganda)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2561,7 +2561,7 @@
     }
   },
   {
-    "Code": "en-AE",
+    "Id": "en-AE",
     "DisplayName": "English (United Arab Emirates)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2574,7 +2574,7 @@
     }
   },
   {
-    "Code": "en-GB",
+    "Id": "en-GB",
     "DisplayName": "English (United Kingdom)",
     "KeyboardLayout": "0809:00000809",
     "FormattingExamples": {
@@ -2587,7 +2587,7 @@
     }
   },
   {
-    "Code": "en-US-posix",
+    "Id": "en-US-posix",
     "DisplayName": "English (United States, Computer)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2600,7 +2600,7 @@
     }
   },
   {
-    "Code": "en-US",
+    "Id": "en-US",
     "DisplayName": "English (United States)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2613,7 +2613,7 @@
     }
   },
   {
-    "Code": "en-VU",
+    "Id": "en-VU",
     "DisplayName": "English (Vanuatu)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2626,7 +2626,7 @@
     }
   },
   {
-    "Code": "en-001",
+    "Id": "en-001",
     "DisplayName": "English (World)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2639,7 +2639,7 @@
     }
   },
   {
-    "Code": "en-ZM",
+    "Id": "en-ZM",
     "DisplayName": "English (Zambia)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2652,7 +2652,7 @@
     }
   },
   {
-    "Code": "en-ZW",
+    "Id": "en-ZW",
     "DisplayName": "English (Zimbabwe)",
     "KeyboardLayout": "0409:00000409",
     "FormattingExamples": {
@@ -2665,7 +2665,7 @@
     }
   },
   {
-    "Code": "eo-001",
+    "Id": "eo-001",
     "DisplayName": "Esperanto (World)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -2678,7 +2678,7 @@
     }
   },
   {
-    "Code": "et-EE",
+    "Id": "et-EE",
     "DisplayName": "Estonian (Estonia)",
     "KeyboardLayout": "0425:00000425",
     "FormattingExamples": {
@@ -2691,7 +2691,7 @@
     }
   },
   {
-    "Code": "ee-GH",
+    "Id": "ee-GH",
     "DisplayName": "Ewe (Ghana)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -2704,7 +2704,7 @@
     }
   },
   {
-    "Code": "ee-TG",
+    "Id": "ee-TG",
     "DisplayName": "Ewe (Togo)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -2717,7 +2717,7 @@
     }
   },
   {
-    "Code": "ewo-CM",
+    "Id": "ewo-CM",
     "DisplayName": "Ewondo (Cameroon)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -2730,7 +2730,7 @@
     }
   },
   {
-    "Code": "fo-DK",
+    "Id": "fo-DK",
     "DisplayName": "Faroese (Denmark)",
     "KeyboardLayout": "0438:00000438",
     "FormattingExamples": {
@@ -2743,7 +2743,7 @@
     }
   },
   {
-    "Code": "fo-FO",
+    "Id": "fo-FO",
     "DisplayName": "Faroese (Faroe Islands)",
     "KeyboardLayout": "0438:00000438",
     "FormattingExamples": {
@@ -2756,7 +2756,7 @@
     }
   },
   {
-    "Code": "fil-PH",
+    "Id": "fil-PH",
     "DisplayName": "Filipino (Philippines)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -2769,7 +2769,7 @@
     }
   },
   {
-    "Code": "fi-FI",
+    "Id": "fi-FI",
     "DisplayName": "Finnish (Finland)",
     "KeyboardLayout": "040b:0000040b",
     "FormattingExamples": {
@@ -2782,7 +2782,7 @@
     }
   },
   {
-    "Code": "fr-DZ",
+    "Id": "fr-DZ",
     "DisplayName": "French (Algeria)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -2795,7 +2795,7 @@
     }
   },
   {
-    "Code": "fr-BE",
+    "Id": "fr-BE",
     "DisplayName": "French (Belgium)",
     "KeyboardLayout": "080c:0000080c",
     "FormattingExamples": {
@@ -2808,7 +2808,7 @@
     }
   },
   {
-    "Code": "fr-BJ",
+    "Id": "fr-BJ",
     "DisplayName": "French (Benin)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -2821,7 +2821,7 @@
     }
   },
   {
-    "Code": "fr-BF",
+    "Id": "fr-BF",
     "DisplayName": "French (Burkina Faso)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -2834,7 +2834,7 @@
     }
   },
   {
-    "Code": "fr-BI",
+    "Id": "fr-BI",
     "DisplayName": "French (Burundi)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -2847,7 +2847,7 @@
     }
   },
   {
-    "Code": "fr-CM",
+    "Id": "fr-CM",
     "DisplayName": "French (Cameroon)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -2860,7 +2860,7 @@
     }
   },
   {
-    "Code": "fr-CA",
+    "Id": "fr-CA",
     "DisplayName": "French (Canada)",
     "KeyboardLayout": "0c0c:00000c0c",
     "FormattingExamples": {
@@ -2873,7 +2873,7 @@
     }
   },
   {
-    "Code": "fr-CF",
+    "Id": "fr-CF",
     "DisplayName": "French (Central African Republic)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -2886,7 +2886,7 @@
     }
   },
   {
-    "Code": "fr-TD",
+    "Id": "fr-TD",
     "DisplayName": "French (Chad)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -2899,7 +2899,7 @@
     }
   },
   {
-    "Code": "fr-KM",
+    "Id": "fr-KM",
     "DisplayName": "French (Comoros)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -2912,7 +2912,7 @@
     }
   },
   {
-    "Code": "fr-CD",
+    "Id": "fr-CD",
     "DisplayName": "French (Congo [DRC])",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -2925,7 +2925,7 @@
     }
   },
   {
-    "Code": "fr-CG",
+    "Id": "fr-CG",
     "DisplayName": "French (Congo)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -2938,7 +2938,7 @@
     }
   },
   {
-    "Code": "fr-CI",
+    "Id": "fr-CI",
     "DisplayName": "French (Côte d’Ivoire)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -2951,7 +2951,7 @@
     }
   },
   {
-    "Code": "fr-DJ",
+    "Id": "fr-DJ",
     "DisplayName": "French (Djibouti)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -2964,7 +2964,7 @@
     }
   },
   {
-    "Code": "fr-GQ",
+    "Id": "fr-GQ",
     "DisplayName": "French (Equatorial Guinea)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -2977,7 +2977,7 @@
     }
   },
   {
-    "Code": "fr-FR",
+    "Id": "fr-FR",
     "DisplayName": "French (France)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -2990,7 +2990,7 @@
     }
   },
   {
-    "Code": "fr-GF",
+    "Id": "fr-GF",
     "DisplayName": "French (French Guiana)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3003,7 +3003,7 @@
     }
   },
   {
-    "Code": "fr-PF",
+    "Id": "fr-PF",
     "DisplayName": "French (French Polynesia)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3016,7 +3016,7 @@
     }
   },
   {
-    "Code": "fr-GA",
+    "Id": "fr-GA",
     "DisplayName": "French (Gabon)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3029,7 +3029,7 @@
     }
   },
   {
-    "Code": "fr-GP",
+    "Id": "fr-GP",
     "DisplayName": "French (Guadeloupe)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3042,7 +3042,7 @@
     }
   },
   {
-    "Code": "fr-GN",
+    "Id": "fr-GN",
     "DisplayName": "French (Guinea)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3055,7 +3055,7 @@
     }
   },
   {
-    "Code": "fr-HT",
+    "Id": "fr-HT",
     "DisplayName": "French (Haiti)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3068,7 +3068,7 @@
     }
   },
   {
-    "Code": "fr-LU",
+    "Id": "fr-LU",
     "DisplayName": "French (Luxembourg)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3081,7 +3081,7 @@
     }
   },
   {
-    "Code": "fr-MG",
+    "Id": "fr-MG",
     "DisplayName": "French (Madagascar)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3094,7 +3094,7 @@
     }
   },
   {
-    "Code": "fr-ML",
+    "Id": "fr-ML",
     "DisplayName": "French (Mali)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3107,7 +3107,7 @@
     }
   },
   {
-    "Code": "fr-MQ",
+    "Id": "fr-MQ",
     "DisplayName": "French (Martinique)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3120,7 +3120,7 @@
     }
   },
   {
-    "Code": "fr-MR",
+    "Id": "fr-MR",
     "DisplayName": "French (Mauritania)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3133,7 +3133,7 @@
     }
   },
   {
-    "Code": "fr-MU",
+    "Id": "fr-MU",
     "DisplayName": "French (Mauritius)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3146,7 +3146,7 @@
     }
   },
   {
-    "Code": "fr-YT",
+    "Id": "fr-YT",
     "DisplayName": "French (Mayotte)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3159,7 +3159,7 @@
     }
   },
   {
-    "Code": "fr-MC",
+    "Id": "fr-MC",
     "DisplayName": "French (Monaco)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3172,7 +3172,7 @@
     }
   },
   {
-    "Code": "fr-MA",
+    "Id": "fr-MA",
     "DisplayName": "French (Morocco)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3185,7 +3185,7 @@
     }
   },
   {
-    "Code": "fr-NC",
+    "Id": "fr-NC",
     "DisplayName": "French (New Caledonia)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3198,7 +3198,7 @@
     }
   },
   {
-    "Code": "fr-NE",
+    "Id": "fr-NE",
     "DisplayName": "French (Niger)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3211,7 +3211,7 @@
     }
   },
   {
-    "Code": "fr-RE",
+    "Id": "fr-RE",
     "DisplayName": "French (Réunion)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3224,7 +3224,7 @@
     }
   },
   {
-    "Code": "fr-RW",
+    "Id": "fr-RW",
     "DisplayName": "French (Rwanda)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3237,7 +3237,7 @@
     }
   },
   {
-    "Code": "fr-SN",
+    "Id": "fr-SN",
     "DisplayName": "French (Senegal)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3250,7 +3250,7 @@
     }
   },
   {
-    "Code": "fr-SC",
+    "Id": "fr-SC",
     "DisplayName": "French (Seychelles)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3263,7 +3263,7 @@
     }
   },
   {
-    "Code": "fr-BL",
+    "Id": "fr-BL",
     "DisplayName": "French (St. Barthélemy)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3276,7 +3276,7 @@
     }
   },
   {
-    "Code": "fr-MF",
+    "Id": "fr-MF",
     "DisplayName": "French (St. Martin)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3289,7 +3289,7 @@
     }
   },
   {
-    "Code": "fr-PM",
+    "Id": "fr-PM",
     "DisplayName": "French (St. Pierre & Miquelon)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3302,7 +3302,7 @@
     }
   },
   {
-    "Code": "fr-CH",
+    "Id": "fr-CH",
     "DisplayName": "French (Switzerland)",
     "KeyboardLayout": "100c:0000100c",
     "FormattingExamples": {
@@ -3315,7 +3315,7 @@
     }
   },
   {
-    "Code": "fr-SY",
+    "Id": "fr-SY",
     "DisplayName": "French (Syria)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3328,7 +3328,7 @@
     }
   },
   {
-    "Code": "fr-TG",
+    "Id": "fr-TG",
     "DisplayName": "French (Togo)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3341,7 +3341,7 @@
     }
   },
   {
-    "Code": "fr-TN",
+    "Id": "fr-TN",
     "DisplayName": "French (Tunisia)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3354,7 +3354,7 @@
     }
   },
   {
-    "Code": "fr-VU",
+    "Id": "fr-VU",
     "DisplayName": "French (Vanuatu)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3367,7 +3367,7 @@
     }
   },
   {
-    "Code": "fr-WF",
+    "Id": "fr-WF",
     "DisplayName": "French (Wallis & Futuna)",
     "KeyboardLayout": "040c:0000040c",
     "FormattingExamples": {
@@ -3380,7 +3380,7 @@
     }
   },
   {
-    "Code": "fur-IT",
+    "Id": "fur-IT",
     "DisplayName": "Friulian (Italy)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3393,7 +3393,7 @@
     }
   },
   {
-    "Code": "ff-Latn-BF",
+    "Id": "ff-Latn-BF",
     "DisplayName": "Fulah (Latin, Burkina Faso)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3406,7 +3406,7 @@
     }
   },
   {
-    "Code": "ff-Latn-CM",
+    "Id": "ff-Latn-CM",
     "DisplayName": "Fulah (Latin, Cameroon)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3419,7 +3419,7 @@
     }
   },
   {
-    "Code": "ff-Latn-GM",
+    "Id": "ff-Latn-GM",
     "DisplayName": "Fulah (Latin, Gambia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3432,7 +3432,7 @@
     }
   },
   {
-    "Code": "ff-Latn-GH",
+    "Id": "ff-Latn-GH",
     "DisplayName": "Fulah (Latin, Ghana)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3445,7 +3445,7 @@
     }
   },
   {
-    "Code": "ff-Latn-GW",
+    "Id": "ff-Latn-GW",
     "DisplayName": "Fulah (Latin, Guinea-Bissau)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3458,7 +3458,7 @@
     }
   },
   {
-    "Code": "ff-Latn-GN",
+    "Id": "ff-Latn-GN",
     "DisplayName": "Fulah (Latin, Guinea)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3471,7 +3471,7 @@
     }
   },
   {
-    "Code": "ff-Latn-LR",
+    "Id": "ff-Latn-LR",
     "DisplayName": "Fulah (Latin, Liberia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3484,7 +3484,7 @@
     }
   },
   {
-    "Code": "ff-Latn-MR",
+    "Id": "ff-Latn-MR",
     "DisplayName": "Fulah (Latin, Mauritania)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3497,7 +3497,7 @@
     }
   },
   {
-    "Code": "ff-Latn-NE",
+    "Id": "ff-Latn-NE",
     "DisplayName": "Fulah (Latin, Niger)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3510,7 +3510,7 @@
     }
   },
   {
-    "Code": "ff-Latn-NG",
+    "Id": "ff-Latn-NG",
     "DisplayName": "Fulah (Latin, Nigeria)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3523,7 +3523,7 @@
     }
   },
   {
-    "Code": "ff-Latn-SN",
+    "Id": "ff-Latn-SN",
     "DisplayName": "Fulah (Latin, Senegal)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3536,7 +3536,7 @@
     }
   },
   {
-    "Code": "ff-Latn-SL",
+    "Id": "ff-Latn-SL",
     "DisplayName": "Fulah (Latin, Sierra Leone)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3549,7 +3549,7 @@
     }
   },
   {
-    "Code": "gl-ES",
+    "Id": "gl-ES",
     "DisplayName": "Galician (Spain)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3562,7 +3562,7 @@
     }
   },
   {
-    "Code": "lg-UG",
+    "Id": "lg-UG",
     "DisplayName": "Ganda (Uganda)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3575,7 +3575,7 @@
     }
   },
   {
-    "Code": "ka-GE",
+    "Id": "ka-GE",
     "DisplayName": "Georgian (Georgia)",
     "KeyboardLayout": "0437:00000437",
     "FormattingExamples": {
@@ -3588,7 +3588,7 @@
     }
   },
   {
-    "Code": "de-AT",
+    "Id": "de-AT",
     "DisplayName": "German (Austria)",
     "KeyboardLayout": "0407:00000407",
     "FormattingExamples": {
@@ -3601,7 +3601,7 @@
     }
   },
   {
-    "Code": "de-BE",
+    "Id": "de-BE",
     "DisplayName": "German (Belgium)",
     "KeyboardLayout": "0407:00000407",
     "FormattingExamples": {
@@ -3614,7 +3614,7 @@
     }
   },
   {
-    "Code": "de-DE",
+    "Id": "de-DE",
     "DisplayName": "German (Germany)",
     "KeyboardLayout": "0407:00000407",
     "FormattingExamples": {
@@ -3627,7 +3627,7 @@
     }
   },
   {
-    "Code": "de-IT",
+    "Id": "de-IT",
     "DisplayName": "German (Italy)",
     "KeyboardLayout": "0407:00000407",
     "FormattingExamples": {
@@ -3640,7 +3640,7 @@
     }
   },
   {
-    "Code": "de-LI",
+    "Id": "de-LI",
     "DisplayName": "German (Liechtenstein)",
     "KeyboardLayout": "0407:00000407",
     "FormattingExamples": {
@@ -3653,7 +3653,7 @@
     }
   },
   {
-    "Code": "de-LU",
+    "Id": "de-LU",
     "DisplayName": "German (Luxembourg)",
     "KeyboardLayout": "0407:00000407",
     "FormattingExamples": {
@@ -3666,7 +3666,7 @@
     }
   },
   {
-    "Code": "de-CH",
+    "Id": "de-CH",
     "DisplayName": "German (Switzerland)",
     "KeyboardLayout": "0807:00000807",
     "FormattingExamples": {
@@ -3679,7 +3679,7 @@
     }
   },
   {
-    "Code": "el-CY",
+    "Id": "el-CY",
     "DisplayName": "Greek (Cyprus)",
     "KeyboardLayout": "0408:00000408",
     "FormattingExamples": {
@@ -3692,7 +3692,7 @@
     }
   },
   {
-    "Code": "el-GR",
+    "Id": "el-GR",
     "DisplayName": "Greek (Greece)",
     "KeyboardLayout": "0408:00000408",
     "FormattingExamples": {
@@ -3705,7 +3705,7 @@
     }
   },
   {
-    "Code": "gn-PY",
+    "Id": "gn-PY",
     "DisplayName": "Guarani (Paraguay)",
     "KeyboardLayout": "0474:00000474",
     "FormattingExamples": {
@@ -3718,7 +3718,7 @@
     }
   },
   {
-    "Code": "gu-IN",
+    "Id": "gu-IN",
     "DisplayName": "Gujarati (India)",
     "KeyboardLayout": "0447:00000447",
     "FormattingExamples": {
@@ -3731,7 +3731,7 @@
     }
   },
   {
-    "Code": "guz-KE",
+    "Id": "guz-KE",
     "DisplayName": "Gusii (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3744,7 +3744,7 @@
     }
   },
   {
-    "Code": "ha-Latn-GH",
+    "Id": "ha-Latn-GH",
     "DisplayName": "Hausa (Latin, Ghana)",
     "KeyboardLayout": "0468:00000468",
     "FormattingExamples": {
@@ -3757,7 +3757,7 @@
     }
   },
   {
-    "Code": "ha-Latn-NE",
+    "Id": "ha-Latn-NE",
     "DisplayName": "Hausa (Latin, Niger)",
     "KeyboardLayout": "0468:00000468",
     "FormattingExamples": {
@@ -3770,7 +3770,7 @@
     }
   },
   {
-    "Code": "ha-Latn-NG",
+    "Id": "ha-Latn-NG",
     "DisplayName": "Hausa (Latin, Nigeria)",
     "KeyboardLayout": "0468:00000468",
     "FormattingExamples": {
@@ -3783,7 +3783,7 @@
     }
   },
   {
-    "Code": "haw-US",
+    "Id": "haw-US",
     "DisplayName": "Hawaiian (United States)",
     "KeyboardLayout": "0475:00000475",
     "FormattingExamples": {
@@ -3796,7 +3796,7 @@
     }
   },
   {
-    "Code": "he-IL",
+    "Id": "he-IL",
     "DisplayName": "Hebrew (Israel)",
     "KeyboardLayout": "040d:0000040d",
     "FormattingExamples": {
@@ -3809,7 +3809,7 @@
     }
   },
   {
-    "Code": "hi-IN",
+    "Id": "hi-IN",
     "DisplayName": "Hindi (India)",
     "KeyboardLayout": "0439:00000439",
     "FormattingExamples": {
@@ -3822,7 +3822,7 @@
     }
   },
   {
-    "Code": "hu-HU",
+    "Id": "hu-HU",
     "DisplayName": "Hungarian (Hungary)",
     "KeyboardLayout": "040e:0000040e",
     "FormattingExamples": {
@@ -3835,7 +3835,7 @@
     }
   },
   {
-    "Code": "is-IS",
+    "Id": "is-IS",
     "DisplayName": "Icelandic (Iceland)",
     "KeyboardLayout": "040f:0000040f",
     "FormattingExamples": {
@@ -3848,7 +3848,7 @@
     }
   },
   {
-    "Code": "ig-NG",
+    "Id": "ig-NG",
     "DisplayName": "Igbo (Nigeria)",
     "KeyboardLayout": "0470:00000470",
     "FormattingExamples": {
@@ -3861,7 +3861,7 @@
     }
   },
   {
-    "Code": "smn-FI",
+    "Id": "smn-FI",
     "DisplayName": "Inari Sami (Finland)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3874,7 +3874,7 @@
     }
   },
   {
-    "Code": "id-ID",
+    "Id": "id-ID",
     "DisplayName": "Indonesian (Indonesia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3887,7 +3887,7 @@
     }
   },
   {
-    "Code": "ia-001",
+    "Id": "ia-001",
     "DisplayName": "Interlingua (World)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3900,7 +3900,7 @@
     }
   },
   {
-    "Code": "iu-CA",
+    "Id": "iu-CA",
     "DisplayName": "Inuktitut (Canada)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3913,7 +3913,7 @@
     }
   },
   {
-    "Code": "iu-Latn-CA",
+    "Id": "iu-Latn-CA",
     "DisplayName": "Inuktitut (Latin, Canada)",
     "KeyboardLayout": "085d:0000085d",
     "FormattingExamples": {
@@ -3926,7 +3926,7 @@
     }
   },
   {
-    "Code": "ga-IE",
+    "Id": "ga-IE",
     "DisplayName": "Irish (Ireland)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3939,7 +3939,7 @@
     }
   },
   {
-    "Code": "xh-ZA",
+    "Id": "xh-ZA",
     "DisplayName": "isiXhosa (South Africa)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3952,7 +3952,7 @@
     }
   },
   {
-    "Code": "zu-ZA",
+    "Id": "zu-ZA",
     "DisplayName": "isiZulu (South Africa)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -3965,7 +3965,7 @@
     }
   },
   {
-    "Code": "it-IT",
+    "Id": "it-IT",
     "DisplayName": "Italian (Italy)",
     "KeyboardLayout": "0410:00000410",
     "FormattingExamples": {
@@ -3978,7 +3978,7 @@
     }
   },
   {
-    "Code": "it-SM",
+    "Id": "it-SM",
     "DisplayName": "Italian (San Marino)",
     "KeyboardLayout": "0410:00000410",
     "FormattingExamples": {
@@ -3991,7 +3991,7 @@
     }
   },
   {
-    "Code": "it-CH",
+    "Id": "it-CH",
     "DisplayName": "Italian (Switzerland)",
     "KeyboardLayout": "0410:00000410",
     "FormattingExamples": {
@@ -4004,7 +4004,7 @@
     }
   },
   {
-    "Code": "it-VA",
+    "Id": "it-VA",
     "DisplayName": "Italian (Vatican City)",
     "KeyboardLayout": "0410:00000410",
     "FormattingExamples": {
@@ -4017,7 +4017,7 @@
     }
   },
   {
-    "Code": "ja-JP",
+    "Id": "ja-JP",
     "DisplayName": "Japanese (Japan)",
     "KeyboardLayout": "0411:00000411",
     "FormattingExamples": {
@@ -4030,7 +4030,7 @@
     }
   },
   {
-    "Code": "jv-Latn-ID",
+    "Id": "jv-Latn-ID",
     "DisplayName": "Javanese (Latin, Indonesia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4043,7 +4043,7 @@
     }
   },
   {
-    "Code": "dyo-SN",
+    "Id": "dyo-SN",
     "DisplayName": "Jola-Fonyi (Senegal)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4056,7 +4056,7 @@
     }
   },
   {
-    "Code": "kea-CV",
+    "Id": "kea-CV",
     "DisplayName": "Kabuverdianu (Cabo Verde)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4069,7 +4069,7 @@
     }
   },
   {
-    "Code": "kab-DZ",
+    "Id": "kab-DZ",
     "DisplayName": "Kabyle (Algeria)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4082,7 +4082,7 @@
     }
   },
   {
-    "Code": "kkj-CM",
+    "Id": "kkj-CM",
     "DisplayName": "Kako (Cameroon)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4095,7 +4095,7 @@
     }
   },
   {
-    "Code": "kl-GL",
+    "Id": "kl-GL",
     "DisplayName": "Kalaallisut (Greenland)",
     "KeyboardLayout": "046f:0000046f",
     "FormattingExamples": {
@@ -4108,7 +4108,7 @@
     }
   },
   {
-    "Code": "kln-KE",
+    "Id": "kln-KE",
     "DisplayName": "Kalenjin (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4121,7 +4121,7 @@
     }
   },
   {
-    "Code": "kam-KE",
+    "Id": "kam-KE",
     "DisplayName": "Kamba (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4134,7 +4134,7 @@
     }
   },
   {
-    "Code": "kn-IN",
+    "Id": "kn-IN",
     "DisplayName": "Kannada (India)",
     "KeyboardLayout": "044b:0000044b",
     "FormattingExamples": {
@@ -4147,7 +4147,7 @@
     }
   },
   {
-    "Code": "ks-Arab-IN",
+    "Id": "ks-Arab-IN",
     "DisplayName": "Kashmiri (Arabic, India)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4160,7 +4160,7 @@
     }
   },
   {
-    "Code": "kk-KZ",
+    "Id": "kk-KZ",
     "DisplayName": "Kazakh (Kazakhstan)",
     "KeyboardLayout": "043f:0000043f",
     "FormattingExamples": {
@@ -4173,7 +4173,7 @@
     }
   },
   {
-    "Code": "km-KH",
+    "Id": "km-KH",
     "DisplayName": "Khmer (Cambodia)",
     "KeyboardLayout": "0453:00000453",
     "FormattingExamples": {
@@ -4186,7 +4186,7 @@
     }
   },
   {
-    "Code": "ki-KE",
+    "Id": "ki-KE",
     "DisplayName": "Kikuyu (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4199,7 +4199,7 @@
     }
   },
   {
-    "Code": "rw-RW",
+    "Id": "rw-RW",
     "DisplayName": "Kinyarwanda (Rwanda)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4212,7 +4212,7 @@
     }
   },
   {
-    "Code": "sw-CD",
+    "Id": "sw-CD",
     "DisplayName": "Kiswahili (Congo [DRC])",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4225,7 +4225,7 @@
     }
   },
   {
-    "Code": "sw-KE",
+    "Id": "sw-KE",
     "DisplayName": "Kiswahili (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4238,7 +4238,7 @@
     }
   },
   {
-    "Code": "sw-TZ",
+    "Id": "sw-TZ",
     "DisplayName": "Kiswahili (Tanzania)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4251,7 +4251,7 @@
     }
   },
   {
-    "Code": "sw-UG",
+    "Id": "sw-UG",
     "DisplayName": "Kiswahili (Uganda)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4264,7 +4264,7 @@
     }
   },
   {
-    "Code": "kok-IN",
+    "Id": "kok-IN",
     "DisplayName": "Konkani (India)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4277,7 +4277,7 @@
     }
   },
   {
-    "Code": "ko-KR",
+    "Id": "ko-KR",
     "DisplayName": "Korean (Korea)",
     "KeyboardLayout": "0412:00000412",
     "FormattingExamples": {
@@ -4290,7 +4290,7 @@
     }
   },
   {
-    "Code": "ko-KP",
+    "Id": "ko-KP",
     "DisplayName": "Korean (North Korea)",
     "KeyboardLayout": "0412:00000412",
     "FormattingExamples": {
@@ -4303,7 +4303,7 @@
     }
   },
   {
-    "Code": "khq-ML",
+    "Id": "khq-ML",
     "DisplayName": "Koyra Chiini (Mali)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4316,7 +4316,7 @@
     }
   },
   {
-    "Code": "ses-ML",
+    "Id": "ses-ML",
     "DisplayName": "Koyraboro Senni (Mali)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4329,7 +4329,7 @@
     }
   },
   {
-    "Code": "ku-Arab-IR",
+    "Id": "ku-Arab-IR",
     "DisplayName": "Kurdish (Arabic, Iran)",
     "KeyboardLayout": "0492:00000492",
     "FormattingExamples": {
@@ -4342,7 +4342,7 @@
     }
   },
   {
-    "Code": "ku-Arab-IQ",
+    "Id": "ku-Arab-IQ",
     "DisplayName": "Kurdish (Arabic, Iraq)",
     "KeyboardLayout": "0492:00000492",
     "FormattingExamples": {
@@ -4355,7 +4355,7 @@
     }
   },
   {
-    "Code": "nmg-CM",
+    "Id": "nmg-CM",
     "DisplayName": "Kwasio (Cameroon)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4368,7 +4368,7 @@
     }
   },
   {
-    "Code": "ky-KG",
+    "Id": "ky-KG",
     "DisplayName": "Kyrgyz (Kyrgyzstan)",
     "KeyboardLayout": "0440:00000440",
     "FormattingExamples": {
@@ -4381,7 +4381,7 @@
     }
   },
   {
-    "Code": "quc-GT",
+    "Id": "quc-GT",
     "DisplayName": "Kʼicheʼ (Guatemala)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4394,7 +4394,7 @@
     }
   },
   {
-    "Code": "lkt-US",
+    "Id": "lkt-US",
     "DisplayName": "Lakota (United States)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4407,7 +4407,7 @@
     }
   },
   {
-    "Code": "lag-TZ",
+    "Id": "lag-TZ",
     "DisplayName": "Langi (Tanzania)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4420,7 +4420,7 @@
     }
   },
   {
-    "Code": "lo-LA",
+    "Id": "lo-LA",
     "DisplayName": "Lao (Laos)",
     "KeyboardLayout": "0454:00000454",
     "FormattingExamples": {
@@ -4433,7 +4433,7 @@
     }
   },
   {
-    "Code": "lv-LV",
+    "Id": "lv-LV",
     "DisplayName": "Latvian (Latvia)",
     "KeyboardLayout": "0426:00000426",
     "FormattingExamples": {
@@ -4446,7 +4446,7 @@
     }
   },
   {
-    "Code": "ln-AO",
+    "Id": "ln-AO",
     "DisplayName": "Lingala (Angola)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4459,7 +4459,7 @@
     }
   },
   {
-    "Code": "ln-CF",
+    "Id": "ln-CF",
     "DisplayName": "Lingala (Central African Republic)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4472,7 +4472,7 @@
     }
   },
   {
-    "Code": "ln-CD",
+    "Id": "ln-CD",
     "DisplayName": "Lingala (Congo [DRC])",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4485,7 +4485,7 @@
     }
   },
   {
-    "Code": "ln-CG",
+    "Id": "ln-CG",
     "DisplayName": "Lingala (Congo)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4498,7 +4498,7 @@
     }
   },
   {
-    "Code": "lt-LT",
+    "Id": "lt-LT",
     "DisplayName": "Lithuanian (Lithuania)",
     "KeyboardLayout": "0427:00000427",
     "FormattingExamples": {
@@ -4511,7 +4511,7 @@
     }
   },
   {
-    "Code": "nds-DE",
+    "Id": "nds-DE",
     "DisplayName": "Low German (Germany)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4524,7 +4524,7 @@
     }
   },
   {
-    "Code": "nds-NL",
+    "Id": "nds-NL",
     "DisplayName": "Low German (Netherlands)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4537,7 +4537,7 @@
     }
   },
   {
-    "Code": "dsb-DE",
+    "Id": "dsb-DE",
     "DisplayName": "Lower Sorbian (Germany)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4550,7 +4550,7 @@
     }
   },
   {
-    "Code": "lu-CD",
+    "Id": "lu-CD",
     "DisplayName": "Luba-Katanga (Congo [DRC])",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4563,7 +4563,7 @@
     }
   },
   {
-    "Code": "smj-NO",
+    "Id": "smj-NO",
     "DisplayName": "Lule Sami (Norway)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4576,7 +4576,7 @@
     }
   },
   {
-    "Code": "smj-SE",
+    "Id": "smj-SE",
     "DisplayName": "Lule Sami (Sweden)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4589,7 +4589,7 @@
     }
   },
   {
-    "Code": "luo-KE",
+    "Id": "luo-KE",
     "DisplayName": "Luo (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4602,7 +4602,7 @@
     }
   },
   {
-    "Code": "lb-LU",
+    "Id": "lb-LU",
     "DisplayName": "Luxembourgish (Luxembourg)",
     "KeyboardLayout": "046e:0000046e",
     "FormattingExamples": {
@@ -4615,7 +4615,7 @@
     }
   },
   {
-    "Code": "luy-KE",
+    "Id": "luy-KE",
     "DisplayName": "Luyia (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4628,7 +4628,7 @@
     }
   },
   {
-    "Code": "mk-MK",
+    "Id": "mk-MK",
     "DisplayName": "Macedonian (North Macedonia)",
     "KeyboardLayout": "042f:0000042f",
     "FormattingExamples": {
@@ -4641,7 +4641,7 @@
     }
   },
   {
-    "Code": "jmc-TZ",
+    "Id": "jmc-TZ",
     "DisplayName": "Machame (Tanzania)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4654,7 +4654,7 @@
     }
   },
   {
-    "Code": "mgh-MZ",
+    "Id": "mgh-MZ",
     "DisplayName": "Makhuwa-Meetto (Mozambique)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4667,7 +4667,7 @@
     }
   },
   {
-    "Code": "kde-TZ",
+    "Id": "kde-TZ",
     "DisplayName": "Makonde (Tanzania)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4680,7 +4680,7 @@
     }
   },
   {
-    "Code": "mg-MG",
+    "Id": "mg-MG",
     "DisplayName": "Malagasy (Madagascar)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4693,7 +4693,7 @@
     }
   },
   {
-    "Code": "ms-BN",
+    "Id": "ms-BN",
     "DisplayName": "Malay (Brunei)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4706,7 +4706,7 @@
     }
   },
   {
-    "Code": "ms-MY",
+    "Id": "ms-MY",
     "DisplayName": "Malay (Malaysia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4719,7 +4719,7 @@
     }
   },
   {
-    "Code": "ms-SG",
+    "Id": "ms-SG",
     "DisplayName": "Malay (Singapore)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4732,7 +4732,7 @@
     }
   },
   {
-    "Code": "ml-IN",
+    "Id": "ml-IN",
     "DisplayName": "Malayalam (India)",
     "KeyboardLayout": "044c:0000044c",
     "FormattingExamples": {
@@ -4745,7 +4745,7 @@
     }
   },
   {
-    "Code": "mt-MT",
+    "Id": "mt-MT",
     "DisplayName": "Maltese (Malta)",
     "KeyboardLayout": "043a:0000043a",
     "FormattingExamples": {
@@ -4758,7 +4758,7 @@
     }
   },
   {
-    "Code": "gv-IM",
+    "Id": "gv-IM",
     "DisplayName": "Manx (Isle of Man)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4771,7 +4771,7 @@
     }
   },
   {
-    "Code": "mi-NZ",
+    "Id": "mi-NZ",
     "DisplayName": "Maori (New Zealand)",
     "KeyboardLayout": "0481:00000481",
     "FormattingExamples": {
@@ -4784,7 +4784,7 @@
     }
   },
   {
-    "Code": "arn-CL",
+    "Id": "arn-CL",
     "DisplayName": "Mapuche (Chile)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4797,7 +4797,7 @@
     }
   },
   {
-    "Code": "mr-IN",
+    "Id": "mr-IN",
     "DisplayName": "Marathi (India)",
     "KeyboardLayout": "044e:0000044e",
     "FormattingExamples": {
@@ -4810,7 +4810,7 @@
     }
   },
   {
-    "Code": "mas-KE",
+    "Id": "mas-KE",
     "DisplayName": "Masai (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4823,7 +4823,7 @@
     }
   },
   {
-    "Code": "mas-TZ",
+    "Id": "mas-TZ",
     "DisplayName": "Masai (Tanzania)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4836,7 +4836,7 @@
     }
   },
   {
-    "Code": "mzn-IR",
+    "Id": "mzn-IR",
     "DisplayName": "Mazanderani (Iran)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4849,7 +4849,7 @@
     }
   },
   {
-    "Code": "mer-KE",
+    "Id": "mer-KE",
     "DisplayName": "Meru (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4862,7 +4862,7 @@
     }
   },
   {
-    "Code": "mgo-CM",
+    "Id": "mgo-CM",
     "DisplayName": "Metaʼ (Cameroon)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4875,7 +4875,7 @@
     }
   },
   {
-    "Code": "moh-CA",
+    "Id": "moh-CA",
     "DisplayName": "Mohawk (Canada)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4888,7 +4888,7 @@
     }
   },
   {
-    "Code": "mn-MN",
+    "Id": "mn-MN",
     "DisplayName": "Mongolian (Mongolia)",
     "KeyboardLayout": "0450:00000450",
     "FormattingExamples": {
@@ -4901,7 +4901,7 @@
     }
   },
   {
-    "Code": "mn-Mong-CN",
+    "Id": "mn-Mong-CN",
     "DisplayName": "Mongolian (Mongolian, China)",
     "KeyboardLayout": "0850:00000850",
     "FormattingExamples": {
@@ -4914,7 +4914,7 @@
     }
   },
   {
-    "Code": "mn-Mong-MN",
+    "Id": "mn-Mong-MN",
     "DisplayName": "Mongolian (Mongolian, Mongolia)",
     "KeyboardLayout": "0850:00000850",
     "FormattingExamples": {
@@ -4927,7 +4927,7 @@
     }
   },
   {
-    "Code": "mfe-MU",
+    "Id": "mfe-MU",
     "DisplayName": "Morisyen (Mauritius)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4940,7 +4940,7 @@
     }
   },
   {
-    "Code": "mua-CM",
+    "Id": "mua-CM",
     "DisplayName": "Mundang (Cameroon)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4953,7 +4953,7 @@
     }
   },
   {
-    "Code": "nqo-GN",
+    "Id": "nqo-GN",
     "DisplayName": "N’Ko (Guinea)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4966,7 +4966,7 @@
     }
   },
   {
-    "Code": "naq-NA",
+    "Id": "naq-NA",
     "DisplayName": "Nama (Namibia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -4979,7 +4979,7 @@
     }
   },
   {
-    "Code": "ne-IN",
+    "Id": "ne-IN",
     "DisplayName": "Nepali (India)",
     "KeyboardLayout": "0461:00000461",
     "FormattingExamples": {
@@ -4992,7 +4992,7 @@
     }
   },
   {
-    "Code": "ne-NP",
+    "Id": "ne-NP",
     "DisplayName": "Nepali (Nepal)",
     "KeyboardLayout": "0461:00000461",
     "FormattingExamples": {
@@ -5005,7 +5005,7 @@
     }
   },
   {
-    "Code": "nnh-CM",
+    "Id": "nnh-CM",
     "DisplayName": "Ngiemboon (Cameroon)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5018,7 +5018,7 @@
     }
   },
   {
-    "Code": "jgo-CM",
+    "Id": "jgo-CM",
     "DisplayName": "Ngomba (Cameroon)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5031,7 +5031,7 @@
     }
   },
   {
-    "Code": "nd-ZW",
+    "Id": "nd-ZW",
     "DisplayName": "North Ndebele (Zimbabwe)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5044,7 +5044,7 @@
     }
   },
   {
-    "Code": "lrc-IR",
+    "Id": "lrc-IR",
     "DisplayName": "Northern Luri (Iran)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5057,7 +5057,7 @@
     }
   },
   {
-    "Code": "lrc-IQ",
+    "Id": "lrc-IQ",
     "DisplayName": "Northern Luri (Iraq)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5070,7 +5070,7 @@
     }
   },
   {
-    "Code": "se-FI",
+    "Id": "se-FI",
     "DisplayName": "Northern Sami (Finland)",
     "KeyboardLayout": "043b:0000043b",
     "FormattingExamples": {
@@ -5083,7 +5083,7 @@
     }
   },
   {
-    "Code": "se-NO",
+    "Id": "se-NO",
     "DisplayName": "Northern Sami (Norway)",
     "KeyboardLayout": "043b:0000043b",
     "FormattingExamples": {
@@ -5096,7 +5096,7 @@
     }
   },
   {
-    "Code": "se-SE",
+    "Id": "se-SE",
     "DisplayName": "Northern Sami (Sweden)",
     "KeyboardLayout": "083b:0000083b",
     "FormattingExamples": {
@@ -5109,7 +5109,7 @@
     }
   },
   {
-    "Code": "nb-NO",
+    "Id": "nb-NO",
     "DisplayName": "Norwegian Bokmål (Norway)",
     "KeyboardLayout": "0414:00000414",
     "FormattingExamples": {
@@ -5122,7 +5122,7 @@
     }
   },
   {
-    "Code": "nb-SJ",
+    "Id": "nb-SJ",
     "DisplayName": "Norwegian Bokmål (Svalbard & Jan Mayen)",
     "KeyboardLayout": "0414:00000414",
     "FormattingExamples": {
@@ -5135,7 +5135,7 @@
     }
   },
   {
-    "Code": "nn-NO",
+    "Id": "nn-NO",
     "DisplayName": "Norwegian Nynorsk (Norway)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5148,7 +5148,7 @@
     }
   },
   {
-    "Code": "nus-SS",
+    "Id": "nus-SS",
     "DisplayName": "Nuer (South Sudan)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5161,7 +5161,7 @@
     }
   },
   {
-    "Code": "nyn-UG",
+    "Id": "nyn-UG",
     "DisplayName": "Nyankole (Uganda)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5174,7 +5174,7 @@
     }
   },
   {
-    "Code": "oc-FR",
+    "Id": "oc-FR",
     "DisplayName": "Occitan (France)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5187,7 +5187,7 @@
     }
   },
   {
-    "Code": "or-IN",
+    "Id": "or-IN",
     "DisplayName": "Odia (India)",
     "KeyboardLayout": "0448:00000448",
     "FormattingExamples": {
@@ -5200,7 +5200,7 @@
     }
   },
   {
-    "Code": "om-ET",
+    "Id": "om-ET",
     "DisplayName": "Oromo (Ethiopia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5213,7 +5213,7 @@
     }
   },
   {
-    "Code": "om-KE",
+    "Id": "om-KE",
     "DisplayName": "Oromo (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5226,7 +5226,7 @@
     }
   },
   {
-    "Code": "os-GE",
+    "Id": "os-GE",
     "DisplayName": "Ossetic (Georgia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5239,7 +5239,7 @@
     }
   },
   {
-    "Code": "os-RU",
+    "Id": "os-RU",
     "DisplayName": "Ossetic (Russia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5252,7 +5252,7 @@
     }
   },
   {
-    "Code": "ps-AF",
+    "Id": "ps-AF",
     "DisplayName": "Pashto (Afghanistan)",
     "KeyboardLayout": "0463:00000463",
     "FormattingExamples": {
@@ -5265,7 +5265,7 @@
     }
   },
   {
-    "Code": "ps-PK",
+    "Id": "ps-PK",
     "DisplayName": "Pashto (Pakistan)",
     "KeyboardLayout": "0463:00000463",
     "FormattingExamples": {
@@ -5278,7 +5278,7 @@
     }
   },
   {
-    "Code": "fa-IR",
+    "Id": "fa-IR",
     "DisplayName": "Persian (Iran)",
     "KeyboardLayout": "0429:00000429",
     "FormattingExamples": {
@@ -5291,7 +5291,7 @@
     }
   },
   {
-    "Code": "pl-PL",
+    "Id": "pl-PL",
     "DisplayName": "Polish (Poland)",
     "KeyboardLayout": "0415:00000415",
     "FormattingExamples": {
@@ -5304,7 +5304,7 @@
     }
   },
   {
-    "Code": "pt-AO",
+    "Id": "pt-AO",
     "DisplayName": "Portuguese (Angola)",
     "KeyboardLayout": "0416:00000416",
     "FormattingExamples": {
@@ -5317,7 +5317,7 @@
     }
   },
   {
-    "Code": "pt-BR",
+    "Id": "pt-BR",
     "DisplayName": "Portuguese (Brazil)",
     "KeyboardLayout": "0416:00000416",
     "FormattingExamples": {
@@ -5330,7 +5330,7 @@
     }
   },
   {
-    "Code": "pt-CV",
+    "Id": "pt-CV",
     "DisplayName": "Portuguese (Cabo Verde)",
     "KeyboardLayout": "0416:00000416",
     "FormattingExamples": {
@@ -5343,7 +5343,7 @@
     }
   },
   {
-    "Code": "pt-GQ",
+    "Id": "pt-GQ",
     "DisplayName": "Portuguese (Equatorial Guinea)",
     "KeyboardLayout": "0416:00000416",
     "FormattingExamples": {
@@ -5356,7 +5356,7 @@
     }
   },
   {
-    "Code": "pt-GW",
+    "Id": "pt-GW",
     "DisplayName": "Portuguese (Guinea-Bissau)",
     "KeyboardLayout": "0416:00000416",
     "FormattingExamples": {
@@ -5369,7 +5369,7 @@
     }
   },
   {
-    "Code": "pt-LU",
+    "Id": "pt-LU",
     "DisplayName": "Portuguese (Luxembourg)",
     "KeyboardLayout": "0416:00000416",
     "FormattingExamples": {
@@ -5382,7 +5382,7 @@
     }
   },
   {
-    "Code": "pt-MO",
+    "Id": "pt-MO",
     "DisplayName": "Portuguese (Macao SAR)",
     "KeyboardLayout": "0416:00000416",
     "FormattingExamples": {
@@ -5395,7 +5395,7 @@
     }
   },
   {
-    "Code": "pt-MZ",
+    "Id": "pt-MZ",
     "DisplayName": "Portuguese (Mozambique)",
     "KeyboardLayout": "0416:00000416",
     "FormattingExamples": {
@@ -5408,7 +5408,7 @@
     }
   },
   {
-    "Code": "pt-PT",
+    "Id": "pt-PT",
     "DisplayName": "Portuguese (Portugal)",
     "KeyboardLayout": "0816:00000816",
     "FormattingExamples": {
@@ -5421,7 +5421,7 @@
     }
   },
   {
-    "Code": "pt-ST",
+    "Id": "pt-ST",
     "DisplayName": "Portuguese (São Tomé & Príncipe)",
     "KeyboardLayout": "0416:00000416",
     "FormattingExamples": {
@@ -5434,7 +5434,7 @@
     }
   },
   {
-    "Code": "pt-CH",
+    "Id": "pt-CH",
     "DisplayName": "Portuguese (Switzerland)",
     "KeyboardLayout": "0416:00000416",
     "FormattingExamples": {
@@ -5447,7 +5447,7 @@
     }
   },
   {
-    "Code": "pt-TL",
+    "Id": "pt-TL",
     "DisplayName": "Portuguese (Timor-Leste)",
     "KeyboardLayout": "0416:00000416",
     "FormattingExamples": {
@@ -5460,7 +5460,7 @@
     }
   },
   {
-    "Code": "prs-AF",
+    "Id": "prs-AF",
     "DisplayName": "prs (Afghanistan)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5473,7 +5473,7 @@
     }
   },
   {
-    "Code": "prg-001",
+    "Id": "prg-001",
     "DisplayName": "Prussian (World)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5486,7 +5486,7 @@
     }
   },
   {
-    "Code": "pa-Arab-PK",
+    "Id": "pa-Arab-PK",
     "DisplayName": "Punjabi (Arabic, Pakistan)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5499,7 +5499,7 @@
     }
   },
   {
-    "Code": "pa-IN",
+    "Id": "pa-IN",
     "DisplayName": "Punjabi (India)",
     "KeyboardLayout": "0446:00000446",
     "FormattingExamples": {
@@ -5512,7 +5512,7 @@
     }
   },
   {
-    "Code": "quz-BO",
+    "Id": "quz-BO",
     "DisplayName": "Quechua (Bolivia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5525,7 +5525,7 @@
     }
   },
   {
-    "Code": "quz-EC",
+    "Id": "quz-EC",
     "DisplayName": "Quechua (Ecuador)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5538,7 +5538,7 @@
     }
   },
   {
-    "Code": "quz-PE",
+    "Id": "quz-PE",
     "DisplayName": "Quechua (Peru)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5551,7 +5551,7 @@
     }
   },
   {
-    "Code": "ro-MD",
+    "Id": "ro-MD",
     "DisplayName": "Romanian (Moldova)",
     "KeyboardLayout": "0418:00000418",
     "FormattingExamples": {
@@ -5564,7 +5564,7 @@
     }
   },
   {
-    "Code": "ro-RO",
+    "Id": "ro-RO",
     "DisplayName": "Romanian (Romania)",
     "KeyboardLayout": "0418:00000418",
     "FormattingExamples": {
@@ -5577,7 +5577,7 @@
     }
   },
   {
-    "Code": "rm-CH",
+    "Id": "rm-CH",
     "DisplayName": "Romansh (Switzerland)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5590,7 +5590,7 @@
     }
   },
   {
-    "Code": "rof-TZ",
+    "Id": "rof-TZ",
     "DisplayName": "Rombo (Tanzania)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5603,7 +5603,7 @@
     }
   },
   {
-    "Code": "rn-BI",
+    "Id": "rn-BI",
     "DisplayName": "Rundi (Burundi)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5616,7 +5616,7 @@
     }
   },
   {
-    "Code": "ru-BY",
+    "Id": "ru-BY",
     "DisplayName": "Russian (Belarus)",
     "KeyboardLayout": "0419:00000419",
     "FormattingExamples": {
@@ -5629,7 +5629,7 @@
     }
   },
   {
-    "Code": "ru-KZ",
+    "Id": "ru-KZ",
     "DisplayName": "Russian (Kazakhstan)",
     "KeyboardLayout": "0419:00000419",
     "FormattingExamples": {
@@ -5642,7 +5642,7 @@
     }
   },
   {
-    "Code": "ru-KG",
+    "Id": "ru-KG",
     "DisplayName": "Russian (Kyrgyzstan)",
     "KeyboardLayout": "0419:00000419",
     "FormattingExamples": {
@@ -5655,7 +5655,7 @@
     }
   },
   {
-    "Code": "ru-MD",
+    "Id": "ru-MD",
     "DisplayName": "Russian (Moldova)",
     "KeyboardLayout": "0419:00000419",
     "FormattingExamples": {
@@ -5668,7 +5668,7 @@
     }
   },
   {
-    "Code": "ru-RU",
+    "Id": "ru-RU",
     "DisplayName": "Russian (Russia)",
     "KeyboardLayout": "0419:00000419",
     "FormattingExamples": {
@@ -5681,7 +5681,7 @@
     }
   },
   {
-    "Code": "ru-UA",
+    "Id": "ru-UA",
     "DisplayName": "Russian (Ukraine)",
     "KeyboardLayout": "0419:00000419",
     "FormattingExamples": {
@@ -5694,7 +5694,7 @@
     }
   },
   {
-    "Code": "rwk-TZ",
+    "Id": "rwk-TZ",
     "DisplayName": "Rwa (Tanzania)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5707,7 +5707,7 @@
     }
   },
   {
-    "Code": "ssy-ER",
+    "Id": "ssy-ER",
     "DisplayName": "Saho (Eritrea)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5720,7 +5720,7 @@
     }
   },
   {
-    "Code": "sah-RU",
+    "Id": "sah-RU",
     "DisplayName": "Sakha (Russia)",
     "KeyboardLayout": "0485:00000485",
     "FormattingExamples": {
@@ -5733,7 +5733,7 @@
     }
   },
   {
-    "Code": "saq-KE",
+    "Id": "saq-KE",
     "DisplayName": "Samburu (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5746,7 +5746,7 @@
     }
   },
   {
-    "Code": "sg-CF",
+    "Id": "sg-CF",
     "DisplayName": "Sango (Central African Republic)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5759,7 +5759,7 @@
     }
   },
   {
-    "Code": "sbp-TZ",
+    "Id": "sbp-TZ",
     "DisplayName": "Sangu (Tanzania)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5772,7 +5772,7 @@
     }
   },
   {
-    "Code": "sa-IN",
+    "Id": "sa-IN",
     "DisplayName": "Sanskrit (India)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5785,7 +5785,7 @@
     }
   },
   {
-    "Code": "gd-GB",
+    "Id": "gd-GB",
     "DisplayName": "Scottish Gaelic (United Kingdom)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5798,7 +5798,7 @@
     }
   },
   {
-    "Code": "seh-MZ",
+    "Id": "seh-MZ",
     "DisplayName": "Sena (Mozambique)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5811,7 +5811,7 @@
     }
   },
   {
-    "Code": "sr-Cyrl-BA",
+    "Id": "sr-Cyrl-BA",
     "DisplayName": "Serbian (Cyrillic, Bosnia & Herzegovina)",
     "KeyboardLayout": "281a:00000c1a",
     "FormattingExamples": {
@@ -5824,7 +5824,7 @@
     }
   },
   {
-    "Code": "sr-Cyrl-XK",
+    "Id": "sr-Cyrl-XK",
     "DisplayName": "Serbian (Cyrillic, Kosovo)",
     "KeyboardLayout": "281a:00000c1a",
     "FormattingExamples": {
@@ -5837,7 +5837,7 @@
     }
   },
   {
-    "Code": "sr-Cyrl-ME",
+    "Id": "sr-Cyrl-ME",
     "DisplayName": "Serbian (Cyrillic, Montenegro)",
     "KeyboardLayout": "281a:00000c1a",
     "FormattingExamples": {
@@ -5850,7 +5850,7 @@
     }
   },
   {
-    "Code": "sr-Cyrl-RS",
+    "Id": "sr-Cyrl-RS",
     "DisplayName": "Serbian (Cyrillic, Serbia)",
     "KeyboardLayout": "281a:00000c1a",
     "FormattingExamples": {
@@ -5863,7 +5863,7 @@
     }
   },
   {
-    "Code": "sr-Latn-BA",
+    "Id": "sr-Latn-BA",
     "DisplayName": "Serbian (Latin, Bosnia & Herzegovina)",
     "KeyboardLayout": "241a:0000081a",
     "FormattingExamples": {
@@ -5876,7 +5876,7 @@
     }
   },
   {
-    "Code": "sr-Latn-XK",
+    "Id": "sr-Latn-XK",
     "DisplayName": "Serbian (Latin, Kosovo)",
     "KeyboardLayout": "241a:0000081a",
     "FormattingExamples": {
@@ -5889,7 +5889,7 @@
     }
   },
   {
-    "Code": "sr-Latn-ME",
+    "Id": "sr-Latn-ME",
     "DisplayName": "Serbian (Latin, Montenegro)",
     "KeyboardLayout": "241a:0000081a",
     "FormattingExamples": {
@@ -5902,7 +5902,7 @@
     }
   },
   {
-    "Code": "sr-Latn-RS",
+    "Id": "sr-Latn-RS",
     "DisplayName": "Serbian (Latin, Serbia)",
     "KeyboardLayout": "241a:0000081a",
     "FormattingExamples": {
@@ -5915,7 +5915,7 @@
     }
   },
   {
-    "Code": "st-LS",
+    "Id": "st-LS",
     "DisplayName": "Sesotho (Lesotho)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5928,7 +5928,7 @@
     }
   },
   {
-    "Code": "st-ZA",
+    "Id": "st-ZA",
     "DisplayName": "Sesotho (South Africa)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5941,7 +5941,7 @@
     }
   },
   {
-    "Code": "nso-ZA",
+    "Id": "nso-ZA",
     "DisplayName": "Sesotho sa Leboa (South Africa)",
     "KeyboardLayout": "046c:0000046c",
     "FormattingExamples": {
@@ -5954,7 +5954,7 @@
     }
   },
   {
-    "Code": "tn-BW",
+    "Id": "tn-BW",
     "DisplayName": "Setswana (Botswana)",
     "KeyboardLayout": "0432:00000432",
     "FormattingExamples": {
@@ -5967,7 +5967,7 @@
     }
   },
   {
-    "Code": "tn-ZA",
+    "Id": "tn-ZA",
     "DisplayName": "Setswana (South Africa)",
     "KeyboardLayout": "0432:00000432",
     "FormattingExamples": {
@@ -5980,7 +5980,7 @@
     }
   },
   {
-    "Code": "ksb-TZ",
+    "Id": "ksb-TZ",
     "DisplayName": "Shambala (Tanzania)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -5993,7 +5993,7 @@
     }
   },
   {
-    "Code": "sn-Latn-ZW",
+    "Id": "sn-Latn-ZW",
     "DisplayName": "Shona (Latin, Zimbabwe)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6006,7 +6006,7 @@
     }
   },
   {
-    "Code": "sd-Arab-PK",
+    "Id": "sd-Arab-PK",
     "DisplayName": "Sindhi (Arabic, Pakistan)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6019,7 +6019,7 @@
     }
   },
   {
-    "Code": "si-LK",
+    "Id": "si-LK",
     "DisplayName": "Sinhala (Sri Lanka)",
     "KeyboardLayout": "045b:0000045b",
     "FormattingExamples": {
@@ -6032,7 +6032,7 @@
     }
   },
   {
-    "Code": "ss-SZ",
+    "Id": "ss-SZ",
     "DisplayName": "siSwati (Eswatini)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6045,7 +6045,7 @@
     }
   },
   {
-    "Code": "ss-ZA",
+    "Id": "ss-ZA",
     "DisplayName": "siSwati (South Africa)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6058,7 +6058,7 @@
     }
   },
   {
-    "Code": "sms-FI",
+    "Id": "sms-FI",
     "DisplayName": "Skolt Sami (Finland)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6071,7 +6071,7 @@
     }
   },
   {
-    "Code": "sk-SK",
+    "Id": "sk-SK",
     "DisplayName": "Slovak (Slovakia)",
     "KeyboardLayout": "041b:0000041b",
     "FormattingExamples": {
@@ -6084,7 +6084,7 @@
     }
   },
   {
-    "Code": "sl-SI",
+    "Id": "sl-SI",
     "DisplayName": "Slovenian (Slovenia)",
     "KeyboardLayout": "0424:00000424",
     "FormattingExamples": {
@@ -6097,7 +6097,7 @@
     }
   },
   {
-    "Code": "xog-UG",
+    "Id": "xog-UG",
     "DisplayName": "Soga (Uganda)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6110,7 +6110,7 @@
     }
   },
   {
-    "Code": "so-DJ",
+    "Id": "so-DJ",
     "DisplayName": "Somali (Djibouti)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6123,7 +6123,7 @@
     }
   },
   {
-    "Code": "so-ET",
+    "Id": "so-ET",
     "DisplayName": "Somali (Ethiopia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6136,7 +6136,7 @@
     }
   },
   {
-    "Code": "so-KE",
+    "Id": "so-KE",
     "DisplayName": "Somali (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6149,7 +6149,7 @@
     }
   },
   {
-    "Code": "so-SO",
+    "Id": "so-SO",
     "DisplayName": "Somali (Somalia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6162,7 +6162,7 @@
     }
   },
   {
-    "Code": "nr-ZA",
+    "Id": "nr-ZA",
     "DisplayName": "South Ndebele (South Africa)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6175,7 +6175,7 @@
     }
   },
   {
-    "Code": "sma-NO",
+    "Id": "sma-NO",
     "DisplayName": "Southern Sami (Norway)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6188,7 +6188,7 @@
     }
   },
   {
-    "Code": "sma-SE",
+    "Id": "sma-SE",
     "DisplayName": "Southern Sami (Sweden)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6201,7 +6201,7 @@
     }
   },
   {
-    "Code": "es-AR",
+    "Id": "es-AR",
     "DisplayName": "Spanish (Argentina)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6214,7 +6214,7 @@
     }
   },
   {
-    "Code": "es-BZ",
+    "Id": "es-BZ",
     "DisplayName": "Spanish (Belize)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6227,7 +6227,7 @@
     }
   },
   {
-    "Code": "es-BO",
+    "Id": "es-BO",
     "DisplayName": "Spanish (Bolivia)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6240,7 +6240,7 @@
     }
   },
   {
-    "Code": "es-BR",
+    "Id": "es-BR",
     "DisplayName": "Spanish (Brazil)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6253,7 +6253,7 @@
     }
   },
   {
-    "Code": "es-CL",
+    "Id": "es-CL",
     "DisplayName": "Spanish (Chile)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6266,7 +6266,7 @@
     }
   },
   {
-    "Code": "es-CO",
+    "Id": "es-CO",
     "DisplayName": "Spanish (Colombia)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6279,7 +6279,7 @@
     }
   },
   {
-    "Code": "es-CR",
+    "Id": "es-CR",
     "DisplayName": "Spanish (Costa Rica)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6292,7 +6292,7 @@
     }
   },
   {
-    "Code": "es-CU",
+    "Id": "es-CU",
     "DisplayName": "Spanish (Cuba)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6305,7 +6305,7 @@
     }
   },
   {
-    "Code": "es-DO",
+    "Id": "es-DO",
     "DisplayName": "Spanish (Dominican Republic)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6318,7 +6318,7 @@
     }
   },
   {
-    "Code": "es-EC",
+    "Id": "es-EC",
     "DisplayName": "Spanish (Ecuador)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6331,7 +6331,7 @@
     }
   },
   {
-    "Code": "es-SV",
+    "Id": "es-SV",
     "DisplayName": "Spanish (El Salvador)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6344,7 +6344,7 @@
     }
   },
   {
-    "Code": "es-GQ",
+    "Id": "es-GQ",
     "DisplayName": "Spanish (Equatorial Guinea)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6357,7 +6357,7 @@
     }
   },
   {
-    "Code": "es-GT",
+    "Id": "es-GT",
     "DisplayName": "Spanish (Guatemala)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6370,7 +6370,7 @@
     }
   },
   {
-    "Code": "es-HN",
+    "Id": "es-HN",
     "DisplayName": "Spanish (Honduras)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6383,7 +6383,7 @@
     }
   },
   {
-    "Code": "es-419",
+    "Id": "es-419",
     "DisplayName": "Spanish (Latin America)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6396,7 +6396,7 @@
     }
   },
   {
-    "Code": "es-MX",
+    "Id": "es-MX",
     "DisplayName": "Spanish (Mexico)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6409,7 +6409,7 @@
     }
   },
   {
-    "Code": "es-NI",
+    "Id": "es-NI",
     "DisplayName": "Spanish (Nicaragua)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6422,7 +6422,7 @@
     }
   },
   {
-    "Code": "es-PA",
+    "Id": "es-PA",
     "DisplayName": "Spanish (Panama)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6435,7 +6435,7 @@
     }
   },
   {
-    "Code": "es-PY",
+    "Id": "es-PY",
     "DisplayName": "Spanish (Paraguay)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6448,7 +6448,7 @@
     }
   },
   {
-    "Code": "es-PE",
+    "Id": "es-PE",
     "DisplayName": "Spanish (Peru)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6461,7 +6461,7 @@
     }
   },
   {
-    "Code": "es-PH",
+    "Id": "es-PH",
     "DisplayName": "Spanish (Philippines)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6474,7 +6474,7 @@
     }
   },
   {
-    "Code": "es-PR",
+    "Id": "es-PR",
     "DisplayName": "Spanish (Puerto Rico)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6487,7 +6487,7 @@
     }
   },
   {
-    "Code": "es-ES",
+    "Id": "es-ES",
     "DisplayName": "Spanish (Spain)",
     "KeyboardLayout": "0c0a:0000040a",
     "FormattingExamples": {
@@ -6500,7 +6500,7 @@
     }
   },
   {
-    "Code": "es-US",
+    "Id": "es-US",
     "DisplayName": "Spanish (United States)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6513,7 +6513,7 @@
     }
   },
   {
-    "Code": "es-UY",
+    "Id": "es-UY",
     "DisplayName": "Spanish (Uruguay)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6526,7 +6526,7 @@
     }
   },
   {
-    "Code": "es-VE",
+    "Id": "es-VE",
     "DisplayName": "Spanish (Venezuela)",
     "KeyboardLayout": "080a:0000080a",
     "FormattingExamples": {
@@ -6539,7 +6539,7 @@
     }
   },
   {
-    "Code": "zgh-Tfng-MA",
+    "Id": "zgh-Tfng-MA",
     "DisplayName": "Standard Moroccan Tamazight (Tifinagh, Morocco)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6552,7 +6552,7 @@
     }
   },
   {
-    "Code": "sv-AX",
+    "Id": "sv-AX",
     "DisplayName": "Swedish (Åland Islands)",
     "KeyboardLayout": "041d:0000041d",
     "FormattingExamples": {
@@ -6565,7 +6565,7 @@
     }
   },
   {
-    "Code": "sv-FI",
+    "Id": "sv-FI",
     "DisplayName": "Swedish (Finland)",
     "KeyboardLayout": "041d:0000041d",
     "FormattingExamples": {
@@ -6578,7 +6578,7 @@
     }
   },
   {
-    "Code": "sv-SE",
+    "Id": "sv-SE",
     "DisplayName": "Swedish (Sweden)",
     "KeyboardLayout": "041d:0000041d",
     "FormattingExamples": {
@@ -6591,7 +6591,7 @@
     }
   },
   {
-    "Code": "gsw-FR",
+    "Id": "gsw-FR",
     "DisplayName": "Swiss German (France)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6604,7 +6604,7 @@
     }
   },
   {
-    "Code": "gsw-LI",
+    "Id": "gsw-LI",
     "DisplayName": "Swiss German (Liechtenstein)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6617,7 +6617,7 @@
     }
   },
   {
-    "Code": "gsw-CH",
+    "Id": "gsw-CH",
     "DisplayName": "Swiss German (Switzerland)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6630,7 +6630,7 @@
     }
   },
   {
-    "Code": "syr-SY",
+    "Id": "syr-SY",
     "DisplayName": "Syriac (Syria)",
     "KeyboardLayout": "045a:0000045a",
     "FormattingExamples": {
@@ -6643,7 +6643,7 @@
     }
   },
   {
-    "Code": "shi-Latn-MA",
+    "Id": "shi-Latn-MA",
     "DisplayName": "Tachelhit (Latin, Morocco)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6656,7 +6656,7 @@
     }
   },
   {
-    "Code": "shi-Tfng-MA",
+    "Id": "shi-Tfng-MA",
     "DisplayName": "Tachelhit (Tifinagh, Morocco)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6669,7 +6669,7 @@
     }
   },
   {
-    "Code": "dav-KE",
+    "Id": "dav-KE",
     "DisplayName": "Taita (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6682,7 +6682,7 @@
     }
   },
   {
-    "Code": "tg-Cyrl-TJ",
+    "Id": "tg-Cyrl-TJ",
     "DisplayName": "Tajik (Cyrillic, Tajikistan)",
     "KeyboardLayout": "0428:00000428",
     "FormattingExamples": {
@@ -6695,7 +6695,7 @@
     }
   },
   {
-    "Code": "ta-IN",
+    "Id": "ta-IN",
     "DisplayName": "Tamil (India)",
     "KeyboardLayout": "0449:00000449",
     "FormattingExamples": {
@@ -6708,7 +6708,7 @@
     }
   },
   {
-    "Code": "ta-MY",
+    "Id": "ta-MY",
     "DisplayName": "Tamil (Malaysia)",
     "KeyboardLayout": "0449:00000449",
     "FormattingExamples": {
@@ -6721,7 +6721,7 @@
     }
   },
   {
-    "Code": "ta-SG",
+    "Id": "ta-SG",
     "DisplayName": "Tamil (Singapore)",
     "KeyboardLayout": "0449:00000449",
     "FormattingExamples": {
@@ -6734,7 +6734,7 @@
     }
   },
   {
-    "Code": "ta-LK",
+    "Id": "ta-LK",
     "DisplayName": "Tamil (Sri Lanka)",
     "KeyboardLayout": "0449:00000449",
     "FormattingExamples": {
@@ -6747,7 +6747,7 @@
     }
   },
   {
-    "Code": "twq-NE",
+    "Id": "twq-NE",
     "DisplayName": "Tasawaq (Niger)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6760,7 +6760,7 @@
     }
   },
   {
-    "Code": "tt-RU",
+    "Id": "tt-RU",
     "DisplayName": "Tatar (Russia)",
     "KeyboardLayout": "0444:00000444",
     "FormattingExamples": {
@@ -6773,7 +6773,7 @@
     }
   },
   {
-    "Code": "te-IN",
+    "Id": "te-IN",
     "DisplayName": "Telugu (India)",
     "KeyboardLayout": "044a:0000044a",
     "FormattingExamples": {
@@ -6786,7 +6786,7 @@
     }
   },
   {
-    "Code": "teo-KE",
+    "Id": "teo-KE",
     "DisplayName": "Teso (Kenya)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6799,7 +6799,7 @@
     }
   },
   {
-    "Code": "teo-UG",
+    "Id": "teo-UG",
     "DisplayName": "Teso (Uganda)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6812,7 +6812,7 @@
     }
   },
   {
-    "Code": "th-TH",
+    "Id": "th-TH",
     "DisplayName": "Thai (Thailand)",
     "KeyboardLayout": "041e:0000041e",
     "FormattingExamples": {
@@ -6825,7 +6825,7 @@
     }
   },
   {
-    "Code": "bo-CN",
+    "Id": "bo-CN",
     "DisplayName": "Tibetan (China)",
     "KeyboardLayout": "0451:00000451",
     "FormattingExamples": {
@@ -6838,7 +6838,7 @@
     }
   },
   {
-    "Code": "bo-IN",
+    "Id": "bo-IN",
     "DisplayName": "Tibetan (India)",
     "KeyboardLayout": "0451:00000451",
     "FormattingExamples": {
@@ -6851,7 +6851,7 @@
     }
   },
   {
-    "Code": "tig-ER",
+    "Id": "tig-ER",
     "DisplayName": "Tigre (Eritrea)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6864,7 +6864,7 @@
     }
   },
   {
-    "Code": "ti-ER",
+    "Id": "ti-ER",
     "DisplayName": "Tigrinya (Eritrea)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6877,7 +6877,7 @@
     }
   },
   {
-    "Code": "ti-ET",
+    "Id": "ti-ET",
     "DisplayName": "Tigrinya (Ethiopia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6890,7 +6890,7 @@
     }
   },
   {
-    "Code": "to-TO",
+    "Id": "to-TO",
     "DisplayName": "Tongan (Tonga)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -6903,7 +6903,7 @@
     }
   },
   {
-    "Code": "tr-CY",
+    "Id": "tr-CY",
     "DisplayName": "Turkish (Cyprus)",
     "KeyboardLayout": "041f:0000041f",
     "FormattingExamples": {
@@ -6916,7 +6916,7 @@
     }
   },
   {
-    "Code": "tr-TR",
+    "Id": "tr-TR",
     "DisplayName": "Turkish (Turkey)",
     "KeyboardLayout": "041f:0000041f",
     "FormattingExamples": {
@@ -6929,7 +6929,7 @@
     }
   },
   {
-    "Code": "tk-TM",
+    "Id": "tk-TM",
     "DisplayName": "Turkmen (Turkmenistan)",
     "KeyboardLayout": "0442:00000442",
     "FormattingExamples": {
@@ -6942,7 +6942,7 @@
     }
   },
   {
-    "Code": "uk-UA",
+    "Id": "uk-UA",
     "DisplayName": "Ukrainian (Ukraine)",
     "KeyboardLayout": "0422:00000422",
     "FormattingExamples": {
@@ -6955,7 +6955,7 @@
     }
   },
   {
-    "Code": "hsb-DE",
+    "Id": "hsb-DE",
     "DisplayName": "Upper Sorbian (Germany)",
     "KeyboardLayout": "042e:0000042e",
     "FormattingExamples": {
@@ -6968,7 +6968,7 @@
     }
   },
   {
-    "Code": "ur-IN",
+    "Id": "ur-IN",
     "DisplayName": "Urdu (India)",
     "KeyboardLayout": "0420:00000420",
     "FormattingExamples": {
@@ -6981,7 +6981,7 @@
     }
   },
   {
-    "Code": "ur-PK",
+    "Id": "ur-PK",
     "DisplayName": "Urdu (Pakistan)",
     "KeyboardLayout": "0420:00000420",
     "FormattingExamples": {
@@ -6994,7 +6994,7 @@
     }
   },
   {
-    "Code": "ug-CN",
+    "Id": "ug-CN",
     "DisplayName": "Uyghur (China)",
     "KeyboardLayout": "0480:00000480",
     "FormattingExamples": {
@@ -7007,7 +7007,7 @@
     }
   },
   {
-    "Code": "uz-Arab-AF",
+    "Id": "uz-Arab-AF",
     "DisplayName": "Uzbek (Arabic, Afghanistan)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -7020,7 +7020,7 @@
     }
   },
   {
-    "Code": "uz-Cyrl-UZ",
+    "Id": "uz-Cyrl-UZ",
     "DisplayName": "Uzbek (Cyrillic, Uzbekistan)",
     "KeyboardLayout": "0843:00000843",
     "FormattingExamples": {
@@ -7033,7 +7033,7 @@
     }
   },
   {
-    "Code": "uz-Latn-UZ",
+    "Id": "uz-Latn-UZ",
     "DisplayName": "Uzbek (Latin, Uzbekistan)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -7046,7 +7046,7 @@
     }
   },
   {
-    "Code": "vai-Latn-LR",
+    "Id": "vai-Latn-LR",
     "DisplayName": "Vai (Latin, Liberia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -7059,7 +7059,7 @@
     }
   },
   {
-    "Code": "vai-Vaii-LR",
+    "Id": "vai-Vaii-LR",
     "DisplayName": "Vai (Vai, Liberia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -7072,7 +7072,7 @@
     }
   },
   {
-    "Code": "ve-ZA",
+    "Id": "ve-ZA",
     "DisplayName": "Venda (South Africa)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -7085,7 +7085,7 @@
     }
   },
   {
-    "Code": "vi-VN",
+    "Id": "vi-VN",
     "DisplayName": "Vietnamese (Vietnam)",
     "KeyboardLayout": "042a:0000042a",
     "FormattingExamples": {
@@ -7098,7 +7098,7 @@
     }
   },
   {
-    "Code": "vo-001",
+    "Id": "vo-001",
     "DisplayName": "Volapük (World)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -7111,7 +7111,7 @@
     }
   },
   {
-    "Code": "vun-TZ",
+    "Id": "vun-TZ",
     "DisplayName": "Vunjo (Tanzania)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -7124,7 +7124,7 @@
     }
   },
   {
-    "Code": "wae-CH",
+    "Id": "wae-CH",
     "DisplayName": "Walser (Switzerland)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -7137,7 +7137,7 @@
     }
   },
   {
-    "Code": "cy-GB",
+    "Id": "cy-GB",
     "DisplayName": "Welsh (United Kingdom)",
     "KeyboardLayout": "0452:00000452",
     "FormattingExamples": {
@@ -7150,7 +7150,7 @@
     }
   },
   {
-    "Code": "fy-NL",
+    "Id": "fy-NL",
     "DisplayName": "Western Frisian (Netherlands)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -7163,7 +7163,7 @@
     }
   },
   {
-    "Code": "wal-ET",
+    "Id": "wal-ET",
     "DisplayName": "Wolaytta (Ethiopia)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -7176,7 +7176,7 @@
     }
   },
   {
-    "Code": "wo-SN",
+    "Id": "wo-SN",
     "DisplayName": "Wolof (Senegal)",
     "KeyboardLayout": "0488:00000488",
     "FormattingExamples": {
@@ -7189,7 +7189,7 @@
     }
   },
   {
-    "Code": "ts-ZA",
+    "Id": "ts-ZA",
     "DisplayName": "Xitsonga (South Africa)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -7202,7 +7202,7 @@
     }
   },
   {
-    "Code": "yav-CM",
+    "Id": "yav-CM",
     "DisplayName": "Yangben (Cameroon)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -7215,7 +7215,7 @@
     }
   },
   {
-    "Code": "ii-CN",
+    "Id": "ii-CN",
     "DisplayName": "Yi (China)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -7228,7 +7228,7 @@
     }
   },
   {
-    "Code": "yi-001",
+    "Id": "yi-001",
     "DisplayName": "Yiddish (World)",
     "KeyboardLayout": null,
     "FormattingExamples": {
@@ -7241,7 +7241,7 @@
     }
   },
   {
-    "Code": "yo-BJ",
+    "Id": "yo-BJ",
     "DisplayName": "Yoruba (Benin)",
     "KeyboardLayout": "046a:0000046a",
     "FormattingExamples": {
@@ -7254,7 +7254,7 @@
     }
   },
   {
-    "Code": "yo-NG",
+    "Id": "yo-NG",
     "DisplayName": "Yoruba (Nigeria)",
     "KeyboardLayout": "046a:0000046a",
     "FormattingExamples": {
@@ -7267,7 +7267,7 @@
     }
   },
   {
-    "Code": "dje-NE",
+    "Id": "dje-NE",
     "DisplayName": "Zarma (Niger)",
     "KeyboardLayout": null,
     "FormattingExamples": {

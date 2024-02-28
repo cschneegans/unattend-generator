@@ -33,13 +33,13 @@ class LocalesModifier(ModifierContext context) : Modifier(context)
       foreach (var element in elements)
       {
         XmlNode node = element.Node;
-        node.SelectSingleNodeOrThrow("u:InputLocale", NamespaceManager).InnerText = settings.InputLocale.Code;
-        node.SelectSingleNodeOrThrow("u:SystemLocale", NamespaceManager).InnerText = settings.UserLocale.Code;
-        node.SelectSingleNodeOrThrow("u:UserLocale", NamespaceManager).InnerText = settings.UserLocale.Code;
-        node.SelectSingleNodeOrThrow("u:UILanguage", NamespaceManager).InnerText = settings.ImageLanguage.Tag;
+        node.SelectSingleNodeOrThrow("u:InputLocale", NamespaceManager).InnerText = settings.InputLocale.Id;
+        node.SelectSingleNodeOrThrow("u:SystemLocale", NamespaceManager).InnerText = settings.UserLocale.Id;
+        node.SelectSingleNodeOrThrow("u:UserLocale", NamespaceManager).InnerText = settings.UserLocale.Id;
+        node.SelectSingleNodeOrThrow("u:UILanguage", NamespaceManager).InnerText = settings.ImageLanguage.Id;
         if (element.Setup)
         {
-          node.SelectSingleNodeOrThrow("u:SetupUILanguage/u:UILanguage", NamespaceManager).InnerText = settings.ImageLanguage.Tag;
+          node.SelectSingleNodeOrThrow("u:SetupUILanguage/u:UILanguage", NamespaceManager).InnerText = settings.ImageLanguage.Id;
         }
       }
     }

@@ -1,154 +1,154 @@
 [
   {
-    "Tag": "ar-SA",
+    "Id": "ar-SA",
     "DisplayName": "Arabic"
   },
   {
-    "Tag": "pt-BR",
+    "Id": "pt-BR",
     "DisplayName": "Brazilian Portuguese"
   },
   {
-    "Tag": "bg-BG",
+    "Id": "bg-BG",
     "DisplayName": "Bulgarian"
   },
   {
-    "Tag": "zh-Hans-CN",
+    "Id": "zh-Hans-CN",
     "DisplayName": "Chinese Simplified"
   },
   {
-    "Tag": "zh-Hant-CN",
+    "Id": "zh-Hant-CN",
     "DisplayName": "Chinese Traditional"
   },
   {
-    "Tag": "hr-HR",
+    "Id": "hr-HR",
     "DisplayName": "Croatian"
   },
   {
-    "Tag": "cs-CZ",
+    "Id": "cs-CZ",
     "DisplayName": "Czech"
   },
   {
-    "Tag": "da-DK",
+    "Id": "da-DK",
     "DisplayName": "Danish"
   },
   {
-    "Tag": "nl-NL",
+    "Id": "nl-NL",
     "DisplayName": "Dutch"
   },
   {
-    "Tag": "en-US",
+    "Id": "en-US",
     "DisplayName": "English"
   },
   {
-    "Tag": "en-GB",
+    "Id": "en-GB",
     "DisplayName": "English International"
   },
   {
-    "Tag": "et-EE",
+    "Id": "et-EE",
     "DisplayName": "Estonian"
   },
   {
-    "Tag": "fi-FI",
+    "Id": "fi-FI",
     "DisplayName": "Finnish"
   },
   {
-    "Tag": "fr-FR",
+    "Id": "fr-FR",
     "DisplayName": "French"
   },
   {
-    "Tag": "fr-CA",
+    "Id": "fr-CA",
     "DisplayName": "French Canadian"
   },
   {
-    "Tag": "de-DE",
+    "Id": "de-DE",
     "DisplayName": "German"
   },
   {
-    "Tag": "el-GR",
+    "Id": "el-GR",
     "DisplayName": "Greek"
   },
   {
-    "Tag": "he-IL",
+    "Id": "he-IL",
     "DisplayName": "Hebrew"
   },
   {
-    "Tag": "hu-HU",
+    "Id": "hu-HU",
     "DisplayName": "Hungarian"
   },
   {
-    "Tag": "it-IT",
+    "Id": "it-IT",
     "DisplayName": "Italian"
   },
   {
-    "Tag": "ja-JP",
+    "Id": "ja-JP",
     "DisplayName": "Japanese"
   },
   {
-    "Tag": "ko-KR",
+    "Id": "ko-KR",
     "DisplayName": "Korean"
   },
   {
-    "Tag": "lv-LV",
+    "Id": "lv-LV",
     "DisplayName": "Latvian"
   },
   {
-    "Tag": "lt-LT",
+    "Id": "lt-LT",
     "DisplayName": "Lithuanian"
   },
   {
-    "Tag": "nb-NO",
+    "Id": "nb-NO",
     "DisplayName": "Norwegian"
   },
   {
-    "Tag": "pl-PL",
+    "Id": "pl-PL",
     "DisplayName": "Polish"
   },
   {
-    "Tag": "pt-PT",
+    "Id": "pt-PT",
     "DisplayName": "Portuguese"
   },
   {
-    "Tag": "ro-RO",
+    "Id": "ro-RO",
     "DisplayName": "Romanian"
   },
   {
-    "Tag": "ru-RU",
+    "Id": "ru-RU",
     "DisplayName": "Russian"
   },
   {
-    "Tag": "sr-Latn-RS",
+    "Id": "sr-Latn-RS",
     "DisplayName": "Serbian Latin"
   },
   {
-    "Tag": "sk-SK",
+    "Id": "sk-SK",
     "DisplayName": "Slovak"
   },
   {
-    "Tag": "sl-SI",
+    "Id": "sl-SI",
     "DisplayName": "Slovenian"
   },
   {
-    "Tag": "es-ES",
+    "Id": "es-ES",
     "DisplayName": "Spanish"
   },
   {
-    "Tag": "es-MX",
+    "Id": "es-MX",
     "DisplayName": "Spanish (Mexico)"
   },
   {
-    "Tag": "sv-SE",
+    "Id": "sv-SE",
     "DisplayName": "Swedish"
   },
   {
-    "Tag": "th-TH",
+    "Id": "th-TH",
     "DisplayName": "Thai"
   },
   {
-    "Tag": "tr-TR",
+    "Id": "tr-TR",
     "DisplayName": "Turkish"
   },
   {
-    "Tag": "uk-UA",
+    "Id": "uk-UA",
     "DisplayName": "Ukrainian"
   }
 ]

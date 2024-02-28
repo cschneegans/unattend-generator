@@ -1,43 +1,43 @@
 [
   {
-    "Name": "Microsoft-Windows-Audio-AudioCore",
+    "Id": "Microsoft-Windows-Audio-AudioCore",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-Audio-VolumeControl",
+    "Id": "Microsoft-Windows-Audio-VolumeControl",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-Authentication-AuthUI",
+    "Id": "Microsoft-Windows-Authentication-AuthUI",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-BLB-WSB-Online-Main",
+    "Id": "Microsoft-Windows-BLB-WSB-Online-Main",
     "Passes": [
       "specialize",
       "oobeSystem"
     ]
   },
   {
-    "Name": "Microsoft-Windows-BrowserService",
+    "Id": "Microsoft-Windows-BrowserService",
     "Passes": [
       "generalize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-CodeIntegrity",
+    "Id": "Microsoft-Windows-CodeIntegrity",
     "Passes": [
       "offlineServicing"
     ]
   },
   {
-    "Name": "Microsoft-Windows-CoreMmRes",
+    "Id": "Microsoft-Windows-CoreMmRes",
     "Passes": [
       "generalize",
       "specialize",
@@ -47,7 +47,7 @@
     ]
   },
   {
-    "Name": "Microsoft-Windows-Deployment",
+    "Id": "Microsoft-Windows-Deployment",
     "Passes": [
       "generalize",
       "specialize",
@@ -57,19 +57,19 @@
     ]
   },
   {
-    "Name": "Microsoft-Windows-DeviceAccess",
+    "Id": "Microsoft-Windows-DeviceAccess",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-DeviceGuard-Unattend",
+    "Id": "Microsoft-Windows-DeviceGuard-Unattend",
     "Passes": [
       "offlineServicing"
     ]
   },
   {
-    "Name": "Microsoft-Windows-DiagCpl",
+    "Id": "Microsoft-Windows-DiagCpl",
     "Passes": [
       "offlineServicing",
       "generalize",
@@ -77,7 +77,7 @@
     ]
   },
   {
-    "Name": "Microsoft-Windows-Disk-Failure-Diagnostic-Module",
+    "Id": "Microsoft-Windows-Disk-Failure-Diagnostic-Module",
     "Passes": [
       "offlineServicing",
       "generalize",
@@ -85,215 +85,215 @@
     ]
   },
   {
-    "Name": "Microsoft-Windows-DNS-Client",
+    "Id": "Microsoft-Windows-DNS-Client",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-Embedded-BootExp",
+    "Id": "Microsoft-Windows-Embedded-BootExp",
     "Passes": [
       "specialize",
       "oobeSystem"
     ]
   },
   {
-    "Name": "Microsoft-Windows-Embedded-EmbeddedLogon",
+    "Id": "Microsoft-Windows-Embedded-EmbeddedLogon",
     "Passes": [
       "offlineServicing",
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-Embedded-KeyboardFilterService",
+    "Id": "Microsoft-Windows-Embedded-KeyboardFilterService",
     "Passes": [
       "offlineServicing"
     ]
   },
   {
-    "Name": "Microsoft-Windows-Embedded-ShellLauncher",
+    "Id": "Microsoft-Windows-Embedded-ShellLauncher",
     "Passes": [
       "oobeSystem"
     ]
   },
   {
-    "Name": "Microsoft-Windows-Embedded-UnifiedWriteFilter",
+    "Id": "Microsoft-Windows-Embedded-UnifiedWriteFilter",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-EnhancedStorage-Adm",
+    "Id": "Microsoft-Windows-EnhancedStorage-Adm",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-ErrorReportingCore",
+    "Id": "Microsoft-Windows-ErrorReportingCore",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-Fax-Service",
+    "Id": "Microsoft-Windows-Fax-Service",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-GPIOButtons",
+    "Id": "Microsoft-Windows-GPIOButtons",
     "Passes": [
       "offlineServicing",
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-HelpAndSupport",
+    "Id": "Microsoft-Windows-HelpAndSupport",
     "Passes": [
       "specialize",
       "oobeSystem"
     ]
   },
   {
-    "Name": "Microsoft-Windows-IE-ClientNetworkProtocolImplementation",
+    "Id": "Microsoft-Windows-IE-ClientNetworkProtocolImplementation",
     "Passes": [
       "oobeSystem"
     ]
   },
   {
-    "Name": "Microsoft-Windows-IE-ESC",
+    "Id": "Microsoft-Windows-IE-ESC",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-IE-InternetExplorer",
+    "Id": "Microsoft-Windows-IE-InternetExplorer",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-International-Core",
+    "Id": "Microsoft-Windows-International-Core",
     "Passes": [
       "specialize",
       "oobeSystem"
     ]
   },
   {
-    "Name": "Microsoft-Windows-International-Core-WinPE",
+    "Id": "Microsoft-Windows-International-Core-WinPE",
     "Passes": [
       "windowsPE"
     ]
   },
   {
-    "Name": "Microsoft-Windows-LUA-Settings",
+    "Id": "Microsoft-Windows-LUA-Settings",
     "Passes": [
       "offlineServicing"
     ]
   },
   {
-    "Name": "Microsoft-Windows-MapControl-Desktop",
+    "Id": "Microsoft-Windows-MapControl-Desktop",
     "Passes": [
       "specialize",
       "oobeSystem"
     ]
   },
   {
-    "Name": "Microsoft-Windows-MediaPlayer-Core",
+    "Id": "Microsoft-Windows-MediaPlayer-Core",
     "Passes": [
       "offlineServicing"
     ]
   },
   {
-    "Name": "Microsoft-Windows-MicrosoftEdgeBrowser",
+    "Id": "Microsoft-Windows-MicrosoftEdgeBrowser",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-MobilePC-Sensors-API",
+    "Id": "Microsoft-Windows-MobilePC-Sensors-API",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-NetBT",
+    "Id": "Microsoft-Windows-NetBT",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-NetworkBridge",
+    "Id": "Microsoft-Windows-NetworkBridge",
     "Passes": [
       "generalize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-NetworkLoadBalancing-Core",
+    "Id": "Microsoft-Windows-NetworkLoadBalancing-Core",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-OutOfBoxExperience",
+    "Id": "Microsoft-Windows-OutOfBoxExperience",
     "Passes": [
       "generalize",
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-PartitionManager",
+    "Id": "Microsoft-Windows-PartitionManager",
     "Passes": [
       "offlineServicing"
     ]
   },
   {
-    "Name": "Microsoft-Windows-PnpCustomizationsNonWinPE",
+    "Id": "Microsoft-Windows-PnpCustomizationsNonWinPE",
     "Passes": [
       "offlineServicing",
       "auditSystem"
     ]
   },
   {
-    "Name": "Microsoft-Windows-PnpCustomizationsWinPE",
+    "Id": "Microsoft-Windows-PnpCustomizationsWinPE",
     "Passes": [
       "windowsPE"
     ]
   },
   {
-    "Name": "Microsoft-Windows-PnpSysprep",
+    "Id": "Microsoft-Windows-PnpSysprep",
     "Passes": [
       "generalize",
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-PowerCPL",
+    "Id": "Microsoft-Windows-PowerCPL",
     "Passes": [
       "generalize",
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-Printing-Spooler-Core",
+    "Id": "Microsoft-Windows-Printing-Spooler-Core",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-RasServer",
+    "Id": "Microsoft-Windows-RasServer",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-RemoteAssistance-Exe",
+    "Id": "Microsoft-Windows-RemoteAssistance-Exe",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-SecureStartup-FilterDriver",
+    "Id": "Microsoft-Windows-SecureStartup-FilterDriver",
     "Passes": [
       "offlineServicing",
       "specialize",
@@ -302,38 +302,38 @@
     ]
   },
   {
-    "Name": "Microsoft-Windows-Security-SPP",
+    "Id": "Microsoft-Windows-Security-SPP",
     "Passes": [
       "generalize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-Security-SPP-UX",
+    "Id": "Microsoft-Windows-Security-SPP-UX",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-ServerManager-SvrMgrNc",
+    "Id": "Microsoft-Windows-ServerManager-SvrMgrNc",
     "Passes": [
       "generalize",
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-Setup",
+    "Id": "Microsoft-Windows-Setup",
     "Passes": [
       "windowsPE"
     ]
   },
   {
-    "Name": "Microsoft-Windows-SharedAccess",
+    "Id": "Microsoft-Windows-SharedAccess",
     "Passes": [
       "generalize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-Shell-Setup",
+    "Id": "Microsoft-Windows-Shell-Setup",
     "Passes": [
       "offlineServicing",
       "windowsPE",
@@ -345,39 +345,39 @@
     ]
   },
   {
-    "Name": "Microsoft-Windows-SHWebSVC",
+    "Id": "Microsoft-Windows-SHWebSVC",
     "Passes": [
       "oobeSystem"
     ]
   },
   {
-    "Name": "Microsoft-Windows-SMBServer",
+    "Id": "Microsoft-Windows-SMBServer",
     "Passes": [
       "generalize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-SNMP-Agent-Service",
+    "Id": "Microsoft-Windows-SNMP-Agent-Service",
     "Passes": [
       "generalize",
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-SQMAPI",
+    "Id": "Microsoft-Windows-SQMAPI",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-STObject",
+    "Id": "Microsoft-Windows-STObject",
     "Passes": [
       "generalize",
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-StorPort-RegistrySettings",
+    "Id": "Microsoft-Windows-StorPort-RegistrySettings",
     "Passes": [
       "specialize",
       "auditSystem",
@@ -386,26 +386,26 @@
     ]
   },
   {
-    "Name": "Microsoft-Windows-SystemMaintenanceService",
+    "Id": "Microsoft-Windows-SystemMaintenanceService",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-SystemRestore-Main",
+    "Id": "Microsoft-Windows-SystemRestore-Main",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-SystemSettingsThreshold",
+    "Id": "Microsoft-Windows-SystemSettingsThreshold",
     "Passes": [
       "generalize",
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-TabletPC-Platform-Input-Core",
+    "Id": "Microsoft-Windows-TabletPC-Platform-Input-Core",
     "Passes": [
       "offlineServicing",
       "specialize",
@@ -413,32 +413,32 @@
     ]
   },
   {
-    "Name": "Microsoft-Windows-TapiSetup",
+    "Id": "Microsoft-Windows-TapiSetup",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-TCPIP",
+    "Id": "Microsoft-Windows-TCPIP",
     "Passes": [
       "windowsPE",
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-TerminalServices-CentralPublishing",
+    "Id": "Microsoft-Windows-TerminalServices-CentralPublishing",
     "Passes": [
       "oobeSystem"
     ]
   },
   {
-    "Name": "Microsoft-Windows-TerminalServices-LicenseServer",
+    "Id": "Microsoft-Windows-TerminalServices-LicenseServer",
     "Passes": [
       "oobeSystem"
     ]
   },
   {
-    "Name": "Microsoft-Windows-TerminalServices-LocalSessionManager",
+    "Id": "Microsoft-Windows-TerminalServices-LocalSessionManager",
     "Passes": [
       "offlineServicing",
       "generalize",
@@ -446,7 +446,7 @@
     ]
   },
   {
-    "Name": "Microsoft-Windows-TerminalServices-Publishing-WMIProvider",
+    "Id": "Microsoft-Windows-TerminalServices-Publishing-WMIProvider",
     "Passes": [
       "offlineServicing",
       "generalize",
@@ -454,14 +454,14 @@
     ]
   },
   {
-    "Name": "Microsoft-Windows-TerminalServices-RDP-WinStationExtensions",
+    "Id": "Microsoft-Windows-TerminalServices-RDP-WinStationExtensions",
     "Passes": [
       "generalize",
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-TerminalServices-RemoteConnectionManager",
+    "Id": "Microsoft-Windows-TerminalServices-RemoteConnectionManager",
     "Passes": [
       "offlineServicing",
       "generalize",
@@ -469,13 +469,13 @@
     ]
   },
   {
-    "Name": "Microsoft-Windows-Tpm-Tasks",
+    "Id": "Microsoft-Windows-Tpm-Tasks",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-TwinUI",
+    "Id": "Microsoft-Windows-TwinUI",
     "Passes": [
       "offlineServicing",
       "specialize",
@@ -483,20 +483,20 @@
     ]
   },
   {
-    "Name": "Microsoft-Windows-UnattendedJoin",
+    "Id": "Microsoft-Windows-UnattendedJoin",
     "Passes": [
       "offlineServicing",
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-WDF-KernelLibrary",
+    "Id": "Microsoft-Windows-WDF-KernelLibrary",
     "Passes": [
       "offlineServicing"
     ]
   },
   {
-    "Name": "Microsoft-Windows-WiFiNetworkManager",
+    "Id": "Microsoft-Windows-WiFiNetworkManager",
     "Passes": [
       "offlineServicing",
       "specialize",
@@ -504,13 +504,13 @@
     ]
   },
   {
-    "Name": "Microsoft-Windows-WinRE-RecoveryAgent",
+    "Id": "Microsoft-Windows-WinRE-RecoveryAgent",
     "Passes": [
       "oobeSystem"
     ]
   },
   {
-    "Name": "Microsoft-Windows-WLANSVC",
+    "Id": "Microsoft-Windows-WLANSVC",
     "Passes": [
       "offlineServicing",
       "windowsPE",
@@ -519,33 +519,33 @@
     ]
   },
   {
-    "Name": "Microsoft-Windows-WorkstationService",
+    "Id": "Microsoft-Windows-WorkstationService",
     "Passes": [
       "generalize",
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-WPD-BusEnumService",
+    "Id": "Microsoft-Windows-WPD-BusEnumService",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Microsoft-Windows-WWANUI",
+    "Id": "Microsoft-Windows-WWANUI",
     "Passes": [
       "generalize",
       "specialize"
     ]
   },
   {
-    "Name": "Networking-MPSSVC-Svc",
+    "Id": "Networking-MPSSVC-Svc",
     "Passes": [
       "specialize"
     ]
   },
   {
-    "Name": "Security-Malware-Windows-Defender",
+    "Id": "Security-Malware-Windows-Defender",
     "Passes": [
       "offlineServicing",
       "specialize",

@@ -54,7 +54,7 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
               RemoveCapability(capability);
               break;
             }
-          case CustomBloatwareStep when bw.Key == "RemoveOneDrive":
+          case CustomBloatwareStep when bw.Id == "RemoveOneDrive":
             {
               appender.ShellCommand(@"del ""C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk""");
               appender.ShellCommand(@"del ""C:\Windows\System32\OneDriveSetup.exe""");
@@ -65,12 +65,12 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
               });
               break;
             }
-          case CustomBloatwareStep when bw.Key == "RemoveTeams":
+          case CustomBloatwareStep when bw.Id == "RemoveTeams":
             {
               appender.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications"" /v ConfigureChatAutoInstall /t REG_DWORD /d 0 /f");
               break;
             }
-          case CustomBloatwareStep when bw.Key == "RemoveNotepad":
+          case CustomBloatwareStep when bw.Id == "RemoveNotepad":
             {
               appender.RegistryDefaultUserCommand((rootKey, subKey) =>
               {
@@ -78,12 +78,12 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
               });
               break;
             }
-          case CustomBloatwareStep when bw.Key == "RemoveOutlook":
+          case CustomBloatwareStep when bw.Id == "RemoveOutlook":
             {
               appender.RegistryCommand(@"delete ""HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\OutlookUpdate"" /f");
               break;
             }
-          case CustomBloatwareStep when bw.Key == "RemoveDevHome":
+          case CustomBloatwareStep when bw.Id == "RemoveDevHome":
             {
               appender.RegistryCommand(@"delete ""HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\DevHomeUpdate"" /f");
               break;

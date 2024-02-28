@@ -287,7 +287,7 @@ public record class Configuration(
 
 public interface IKeyed
 {
-  string Key { get; }
+  string Id { get; }
 }
 
 public abstract class BloatwareStep(
@@ -328,7 +328,7 @@ public class Bloatware(
 {
   public string DisplayName { get; } = displayName;
 
-  public string Key { get; } = $"Remove{token ?? displayName.Replace(" ", "")}";
+  public string Id { get; } = $"Remove{token ?? displayName.Replace(" ", "")}";
 
   public string? Since { get; } = since;
 
@@ -352,36 +352,34 @@ public class Bloatware(
 }
 
 public class Component(
-  string name,
+  string id,
   ImmutableSortedSet<Pass> passes
 ) : IKeyed
 {
-  public string Name { get; } = ValidateName(name);
+  public string Id { get; } = Validate(id);
 
   private static readonly Regex Pattern = new("^[a-z-]+$", RegexOptions.IgnoreCase);
 
-  private static string ValidateName(string name)
+  private static string Validate(string id)
   {
-    if (!Pattern.IsMatch(name))
+    if (!Pattern.IsMatch(id))
     {
-      throw new ArgumentException($"Name '{name}' contains illegal characters.", nameof(name));
+      throw new ArgumentException($"ID '{id}' contains illegal characters.", nameof(id));
     }
-    return name;
+    return id;
   }
 
   public ImmutableSortedSet<Pass> Passes { get; } = passes;
-
-  public string Key => Name;
 
   public string Uri
   {
     get
     {
-      string name = Name switch
+      string name = Id switch
       {
         "Microsoft-Windows-WDF-KernelLibrary" => "microsoft-windows-wdf-kernel-library",
         "Microsoft-Windows-MapControl-Desktop" => "microsoft-windows-mapcontrol",
-        _ => Name.ToLowerInvariant(),
+        _ => Id.ToLowerInvariant(),
       };
       return $"https://learn.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/{name}";
     }
@@ -400,37 +398,28 @@ public class WindowsEdition(
   public string DisplayName { get; } = displayName;
 
   public string ProductKey { get; } = productKey;
-
-  [JsonIgnore]
-  public string Key => Id;
-
+    
   public bool Visible = visible;
 }
 
 public class ImageLanguage(
-  string tag,
+  string id,
   string displayName
 ) : IKeyed
 {
-  public string Tag { get; } = tag;
+  public string Id { get; } = id;
 
   public string DisplayName { get; } = displayName;
-
-  [JsonIgnore]
-  public string Key => Tag;
 }
 
 public class KeyboardIdentifier(
-  string code,
+  string id,
   string displayName
 ) : IKeyed
 {
-  public string Code { get; } = code;
+  public string Id { get; } = id;
 
   public string DisplayName { get; } = displayName;
-
-  [JsonIgnore]
-  public string Key => Code;
 }
 
 public class TimeOffset(
@@ -441,9 +430,6 @@ public class TimeOffset(
   public string Id { get; } = id;
 
   public string DisplayName { get; } = displayName;
-
-  [JsonIgnore]
-  public string Key => Id;
 }
 
 public record class FormattingExamples(
@@ -478,27 +464,24 @@ public class KeyboardConverter(
 }
 
 public class UserLocale(
-  string code,
+  string id,
   string displayName,
   KeyboardIdentifier? keyboardLayout,
   FormattingExamples formattingExamples
 ) : IKeyed
 {
-  public string Code { get; } = code;
+  public string Id { get; } = id;
 
   public string DisplayName { get; } = displayName;
 
   public KeyboardIdentifier? KeyboardLayout { get; } = keyboardLayout;
-
-  [JsonIgnore]
-  public string Key => Code;
 
   public FormattingExamples FormattingExamples { get; } = formattingExamples;
 }
 
 public static class Constants
 {
-  public static readonly string FirstLogonScript = @"C:\Windows\Setup\Scripts\UserFirstLogon.cmd";
+  public const string FirstLogonScript = @"C:\Windows\Setup\Scripts\UserFirstLogon.cmd";
 
   public const string UsersGroup = "Users";
 
@@ -552,7 +535,7 @@ public class UnattendGenerator
     }
 
     {
-      VerifyUniqueKeys(Components.Values, e => e.Name);
+      VerifyUniqueKeys(Components.Values, e => e.Id);
     }
     {
       VerifyUniqueKeys(WindowsEditions.Values, e => e.Id);
@@ -560,15 +543,15 @@ public class UnattendGenerator
       VerifyUniqueKeys(WindowsEditions.Values, e => e.ProductKey);
     }
     {
-      VerifyUniqueKeys(UserLocales.Values, e => e.Code);
+      VerifyUniqueKeys(UserLocales.Values, e => e.Id);
       VerifyUniqueKeys(UserLocales.Values, e => e.DisplayName);
     }
     {
-      VerifyUniqueKeys(KeyboardIdentifiers.Values, e => e.Code);
+      VerifyUniqueKeys(KeyboardIdentifiers.Values, e => e.Id);
       VerifyUniqueKeys(KeyboardIdentifiers.Values, e => e.DisplayName);
     }
     {
-      VerifyUniqueKeys(ImageLanguages.Values, e => e.Tag);
+      VerifyUniqueKeys(ImageLanguages.Values, e => e.Id);
       VerifyUniqueKeys(ImageLanguages.Values, e => e.DisplayName);
     }
     {
@@ -621,22 +604,22 @@ public class UnattendGenerator
     );
   }
 
-  public ImmutableDictionary<string, TimeOffset> TimeZones { get; }
+  public IImmutableDictionary<string, TimeOffset> TimeZones { get; }
 
-  public ImmutableDictionary<string, Component> Components { get; }
+  public IImmutableDictionary<string, Component> Components { get; }
 
-  public ImmutableDictionary<string, Bloatware> Bloatwares { get; }
+  public IImmutableDictionary<string, Bloatware> Bloatwares { get; }
 
-  public ImmutableDictionary<string, KeyboardIdentifier> KeyboardIdentifiers { get; }
+  public IImmutableDictionary<string, KeyboardIdentifier> KeyboardIdentifiers { get; }
 
-  public ImmutableDictionary<string, UserLocale> UserLocales { get; }
+  public IImmutableDictionary<string, UserLocale> UserLocales { get; }
 
-  public ImmutableDictionary<string, ImageLanguage> ImageLanguages { get; }
+  public IImmutableDictionary<string, ImageLanguage> ImageLanguages { get; }
 
-  public ImmutableDictionary<string, WindowsEdition> WindowsEditions { get; }
+  public IImmutableDictionary<string, WindowsEdition> WindowsEditions { get; }
 
   [return: NotNull]
-  private static T Lookup<T>(ImmutableDictionary<string, T> dic, string key) where T : IKeyed
+  private static T Lookup<T>(IImmutableDictionary<string, T> dic, string key) where T : IKeyed
   {
     if (dic.TryGetValue(key, out T? value))
     {

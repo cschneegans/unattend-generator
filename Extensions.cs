@@ -35,12 +35,15 @@ public static class Extensions
     node.ParentNode.RemoveChild(node);
   }
 
-  public static ImmutableDictionary<string, T> ToKeyedDictionary<T>(this IEnumerable<T>? enumerable) where T : IKeyed
+  public static IImmutableDictionary<string, T> ToKeyedDictionary<T>(this IEnumerable<T>? enumerable) where T : IKeyed
   {
     if (enumerable == null)
     {
       throw new NullReferenceException();
     }
-    return enumerable.ToImmutableDictionary(keySelector: value => value.Key, keyComparer: StringComparer.OrdinalIgnoreCase);
+    return enumerable.ToImmutableDictionary(
+      keySelector: value => value.Id,
+      keyComparer: StringComparer.OrdinalIgnoreCase
+    );
   }
 }
