@@ -22,8 +22,8 @@ public record class CustomPartitionSettings(
 ) : IPartitionSettings;
 
 public record class UnattendedPartitionSettings(
-  PartitionLayouts PartitionLayout,
-  RecoveryModes RecoveryMode,
+  PartitionLayout PartitionLayout,
+  RecoveryMode RecoveryMode,
   int EspSize = Constants.EspDefaultSize,
   int RecoverySize = Constants.RecoveryPartitionSize
 ) : IPartitionSettings;
@@ -45,14 +45,14 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           {
             int partition = settings.PartitionLayout switch
             {
-              PartitionLayouts.MBR => 2,
-              PartitionLayouts.GPT => 3,
+              PartitionLayout.MBR => 2,
+              PartitionLayout.GPT => 3,
               _ => throw new ArgumentException(nameof(settings.PartitionLayout)),
             };
             InstallTo(disk: 0, partition: partition);
           }
 
-          if (settings.RecoveryMode == RecoveryModes.None)
+          if (settings.RecoveryMode == RecoveryMode.None)
           {
             CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
             appender.Command(@"ReAgentc.exe /disable");
@@ -114,8 +114,8 @@ class DiskModifier(ModifierContext context) : Modifier(context)
   public static string GetCustomDiskpartScript()
   {
     UnattendedPartitionSettings settings = new(
-      PartitionLayout: PartitionLayouts.GPT,
-      RecoveryMode: RecoveryModes.Partition,
+      PartitionLayout: PartitionLayout.GPT,
+      RecoveryMode: RecoveryMode.Partition,
       EspSize: Constants.EspDefaultSize,
       RecoverySize: Constants.RecoveryPartitionSize
     );
@@ -134,11 +134,11 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       }
     }
 
-    bool recoveryPartition = settings.RecoveryMode == RecoveryModes.Partition;
+    bool recoveryPartition = settings.RecoveryMode == RecoveryMode.Partition;
 
     switch (settings.PartitionLayout)
     {
-      case PartitionLayouts.MBR:
+      case PartitionLayout.MBR:
         AddIf("SELECT DISK=0");
         AddIf("CLEAN");
         AddIf("CREATE PARTITION PRIMARY SIZE=100");
@@ -152,7 +152,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         AddIf("SET ID=27", recoveryPartition);
         break;
 
-      case PartitionLayouts.GPT:
+      case PartitionLayout.GPT:
         AddIf("SELECT DISK=0");
         AddIf("CLEAN");
         AddIf("CONVERT GPT");

@@ -22,17 +22,17 @@ public enum Pass
   oobeSystem
 }
 
-public enum RecoveryModes
+public enum RecoveryMode
 {
   None, Folder, Partition
 }
 
-public enum PartitionLayouts
+public enum PartitionLayout
 {
   MBR, GPT
 }
 
-public enum ProcessorArchitectures
+public enum ProcessorArchitecture
 {
   x86, amd64, arm64
 }
@@ -233,7 +233,7 @@ public record class Configuration(
   ITimeZoneSettings TimeZoneSettings,
   IWifiSettings WifiSettings,
   IWdacSettings WdacSettings,
-  ImmutableHashSet<ProcessorArchitectures> ProcessorArchitectures,
+  ImmutableHashSet<ProcessorArchitecture> ProcessorArchitectures,
   ImmutableDictionary<string, ImmutableSortedSet<Pass>> Components,
   ImmutableList<Bloatware> Bloatwares,
   ExpressSettingsMode ExpressSettings,
@@ -264,7 +264,7 @@ public record class Configuration(
     TimeZoneSettings: new ImplicitTimeZoneSettings(),
     WifiSettings: new InteractiveWifiSettings(),
     WdacSettings: new SkipWdacSettings(),
-    ProcessorArchitectures: [Unattend.ProcessorArchitectures.amd64],
+    ProcessorArchitectures: [Unattend.ProcessorArchitecture.amd64],
     Components: ImmutableDictionary.Create<string, ImmutableSortedSet<Pass>>(),
     Bloatwares: [],
     ExpressSettings: ExpressSettingsMode.DisableAll,
@@ -398,7 +398,7 @@ public class WindowsEdition(
   public string DisplayName { get; } = displayName;
 
   public string ProductKey { get; } = productKey;
-    
+
   public bool Visible = visible;
 }
 
@@ -587,7 +587,7 @@ public class UnattendGenerator
     );
   }
 
-  public UnattendedPartitionSettings CreateUnattendedPartitionSettings(PartitionLayouts layout, RecoveryModes recovery, int espSize = Constants.EspDefaultSize, int recoverySize = Constants.RecoveryPartitionSize)
+  public UnattendedPartitionSettings CreateUnattendedPartitionSettings(PartitionLayout layout, RecoveryMode recovery, int espSize = Constants.EspDefaultSize, int recoverySize = Constants.RecoveryPartitionSize)
   {
     return new UnattendedPartitionSettings(
       PartitionLayout: layout,
