@@ -34,16 +34,6 @@ public static class Validation
   {
     NotNull(property, field);
 
-    //if (property == null)
-    //{
-    //  throw new ConfigurationException($"Parameter '{field}' must be set.");
-    //}
-    //else
-    //{
-    //  return (T)property;
-    //}
-
-
     if (min.HasValue)
     {
       if (property < min)
