@@ -1,0 +1,42 @@
+﻿using System;
+
+namespace Schneegans.Unattend;
+
+public interface IPasswordExpirationSettings;
+
+public class DefaultPasswordExpirationSettings : IPasswordExpirationSettings
+{
+  public const int MaxAge = 42;
+}
+
+public class UnlimitedPasswordExpirationSettings : IPasswordExpirationSettings;
+
+public class CustomPasswordExpirationSettings(int? maxAge) : IPasswordExpirationSettings
+{
+  public int MaxAge { get; } = Validation.InRange(maxAge, min: 1, max: 999);
+}
+
+class PasswordExpirationModifier(ModifierContext context) : Modifier(context)
+{
+  public override void Process()
+  {
+    CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
+
+    switch (Configuration.PasswordExpirationSettings)
+    {
+      case DefaultPasswordExpirationSettings:
+        break;
+
+      case UnlimitedPasswordExpirationSettings:
+        appender.Command("net.exe accounts /maxpwage:UNLIMITED");
+        break;
+
+      case CustomPasswordExpirationSettings settings:
+        appender.Command($"net.exe accounts /maxpwage:{settings.MaxAge}");
+        break;
+
+      default:
+        throw new NotSupportedException();
+    }
+  }
+}
