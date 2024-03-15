@@ -172,6 +172,7 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
     }
     return @$"powershell.exe -NoProfile -Command ""{value}""";
   }
+
   public void InvokePowerShellScript(string file)
   {
     PowerShellCommand($"Get-Content -LiteralPath '{file}' -Raw | Invoke-Expression;");
@@ -208,7 +209,13 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
 
   public void WriteToFile(string path, string line)
   {
-    Command($@"cmd.exe /c "">>""{path}"" echo {EscapeShell(line)}""");
+    int chunkSize = 256 - 64 - path.Length;
+    var chunks = line.Chunk(chunkSize).Select(chars => new string(chars));
+    foreach (var chunk in chunks.SkipLast(1))
+    {
+      Command($@"cmd.exe /c "">>""{path}"" <nul set /p={EscapeShell(chunk)}""");
+    }
+    Command($@"cmd.exe /c "">>""{path}"" echo {EscapeShell(chunks.Last())}""");
   }
 
   public void WriteToFile(string path, IEnumerable<string> lines)
@@ -238,6 +245,7 @@ public record class Configuration(
   ImmutableDictionary<string, ImmutableSortedSet<Pass>> Components,
   ImmutableList<Bloatware> Bloatwares,
   ExpressSettingsMode ExpressSettings,
+  ScriptSettings ScriptSettings,
   bool BypassRequirementsCheck,
   bool BypassNetworkCheck,
   bool EnableLongPaths,
@@ -270,6 +278,7 @@ public record class Configuration(
     Components: ImmutableDictionary.Create<string, ImmutableSortedSet<Pass>>(),
     Bloatwares: [],
     ExpressSettings: ExpressSettingsMode.DisableAll,
+    ScriptSettings: new ScriptSettings([]),
     BypassRequirementsCheck: false,
     BypassNetworkCheck: false,
     EnableLongPaths: false,
@@ -694,6 +703,7 @@ public class UnattendGenerator
       new ComputerNameModifier(context),
       new TimeZoneModifier(context),
       new WdacModifier(context),
+      new ScriptModifier(context),
       new OrderModifier(context),
       new ProcessorArchitectureModifier(context),
       new PrettyModifier(context),
