@@ -209,13 +209,20 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
 
   public void WriteToFile(string path, string line)
   {
-    int chunkSize = 256 - 64 - path.Length;
-    var chunks = line.Chunk(chunkSize).Select(chars => new string(chars));
-    foreach (var chunk in chunks.SkipLast(1))
+    if (string.IsNullOrEmpty(line))
     {
-      Command($@"cmd.exe /c "">>""{path}"" <nul set /p={EscapeShell(chunk)}""");
+      Command($@"cmd.exe /c "">>""{path}"" echo(""");
     }
-    Command($@"cmd.exe /c "">>""{path}"" echo {EscapeShell(chunks.Last())}""");
+    else
+    {
+      int chunkSize = 256 - 64 - path.Length;
+      var chunks = line.Chunk(chunkSize).Select(chars => new string(chars));
+      foreach (var chunk in chunks.SkipLast(1))
+      {
+        Command($@"cmd.exe /c "">>""{path}"" <nul set /p={EscapeShell(chunk)}""");
+      }
+      Command($@"cmd.exe /c "">>""{path}"" echo {EscapeShell(chunks.Last())}""");
+    }
   }
 
   public void WriteToFile(string path, IEnumerable<string> lines)
