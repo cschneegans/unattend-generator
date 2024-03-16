@@ -209,9 +209,9 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
 
   public void WriteToFile(string path, string line)
   {
-    if (string.IsNullOrEmpty(line))
+    if (string.IsNullOrWhiteSpace(line))
     {
-      Command($@"cmd.exe /c "">>""{path}"" echo(""");
+      Command($@"cmd.exe /c "">>""{path}"" echo({line}""");
     }
     else
     {
