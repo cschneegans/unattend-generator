@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace Schneegans.Unattend;
 
@@ -33,28 +32,30 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
     {
       if (!string.IsNullOrWhiteSpace(script.Content))
       {
-        string filepath = GetScriptPath(script);
-        WriteScriptContent(script, filepath);
-        CallScript(script, filepath);
+        ScriptId scriptId = NewScriptId(script);
+        WriteScriptContent(script, scriptId);
+        CallScript(script, scriptId);
       }
     }
   }
 
-  private string GetScriptPath(Script script)
+  record class ScriptId(string FullName, string Key);
+
+  private ScriptId NewScriptId(Script script)
   {
-    string filename = $"unattend-{++count:X2}";
+    string name = $"unattend-{++count:X2}";
     string extension = script.Type.ToString().ToLowerInvariant();
-    return @$"C:\Windows\Setup\Scripts\{filename}.{extension}";
+    return new ScriptId(@$"C:\Windows\Setup\Scripts\{name}.{extension}", name);
   }
 
-  private void WriteScriptContent(Script script, string filepath)
+  private void WriteScriptContent(Script script, ScriptId scriptId)
   {
     var appender = new CommandAppender(Document, NamespaceManager, CommandConfig.Specialize);
     var lines = Util.SplitLines(script.Content);
-    appender.WriteToFile(filepath, lines);
+    appender.WriteToFile(scriptId.FullName, lines);
   }
 
-  private void CallScript(Script script, string filepath)
+  private void CallScript(Script script, ScriptId scriptId)
   {
     var appender = new CommandAppender(Document, NamespaceManager, script.Phase switch
     {
@@ -69,10 +70,10 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
         switch (script.Type)
         {
           case ScriptType.Cmd:
-            appender.Command(filepath);
+            appender.Command(scriptId.FullName);
             break;
           case ScriptType.Ps1:
-            appender.InvokePowerShellScript(filepath);
+            appender.InvokePowerShellScript(scriptId.FullName);
             break;
           default:
             throw new NotSupportedException();
@@ -83,11 +84,11 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
         {
           string command = script.Type switch
           {
-            ScriptType.Cmd => filepath,
-            ScriptType.Ps1 => appender.GetPowerShellCommand($"Get-Content -LiteralPath '{filepath}' -Raw | Invoke-Expression;"),
+            ScriptType.Cmd => scriptId.FullName,
+            ScriptType.Ps1 => appender.GetPowerShellCommand($"Get-Content -LiteralPath '{scriptId.FullName}' -Raw | Invoke-Expression;"),
             _ => throw new NotSupportedException(),
           };
-          appender.UserRunOnceCommand(Path.GetFileNameWithoutExtension(filepath), command, rootKey, subKey);
+          appender.UserRunOnceCommand(scriptId.Key, command, rootKey, subKey);
         });
         break;
       default:
