@@ -254,7 +254,9 @@ class CommandBuilder
   public static IEnumerable<string> SafeWriteToFile(string path, string content)
   {
     byte[] bytes = Encoding.UTF8.GetBytes(content);
-    foreach (string base64 in Util.SplitLines(Convert.ToBase64String(bytes, Base64FormattingOptions.InsertLineBreaks)))
+
+    int chunkSize = 256 - 70;
+    foreach (string base64 in Convert.ToBase64String(bytes).Chunk(chunkSize).Select(chars => new string(chars)))
     {
       yield return $@"cmd.exe /c "">>""{path}"" echo {base64}""";
     }
