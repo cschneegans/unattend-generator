@@ -27,13 +27,17 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
 
     void RemovePackage(PackageBloatwareStep step)
     {
-      appender.WriteToFile(packages.CmdPath, step.Selector);
+      appender.Append(
+        CommandBuilder.WriteToFile(packages.CmdPath, step.Selector)
+      );
       packages.HasContent = true;
     }
 
     void RemoveCapability(CapabilityBloatwareStep step)
     {
-      appender.WriteToFile(caps.CmdPath, step.Selector);
+      appender.Append(
+        CommandBuilder.WriteToFile(caps.CmdPath, step.Selector)
+      );
       caps.HasContent = true;
     }
 
@@ -56,36 +60,45 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
             }
           case CustomBloatwareStep when bw.Id == "RemoveOneDrive":
             {
-              appender.ShellCommand(@"del ""C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk""");
-              appender.ShellCommand(@"del ""C:\Windows\System32\OneDriveSetup.exe""");
-              appender.ShellCommand(@"del ""C:\Windows\SysWOW64\OneDriveSetup.exe""");
-              appender.RegistryDefaultUserCommand((rootKey, subKey) =>
-              {
-                appender.RegistryCommand(@$"delete ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\Run"" /v OneDriveSetup /f");
-              });
+              appender.Append([
+                CommandBuilder.ShellCommand(@"del ""C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk"""),
+                CommandBuilder.ShellCommand(@"del ""C:\Windows\System32\OneDriveSetup.exe"""),
+                CommandBuilder.ShellCommand(@"del ""C:\Windows\SysWOW64\OneDriveSetup.exe"""),
+                .. CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) => {
+                  return [CommandBuilder.RegistryCommand(@$"delete ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\Run"" /v OneDriveSetup /f")];
+                }),
+              ]);
               break;
             }
           case CustomBloatwareStep when bw.Id == "RemoveTeams":
             {
-              appender.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications"" /v ConfigureChatAutoInstall /t REG_DWORD /d 0 /f");
+              appender.Append(
+                CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications"" /v ConfigureChatAutoInstall /t REG_DWORD /d 0 /f")
+              );
               break;
             }
           case CustomBloatwareStep when bw.Id == "RemoveNotepad":
             {
-              appender.RegistryDefaultUserCommand((rootKey, subKey) =>
-              {
-                appender.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Notepad"" /v ShowStoreBanner /t REG_DWORD /d 0 /f");
-              });
+              appender.Append(
+                CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
+                {
+                  return [CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Notepad"" /v ShowStoreBanner /t REG_DWORD /d 0 /f")];
+                })
+              );
               break;
             }
           case CustomBloatwareStep when bw.Id == "RemoveOutlook":
             {
-              appender.RegistryCommand(@"delete ""HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\OutlookUpdate"" /f");
+              appender.Append(
+                CommandBuilder.RegistryCommand(@"delete ""HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\OutlookUpdate"" /f")
+              );
               break;
             }
           case CustomBloatwareStep when bw.Id == "RemoveDevHome":
             {
-              appender.RegistryCommand(@"delete ""HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\DevHomeUpdate"" /f");
+              appender.Append(
+                CommandBuilder.RegistryCommand(@"delete ""HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\DevHomeUpdate"" /f")
+              );
               break;
             }
           default:
@@ -96,12 +109,16 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
 
     if (packages.HasContent)
     {
-      appender.PowerShellCommand(@$"Get-AppxProvisionedPackage -Online | where DisplayName -In (Get-Content {packages.PsPath} ) | Remove-AppxProvisionedPackage -AllUsers -Online *>&1 >> {packages.PsLogPath};");
+      appender.Append(
+        CommandBuilder.PowerShellCommand(@$"Get-AppxProvisionedPackage -Online | where DisplayName -In (Get-Content {packages.PsPath} ) | Remove-AppxProvisionedPackage -AllUsers -Online *>&1 >> {packages.PsLogPath};")
+      );
     }
 
     if (caps.HasContent)
     {
-      appender.PowerShellCommand(@$"Get-WindowsCapability -Online | where {{($_.Name -split '~')[0] -in (Get-Content {caps.PsPath} ) }} | Remove-WindowsCapability -Online *>&1 >> {caps.PsLogPath};");
+      appender.Append(
+        CommandBuilder.PowerShellCommand(@$"Get-WindowsCapability -Online | where {{($_.Name -split '~')[0] -in (Get-Content {caps.PsPath} ) }} | Remove-WindowsCapability -Online *>&1 >> {caps.PsLogPath};")
+      );
     }
 
     if (!Configuration.Bloatwares.IsEmpty)
@@ -118,7 +135,9 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
           "</LayoutModificationTemplate>";
         var doc = new XmlDocument();
         doc.LoadXml(xml);
-        appender.WriteToFile(@"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml", doc);
+        appender.Append(
+          CommandBuilder.WriteToFile(@"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml", doc)
+        );
       }
       {
         // Windows 11
@@ -126,14 +145,18 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
         string guid = "B5292708-1619-419B-9923-E5D9F3925E71";
         {
           string key = @"HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start";
-          appender.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins /t REG_SZ /d {json} /f");
-          appender.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_ProviderSet /t REG_DWORD /d 1 /f");
-          appender.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_WinningProvider /t REG_SZ /d {guid} /f");
+          appender.Append([
+            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins /t REG_SZ /d {json} /f"),
+            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_ProviderSet /t REG_DWORD /d 1 /f"),
+            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_WinningProvider /t REG_SZ /d {guid} /f"),
+          ]);
         }
         {
           string key = $@"HKLM\SOFTWARE\Microsoft\PolicyManager\providers\{guid}\default\Device\Start";
-          appender.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins /t REG_SZ /d {json} /f");
-          appender.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_LastWrite /t REG_DWORD /d 1 /f");
+          appender.Append([
+            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins /t REG_SZ /d {json} /f"),
+            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_LastWrite /t REG_DWORD /d 1 /f"),
+          ]);
         }
       }
     }

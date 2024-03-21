@@ -28,11 +28,15 @@ class PasswordExpirationModifier(ModifierContext context) : Modifier(context)
         break;
 
       case UnlimitedPasswordExpirationSettings:
-        appender.Command("net.exe accounts /maxpwage:UNLIMITED");
+        appender.Append(
+          CommandBuilder.Raw("net.exe accounts /maxpwage:UNLIMITED")
+        );
         break;
 
       case CustomPasswordExpirationSettings settings:
-        appender.Command($"net.exe accounts /maxpwage:{settings.MaxAge}");
+        appender.Append(
+          CommandBuilder.Raw($"net.exe accounts /maxpwage:{settings.MaxAge}")
+        );
         break;
 
       default:

@@ -106,54 +106,67 @@ record class CommandConfig(
 
 class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig config)
 {
-  public void Command(string value)
+  public void Append(string value)
   {
     config.CreateElement(doc, ns).InnerText = value;
   }
 
-  public void ShellCommand(string command)
+  public void Append(IEnumerable<string> values)
   {
-    Command($@"cmd.exe /c ""{command}""");
+    foreach (string value in values)
+    {
+      Append(value);
+    }
+  }
+}
+
+class CommandBuilder
+{
+  public static string Raw(string command)
+  {
+    return command;
+  }
+
+  public static string ShellCommand(string command)
+  {
+    return $@"cmd.exe /c ""{command}""";
   }
 
   /// <summary>
   /// Runs a command and redirects its <c>stdout</c> and <c>stderr</c> to a file.
   /// </summary>
-  public void ShellCommand(string command, string outFile)
+  public static string ShellCommand(string command, string outFile)
   {
-    Command($@"cmd.exe /c ""2>&1 >>""{outFile}"" {command}""");
+    return $@"cmd.exe /c ""2>&1 >>""{outFile}"" {command}""";
   }
 
-  public void UserRunOnceCommand(string name, string value, string rootKey, string subKey)
+  public static string RegistryCommand(string value)
+  {
+    return $"reg.exe {value}";
+  }
+
+  public static string UserRunOnceCommand(string name, string value, string rootKey, string subKey)
   {
     static string Escape(string s)
     {
       return s.Replace(@"""", @"\""");
     }
 
-    RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\Runonce"" /v ""{Escape(name)}"" /t REG_SZ /d ""{Escape(value)}"" /f");
+    return RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\Runonce"" /v ""{Escape(name)}"" /t REG_SZ /d ""{Escape(value)}"" /f");
   }
 
-  public void RegistryDefaultUserCommand(Action<string, string> action)
+  public static IEnumerable<string> RegistryDefaultUserCommand(Func<string, string, IEnumerable<string>> action)
   {
     string rootKey = "HKU";
     string subKey = "mount";
-    RegistryCommand(@$"load ""{rootKey}\{subKey}"" ""C:\Users\Default\NTUSER.DAT""");
-    action.Invoke(rootKey, subKey);
-    RegistryCommand(@$"unload ""{rootKey}\{subKey}""");
+    return [
+      RegistryCommand(@$"load ""{rootKey}\{subKey}"" ""C:\Users\Default\NTUSER.DAT"""),
+      .. action.Invoke(rootKey, subKey),
+      RegistryCommand(@$"unload ""{rootKey}\{subKey}"""),
+    ];
   }
 
-  public void RegistryCommand(string value)
-  {
-    Command($"reg.exe {value}");
-  }
-
-  public void PowerShellCommand(string value)
-  {
-    Command(GetPowerShellCommand(value));
-  }
-
-  public string GetPowerShellCommand(string value)
+  public static string PowerShellCommand(string value)
   {
     {
       const char quote = '"';
@@ -173,22 +186,22 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
     return @$"powershell.exe -NoProfile -Command ""{value}""";
   }
 
-  public void InvokePowerShellScript(string file)
+  public static string InvokePowerShellScript(string filepath)
   {
-    PowerShellCommand($"Get-Content -LiteralPath '{file}' -Raw | Invoke-Expression;");
+    return PowerShellCommand($"Get-Content -LiteralPath '{filepath}' -Raw | Invoke-Expression;");
   }
 
-  static string EscapeShell(string command)
+  public static string InvokeVBScript(string filepath)
   {
-    return command
-      .Replace("^", "^^")
-      .Replace("&", "^&")
-      .Replace("<", "^<")
-      .Replace(">", "^>")
-      .Replace("|", "^|");
+    return @$"cscript.exe //E:vbscript ""{filepath}""";
   }
 
-  public void WriteToFile(string path, XmlDocument doc)
+  public static string InvokeJScript(string filepath)
+  {
+    return @$"cscript.exe //E:jscript ""{filepath}""";
+  }
+
+  public static IEnumerable<string> WriteToFile(string path, XmlDocument doc)
   {
     var sb = new StringBuilder();
     using var writer = XmlWriter.Create(sb, new XmlWriterSettings()
@@ -201,17 +214,25 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
     doc.WriteTo(writer);
     writer.Close();
 
-    foreach (string line in Util.SplitLines(sb.ToString()))
-    {
-      WriteToFile(path, line);
-    }
+    return Util.SplitLines(sb.ToString()).SelectMany(line => WriteToFile(path, line));
   }
 
-  public void WriteToFile(string path, string line)
+  public static IEnumerable<string> WriteToFile(string path, string line)
   {
+    static string EscapeShell(string command)
+    {
+      return command
+        .Replace("^", "^^")
+        .Replace("&", "^&")
+        .Replace("<", "^<")
+        .Replace(">", "^>")
+        .Replace("|", "^|")
+        .Replace("%", "^%");
+    }
+
     if (string.IsNullOrWhiteSpace(line))
     {
-      Command($@"cmd.exe /c "">>""{path}"" echo({line}""");
+      yield return $@"cmd.exe /c "">>""{path}"" echo({line}""";
     }
     else
     {
@@ -219,18 +240,25 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
       var chunks = line.Chunk(chunkSize).Select(chars => new string(chars));
       foreach (var chunk in chunks.SkipLast(1))
       {
-        Command($@"cmd.exe /c "">>""{path}"" <nul set /p={EscapeShell(chunk)}""");
+        yield return $@"cmd.exe /c "">>""{path}"" <nul set /p={EscapeShell(chunk)}""";
       }
-      Command($@"cmd.exe /c "">>""{path}"" echo {EscapeShell(chunks.Last())}""");
+      yield return $@"cmd.exe /c "">>""{path}"" echo {EscapeShell(chunks.Last())}""";
     }
   }
 
-  public void WriteToFile(string path, IEnumerable<string> lines)
+  public static IEnumerable<string> WriteToFile(string path, IEnumerable<string> lines)
   {
-    foreach (string line in lines)
+    return lines.SelectMany(line => WriteToFile(path, line));
+  }
+
+  public static IEnumerable<string> SafeWriteToFile(string path, string content)
+  {
+    byte[] bytes = Encoding.UTF8.GetBytes(content);
+    foreach (string base64 in Util.SplitLines(Convert.ToBase64String(bytes, Base64FormattingOptions.InsertLineBreaks)))
     {
-      WriteToFile(path, line);
+      yield return $@"cmd.exe /c "">>""{path}"" echo {base64}""";
     }
+    yield return PowerShellCommand(@$"$p='{path}'; $f=[System.IO.File]; $f::WriteAllBytes($p, [convert]::FromBase64String($f::ReadAllText($p)));");
   }
 }
 

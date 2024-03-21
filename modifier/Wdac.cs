@@ -151,8 +151,10 @@ class WdacModifier(ModifierContext context) : Modifier(context)
 
       CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
       string ps1File = @"%TEMP%\wdac.ps1";
-      appender.WriteToFile(ps1File, GetOuterScript());
-      appender.InvokePowerShellScript(ps1File);
+      appender.Append([
+        .. CommandBuilder.WriteToFile(ps1File, GetOuterScript()),
+        CommandBuilder.InvokePowerShellScript(ps1File),
+      ]);
     }
     else
     {

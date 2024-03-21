@@ -40,10 +40,14 @@ class LockoutModifier(ModifierContext context) : Modifier(context)
       case DefaultLockoutSettings:
         return;
       case DisableLockoutSettings:
-        appender.Command("net.exe accounts /lockoutthreshold:0");
+        appender.Append(
+          CommandBuilder.Raw("net.exe accounts /lockoutthreshold:0")
+        );
         break;
       case CustomLockoutSettings settings:
-        appender.Command($"net.exe accounts /lockoutthreshold:{settings.LockoutThreshold} /lockoutduration:{settings.LockoutDuration} /lockoutwindow:{settings.LockoutWindow}");
+        appender.Append(
+          CommandBuilder.Raw($"net.exe accounts /lockoutthreshold:{settings.LockoutThreshold} /lockoutduration:{settings.LockoutDuration} /lockoutwindow:{settings.LockoutWindow}")
+        );
         break;
       default:
         throw new NotSupportedException();

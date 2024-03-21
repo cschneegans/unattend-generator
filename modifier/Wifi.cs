@@ -54,16 +54,20 @@ class WifiModifier(ModifierContext context) : Modifier(context)
     string logfile = @"%TEMP%\wifi.log";
 
     CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
-    appender.WriteToFile(xmlfile, GetWlanProfile(settings));
-    appender.ShellCommand($@"netsh.exe wlan add profile filename=""{xmlfile}"" user=all", logfile);
-    appender.ShellCommand($@"del ""{xmlfile}""");
+    appender.Append([
+      .. CommandBuilder.WriteToFile(xmlfile, GetWlanProfile(settings)),
+      CommandBuilder.ShellCommand($@"netsh.exe wlan add profile filename=""{xmlfile}"" user=all", logfile),
+      CommandBuilder.ShellCommand($@"del ""{xmlfile}""")
+    ]);
 
     if (settings.ConnectAutomatically)
     {
-      appender.ShellCommand($@"netsh.exe wlan connect name=""{settings.Name}"" ssid=""{settings.Name}""", logfile);
+      appender.Append(
+        CommandBuilder.ShellCommand($@"netsh.exe wlan connect name=""{settings.Name}"" ssid=""{settings.Name}""", logfile)
+      );
     }
   }
-  
+
   static XmlDocument GetWlanProfile(UnattendedWifiSettings settings)
   {
     var doc = Util.XmlDocumentFromResource("WLANProfile.xml");

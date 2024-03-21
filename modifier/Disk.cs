@@ -55,8 +55,10 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           if (settings.RecoveryMode == RecoveryMode.None)
           {
             CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
-            appender.Command(@"ReAgentc.exe /disable");
-            appender.ShellCommand(@"del /a /f ""C:\Windows\System32\Recovery\Winre.wim""");
+            appender.Append([
+              CommandBuilder.Raw(@"ReAgentc.exe /disable"),
+              CommandBuilder.ShellCommand(@"del /a /f ""C:\Windows\System32\Recovery\Winre.wim"""),
+            ]);
           }
 
           break;
@@ -102,13 +104,14 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
   private void WriteScript(IEnumerable<string> lines)
   {
-    CommandAppender appender = new(Document, NamespaceManager, CommandConfig.WindowsPE);
-
     string filename = @"X:\diskpart.txt";
     string logfile = @"X:\diskpart.log";
 
-    appender.WriteToFile(filename, lines);
-    appender.ShellCommand($@">>""{logfile}"" diskpart.exe /s ""{filename}""");
+    CommandAppender appender = new(Document, NamespaceManager, CommandConfig.WindowsPE);
+    appender.Append([
+      .. CommandBuilder.WriteToFile(filename, lines),
+      CommandBuilder.ShellCommand($@">>""{logfile}"" diskpart.exe /s ""{filename}""")
+    ]);
   }
 
   public static string GetCustomDiskpartScript()

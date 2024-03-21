@@ -190,7 +190,9 @@ class UsersModifier(ModifierContext context) : Modifier(context)
     }
     {
       CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Oobe);
-      appender.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"" /v AutoLogonCount /t REG_DWORD /d 0 /f");
+      appender.Append(
+        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"" /v AutoLogonCount /t REG_DWORD /d 0 /f")
+      );
     }
   }
 
