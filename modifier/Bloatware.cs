@@ -3,17 +3,74 @@ using System.Xml;
 
 namespace Schneegans.Unattend;
 
-class ContentInfo(string baseName)
+abstract class Remover<T> where T : SelectorBloatwareStep
 {
-  public string BaseName { get; } = baseName ?? throw new ArgumentNullException(nameof(baseName));
+  private bool hasContent = false;
 
-  public string CmdPath => @$"%TEMP%\{BaseName}.txt";
+  protected string CmdPath => @$"%TEMP%\{Tag()}.txt";
 
-  public string PsPath => @$"$env:TEMP\{BaseName}.txt";
+  protected string PsPath => @$"$env:TEMP\{Tag()}.txt";
 
-  public string PsLogPath => @$"$env:TEMP\{BaseName}.log";
+  protected string PsLogPath => @$"$env:TEMP\{Tag()}.log";
 
-  public bool HasContent { get; set; } = false;
+  public void Add(T step, CommandAppender appender)
+  {
+    appender.Append(
+      CommandBuilder.WriteToFile(CmdPath, step.Selector)
+    );
+    hasContent = true;
+  }
+
+  public void Write(CommandAppender appender)
+  {
+    if (hasContent)
+    {
+      appender.Append(RemoveCommand());
+    }
+  }
+
+  protected abstract string RemoveCommand();
+
+  protected abstract string Tag();
+}
+
+class PackageRemover : Remover<PackageBloatwareStep>
+{
+  protected override string RemoveCommand()
+  {
+    return CommandBuilder.PowerShellCommand(@$"Get-AppxProvisionedPackage -Online | where DisplayName -In (Get-Content {PsPath} ) | Remove-AppxProvisionedPackage -AllUsers -Online *>&1 >> {PsLogPath};");
+  }
+
+  protected override string Tag()
+  {
+    return "remove-packages";
+  }
+}
+
+class CapabilityRemover : Remover<CapabilityBloatwareStep>
+{
+  protected override string RemoveCommand()
+  {
+    return CommandBuilder.PowerShellCommand(@$"Get-WindowsCapability -Online | where {{($_.Name -split '~')[0] -in (Get-Content {PsPath} ) }} | Remove-WindowsCapability -Online *>&1 >> {PsLogPath};");
+  }
+
+  protected override string Tag()
+  {
+    return "remove-caps";
+  }
+}
+
+class FeatureRemover : Remover<OptionalFeatureBloatwareStep>
+{
+  protected override string RemoveCommand()
+  {
+    return CommandBuilder.PowerShellCommand(@$"Get-WindowsOptionalFeature -Online | where FeatureName -In (Get-Content {PsPath} ) | Disable-WindowsOptionalFeature -Online -Remove -NoRestart *>&1 >> {PsLogPath};");
+  }
+
+  protected override string Tag()
+  {
+    return "remove-features";
+  }
 }
 
 class BloatwareModifier(ModifierContext context) : Modifier(context)
@@ -22,24 +79,9 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
   {
     CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
 
-    var packages = new ContentInfo("remove-packages");
-    var caps = new ContentInfo("remove-caps");
-
-    void RemovePackage(PackageBloatwareStep step)
-    {
-      appender.Append(
-        CommandBuilder.WriteToFile(packages.CmdPath, step.Selector)
-      );
-      packages.HasContent = true;
-    }
-
-    void RemoveCapability(CapabilityBloatwareStep step)
-    {
-      appender.Append(
-        CommandBuilder.WriteToFile(caps.CmdPath, step.Selector)
-      );
-      caps.HasContent = true;
-    }
+    var packageRemover = new PackageRemover();
+    var capabilityRemover = new CapabilityRemover();
+    var featureRemover = new FeatureRemover();
 
     foreach (Bloatware bw in Configuration.Bloatwares)
     {
@@ -48,78 +90,56 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
         switch (step)
         {
           case PackageBloatwareStep package:
-            {
-              RemovePackage(package);
-              break;
-            }
-
+            packageRemover.Add(package, appender);
+            break;
           case CapabilityBloatwareStep capability:
-            {
-              RemoveCapability(capability);
-              break;
-            }
+            capabilityRemover.Add(capability, appender);
+            break;
+          case OptionalFeatureBloatwareStep feature:
+            featureRemover.Add(feature, appender);
+            break;
           case CustomBloatwareStep when bw.Id == "RemoveOneDrive":
-            {
-              appender.Append([
-                CommandBuilder.ShellCommand(@"del ""C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk"""),
-                CommandBuilder.ShellCommand(@"del ""C:\Windows\System32\OneDriveSetup.exe"""),
-                CommandBuilder.ShellCommand(@"del ""C:\Windows\SysWOW64\OneDriveSetup.exe"""),
-                .. CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) => {
+            appender.Append([
+              CommandBuilder.ShellCommand(@"del ""C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk"""),
+              CommandBuilder.ShellCommand(@"del ""C:\Windows\System32\OneDriveSetup.exe"""),
+              CommandBuilder.ShellCommand(@"del ""C:\Windows\SysWOW64\OneDriveSetup.exe"""),
+              .. CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) => {
                   return [CommandBuilder.RegistryCommand(@$"delete ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\Run"" /v OneDriveSetup /f")];
-                }),
-              ]);
-              break;
-            }
+              }),
+            ]);
+            break;
           case CustomBloatwareStep when bw.Id == "RemoveTeams":
-            {
-              appender.Append(
-                CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications"" /v ConfigureChatAutoInstall /t REG_DWORD /d 0 /f")
-              );
-              break;
-            }
+            appender.Append(
+              CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications"" /v ConfigureChatAutoInstall /t REG_DWORD /d 0 /f")
+            );
+            break;
           case CustomBloatwareStep when bw.Id == "RemoveNotepad":
-            {
-              appender.Append(
-                CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-                {
-                  return [CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Notepad"" /v ShowStoreBanner /t REG_DWORD /d 0 /f")];
-                })
-              );
-              break;
-            }
+            appender.Append(
+              CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
+              {
+                return [CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Notepad"" /v ShowStoreBanner /t REG_DWORD /d 0 /f")];
+              })
+            );
+            break;
           case CustomBloatwareStep when bw.Id == "RemoveOutlook":
-            {
-              appender.Append(
-                CommandBuilder.RegistryCommand(@"delete ""HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\OutlookUpdate"" /f")
-              );
-              break;
-            }
+            appender.Append(
+              CommandBuilder.RegistryCommand(@"delete ""HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\OutlookUpdate"" /f")
+            );
+            break;
           case CustomBloatwareStep when bw.Id == "RemoveDevHome":
-            {
-              appender.Append(
-                CommandBuilder.RegistryCommand(@"delete ""HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\DevHomeUpdate"" /f")
-              );
-              break;
-            }
+            appender.Append(
+              CommandBuilder.RegistryCommand(@"delete ""HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\DevHomeUpdate"" /f")
+            );
+            break;
           default:
             throw new NotSupportedException();
         }
       }
     }
 
-    if (packages.HasContent)
-    {
-      appender.Append(
-        CommandBuilder.PowerShellCommand(@$"Get-AppxProvisionedPackage -Online | where DisplayName -In (Get-Content {packages.PsPath} ) | Remove-AppxProvisionedPackage -AllUsers -Online *>&1 >> {packages.PsLogPath};")
-      );
-    }
-
-    if (caps.HasContent)
-    {
-      appender.Append(
-        CommandBuilder.PowerShellCommand(@$"Get-WindowsCapability -Online | where {{($_.Name -split '~')[0] -in (Get-Content {caps.PsPath} ) }} | Remove-WindowsCapability -Online *>&1 >> {caps.PsLogPath};")
-      );
-    }
+    packageRemover.Write(appender);
+    capabilityRemover.Write(appender);
+    featureRemover.Write(appender);
 
     if (!Configuration.Bloatwares.IsEmpty)
     {

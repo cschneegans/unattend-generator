@@ -361,6 +361,11 @@ public class CapabilityBloatwareStep(
   string selector
 ) : SelectorBloatwareStep(versions, selector);
 
+public class OptionalFeatureBloatwareStep(
+  byte[] versions,
+  string selector
+) : SelectorBloatwareStep(versions, selector);
+
 public class CustomBloatwareStep(
   byte[] versions
 ) : BloatwareStep(versions);

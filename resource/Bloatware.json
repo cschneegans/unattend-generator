@@ -152,6 +152,13 @@
           10,
           11
         ]
+      },
+      {
+        "$type": "Schneegans.Unattend.OptionalFeatureBloatwareStep, UnattendGenerator",
+        "Selector": "Microsoft-SnippingTool",
+        "Versions": [
+          10
+        ]
       }
     ]
   },
