@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace Schneegans.Unattend;
 
@@ -51,7 +49,7 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
 
   private ScriptId NewScriptId(Script script)
   {
-    string name = $"unattend-{++count:X2}";
+    string name = $"unattend-{++count:x2}";
     string extension = script.Type.ToString().ToLowerInvariant();
     return new ScriptId(@$"{ScriptsDirectory}\{name}.{extension}", name);
   }
