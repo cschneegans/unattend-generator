@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Schneegans.Unattend;
 
@@ -10,18 +11,45 @@ public enum ScriptType
 
 public enum ScriptPhase
 {
-  System, FirstLogon, UserOnce
+  System, FirstLogon, UserOnce, DefaultUser
+}
+
+public static class ScriptExtensions
+{
+  public static IEnumerable<ScriptType> GetAllowedTypes(this ScriptPhase phase)
+  {
+    return phase switch
+    {
+      ScriptPhase.DefaultUser => [ScriptType.Reg],
+      _ => Enum.GetValues<ScriptType>(),
+    };
+  }
 }
 
 public record class ScriptSettings(
   IEnumerable<Script> Scripts
 );
 
-public record class Script(
-  string Content,
-  ScriptPhase Phase,
-  ScriptType Type
-);
+public class Script
+{
+  public Script(string content, ScriptPhase phase, ScriptType type)
+  {
+    if (!phase.GetAllowedTypes().Contains(type))
+    {
+      throw new ConfigurationException($"Scripts in phase '{phase}' must not have type '{type}'.");
+    }
+
+    Content = content;
+    Phase = phase;
+    Type = type;
+  }
+
+  public string Content { get; }
+
+  public ScriptPhase Phase { get; }
+
+  public ScriptType Type { get; }
+}
 
 class ScriptModifier(ModifierContext context) : Modifier(context)
 {
@@ -112,6 +140,14 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
             return [CommandBuilder.UserRunOnceCommand(scriptId.Key, command, rootKey, subKey)];
           })
         );
+        break;
+      case ScriptPhase.DefaultUser:
+        string mountKey = @"""HKU\DefaultUser""";
+        appender.Append([
+          CommandBuilder.RegistryCommand(@$"load {mountKey} ""C:\Users\Default\NTUSER.DAT"""),
+          command,
+          CommandBuilder.RegistryCommand($"unload {mountKey}"),
+        ]);
         break;
       default:
         throw new NotSupportedException();
