@@ -42,66 +42,94 @@ public enum ExpressSettingsMode
   Interactive, EnableAll, DisableAll
 }
 
-record class CommandConfig(
-  Func<XmlDocument, XmlNamespaceManager, XmlElement> CreateElement
-)
+abstract class CommandConfig
 {
-  /// <summary>
-  /// Inserts a command using this markup:
-  /// <code>
-  /// &lt;settings pass=&quot;windowsPE&quot;&gt;
-  ///   &lt;component name=&quot;Microsoft-Windows-Setup&quot;&gt;
-  ///     &lt;RunSynchronous&gt;
-  ///       &lt;RunSynchronousCommand&gt;
-  ///         &lt;Path&gt;
-  /// </code>
-  /// </summary>
-  public static CommandConfig WindowsPE = new(
-    CreateElement: (doc, ns) =>
-    {
-      var container = Util.GetOrCreateElement(Pass.windowsPE, "Microsoft-Windows-Setup", "RunSynchronous", doc, ns);
-      var outer = Util.NewElement("RunSynchronousCommand", container, doc, ns);
-      return Util.NewElement("Path", outer, doc, ns);
-    }
-  );
+  public readonly static WindowsPECommandConfig WindowsPE = new();
+  public readonly static SpecializeCommandConfig Specialize = new();
+  public readonly static OobeCommandConfig Oobe = new();
 
-  /// <summary>
-  /// Inserts a command using this markup:
-  /// <code>
-  /// &lt;settings pass=&quot;specialize&quot;&gt;
-  ///   &lt;component name=&quot;Microsoft-Windows-Deployment&quot;&gt;
-  ///     &lt;RunSynchronous&gt;
-  ///       &lt;RunSynchronousCommand&gt;
-  ///         &lt;Path&gt;
-  /// </code>
-  /// </summary>
-  public static CommandConfig Specialize = new(
-    CreateElement: (doc, ns) =>
-    {
-      var container = Util.GetOrCreateElement(Pass.specialize, "Microsoft-Windows-Deployment", "RunSynchronous", doc, ns);
-      var outer = Util.NewElement("RunSynchronousCommand", container, doc, ns);
-      return Util.NewElement("Path", outer, doc, ns);
-    }
-  );
+  protected abstract XmlElement GetContainer(XmlDocument doc, XmlNamespaceManager ns);
 
-  /// <summary>
-  /// Inserts a command using this markup:
-  /// <code>
-  /// &lt;settings pass=&quot;oobeSystem&quot;&gt;
-  ///   &lt;component name=&quot;Microsoft-Windows-Shell-Setup&quot;&gt;
-  ///     &lt;FirstLogonCommands&gt;
-  ///       &lt;SynchronousCommand&gt;
-  ///         &lt;CommandLine&gt;
-  /// </code>
-  /// </summary>
-  public static CommandConfig Oobe = new(
-    CreateElement: (doc, ns) =>
-    {
-      var container = Util.GetOrCreateElement(Pass.oobeSystem, "Microsoft-Windows-Shell-Setup", "FirstLogonCommands", doc, ns);
-      var outer = Util.NewElement("SynchronousCommand", container, doc, ns);
-      return Util.NewElement("CommandLine", outer, doc, ns);
-    }
-  );
+  public abstract XmlElement CreateElement(XmlDocument doc, XmlNamespaceManager ns);
+
+  public XmlComment CreateComment(XmlDocument doc, XmlNamespaceManager ns)
+  {
+    XmlComment comment = doc.CreateComment(null);
+    GetContainer(doc, ns).AppendChild(comment);
+    return comment;
+  }
+}
+
+/// <summary>
+/// Inserts a command using this markup:
+/// <code>
+/// &lt;settings pass=&quot;windowsPE&quot;&gt;
+///   &lt;component name=&quot;Microsoft-Windows-Setup&quot;&gt;
+///     &lt;RunSynchronous&gt;
+///       &lt;RunSynchronousCommand&gt;
+///         &lt;Path&gt;
+/// </code>
+/// </summary>
+class WindowsPECommandConfig : CommandConfig
+{
+  protected override XmlElement GetContainer(XmlDocument doc, XmlNamespaceManager ns)
+  {
+    return Util.GetOrCreateElement(Pass.windowsPE, "Microsoft-Windows-Setup", "RunSynchronous", doc, ns);
+  }
+
+  public override XmlElement CreateElement(XmlDocument doc, XmlNamespaceManager ns)
+  {
+    var outer = Util.NewElement("RunSynchronousCommand", GetContainer(doc, ns), doc, ns);
+    return Util.NewElement("Path", outer, doc, ns);
+  }
+}
+
+/// <summary>
+/// Inserts a command using this markup:
+/// <code>
+/// &lt;settings pass=&quot;specialize&quot;&gt;
+///   &lt;component name=&quot;Microsoft-Windows-Deployment&quot;&gt;
+///     &lt;RunSynchronous&gt;
+///       &lt;RunSynchronousCommand&gt;
+///         &lt;Path&gt;
+/// </code>
+/// </summary>
+class SpecializeCommandConfig : CommandConfig
+{
+  protected override XmlElement GetContainer(XmlDocument doc, XmlNamespaceManager ns)
+  {
+    return Util.GetOrCreateElement(Pass.specialize, "Microsoft-Windows-Deployment", "RunSynchronous", doc, ns);
+  }
+
+  public override XmlElement CreateElement(XmlDocument doc, XmlNamespaceManager ns)
+  {
+    var outer = Util.NewElement("RunSynchronousCommand", GetContainer(doc, ns), doc, ns);
+    return Util.NewElement("Path", outer, doc, ns);
+  }
+}
+
+/// <summary>
+/// Inserts a command using this markup:
+/// <code>
+/// &lt;settings pass=&quot;oobeSystem&quot;&gt;
+///   &lt;component name=&quot;Microsoft-Windows-Shell-Setup&quot;&gt;
+///     &lt;FirstLogonCommands&gt;
+///       &lt;SynchronousCommand&gt;
+///         &lt;CommandLine&gt;
+/// </code>
+/// </summary>
+class OobeCommandConfig : CommandConfig
+{
+  protected override XmlElement GetContainer(XmlDocument doc, XmlNamespaceManager ns)
+  {
+    return Util.GetOrCreateElement(Pass.oobeSystem, "Microsoft-Windows-Shell-Setup", "FirstLogonCommands", doc, ns);
+  }
+
+  public override XmlElement CreateElement(XmlDocument doc, XmlNamespaceManager ns)
+  {
+    var outer = Util.NewElement("SynchronousCommand", GetContainer(doc, ns), doc, ns);
+    return Util.NewElement("CommandLine", outer, doc, ns);
+  }
 }
 
 class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig config)
@@ -117,6 +145,11 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
     {
       Append(value);
     }
+  }
+
+  public void AppendXmlComment(string comment)
+  {
+    config.CreateComment(doc, ns).Value = comment;
   }
 }
 

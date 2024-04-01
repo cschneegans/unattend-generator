@@ -139,8 +139,10 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
     }
 
     var appender = new CommandAppender(Document, NamespaceManager, CommandConfig.Specialize);
+    string content = Clean(script);
+    appender.AppendXmlComment($"\r\n{content}\r\n");
     appender.Append(
-      CommandBuilder.SafeWriteToFile(scriptId.FullName, Clean(script), script.Type.PreferredEncoding())
+      CommandBuilder.SafeWriteToFile(scriptId.FullName, content, script.Type.PreferredEncoding())
     );
   }
 
