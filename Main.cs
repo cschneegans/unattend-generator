@@ -120,7 +120,7 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
   }
 }
 
-class CommandBuilder
+static class CommandBuilder
 {
   public static string Raw(string command)
   {
@@ -251,9 +251,12 @@ class CommandBuilder
     return lines.SelectMany(line => WriteToFile(path, line));
   }
 
-  public static IEnumerable<string> SafeWriteToFile(string path, string content)
+  public static IEnumerable<string> SafeWriteToFile(string path, string content, Encoding encoding)
   {
-    byte[] bytes = Encoding.UTF8.GetBytes(content);
+    byte[] bytes = Enumerable.Concat(
+      encoding.GetPreamble(),
+      encoding.GetBytes(content)
+    ).ToArray();
 
     int chunkSize = 256 - 70;
     foreach (string base64 in Convert.ToBase64String(bytes).Chunk(chunkSize).Select(chars => new string(chars)))

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Schneegans.Unattend;
 
@@ -24,6 +25,25 @@ public static class ScriptExtensions
       _ => Enum.GetValues<ScriptType>(),
     };
   }
+
+  public static string FileExtension(this ScriptType type)
+  {
+    return '.' + type.ToString().ToLowerInvariant();
+  }
+
+  public static Encoding PreferredEncoding(this ScriptType type)
+  {
+    UnicodeEncoding utf16WithBom = new(bigEndian: false, byteOrderMark: true);
+    return type switch
+    {
+      ScriptType.Ps1 => Encoding.UTF8,
+      ScriptType.Cmd => Encoding.Latin1,
+      ScriptType.Reg => utf16WithBom,
+      ScriptType.Vbs => utf16WithBom,
+      ScriptType.Js => utf16WithBom,
+      _ => throw new NotImplementedException(),
+    };
+  }
 }
 
 public record class ScriptSettings(
@@ -37,6 +57,15 @@ public class Script
     if (!phase.GetAllowedTypes().Contains(type))
     {
       throw new ConfigurationException($"Scripts in phase '{phase}' must not have type '{type}'.");
+    }
+
+    if (phase == ScriptPhase.DefaultUser && type == ScriptType.Reg && !string.IsNullOrWhiteSpace(content))
+    {
+      string prefix = @"[HKEY_USERS\DefaultUser\";
+      if (!content.Contains(prefix, StringComparison.OrdinalIgnoreCase))
+      {
+        throw new ConfigurationException($"{type.FileExtension()} script '{content}' does not contain required key prefix '{prefix}'.");
+      }
     }
 
     Content = content;
@@ -111,7 +140,7 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
 
     var appender = new CommandAppender(Document, NamespaceManager, CommandConfig.Specialize);
     appender.Append(
-      CommandBuilder.SafeWriteToFile(scriptId.FullName, Clean(script))
+      CommandBuilder.SafeWriteToFile(scriptId.FullName, Clean(script), script.Type.PreferredEncoding())
     );
   }
 
