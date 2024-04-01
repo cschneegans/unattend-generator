@@ -104,7 +104,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     {
       CommandAppender oobe = new(Document, NamespaceManager, CommandConfig.Oobe);
       oobe.Append(
-        CommandBuilder.PowerShellCommand("Disable-ComputerRestore -Drive 'C:\';")
+        CommandBuilder.PowerShellCommand(@"Disable-ComputerRestore -Drive 'C:\';")
       );
     }
 
