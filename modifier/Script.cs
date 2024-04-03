@@ -33,16 +33,20 @@ public static class ScriptExtensions
 
   public static Encoding PreferredEncoding(this ScriptType type)
   {
-    UnicodeEncoding utf16WithBom = new(bigEndian: false, byteOrderMark: true);
     return type switch
     {
       ScriptType.Ps1 => Encoding.UTF8,
       ScriptType.Cmd => Encoding.Latin1,
-      ScriptType.Reg => utf16WithBom,
-      ScriptType.Vbs => utf16WithBom,
-      ScriptType.Js => utf16WithBom,
+      ScriptType.Reg => Utf16WithBom(),
+      ScriptType.Vbs => Utf16WithBom(),
+      ScriptType.Js => Utf16WithBom(),
       _ => throw new NotImplementedException(),
     };
+
+    static UnicodeEncoding Utf16WithBom()
+    {
+      return new(bigEndian: false, byteOrderMark: true);
+    }
   }
 }
 
