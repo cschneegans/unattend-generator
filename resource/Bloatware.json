@@ -660,5 +660,17 @@
         ]
       }
     ]
+  },
+  {
+    "DisplayName": "Copilot",
+    "Since": "23H2",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.CustomBloatwareStep, UnattendGenerator",
+        "Versions": [
+          11
+        ]
+      }
+    ]
   }
 ]

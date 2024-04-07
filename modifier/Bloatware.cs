@@ -131,6 +131,17 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
               CommandBuilder.RegistryCommand(@"delete ""HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\DevHomeUpdate"" /f")
             );
             break;
+          case CustomBloatwareStep when bw.Id == "RemoveCopilot":
+            appender.Append([
+              .. CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
+              {
+                return [
+                  CommandBuilder.UserRunOnceCommand("UninstallCopilot", CommandBuilder.PowerShellCommand("Get-AppxPackage -Name 'Microsoft.Windows.Ai.Copilot.Provider' | Remove-AppxPackage;"), rootKey, subKey),
+                  CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Policies\Microsoft\Windows\WindowsCopilot"" /v TurnOffWindowsCopilot /t REG_DWORD /d 1 /f")
+                ];
+              }),
+            ]);
+            break;
           default:
             throw new NotSupportedException();
         }
