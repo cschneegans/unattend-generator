@@ -10,7 +10,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "Fdj 1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "62"
   },
   {
     "Id": "aa-ER",
@@ -23,7 +24,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "Nfk 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "71"
   },
   {
     "Id": "aa-ET",
@@ -36,7 +38,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "Br 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "73"
   },
   {
     "Id": "af-NA",
@@ -49,7 +52,8 @@
       "ShortTime": "11:59 nm.",
       "Currency": "$999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "254"
   },
   {
     "Id": "af-ZA",
@@ -62,7 +66,8 @@
       "ShortTime": "23:59",
       "Currency": "R999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "209"
   },
   {
     "Id": "agq-CM",
@@ -75,7 +80,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "ak-GH",
@@ -88,7 +94,8 @@
       "ShortTime": "11:59 EW",
       "Currency": "GH₵999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "89"
   },
   {
     "Id": "sq-AL",
@@ -101,7 +108,8 @@
       "ShortTime": "11:59 e pasdites",
       "Currency": "1 000 Lekë",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "6"
   },
   {
     "Id": "sq-XK",
@@ -114,7 +122,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "9914689"
   },
   {
     "Id": "sq-MK",
@@ -127,7 +136,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 den",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "19618"
   },
   {
     "Id": "am-ET",
@@ -140,7 +150,8 @@
       "ShortTime": "11:59 ከሰዓት",
       "Currency": "ብር999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "73"
   },
   {
     "Id": "ar-DZ",
@@ -153,7 +164,8 @@
       "ShortTime": "11:59 م",
       "Currency": "د.ج.‏ 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "4"
   },
   {
     "Id": "ar-BH",
@@ -166,7 +178,8 @@
       "ShortTime": "11:59 م",
       "Currency": "999٫990 د.ب.‏",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "17"
   },
   {
     "Id": "ar-TD",
@@ -179,7 +192,8 @@
       "ShortTime": "11:59 م",
       "Currency": "1٬000 FCFA",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "41"
   },
   {
     "Id": "ar-KM",
@@ -192,7 +206,8 @@
       "ShortTime": "23:59",
       "Currency": "1٬000 CF",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "50"
   },
   {
     "Id": "ar-DJ",
@@ -205,7 +220,8 @@
       "ShortTime": "11:59 م",
       "Currency": "1٬000 Fdj",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "62"
   },
   {
     "Id": "ar-EG",
@@ -218,7 +234,8 @@
       "ShortTime": "11:59 م",
       "Currency": "999٫99 ج.م.‏",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "67"
   },
   {
     "Id": "ar-ER",
@@ -231,7 +248,8 @@
       "ShortTime": "11:59 م",
       "Currency": "999٫99 Nfk",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "71"
   },
   {
     "Id": "ar-IQ",
@@ -244,7 +262,8 @@
       "ShortTime": "11:59 م",
       "Currency": "1٬000 د.ع.‏",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "121"
   },
   {
     "Id": "ar-IL",
@@ -257,7 +276,8 @@
       "ShortTime": "23:59",
       "Currency": "999٫99 ₪",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "117"
   },
   {
     "Id": "ar-JO",
@@ -270,7 +290,8 @@
       "ShortTime": "11:59 م",
       "Currency": "999٫990 د.أ.‏",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "126"
   },
   {
     "Id": "ar-KW",
@@ -283,7 +304,8 @@
       "ShortTime": "11:59 م",
       "Currency": "999٫990 د.ك.‏",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "136"
   },
   {
     "Id": "ar-LB",
@@ -296,7 +318,8 @@
       "ShortTime": "11:59 م",
       "Currency": "1٬000 ل.ل.‏",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "139"
   },
   {
     "Id": "ar-LY",
@@ -309,7 +332,8 @@
       "ShortTime": "11:59 م",
       "Currency": "د.ل.‏ 999,990",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "148"
   },
   {
     "Id": "ar-MR",
@@ -322,7 +346,8 @@
       "ShortTime": "11:59 م",
       "Currency": "999٫99 أ.م.",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "162"
   },
   {
     "Id": "ar-MA",
@@ -335,7 +360,8 @@
       "ShortTime": "23:59",
       "Currency": "د.م.‏ 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "159"
   },
   {
     "Id": "ar-OM",
@@ -348,7 +374,8 @@
       "ShortTime": "11:59 م",
       "Currency": "999٫990 ر.ع.‏",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "164"
   },
   {
     "Id": "ar-PS",
@@ -361,7 +388,8 @@
       "ShortTime": "11:59 م",
       "Currency": "999٫99 ₪",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "184"
   },
   {
     "Id": "ar-QA",
@@ -374,7 +402,8 @@
       "ShortTime": "11:59 م",
       "Currency": "999٫99 ر.ق.‏",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "197"
   },
   {
     "Id": "ar-SA",
@@ -387,7 +416,8 @@
       "ShortTime": "11:59 م",
       "Currency": "999٫99 ر.س.‏",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "205"
   },
   {
     "Id": "ar-SO",
@@ -400,7 +430,8 @@
       "ShortTime": "11:59 م",
       "Currency": "1٬000 S",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "216"
   },
   {
     "Id": "ar-SS",
@@ -413,7 +444,8 @@
       "ShortTime": "11:59 م",
       "Currency": "999٫99 £",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "276"
   },
   {
     "Id": "ar-SD",
@@ -426,7 +458,8 @@
       "ShortTime": "11:59 م",
       "Currency": "999٫99 ج.س.",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "219"
   },
   {
     "Id": "ar-SY",
@@ -439,7 +472,8 @@
       "ShortTime": "11:59 م",
       "Currency": "1٬000 ل.س.‏",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "222"
   },
   {
     "Id": "ar-TN",
@@ -452,7 +486,8 @@
       "ShortTime": "11:59 م",
       "Currency": "د.ت.‏ 999,990",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "234"
   },
   {
     "Id": "ar-AE",
@@ -465,7 +500,8 @@
       "ShortTime": "11:59 م",
       "Currency": "999٫99 د.إ.‏",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "224"
   },
   {
     "Id": "ar-001",
@@ -478,7 +514,8 @@
       "ShortTime": "11:59 م",
       "Currency": "999٫99 ¤",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": null
   },
   {
     "Id": "ar-YE",
@@ -491,7 +528,8 @@
       "ShortTime": "11:59 م",
       "Currency": "1٬000 ر.ي.‏",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "261"
   },
   {
     "Id": "hy-AM",
@@ -504,7 +542,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 ֏",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "7"
   },
   {
     "Id": "as-IN",
@@ -517,7 +556,8 @@
       "ShortTime": "অপৰাহ্ন 11.59",
       "Currency": "₹ 999.99",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "ast-ES",
@@ -530,7 +570,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "217"
   },
   {
     "Id": "asa-TZ",
@@ -543,7 +584,8 @@
       "ShortTime": "23:59",
       "Currency": "999.99 TSh",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "239"
   },
   {
     "Id": "az-Cyrl-AZ",
@@ -556,7 +598,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 ₼",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "5"
   },
   {
     "Id": "az-Latn-AZ",
@@ -569,7 +612,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 ₼",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "5"
   },
   {
     "Id": "ksf-CM",
@@ -582,7 +626,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "bm-Latn-ML",
@@ -595,7 +640,8 @@
       "ShortTime": "23:59",
       "Currency": "CFA1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "157"
   },
   {
     "Id": "bn-BD",
@@ -608,7 +654,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "999.99৳",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "23"
   },
   {
     "Id": "bn-IN",
@@ -621,7 +668,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "999.99₹",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "bas-CM",
@@ -634,7 +682,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "ba-RU",
@@ -647,7 +696,8 @@
       "ShortTime": "23:59",
       "Currency": "RUB 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "203"
   },
   {
     "Id": "eu-ES",
@@ -660,7 +710,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "217"
   },
   {
     "Id": "be-BY",
@@ -673,7 +724,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 Br",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "29"
   },
   {
     "Id": "bem-ZM",
@@ -686,7 +738,8 @@
       "ShortTime": "11:59 akasuba",
       "Currency": "K999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "263"
   },
   {
     "Id": "bez-TZ",
@@ -699,7 +752,8 @@
       "ShortTime": "23:59",
       "Currency": "999.99TSh",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "239"
   },
   {
     "Id": "byn-ER",
@@ -712,7 +766,8 @@
       "ShortTime": "23:59",
       "Currency": "Nfk 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "71"
   },
   {
     "Id": "brx-IN",
@@ -725,7 +780,8 @@
       "ShortTime": "11:59 बेलासे",
       "Currency": "₹ 999.99",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "bs-Cyrl-BA",
@@ -738,7 +794,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 КМ",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "25"
   },
   {
     "Id": "bs-Latn-BA",
@@ -751,7 +808,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 KM",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "25"
   },
   {
     "Id": "br-FR",
@@ -764,7 +822,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "84"
   },
   {
     "Id": "bg-BG",
@@ -777,7 +836,8 @@
       "ShortTime": "23:59 ч.",
       "Currency": "999,99 лв.",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "35"
   },
   {
     "Id": "my-MM",
@@ -790,7 +850,8 @@
       "ShortTime": " 23:59",
       "Currency": "1,000 K",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "27"
   },
   {
     "Id": "ca-AD",
@@ -803,7 +864,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "8"
   },
   {
     "Id": "ca-FR",
@@ -816,7 +878,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "84"
   },
   {
     "Id": "ca-IT",
@@ -829,7 +892,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "118"
   },
   {
     "Id": "ca-ES-valencia",
@@ -842,7 +906,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "217"
   },
   {
     "Id": "ca-ES",
@@ -855,7 +920,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "217"
   },
   {
     "Id": "ceb-Latn-PH",
@@ -868,7 +934,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "₱999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "201"
   },
   {
     "Id": "tzm-Latn-MA",
@@ -881,7 +948,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 MAD",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "159"
   },
   {
     "Id": "ccp-Cakm-BD",
@@ -894,7 +962,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "999.99৳",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "23"
   },
   {
     "Id": "ccp-Cakm-IN",
@@ -907,7 +976,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "999.99₹",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "ce-RU",
@@ -920,7 +990,8 @@
       "ShortTime": "23:59",
       "Currency": "999.99 ₽",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "203"
   },
   {
     "Id": "chr-Cher-US",
@@ -933,7 +1004,8 @@
       "ShortTime": "11:59 ᏒᎯᏱᎢᏗᏢ",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "244"
   },
   {
     "Id": "cgg-UG",
@@ -946,7 +1018,8 @@
       "ShortTime": "23:59",
       "Currency": "USh1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "240"
   },
   {
     "Id": "zh-CN",
@@ -959,7 +1032,8 @@
       "ShortTime": "下午11:59",
       "Currency": "￥999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "45"
   },
   {
     "Id": "zh-HK",
@@ -972,7 +1046,8 @@
       "ShortTime": "下午11:59",
       "Currency": "HK$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "104"
   },
   {
     "Id": "zh-MO",
@@ -985,7 +1060,8 @@
       "ShortTime": "下午11:59",
       "Currency": "MOP$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "151"
   },
   {
     "Id": "zh-Hans-HK",
@@ -998,7 +1074,8 @@
       "ShortTime": "下午11:59",
       "Currency": "HK$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "104"
   },
   {
     "Id": "zh-Hans-MO",
@@ -1011,7 +1088,8 @@
       "ShortTime": "下午11:59",
       "Currency": "MOP$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "151"
   },
   {
     "Id": "zh-SG",
@@ -1024,7 +1102,8 @@
       "ShortTime": "下午11:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "215"
   },
   {
     "Id": "zh-TW",
@@ -1037,7 +1116,8 @@
       "ShortTime": "下午11:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "237"
   },
   {
     "Id": "cu-RU",
@@ -1050,7 +1130,8 @@
       "ShortTime": "23:59",
       "Currency": "₽ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "203"
   },
   {
     "Id": "ksh-DE",
@@ -1063,7 +1144,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "94"
   },
   {
     "Id": "kw-GB",
@@ -1076,7 +1158,8 @@
       "ShortTime": "23:59",
       "Currency": "£999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "242"
   },
   {
     "Id": "co-FR",
@@ -1089,7 +1172,8 @@
       "ShortTime": "23:59",
       "Currency": "€ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "84"
   },
   {
     "Id": "hr-BA",
@@ -1102,7 +1186,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 KM",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "25"
   },
   {
     "Id": "hr-HR",
@@ -1115,7 +1200,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 HRK",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "108"
   },
   {
     "Id": "cs-CZ",
@@ -1128,7 +1214,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 Kč",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "75"
   },
   {
     "Id": "da-DK",
@@ -1141,7 +1228,8 @@
       "ShortTime": "23.59",
       "Currency": "999,99 kr.",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "61"
   },
   {
     "Id": "da-GL",
@@ -1154,7 +1242,8 @@
       "ShortTime": "23.59",
       "Currency": "999,99 kr.",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "93"
   },
   {
     "Id": "dv-MV",
@@ -1167,7 +1256,8 @@
       "ShortTime": "23:59",
       "Currency": "ރ. 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "165"
   },
   {
     "Id": "dua-CM",
@@ -1180,7 +1270,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "nl-AW",
@@ -1193,7 +1284,8 @@
       "ShortTime": "23:59",
       "Currency": "Afl. 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "302"
   },
   {
     "Id": "nl-BE",
@@ -1206,7 +1298,8 @@
       "ShortTime": "23:59",
       "Currency": "€ 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "21"
   },
   {
     "Id": "nl-BQ",
@@ -1219,7 +1312,8 @@
       "ShortTime": "23:59",
       "Currency": "$ 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "161832258"
   },
   {
     "Id": "nl-CW",
@@ -1232,7 +1326,8 @@
       "ShortTime": "23:59",
       "Currency": "NAf. 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "273"
   },
   {
     "Id": "nl-NL",
@@ -1245,7 +1340,8 @@
       "ShortTime": "23:59",
       "Currency": "€ 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "176"
   },
   {
     "Id": "nl-SX",
@@ -1258,7 +1354,8 @@
       "ShortTime": "23:59",
       "Currency": "NAf. 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "30967"
   },
   {
     "Id": "nl-SR",
@@ -1271,7 +1368,8 @@
       "ShortTime": "23:59",
       "Currency": "$ 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "181"
   },
   {
     "Id": "dz-BT",
@@ -1284,7 +1382,8 @@
       "ShortTime": " 11  59 ཕྱི་ཆ་",
       "Currency": "Nu.999.99",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "34"
   },
   {
     "Id": "ebu-KE",
@@ -1297,7 +1396,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "en-AS",
@@ -1310,7 +1410,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "10"
   },
   {
     "Id": "en-AI",
@@ -1323,7 +1424,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "300"
   },
   {
     "Id": "en-AG",
@@ -1336,7 +1438,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "2"
   },
   {
     "Id": "en-AU",
@@ -1349,7 +1452,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "12"
   },
   {
     "Id": "en-AT",
@@ -1362,7 +1466,8 @@
       "ShortTime": "23:59",
       "Currency": "€999.99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "14"
   },
   {
     "Id": "en-BS",
@@ -1375,7 +1480,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "22"
   },
   {
     "Id": "en-BB",
@@ -1388,7 +1494,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "18"
   },
   {
     "Id": "en-BE",
@@ -1401,7 +1508,8 @@
       "ShortTime": "23:59",
       "Currency": "€999.99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "21"
   },
   {
     "Id": "en-BZ",
@@ -1414,7 +1522,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "24"
   },
   {
     "Id": "en-BM",
@@ -1427,7 +1536,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "20"
   },
   {
     "Id": "en-BW",
@@ -1440,7 +1550,8 @@
       "ShortTime": "23:59",
       "Currency": "P999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "19"
   },
   {
     "Id": "en-IO",
@@ -1453,7 +1564,8 @@
       "ShortTime": "23:59",
       "Currency": "US$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "114"
   },
   {
     "Id": "en-VG",
@@ -1466,7 +1578,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "US$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "351"
   },
   {
     "Id": "en-BI",
@@ -1479,7 +1592,8 @@
       "ShortTime": "23:59",
       "Currency": "FBu1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "38"
   },
   {
     "Id": "en-CM",
@@ -1492,7 +1606,8 @@
       "ShortTime": "23:59",
       "Currency": "FCFA1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "en-CA",
@@ -1505,7 +1620,8 @@
       "ShortTime": "11:59 p.m.",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "39"
   },
   {
     "Id": "en-KY",
@@ -1518,7 +1634,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "307"
   },
   {
     "Id": "en-CX",
@@ -1531,7 +1648,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "309"
   },
   {
     "Id": "en-CC",
@@ -1544,7 +1662,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "311"
   },
   {
     "Id": "en-CK",
@@ -1557,7 +1676,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "312"
   },
   {
     "Id": "en-CY",
@@ -1570,7 +1690,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "€999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "59"
   },
   {
     "Id": "en-DK",
@@ -1583,7 +1704,8 @@
       "ShortTime": "23.59",
       "Currency": "999,99 kr.",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "61"
   },
   {
     "Id": "en-DM",
@@ -1596,7 +1718,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "63"
   },
   {
     "Id": "en-ER",
@@ -1609,7 +1732,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "Nfk999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "71"
   },
   {
     "Id": "en-SZ",
@@ -1622,7 +1746,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "E999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "260"
   },
   {
     "Id": "en-150",
@@ -1635,7 +1760,8 @@
       "ShortTime": "23:59",
       "Currency": "999.99 ¤",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": null
   },
   {
     "Id": "en-FK",
@@ -1648,7 +1774,8 @@
       "ShortTime": "23:59",
       "Currency": "£999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "315"
   },
   {
     "Id": "en-FJ",
@@ -1661,7 +1788,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "78"
   },
   {
     "Id": "en-FI",
@@ -1674,7 +1802,8 @@
       "ShortTime": "23.59",
       "Currency": "€999.99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "77"
   },
   {
     "Id": "en-GM",
@@ -1687,7 +1816,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "D999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "86"
   },
   {
     "Id": "en-DE",
@@ -1700,7 +1830,8 @@
       "ShortTime": "23:59",
       "Currency": "€999.99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "94"
   },
   {
     "Id": "en-GH",
@@ -1713,7 +1844,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "GH₵999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "89"
   },
   {
     "Id": "en-GI",
@@ -1726,7 +1858,8 @@
       "ShortTime": "23:59",
       "Currency": "£999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "90"
   },
   {
     "Id": "en-GD",
@@ -1739,7 +1872,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "91"
   },
   {
     "Id": "en-GU",
@@ -1752,7 +1886,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "322"
   },
   {
     "Id": "en-GG",
@@ -1765,7 +1900,8 @@
       "ShortTime": "23:59",
       "Currency": "£999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "324"
   },
   {
     "Id": "en-GY",
@@ -1778,7 +1914,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "101"
   },
   {
     "Id": "en-HK",
@@ -1791,7 +1928,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "HK$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "104"
   },
   {
     "Id": "en-IN",
@@ -1804,7 +1942,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "₹ 999.99",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "en-IE",
@@ -1817,7 +1956,8 @@
       "ShortTime": "23:59",
       "Currency": "€999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "68"
   },
   {
     "Id": "en-IM",
@@ -1830,7 +1970,8 @@
       "ShortTime": "23:59",
       "Currency": "£999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "15126"
   },
   {
     "Id": "en-IL",
@@ -1843,7 +1984,8 @@
       "ShortTime": "23:59",
       "Currency": "₪999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "117"
   },
   {
     "Id": "en-JM",
@@ -1856,7 +1998,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "124"
   },
   {
     "Id": "en-JE",
@@ -1869,7 +2012,8 @@
       "ShortTime": "23:59",
       "Currency": "£999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "328"
   },
   {
     "Id": "en-KE",
@@ -1882,7 +2026,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "en-KI",
@@ -1895,7 +2040,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "133"
   },
   {
     "Id": "en-LS",
@@ -1908,7 +2054,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "R999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "146"
   },
   {
     "Id": "en-LR",
@@ -1921,7 +2068,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "142"
   },
   {
     "Id": "en-MO",
@@ -1934,7 +2082,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "MOP$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "151"
   },
   {
     "Id": "en-MG",
@@ -1947,7 +2096,8 @@
       "ShortTime": "23:59",
       "Currency": "Ar1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "149"
   },
   {
     "Id": "en-MW",
@@ -1960,7 +2110,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "MK999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "156"
   },
   {
     "Id": "en-MY",
@@ -1973,7 +2124,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "RM999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "167"
   },
   {
     "Id": "en-MT",
@@ -1986,7 +2138,8 @@
       "ShortTime": "23:59",
       "Currency": "€999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "163"
   },
   {
     "Id": "en-MH",
@@ -1999,7 +2152,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "199"
   },
   {
     "Id": "en-MU",
@@ -2012,7 +2166,8 @@
       "ShortTime": "23:59",
       "Currency": "Rs999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "160"
   },
   {
     "Id": "en-FM",
@@ -2025,7 +2180,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "US$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "80"
   },
   {
     "Id": "en-MS",
@@ -2038,7 +2194,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "332"
   },
   {
     "Id": "en-NA",
@@ -2051,7 +2208,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "254"
   },
   {
     "Id": "en-NR",
@@ -2064,7 +2222,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "180"
   },
   {
     "Id": "en-NL",
@@ -2077,7 +2236,8 @@
       "ShortTime": "23:59",
       "Currency": "€999.99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "176"
   },
   {
     "Id": "en-NZ",
@@ -2090,7 +2250,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "183"
   },
   {
     "Id": "en-NG",
@@ -2103,7 +2264,8 @@
       "ShortTime": "23:59",
       "Currency": "₦999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "175"
   },
   {
     "Id": "en-NU",
@@ -2116,7 +2278,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "335"
   },
   {
     "Id": "en-NF",
@@ -2129,7 +2292,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "336"
   },
   {
     "Id": "en-MP",
@@ -2142,7 +2306,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "337"
   },
   {
     "Id": "en-PK",
@@ -2155,7 +2320,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "Rs999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "190"
   },
   {
     "Id": "en-PW",
@@ -2168,7 +2334,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "US$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "195"
   },
   {
     "Id": "en-PG",
@@ -2181,7 +2348,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "K999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "194"
   },
   {
     "Id": "en-PH",
@@ -2194,7 +2362,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "₱999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "201"
   },
   {
     "Id": "en-PN",
@@ -2207,7 +2376,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "339"
   },
   {
     "Id": "en-PR",
@@ -2220,7 +2390,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "202"
   },
   {
     "Id": "en-RW",
@@ -2233,7 +2404,8 @@
       "ShortTime": "23:59",
       "Currency": "RF1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "204"
   },
   {
     "Id": "en-WS",
@@ -2246,7 +2418,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "WS$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "259"
   },
   {
     "Id": "en-SC",
@@ -2259,7 +2432,8 @@
       "ShortTime": "23:59",
       "Currency": "SR999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "208"
   },
   {
     "Id": "en-SL",
@@ -2272,7 +2446,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "Le1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "213"
   },
   {
     "Id": "en-SG",
@@ -2285,7 +2460,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "215"
   },
   {
     "Id": "en-SX",
@@ -2298,7 +2474,8 @@
       "ShortTime": "23:59",
       "Currency": "NAf.999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "30967"
   },
   {
     "Id": "en-SI",
@@ -2311,7 +2488,8 @@
       "ShortTime": "23:59",
       "Currency": "€999.99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "212"
   },
   {
     "Id": "en-SB",
@@ -2324,7 +2502,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "30"
   },
   {
     "Id": "en-ZA",
@@ -2337,7 +2516,8 @@
       "ShortTime": "23:59",
       "Currency": "R999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "209"
   },
   {
     "Id": "en-SS",
@@ -2350,7 +2530,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "£999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "276"
   },
   {
     "Id": "en-SH",
@@ -2363,7 +2544,8 @@
       "ShortTime": "23:59",
       "Currency": "£999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "348"
   },
   {
     "Id": "en-KN",
@@ -2376,7 +2558,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "207"
   },
   {
     "Id": "en-LC",
@@ -2389,7 +2572,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "218"
   },
   {
     "Id": "en-VC",
@@ -2402,7 +2586,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "248"
   },
   {
     "Id": "en-SD",
@@ -2415,7 +2600,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "SDG999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "219"
   },
   {
     "Id": "en-SE",
@@ -2428,7 +2614,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 kr",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "221"
   },
   {
     "Id": "en-CH",
@@ -2441,7 +2628,8 @@
       "ShortTime": "23:59",
       "Currency": "CHF 999.99",
       "Number": "123’456.000"
-    }
+    },
+    "GeoLocation": "223"
   },
   {
     "Id": "en-TZ",
@@ -2454,7 +2642,8 @@
       "ShortTime": "23:59",
       "Currency": "TSh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "239"
   },
   {
     "Id": "en-TK",
@@ -2467,7 +2656,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "347"
   },
   {
     "Id": "en-TO",
@@ -2480,7 +2670,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "T$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "231"
   },
   {
     "Id": "en-TT",
@@ -2493,7 +2684,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "225"
   },
   {
     "Id": "en-TC",
@@ -2506,7 +2698,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "US$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "349"
   },
   {
     "Id": "en-TV",
@@ -2519,7 +2712,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "236"
   },
   {
     "Id": "en-UM",
@@ -2532,7 +2726,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": null
   },
   {
     "Id": "en-VI",
@@ -2545,7 +2740,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "252"
   },
   {
     "Id": "en-UG",
@@ -2558,7 +2754,8 @@
       "ShortTime": "23:59",
       "Currency": "USh1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "240"
   },
   {
     "Id": "en-AE",
@@ -2571,7 +2768,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "AED999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "224"
   },
   {
     "Id": "en-GB",
@@ -2584,7 +2782,8 @@
       "ShortTime": "23:59",
       "Currency": "£999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "242"
   },
   {
     "Id": "en-US-posix",
@@ -2597,7 +2796,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "$ 999.99",
       "Number": "123456.000000"
-    }
+    },
+    "GeoLocation": null
   },
   {
     "Id": "en-US",
@@ -2610,7 +2810,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "244"
   },
   {
     "Id": "en-VU",
@@ -2623,7 +2824,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "VT1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "174"
   },
   {
     "Id": "en-001",
@@ -2636,7 +2838,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "¤999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": null
   },
   {
     "Id": "en-ZM",
@@ -2649,7 +2852,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "K999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "263"
   },
   {
     "Id": "en-ZW",
@@ -2662,7 +2866,8 @@
       "ShortTime": "23:59",
       "Currency": "US$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "264"
   },
   {
     "Id": "eo-001",
@@ -2675,7 +2880,8 @@
       "ShortTime": "23:59",
       "Currency": "¤ 999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": null
   },
   {
     "Id": "et-EE",
@@ -2688,7 +2894,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "70"
   },
   {
     "Id": "ee-GH",
@@ -2701,7 +2908,8 @@
       "ShortTime": "ɣetrɔ ga 11:59",
       "Currency": "GH₵999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "89"
   },
   {
     "Id": "ee-TG",
@@ -2714,7 +2922,8 @@
       "ShortTime": "23:59",
       "Currency": "CFA1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "232"
   },
   {
     "Id": "ewo-CM",
@@ -2727,7 +2936,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "fo-DK",
@@ -2740,7 +2950,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 kr.",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "61"
   },
   {
     "Id": "fo-FO",
@@ -2753,7 +2964,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 kr",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "81"
   },
   {
     "Id": "fil-PH",
@@ -2766,7 +2978,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "₱999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "201"
   },
   {
     "Id": "fi-FI",
@@ -2779,7 +2992,8 @@
       "ShortTime": "23.59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "77"
   },
   {
     "Id": "fr-DZ",
@@ -2792,7 +3006,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "999,99 DA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "4"
   },
   {
     "Id": "fr-BE",
@@ -2805,7 +3020,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "21"
   },
   {
     "Id": "fr-BJ",
@@ -2818,7 +3034,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 CFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "28"
   },
   {
     "Id": "fr-BF",
@@ -2831,7 +3048,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 CFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "245"
   },
   {
     "Id": "fr-BI",
@@ -2844,7 +3062,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FBu",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "38"
   },
   {
     "Id": "fr-CM",
@@ -2857,7 +3076,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "fr-CA",
@@ -2870,7 +3090,8 @@
       "ShortTime": "23 h 59",
       "Currency": "999,99 $",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "39"
   },
   {
     "Id": "fr-CF",
@@ -2883,7 +3104,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "55"
   },
   {
     "Id": "fr-TD",
@@ -2896,7 +3118,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "1 000 FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "41"
   },
   {
     "Id": "fr-KM",
@@ -2909,7 +3132,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 CF",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "50"
   },
   {
     "Id": "fr-CD",
@@ -2922,7 +3146,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 FC",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "44"
   },
   {
     "Id": "fr-CG",
@@ -2935,7 +3160,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "43"
   },
   {
     "Id": "fr-CI",
@@ -2948,7 +3174,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 CFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "119"
   },
   {
     "Id": "fr-DJ",
@@ -2961,7 +3188,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "1 000 Fdj",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "62"
   },
   {
     "Id": "fr-GQ",
@@ -2974,7 +3202,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "69"
   },
   {
     "Id": "fr-FR",
@@ -2987,7 +3216,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "84"
   },
   {
     "Id": "fr-GF",
@@ -3000,7 +3230,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "317"
   },
   {
     "Id": "fr-PF",
@@ -3013,7 +3244,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFP",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "318"
   },
   {
     "Id": "fr-GA",
@@ -3026,7 +3258,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "87"
   },
   {
     "Id": "fr-GP",
@@ -3039,7 +3272,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "321"
   },
   {
     "Id": "fr-GN",
@@ -3052,7 +3286,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FG",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "100"
   },
   {
     "Id": "fr-HT",
@@ -3065,7 +3300,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 G",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "103"
   },
   {
     "Id": "fr-LU",
@@ -3078,7 +3314,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "147"
   },
   {
     "Id": "fr-MG",
@@ -3091,7 +3328,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 Ar",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "149"
   },
   {
     "Id": "fr-ML",
@@ -3104,7 +3342,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 CFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "157"
   },
   {
     "Id": "fr-MQ",
@@ -3117,7 +3356,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "330"
   },
   {
     "Id": "fr-MR",
@@ -3130,7 +3370,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "999,99 UM",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "162"
   },
   {
     "Id": "fr-MU",
@@ -3143,7 +3384,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 Rs",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "160"
   },
   {
     "Id": "fr-YT",
@@ -3156,7 +3398,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "331"
   },
   {
     "Id": "fr-MC",
@@ -3169,7 +3412,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "158"
   },
   {
     "Id": "fr-MA",
@@ -3182,7 +3426,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 MAD",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "159"
   },
   {
     "Id": "fr-NC",
@@ -3195,7 +3440,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFP",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "334"
   },
   {
     "Id": "fr-NE",
@@ -3208,7 +3454,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 CFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "173"
   },
   {
     "Id": "fr-RE",
@@ -3221,7 +3468,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "198"
   },
   {
     "Id": "fr-RW",
@@ -3234,7 +3482,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 RF",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "204"
   },
   {
     "Id": "fr-SN",
@@ -3247,7 +3496,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 CFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "210"
   },
   {
     "Id": "fr-SC",
@@ -3260,7 +3510,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 SR",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "208"
   },
   {
     "Id": "fr-BL",
@@ -3273,7 +3524,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "161832015"
   },
   {
     "Id": "fr-MF",
@@ -3286,7 +3538,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "31706"
   },
   {
     "Id": "fr-PM",
@@ -3299,7 +3552,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "206"
   },
   {
     "Id": "fr-CH",
@@ -3312,7 +3566,8 @@
       "ShortTime": "23:59",
       "Currency": "999.99 CHF",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "223"
   },
   {
     "Id": "fr-SY",
@@ -3325,7 +3580,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "1 000 LS",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "222"
   },
   {
     "Id": "fr-TG",
@@ -3338,7 +3594,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 CFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "232"
   },
   {
     "Id": "fr-TN",
@@ -3351,7 +3608,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "999,990 DT",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "234"
   },
   {
     "Id": "fr-VU",
@@ -3364,7 +3622,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "1 000 VT",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "174"
   },
   {
     "Id": "fr-WF",
@@ -3377,7 +3636,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFP",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "352"
   },
   {
     "Id": "fur-IT",
@@ -3390,7 +3650,8 @@
       "ShortTime": "23:59",
       "Currency": "€ 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "118"
   },
   {
     "Id": "ff-Latn-BF",
@@ -3403,7 +3664,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 CFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "245"
   },
   {
     "Id": "ff-Latn-CM",
@@ -3416,7 +3678,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "ff-Latn-GM",
@@ -3429,7 +3692,8 @@
       "ShortTime": "11:59 kikiiɗe",
       "Currency": "999,99 D",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "86"
   },
   {
     "Id": "ff-Latn-GH",
@@ -3442,7 +3706,8 @@
       "ShortTime": "11:59 kikiiɗe",
       "Currency": "999,99 GH₵",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "89"
   },
   {
     "Id": "ff-Latn-GW",
@@ -3455,7 +3720,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 CFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "196"
   },
   {
     "Id": "ff-Latn-GN",
@@ -3468,7 +3734,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FG",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "100"
   },
   {
     "Id": "ff-Latn-LR",
@@ -3481,7 +3748,8 @@
       "ShortTime": "11:59 kikiiɗe",
       "Currency": "999,99 $",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "142"
   },
   {
     "Id": "ff-Latn-MR",
@@ -3494,7 +3762,8 @@
       "ShortTime": "11:59 kikiiɗe",
       "Currency": "999,99 UM",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "162"
   },
   {
     "Id": "ff-Latn-NE",
@@ -3507,7 +3776,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 CFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "173"
   },
   {
     "Id": "ff-Latn-NG",
@@ -3520,7 +3790,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 ₦",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "175"
   },
   {
     "Id": "ff-Latn-SN",
@@ -3533,7 +3804,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 CFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "210"
   },
   {
     "Id": "ff-Latn-SL",
@@ -3546,7 +3818,8 @@
       "ShortTime": "11:59 kikiiɗe",
       "Currency": "1 000 Le",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "213"
   },
   {
     "Id": "gl-ES",
@@ -3559,7 +3832,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "217"
   },
   {
     "Id": "lg-UG",
@@ -3572,7 +3846,8 @@
       "ShortTime": "23:59",
       "Currency": "1,000USh",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "240"
   },
   {
     "Id": "ka-GE",
@@ -3585,7 +3860,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 ₾",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "88"
   },
   {
     "Id": "de-AT",
@@ -3598,7 +3874,8 @@
       "ShortTime": "23:59",
       "Currency": "€ 999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "14"
   },
   {
     "Id": "de-BE",
@@ -3611,7 +3888,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "21"
   },
   {
     "Id": "de-DE",
@@ -3624,7 +3902,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "94"
   },
   {
     "Id": "de-IT",
@@ -3637,7 +3916,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "118"
   },
   {
     "Id": "de-LI",
@@ -3650,7 +3930,8 @@
       "ShortTime": "23:59",
       "Currency": "CHF 999.99",
       "Number": "123’456.000"
-    }
+    },
+    "GeoLocation": "145"
   },
   {
     "Id": "de-LU",
@@ -3663,7 +3944,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "147"
   },
   {
     "Id": "de-CH",
@@ -3676,7 +3958,8 @@
       "ShortTime": "23:59",
       "Currency": "CHF 999.99",
       "Number": "123’456.000"
-    }
+    },
+    "GeoLocation": "223"
   },
   {
     "Id": "el-CY",
@@ -3689,7 +3972,8 @@
       "ShortTime": "11:59 μ.μ.",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "59"
   },
   {
     "Id": "el-GR",
@@ -3702,7 +3986,8 @@
       "ShortTime": "11:59 μ.μ.",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "98"
   },
   {
     "Id": "gn-PY",
@@ -3715,7 +4000,8 @@
       "ShortTime": "23:59",
       "Currency": "₲ 1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "185"
   },
   {
     "Id": "gu-IN",
@@ -3728,7 +4014,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "₹999.99",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "guz-KE",
@@ -3741,7 +4028,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "ha-Latn-GH",
@@ -3754,7 +4042,8 @@
       "ShortTime": "23:59",
       "Currency": "GHS 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "89"
   },
   {
     "Id": "ha-Latn-NE",
@@ -3767,7 +4056,8 @@
       "ShortTime": "23:59",
       "Currency": "CFA 1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "173"
   },
   {
     "Id": "ha-Latn-NG",
@@ -3780,7 +4070,8 @@
       "ShortTime": "23:59",
       "Currency": "₦ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "175"
   },
   {
     "Id": "haw-US",
@@ -3793,7 +4084,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "244"
   },
   {
     "Id": "he-IL",
@@ -3806,7 +4098,8 @@
       "ShortTime": "23:59",
       "Currency": "999.99 ₪",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "117"
   },
   {
     "Id": "hi-IN",
@@ -3819,7 +4112,8 @@
       "ShortTime": "11:59 pm",
       "Currency": "₹999.99",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "hu-HU",
@@ -3832,7 +4126,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 Ft",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "109"
   },
   {
     "Id": "is-IS",
@@ -3845,7 +4140,8 @@
       "ShortTime": "23:59",
       "Currency": "1.000 ISK",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "110"
   },
   {
     "Id": "ig-NG",
@@ -3858,7 +4154,8 @@
       "ShortTime": "23:59",
       "Currency": "₦999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "175"
   },
   {
     "Id": "smn-FI",
@@ -3871,7 +4168,8 @@
       "ShortTime": "23.59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "77"
   },
   {
     "Id": "id-ID",
@@ -3884,7 +4182,8 @@
       "ShortTime": "23.59",
       "Currency": "Rp999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "111"
   },
   {
     "Id": "ia-001",
@@ -3897,7 +4196,8 @@
       "ShortTime": "23:59",
       "Currency": "¤ 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": null
   },
   {
     "Id": "iu-CA",
@@ -3910,7 +4210,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "CA$ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "39"
   },
   {
     "Id": "iu-Latn-CA",
@@ -3923,7 +4224,8 @@
       "ShortTime": "23:59",
       "Currency": "CA$ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "39"
   },
   {
     "Id": "ga-IE",
@@ -3936,7 +4238,8 @@
       "ShortTime": "23:59",
       "Currency": "€999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "68"
   },
   {
     "Id": "xh-ZA",
@@ -3949,7 +4252,8 @@
       "ShortTime": "23:59",
       "Currency": "R999.99",
       "Number": "123 456.000"
-    }
+    },
+    "GeoLocation": "209"
   },
   {
     "Id": "zu-ZA",
@@ -3962,7 +4266,8 @@
       "ShortTime": "23:59",
       "Currency": "R999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "209"
   },
   {
     "Id": "it-IT",
@@ -3975,7 +4280,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "118"
   },
   {
     "Id": "it-SM",
@@ -3988,7 +4294,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "214"
   },
   {
     "Id": "it-CH",
@@ -4001,7 +4308,8 @@
       "ShortTime": "23:59",
       "Currency": "CHF 999.99",
       "Number": "123’456.000"
-    }
+    },
+    "GeoLocation": "223"
   },
   {
     "Id": "it-VA",
@@ -4014,7 +4322,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "253"
   },
   {
     "Id": "ja-JP",
@@ -4027,7 +4336,8 @@
       "ShortTime": "23:59",
       "Currency": "￥1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "122"
   },
   {
     "Id": "jv-Latn-ID",
@@ -4040,7 +4350,8 @@
       "ShortTime": "23:59",
       "Currency": "Rp 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "111"
   },
   {
     "Id": "dyo-SN",
@@ -4053,7 +4364,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 CFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "210"
   },
   {
     "Id": "kea-CV",
@@ -4066,7 +4378,8 @@
       "ShortTime": "23:59",
       "Currency": "999$99 ​",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "57"
   },
   {
     "Id": "kab-DZ",
@@ -4079,7 +4392,8 @@
       "ShortTime": "11:59 n tmeddit",
       "Currency": "999,99DA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "4"
   },
   {
     "Id": "kkj-CM",
@@ -4092,7 +4406,8 @@
       "ShortTime": "23:59",
       "Currency": "FCFA 1.000",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "kl-GL",
@@ -4105,7 +4420,8 @@
       "ShortTime": "23.59",
       "Currency": "kr.999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "93"
   },
   {
     "Id": "kln-KE",
@@ -4118,7 +4434,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "kam-KE",
@@ -4131,7 +4448,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "kn-IN",
@@ -4144,7 +4462,8 @@
       "ShortTime": "11:59 ಅಪರಾಹ್ನ",
       "Currency": "₹999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "ks-Arab-IN",
@@ -4157,7 +4476,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "₹ 999٫99",
       "Number": "1٬23٬456٫000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "kk-KZ",
@@ -4170,7 +4490,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 ₸",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "137"
   },
   {
     "Id": "km-KH",
@@ -4183,7 +4504,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "999,99៛",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "40"
   },
   {
     "Id": "ki-KE",
@@ -4196,7 +4518,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "rw-RW",
@@ -4209,7 +4532,8 @@
       "ShortTime": "23:59",
       "Currency": "RF 1.000",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "204"
   },
   {
     "Id": "sw-CD",
@@ -4222,7 +4546,8 @@
       "ShortTime": "23:59",
       "Currency": "FC 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "44"
   },
   {
     "Id": "sw-KE",
@@ -4235,7 +4560,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "sw-TZ",
@@ -4248,7 +4574,8 @@
       "ShortTime": "23:59",
       "Currency": "TSh 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "239"
   },
   {
     "Id": "sw-UG",
@@ -4261,7 +4588,8 @@
       "ShortTime": "23:59",
       "Currency": "USh 1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "240"
   },
   {
     "Id": "kok-IN",
@@ -4274,7 +4602,8 @@
       "ShortTime": "11:59 म.नं.",
       "Currency": "₹ 999.99",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "ko-KR",
@@ -4287,7 +4616,8 @@
       "ShortTime": "오후 11:59",
       "Currency": "₩1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "134"
   },
   {
     "Id": "ko-KP",
@@ -4300,7 +4630,8 @@
       "ShortTime": "오후 11:59",
       "Currency": "KPW1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "131"
   },
   {
     "Id": "khq-ML",
@@ -4313,7 +4644,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000CFA",
       "Number": "123 456.000"
-    }
+    },
+    "GeoLocation": "157"
   },
   {
     "Id": "ses-ML",
@@ -4326,7 +4658,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000CFA",
       "Number": "123 456.000"
-    }
+    },
+    "GeoLocation": "157"
   },
   {
     "Id": "ku-Arab-IR",
@@ -4339,7 +4672,8 @@
       "ShortTime": "23:59",
       "Currency": "1٬000 IRR",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "116"
   },
   {
     "Id": "ku-Arab-IQ",
@@ -4352,7 +4686,8 @@
       "ShortTime": "11:59 د.ن",
       "Currency": "1٬000 د.ع.‏",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "121"
   },
   {
     "Id": "nmg-CM",
@@ -4365,7 +4700,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "ky-KG",
@@ -4378,7 +4714,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 сом",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "130"
   },
   {
     "Id": "quc-GT",
@@ -4391,7 +4728,8 @@
       "ShortTime": "23:59",
       "Currency": "Q 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "99"
   },
   {
     "Id": "lkt-US",
@@ -4404,7 +4742,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "$ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "244"
   },
   {
     "Id": "lag-TZ",
@@ -4417,7 +4756,8 @@
       "ShortTime": "23:59",
       "Currency": "TSh 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "239"
   },
   {
     "Id": "lo-LA",
@@ -4430,7 +4770,8 @@
       "ShortTime": "23:59",
       "Currency": "₭1.000",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "138"
   },
   {
     "Id": "lv-LV",
@@ -4443,7 +4784,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "140"
   },
   {
     "Id": "ln-AO",
@@ -4456,7 +4798,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 Kz",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "9"
   },
   {
     "Id": "ln-CF",
@@ -4469,7 +4812,8 @@
       "ShortTime": "23:59",
       "Currency": "1.000 FCFA",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "55"
   },
   {
     "Id": "ln-CD",
@@ -4482,7 +4826,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 FC",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "44"
   },
   {
     "Id": "ln-CG",
@@ -4495,7 +4840,8 @@
       "ShortTime": "23:59",
       "Currency": "1.000 FCFA",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "43"
   },
   {
     "Id": "lt-LT",
@@ -4508,7 +4854,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "141"
   },
   {
     "Id": "nds-DE",
@@ -4521,7 +4868,8 @@
       "ShortTime": "23:59",
       "Currency": "€ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "94"
   },
   {
     "Id": "nds-NL",
@@ -4534,7 +4882,8 @@
       "ShortTime": "23:59",
       "Currency": "€ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "176"
   },
   {
     "Id": "dsb-DE",
@@ -4547,7 +4896,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "94"
   },
   {
     "Id": "lu-CD",
@@ -4560,7 +4910,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99FC",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "44"
   },
   {
     "Id": "smj-NO",
@@ -4573,7 +4924,8 @@
       "ShortTime": "23:59",
       "Currency": "NOK 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "177"
   },
   {
     "Id": "smj-SE",
@@ -4586,7 +4938,8 @@
       "ShortTime": "23:59",
       "Currency": "SEK 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "221"
   },
   {
     "Id": "luo-KE",
@@ -4599,7 +4952,8 @@
       "ShortTime": "23:59",
       "Currency": "999.99Ksh",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "lb-LU",
@@ -4612,7 +4966,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "147"
   },
   {
     "Id": "luy-KE",
@@ -4625,7 +4980,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "mk-MK",
@@ -4638,7 +4994,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 ден",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "19618"
   },
   {
     "Id": "jmc-TZ",
@@ -4651,7 +5008,8 @@
       "ShortTime": "23:59",
       "Currency": "TSh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "239"
   },
   {
     "Id": "mgh-MZ",
@@ -4664,7 +5022,8 @@
       "ShortTime": "23:59",
       "Currency": "MTn 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "168"
   },
   {
     "Id": "kde-TZ",
@@ -4677,7 +5036,8 @@
       "ShortTime": "23:59",
       "Currency": "TSh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "239"
   },
   {
     "Id": "mg-MG",
@@ -4690,7 +5050,8 @@
       "ShortTime": "23:59",
       "Currency": "Ar 1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "149"
   },
   {
     "Id": "ms-BN",
@@ -4703,7 +5064,8 @@
       "ShortTime": "11:59 PTG",
       "Currency": "$ 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "37"
   },
   {
     "Id": "ms-MY",
@@ -4716,7 +5078,8 @@
       "ShortTime": "11:59 PTG",
       "Currency": "RM999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "167"
   },
   {
     "Id": "ms-SG",
@@ -4729,7 +5092,8 @@
       "ShortTime": "11:59 PTG",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "215"
   },
   {
     "Id": "ml-IN",
@@ -4742,7 +5106,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "₹999.99",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "mt-MT",
@@ -4755,7 +5120,8 @@
       "ShortTime": "23:59",
       "Currency": "€999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "163"
   },
   {
     "Id": "gv-IM",
@@ -4768,7 +5134,8 @@
       "ShortTime": "23:59",
       "Currency": "£999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "15126"
   },
   {
     "Id": "mi-NZ",
@@ -4781,7 +5148,8 @@
       "ShortTime": "11:59",
       "Currency": "$ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "183"
   },
   {
     "Id": "arn-CL",
@@ -4794,7 +5162,8 @@
       "ShortTime": "23:59",
       "Currency": "CLP 1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "46"
   },
   {
     "Id": "mr-IN",
@@ -4807,7 +5176,8 @@
       "ShortTime": "11:59 म.उ.",
       "Currency": "₹999.99",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "mas-KE",
@@ -4820,7 +5190,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "mas-TZ",
@@ -4833,7 +5204,8 @@
       "ShortTime": "23:59",
       "Currency": "TSh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "239"
   },
   {
     "Id": "mzn-IR",
@@ -4846,7 +5218,8 @@
       "ShortTime": "23:59",
       "Currency": "IRR 1٬000",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "116"
   },
   {
     "Id": "mer-KE",
@@ -4859,7 +5232,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "mgo-CM",
@@ -4872,7 +5246,8 @@
       "ShortTime": "23:59",
       "Currency": "FCFA 1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "moh-CA",
@@ -4885,7 +5260,8 @@
       "ShortTime": "23:59",
       "Currency": "CA$ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "39"
   },
   {
     "Id": "mn-MN",
@@ -4898,7 +5274,8 @@
       "ShortTime": "23:59",
       "Currency": "₮ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "154"
   },
   {
     "Id": "mn-Mong-CN",
@@ -4911,7 +5288,8 @@
       "ShortTime": "23:59",
       "Currency": "CN¥ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "45"
   },
   {
     "Id": "mn-Mong-MN",
@@ -4924,7 +5302,8 @@
       "ShortTime": "23:59",
       "Currency": "₮999,99",
       "Number": "123,456,000"
-    }
+    },
+    "GeoLocation": "154"
   },
   {
     "Id": "mfe-MU",
@@ -4937,7 +5316,8 @@
       "ShortTime": "23:59",
       "Currency": "Rs 999.99",
       "Number": "123 456.000"
-    }
+    },
+    "GeoLocation": "160"
   },
   {
     "Id": "mua-CM",
@@ -4950,7 +5330,8 @@
       "ShortTime": "23:59",
       "Currency": "FCFA1.000",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "nqo-GN",
@@ -4963,7 +5344,8 @@
       "ShortTime": "23:59",
       "Currency": "GNF 1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "100"
   },
   {
     "Id": "naq-NA",
@@ -4976,7 +5358,8 @@
       "ShortTime": "11:59 ǃuias",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "254"
   },
   {
     "Id": "ne-IN",
@@ -4989,7 +5372,8 @@
       "ShortTime": "11:59 अपराह्न",
       "Currency": "₹ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "ne-NP",
@@ -5002,7 +5386,8 @@
       "ShortTime": "23:59",
       "Currency": "नेरू 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "178"
   },
   {
     "Id": "nnh-CM",
@@ -5015,7 +5400,8 @@
       "ShortTime": "23:59",
       "Currency": "FCFA 1.000",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "jgo-CM",
@@ -5028,7 +5414,8 @@
       "ShortTime": "23:59",
       "Currency": "FCFA 1.000",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "nd-ZW",
@@ -5041,7 +5428,8 @@
       "ShortTime": "23:59",
       "Currency": "US$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "264"
   },
   {
     "Id": "lrc-IR",
@@ -5054,7 +5442,8 @@
       "ShortTime": "23:59",
       "Currency": "IRR 1٬000",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "116"
   },
   {
     "Id": "lrc-IQ",
@@ -5067,7 +5456,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "د.ع.‏ 1٬000",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "121"
   },
   {
     "Id": "se-FI",
@@ -5080,7 +5470,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "77"
   },
   {
     "Id": "se-NO",
@@ -5093,7 +5484,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 kr",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "177"
   },
   {
     "Id": "se-SE",
@@ -5106,7 +5498,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 kr",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "221"
   },
   {
     "Id": "nb-NO",
@@ -5119,7 +5512,8 @@
       "ShortTime": "23:59",
       "Currency": "kr 999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "177"
   },
   {
     "Id": "nb-SJ",
@@ -5132,7 +5526,8 @@
       "ShortTime": "23:59",
       "Currency": "kr 999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "220"
   },
   {
     "Id": "nn-NO",
@@ -5145,7 +5540,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 kr",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "177"
   },
   {
     "Id": "nus-SS",
@@ -5158,7 +5554,8 @@
       "ShortTime": "11:59 TŊ",
       "Currency": "£999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "276"
   },
   {
     "Id": "nyn-UG",
@@ -5171,7 +5568,8 @@
       "ShortTime": "23:59",
       "Currency": "USh1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "240"
   },
   {
     "Id": "oc-FR",
@@ -5184,7 +5582,8 @@
       "ShortTime": "23:59",
       "Currency": "€ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "84"
   },
   {
     "Id": "or-IN",
@@ -5197,7 +5596,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "₹999.99",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "om-ET",
@@ -5210,7 +5610,8 @@
       "ShortTime": "11:59 WB",
       "Currency": "Br999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "73"
   },
   {
     "Id": "om-KE",
@@ -5223,7 +5624,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "os-GE",
@@ -5236,7 +5638,8 @@
       "ShortTime": "23:59",
       "Currency": "₾ 999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "88"
   },
   {
     "Id": "os-RU",
@@ -5249,7 +5652,8 @@
       "ShortTime": "23:59",
       "Currency": "₽ 999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "203"
   },
   {
     "Id": "ps-AF",
@@ -5262,7 +5666,8 @@
       "ShortTime": "23:59",
       "Currency": "1٬000 ؋",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "3"
   },
   {
     "Id": "ps-PK",
@@ -5275,7 +5680,8 @@
       "ShortTime": "11:59 غ.و.",
       "Currency": "999٫99 Rs",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "190"
   },
   {
     "Id": "fa-IR",
@@ -5288,7 +5694,8 @@
       "ShortTime": "23:59",
       "Currency": "ریال1٬000",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "116"
   },
   {
     "Id": "pl-PL",
@@ -5301,7 +5708,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 zł",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "191"
   },
   {
     "Id": "pt-AO",
@@ -5314,7 +5722,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 Kz",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "9"
   },
   {
     "Id": "pt-BR",
@@ -5327,7 +5736,8 @@
       "ShortTime": "23:59",
       "Currency": "R$ 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "32"
   },
   {
     "Id": "pt-CV",
@@ -5340,7 +5750,8 @@
       "ShortTime": "23:59",
       "Currency": "999$99 ​",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "57"
   },
   {
     "Id": "pt-GQ",
@@ -5353,7 +5764,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "69"
   },
   {
     "Id": "pt-GW",
@@ -5366,7 +5778,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 CFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "196"
   },
   {
     "Id": "pt-LU",
@@ -5379,7 +5792,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "147"
   },
   {
     "Id": "pt-MO",
@@ -5392,7 +5806,8 @@
       "ShortTime": "11:59 da tarde",
       "Currency": "999,99 MOP$",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "151"
   },
   {
     "Id": "pt-MZ",
@@ -5405,7 +5820,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 MTn",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "168"
   },
   {
     "Id": "pt-PT",
@@ -5418,7 +5834,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "193"
   },
   {
     "Id": "pt-ST",
@@ -5431,7 +5848,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 Db",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "233"
   },
   {
     "Id": "pt-CH",
@@ -5444,7 +5862,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 CHF",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "223"
   },
   {
     "Id": "pt-TL",
@@ -5457,7 +5876,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 US$",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "7299303"
   },
   {
     "Id": "prs-AF",
@@ -5470,7 +5890,8 @@
       "ShortTime": "23:59",
       "Currency": "؋ 1٬000",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "3"
   },
   {
     "Id": "prg-001",
@@ -5483,7 +5904,8 @@
       "ShortTime": "23:59",
       "Currency": "¤ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": null
   },
   {
     "Id": "pa-Arab-PK",
@@ -5496,7 +5918,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "ر 999٫99",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "190"
   },
   {
     "Id": "pa-IN",
@@ -5509,7 +5932,8 @@
       "ShortTime": "11:59 ਬਾ.ਦੁ.",
       "Currency": "₹ 999.99",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "quz-BO",
@@ -5522,7 +5946,8 @@
       "ShortTime": "23:59",
       "Currency": "BOB 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "26"
   },
   {
     "Id": "quz-EC",
@@ -5535,7 +5960,8 @@
       "ShortTime": "23:59",
       "Currency": "US$ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "66"
   },
   {
     "Id": "quz-PE",
@@ -5548,7 +5974,8 @@
       "ShortTime": "23:59",
       "Currency": "S/ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "187"
   },
   {
     "Id": "ro-MD",
@@ -5561,7 +5988,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 L",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "152"
   },
   {
     "Id": "ro-RO",
@@ -5574,7 +6002,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 RON",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "200"
   },
   {
     "Id": "rm-CH",
@@ -5587,7 +6016,8 @@
       "ShortTime": "23:59",
       "Currency": "999.99 CHF",
       "Number": "123’456.000"
-    }
+    },
+    "GeoLocation": "223"
   },
   {
     "Id": "rof-TZ",
@@ -5600,7 +6030,8 @@
       "ShortTime": "23:59",
       "Currency": "TSh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "239"
   },
   {
     "Id": "rn-BI",
@@ -5613,7 +6044,8 @@
       "ShortTime": "23:59",
       "Currency": "1.000FBu",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "38"
   },
   {
     "Id": "ru-BY",
@@ -5626,7 +6058,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 Br",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "29"
   },
   {
     "Id": "ru-KZ",
@@ -5639,7 +6072,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 ₸",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "137"
   },
   {
     "Id": "ru-KG",
@@ -5652,7 +6086,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 сом",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "130"
   },
   {
     "Id": "ru-MD",
@@ -5665,7 +6100,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 L",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "152"
   },
   {
     "Id": "ru-RU",
@@ -5678,7 +6114,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 ₽",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "203"
   },
   {
     "Id": "ru-UA",
@@ -5691,7 +6128,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 ₴",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "241"
   },
   {
     "Id": "rwk-TZ",
@@ -5704,7 +6142,8 @@
       "ShortTime": "23:59",
       "Currency": "999.99TSh",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "239"
   },
   {
     "Id": "ssy-ER",
@@ -5717,7 +6156,8 @@
       "ShortTime": "23:59",
       "Currency": "Nfk 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "71"
   },
   {
     "Id": "sah-RU",
@@ -5730,7 +6170,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 ₽",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "203"
   },
   {
     "Id": "saq-KE",
@@ -5743,7 +6184,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "sg-CF",
@@ -5756,7 +6198,8 @@
       "ShortTime": "23:59",
       "Currency": "FCFA1.000",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "55"
   },
   {
     "Id": "sbp-TZ",
@@ -5769,7 +6212,8 @@
       "ShortTime": "23:59",
       "Currency": "999.99TSh",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "239"
   },
   {
     "Id": "sa-IN",
@@ -5782,7 +6226,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "रु 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "gd-GB",
@@ -5795,7 +6240,8 @@
       "ShortTime": "23:59",
       "Currency": "£999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "242"
   },
   {
     "Id": "seh-MZ",
@@ -5808,7 +6254,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99MTn",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "168"
   },
   {
     "Id": "sr-Cyrl-BA",
@@ -5821,7 +6268,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 КМ",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "25"
   },
   {
     "Id": "sr-Cyrl-XK",
@@ -5834,7 +6282,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "9914689"
   },
   {
     "Id": "sr-Cyrl-ME",
@@ -5847,7 +6296,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "270"
   },
   {
     "Id": "sr-Cyrl-RS",
@@ -5860,7 +6310,8 @@
       "ShortTime": "23:59",
       "Currency": "1.000 RSD",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "269"
   },
   {
     "Id": "sr-Latn-BA",
@@ -5873,7 +6324,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 KM",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "25"
   },
   {
     "Id": "sr-Latn-XK",
@@ -5886,7 +6338,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "9914689"
   },
   {
     "Id": "sr-Latn-ME",
@@ -5899,7 +6352,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "270"
   },
   {
     "Id": "sr-Latn-RS",
@@ -5912,7 +6366,8 @@
       "ShortTime": "23:59",
       "Currency": "1.000 RSD",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "269"
   },
   {
     "Id": "st-LS",
@@ -5925,7 +6380,8 @@
       "ShortTime": "23:59",
       "Currency": "R999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "146"
   },
   {
     "Id": "st-ZA",
@@ -5938,7 +6394,8 @@
       "ShortTime": "23:59",
       "Currency": "R999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "209"
   },
   {
     "Id": "nso-ZA",
@@ -5951,7 +6408,8 @@
       "ShortTime": "23:59",
       "Currency": "R 999.99",
       "Number": "123 456.000"
-    }
+    },
+    "GeoLocation": "209"
   },
   {
     "Id": "tn-BW",
@@ -5964,7 +6422,8 @@
       "ShortTime": "23:59",
       "Currency": "P999.99",
       "Number": "123 456.000"
-    }
+    },
+    "GeoLocation": "19"
   },
   {
     "Id": "tn-ZA",
@@ -5977,7 +6436,8 @@
       "ShortTime": "23:59",
       "Currency": "R999.99",
       "Number": "123 456.000"
-    }
+    },
+    "GeoLocation": "209"
   },
   {
     "Id": "ksb-TZ",
@@ -5990,7 +6450,8 @@
       "ShortTime": "23:59",
       "Currency": "999.99TSh",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "239"
   },
   {
     "Id": "sn-Latn-ZW",
@@ -6003,7 +6464,8 @@
       "ShortTime": "23:59",
       "Currency": "US$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "264"
   },
   {
     "Id": "sd-Arab-PK",
@@ -6016,7 +6478,8 @@
       "ShortTime": "11:59 منجهند، شام",
       "Currency": "999٫99 Rs",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "190"
   },
   {
     "Id": "si-LK",
@@ -6029,7 +6492,8 @@
       "ShortTime": "23.59",
       "Currency": "රු.999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "42"
   },
   {
     "Id": "ss-SZ",
@@ -6042,7 +6506,8 @@
       "ShortTime": "23:59",
       "Currency": "E999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "260"
   },
   {
     "Id": "ss-ZA",
@@ -6055,7 +6520,8 @@
       "ShortTime": "23:59",
       "Currency": "R999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "209"
   },
   {
     "Id": "sms-FI",
@@ -6068,7 +6534,8 @@
       "ShortTime": "23:59",
       "Currency": "€ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "77"
   },
   {
     "Id": "sk-SK",
@@ -6081,7 +6548,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "143"
   },
   {
     "Id": "sl-SI",
@@ -6094,7 +6562,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "212"
   },
   {
     "Id": "xog-UG",
@@ -6107,7 +6576,8 @@
       "ShortTime": "23:59",
       "Currency": "1,000 USh",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "240"
   },
   {
     "Id": "so-DJ",
@@ -6120,7 +6590,8 @@
       "ShortTime": "11:59 GD",
       "Currency": "Fdj1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "62"
   },
   {
     "Id": "so-ET",
@@ -6133,7 +6604,8 @@
       "ShortTime": "11:59 GD",
       "Currency": "Br999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "73"
   },
   {
     "Id": "so-KE",
@@ -6146,7 +6618,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "so-SO",
@@ -6159,7 +6632,8 @@
       "ShortTime": "11:59 GD",
       "Currency": "S1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "216"
   },
   {
     "Id": "nr-ZA",
@@ -6172,7 +6646,8 @@
       "ShortTime": "23:59",
       "Currency": "R999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "209"
   },
   {
     "Id": "sma-NO",
@@ -6185,7 +6660,8 @@
       "ShortTime": "23:59",
       "Currency": "NOK 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "177"
   },
   {
     "Id": "sma-SE",
@@ -6198,7 +6674,8 @@
       "ShortTime": "23:59",
       "Currency": "SEK 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "221"
   },
   {
     "Id": "es-AR",
@@ -6211,7 +6688,8 @@
       "ShortTime": "23:59",
       "Currency": "$ 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "11"
   },
   {
     "Id": "es-BZ",
@@ -6224,7 +6702,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "24"
   },
   {
     "Id": "es-BO",
@@ -6237,7 +6716,8 @@
       "ShortTime": "23:59",
       "Currency": "Bs999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "26"
   },
   {
     "Id": "es-BR",
@@ -6250,7 +6730,8 @@
       "ShortTime": "23:59",
       "Currency": "R$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "32"
   },
   {
     "Id": "es-CL",
@@ -6263,7 +6744,8 @@
       "ShortTime": "23:59",
       "Currency": "$1.000",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "46"
   },
   {
     "Id": "es-CO",
@@ -6276,7 +6758,8 @@
       "ShortTime": "11:59 p. m.",
       "Currency": "$ 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "51"
   },
   {
     "Id": "es-CR",
@@ -6289,7 +6772,8 @@
       "ShortTime": "23:59",
       "Currency": "₡999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "54"
   },
   {
     "Id": "es-CU",
@@ -6302,7 +6786,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "56"
   },
   {
     "Id": "es-DO",
@@ -6315,7 +6800,8 @@
       "ShortTime": "11:59 p. m.",
       "Currency": "RD$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "65"
   },
   {
     "Id": "es-EC",
@@ -6328,7 +6814,8 @@
       "ShortTime": "23:59",
       "Currency": "$999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "66"
   },
   {
     "Id": "es-SV",
@@ -6341,7 +6828,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "72"
   },
   {
     "Id": "es-GQ",
@@ -6354,7 +6842,8 @@
       "ShortTime": "23:59",
       "Currency": "FCFA1.000",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "69"
   },
   {
     "Id": "es-GT",
@@ -6367,7 +6856,8 @@
       "ShortTime": "23:59",
       "Currency": "Q999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "99"
   },
   {
     "Id": "es-HN",
@@ -6380,7 +6870,8 @@
       "ShortTime": "23:59",
       "Currency": "L999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "106"
   },
   {
     "Id": "es-419",
@@ -6393,7 +6884,8 @@
       "ShortTime": "23:59",
       "Currency": "¤999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": null
   },
   {
     "Id": "es-MX",
@@ -6406,7 +6898,8 @@
       "ShortTime": "23:59",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "166"
   },
   {
     "Id": "es-NI",
@@ -6419,7 +6912,8 @@
       "ShortTime": "23:59",
       "Currency": "C$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "182"
   },
   {
     "Id": "es-PA",
@@ -6432,7 +6926,8 @@
       "ShortTime": "11:59 p. m.",
       "Currency": "B/.999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "192"
   },
   {
     "Id": "es-PY",
@@ -6445,7 +6940,8 @@
       "ShortTime": "23:59",
       "Currency": "Gs. 1.000",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "185"
   },
   {
     "Id": "es-PE",
@@ -6458,7 +6954,8 @@
       "ShortTime": "23:59",
       "Currency": "S/ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "187"
   },
   {
     "Id": "es-PH",
@@ -6471,7 +6968,8 @@
       "ShortTime": "11:59 p. m.",
       "Currency": "999,99 ₱",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "201"
   },
   {
     "Id": "es-PR",
@@ -6484,7 +6982,8 @@
       "ShortTime": "11:59 p. m.",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "202"
   },
   {
     "Id": "es-ES",
@@ -6497,7 +6996,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "217"
   },
   {
     "Id": "es-US",
@@ -6510,7 +7010,8 @@
       "ShortTime": "11:59 p. m.",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "244"
   },
   {
     "Id": "es-UY",
@@ -6523,7 +7024,8 @@
       "ShortTime": "23:59",
       "Currency": "$ 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "246"
   },
   {
     "Id": "es-VE",
@@ -6536,7 +7038,8 @@
       "ShortTime": "11:59 p. m.",
       "Currency": "Bs.S999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "249"
   },
   {
     "Id": "zgh-Tfng-MA",
@@ -6549,7 +7052,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99MAD",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "159"
   },
   {
     "Id": "sv-AX",
@@ -6562,7 +7066,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "10028789"
   },
   {
     "Id": "sv-FI",
@@ -6575,7 +7080,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 €",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "77"
   },
   {
     "Id": "sv-SE",
@@ -6588,7 +7094,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 kr",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "221"
   },
   {
     "Id": "gsw-FR",
@@ -6601,7 +7108,8 @@
       "ShortTime": "23:59",
       "Currency": "999.99 €",
       "Number": "123’456.000"
-    }
+    },
+    "GeoLocation": "84"
   },
   {
     "Id": "gsw-LI",
@@ -6614,7 +7122,8 @@
       "ShortTime": "23:59",
       "Currency": "999.99 CHF",
       "Number": "123’456.000"
-    }
+    },
+    "GeoLocation": "145"
   },
   {
     "Id": "gsw-CH",
@@ -6627,7 +7136,8 @@
       "ShortTime": "23:59",
       "Currency": "999.99 CHF",
       "Number": "123’456.000"
-    }
+    },
+    "GeoLocation": "223"
   },
   {
     "Id": "syr-SY",
@@ -6640,7 +7150,8 @@
       "ShortTime": "23:59",
       "Currency": "SYP 1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "222"
   },
   {
     "Id": "shi-Latn-MA",
@@ -6653,7 +7164,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99MAD",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "159"
   },
   {
     "Id": "shi-Tfng-MA",
@@ -6666,7 +7178,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99MAD",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "159"
   },
   {
     "Id": "dav-KE",
@@ -6679,7 +7192,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "tg-Cyrl-TJ",
@@ -6692,7 +7206,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 сом.",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "228"
   },
   {
     "Id": "ta-IN",
@@ -6705,7 +7220,8 @@
       "ShortTime": "பிற்பகல் 11:59",
       "Currency": "₹ 999.99",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "ta-MY",
@@ -6718,7 +7234,8 @@
       "ShortTime": "பிற்பகல் 11:59",
       "Currency": "RM 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "167"
   },
   {
     "Id": "ta-SG",
@@ -6731,7 +7248,8 @@
       "ShortTime": "பிற்பகல் 11:59",
       "Currency": "$ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "215"
   },
   {
     "Id": "ta-LK",
@@ -6744,7 +7262,8 @@
       "ShortTime": "23:59",
       "Currency": "Rs. 999.99",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "42"
   },
   {
     "Id": "twq-NE",
@@ -6757,7 +7276,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000CFA",
       "Number": "123 456.000"
-    }
+    },
+    "GeoLocation": "173"
   },
   {
     "Id": "tt-RU",
@@ -6770,7 +7290,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 ₽",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "203"
   },
   {
     "Id": "te-IN",
@@ -6783,7 +7304,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "₹999.99",
       "Number": "1,23,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "teo-KE",
@@ -6796,7 +7318,8 @@
       "ShortTime": "23:59",
       "Currency": "Ksh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "129"
   },
   {
     "Id": "teo-UG",
@@ -6809,7 +7332,8 @@
       "ShortTime": "23:59",
       "Currency": "USh1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "240"
   },
   {
     "Id": "th-TH",
@@ -6822,7 +7346,8 @@
       "ShortTime": "23:59",
       "Currency": "฿999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "227"
   },
   {
     "Id": "bo-CN",
@@ -6835,7 +7360,8 @@
       "ShortTime": "11:59 ཕྱི་དྲོ་",
       "Currency": "¥ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "45"
   },
   {
     "Id": "bo-IN",
@@ -6848,7 +7374,8 @@
       "ShortTime": "11:59 ཕྱི་དྲོ་",
       "Currency": "₹ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "tig-ER",
@@ -6861,7 +7388,8 @@
       "ShortTime": "23:59",
       "Currency": "Nfk 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "71"
   },
   {
     "Id": "ti-ER",
@@ -6874,7 +7402,8 @@
       "ShortTime": "11:59 ድሕር ሰዓት",
       "Currency": "Nfk999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "71"
   },
   {
     "Id": "ti-ET",
@@ -6887,7 +7416,8 @@
       "ShortTime": "11:59 ድሕር ሰዓት",
       "Currency": "Br999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "73"
   },
   {
     "Id": "to-TO",
@@ -6900,7 +7430,8 @@
       "ShortTime": "11:59 efiafi",
       "Currency": "T$ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "231"
   },
   {
     "Id": "tr-CY",
@@ -6913,7 +7444,8 @@
       "ShortTime": "11:59 ÖS",
       "Currency": "€999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "59"
   },
   {
     "Id": "tr-TR",
@@ -6926,7 +7458,8 @@
       "ShortTime": "23:59",
       "Currency": "₺999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "235"
   },
   {
     "Id": "tk-TM",
@@ -6939,7 +7472,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 TMT",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "238"
   },
   {
     "Id": "uk-UA",
@@ -6952,7 +7486,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 ₴",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "241"
   },
   {
     "Id": "hsb-DE",
@@ -6965,7 +7500,8 @@
       "ShortTime": "23:59 hodź.",
       "Currency": "999,99 €",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "94"
   },
   {
     "Id": "ur-IN",
@@ -6978,7 +7514,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "₹ 999٫99",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "113"
   },
   {
     "Id": "ur-PK",
@@ -6991,7 +7528,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "Rs 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "190"
   },
   {
     "Id": "ug-CN",
@@ -7004,7 +7542,8 @@
       "ShortTime": "11:59 چۈشتىن كېيىن",
       "Currency": "￥999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "45"
   },
   {
     "Id": "uz-Arab-AF",
@@ -7017,7 +7556,8 @@
       "ShortTime": "23:59",
       "Currency": "؋ 1٬000",
       "Number": "123٬456٫000"
-    }
+    },
+    "GeoLocation": "3"
   },
   {
     "Id": "uz-Cyrl-UZ",
@@ -7030,7 +7570,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 сўм",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "247"
   },
   {
     "Id": "uz-Latn-UZ",
@@ -7043,7 +7584,8 @@
       "ShortTime": "23:59",
       "Currency": "999,99 soʻm",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "247"
   },
   {
     "Id": "vai-Latn-LR",
@@ -7056,7 +7598,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "142"
   },
   {
     "Id": "vai-Vaii-LR",
@@ -7069,7 +7612,8 @@
       "ShortTime": "11:59 PM",
       "Currency": "$999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "142"
   },
   {
     "Id": "ve-ZA",
@@ -7082,7 +7626,8 @@
       "ShortTime": "23:59",
       "Currency": "R999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "209"
   },
   {
     "Id": "vi-VN",
@@ -7095,7 +7640,8 @@
       "ShortTime": "23:59",
       "Currency": "1.000 ₫",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "251"
   },
   {
     "Id": "vo-001",
@@ -7108,7 +7654,8 @@
       "ShortTime": "23:59",
       "Currency": "¤ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": null
   },
   {
     "Id": "vun-TZ",
@@ -7121,7 +7668,8 @@
       "ShortTime": "23:59",
       "Currency": "TSh999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "239"
   },
   {
     "Id": "wae-CH",
@@ -7134,7 +7682,8 @@
       "ShortTime": "23:59",
       "Currency": "CHF 999,99",
       "Number": "123’456,000"
-    }
+    },
+    "GeoLocation": "223"
   },
   {
     "Id": "cy-GB",
@@ -7147,7 +7696,8 @@
       "ShortTime": "23:59",
       "Currency": "£999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "242"
   },
   {
     "Id": "fy-NL",
@@ -7160,7 +7710,8 @@
       "ShortTime": "23:59",
       "Currency": "€ 999,99",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "176"
   },
   {
     "Id": "wal-ET",
@@ -7173,7 +7724,8 @@
       "ShortTime": "23:59",
       "Currency": "Br 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "73"
   },
   {
     "Id": "wo-SN",
@@ -7186,7 +7738,8 @@
       "ShortTime": "23:59",
       "Currency": "CFA 1.000",
       "Number": "123.456,000"
-    }
+    },
+    "GeoLocation": "210"
   },
   {
     "Id": "ts-ZA",
@@ -7199,7 +7752,8 @@
       "ShortTime": "23:59",
       "Currency": "R 999,99",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "209"
   },
   {
     "Id": "yav-CM",
@@ -7212,7 +7766,8 @@
       "ShortTime": "23:59",
       "Currency": "1 000 FCFA",
       "Number": "123 456,000"
-    }
+    },
+    "GeoLocation": "49"
   },
   {
     "Id": "ii-CN",
@@ -7225,7 +7780,8 @@
       "ShortTime": "11:59 ꁯꋒ",
       "Currency": "¥ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "45"
   },
   {
     "Id": "yi-001",
@@ -7238,7 +7794,8 @@
       "ShortTime": "23:59",
       "Currency": "¤ 999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": null
   },
   {
     "Id": "yo-BJ",
@@ -7251,7 +7808,8 @@
       "ShortTime": "23:59",
       "Currency": "CFA1,000",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "28"
   },
   {
     "Id": "yo-NG",
@@ -7264,7 +7822,8 @@
       "ShortTime": "23:59",
       "Currency": "₦999.99",
       "Number": "123,456.000"
-    }
+    },
+    "GeoLocation": "175"
   },
   {
     "Id": "dje-NE",
@@ -7277,6 +7836,7 @@
       "ShortTime": "23:59",
       "Currency": "1 000CFA",
       "Number": "123 456.000"
-    }
+    },
+    "GeoLocation": "173"
   }
 ]

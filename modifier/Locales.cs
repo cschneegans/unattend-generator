@@ -10,7 +10,8 @@ public class InteractiveLanguageSettings : ILanguageSettings;
 public record class UnattendedLanguageSettings(
   ImageLanguage ImageLanguage,
   UserLocale UserLocale,
-  KeyboardIdentifier InputLocale
+  KeyboardIdentifier InputLocale,
+  GeoLocation GeoLocation
 ) : ILanguageSettings;
 
 class LocalesModifier(ModifierContext context) : Modifier(context)
@@ -42,6 +43,11 @@ class LocalesModifier(ModifierContext context) : Modifier(context)
           node.SelectSingleNodeOrThrow("u:SetupUILanguage/u:UILanguage", NamespaceManager).InnerText = settings.ImageLanguage.Id;
         }
       }
+
+      var appender = new CommandAppender(Document, NamespaceManager, new SpecializeCommandConfig());
+      appender.Append(
+        CommandBuilder.PowerShellCommand($"Set-WinHomeLocation -GeoId {settings.GeoLocation.Id};")
+      );
     }
     else if (Configuration.LanguageSettings is InteractiveLanguageSettings)
     {

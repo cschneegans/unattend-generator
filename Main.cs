@@ -521,6 +521,16 @@ public class TimeOffset(
   public string DisplayName { get; } = displayName;
 }
 
+public class GeoLocation(
+  string id,
+  string displayName
+) : IKeyed
+{
+  public string Id { get; } = id;
+
+  public string DisplayName { get; } = displayName;
+}
+
 public record class FormattingExamples(
   string LongDate,
   string ShortDate,
@@ -552,11 +562,34 @@ public class KeyboardConverter(
   }
 }
 
+public class GeoLocationConverter(
+  UnattendGenerator generator
+) : JsonConverter<GeoLocation>
+{
+  public override bool CanWrite => false;
+
+  public override GeoLocation? ReadJson(JsonReader reader, Type objectType, GeoLocation? existingValue, bool hasExistingValue, JsonSerializer serializer)
+  {
+    return reader.TokenType switch
+    {
+      JsonToken.String => generator.Lookup<GeoLocation>("" + reader.Value),
+      JsonToken.Null => null,
+      _ => throw new NotSupportedException(),
+    };
+  }
+
+  public override void WriteJson(JsonWriter writer, GeoLocation? value, JsonSerializer serializer)
+  {
+    throw new NotImplementedException();
+  }
+}
+
 public class UserLocale(
   string id,
   string displayName,
   KeyboardIdentifier? keyboardLayout,
-  FormattingExamples formattingExamples
+  FormattingExamples formattingExamples,
+  GeoLocation? geoLocation
 ) : IKeyed
 {
   public string Id { get; } = id;
@@ -566,6 +599,8 @@ public class UserLocale(
   public KeyboardIdentifier? KeyboardLayout { get; } = keyboardLayout;
 
   public FormattingExamples FormattingExamples { get; } = formattingExamples;
+
+  public GeoLocation? GeoLocation { get; } = geoLocation;
 }
 
 public static class Constants
@@ -610,8 +645,12 @@ public class UnattendGenerator
       KeyboardIdentifiers = JsonConvert.DeserializeObject<KeyboardIdentifier[]>(json).ToKeyedDictionary();
     }
     {
+      string json = Util.StringFromResource("GeoId.json");
+      GeoLocations = JsonConvert.DeserializeObject<GeoLocation[]>(json).ToKeyedDictionary();
+    }
+    {
       string json = Util.StringFromResource("UserLocale.json");
-      JsonConverter[] converters = [new KeyboardConverter(this)];
+      JsonConverter[] converters = [new KeyboardConverter(this), new GeoLocationConverter(this)];
       UserLocales = JsonConvert.DeserializeObject<UserLocale[]>(json, converters).ToKeyedDictionary();
     }
     {
@@ -660,12 +699,13 @@ public class UnattendGenerator
     });
   }
 
-  public UnattendedLanguageSettings CreateUnattendedLanguageSettings(string imageLanguage, string userLocale, string keyboardIdentifier)
+  public UnattendedLanguageSettings CreateUnattendedLanguageSettings(string imageLanguage, string userLocale, string keyboardIdentifier, string geoLocation)
   {
     return new UnattendedLanguageSettings(
       ImageLanguage: Lookup<ImageLanguage>(imageLanguage),
       UserLocale: Lookup<UserLocale>(userLocale),
-      InputLocale: Lookup<KeyboardIdentifier>(keyboardIdentifier)
+      InputLocale: Lookup<KeyboardIdentifier>(keyboardIdentifier),
+      GeoLocation: Lookup<GeoLocation>(geoLocation)
     );
   }
 
@@ -694,6 +734,8 @@ public class UnattendGenerator
   }
 
   public IImmutableDictionary<string, TimeOffset> TimeZones { get; }
+  
+  public IImmutableDictionary<string, GeoLocation> GeoLocations { get; }
 
   public IImmutableDictionary<string, Component> Components { get; }
 
@@ -746,6 +788,10 @@ public class UnattendGenerator
     if (typeof(T) == typeof(Bloatware))
     {
       return (T)(object)Lookup(Bloatwares, key);
+    }
+    if (typeof(T) == typeof(GeoLocation))
+    {
+      return (T)(object)Lookup(GeoLocations, key);
     }
     throw new NotSupportedException();
   }

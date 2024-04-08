@@ -9,9 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resource\GeoId.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="resource\autounattend.xml" />
     <EmbeddedResource Include="resource\autounattend.xsd" />
     <EmbeddedResource Include="resource\Component.json" />
+    <EmbeddedResource Include="resource\GeoId.json" />
     <EmbeddedResource Include="resource\ImageLanguage.json" />
     <EmbeddedResource Include="resource\KeyboardIdentifier.json" />
     <EmbeddedResource Include="resource\Bloatware.json" />
