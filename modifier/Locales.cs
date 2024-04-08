@@ -44,10 +44,16 @@ class LocalesModifier(ModifierContext context) : Modifier(context)
         }
       }
 
-      var appender = new CommandAppender(Document, NamespaceManager, new SpecializeCommandConfig());
-      appender.Append(
-        CommandBuilder.PowerShellCommand($"Set-WinHomeLocation -GeoId {settings.GeoLocation.Id};")
-      );
+      if (settings.GeoLocation.Id != settings.UserLocale.GeoLocation?.Id)
+      {
+        var appender = new CommandAppender(Document, NamespaceManager, new SpecializeCommandConfig());
+        appender.Append(
+          CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
+          {
+            return [CommandBuilder.UserRunOnceCommand("GeoLocation", CommandBuilder.PowerShellCommand($"Set-WinHomeLocation -GeoId {settings.GeoLocation.Id};"), rootKey, subKey)];
+          }
+         ));
+      }
     }
     else if (Configuration.LanguageSettings is InteractiveLanguageSettings)
     {
