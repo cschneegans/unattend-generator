@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resource\ExtractScripts.ps1" />
     <None Remove="resource\GeoId.json" />
   </ItemGroup>
 
@@ -16,6 +17,7 @@
     <EmbeddedResource Include="resource\autounattend.xml" />
     <EmbeddedResource Include="resource\autounattend.xsd" />
     <EmbeddedResource Include="resource\Component.json" />
+    <EmbeddedResource Include="resource\ExtractScripts.ps1" />
     <EmbeddedResource Include="resource\GeoId.json" />
     <EmbeddedResource Include="resource\ImageLanguage.json" />
     <EmbeddedResource Include="resource\KeyboardIdentifier.json" />

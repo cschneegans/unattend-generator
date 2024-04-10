@@ -48,16 +48,7 @@ abstract class CommandConfig
   public readonly static SpecializeCommandConfig Specialize = new();
   public readonly static OobeCommandConfig Oobe = new();
 
-  protected abstract XmlElement GetContainer(XmlDocument doc, XmlNamespaceManager ns);
-
   public abstract XmlElement CreateElement(XmlDocument doc, XmlNamespaceManager ns);
-
-  public XmlComment CreateComment(XmlDocument doc, XmlNamespaceManager ns)
-  {
-    XmlComment comment = doc.CreateComment(null);
-    GetContainer(doc, ns).AppendChild(comment);
-    return comment;
-  }
 }
 
 /// <summary>
@@ -72,14 +63,10 @@ abstract class CommandConfig
 /// </summary>
 class WindowsPECommandConfig : CommandConfig
 {
-  protected override XmlElement GetContainer(XmlDocument doc, XmlNamespaceManager ns)
-  {
-    return Util.GetOrCreateElement(Pass.windowsPE, "Microsoft-Windows-Setup", "RunSynchronous", doc, ns);
-  }
-
   public override XmlElement CreateElement(XmlDocument doc, XmlNamespaceManager ns)
   {
-    var outer = Util.NewElement("RunSynchronousCommand", GetContainer(doc, ns), doc, ns);
+    var container = Util.GetOrCreateElement(Pass.windowsPE, "Microsoft-Windows-Setup", "RunSynchronous", doc, ns);
+    var outer = Util.NewElement("RunSynchronousCommand", container, doc, ns);
     return Util.NewElement("Path", outer, doc, ns);
   }
 }
@@ -96,14 +83,10 @@ class WindowsPECommandConfig : CommandConfig
 /// </summary>
 class SpecializeCommandConfig : CommandConfig
 {
-  protected override XmlElement GetContainer(XmlDocument doc, XmlNamespaceManager ns)
-  {
-    return Util.GetOrCreateElement(Pass.specialize, "Microsoft-Windows-Deployment", "RunSynchronous", doc, ns);
-  }
-
   public override XmlElement CreateElement(XmlDocument doc, XmlNamespaceManager ns)
   {
-    var outer = Util.NewElement("RunSynchronousCommand", GetContainer(doc, ns), doc, ns);
+    var container = Util.GetOrCreateElement(Pass.specialize, "Microsoft-Windows-Deployment", "RunSynchronous", doc, ns);
+    var outer = Util.NewElement("RunSynchronousCommand", container, doc, ns);
     return Util.NewElement("Path", outer, doc, ns);
   }
 }
@@ -120,14 +103,10 @@ class SpecializeCommandConfig : CommandConfig
 /// </summary>
 class OobeCommandConfig : CommandConfig
 {
-  protected override XmlElement GetContainer(XmlDocument doc, XmlNamespaceManager ns)
-  {
-    return Util.GetOrCreateElement(Pass.oobeSystem, "Microsoft-Windows-Shell-Setup", "FirstLogonCommands", doc, ns);
-  }
-
   public override XmlElement CreateElement(XmlDocument doc, XmlNamespaceManager ns)
   {
-    var outer = Util.NewElement("SynchronousCommand", GetContainer(doc, ns), doc, ns);
+    var container = Util.GetOrCreateElement(Pass.oobeSystem, "Microsoft-Windows-Shell-Setup", "FirstLogonCommands", doc, ns);
+    var outer = Util.NewElement("SynchronousCommand", container, doc, ns);
     return Util.NewElement("CommandLine", outer, doc, ns);
   }
 }
@@ -145,11 +124,6 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
     {
       Append(value);
     }
-  }
-
-  public void AppendXmlComment(string comment)
-  {
-    config.CreateComment(doc, ns).Value = comment;
   }
 }
 
@@ -282,21 +256,6 @@ static class CommandBuilder
   public static IEnumerable<string> WriteToFile(string path, IEnumerable<string> lines)
   {
     return lines.SelectMany(line => WriteToFile(path, line));
-  }
-
-  public static IEnumerable<string> SafeWriteToFile(string path, string content, Encoding encoding)
-  {
-    byte[] bytes = Enumerable.Concat(
-      encoding.GetPreamble(),
-      encoding.GetBytes(content)
-    ).ToArray();
-
-    int chunkSize = 256 - 70;
-    foreach (string base64 in Convert.ToBase64String(bytes).Chunk(chunkSize).Select(chars => new string(chars)))
-    {
-      yield return $@"cmd.exe /c "">>""{path}"" echo {base64}""";
-    }
-    yield return PowerShellCommand(@$"$p='{path}'; $f=[System.IO.File]; $f::WriteAllBytes($p, [convert]::FromBase64String($f::ReadAllText($p)));");
   }
 }
 
@@ -618,6 +577,8 @@ public static class Constants
   public const int EspDefaultSize = 300;
 
   public static readonly string DiskpartScript = DiskModifier.GetCustomDiskpartScript();
+
+  public const string MyNamespaceUri = "https://schneegans.de/windows/unattend-generator/";
 }
 
 public class UnattendGenerator
@@ -734,7 +695,7 @@ public class UnattendGenerator
   }
 
   public IImmutableDictionary<string, TimeOffset> TimeZones { get; }
-  
+
   public IImmutableDictionary<string, GeoLocation> GeoLocations { get; }
 
   public IImmutableDictionary<string, Component> Components { get; }
@@ -802,6 +763,7 @@ public class UnattendGenerator
     var ns = new XmlNamespaceManager(doc.NameTable);
     ns.AddNamespace("u", "urn:schemas-microsoft-com:unattend");
     ns.AddNamespace("wcm", "http://schemas.microsoft.com/WMIConfig/2002/State");
+    ns.AddNamespace("s", Constants.MyNamespaceUri);
 
     ModifierContext context = new(
       Configuration: config,

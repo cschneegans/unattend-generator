@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
-using System.Text;
+using System.Xml;
 
 namespace Schneegans.Unattend;
 
@@ -12,7 +13,25 @@ public enum ScriptType
 
 public enum ScriptPhase
 {
-  System, FirstLogon, UserOnce, DefaultUser
+  /// <summary>
+  /// Script is to run in the system context, before user accounts are created.
+  /// </summary>
+  System,
+
+  /// <summary>
+  /// Script is to run when the first user logs on.
+  /// </summary>
+  FirstLogon,
+
+  /// <summary>
+  /// Script is to run whenever a user logs on for the first time.
+  /// </summary>
+  UserOnce,
+
+  /// <summary>
+  /// Script is to modify the default user's registry hive.
+  /// </summary>
+  DefaultUser
 }
 
 public static class ScriptExtensions
@@ -29,24 +48,6 @@ public static class ScriptExtensions
   public static string FileExtension(this ScriptType type)
   {
     return '.' + type.ToString().ToLowerInvariant();
-  }
-
-  public static Encoding PreferredEncoding(this ScriptType type)
-  {
-    return type switch
-    {
-      ScriptType.Ps1 => Encoding.UTF8,
-      ScriptType.Cmd => Encoding.Latin1,
-      ScriptType.Reg => Utf16WithBom(),
-      ScriptType.Vbs => Utf16WithBom(),
-      ScriptType.Js => Utf16WithBom(),
-      _ => throw new NotImplementedException(),
-    };
-
-    static UnicodeEncoding Utf16WithBom()
-    {
-      return new(bigEndian: false, byteOrderMark: true);
-    }
   }
 }
 
@@ -88,21 +89,30 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
 {
   private int count = 0;
 
-  private const string ScriptsDirectory = @"C:\Windows\Setup\Scripts";
-
-  private bool directoryCreated = false;
-
   public override void Process()
   {
-    foreach (Script script in Configuration.ScriptSettings.Scripts)
+    var scriptsMap = Configuration.ScriptSettings.Scripts.ToImmutableDictionary(NewScriptId);
+    if (scriptsMap.IsEmpty)
     {
-      if (!string.IsNullOrWhiteSpace(script.Content))
-      {
-        ScriptId scriptId = NewScriptId(script);
-        CreateScriptsDirectoryOnce();
-        WriteScriptContent(script, scriptId);
-        CallScript(script, scriptId);
-      }
+      return;
+    }
+    foreach (var pair in scriptsMap)
+    {
+      WriteScriptContent(pair.Value, pair.Key);
+    }
+    {
+      const string psPath = @"C:\Windows\Temp\ExtractScripts.ps1";
+      CommandAppender appender = new(Document, NamespaceManager, new SpecializeCommandConfig());
+      appender.Append(
+        CommandBuilder.WriteToFile(psPath, Util.SplitLines(Util.StringFromResource("ExtractScripts.ps1")))
+      );
+      appender.Append(
+        CommandBuilder.InvokePowerShellScript(psPath)
+      );
+    }
+    foreach (var pair in scriptsMap)
+    {
+      CallScript(pair.Value, pair.Key);
     }
   }
 
@@ -112,19 +122,7 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
   {
     string name = $"unattend-{++count:x2}";
     string extension = script.Type.ToString().ToLowerInvariant();
-    return new ScriptId(@$"{ScriptsDirectory}\{name}.{extension}", name);
-  }
-
-  private void CreateScriptsDirectoryOnce()
-  {
-    if (!directoryCreated)
-    {
-      var appender = new CommandAppender(Document, NamespaceManager, CommandConfig.Specialize);
-      appender.Append(
-        CommandBuilder.ShellCommand($"mkdir {ScriptsDirectory}")
-      );
-      directoryCreated = true;
-    }
+    return new ScriptId(@$"C:\Windows\Setup\Scripts\{name}.{extension}", name);
   }
 
   private void WriteScriptContent(Script script, ScriptId scriptId)
@@ -142,12 +140,20 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
       return script.Content;
     }
 
-    var appender = new CommandAppender(Document, NamespaceManager, CommandConfig.Specialize);
-    string content = Clean(script);
-    appender.AppendXmlComment($"\r\n{content}\r\n");
-    appender.Append(
-      CommandBuilder.SafeWriteToFile(scriptId.FullName, content, script.Type.PreferredEncoding())
-    );
+    {
+      XmlNode root = Document.SelectSingleNodeOrThrow("/u:unattend", NamespaceManager);
+      XmlNode? extensions = root.SelectSingleNode("s:Extensions", NamespaceManager);
+      if (extensions == null)
+      {
+        extensions = Document.CreateElement("Extensions", Constants.MyNamespaceUri);
+        root.AppendChild(extensions);
+      }
+
+      XmlElement file = Document.CreateElement("File", Constants.MyNamespaceUri);
+      file.SetAttribute("path", scriptId.FullName);
+      file.InnerText = Clean(script);
+      extensions.AppendChild(file);
+    }
   }
 
   private void CallScript(Script script, ScriptId scriptId)
