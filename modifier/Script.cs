@@ -103,12 +103,10 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
     {
       const string psPath = @"C:\Windows\Temp\ExtractScripts.ps1";
       CommandAppender appender = new(Document, NamespaceManager, new SpecializeCommandConfig());
-      appender.Append(
-        CommandBuilder.WriteToFile(psPath, Util.SplitLines(Util.StringFromResource("ExtractScripts.ps1")))
-      );
-      appender.Append(
+      appender.Append([
+        .. CommandBuilder.WriteToFile(psPath, Util.SplitLines(Util.StringFromResource("ExtractScripts.ps1"))),
         CommandBuilder.InvokePowerShellScript(psPath)
-      );
+      ]);
     }
     foreach (var pair in scriptsMap)
     {

@@ -1,9 +1,6 @@
 mkdir -Path "C:\Windows\Setup\Scripts" -ErrorAction 'SilentlyContinue';
-$doc = [xml]::new();
-$doc.Load( "C:\Windows\Panther\unattend.xml" );
-$ns = [System.Xml.XmlNamespaceManager]::new( $doc.NameTable );
-$ns.AddNamespace( 's', 'https://schneegans.de/windows/unattend-generator/' );
-foreach( $file in $doc.SelectNodes( '//s:File[@path]', $ns ) ) {
+$doc = [xml]::new(); $doc.Load( "C:\Windows\Panther\unattend.xml" );
+foreach( $file in $doc.unattend.Extensions.File ) {
     $path = $file.GetAttribute( 'path' );
     $encoding = switch( [System.IO.Path]::GetExtension( $path ) ) {
         '.ps1' { [System.Text.Encoding]::UTF8; }
