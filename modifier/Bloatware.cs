@@ -99,14 +99,21 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
             featureRemover.Add(feature, appender);
             break;
           case CustomBloatwareStep when bw.Id == "RemoveOneDrive":
-            appender.Append([
-              CommandBuilder.ShellCommand(@"del ""C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk"""),
-              CommandBuilder.ShellCommand(@"del ""C:\Windows\System32\OneDriveSetup.exe"""),
-              CommandBuilder.ShellCommand(@"del ""C:\Windows\SysWOW64\OneDriveSetup.exe"""),
-              .. CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) => {
-                  return [CommandBuilder.RegistryCommand(@$"delete ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\Run"" /v OneDriveSetup /f")];
-              }),
-            ]);
+            appender.Append(
+              CommandBuilder.ShellCommand(@"del ""C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk""")
+            );
+            appender.Append(
+              CommandBuilder.ShellCommand(@"del ""C:\Windows\System32\OneDriveSetup.exe""")
+            );
+            appender.Append(
+              CommandBuilder.ShellCommand(@"del ""C:\Windows\SysWOW64\OneDriveSetup.exe""")
+            );
+            appender.Append(
+              CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
+              {
+                return [CommandBuilder.RegistryCommand(@$"delete ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\Run"" /v OneDriveSetup /f")];
+              })
+            );
             break;
           case CustomBloatwareStep when bw.Id == "RemoveTeams":
             appender.Append(
@@ -132,15 +139,15 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
             );
             break;
           case CustomBloatwareStep when bw.Id == "RemoveCopilot":
-            appender.Append([
-              .. CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
+            appender.Append(
+              CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
               {
                 return [
                   CommandBuilder.UserRunOnceCommand("UninstallCopilot", CommandBuilder.PowerShellCommand("Get-AppxPackage -Name 'Microsoft.Windows.Ai.Copilot.Provider' | Remove-AppxPackage;"), rootKey, subKey),
                   CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Policies\Microsoft\Windows\WindowsCopilot"" /v TurnOffWindowsCopilot /t REG_DWORD /d 1 /f")
                 ];
-              }),
-            ]);
+              })
+            );
             break;
           default:
             throw new NotSupportedException();
@@ -176,18 +183,24 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
         string guid = "B5292708-1619-419B-9923-E5D9F3925E71";
         {
           string key = @"HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start";
-          appender.Append([
-            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins /t REG_SZ /d {json} /f"),
-            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_ProviderSet /t REG_DWORD /d 1 /f"),
-            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_WinningProvider /t REG_SZ /d {guid} /f"),
-          ]);
+          appender.Append(
+            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins /t REG_SZ /d {json} /f")
+          );
+          appender.Append(
+            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_ProviderSet /t REG_DWORD /d 1 /f")
+          );
+          appender.Append(
+            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_WinningProvider /t REG_SZ /d {guid} /f")
+          );
         }
         {
           string key = $@"HKLM\SOFTWARE\Microsoft\PolicyManager\providers\{guid}\default\Device\Start";
-          appender.Append([
-            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins /t REG_SZ /d {json} /f"),
-            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_LastWrite /t REG_DWORD /d 1 /f"),
-          ]);
+          appender.Append(
+            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins /t REG_SZ /d {json} /f")
+          );
+          appender.Append(
+            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_LastWrite /t REG_DWORD /d 1 /f")
+          );
         }
       }
     }

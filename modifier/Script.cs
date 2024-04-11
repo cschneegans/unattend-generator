@@ -87,43 +87,44 @@ public class Script
 
 class ScriptModifier(ModifierContext context) : Modifier(context)
 {
-  private int count = 0;
-
   public override void Process()
   {
-    var scriptsMap = Configuration.ScriptSettings.Scripts.ToImmutableDictionary(NewScriptId);
-    if (scriptsMap.IsEmpty)
+    var items = Configuration.ScriptSettings.Scripts.Select((script, index) => (Id: NewScriptId(script, index), Script: script)).ToImmutableList();
+    if (items.IsEmpty)
     {
       return;
     }
-    foreach (var pair in scriptsMap)
+
+    foreach (var item in items)
     {
-      WriteScriptContent(pair.Value, pair.Key);
+      WriteScriptContent(item.Id, item.Script);
     }
     {
       const string psPath = @"C:\Windows\Temp\ExtractScripts.ps1";
       CommandAppender appender = new(Document, NamespaceManager, new SpecializeCommandConfig());
-      appender.Append([
-        .. CommandBuilder.WriteToFile(psPath, Util.SplitLines(Util.StringFromResource("ExtractScripts.ps1"))),
+      appender.Append(
+        CommandBuilder.WriteToFile(psPath, Util.SplitLines(Util.StringFromResource("ExtractScripts.ps1")))
+      );
+      appender.Append(
         CommandBuilder.InvokePowerShellScript(psPath)
-      ]);
+      );
     }
-    foreach (var pair in scriptsMap)
+    foreach (var item in items)
     {
-      CallScript(pair.Value, pair.Key);
+      CallScript(item.Id, item.Script);
     }
   }
 
   record class ScriptId(string FullName, string Key);
 
-  private ScriptId NewScriptId(Script script)
+  private static ScriptId NewScriptId(Script script, int index)
   {
-    string name = $"unattend-{++count:x2}";
+    string name = $"unattend-{index + 1:x2}";
     string extension = script.Type.ToString().ToLowerInvariant();
     return new ScriptId(@$"C:\Windows\Setup\Scripts\{name}.{extension}", name);
   }
 
-  private void WriteScriptContent(Script script, ScriptId scriptId)
+  private void WriteScriptContent(ScriptId scriptId, Script script)
   {
     static string Clean(Script script)
     {
@@ -154,7 +155,7 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
     }
   }
 
-  private void CallScript(Script script, ScriptId scriptId)
+  private void CallScript(ScriptId scriptId, Script script)
   {
     var appender = new CommandAppender(Document, NamespaceManager, script.Phase switch
     {
@@ -182,11 +183,15 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
         break;
       case ScriptPhase.DefaultUser:
         string mountKey = @"""HKU\DefaultUser""";
-        appender.Append([
-          CommandBuilder.RegistryCommand(@$"load {mountKey} ""C:\Users\Default\NTUSER.DAT"""),
-          command,
-          CommandBuilder.RegistryCommand($"unload {mountKey}"),
-        ]);
+        appender.Append(
+          CommandBuilder.RegistryCommand(@$"load {mountKey} ""C:\Users\Default\NTUSER.DAT""")
+        );
+        appender.Append(
+          command
+        );
+        appender.Append(
+          CommandBuilder.RegistryCommand($"unload {mountKey}")
+        );
         break;
       default:
         throw new NotSupportedException();

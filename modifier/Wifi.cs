@@ -54,11 +54,15 @@ class WifiModifier(ModifierContext context) : Modifier(context)
     string logfile = @"%TEMP%\wifi.log";
 
     CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
-    appender.Append([
-      .. CommandBuilder.WriteToFile(xmlfile, GetWlanProfile(settings)),
-      CommandBuilder.ShellCommand($@"netsh.exe wlan add profile filename=""{xmlfile}"" user=all", logfile),
+    appender.Append(
+      CommandBuilder.WriteToFile(xmlfile, GetWlanProfile(settings))
+    );
+    appender.Append(
+      CommandBuilder.ShellCommand($@"netsh.exe wlan add profile filename=""{xmlfile}"" user=all", logfile)
+    );
+    appender.Append(
       CommandBuilder.ShellCommand($@"del ""{xmlfile}""")
-    ]);
+    );
 
     if (settings.ConnectAutomatically)
     {

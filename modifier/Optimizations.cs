@@ -31,10 +31,12 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         "WinDefend",
       }.ForEach(name =>
       {
-        appender.Append([
-          .. CommandBuilder.WriteToFile(filename, $@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\{name}"),
-          .. CommandBuilder.WriteToFile(filename, @"    ""Start"" = REG_DWORD 4"),
-        ]);
+        appender.Append(
+          CommandBuilder.WriteToFile(filename, $@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\{name}")
+        );
+        appender.Append(
+          CommandBuilder.WriteToFile(filename, @"    ""Start"" = REG_DWORD 4")
+        );
       });
       appender.Append(
         CommandBuilder.Raw(@$"regini.exe ""{filename}""")
@@ -50,10 +52,12 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.EnableRemoteDesktop)
     {
-      appender.Append([
-        CommandBuilder.Raw(@"netsh.exe advfirewall firewall set rule group=""Remote Desktop"" new enable=Yes"),
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server"" /v fDenyTSConnections /t REG_DWORD /d 0 /f"),
-      ]);
+      appender.Append(
+        CommandBuilder.Raw(@"netsh.exe advfirewall firewall set rule group=""Remote Desktop"" new enable=Yes")
+      );
+      appender.Append(
+        CommandBuilder.RegistryCommand(@"add ""HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server"" /v fDenyTSConnections /t REG_DWORD /d 0 /f")
+      );
     }
 
     if (Configuration.HardenSystemDriveAcl)
@@ -94,10 +98,12 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.NoAutoRebootWithLoggedOnUsers)
     {
-      appender.Append([
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" /v AUOptions /t REG_DWORD /d 4 /f"),
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" /v NoAutoRebootWithLoggedOnUsers /t REG_DWORD /d 1 /f"),
-      ]);
+      appender.Append(
+        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" /v AUOptions /t REG_DWORD /d 4 /f")
+      );
+      appender.Append(
+        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" /v NoAutoRebootWithLoggedOnUsers /t REG_DWORD /d 1 /f")
+      );
     }
 
     if (Configuration.DisableSystemRestore)
@@ -117,8 +123,8 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.TurnOffSystemSounds)
     {
-      appender.Append([
-        .. CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
+      appender.Append(
+        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
         {
           IEnumerable<string> GetScriptLines()
           {
@@ -139,10 +145,13 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
             CommandBuilder.InvokePowerShellScript(ps1File),
             CommandBuilder.UserRunOnceCommand("NoSounds", @"C:\Windows\System32\reg.exe add ""HKCU\AppEvents\Schemes"" /ve /t REG_SZ /d "".None"" /f", rootKey, subKey),
           ];
-        }),
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation"" /v DisableStartupSound /t REG_DWORD /d 1 /f"),
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides"" /v UserSetting_DisableStartupSound /t REG_DWORD /d 1 /f"),
-      ]);
+        }));
+      appender.Append(
+        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation"" /v DisableStartupSound /t REG_DWORD /d 1 /f")
+      );
+      appender.Append(
+        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides"" /v UserSetting_DisableStartupSound /t REG_DWORD /d 1 /f")
+      );
     }
 
     if (Configuration.RunScriptOnFirstLogon)
