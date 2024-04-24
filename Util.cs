@@ -39,9 +39,13 @@ internal static class Util
     return doc;
   }
 
-  internal static XmlSchemaSet XmlSchemaSetFromResource(string name)
+  internal static XmlSchema XmlSchemaFromResource(string name)
   {
-    XmlSchema schema = XmlSchema.Read(XmlReaderFromResource(name), null) ?? throw new NullReferenceException();
+    return XmlSchema.Read(XmlReaderFromResource(name), null) ?? throw new NullReferenceException();
+  }
+
+  internal static XmlSchemaSet ToSchemaSet(XmlSchema schema)
+  {
     var schemas = new XmlSchemaSet();
     schemas.Add(schema);
     return schemas;
@@ -49,10 +53,19 @@ internal static class Util
 
   internal static void ValidateAgainstSchema(XmlDocument doc, string schemaName)
   {
+    var schema = XmlSchemaFromResource(schemaName);
+    {
+      string? expected = schema.TargetNamespace;
+      string? actual = doc.DocumentElement?.NamespaceURI;
+      if (expected != actual)
+      {
+        throw new XmlSchemaValidationException($"Namespace URI of root element must be '{expected}', but was '{actual}'.");
+      }
+    }
     var settings = new XmlReaderSettings()
     {
       ValidationType = ValidationType.Schema,
-      Schemas = XmlSchemaSetFromResource(schemaName),
+      Schemas = ToSchemaSet(schema),
     };
     using var reader = XmlReader.Create(new XmlNodeReader(doc), settings);
     while (reader.Read())
