@@ -23,6 +23,10 @@ public record class UnattendedWifiSettings(
   bool NonBroadcast
 ) : IWifiSettings;
 
+public record class XmlWifiSettings(
+  string Xml
+) : IWifiSettings;
+
 class WifiModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
@@ -53,10 +57,10 @@ class WifiModifier(ModifierContext context) : Modifier(context)
     string xmlfile = @"%TEMP%\wifi.xml";
     string logfile = @"%TEMP%\wifi.log";
 
+    string xml = Util.ToPrettyString(GetWlanProfile(settings));
+    Util.AddFile(xml, useCDataSection: true, xmlfile, Document, NamespaceManager);
+
     CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
-    appender.Append(
-      CommandBuilder.WriteToFile(xmlfile, GetWlanProfile(settings))
-    );
     appender.Append(
       CommandBuilder.ShellCommand($@"netsh.exe wlan add profile filename=""{xmlfile}"" user=all", logfile)
     );

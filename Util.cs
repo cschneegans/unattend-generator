@@ -4,6 +4,8 @@ using System.Text;
 using System.Xml.Schema;
 using System.Xml;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
+using System.Text.RegularExpressions;
 
 namespace Schneegans.Unattend;
 
@@ -114,5 +116,72 @@ internal static class Util
     XmlElement element = doc.CreateElement(name, ns.LookupNamespace("u"));
     parent.AppendChild(element);
     return element;
+  }
+
+  public static string ToPrettyString(XmlDocument doc)
+  {
+    using var sw = new StringWriter();
+    using var writer = XmlWriter.Create(sw, new XmlWriterSettings()
+    {
+      CloseOutput = true,
+      OmitXmlDeclaration = true,
+      Indent = true,
+      IndentChars = "\t",
+      NewLineChars = "\r\n",
+    });
+    doc.Save(writer);
+    writer.Close();
+    return sw.ToString();
+  }
+
+  public static byte[] ToPrettyBytes(XmlDocument doc)
+  {
+    using var mstr = new MemoryStream();
+    using var writer = XmlWriter.Create(mstr, new XmlWriterSettings()
+    {
+      Encoding = Encoding.UTF8,
+      CloseOutput = true,
+      Indent = true,
+      IndentChars = "\t",
+      NewLineChars = "\r\n",
+    });
+    doc.Save(writer);
+    writer.Close();
+    return mstr.ToArray();
+  }
+
+  public static void AddFile(string content, bool useCDataSection, string path, XmlDocument doc, XmlNamespaceManager ns)
+  {
+    {
+      XmlNode root = doc.SelectSingleNodeOrThrow("/u:unattend", ns);
+      XmlNode? extensions = root.SelectSingleNode("s:Extensions", ns);
+      if (extensions == null)
+      {
+        extensions = doc.CreateElement("Extensions", Constants.MyNamespaceUri);
+        root.AppendChild(extensions);
+
+        XmlNode extractScript = doc.CreateElement("ExtractScript", Constants.MyNamespaceUri);
+        extensions.AppendChild(extractScript);
+        extractScript.InnerText = StringFromResource("ExtractScripts.ps1");
+
+        CommandAppender appender = new(doc, ns, new SpecializeCommandConfig());
+        appender.Append(
+          CommandBuilder.PowerShellCommand(@"$xml = [xml]::new(); $xml.Load('C:\Windows\Panther\unattend.xml'); $sb = [scriptblock]::Create( $xml.unattend.Extensions.ExtractScript ); Invoke-Command -ScriptBlock $sb -ArgumentList $xml;")
+        );
+      }
+
+      XmlElement file = doc.CreateElement("File", Constants.MyNamespaceUri);
+      file.SetAttribute("path", path);
+      extensions.AppendChild(file);
+
+      if (useCDataSection)
+      {
+        file.AppendChild(doc.CreateCDataSection(content));
+      }
+      else
+      {
+        file.InnerText = content;
+      }
+    }
   }
 }

@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -694,6 +693,7 @@ public class UnattendGenerator
     );
   }
 
+  // TODO Rename to “TimeOffsets”
   public IImmutableDictionary<string, TimeOffset> TimeZones { get; }
 
   public IImmutableDictionary<string, GeoLocation> GeoLocations { get; }
@@ -805,18 +805,7 @@ public class UnattendGenerator
 
   public byte[] GenerateBytes(Configuration config)
   {
-    var doc = GenerateXml(config);
-    using var mstr = new MemoryStream();
-    using var writer = XmlWriter.Create(mstr, new XmlWriterSettings()
-    {
-      CloseOutput = true,
-      Indent = true,
-      IndentChars = "\t",
-      NewLineChars = "\r\n",
-    });
-    doc.Save(writer);
-    writer.Close();
-    return mstr.ToArray();
+    return Util.ToPrettyBytes(GenerateXml(config));
   }
 }
 

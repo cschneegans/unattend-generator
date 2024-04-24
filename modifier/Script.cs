@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using System.Xml;
 
 namespace Schneegans.Unattend;
 
@@ -98,19 +97,6 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
     foreach (var item in items)
     {
       WriteScriptContent(item.Id, item.Script);
-    }
-    {
-      const string psPath = @"C:\Windows\Temp\ExtractScripts.ps1";
-      CommandAppender appender = new(Document, NamespaceManager, new SpecializeCommandConfig());
-      appender.Append(
-        CommandBuilder.WriteToFile(psPath, Util.SplitLines(Util.StringFromResource("ExtractScripts.ps1")))
-      );
-      appender.Append(
-        CommandBuilder.InvokePowerShellScript(psPath)
-      );
-    }
-    foreach (var item in items)
-    {
       CallScript(item.Id, item.Script);
     }
   }
@@ -139,20 +125,7 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
       return script.Content;
     }
 
-    {
-      XmlNode root = Document.SelectSingleNodeOrThrow("/u:unattend", NamespaceManager);
-      XmlNode? extensions = root.SelectSingleNode("s:Extensions", NamespaceManager);
-      if (extensions == null)
-      {
-        extensions = Document.CreateElement("Extensions", Constants.MyNamespaceUri);
-        root.AppendChild(extensions);
-      }
-
-      XmlElement file = Document.CreateElement("File", Constants.MyNamespaceUri);
-      file.SetAttribute("path", scriptId.FullName);
-      file.InnerText = Clean(script);
-      extensions.AppendChild(file);
-    }
+    Util.AddFile(Clean(script), useCDataSection: false, scriptId.FullName, Document, NamespaceManager);
   }
 
   private void CallScript(ScriptId scriptId, Script script)
