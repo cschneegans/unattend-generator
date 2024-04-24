@@ -619,7 +619,7 @@ public class UnattendGenerator
     }
     {
       string json = Util.StringFromResource("TimeOffset.json");
-      TimeZones = JsonConvert.DeserializeObject<TimeOffset[]>(json).ToKeyedDictionary();
+      TimeOffsets = JsonConvert.DeserializeObject<TimeOffset[]>(json).ToKeyedDictionary();
     }
 
     {
@@ -643,8 +643,8 @@ public class UnattendGenerator
       VerifyUniqueKeys(ImageLanguages.Values, e => e.DisplayName);
     }
     {
-      VerifyUniqueKeys(TimeZones.Values, e => e.Id);
-      VerifyUniqueKeys(TimeZones.Values, e => e.DisplayName);
+      VerifyUniqueKeys(TimeOffsets.Values, e => e.Id);
+      VerifyUniqueKeys(TimeOffsets.Values, e => e.DisplayName);
     }
   }
 
@@ -693,8 +693,7 @@ public class UnattendGenerator
     );
   }
 
-  // TODO Rename to “TimeOffsets”
-  public IImmutableDictionary<string, TimeOffset> TimeZones { get; }
+  public IImmutableDictionary<string, TimeOffset> TimeOffsets { get; }
 
   public IImmutableDictionary<string, GeoLocation> GeoLocations { get; }
 
@@ -744,7 +743,7 @@ public class UnattendGenerator
     }
     if (typeof(T) == typeof(TimeOffset))
     {
-      return (T)(object)Lookup(TimeZones, key);
+      return (T)(object)Lookup(TimeOffsets, key);
     }
     if (typeof(T) == typeof(Bloatware))
     {
