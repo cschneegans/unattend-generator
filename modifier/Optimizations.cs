@@ -126,22 +126,19 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       appender.Append(
         CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
         {
-          IEnumerable<string> GetScriptLines()
-          {
-            string psDrive = "HKU";
-            yield return $"New-PSDrive -PSProvider 'Registry' -Root 'HKEY_USERS' -Name '{psDrive}';";
-            yield return @$"$excludes = Get-ChildItem -LiteralPath '{psDrive}:\{subKey}\AppEvents\EventLabels' | ";
-            yield return "Where-Object -FilterScript { ($_ | Get-ItemProperty).ExcludeFromCPL -eq 1; } | ";
-            yield return "Select-Object -ExpandProperty 'PSChildName';";
-            yield return @$"Get-ChildItem -Path '{psDrive}:\{subKey}\AppEvents\Schemes\Apps\*\*' | ";
-            yield return "Where-Object -Property 'PSChildName' -NotIn $excludes | ";
-            yield return "Get-ChildItem -Include '.Current' | Set-ItemProperty -Name '(default)' -Value '';";
-            yield return $"Remove-PSDrive -Name '{psDrive}';";
-          };
-
+          string script = $$"""
+            New-PSDrive -PSProvider 'Registry' -Root 'HKEY_USERS' -Name 'HKU';
+            $excludes = Get-ChildItem -LiteralPath 'HKU:\{{subKey}}\AppEvents\EventLabels' |
+              Where-Object -FilterScript { ($_ | Get-ItemProperty).ExcludeFromCPL -eq 1; } |
+              Select-Object -ExpandProperty 'PSChildName';
+            Get-ChildItem -Path 'HKU:\{{subKey}}\AppEvents\Schemes\Apps\*\*' |
+              Where-Object -Property 'PSChildName' -NotIn $excludes |
+              Get-ChildItem -Include '.Current' | Set-ItemProperty -Name '(default)' -Value '';
+            Remove-PSDrive -Name 'HKU';
+            """;
           string ps1File = @"%TEMP%\sounds.ps1";
+          Util.AddTextFile(script, ps1File, Document, NamespaceManager);
           return [
-            .. CommandBuilder.WriteToFile(ps1File, GetScriptLines()),
             CommandBuilder.InvokePowerShellScript(ps1File),
             CommandBuilder.UserRunOnceCommand("NoSounds", @"C:\Windows\System32\reg.exe add ""HKCU\AppEvents\Schemes"" /ve /t REG_SZ /d "".None"" /f", rootKey, subKey),
           ];

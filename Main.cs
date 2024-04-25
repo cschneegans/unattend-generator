@@ -207,22 +207,6 @@ static class CommandBuilder
     return @$"cscript.exe //E:jscript ""{filepath}""";
   }
 
-  public static IEnumerable<string> WriteToFile(string path, XmlDocument doc)
-  {
-    var sb = new StringBuilder();
-    using var writer = XmlWriter.Create(sb, new XmlWriterSettings()
-    {
-      Indent = true,
-      IndentChars = "",
-      OmitXmlDeclaration = true,
-    });
-
-    doc.WriteTo(writer);
-    writer.Close();
-
-    return Util.SplitLines(sb.ToString()).SelectMany(line => WriteToFile(path, line));
-  }
-
   public static IEnumerable<string> WriteToFile(string path, string line)
   {
     static string EscapeShell(string command)
@@ -657,33 +641,6 @@ public class UnattendGenerator
         throw new ArgumentException($"'{group.Key}' occurs more than once.");
       }
     });
-  }
-
-  public UnattendedLanguageSettings CreateUnattendedLanguageSettings(string imageLanguage, string userLocale, string keyboardIdentifier, string geoLocation)
-  {
-    return new UnattendedLanguageSettings(
-      ImageLanguage: Lookup<ImageLanguage>(imageLanguage),
-      UserLocale: Lookup<UserLocale>(userLocale),
-      InputLocale: Lookup<KeyboardIdentifier>(keyboardIdentifier),
-      GeoLocation: Lookup<GeoLocation>(geoLocation)
-    );
-  }
-
-  public UnattendedEditionSettings CreateUnattendedEditionSettings(string edition)
-  {
-    return new UnattendedEditionSettings(
-      Edition: Lookup<WindowsEdition>(edition)
-    );
-  }
-
-  public UnattendedPartitionSettings CreateUnattendedPartitionSettings(PartitionLayout layout, RecoveryMode recovery, int espSize = Constants.EspDefaultSize, int recoverySize = Constants.RecoveryPartitionSize)
-  {
-    return new UnattendedPartitionSettings(
-      PartitionLayout: layout,
-      RecoveryMode: recovery,
-      EspSize: espSize,
-      RecoverySize: recoverySize
-    );
   }
 
   public ExplicitTimeZoneSettings CreateExplicitTimeZoneSettings(string id)
