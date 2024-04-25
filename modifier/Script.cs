@@ -125,7 +125,7 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
       return script.Content;
     }
 
-    Util.AddFile(Clean(script), useCDataSection: false, scriptId.FullName, Document, NamespaceManager);
+    Util.AddTextFile(Clean(script), scriptId.FullName, Document, NamespaceManager);
   }
 
   private void CallScript(ScriptId scriptId, Script script)

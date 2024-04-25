@@ -163,7 +163,17 @@ internal static class Util
     return mstr.ToArray();
   }
 
-  public static void AddFile(string content, bool useCDataSection, string path, XmlDocument doc, XmlNamespaceManager ns)
+  public static void AddXmlFile(XmlDocument xml, string path, XmlDocument doc, XmlNamespaceManager ns)
+  {
+    AddFile(ToPrettyString(xml), useCDataSection: true, path, doc, ns);
+  }
+
+  public static void AddTextFile(string content, string path, XmlDocument doc, XmlNamespaceManager ns)
+  {
+    AddFile(content, useCDataSection: false, path, doc, ns);
+  }
+
+  private static void AddFile(string content, bool useCDataSection, string path, XmlDocument doc, XmlNamespaceManager ns)
   {
     {
       XmlNode root = doc.SelectSingleNodeOrThrow("/u:unattend", ns);
@@ -189,7 +199,7 @@ internal static class Util
 
       if (useCDataSection)
       {
-        file.AppendChild(doc.CreateCDataSection(content));
+        file.AppendChild(doc.CreateCDataSection("\r\n" + content + "\r\n")); // Safe to add newline because document is serialized without XML declaration.
       }
       else
       {

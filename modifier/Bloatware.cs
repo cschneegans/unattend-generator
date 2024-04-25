@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Xml;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Schneegans.Unattend;
 
@@ -163,19 +164,18 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
     {
       {
         // Windows 10
-        string xml = "<LayoutModificationTemplate Version='1' xmlns='http://schemas.microsoft.com/Start/2014/LayoutModification'>" +
-          "<LayoutOptions StartTileGroupCellWidth='6' />" +
-          "<DefaultLayoutOverride>" +
-          "<StartLayoutCollection>" +
-          "<StartLayout GroupCellWidth='6' xmlns='http://schemas.microsoft.com/Start/2014/FullDefaultLayout' />" +
-          "</StartLayoutCollection>" +
-          "</DefaultLayoutOverride>" +
-          "</LayoutModificationTemplate>";
-        var doc = new XmlDocument();
-        doc.LoadXml(xml);
-        appender.Append(
-          CommandBuilder.WriteToFile(@"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml", doc)
-        );
+        XmlDocument xml = new();
+        xml.LoadXml(@"
+<LayoutModificationTemplate Version='1' xmlns='http://schemas.microsoft.com/Start/2014/LayoutModification'>
+  <LayoutOptions StartTileGroupCellWidth='6' />
+  <DefaultLayoutOverride>
+    <StartLayoutCollection>
+      <StartLayout GroupCellWidth='6' xmlns='http://schemas.microsoft.com/Start/2014/FullDefaultLayout' />
+    </StartLayoutCollection>
+  </DefaultLayoutOverride>
+</LayoutModificationTemplate>
+");
+        Util.AddXmlFile(xml, @"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml", Document, NamespaceManager);
       }
       {
         // Windows 11

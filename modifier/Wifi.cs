@@ -209,7 +209,7 @@ class WifiModifier(ModifierContext context) : Modifier(context)
 
     XmlDocument profile = settings.ProfileXml;
     Util.ValidateAgainstSchema(profile, "WLAN_profile_v1.xsd");
-    Util.AddFile(Util.ToPrettyString(profile), useCDataSection: true, xmlfile, Document, NamespaceManager);
+    Util.AddXmlFile(profile, xmlfile, Document, NamespaceManager);
 
     CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
     appender.Append(
