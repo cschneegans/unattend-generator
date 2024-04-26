@@ -58,7 +58,7 @@ class WdacModifier(ModifierContext context) : Modifier(context)
           $ErrorActionPreference = 'Stop';
           $(
             try {
-              $guid= '{{guid}}';
+              $guid = '{{guid}}';
               $xml = "{{activeFolder}}\${guid}.xml";
               $binary = "{{activeFolder}}\${guid}.cip";
               Copy-Item -LiteralPath '{{templateFile}}' -Destination $xml;

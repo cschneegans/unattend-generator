@@ -1,32 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Xml;
 
 namespace Schneegans.Unattend;
 
 abstract class Remover<T> where T : SelectorBloatwareStep
 {
-  private bool hasContent = false;
+  protected readonly List<string> selectors = [];
 
-  protected string CmdPath => @$"%TEMP%\{Tag()}.txt";
-
-  protected string PsPath => @$"$env:TEMP\{Tag()}.txt";
+  protected string CmdPath => @$"%TEMP%\{Tag()}.ps1";
 
   protected string PsLogPath => @$"$env:TEMP\{Tag()}.log";
 
-  public void Add(T step, CommandAppender appender)
+  public void Add(T step)
   {
-    appender.Append(
-      CommandBuilder.WriteToFile(CmdPath, step.Selector)
-    );
-    hasContent = true;
+    selectors.Add(step.Selector);
   }
 
-  public void Write(CommandAppender appender)
+  public void Save(CommandAppender appender, XmlDocument doc, XmlNamespaceManager ns)
   {
-    if (hasContent)
+    if (selectors.Count == 0)
     {
-      appender.Append(RemoveCommand());
+      return;
     }
+    Util.AddTextFile(RemoveCommand(), CmdPath, doc, ns);
+    appender.Append(
+      CommandBuilder.InvokePowerShellScript(CmdPath)
+    );
   }
 
   protected abstract string RemoveCommand();
@@ -38,7 +39,19 @@ class PackageRemover : Remover<PackageBloatwareStep>
 {
   protected override string RemoveCommand()
   {
-    return CommandBuilder.PowerShellCommand(@$"Get-AppxProvisionedPackage -Online | where DisplayName -In (Get-Content {PsPath} ) | Remove-AppxProvisionedPackage -AllUsers -Online *>&1 >> {PsLogPath};");
+    StringWriter sw = new();
+    sw.WriteLine("""
+      Get-AppxProvisionedPackage -Online |
+      Where-Object -Property 'DisplayName' -In -Value @(
+      """);
+    foreach (string selector in selectors)
+    {
+      sw.WriteLine($"  '{selector}';");
+    }
+    sw.WriteLine($$"""
+      ) | Remove-AppxProvisionedPackage -AllUsers -Online *>&1 >> "{{PsLogPath}}";
+      """);
+    return sw.ToString();
   }
 
   protected override string Tag()
@@ -51,7 +64,21 @@ class CapabilityRemover : Remover<CapabilityBloatwareStep>
 {
   protected override string RemoveCommand()
   {
-    return CommandBuilder.PowerShellCommand(@$"Get-WindowsCapability -Online | where {{($_.Name -split '~')[0] -in (Get-Content {PsPath} ) }} | Remove-WindowsCapability -Online *>&1 >> {PsLogPath};");
+    StringWriter sw = new();
+    sw.WriteLine("""
+    Get-WindowsCapability -Online |
+    Where-Object -FilterScript {
+      ($_.Name -split '~')[0] -in @(
+    """);
+    foreach (string selector in selectors)
+    {
+      sw.WriteLine($"    '{selector}';");
+    }
+    sw.WriteLine($$"""
+      );
+    } | Remove-WindowsCapability -Online *>&1 >> "{{PsLogPath}}";
+    """);
+    return sw.ToString();
   }
 
   protected override string Tag()
@@ -64,7 +91,19 @@ class FeatureRemover : Remover<OptionalFeatureBloatwareStep>
 {
   protected override string RemoveCommand()
   {
-    return CommandBuilder.PowerShellCommand(@$"Get-WindowsOptionalFeature -Online | where FeatureName -In (Get-Content {PsPath} ) | Disable-WindowsOptionalFeature -Online -Remove -NoRestart *>&1 >> {PsLogPath};");
+    StringWriter sw = new();
+    sw.WriteLine("""
+      Get-WindowsOptionalFeature -Online |
+      Where-Object -Property 'FeatureName' -In -Value @(
+      """);
+    foreach (string selector in selectors)
+    {
+      sw.WriteLine($"  '{selector}';");
+    }
+    sw.WriteLine($$"""
+    ) | Disable-WindowsOptionalFeature -Online -Remove -NoRestart *>&1 >> "{{PsLogPath}}";
+    """);
+    return sw.ToString();
   }
 
   protected override string Tag()
@@ -90,13 +129,13 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
         switch (step)
         {
           case PackageBloatwareStep package:
-            packageRemover.Add(package, appender);
+            packageRemover.Add(package);
             break;
           case CapabilityBloatwareStep capability:
-            capabilityRemover.Add(capability, appender);
+            capabilityRemover.Add(capability);
             break;
           case OptionalFeatureBloatwareStep feature:
-            featureRemover.Add(feature, appender);
+            featureRemover.Add(feature);
             break;
           case CustomBloatwareStep when bw.Id == "RemoveOneDrive":
             appender.Append(
@@ -155,9 +194,9 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
       }
     }
 
-    packageRemover.Write(appender);
-    capabilityRemover.Write(appender);
-    featureRemover.Write(appender);
+    packageRemover.Save(appender, Document, NamespaceManager);
+    capabilityRemover.Save(appender, Document, NamespaceManager);
+    featureRemover.Save(appender, Document, NamespaceManager);
 
     if (!Configuration.Bloatwares.IsEmpty)
     {
