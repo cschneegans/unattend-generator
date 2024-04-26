@@ -110,9 +110,12 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     string logfile = @"X:\diskpart.log";
 
     CommandAppender appender = new(Document, NamespaceManager, CommandConfig.WindowsPE);
-    appender.Append(
-      CommandBuilder.WriteToFile(filename, lines)
-    );
+    foreach (string line in lines)
+    {
+      appender.Append(
+        CommandBuilder.WriteToFile(filename, line)
+      );
+    }
     appender.Append(
       CommandBuilder.ShellCommand($@">>""{logfile}"" diskpart.exe /s ""{filename}""")
     );

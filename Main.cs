@@ -222,23 +222,15 @@ static class CommandBuilder
 
     if (string.IsNullOrWhiteSpace(line))
     {
-      yield return $@"cmd.exe /c "">>""{path}"" echo({line}""";
+      yield break;
     }
-    else
-    {
-      int chunkSize = 256 - 64 - path.Length;
-      var chunks = line.Chunk(chunkSize).Select(chars => new string(chars));
-      foreach (var chunk in chunks.SkipLast(1))
-      {
-        yield return $@"cmd.exe /c "">>""{path}"" <nul set /p={EscapeShell(chunk)}""";
-      }
-      yield return $@"cmd.exe /c "">>""{path}"" echo {EscapeShell(chunks.Last())}""";
-    }
-  }
 
-  public static IEnumerable<string> WriteToFile(string path, IEnumerable<string> lines)
-  {
-    return lines.SelectMany(line => WriteToFile(path, line));
+    string command = $@"cmd.exe /c "">>""{path}"" echo {EscapeShell(line)}""";
+    if (command.Length >= 255)
+    {
+      throw new ConfigurationException($"Line '{line}' is too long.");
+    }
+    yield return command;
   }
 }
 

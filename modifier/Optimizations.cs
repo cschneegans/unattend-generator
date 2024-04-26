@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Schneegans.Unattend;
@@ -19,25 +20,24 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableDefender)
     {
-      string filename = @"%TEMP%\regini.txt";
-      new List<string>()
-      {
-        // https://lazyadmin.nl/win-11/turn-off-windows-defender-windows-11-permanently/
+      // https://lazyadmin.nl/win-11/turn-off-windows-defender-windows-11-permanently/
+      string filename = @"%TEMP%\disable-defender.ini";
+      StringWriter sw = new();
+      foreach (string service in (string[])[
         "Sense",
         "WdBoot",
         "WdFilter",
         "WdNisDrv",
         "WdNisSvc",
         "WinDefend",
-      }.ForEach(name =>
+      ])
       {
-        appender.Append(
-          CommandBuilder.WriteToFile(filename, $@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\{name}")
-        );
-        appender.Append(
-          CommandBuilder.WriteToFile(filename, @"    ""Start"" = REG_DWORD 4")
-        );
-      });
+        sw.WriteLine($"""
+          HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\{service}
+              "Start" = REG_DWORD 4
+          """);
+      }
+      Util.AddTextFile(sw.ToString(), filename, Document, NamespaceManager);
       appender.Append(
         CommandBuilder.Raw(@$"regini.exe ""{filename}""")
       );
