@@ -187,7 +187,7 @@ internal static class Util
         extensions.AppendChild(extractScript);
         extractScript.InnerText = StringFromResource("ExtractScripts.ps1");
 
-        CommandAppender appender = new(doc, ns, new SpecializeCommandConfig());
+        CommandAppender appender = new(doc, ns, CommandConfig.Specialize);
         appender.Append(
           CommandBuilder.PowerShellCommand(@"$xml = [xml]::new(); $xml.Load('C:\Windows\Panther\unattend.xml'); $sb = [scriptblock]::Create( $xml.unattend.Extensions.ExtractScript ); Invoke-Command -ScriptBlock $sb -ArgumentList $xml;")
         );
