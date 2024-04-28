@@ -23,7 +23,7 @@ class Example
             generator.Lookup<Bloatware>("RemoveTeams"),
             generator.Lookup<Bloatware>("RemoveOutlook"),
           ]
-        )
+        ),
       }
     );
     using XmlWriter writer = XmlWriter.Create(Console.Out, new XmlWriterSettings()

@@ -4,8 +4,6 @@ using System.Text;
 using System.Xml.Schema;
 using System.Xml;
 using System.Collections.Generic;
-using System.Reflection.Metadata;
-using System.Text.RegularExpressions;
 
 namespace Schneegans.Unattend;
 

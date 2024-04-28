@@ -785,4 +785,9 @@ abstract class Modifier(ModifierContext context)
   }
 
   public abstract void Process();
+
+  public CommandAppender GetAppender(CommandConfig config)
+  {
+    return new CommandAppender(Document, NamespaceManager, config);
+  }
 }

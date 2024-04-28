@@ -212,12 +212,10 @@ class WifiModifier(ModifierContext context) : Modifier(context)
     Util.AddXmlFile(profile, xmlfile, Document, NamespaceManager);
 
     CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
-    appender.Append(
-      CommandBuilder.ShellCommand($@"netsh.exe wlan add profile filename=""{xmlfile}"" user=all", logfile)
-    );
-    appender.Append(
-      CommandBuilder.ShellCommand($@"del ""{xmlfile}""")
-    );
+    appender.Append([
+      CommandBuilder.ShellCommand($@"netsh.exe wlan add profile filename=""{xmlfile}"" user=all", logfile),
+      CommandBuilder.ShellCommand($@"del ""{xmlfile}"""),
+    ]);
 
     if (settings.ConnectAutomatically)
     {

@@ -156,15 +156,11 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
         break;
       case ScriptPhase.DefaultUser:
         string mountKey = @"""HKU\DefaultUser""";
-        appender.Append(
-          CommandBuilder.RegistryCommand(@$"load {mountKey} ""C:\Users\Default\NTUSER.DAT""")
-        );
-        appender.Append(
-          command
-        );
-        appender.Append(
+        appender.Append([
+          CommandBuilder.RegistryCommand(@$"load {mountKey} ""C:\Users\Default\NTUSER.DAT"""),
+          command,
           CommandBuilder.RegistryCommand($"unload {mountKey}")
-        );
+        ]);
         break;
       default:
         throw new NotSupportedException();
