@@ -6,7 +6,7 @@ class BypassModifier(ModifierContext context) : Modifier(context)
   {
     if (Configuration.BypassRequirementsCheck)
     {
-      CommandAppender appender = new(Document, NamespaceManager, CommandConfig.WindowsPE);
+      CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
 
       string[] values = [
         "BypassTPMCheck",
@@ -27,7 +27,7 @@ class BypassModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.BypassNetworkCheck)
     {
-      CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
+      CommandAppender appender = GetAppender(CommandConfig.Specialize);
       appender.Append(
         CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE"" /v BypassNRO /t REG_DWORD /d 1 /f")
       );

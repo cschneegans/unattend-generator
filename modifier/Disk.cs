@@ -54,7 +54,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
           if (settings.RecoveryMode == RecoveryMode.None)
           {
-            CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
+            CommandAppender appender = GetAppender(CommandConfig.Specialize);
             appender.Append([
               CommandBuilder.Raw(@"ReAgentc.exe /disable"),
               CommandBuilder.ShellCommand(@"del /a /f ""C:\Windows\System32\Recovery\Winre.wim"""),
@@ -107,7 +107,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     string filename = @"X:\diskpart.txt";
     string logfile = @"X:\diskpart.log";
 
-    CommandAppender appender = new(Document, NamespaceManager, CommandConfig.WindowsPE);
+    CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
     foreach (string line in lines)
     {
       appender.Append(

@@ -16,7 +16,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
-    CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
+    CommandAppender appender = GetAppender(CommandConfig.Specialize);
 
     if (Configuration.DisableDefender)
     {
@@ -37,7 +37,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
               "Start" = REG_DWORD 4
           """);
       }
-      Util.AddTextFile(sw.ToString(), filename, Document, NamespaceManager);
+      AddTextFile(sw.ToString(), filename);
       appender.Append(
         CommandBuilder.Raw(@$"regini.exe ""{filename}""")
       );
@@ -104,7 +104,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableSystemRestore)
     {
-      CommandAppender oobe = new(Document, NamespaceManager, CommandConfig.Oobe);
+      CommandAppender oobe = GetAppender(CommandConfig.Oobe);
       oobe.Append(
         CommandBuilder.PowerShellCommand(@"Disable-ComputerRestore -Drive 'C:\';")
       );
@@ -133,7 +133,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
             Remove-PSDrive -Name 'HKU';
             """;
           string ps1File = @"%TEMP%\sounds.ps1";
-          Util.AddTextFile(script, ps1File, Document, NamespaceManager);
+          AddTextFile(script, ps1File);
           return [
             CommandBuilder.InvokePowerShellScript(ps1File),
             CommandBuilder.UserRunOnceCommand("NoSounds", @"C:\Windows\System32\reg.exe add ""HKCU\AppEvents\Schemes"" /ve /t REG_SZ /d "".None"" /f", rootKey, subKey),

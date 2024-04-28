@@ -33,7 +33,7 @@ class LockoutModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
-    CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
+    CommandAppender appender = GetAppender(CommandConfig.Specialize);
 
     switch (Configuration.LockoutSettings)
     {

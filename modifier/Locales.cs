@@ -46,7 +46,7 @@ class LocalesModifier(ModifierContext context) : Modifier(context)
 
       if (settings.GeoLocation.Id != settings.UserLocale.GeoLocation?.Id)
       {
-        var appender = new CommandAppender(Document, NamespaceManager, CommandConfig.Specialize);
+        CommandAppender appender = GetAppender(CommandConfig.Specialize);
         appender.Append(
           CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
           {

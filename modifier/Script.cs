@@ -125,12 +125,12 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
       return script.Content;
     }
 
-    Util.AddTextFile(Clean(script), scriptId.FullName, Document, NamespaceManager);
+    AddTextFile(Clean(script), scriptId.FullName);
   }
 
   private void CallScript(ScriptId scriptId, Script script)
   {
-    var appender = new CommandAppender(Document, NamespaceManager, script.Phase switch
+    CommandAppender appender = GetAppender(script.Phase switch
     {
       ScriptPhase.FirstLogon => CommandConfig.Oobe,
       _ => CommandConfig.Specialize,

@@ -133,9 +133,9 @@ class WdacModifier(ModifierContext context) : Modifier(context)
         ) *>&1 | Out-File -Append -FilePath "$env:TEMP\wdac.log";
         """);
 
-      CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
+      CommandAppender appender = GetAppender(CommandConfig.Specialize);
       string ps1File = @"%TEMP%\wdac.ps1";
-      Util.AddTextFile(sw.ToString(), ps1File, Document, NamespaceManager);
+      AddTextFile(sw.ToString(), ps1File);
       appender.Append(
         CommandBuilder.InvokePowerShellScript(ps1File)
       );

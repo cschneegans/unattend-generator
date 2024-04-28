@@ -209,9 +209,9 @@ class WifiModifier(ModifierContext context) : Modifier(context)
 
     XmlDocument profile = settings.ProfileXml;
     Util.ValidateAgainstSchema(profile, "WLAN_profile_v1.xsd");
-    Util.AddXmlFile(profile, xmlfile, Document, NamespaceManager);
+    AddXmlFile(profile, xmlfile);
 
-    CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
+    CommandAppender appender = GetAppender(CommandConfig.Specialize);
     appender.Append([
       CommandBuilder.ShellCommand($@"netsh.exe wlan add profile filename=""{xmlfile}"" user=all", logfile),
       CommandBuilder.ShellCommand($@"del ""{xmlfile}"""),

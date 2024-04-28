@@ -160,49 +160,4 @@ internal static class Util
     writer.Close();
     return mstr.ToArray();
   }
-
-  public static void AddXmlFile(XmlDocument xml, string path, XmlDocument doc, XmlNamespaceManager ns)
-  {
-    AddFile(ToPrettyString(xml), useCDataSection: true, path, doc, ns);
-  }
-
-  public static void AddTextFile(string content, string path, XmlDocument doc, XmlNamespaceManager ns)
-  {
-    AddFile(content, useCDataSection: false, path, doc, ns);
-  }
-
-  private static void AddFile(string content, bool useCDataSection, string path, XmlDocument doc, XmlNamespaceManager ns)
-  {
-    {
-      XmlNode root = doc.SelectSingleNodeOrThrow("/u:unattend", ns);
-      XmlNode? extensions = root.SelectSingleNode("s:Extensions", ns);
-      if (extensions == null)
-      {
-        extensions = doc.CreateElement("Extensions", Constants.MyNamespaceUri);
-        root.AppendChild(extensions);
-
-        XmlNode extractScript = doc.CreateElement("ExtractScript", Constants.MyNamespaceUri);
-        extensions.AppendChild(extractScript);
-        extractScript.InnerText = StringFromResource("ExtractScripts.ps1");
-
-        CommandAppender appender = new(doc, ns, CommandConfig.Specialize);
-        appender.Append(
-          CommandBuilder.PowerShellCommand(@"$xml = [xml]::new(); $xml.Load('C:\Windows\Panther\unattend.xml'); $sb = [scriptblock]::Create( $xml.unattend.Extensions.ExtractScript ); Invoke-Command -ScriptBlock $sb -ArgumentList $xml;")
-        );
-      }
-
-      XmlElement file = doc.CreateElement("File", Constants.MyNamespaceUri);
-      file.SetAttribute("path", path);
-      extensions.AppendChild(file);
-
-      if (useCDataSection)
-      {
-        file.AppendChild(doc.CreateCDataSection("\r\n" + content + "\r\n")); // Safe to add newline because document is serialized without XML declaration.
-      }
-      else
-      {
-        file.InnerText = content;
-      }
-    }
-  }
 }

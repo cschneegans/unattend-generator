@@ -18,13 +18,14 @@ abstract class Remover<T> where T : SelectorBloatwareStep
     selectors.Add(step.Selector);
   }
 
-  public void Save(CommandAppender appender, XmlDocument doc, XmlNamespaceManager ns)
+  public void Save(BloatwareModifier parent)
   {
     if (selectors.Count == 0)
     {
       return;
     }
-    Util.AddTextFile(RemoveCommand(), CmdPath, doc, ns);
+    parent.AddTextFile(RemoveCommand(), CmdPath);
+    CommandAppender appender = parent.GetAppender(CommandConfig.Specialize);
     appender.Append(
       CommandBuilder.InvokePowerShellScript(CmdPath)
     );
@@ -116,7 +117,7 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
-    CommandAppender appender = new(Document, NamespaceManager, CommandConfig.Specialize);
+    CommandAppender appender = GetAppender(CommandConfig.Specialize);
 
     var packageRemover = new PackageRemover();
     var capabilityRemover = new CapabilityRemover();
@@ -190,9 +191,9 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
       }
     }
 
-    packageRemover.Save(appender, Document, NamespaceManager);
-    capabilityRemover.Save(appender, Document, NamespaceManager);
-    featureRemover.Save(appender, Document, NamespaceManager);
+    packageRemover.Save(this);
+    capabilityRemover.Save(this);
+    featureRemover.Save(this);
 
     if (!Configuration.Bloatwares.IsEmpty)
     {
@@ -209,7 +210,7 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
             </DefaultLayoutOverride>
           </LayoutModificationTemplate>
           """);
-        Util.AddXmlFile(xml, @"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml", Document, NamespaceManager);
+        AddXmlFile(xml, @"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml");
       }
       {
         // Windows 11
