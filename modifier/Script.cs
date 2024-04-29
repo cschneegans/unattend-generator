@@ -39,7 +39,10 @@ public static class ScriptExtensions
   {
     return phase switch
     {
-      ScriptPhase.DefaultUser => [ScriptType.Reg],
+      ScriptPhase.DefaultUser => [
+        ScriptType.Reg,
+        ScriptType.Cmd,
+      ],
       _ => Enum.GetValues<ScriptType>(),
     };
   }
