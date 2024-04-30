@@ -150,7 +150,7 @@ internal static class Util
     using var mstr = new MemoryStream();
     using var writer = XmlWriter.Create(mstr, new XmlWriterSettings()
     {
-      Encoding = Encoding.UTF8,
+      Encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false),
       CloseOutput = true,
       Indent = true,
       IndentChars = "\t",
