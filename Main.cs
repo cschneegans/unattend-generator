@@ -280,7 +280,7 @@ public record class Configuration(
     TimeZoneSettings: new ImplicitTimeZoneSettings(),
     WifiSettings: new InteractiveWifiSettings(),
     WdacSettings: new SkipWdacSettings(),
-    ProcessorArchitectures: [Unattend.ProcessorArchitecture.amd64],
+    ProcessorArchitectures: [ProcessorArchitecture.amd64],
     Components: ImmutableDictionary.Create<string, ImmutableSortedSet<Pass>>(),
     Bloatwares: [],
     ExpressSettings: ExpressSettingsMode.DisableAll,
@@ -308,51 +308,48 @@ public interface IKeyed
 }
 
 public abstract class BloatwareStep(
-  byte[] versions
+  string[] appliesTo
 )
 {
-  public ImmutableSortedSet<byte> Versions { get; } = ImmutableSortedSet.CreateRange(versions);
+  public ImmutableSortedSet<string> AppliesTo { get; } = ImmutableSortedSet.CreateRange(appliesTo);
 }
 
 public class SelectorBloatwareStep(
-  byte[] versions,
+  string[] appliesTo,
   string selector
-) : BloatwareStep(versions)
+) : BloatwareStep(appliesTo)
 {
   public string Selector { get; } = selector;
 }
 
 public class PackageBloatwareStep(
-  byte[] versions,
+  string[] appliesTo,
   string selector
-) : SelectorBloatwareStep(versions, selector);
+) : SelectorBloatwareStep(appliesTo, selector);
 
 public class CapabilityBloatwareStep(
-  byte[] versions,
+  string[] appliesTo,
   string selector
-) : SelectorBloatwareStep(versions, selector);
+) : SelectorBloatwareStep(appliesTo, selector);
 
 public class OptionalFeatureBloatwareStep(
-  byte[] versions,
+  string[] appliesTo,
   string selector
-) : SelectorBloatwareStep(versions, selector);
+) : SelectorBloatwareStep(appliesTo, selector);
 
 public class CustomBloatwareStep(
-  byte[] versions
-) : BloatwareStep(versions);
+  string[] appliesTo
+) : BloatwareStep(appliesTo);
 
 public class Bloatware(
   string displayName,
   string? token,
-  ImmutableList<BloatwareStep> steps,
-  string? since
+  ImmutableList<BloatwareStep> steps
 ) : IKeyed
 {
   public string DisplayName { get; } = displayName;
 
   public string Id { get; } = $"Remove{token ?? displayName.Replace(" ", "")}";
-
-  public string? Since { get; } = since;
 
   public ImmutableList<BloatwareStep> Steps { get; } = steps;
 
