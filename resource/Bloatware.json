@@ -690,5 +690,17 @@
         ]
       }
     ]
+  },
+  {
+    "DisplayName": "Bing Search",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.PackageBloatwareStep, UnattendGenerator",
+        "Selector": "Microsoft.BingSearch",
+        "AppliesTo": [
+          "Windows 11 24H2"
+        ]
+      }
+    ]
   }
 ]
