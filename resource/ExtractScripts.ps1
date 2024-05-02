@@ -15,5 +15,5 @@ foreach( $file in $Document.unattend.Extensions.File ) {
         { $_ -in '.reg', '.vbs', '.js' } { [System.Text.UnicodeEncoding]::new( $false, $true ); }
         default { [System.Text.Encoding]::Default; }
     };
-    [System.IO.File]::WriteAllBytes( $path, ( $encoding.GetPreamble() + $encoding.GetBytes( $file.InnerText ) ) );
+    [System.IO.File]::WriteAllBytes( $path, ( $encoding.GetPreamble() + $encoding.GetBytes( $file.InnerText.Trim() ) ) );
 }

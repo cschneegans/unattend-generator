@@ -160,4 +160,9 @@ internal static class Util
     writer.Close();
     return mstr.ToArray();
   }
+
+  public static string Indent(string value)
+  {
+    return $"\r\n{value.Trim()}\r\n\t\t";
+  }
 }

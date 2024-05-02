@@ -809,7 +809,13 @@ abstract class Modifier(ModifierContext context)
 
         XmlNode extractScript = Document.CreateElement("ExtractScript", Constants.MyNamespaceUri);
         extensions.AppendChild(extractScript);
-        extractScript.InnerText = Util.StringFromResource("ExtractScripts.ps1");
+        extractScript.AppendChild(
+          Document.CreateTextNode(
+            Util.Indent(
+              Util.StringFromResource("ExtractScripts.ps1")
+            )
+          )
+        );
 
         CommandAppender appender = GetAppender(CommandConfig.Specialize);
         appender.Append(
@@ -823,11 +829,11 @@ abstract class Modifier(ModifierContext context)
 
       if (useCDataSection)
       {
-        file.AppendChild(Document.CreateCDataSection("\r\n" + content + "\r\n")); // Safe to add newline because document is serialized without XML declaration.
+        file.AppendChild(Document.CreateCDataSection(Util.Indent(content)));
       }
       else
       {
-        file.InnerText = content;
+        file.AppendChild(Document.CreateTextNode(Util.Indent(content)));
       }
     }
   }
