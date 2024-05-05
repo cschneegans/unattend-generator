@@ -265,7 +265,8 @@ public record class Configuration(
   bool TurnOffSystemSounds,
   bool RunScriptOnFirstLogon,
   bool DisableAppSuggestions,
-  bool DisableWidgets
+  bool DisableWidgets,
+  bool VBoxGuestAdditions
 )
 {
   public static Configuration Default => new(
@@ -298,7 +299,8 @@ public record class Configuration(
     TurnOffSystemSounds: false,
     RunScriptOnFirstLogon: false,
     DisableAppSuggestions: false,
-    DisableWidgets: false
+    DisableWidgets: false,
+    VBoxGuestAdditions: false
   );
 }
 

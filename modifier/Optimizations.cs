@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -188,6 +189,16 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
       appender.Append(
         CommandBuilder.RegistryCommand(@"add ""HKLM\Software\Policies\Microsoft\Windows\CloudContent"" /v ""DisableWindowsConsumerFeatures"" /t REG_DWORD /d 0 /f")
+      );
+    }
+
+    if (Configuration.VBoxGuestAdditions)
+    {
+      string ps1File = @"%TEMP%\VBoxGuestAdditions.ps1";
+      string script = Util.StringFromResource("VBoxGuestAdditions.ps1");
+      AddTextFile(script, ps1File);
+      appender.Append(
+        CommandBuilder.InvokePowerShellScript(ps1File)
       );
     }
   }
