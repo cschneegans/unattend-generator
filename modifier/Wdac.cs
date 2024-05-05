@@ -123,7 +123,7 @@ class WdacModifier(ModifierContext context) : Modifier(context)
             $nsmgr.AddNamespace( 'pol', 'urn:schemas-microsoft-com:sipolicy' );
             $doc.SelectSingleNode( '/pol:SiPolicy/pol:PolicyID', $nsmgr ).InnerText = $guid;
             $doc.SelectSingleNode( '/pol:SiPolicy/pol:BasePolicyID', $nsmgr ).InnerText = $guid;
-            $node = $doc.SelectSingleNode( '//pol:SigningScenario[@Value=''12'']/pol:ProductSigners/pol:AllowedSigners', $nsmgr );
+            $node = $doc.SelectSingleNode( '//pol:SigningScenario[@Value="12"]/pol:ProductSigners/pol:AllowedSigners', $nsmgr );
             $node.ParentNode.RemoveChild( $node );
             $doc.Save( $xml );
             ConvertFrom-CIPolicy -XmlFilePath $xml -BinaryFilePath $binary;

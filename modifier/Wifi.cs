@@ -167,8 +167,7 @@ public record class ParameterizedWifiSettings(
               break;
             }
           default:
-            throw
-            new NotImplementedException($"Authentication mode {Authentication} is not implemented.");
+            throw new NotImplementedException($"Authentication mode {Authentication} is not implemented.");
         }
       }
 
