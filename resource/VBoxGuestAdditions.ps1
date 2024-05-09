@@ -2,7 +2,7 @@
 	foreach( $letter in 'DEFGHIJKLMNOPQRSTUVWXYZ'.ToCharArray() ) {
 		$exe = "${letter}:\VBoxWindowsAdditions.exe";
 		if( Test-Path -LiteralPath $exe ) {
-			$certs = "${letter}:\cert\";
+			$certs = "${letter}:\cert";
 			& "$certs\VBoxCertUtil.exe" add-trusted-publisher "$certs\vbox*.cer" --root "$certs\vbox*.cer";
 			Start-Process -FilePath $exe -ArgumentList "/with_wddm", "/S" -Wait;
 			return;
