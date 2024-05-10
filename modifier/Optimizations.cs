@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -199,6 +198,13 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       AddTextFile(script, ps1File);
       appender.Append(
         CommandBuilder.InvokePowerShellScript(ps1File)
+      );
+    }
+
+    if (Configuration.PreventDeviceEncryption)
+    {
+      appender.Append(
+        CommandBuilder.RegistryCommand(@"add ""HKLM\SYSTEM\CurrentControlSet\Control\BitLocker"" /v ""PreventDeviceEncryption"" /t REG_DWORD /d 1 /f")
       );
     }
   }

@@ -266,7 +266,8 @@ public record class Configuration(
   bool RunScriptOnFirstLogon,
   bool DisableAppSuggestions,
   bool DisableWidgets,
-  bool VBoxGuestAdditions
+  bool VBoxGuestAdditions,
+  bool PreventDeviceEncryption
 )
 {
   public static Configuration Default => new(
@@ -300,7 +301,8 @@ public record class Configuration(
     RunScriptOnFirstLogon: false,
     DisableAppSuggestions: false,
     DisableWidgets: false,
-    VBoxGuestAdditions: false
+    VBoxGuestAdditions: false,
+    PreventDeviceEncryption: false
   );
 }
 
