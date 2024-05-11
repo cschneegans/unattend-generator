@@ -20,8 +20,7 @@ public enum WdacAuditModes
 
 public record class ConfigureWdacSettings(
   WdacAuditModes AuditMode,
-  WdacScriptModes ScriptMode,
-  bool BlockDefender
+  WdacScriptModes ScriptMode
 ) : IWdacSettings;
 
 enum RuleType
@@ -100,11 +99,6 @@ class WdacModifier(ModifierContext context) : Modifier(context)
       NewPathRule(@"C:\Windows\*", RuleType.Allow);
       NewPathRule(@"C:\Program Files\*", RuleType.Allow);
       NewPathRule(@"C:\Program Files (x86)\*", RuleType.Allow);
-      if (settings.BlockDefender)
-      {
-        NewPathRule(@"C:\Program Files\Windows Defender\*", RuleType.Deny);
-        NewPathRule(@"MsMpEng.exe", RuleType.Deny);
-      }
 
       {
         using StreamReader sr = new(
