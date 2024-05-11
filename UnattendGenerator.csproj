@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resource\disable-defender-pe.cmd" />
     <None Remove="resource\ExtractScripts.ps1" />
     <None Remove="resource\GeoId.json" />
     <None Remove="resource\VBoxGuestAdditions.ps1" />
@@ -34,6 +35,10 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="resource\disable-defender-pe.cmd" />
   </ItemGroup>
 
 </Project>

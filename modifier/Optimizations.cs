@@ -20,6 +20,21 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableDefender)
     {
+      if (Configuration.DisableDefenderPE)
+      {
+        CommandAppender pe = GetAppender(CommandConfig.WindowsPE);
+        const string path = @"X:\disable-defender.cmd";
+        foreach (string line in Util.SplitLines(Util.StringFromResource("disable-defender-pe.cmd")))
+        {
+          pe.Append(
+            CommandBuilder.WriteToFile(path, line)
+          );
+        }
+        pe.Append(
+          CommandBuilder.ShellCommand($"start /MIN {path}")
+        );
+      }
+
       // https://lazyadmin.nl/win-11/turn-off-windows-defender-windows-11-permanently/
       string filename = @"%TEMP%\disable-defender.ini";
       StringWriter sw = new();
