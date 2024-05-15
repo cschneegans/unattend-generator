@@ -87,33 +87,39 @@ public class Script
   public ScriptType Type { get; }
 }
 
+public record class ScriptInfo(Script Script, string ScriptPath, string Key)
+{
+  public static ScriptInfo Create(Script script, int index)
+  {
+    const string folder = @"C:\Windows\Setup\Scripts";
+    string name = $"unattend-{index + 1:x2}";
+    string extension = script.Type.ToString().ToLowerInvariant();
+    return new ScriptInfo(
+      Script: script,
+      ScriptPath: @$"{folder}\{name}.{extension}",
+      Key: name
+    );
+  }
+}
+
 class ScriptModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
-    var items = Configuration.ScriptSettings.Scripts.Select((script, index) => (Id: NewScriptId(script, index), Script: script)).ToImmutableList();
-    if (items.IsEmpty)
+    var infos = Configuration.ScriptSettings.Scripts.Select(ScriptInfo.Create).ToImmutableList();
+    if (infos.IsEmpty)
     {
       return;
     }
 
-    foreach (var item in items)
+    foreach (var info in infos)
     {
-      WriteScriptContent(item.Id, item.Script);
-      CallScript(item.Id, item.Script);
+      WriteScriptContent(info);
+      CallScript(info);
     }
   }
 
-  record class ScriptId(string FullName, string Key);
-
-  private static ScriptId NewScriptId(Script script, int index)
-  {
-    string name = $"unattend-{index + 1:x2}";
-    string extension = script.Type.ToString().ToLowerInvariant();
-    return new ScriptId(@$"C:\Windows\Setup\Scripts\{name}.{extension}", name);
-  }
-
-  private void WriteScriptContent(ScriptId scriptId, Script script)
+  private void WriteScriptContent(ScriptInfo info)
   {
     static string Clean(Script script)
     {
@@ -128,20 +134,20 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
       return script.Content;
     }
 
-    AddTextFile(Clean(script), scriptId.FullName);
+    AddTextFile(Clean(info.Script), info.ScriptPath);
   }
 
-  private void CallScript(ScriptId scriptId, Script script)
+  private void CallScript(ScriptInfo info)
   {
-    CommandAppender appender = GetAppender(script.Phase switch
+    CommandAppender appender = GetAppender(info.Script.Phase switch
     {
       ScriptPhase.FirstLogon => CommandConfig.Oobe,
       _ => CommandConfig.Specialize,
     });
 
-    string command = CommandHelper.GetCommand(script, scriptId.FullName);
+    string command = CommandHelper.GetCommand(info);
 
-    switch (script.Phase)
+    switch (info.Script.Phase)
     {
       case ScriptPhase.System:
       case ScriptPhase.FirstLogon:
@@ -153,17 +159,17 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
         appender.Append(
           CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
           {
-            return [CommandBuilder.UserRunOnceCommand(scriptId.Key, command, rootKey, subKey)];
+            return [CommandBuilder.UserRunOnceCommand(info.Key, command, rootKey, subKey)];
           })
         );
         break;
       case ScriptPhase.DefaultUser:
-        string mountKey = @"""HKU\DefaultUser""";
-        appender.Append([
-          CommandBuilder.RegistryCommand(@$"load {mountKey} ""C:\Users\Default\NTUSER.DAT"""),
-          command,
-          CommandBuilder.RegistryCommand($"unload {mountKey}")
-        ]);
+        appender.Append(
+          CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
+          {
+            return [command];
+          })
+        );
         break;
       default:
         throw new NotSupportedException();
@@ -173,15 +179,15 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
 
 public static class CommandHelper
 {
-  public static string GetCommand(Script script, string filepath)
+  public static string GetCommand(ScriptInfo info)
   {
-    return script.Type switch
+    return info.Script.Type switch
     {
-      ScriptType.Cmd => CommandBuilder.Raw(filepath),
-      ScriptType.Ps1 => CommandBuilder.InvokePowerShellScript(filepath),
-      ScriptType.Reg => CommandBuilder.RegistryCommand(@$"import ""{filepath}"""),
-      ScriptType.Vbs => CommandBuilder.InvokeVBScript(filepath),
-      ScriptType.Js => CommandBuilder.InvokeJScript(filepath),
+      ScriptType.Cmd => CommandBuilder.Raw(info.ScriptPath),
+      ScriptType.Ps1 => CommandBuilder.InvokePowerShellScript(info.ScriptPath),
+      ScriptType.Reg => CommandBuilder.RegistryCommand(@$"import ""{info.ScriptPath}"""),
+      ScriptType.Vbs => CommandBuilder.InvokeVBScript(info.ScriptPath),
+      ScriptType.Js => CommandBuilder.InvokeJScript(info.ScriptPath),
       _ => throw new NotSupportedException(),
     };
   }

@@ -163,7 +163,7 @@ static class CommandBuilder
   public static IEnumerable<string> RegistryDefaultUserCommand(Func<string, string, IEnumerable<string>> action)
   {
     string rootKey = "HKU";
-    string subKey = "mount";
+    string subKey = "DefaultUser";
     return [
       RegistryCommand(@$"load ""{rootKey}\{subKey}"" ""C:\Users\Default\NTUSER.DAT"""),
       .. action.Invoke(rootKey, subKey),
