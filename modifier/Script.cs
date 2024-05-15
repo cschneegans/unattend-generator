@@ -87,7 +87,7 @@ public class Script
   public ScriptType Type { get; }
 }
 
-public record class ScriptInfo(Script Script, string ScriptPath, string Key)
+public record class ScriptInfo(Script Script, string ScriptPath, string LogPath, string Key)
 {
   public static ScriptInfo Create(Script script, int index)
   {
@@ -97,6 +97,7 @@ public record class ScriptInfo(Script Script, string ScriptPath, string Key)
     return new ScriptInfo(
       Script: script,
       ScriptPath: @$"{folder}\{name}.{extension}",
+      LogPath: @$"{folder}\{name}.log",
       Key: name
     );
   }
@@ -181,7 +182,7 @@ public static class CommandHelper
 {
   public static string GetCommand(ScriptInfo info)
   {
-    return info.Script.Type switch
+    string inner = info.Script.Type switch
     {
       ScriptType.Cmd => CommandBuilder.Raw(info.ScriptPath),
       ScriptType.Ps1 => CommandBuilder.InvokePowerShellScript(info.ScriptPath),
@@ -190,5 +191,14 @@ public static class CommandHelper
       ScriptType.Js => CommandBuilder.InvokeJScript(info.ScriptPath),
       _ => throw new NotSupportedException(),
     };
+
+    if (info.Script.Phase == ScriptPhase.UserOnce)
+    {
+      return inner;
+    }
+    else
+    {
+      return CommandBuilder.ShellCommand(inner, outFile: info.LogPath);
+    }
   }
 }

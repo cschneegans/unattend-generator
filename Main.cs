@@ -142,7 +142,7 @@ static class CommandBuilder
   /// </summary>
   public static string ShellCommand(string command, string outFile)
   {
-    return $@"cmd.exe /c ""2>&1 >>""{outFile}"" {command}""";
+    return $@"cmd.exe /c ""{command} >>""{outFile}"" 2>&1""";
   }
 
   public static string RegistryCommand(string value)
