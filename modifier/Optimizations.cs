@@ -216,6 +216,16 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       );
     }
 
+    if(Configuration.VMwareTools)
+    {
+      string ps1File = @"%TEMP%\VMwareTools.ps1";
+      string script = Util.StringFromResource("VMwareTools.ps1");
+      AddTextFile(script, ps1File);
+      appender.Append(
+        CommandBuilder.InvokePowerShellScript(ps1File)
+      );
+    }
+
     if (Configuration.PreventDeviceEncryption)
     {
       appender.Append(

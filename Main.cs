@@ -268,6 +268,7 @@ public record class Configuration(
   bool DisableAppSuggestions,
   bool DisableWidgets,
   bool VBoxGuestAdditions,
+  bool VMwareTools,
   bool PreventDeviceEncryption
 )
 {
@@ -304,6 +305,7 @@ public record class Configuration(
     DisableAppSuggestions: false,
     DisableWidgets: false,
     VBoxGuestAdditions: false,
+    VMwareTools: false,
     PreventDeviceEncryption: false
   );
 }

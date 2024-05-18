@@ -13,6 +13,7 @@
     <None Remove="resource\ExtractScripts.ps1" />
     <None Remove="resource\GeoId.json" />
     <None Remove="resource\VBoxGuestAdditions.ps1" />
+    <None Remove="resource\VMwareTools.ps1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +28,7 @@
     <EmbeddedResource Include="resource\known-writeable-folders.txt" />
     <EmbeddedResource Include="resource\TimeOffset.json" />
     <EmbeddedResource Include="resource\UserLocale.json" />
+    <EmbeddedResource Include="resource\VMwareTools.ps1" />
     <EmbeddedResource Include="resource\VBoxGuestAdditions.ps1" />
     <EmbeddedResource Include="resource\WindowsEdition.json" />
     <EmbeddedResource Include="resource\WLANProfile.xml" />
