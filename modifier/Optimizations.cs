@@ -137,16 +137,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       appender.Append(
         CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
         {
-          string script = $$"""
-            New-PSDrive -PSProvider 'Registry' -Root 'HKEY_USERS' -Name 'HKU';
-            $excludes = Get-ChildItem -LiteralPath 'HKU:\{{subKey}}\AppEvents\EventLabels' |
-              Where-Object -FilterScript { ($_ | Get-ItemProperty).ExcludeFromCPL -eq 1; } |
-              Select-Object -ExpandProperty 'PSChildName';
-            Get-ChildItem -Path 'HKU:\{{subKey}}\AppEvents\Schemes\Apps\*\*' |
-              Where-Object -Property 'PSChildName' -NotIn $excludes |
-              Get-ChildItem -Include '.Current' | Set-ItemProperty -Name '(default)' -Value '';
-            Remove-PSDrive -Name 'HKU';
-            """;
+          string script = $"$mountKey = '{subKey}';\r\n" + Util.StringFromResource("TurnOffSystemSounds.ps1");
           string ps1File = @"%TEMP%\sounds.ps1";
           AddTextFile(script, ps1File);
           return [

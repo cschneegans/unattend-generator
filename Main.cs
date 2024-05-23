@@ -160,7 +160,9 @@ static class CommandBuilder
     return RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\Runonce"" /v ""{Escape(name)}"" /t REG_SZ /d ""{Escape(value)}"" /f");
   }
 
-  public static IEnumerable<string> RegistryDefaultUserCommand(Func<string, string, IEnumerable<string>> action)
+  public delegate IEnumerable<string> RegistryDefaultUserAction(string rootKey, string subKey);
+
+  public static IEnumerable<string> RegistryDefaultUserCommand(RegistryDefaultUserAction action)
   {
     string rootKey = "HKU";
     string subKey = "DefaultUser";
