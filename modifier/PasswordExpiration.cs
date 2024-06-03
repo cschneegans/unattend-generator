@@ -13,7 +13,7 @@ public class UnlimitedPasswordExpirationSettings : IPasswordExpirationSettings;
 
 public class CustomPasswordExpirationSettings(int? maxAge) : IPasswordExpirationSettings
 {
-  public int MaxAge { get; } = Validation.InRange(maxAge, min: 1, max: 999);
+  public int MaxAge => Validation.InRange(maxAge, min: 1, max: 999);
 }
 
 class PasswordExpirationModifier(ModifierContext context) : Modifier(context)

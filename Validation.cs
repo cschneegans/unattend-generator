@@ -30,7 +30,7 @@ public static class Validation
   }
 
   [return: NotNull]
-  public static int InRange([NotNull] int? property, int? min, int? max, [CallerArgumentExpression(nameof(property))] string field = "")
+  public static int InRange([NotNull] int? property, int? min = null, int? max = null, [CallerArgumentExpression(nameof(property))] string field = "")
   {
     NotNull(property, field);
 

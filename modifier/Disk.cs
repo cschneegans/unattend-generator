@@ -11,10 +11,15 @@ public interface IInstallToSettings;
 
 public class AvailableInstallToSettings : IInstallToSettings;
 
-public record class CustomInstallToSettings(
-  int InstallToDisk,
-  int InstallToPartition
-) : IInstallToSettings;
+public class CustomInstallToSettings(
+  int installToDisk,
+  int installToPartition
+) : IInstallToSettings
+{
+  public int InstallToDisk => Validation.InRange(installToDisk, min: 0);
+
+  public int InstallToPartition => Validation.InRange(installToPartition, min: 1);
+}
 
 public record class CustomPartitionSettings(
   string Script,
