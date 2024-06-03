@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Xml;
+using System.Xml.Schema;
 
 namespace Schneegans.Unattend;
 
@@ -207,7 +208,15 @@ class WifiModifier(ModifierContext context) : Modifier(context)
     string logfile = @"%TEMP%\wifi.log";
 
     XmlDocument profile = settings.ProfileXml;
-    Util.ValidateAgainstSchema(profile, "WLAN_profile_v1.xsd");
+    try
+    {
+      Util.ValidateAgainstSchema(profile, "WLAN_profile_v1.xsd");
+    }
+    catch (Exception e) when (e is XmlException or XmlSchemaException)
+    {
+      throw new ConfigurationException($"WLAN profile XML is invalid: {e.Message}");
+    }
+
     AddXmlFile(profile, xmlfile);
 
     CommandAppender appender = GetAppender(CommandConfig.Specialize);
