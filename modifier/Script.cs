@@ -42,8 +42,20 @@ public static class ScriptExtensions
       ScriptPhase.DefaultUser => [
         ScriptType.Reg,
         ScriptType.Cmd,
+        ScriptType.Ps1,
       ],
       _ => Enum.GetValues<ScriptType>(),
+    };
+  }
+
+  public static string DefaultUserRequiredPrefix(this ScriptType type)
+  {
+    return type switch
+    {
+      ScriptType.Reg => @"[HKEY_USERS\DefaultUser\",
+      ScriptType.Cmd => @"HKU\DefaultUser\",
+      ScriptType.Ps1 => @"Registry::HKU\DefaultUser\",
+      _ => "",
     };
   }
 
@@ -66,9 +78,9 @@ public class Script
       throw new ConfigurationException($"Scripts in phase '{phase}' must not have type '{type}'.");
     }
 
-    if (phase == ScriptPhase.DefaultUser && type == ScriptType.Reg && !string.IsNullOrWhiteSpace(content))
+    if (phase == ScriptPhase.DefaultUser && !string.IsNullOrWhiteSpace(content))
     {
-      string prefix = @"[HKEY_USERS\DefaultUser\";
+      string prefix = type.DefaultUserRequiredPrefix();
       if (!content.Contains(prefix, StringComparison.OrdinalIgnoreCase))
       {
         throw new ConfigurationException($"{type.FileExtension()} script '{content}' does not contain required key prefix '{prefix}'.");
