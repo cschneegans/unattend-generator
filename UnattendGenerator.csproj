@@ -14,6 +14,7 @@
     <None Remove="resource\GeoId.json" />
     <None Remove="resource\TurnOffSystemSounds.ps1" />
     <None Remove="resource\VBoxGuestAdditions.ps1" />
+    <None Remove="resource\VirtIoGuestTools.ps1" />
     <None Remove="resource\VMwareTools.ps1" />
   </ItemGroup>
 
@@ -30,6 +31,7 @@
     <EmbeddedResource Include="resource\TimeOffset.json" />
     <EmbeddedResource Include="resource\TurnOffSystemSounds.ps1" />
     <EmbeddedResource Include="resource\UserLocale.json" />
+    <EmbeddedResource Include="resource\VirtIoGuestTools.ps1" />
     <EmbeddedResource Include="resource\VMwareTools.ps1" />
     <EmbeddedResource Include="resource\VBoxGuestAdditions.ps1" />
     <EmbeddedResource Include="resource\WindowsEdition.json" />

@@ -271,6 +271,7 @@ public record class Configuration(
   bool DisableWidgets,
   bool VBoxGuestAdditions,
   bool VMwareTools,
+  bool VirtIoGuestTools,
   bool PreventDeviceEncryption
 )
 {
@@ -308,6 +309,7 @@ public record class Configuration(
     DisableWidgets: false,
     VBoxGuestAdditions: false,
     VMwareTools: false,
+    VirtIoGuestTools: false,
     PreventDeviceEncryption: false
   );
 }

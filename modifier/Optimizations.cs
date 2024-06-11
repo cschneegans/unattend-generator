@@ -207,10 +207,20 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       );
     }
 
-    if(Configuration.VMwareTools)
+    if (Configuration.VMwareTools)
     {
       string ps1File = @"%TEMP%\VMwareTools.ps1";
       string script = Util.StringFromResource("VMwareTools.ps1");
+      AddTextFile(script, ps1File);
+      appender.Append(
+        CommandBuilder.InvokePowerShellScript(ps1File)
+      );
+    }
+
+    if (Configuration.VirtIoGuestTools)
+    {
+      string ps1File = @"%TEMP%\VirtIoGuestTools.ps1";
+      string script = Util.StringFromResource("VirtIoGuestTools.ps1");
       AddTextFile(script, ps1File);
       appender.Append(
         CommandBuilder.InvokePowerShellScript(ps1File)
