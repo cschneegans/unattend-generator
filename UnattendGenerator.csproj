@@ -9,13 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="resource\disable-defender-pe.cmd" />
-    <None Remove="resource\ExtractScripts.ps1" />
-    <None Remove="resource\GeoId.json" />
-    <None Remove="resource\TurnOffSystemSounds.ps1" />
-    <None Remove="resource\VBoxGuestAdditions.ps1" />
-    <None Remove="resource\VirtIoGuestTools.ps1" />
-    <None Remove="resource\VMwareTools.ps1" />
+    <None Remove="resource\RemoveBloatware.ps1" />
+    <None Remove="resource\RemoveCapabilities.ps1" />
+    <None Remove="resource\RemoveFeatures.ps1" />
+    <None Remove="resource\RemovePackages.ps1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +25,7 @@
     <EmbeddedResource Include="resource\KeyboardIdentifier.json" />
     <EmbeddedResource Include="resource\Bloatware.json" />
     <EmbeddedResource Include="resource\known-writeable-folders.txt" />
+    <EmbeddedResource Include="resource\RemoveBloatware.ps1" />
     <EmbeddedResource Include="resource\TimeOffset.json" />
     <EmbeddedResource Include="resource\TurnOffSystemSounds.ps1" />
     <EmbeddedResource Include="resource\UserLocale.json" />
@@ -37,14 +35,11 @@
     <EmbeddedResource Include="resource\WindowsEdition.json" />
     <EmbeddedResource Include="resource\WLANProfile.xml" />
     <EmbeddedResource Include="resource\WLAN_profile_v1.xsd" />
+    <EmbeddedResource Include="resource\disable-defender-pe.cmd" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="resource\disable-defender-pe.cmd" />
   </ItemGroup>
 
 </Project>

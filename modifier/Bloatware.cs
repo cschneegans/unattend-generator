@@ -7,11 +7,7 @@ namespace Schneegans.Unattend;
 
 abstract class Remover<T> where T : SelectorBloatwareStep
 {
-  protected readonly List<string> selectors = [];
-
-  protected string CmdPath => @$"%TEMP%\{Tag()}.ps1";
-
-  protected string PsLogPath => @$"$env:TEMP\{Tag()}.log";
+  private readonly List<string> selectors = [];
 
   public void Add(T step)
   {
@@ -24,93 +20,115 @@ abstract class Remover<T> where T : SelectorBloatwareStep
     {
       return;
     }
-    parent.AddTextFile(RemoveCommand(), CmdPath);
+    string scriptPath = @$"C:\Windows\Temp\{BaseName}.ps1";
+    parent.AddTextFile(GetRemoveCommand(), scriptPath);
     CommandAppender appender = parent.GetAppender(CommandConfig.Specialize);
     appender.Append(
-      CommandBuilder.InvokePowerShellScript(CmdPath)
+      CommandBuilder.InvokePowerShellScript(scriptPath)
     );
   }
 
-  protected abstract string RemoveCommand();
+  private string GetRemoveCommand()
+  {
+    StringWriter sw = new();
+    sw.WriteLine("$selectors = @(");
+    foreach (string selector in selectors)
+    {
+      sw.WriteLine($"\t'{selector}';");
+    }
+    sw.WriteLine(");");
+    sw.WriteLine($"$getCommand = {GetCommand};");
+    sw.WriteLine($"$filterCommand = {FilterCommand};");
+    sw.WriteLine($"$removeCommand = {RemoveCommand};");
+    sw.WriteLine($"$type = '{Type}';");
+    sw.WriteLine($@"$logfile = 'C:\Windows\Temp\{BaseName}.log';");
+    return sw.ToString() + Util.StringFromResource("RemoveBloatware.ps1");
+  }
 
-  protected abstract string Tag();
+  protected abstract string GetCommand { get; }
+
+  protected abstract string FilterCommand { get; }
+  
+  protected abstract string RemoveCommand { get; }
+
+  protected abstract string BaseName { get; }
+  
+  protected abstract string Type { get; }
 }
 
 class PackageRemover : Remover<PackageBloatwareStep>
 {
-  protected override string RemoveCommand()
-  {
-    StringWriter sw = new();
-    sw.WriteLine("""
-      Get-AppxProvisionedPackage -Online |
-      Where-Object -Property 'DisplayName' -In -Value @(
-      """);
-    foreach (string selector in selectors)
-    {
-      sw.WriteLine($"  '{selector}';");
-    }
-    sw.WriteLine($$"""
-      ) | Remove-AppxProvisionedPackage -AllUsers -Online *>&1 >> "{{PsLogPath}}";
-      """);
-    return sw.ToString();
-  }
+  protected override string GetCommand => "{ Get-AppxProvisionedPackage -Online; }";
 
-  protected override string Tag()
+  protected override string FilterCommand => "{ $_.DisplayName -eq $selector; }";
+
+  protected override string RemoveCommand =>
+  """
   {
-    return "remove-packages";
+    [CmdletBinding()]
+    param(
+      [Parameter( Mandatory, ValueFromPipeline )]
+      $InputObject
+    );
+    process {
+      $InputObject | Remove-AppxProvisionedPackage -AllUsers -Online -ErrorAction 'Continue';
+    }
   }
+  """;
+
+  protected override string BaseName => "remove-packages";
+  
+  protected override string Type => "Package";
 }
 
 class CapabilityRemover : Remover<CapabilityBloatwareStep>
 {
-  protected override string RemoveCommand()
-  {
-    StringWriter sw = new();
-    sw.WriteLine("""
-    Get-WindowsCapability -Online |
-    Where-Object -FilterScript {
-      ($_.Name -split '~')[0] -in @(
-    """);
-    foreach (string selector in selectors)
-    {
-      sw.WriteLine($"    '{selector}';");
-    }
-    sw.WriteLine($$"""
-      );
-    } | Remove-WindowsCapability -Online *>&1 >> "{{PsLogPath}}";
-    """);
-    return sw.ToString();
-  }
+  protected override string GetCommand => "{ Get-WindowsCapability -Online; }";
 
-  protected override string Tag()
+  protected override string FilterCommand => "{ ($_.Name -split '~')[0] -eq $selector; }";
+
+  protected override string RemoveCommand =>
+  """
   {
-    return "remove-caps";
+    [CmdletBinding()]
+    param(
+      [Parameter( Mandatory, ValueFromPipeline )]
+      $InputObject
+    );
+    process {
+      $InputObject | Remove-WindowsCapability -Online -ErrorAction 'Continue';
+    }
   }
+  """;
+  
+  protected override string BaseName => "remove-caps";
+  
+  protected override string Type => "Capability";
 }
 
 class FeatureRemover : Remover<OptionalFeatureBloatwareStep>
 {
-  protected override string RemoveCommand()
-  {
-    StringWriter sw = new();
-    sw.WriteLine("""
-      Get-WindowsOptionalFeature -Online |
-      Where-Object -Property 'FeatureName' -In -Value @(
-      """);
-    foreach (string selector in selectors)
-    {
-      sw.WriteLine($"  '{selector}';");
-    }
-    sw.WriteLine($$"""
-    ) | Disable-WindowsOptionalFeature -Online -Remove -NoRestart *>&1 >> "{{PsLogPath}}";
-    """);
-    return sw.ToString();
-  }
+  protected override string GetCommand => "{ Get-WindowsOptionalFeature -Online; }";
 
-  protected override string Tag()
+  protected override string FilterCommand => "{ $_.FeatureName -eq $selector; }";
+
+  protected override string RemoveCommand => 
+  """
   {
-    return "remove-features";
+    [CmdletBinding()]
+    param(
+      [Parameter( Mandatory, ValueFromPipeline )]
+      $InputObject
+    );
+    process {
+      $InputObject | Disable-WindowsOptionalFeature -Online -Remove -NoRestart -ErrorAction 'Continue';
+    }
   }
+  """;
+
+  protected override string BaseName => "remove-features";
+  
+  protected override string Type => "Feature";
 }
 
 class BloatwareModifier(ModifierContext context) : Modifier(context)

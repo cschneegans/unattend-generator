@@ -159,6 +159,13 @@
         "AppliesTo": [
           "Windows 10"
         ]
+      },
+      {
+        "$type": "Schneegans.Unattend.CapabilityBloatwareStep, UnattendGenerator",
+        "Selector": "Microsoft.Windows.SnippingTool",
+        "AppliesTo": [
+          "Windows 11"
+        ]
       }
     ]
   },
