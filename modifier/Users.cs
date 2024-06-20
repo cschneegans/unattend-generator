@@ -66,7 +66,7 @@ public class BuiltinAutoLogonSettings(
   string password
 ) : IAutoLogonSettings
 {
-  public string Password => Validation.StringNotEmpty(password);
+  public string Password => password;
 }
 
 public class OwnAutoLogonSettings : IAutoLogonSettings;
