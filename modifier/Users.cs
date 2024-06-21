@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Text;
 using System.Xml;
 
 namespace Schneegans.Unattend;
@@ -13,11 +14,13 @@ public class UnattendedAccountSettings : IAccountSettings
 {
   public UnattendedAccountSettings(
     ImmutableList<Account> accounts,
-    IAutoLogonSettings autoLogonSettings
+    IAutoLogonSettings autoLogonSettings,
+    bool obscurePasswords
   )
   {
     Accounts = accounts;
     AutoLogonSettings = autoLogonSettings;
+    ObscurePasswords = obscurePasswords;
 
     CheckAdministratorAccount();
     CheckUniqueNames();
@@ -39,6 +42,8 @@ public class UnattendedAccountSettings : IAccountSettings
   public ImmutableList<Account> Accounts { get; }
 
   public IAutoLogonSettings AutoLogonSettings { get; }
+
+  public bool ObscurePasswords { get; }
 
   private void CheckAdministratorAccount()
   {
@@ -183,11 +188,8 @@ class UsersModifier(ModifierContext context) : Modifier(context)
     NewSimpleElement("Username", container, username);
     NewSimpleElement("Enabled", container, "true");
     NewSimpleElement("LogonCount", container, "1");
-    {
-      var passwordElem = NewElement("Password", container);
-      NewSimpleElement("Value", passwordElem, password);
-      NewSimpleElement("PlainText", passwordElem, "true");
-    }
+    NewPasswordElement(container, element: "Password", password: password, obscurePasswords: settings.ObscurePasswords);
+
     {
       CommandAppender appender = GetAppender(CommandConfig.Oobe);
       appender.Append(
@@ -196,13 +198,22 @@ class UsersModifier(ModifierContext context) : Modifier(context)
     }
   }
 
+  private void NewPasswordElement(XmlElement parent, string element, string password, bool obscurePasswords)
+  {
+    var elem = NewElement(element, parent);
+    if (obscurePasswords)
+    {
+      password = Convert.ToBase64String(Encoding.Unicode.GetBytes(password + element));
+    }
+    NewSimpleElement("Value", elem, password);
+    NewSimpleElement("PlainText", elem, obscurePasswords ? "false" : "true");
+  }
+
   private void AddUserAccounts(XmlElement container, UnattendedAccountSettings settings)
   {
     if (settings.AutoLogonSettings is BuiltinAutoLogonSettings bals)
     {
-      XmlElement adminPassword = NewElement("AdministratorPassword", container);
-      NewSimpleElement("Value", adminPassword, bals.Password);
-      NewSimpleElement("PlainText", adminPassword, "true");
+      NewPasswordElement(container, element: "AdministratorPassword", password: bals.Password, obscurePasswords: settings.ObscurePasswords);
     }
     {
       XmlElement localAccounts = NewElement("LocalAccounts", container);
@@ -212,11 +223,7 @@ class UsersModifier(ModifierContext context) : Modifier(context)
         localAccount.SetAttribute("action", NamespaceManager.LookupNamespace("wcm"), "add");
         NewSimpleElement("Name", localAccount, account.Name);
         NewSimpleElement("Group", localAccount, account.Group);
-        {
-          XmlElement password = NewElement("Password", localAccount);
-          NewSimpleElement("Value", password, account.Password);
-          NewSimpleElement("PlainText", password, "true");
-        }
+        NewPasswordElement(localAccount, element: "Password", password: account.Password, obscurePasswords: settings.ObscurePasswords);
       }
     }
   }
