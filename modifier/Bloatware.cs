@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml;
 
 namespace Schneegans.Unattend;
@@ -48,11 +49,11 @@ abstract class Remover<T> where T : SelectorBloatwareStep
   protected abstract string GetCommand { get; }
 
   protected abstract string FilterCommand { get; }
-  
+
   protected abstract string RemoveCommand { get; }
 
   protected abstract string BaseName { get; }
-  
+
   protected abstract string Type { get; }
 }
 
@@ -77,7 +78,7 @@ class PackageRemover : Remover<PackageBloatwareStep>
   """;
 
   protected override string BaseName => "remove-packages";
-  
+
   protected override string Type => "Package";
 }
 
@@ -100,9 +101,9 @@ class CapabilityRemover : Remover<CapabilityBloatwareStep>
     }
   }
   """;
-  
+
   protected override string BaseName => "remove-caps";
-  
+
   protected override string Type => "Capability";
 }
 
@@ -112,7 +113,7 @@ class FeatureRemover : Remover<OptionalFeatureBloatwareStep>
 
   protected override string FilterCommand => "{ $_.FeatureName -eq $selector; }";
 
-  protected override string RemoveCommand => 
+  protected override string RemoveCommand =>
   """
   {
     [CmdletBinding()]
@@ -127,7 +128,7 @@ class FeatureRemover : Remover<OptionalFeatureBloatwareStep>
   """;
 
   protected override string BaseName => "remove-features";
-  
+
   protected override string Type => "Feature";
 }
 
@@ -141,7 +142,7 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
     var capabilityRemover = new CapabilityRemover();
     var featureRemover = new FeatureRemover();
 
-    foreach (Bloatware bw in Configuration.Bloatwares)
+    foreach (Bloatware bw in Configuration.Bloatwares.OrderBy(bw => bw.Id))
     {
       foreach (BloatwareStep step in bw.Steps)
       {
