@@ -148,6 +148,7 @@ class UsersModifier(ModifierContext context) : Modifier(context)
     switch (Configuration.AccountSettings)
     {
       case UnattendedAccountSettings settings:
+        CheckComputerNameCollision(settings);
         AddAutoLogon((XmlElement)Document.SelectSingleNodeOrThrow("//u:AutoLogon", NamespaceManager), settings);
         AddUserAccounts((XmlElement)Document.SelectSingleNodeOrThrow("//u:UserAccounts", NamespaceManager), settings);
         break;
@@ -157,6 +158,20 @@ class UsersModifier(ModifierContext context) : Modifier(context)
         break;
       default:
         throw new NotSupportedException();
+    }
+  }
+
+  private void CheckComputerNameCollision(UnattendedAccountSettings settings)
+  {
+    if (Configuration.ComputerNameSettings is CustomComputerNameSettings computer)
+    {
+      foreach (var account in settings.Accounts)
+      {
+        if (string.Equals(account.Name, computer.ComputerName, StringComparison.OrdinalIgnoreCase))
+        {
+          throw new ConfigurationException($"Account name '{account.Name}' must not be the same as the computer name.");
+        }
+      }
     }
   }
 
@@ -188,7 +203,7 @@ class UsersModifier(ModifierContext context) : Modifier(context)
     NewSimpleElement("Username", container, username);
     NewSimpleElement("Enabled", container, "true");
     NewSimpleElement("LogonCount", container, "1");
-    NewPasswordElement(container, element: "Password", password: password, obscurePasswords: settings.ObscurePasswords);
+    NewPasswordElement(container, "Password", password, settings.ObscurePasswords);
 
     {
       CommandAppender appender = GetAppender(CommandConfig.Oobe);
@@ -213,7 +228,7 @@ class UsersModifier(ModifierContext context) : Modifier(context)
   {
     if (settings.AutoLogonSettings is BuiltinAutoLogonSettings bals)
     {
-      NewPasswordElement(container, element: "AdministratorPassword", password: bals.Password, obscurePasswords: settings.ObscurePasswords);
+      NewPasswordElement(container, "AdministratorPassword", bals.Password, settings.ObscurePasswords);
     }
     {
       XmlElement localAccounts = NewElement("LocalAccounts", container);
@@ -223,7 +238,7 @@ class UsersModifier(ModifierContext context) : Modifier(context)
         localAccount.SetAttribute("action", NamespaceManager.LookupNamespace("wcm"), "add");
         NewSimpleElement("Name", localAccount, account.Name);
         NewSimpleElement("Group", localAccount, account.Group);
-        NewPasswordElement(localAccount, element: "Password", password: account.Password, obscurePasswords: settings.ObscurePasswords);
+        NewPasswordElement(localAccount, "Password", account.Password, settings.ObscurePasswords);
       }
     }
   }
