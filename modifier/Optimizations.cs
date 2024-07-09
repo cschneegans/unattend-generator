@@ -151,16 +151,6 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       ]);
     }
 
-    if (Configuration.RunScriptOnFirstLogon)
-    {
-      appender.Append(
-        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-        {
-          return [CommandBuilder.UserRunOnceCommand("UserFirstLogon", Constants.FirstLogonScript, rootKey, subKey)];
-        }
-      ));
-    }
-
     if (Configuration.DisableAppSuggestions)
     {
       // https://skanthak.homepage.t-online.de/ten.html#eighth

@@ -266,7 +266,6 @@ public record class Configuration(
   bool DisableDefenderPE,
   bool DisableSystemRestore,
   bool TurnOffSystemSounds,
-  bool RunScriptOnFirstLogon,
   bool DisableAppSuggestions,
   bool DisableWidgets,
   bool VBoxGuestAdditions,
@@ -305,7 +304,6 @@ public record class Configuration(
     DisableDefenderPE: false,
     DisableSystemRestore: false,
     TurnOffSystemSounds: false,
-    RunScriptOnFirstLogon: false,
     DisableAppSuggestions: false,
     DisableWidgets: false,
     VBoxGuestAdditions: false,
@@ -549,8 +547,6 @@ public class UserLocale(
 
 public static class Constants
 {
-  public const string FirstLogonScript = @"C:\Windows\Setup\Scripts\UserFirstLogon.cmd";
-
   public const string UsersGroup = "Users";
 
   public const string AdministratorsGroup = "Administrators";
