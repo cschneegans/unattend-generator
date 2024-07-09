@@ -233,5 +233,15 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         CommandBuilder.RegistryCommand(@"add ""HKLM\SYSTEM\CurrentControlSet\Control\BitLocker"" /v ""PreventDeviceEncryption"" /t REG_DWORD /d 1 /f")
       );
     }
+
+    if (Configuration.ClassicContextMenu)
+    {
+      appender.Append(
+        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
+        {
+          return [CommandBuilder.UserRunOnceCommand("ClassicContextMenu", CommandBuilder.RegistryCommand(@$"add ""HKCU\Software\Classes\CLSID\{{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}}\InprocServer32"" /ve /f"), rootKey, subKey)];
+        })
+      );
+    }
   }
 }

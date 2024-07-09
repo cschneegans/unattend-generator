@@ -272,7 +272,8 @@ public record class Configuration(
   bool VBoxGuestAdditions,
   bool VMwareTools,
   bool VirtIoGuestTools,
-  bool PreventDeviceEncryption
+  bool PreventDeviceEncryption,
+  bool ClassicContextMenu
 )
 {
   public static Configuration Default => new(
@@ -310,7 +311,8 @@ public record class Configuration(
     VBoxGuestAdditions: false,
     VMwareTools: false,
     VirtIoGuestTools: false,
-    PreventDeviceEncryption: false
+    PreventDeviceEncryption: false,
+    ClassicContextMenu: false
   );
 }
 
