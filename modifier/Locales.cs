@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 
 namespace Schneegans.Unattend;
@@ -11,6 +13,8 @@ public record class UnattendedLanguageSettings(
   ImageLanguage ImageLanguage,
   UserLocale UserLocale,
   KeyboardIdentifier InputLocale,
+  KeyboardIdentifier? InputLocale2,
+  KeyboardIdentifier? InputLocale3,
   GeoLocation GeoLocation
 ) : ILanguageSettings;
 
@@ -33,8 +37,20 @@ class LocalesModifier(ModifierContext context) : Modifier(context)
     {
       foreach (var element in elements)
       {
+        string keyboards = string.Join(';',
+          new List<KeyboardIdentifier?>() {
+            settings.InputLocale,
+            settings.InputLocale2,
+            settings.InputLocale3,
+          }
+          .SelectMany<KeyboardIdentifier?, string>( k =>
+          {
+            return k == null ? ([]) : ([k.Id]);
+          }
+        ));
+
         XmlNode node = element.Node;
-        node.SelectSingleNodeOrThrow("u:InputLocale", NamespaceManager).InnerText = settings.InputLocale.Id;
+        node.SelectSingleNodeOrThrow("u:InputLocale", NamespaceManager).InnerText = keyboards;
         node.SelectSingleNodeOrThrow("u:SystemLocale", NamespaceManager).InnerText = settings.UserLocale.Id;
         node.SelectSingleNodeOrThrow("u:UserLocale", NamespaceManager).InnerText = settings.UserLocale.Id;
         node.SelectSingleNodeOrThrow("u:UILanguage", NamespaceManager).InnerText = settings.ImageLanguage.Id;

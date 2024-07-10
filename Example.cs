@@ -16,6 +16,8 @@ class Example
           ImageLanguage: generator.Lookup<ImageLanguage>("en-US"),
           UserLocale: generator.Lookup<UserLocale>("en-US"),
           InputLocale: generator.Lookup<KeyboardIdentifier>("0409:00000409"),
+          InputLocale2: null,
+          InputLocale3: null,
           GeoLocation: generator.Lookup<GeoLocation>("244")
         ),
         Bloatwares = ImmutableList.CreateRange(
