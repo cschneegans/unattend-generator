@@ -109,18 +109,18 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
   private void WriteScript(IEnumerable<string> lines)
   {
-    string filename = @"X:\diskpart.txt";
-    string logfile = @"X:\diskpart.log";
+    string script = @"X:\diskpart.txt";
+    string log = @"X:\diskpart.log";
 
     CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
     foreach (string line in lines)
     {
       appender.Append(
-        CommandBuilder.WriteToFile(filename, line)
+        CommandBuilder.WriteToFile(script, line)
       );
     }
     appender.Append(
-      CommandBuilder.ShellCommand($@">>""{logfile}"" diskpart.exe /s ""{filename}""")
+      CommandBuilder.ShellCommand($@"diskpart.exe /s ""{script}"" >>""{log}"" || ( type ""{log}"" & echo diskpart encountered an error. & pause & exit /b 1 )")
     );
   }
 
