@@ -11,10 +11,7 @@ class BypassModifier(ModifierContext context) : Modifier(context)
       string[] values = [
         "BypassTPMCheck",
         "BypassSecureBootCheck",
-        "BypassStorageCheck",
-        "BypassCPUCheck",
-        "BypassRAMCheck",
-        "BypassDiskCheck"
+        "BypassRAMCheck"
       ];
 
       foreach (string value in values)
