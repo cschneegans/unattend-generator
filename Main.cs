@@ -473,15 +473,6 @@ public class GeoLocation(
   public string DisplayName { get; } = displayName;
 }
 
-public record class FormattingExamples(
-  string LongDate,
-  string ShortDate,
-  string LongTime,
-  string ShortTime,
-  string Currency,
-  string Number
-);
-
 public class KeyboardConverter(
   UnattendGenerator generator
 ) : JsonConverter<KeyboardIdentifier>
@@ -530,7 +521,6 @@ public class UserLocale(
   string id,
   string displayName,
   KeyboardIdentifier? keyboardLayout,
-  FormattingExamples formattingExamples,
   GeoLocation? geoLocation
 ) : IKeyed
 {
@@ -539,8 +529,6 @@ public class UserLocale(
   public string DisplayName { get; } = displayName;
 
   public KeyboardIdentifier? KeyboardLayout { get; } = keyboardLayout;
-
-  public FormattingExamples FormattingExamples { get; } = formattingExamples;
 
   public GeoLocation? GeoLocation { get; } = geoLocation;
 }
