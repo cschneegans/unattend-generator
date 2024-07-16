@@ -41,27 +41,27 @@
   },
   {
     "Id": "0001042c",
-    "DisplayName": "Azerbaijani (Standard)"
+    "DisplayName": "Azerbaijani/Azeri (Standard)"
   },
   {
     "Id": "0000082c",
-    "DisplayName": "Azerbaijani Cyrillic"
+    "DisplayName": "Azerbaijani/Azeri Cyrillic"
   },
   {
     "Id": "0000042c",
-    "DisplayName": "Azerbaijani Latin"
+    "DisplayName": "Azerbaijani/Azeri Latin"
   },
   {
     "Id": "00000445",
-    "DisplayName": "Bangla"
+    "DisplayName": "Bengali/Bangla"
   },
   {
     "Id": "00020445",
-    "DisplayName": "Bangla - INSCRIPT"
+    "DisplayName": "Bengali/Bangla - INSCRIPT"
   },
   {
     "Id": "00010445",
-    "DisplayName": "Bangla - INSCRIPT (Legacy)"
+    "DisplayName": "Bengali/Bangla - INSCRIPT (Legacy)"
   },
   {
     "Id": "0000046d",
