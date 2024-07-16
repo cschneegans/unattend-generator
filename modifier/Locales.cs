@@ -9,12 +9,19 @@ public interface ILanguageSettings;
 
 public class InteractiveLanguageSettings : ILanguageSettings;
 
+public record class LocaleAndKeyboard(
+  UserLocale Locale,
+  KeyboardIdentifier Keyboard
+)
+{
+  public string Combined => $"{Locale.LCID}:{Keyboard.Id}";
+}
+
 public record class UnattendedLanguageSettings(
   ImageLanguage ImageLanguage,
-  UserLocale UserLocale,
-  KeyboardIdentifier InputLocale,
-  KeyboardIdentifier? InputLocale2,
-  KeyboardIdentifier? InputLocale3,
+  LocaleAndKeyboard LocaleAndKeyboard,
+  LocaleAndKeyboard? LocaleAndKeyboard2,
+  LocaleAndKeyboard? LocaleAndKeyboard3,
   GeoLocation GeoLocation
 ) : ILanguageSettings;
 
@@ -38,21 +45,21 @@ class LocalesModifier(ModifierContext context) : Modifier(context)
       foreach (var element in elements)
       {
         string keyboards = string.Join(';',
-          new List<KeyboardIdentifier?>() {
-            settings.InputLocale,
-            settings.InputLocale2,
-            settings.InputLocale3,
+          new List<LocaleAndKeyboard?>() {
+            settings.LocaleAndKeyboard,
+            settings.LocaleAndKeyboard2,
+            settings.LocaleAndKeyboard3,
           }
-          .SelectMany<KeyboardIdentifier?, string>( k =>
+          .SelectMany<LocaleAndKeyboard?, string>(pair =>
           {
-            return k == null ? ([]) : ([k.Id]);
+            return pair == null ? ([]) : ([pair.Combined]);
           }
         ));
 
         XmlNode node = element.Node;
         node.SelectSingleNodeOrThrow("u:InputLocale", NamespaceManager).InnerText = keyboards;
-        node.SelectSingleNodeOrThrow("u:SystemLocale", NamespaceManager).InnerText = settings.UserLocale.Id;
-        node.SelectSingleNodeOrThrow("u:UserLocale", NamespaceManager).InnerText = settings.UserLocale.Id;
+        node.SelectSingleNodeOrThrow("u:SystemLocale", NamespaceManager).InnerText = settings.LocaleAndKeyboard.Locale.Id;
+        node.SelectSingleNodeOrThrow("u:UserLocale", NamespaceManager).InnerText = settings.LocaleAndKeyboard.Locale.Id;
         node.SelectSingleNodeOrThrow("u:UILanguage", NamespaceManager).InnerText = settings.ImageLanguage.Id;
         if (element.Setup)
         {
@@ -60,7 +67,7 @@ class LocalesModifier(ModifierContext context) : Modifier(context)
         }
       }
 
-      if (settings.GeoLocation.Id != settings.UserLocale.GeoLocation?.Id)
+      if (settings.GeoLocation.Id != settings.LocaleAndKeyboard.Locale.GeoLocation?.Id)
       {
         CommandAppender appender = GetAppender(CommandConfig.Specialize);
         appender.Append(

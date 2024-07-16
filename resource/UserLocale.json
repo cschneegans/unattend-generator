@@ -1,3362 +1,4804 @@
 [
   {
+    "Id": "aa",
+    "DisplayName": "Afar",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
     "Id": "aa-DJ",
     "DisplayName": "Afar (Djibouti)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "62"
   },
   {
     "Id": "aa-ER",
     "DisplayName": "Afar (Eritrea)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "71"
   },
   {
     "Id": "aa-ET",
     "DisplayName": "Afar (Ethiopia)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "73"
   },
   {
     "Id": "af-NA",
     "DisplayName": "Afrikaans (Namibia)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "254"
   },
   {
     "Id": "af-ZA",
     "DisplayName": "Afrikaans (South Africa)",
+    "LCID": "0436",
     "KeyboardLayout": null,
     "GeoLocation": "209"
   },
   {
+    "Id": "agq",
+    "DisplayName": "Aghem",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
     "Id": "agq-CM",
     "DisplayName": "Aghem (Cameroon)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "49"
+  },
+  {
+    "Id": "ak",
+    "DisplayName": "Akan",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
     "Id": "ak-GH",
     "DisplayName": "Akan (Ghana)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "89"
-  },
-  {
-    "Id": "sq-AL",
-    "DisplayName": "Albanian (Albania)",
-    "KeyboardLayout": "041c:0000041c",
-    "GeoLocation": "6"
-  },
-  {
-    "Id": "sq-XK",
-    "DisplayName": "Albanian (Kosovo)",
-    "KeyboardLayout": "041c:0000041c",
-    "GeoLocation": "9914689"
-  },
-  {
-    "Id": "sq-MK",
-    "DisplayName": "Albanian (North Macedonia)",
-    "KeyboardLayout": "041c:0000041c",
-    "GeoLocation": "19618"
   },
   {
     "Id": "am-ET",
     "DisplayName": "Amharic (Ethiopia)",
+    "LCID": "045e",
     "KeyboardLayout": null,
     "GeoLocation": "73"
   },
   {
-    "Id": "ar-DZ",
-    "DisplayName": "Arabic (Algeria)",
-    "KeyboardLayout": "0401:00000401",
-    "GeoLocation": "4"
+    "Id": "ar-001",
+    "DisplayName": "Arabic (World)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ar-AE",
+    "DisplayName": "Arabic (United Arab Emirates)",
+    "LCID": "3801",
+    "KeyboardLayout": null,
+    "GeoLocation": "224"
   },
   {
     "Id": "ar-BH",
     "DisplayName": "Arabic (Bahrain)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "3c01",
+    "KeyboardLayout": null,
     "GeoLocation": "17"
-  },
-  {
-    "Id": "ar-TD",
-    "DisplayName": "Arabic (Chad)",
-    "KeyboardLayout": "0401:00000401",
-    "GeoLocation": "41"
-  },
-  {
-    "Id": "ar-KM",
-    "DisplayName": "Arabic (Comoros)",
-    "KeyboardLayout": "0401:00000401",
-    "GeoLocation": "50"
   },
   {
     "Id": "ar-DJ",
     "DisplayName": "Arabic (Djibouti)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "62"
+  },
+  {
+    "Id": "ar-DZ",
+    "DisplayName": "Arabic (Algeria)",
+    "LCID": "1401",
+    "KeyboardLayout": null,
+    "GeoLocation": "4"
   },
   {
     "Id": "ar-EG",
     "DisplayName": "Arabic (Egypt)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "0c01",
+    "KeyboardLayout": null,
     "GeoLocation": "67"
   },
   {
     "Id": "ar-ER",
     "DisplayName": "Arabic (Eritrea)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "71"
-  },
-  {
-    "Id": "ar-IQ",
-    "DisplayName": "Arabic (Iraq)",
-    "KeyboardLayout": "0401:00000401",
-    "GeoLocation": "121"
   },
   {
     "Id": "ar-IL",
     "DisplayName": "Arabic (Israel)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "117"
+  },
+  {
+    "Id": "ar-IQ",
+    "DisplayName": "Arabic (Iraq)",
+    "LCID": "0801",
+    "KeyboardLayout": null,
+    "GeoLocation": "121"
   },
   {
     "Id": "ar-JO",
     "DisplayName": "Arabic (Jordan)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "2c01",
+    "KeyboardLayout": null,
     "GeoLocation": "126"
+  },
+  {
+    "Id": "ar-KM",
+    "DisplayName": "Arabic (Comoros)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "50"
   },
   {
     "Id": "ar-KW",
     "DisplayName": "Arabic (Kuwait)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "3401",
+    "KeyboardLayout": null,
     "GeoLocation": "136"
   },
   {
     "Id": "ar-LB",
     "DisplayName": "Arabic (Lebanon)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "3001",
+    "KeyboardLayout": null,
     "GeoLocation": "139"
   },
   {
     "Id": "ar-LY",
     "DisplayName": "Arabic (Libya)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "1001",
+    "KeyboardLayout": null,
     "GeoLocation": "148"
-  },
-  {
-    "Id": "ar-MR",
-    "DisplayName": "Arabic (Mauritania)",
-    "KeyboardLayout": "0401:00000401",
-    "GeoLocation": "162"
   },
   {
     "Id": "ar-MA",
     "DisplayName": "Arabic (Morocco)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "1801",
+    "KeyboardLayout": null,
     "GeoLocation": "159"
+  },
+  {
+    "Id": "ar-MR",
+    "DisplayName": "Arabic (Mauritania)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "162"
   },
   {
     "Id": "ar-OM",
     "DisplayName": "Arabic (Oman)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "2001",
+    "KeyboardLayout": null,
     "GeoLocation": "164"
   },
   {
     "Id": "ar-PS",
     "DisplayName": "Arabic (Palestinian Authority)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "184"
   },
   {
     "Id": "ar-QA",
     "DisplayName": "Arabic (Qatar)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "4001",
+    "KeyboardLayout": null,
     "GeoLocation": "197"
   },
   {
     "Id": "ar-SA",
     "DisplayName": "Arabic (Saudi Arabia)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "0401",
+    "KeyboardLayout": "00000401",
     "GeoLocation": "205"
+  },
+  {
+    "Id": "ar-SD",
+    "DisplayName": "Arabic (Sudan)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "219"
   },
   {
     "Id": "ar-SO",
     "DisplayName": "Arabic (Somalia)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "216"
   },
   {
     "Id": "ar-SS",
     "DisplayName": "Arabic (South Sudan)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "276"
-  },
-  {
-    "Id": "ar-SD",
-    "DisplayName": "Arabic (Sudan)",
-    "KeyboardLayout": "0401:00000401",
-    "GeoLocation": "219"
   },
   {
     "Id": "ar-SY",
     "DisplayName": "Arabic (Syria)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "2801",
+    "KeyboardLayout": null,
     "GeoLocation": "222"
+  },
+  {
+    "Id": "ar-TD",
+    "DisplayName": "Arabic (Chad)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "41"
   },
   {
     "Id": "ar-TN",
     "DisplayName": "Arabic (Tunisia)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "1c01",
+    "KeyboardLayout": null,
     "GeoLocation": "234"
-  },
-  {
-    "Id": "ar-AE",
-    "DisplayName": "Arabic (United Arab Emirates)",
-    "KeyboardLayout": "0401:00000401",
-    "GeoLocation": "224"
-  },
-  {
-    "Id": "ar-001",
-    "DisplayName": "Arabic (World)",
-    "KeyboardLayout": "0401:00000401",
-    "GeoLocation": null
   },
   {
     "Id": "ar-YE",
     "DisplayName": "Arabic (Yemen)",
-    "KeyboardLayout": "0401:00000401",
+    "LCID": "2401",
+    "KeyboardLayout": null,
     "GeoLocation": "261"
   },
   {
-    "Id": "hy-AM",
-    "DisplayName": "Armenian (Armenia)",
-    "KeyboardLayout": "042b:0000042b",
-    "GeoLocation": "7"
+    "Id": "arn-CL",
+    "DisplayName": "Mapuche (Chile)",
+    "LCID": "047a",
+    "KeyboardLayout": null,
+    "GeoLocation": "46"
   },
   {
     "Id": "as-IN",
     "DisplayName": "Assamese (India)",
-    "KeyboardLayout": "044d:0000044d",
+    "LCID": "044d",
+    "KeyboardLayout": "0000044d",
     "GeoLocation": "113"
   },
   {
-    "Id": "ast-ES",
-    "DisplayName": "Asturian (Spain)",
-    "KeyboardLayout": null,
-    "GeoLocation": "217"
+    "Id": "asa",
+    "DisplayName": "Asu",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
     "Id": "asa-TZ",
     "DisplayName": "Asu (Tanzania)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "239"
+  },
+  {
+    "Id": "ast",
+    "DisplayName": "Asturian",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ast-ES",
+    "DisplayName": "Asturian (Spain)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "217"
+  },
+  {
+    "Id": "az-Cyrl",
+    "DisplayName": "Azerbaijani (Cyrillic)",
+    "LCID": "742c",
+    "KeyboardLayout": null,
+    "GeoLocation": null
   },
   {
     "Id": "az-Cyrl-AZ",
     "DisplayName": "Azerbaijani (Cyrillic, Azerbaijan)",
-    "KeyboardLayout": "082c:0000082c",
+    "LCID": "082c",
+    "KeyboardLayout": "0000082c",
     "GeoLocation": "5"
+  },
+  {
+    "Id": "az-Latn",
+    "DisplayName": "Azerbaijani (Latin)",
+    "LCID": "782c",
+    "KeyboardLayout": null,
+    "GeoLocation": null
   },
   {
     "Id": "az-Latn-AZ",
     "DisplayName": "Azerbaijani (Latin, Azerbaijan)",
-    "KeyboardLayout": "042c:0000042c",
+    "LCID": "042c",
+    "KeyboardLayout": "0000042c",
     "GeoLocation": "5"
   },
   {
-    "Id": "ksf-CM",
-    "DisplayName": "Bafia (Cameroon)",
-    "KeyboardLayout": null,
+    "Id": "ba-RU",
+    "DisplayName": "Bashkir (Russia)",
+    "LCID": "046d",
+    "KeyboardLayout": "0000046d",
+    "GeoLocation": "203"
+  },
+  {
+    "Id": "bas",
+    "DisplayName": "Basaa",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "bas-CM",
+    "DisplayName": "Basaa (Cameroon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "49"
   },
   {
-    "Id": "bm-Latn-ML",
-    "DisplayName": "Bamanankan (Latin, Mali)",
-    "KeyboardLayout": null,
+    "Id": "be-BY",
+    "DisplayName": "Belarusian (Belarus)",
+    "LCID": "0423",
+    "KeyboardLayout": "00000423",
+    "GeoLocation": "29"
+  },
+  {
+    "Id": "bem",
+    "DisplayName": "Bemba",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "bem-ZM",
+    "DisplayName": "Bemba (Zambia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "263"
+  },
+  {
+    "Id": "bez",
+    "DisplayName": "Bena",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "bez-TZ",
+    "DisplayName": "Bena (Tanzania)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "239"
+  },
+  {
+    "Id": "bg-BG",
+    "DisplayName": "Bulgarian (Bulgaria)",
+    "LCID": "0402",
+    "KeyboardLayout": "00000402",
+    "GeoLocation": "35"
+  },
+  {
+    "Id": "bm",
+    "DisplayName": "Bamanankan",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "bm-ML",
+    "DisplayName": "Bamanankan (Mali)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "157"
   },
   {
     "Id": "bn-BD",
     "DisplayName": "Bangla (Bangladesh)",
-    "KeyboardLayout": "0445:00000445",
+    "LCID": "0845",
+    "KeyboardLayout": null,
     "GeoLocation": "23"
   },
   {
     "Id": "bn-IN",
     "DisplayName": "Bangla (India)",
-    "KeyboardLayout": "0445:00000445",
+    "LCID": "0445",
+    "KeyboardLayout": "00000445",
     "GeoLocation": "113"
   },
   {
-    "Id": "bas-CM",
-    "DisplayName": "Basaa (Cameroon)",
-    "KeyboardLayout": null,
-    "GeoLocation": "49"
+    "Id": "bo-CN",
+    "DisplayName": "Tibetan (China)",
+    "LCID": "0451",
+    "KeyboardLayout": "00000451",
+    "GeoLocation": "45"
   },
   {
-    "Id": "ba-RU",
-    "DisplayName": "Bashkir (Russia)",
-    "KeyboardLayout": "046d:0000046d",
-    "GeoLocation": "203"
-  },
-  {
-    "Id": "eu-ES",
-    "DisplayName": "Basque (Spain)",
-    "KeyboardLayout": null,
-    "GeoLocation": "217"
-  },
-  {
-    "Id": "be-BY",
-    "DisplayName": "Belarusian (Belarus)",
-    "KeyboardLayout": "0423:00000423",
-    "GeoLocation": "29"
-  },
-  {
-    "Id": "bem-ZM",
-    "DisplayName": "Bemba (Zambia)",
-    "KeyboardLayout": null,
-    "GeoLocation": "263"
-  },
-  {
-    "Id": "bez-TZ",
-    "DisplayName": "Bena (Tanzania)",
-    "KeyboardLayout": null,
-    "GeoLocation": "239"
-  },
-  {
-    "Id": "byn-ER",
-    "DisplayName": "Blin (Eritrea)",
-    "KeyboardLayout": null,
-    "GeoLocation": "71"
-  },
-  {
-    "Id": "brx-IN",
-    "DisplayName": "Bodo (India)",
-    "KeyboardLayout": null,
+    "Id": "bo-IN",
+    "DisplayName": "Tibetan (India)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "113"
-  },
-  {
-    "Id": "bs-Cyrl-BA",
-    "DisplayName": "Bosnian (Cyrillic, Bosnia & Herzegovina)",
-    "KeyboardLayout": "201a:0000201a",
-    "GeoLocation": "25"
-  },
-  {
-    "Id": "bs-Latn-BA",
-    "DisplayName": "Bosnian (Latin, Bosnia & Herzegovina)",
-    "KeyboardLayout": null,
-    "GeoLocation": "25"
   },
   {
     "Id": "br-FR",
     "DisplayName": "Breton (France)",
+    "LCID": "047e",
     "KeyboardLayout": null,
     "GeoLocation": "84"
   },
   {
-    "Id": "bg-BG",
-    "DisplayName": "Bulgarian (Bulgaria)",
-    "KeyboardLayout": "0402:00000402",
-    "GeoLocation": "35"
+    "Id": "brx",
+    "DisplayName": "Bodo",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
-    "Id": "my-MM",
-    "DisplayName": "Burmese (Myanmar)",
+    "Id": "brx-IN",
+    "DisplayName": "Bodo (India)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "113"
+  },
+  {
+    "Id": "bs",
+    "DisplayName": "Bosnian",
+    "LCID": "781a",
     "KeyboardLayout": null,
-    "GeoLocation": "27"
+    "GeoLocation": null
+  },
+  {
+    "Id": "bs-Cyrl",
+    "DisplayName": "Bosnian (Cyrillic)",
+    "LCID": "641a",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "bs-Cyrl-BA",
+    "DisplayName": "Bosnian (Cyrillic, Bosnia & Herzegovina)",
+    "LCID": "201a",
+    "KeyboardLayout": "0000201a",
+    "GeoLocation": "25"
+  },
+  {
+    "Id": "bs-Latn",
+    "DisplayName": "Bosnian (Latin)",
+    "LCID": "681a",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "bs-Latn-BA",
+    "DisplayName": "Bosnian (Latin, Bosnia & Herzegovina)",
+    "LCID": "141a",
+    "KeyboardLayout": null,
+    "GeoLocation": "25"
+  },
+  {
+    "Id": "byn",
+    "DisplayName": "Blin",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "byn-ER",
+    "DisplayName": "Blin (Eritrea)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "71"
   },
   {
     "Id": "ca-AD",
     "DisplayName": "Catalan (Andorra)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "8"
+  },
+  {
+    "Id": "ca-ES",
+    "DisplayName": "Catalan (Spain)",
+    "LCID": "0403",
+    "KeyboardLayout": null,
+    "GeoLocation": "217"
+  },
+  {
+    "Id": "ca-ES-VALENCIA",
+    "DisplayName": "Catalan (Spain, Valencian)",
+    "LCID": "0803",
+    "KeyboardLayout": null,
+    "GeoLocation": null
   },
   {
     "Id": "ca-FR",
     "DisplayName": "Catalan (France)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "84"
   },
   {
     "Id": "ca-IT",
     "DisplayName": "Catalan (Italy)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "118"
   },
   {
-    "Id": "ca-ES-valencia",
-    "DisplayName": "Catalan (Spain, Valencian)",
-    "KeyboardLayout": null,
-    "GeoLocation": "217"
+    "Id": "ccp",
+    "DisplayName": "Chakma",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
-    "Id": "ca-ES",
-    "DisplayName": "Catalan (Spain)",
-    "KeyboardLayout": null,
-    "GeoLocation": "217"
-  },
-  {
-    "Id": "ceb-Latn-PH",
-    "DisplayName": "Cebuano (Latin, Philippines)",
-    "KeyboardLayout": null,
-    "GeoLocation": "201"
-  },
-  {
-    "Id": "tzm-Latn-MA",
-    "DisplayName": "Central Atlas Tamazight (Latin, Morocco)",
-    "KeyboardLayout": null,
-    "GeoLocation": "159"
-  },
-  {
-    "Id": "ccp-Cakm-BD",
-    "DisplayName": "Chakma (Chakma, Bangladesh)",
-    "KeyboardLayout": null,
+    "Id": "ccp-BD",
+    "DisplayName": "Chakma (Bangladesh)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "23"
   },
   {
-    "Id": "ccp-Cakm-IN",
-    "DisplayName": "Chakma (Chakma, India)",
-    "KeyboardLayout": null,
+    "Id": "ccp-IN",
+    "DisplayName": "Chakma (India)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "113"
+  },
+  {
+    "Id": "ce",
+    "DisplayName": "Chechen",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
     "Id": "ce-RU",
     "DisplayName": "Chechen (Russia)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "203"
   },
   {
-    "Id": "chr-Cher-US",
-    "DisplayName": "Cherokee (Cherokee, United States)",
-    "KeyboardLayout": "045c:0000045c",
-    "GeoLocation": "244"
+    "Id": "ceb",
+    "DisplayName": "Cebuano",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ceb-PH",
+    "DisplayName": "Cebuano (Philippines)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "201"
+  },
+  {
+    "Id": "cgg",
+    "DisplayName": "Chiga",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
     "Id": "cgg-UG",
     "DisplayName": "Chiga (Uganda)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "240"
   },
   {
-    "Id": "zh-CN",
-    "DisplayName": "Chinese (China)",
-    "KeyboardLayout": "0804:00000804",
-    "GeoLocation": "45"
+    "Id": "chr-US",
+    "DisplayName": "Cherokee (United States)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "244"
   },
   {
-    "Id": "zh-HK",
-    "DisplayName": "Chinese (Hong Kong SAR)",
-    "KeyboardLayout": "0c04:00000c04",
-    "GeoLocation": "104"
+    "Id": "ckb",
+    "DisplayName": "Central Kurdish",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
-    "Id": "zh-MO",
-    "DisplayName": "Chinese (Macao SAR)",
-    "KeyboardLayout": "1404:00001404",
-    "GeoLocation": "151"
+    "Id": "ckb-IQ",
+    "DisplayName": "Central Kurdish (Iraq)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "121"
   },
   {
-    "Id": "zh-Hans-HK",
-    "DisplayName": "Chinese (Simplified, Hong Kong SAR)",
-    "KeyboardLayout": "0804:00000804",
-    "GeoLocation": "104"
-  },
-  {
-    "Id": "zh-Hans-MO",
-    "DisplayName": "Chinese (Simplified, Macao SAR)",
-    "KeyboardLayout": "0804:00000804",
-    "GeoLocation": "151"
-  },
-  {
-    "Id": "zh-SG",
-    "DisplayName": "Chinese (Singapore)",
-    "KeyboardLayout": "1004:00001004",
-    "GeoLocation": "215"
-  },
-  {
-    "Id": "zh-TW",
-    "DisplayName": "Chinese (Taiwan)",
-    "KeyboardLayout": "0404:00000404",
-    "GeoLocation": "237"
-  },
-  {
-    "Id": "cu-RU",
-    "DisplayName": "Church Slavic (Russia)",
-    "KeyboardLayout": null,
-    "GeoLocation": "203"
-  },
-  {
-    "Id": "ksh-DE",
-    "DisplayName": "Colognian (Germany)",
-    "KeyboardLayout": null,
-    "GeoLocation": "94"
-  },
-  {
-    "Id": "kw-GB",
-    "DisplayName": "Cornish (United Kingdom)",
-    "KeyboardLayout": null,
-    "GeoLocation": "242"
+    "Id": "ckb-IR",
+    "DisplayName": "Central Kurdish (Iran)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "116"
   },
   {
     "Id": "co-FR",
     "DisplayName": "Corsican (France)",
+    "LCID": "0483",
     "KeyboardLayout": null,
     "GeoLocation": "84"
   },
   {
-    "Id": "hr-BA",
-    "DisplayName": "Croatian (Bosnia & Herzegovina)",
-    "KeyboardLayout": "041a:0000041a",
-    "GeoLocation": "25"
-  },
-  {
-    "Id": "hr-HR",
-    "DisplayName": "Croatian (Croatia)",
-    "KeyboardLayout": "041a:0000041a",
-    "GeoLocation": "108"
-  },
-  {
     "Id": "cs-CZ",
     "DisplayName": "Czech (Czechia)",
-    "KeyboardLayout": "0405:00000405",
+    "LCID": "0405",
+    "KeyboardLayout": "00000405",
     "GeoLocation": "75"
+  },
+  {
+    "Id": "cu",
+    "DisplayName": "Church Slavic",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "cu-RU",
+    "DisplayName": "Church Slavic (Russia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "203"
+  },
+  {
+    "Id": "cy-GB",
+    "DisplayName": "Welsh (United Kingdom)",
+    "LCID": "0452",
+    "KeyboardLayout": "00000452",
+    "GeoLocation": "242"
   },
   {
     "Id": "da-DK",
     "DisplayName": "Danish (Denmark)",
-    "KeyboardLayout": "0406:00000406",
+    "LCID": "0406",
+    "KeyboardLayout": "00000406",
     "GeoLocation": "61"
   },
   {
     "Id": "da-GL",
     "DisplayName": "Danish (Greenland)",
-    "KeyboardLayout": "0406:00000406",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "93"
   },
   {
-    "Id": "dv-MV",
-    "DisplayName": "Divehi (Maldives)",
-    "KeyboardLayout": "0465:00000465",
-    "GeoLocation": "165"
+    "Id": "dav",
+    "DisplayName": "Taita",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
-    "Id": "dua-CM",
-    "DisplayName": "Duala (Cameroon)",
-    "KeyboardLayout": null,
-    "GeoLocation": "49"
-  },
-  {
-    "Id": "nl-AW",
-    "DisplayName": "Dutch (Aruba)",
-    "KeyboardLayout": "0413:00000413",
-    "GeoLocation": "302"
-  },
-  {
-    "Id": "nl-BE",
-    "DisplayName": "Dutch (Belgium)",
-    "KeyboardLayout": "0813:00000813",
-    "GeoLocation": "21"
-  },
-  {
-    "Id": "nl-BQ",
-    "DisplayName": "Dutch (Bonaire, Sint Eustatius and Saba)",
-    "KeyboardLayout": "0413:00000413",
-    "GeoLocation": "161832258"
-  },
-  {
-    "Id": "nl-CW",
-    "DisplayName": "Dutch (Curaçao)",
-    "KeyboardLayout": "0413:00000413",
-    "GeoLocation": "273"
-  },
-  {
-    "Id": "nl-NL",
-    "DisplayName": "Dutch (Netherlands)",
-    "KeyboardLayout": "0413:00000413",
-    "GeoLocation": "176"
-  },
-  {
-    "Id": "nl-SX",
-    "DisplayName": "Dutch (Sint Maarten)",
-    "KeyboardLayout": "0413:00000413",
-    "GeoLocation": "30967"
-  },
-  {
-    "Id": "nl-SR",
-    "DisplayName": "Dutch (Suriname)",
-    "KeyboardLayout": "0413:00000413",
-    "GeoLocation": "181"
-  },
-  {
-    "Id": "dz-BT",
-    "DisplayName": "Dzongkha (Bhutan)",
-    "KeyboardLayout": "0c51:00000c51",
-    "GeoLocation": "34"
-  },
-  {
-    "Id": "ebu-KE",
-    "DisplayName": "Embu (Kenya)",
-    "KeyboardLayout": null,
+    "Id": "dav-KE",
+    "DisplayName": "Taita (Kenya)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "129"
-  },
-  {
-    "Id": "en-AS",
-    "DisplayName": "English (American Samoa)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "10"
-  },
-  {
-    "Id": "en-AI",
-    "DisplayName": "English (Anguilla)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "300"
-  },
-  {
-    "Id": "en-AG",
-    "DisplayName": "English (Antigua & Barbuda)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "2"
-  },
-  {
-    "Id": "en-AU",
-    "DisplayName": "English (Australia)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "12"
-  },
-  {
-    "Id": "en-AT",
-    "DisplayName": "English (Austria)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "14"
-  },
-  {
-    "Id": "en-BS",
-    "DisplayName": "English (Bahamas)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "22"
-  },
-  {
-    "Id": "en-BB",
-    "DisplayName": "English (Barbados)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "18"
-  },
-  {
-    "Id": "en-BE",
-    "DisplayName": "English (Belgium)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "21"
-  },
-  {
-    "Id": "en-BZ",
-    "DisplayName": "English (Belize)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "24"
-  },
-  {
-    "Id": "en-BM",
-    "DisplayName": "English (Bermuda)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "20"
-  },
-  {
-    "Id": "en-BW",
-    "DisplayName": "English (Botswana)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "19"
-  },
-  {
-    "Id": "en-IO",
-    "DisplayName": "English (British Indian Ocean Territory)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "114"
-  },
-  {
-    "Id": "en-VG",
-    "DisplayName": "English (British Virgin Islands)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "351"
-  },
-  {
-    "Id": "en-BI",
-    "DisplayName": "English (Burundi)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "38"
-  },
-  {
-    "Id": "en-CM",
-    "DisplayName": "English (Cameroon)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "49"
-  },
-  {
-    "Id": "en-CA",
-    "DisplayName": "English (Canada)",
-    "KeyboardLayout": "1009:00001009",
-    "GeoLocation": "39"
-  },
-  {
-    "Id": "en-KY",
-    "DisplayName": "English (Cayman Islands)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "307"
-  },
-  {
-    "Id": "en-CX",
-    "DisplayName": "English (Christmas Island)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "309"
-  },
-  {
-    "Id": "en-CC",
-    "DisplayName": "English (Cocos [Keeling] Islands)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "311"
-  },
-  {
-    "Id": "en-CK",
-    "DisplayName": "English (Cook Islands)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "312"
-  },
-  {
-    "Id": "en-CY",
-    "DisplayName": "English (Cyprus)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "59"
-  },
-  {
-    "Id": "en-DK",
-    "DisplayName": "English (Denmark)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "61"
-  },
-  {
-    "Id": "en-DM",
-    "DisplayName": "English (Dominica)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "63"
-  },
-  {
-    "Id": "en-ER",
-    "DisplayName": "English (Eritrea)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "71"
-  },
-  {
-    "Id": "en-SZ",
-    "DisplayName": "English (Eswatini)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "260"
-  },
-  {
-    "Id": "en-150",
-    "DisplayName": "English (Europe)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": null
-  },
-  {
-    "Id": "en-FK",
-    "DisplayName": "English (Falkland Islands)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "315"
-  },
-  {
-    "Id": "en-FJ",
-    "DisplayName": "English (Fiji)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "78"
-  },
-  {
-    "Id": "en-FI",
-    "DisplayName": "English (Finland)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "77"
-  },
-  {
-    "Id": "en-GM",
-    "DisplayName": "English (Gambia)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "86"
-  },
-  {
-    "Id": "en-DE",
-    "DisplayName": "English (Germany)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "94"
-  },
-  {
-    "Id": "en-GH",
-    "DisplayName": "English (Ghana)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "89"
-  },
-  {
-    "Id": "en-GI",
-    "DisplayName": "English (Gibraltar)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "90"
-  },
-  {
-    "Id": "en-GD",
-    "DisplayName": "English (Grenada)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "91"
-  },
-  {
-    "Id": "en-GU",
-    "DisplayName": "English (Guam)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "322"
-  },
-  {
-    "Id": "en-GG",
-    "DisplayName": "English (Guernsey)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "324"
-  },
-  {
-    "Id": "en-GY",
-    "DisplayName": "English (Guyana)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "101"
-  },
-  {
-    "Id": "en-HK",
-    "DisplayName": "English (Hong Kong SAR)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "104"
-  },
-  {
-    "Id": "en-IN",
-    "DisplayName": "English (India)",
-    "KeyboardLayout": "4009:00004009",
-    "GeoLocation": "113"
-  },
-  {
-    "Id": "en-IE",
-    "DisplayName": "English (Ireland)",
-    "KeyboardLayout": "1809:00001809",
-    "GeoLocation": "68"
-  },
-  {
-    "Id": "en-IM",
-    "DisplayName": "English (Isle of Man)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "15126"
-  },
-  {
-    "Id": "en-IL",
-    "DisplayName": "English (Israel)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "117"
-  },
-  {
-    "Id": "en-JM",
-    "DisplayName": "English (Jamaica)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "124"
-  },
-  {
-    "Id": "en-JE",
-    "DisplayName": "English (Jersey)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "328"
-  },
-  {
-    "Id": "en-KE",
-    "DisplayName": "English (Kenya)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "129"
-  },
-  {
-    "Id": "en-KI",
-    "DisplayName": "English (Kiribati)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "133"
-  },
-  {
-    "Id": "en-LS",
-    "DisplayName": "English (Lesotho)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "146"
-  },
-  {
-    "Id": "en-LR",
-    "DisplayName": "English (Liberia)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "142"
-  },
-  {
-    "Id": "en-MO",
-    "DisplayName": "English (Macao SAR)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "151"
-  },
-  {
-    "Id": "en-MG",
-    "DisplayName": "English (Madagascar)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "149"
-  },
-  {
-    "Id": "en-MW",
-    "DisplayName": "English (Malawi)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "156"
-  },
-  {
-    "Id": "en-MY",
-    "DisplayName": "English (Malaysia)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "167"
-  },
-  {
-    "Id": "en-MT",
-    "DisplayName": "English (Malta)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "163"
-  },
-  {
-    "Id": "en-MH",
-    "DisplayName": "English (Marshall Islands)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "199"
-  },
-  {
-    "Id": "en-MU",
-    "DisplayName": "English (Mauritius)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "160"
-  },
-  {
-    "Id": "en-FM",
-    "DisplayName": "English (Micronesia)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "80"
-  },
-  {
-    "Id": "en-MS",
-    "DisplayName": "English (Montserrat)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "332"
-  },
-  {
-    "Id": "en-NA",
-    "DisplayName": "English (Namibia)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "254"
-  },
-  {
-    "Id": "en-NR",
-    "DisplayName": "English (Nauru)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "180"
-  },
-  {
-    "Id": "en-NL",
-    "DisplayName": "English (Netherlands)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "176"
-  },
-  {
-    "Id": "en-NZ",
-    "DisplayName": "English (New Zealand)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "183"
-  },
-  {
-    "Id": "en-NG",
-    "DisplayName": "English (Nigeria)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "175"
-  },
-  {
-    "Id": "en-NU",
-    "DisplayName": "English (Niue)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "335"
-  },
-  {
-    "Id": "en-NF",
-    "DisplayName": "English (Norfolk Island)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "336"
-  },
-  {
-    "Id": "en-MP",
-    "DisplayName": "English (Northern Mariana Islands)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "337"
-  },
-  {
-    "Id": "en-PK",
-    "DisplayName": "English (Pakistan)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "190"
-  },
-  {
-    "Id": "en-PW",
-    "DisplayName": "English (Palau)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "195"
-  },
-  {
-    "Id": "en-PG",
-    "DisplayName": "English (Papua New Guinea)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "194"
-  },
-  {
-    "Id": "en-PH",
-    "DisplayName": "English (Philippines)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "201"
-  },
-  {
-    "Id": "en-PN",
-    "DisplayName": "English (Pitcairn Islands)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "339"
-  },
-  {
-    "Id": "en-PR",
-    "DisplayName": "English (Puerto Rico)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "202"
-  },
-  {
-    "Id": "en-RW",
-    "DisplayName": "English (Rwanda)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "204"
-  },
-  {
-    "Id": "en-WS",
-    "DisplayName": "English (Samoa)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "259"
-  },
-  {
-    "Id": "en-SC",
-    "DisplayName": "English (Seychelles)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "208"
-  },
-  {
-    "Id": "en-SL",
-    "DisplayName": "English (Sierra Leone)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "213"
-  },
-  {
-    "Id": "en-SG",
-    "DisplayName": "English (Singapore)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "215"
-  },
-  {
-    "Id": "en-SX",
-    "DisplayName": "English (Sint Maarten)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "30967"
-  },
-  {
-    "Id": "en-SI",
-    "DisplayName": "English (Slovenia)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "212"
-  },
-  {
-    "Id": "en-SB",
-    "DisplayName": "English (Solomon Islands)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "30"
-  },
-  {
-    "Id": "en-ZA",
-    "DisplayName": "English (South Africa)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "209"
-  },
-  {
-    "Id": "en-SS",
-    "DisplayName": "English (South Sudan)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "276"
-  },
-  {
-    "Id": "en-SH",
-    "DisplayName": "English (St Helena, Ascension, Tristan da Cunha)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "348"
-  },
-  {
-    "Id": "en-KN",
-    "DisplayName": "English (St. Kitts & Nevis)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "207"
-  },
-  {
-    "Id": "en-LC",
-    "DisplayName": "English (St. Lucia)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "218"
-  },
-  {
-    "Id": "en-VC",
-    "DisplayName": "English (St. Vincent & Grenadines)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "248"
-  },
-  {
-    "Id": "en-SD",
-    "DisplayName": "English (Sudan)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "219"
-  },
-  {
-    "Id": "en-SE",
-    "DisplayName": "English (Sweden)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "221"
-  },
-  {
-    "Id": "en-CH",
-    "DisplayName": "English (Switzerland)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "223"
-  },
-  {
-    "Id": "en-TZ",
-    "DisplayName": "English (Tanzania)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "239"
-  },
-  {
-    "Id": "en-TK",
-    "DisplayName": "English (Tokelau)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "347"
-  },
-  {
-    "Id": "en-TO",
-    "DisplayName": "English (Tonga)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "231"
-  },
-  {
-    "Id": "en-TT",
-    "DisplayName": "English (Trinidad & Tobago)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "225"
-  },
-  {
-    "Id": "en-TC",
-    "DisplayName": "English (Turks & Caicos Islands)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "349"
-  },
-  {
-    "Id": "en-TV",
-    "DisplayName": "English (Tuvalu)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "236"
-  },
-  {
-    "Id": "en-UM",
-    "DisplayName": "English (U.S. Outlying Islands)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": null
-  },
-  {
-    "Id": "en-VI",
-    "DisplayName": "English (U.S. Virgin Islands)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "252"
-  },
-  {
-    "Id": "en-UG",
-    "DisplayName": "English (Uganda)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "240"
-  },
-  {
-    "Id": "en-AE",
-    "DisplayName": "English (United Arab Emirates)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "224"
-  },
-  {
-    "Id": "en-GB",
-    "DisplayName": "English (United Kingdom)",
-    "KeyboardLayout": "0809:00000809",
-    "GeoLocation": "242"
-  },
-  {
-    "Id": "en-US-posix",
-    "DisplayName": "English (United States, Computer)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": null
-  },
-  {
-    "Id": "en-US",
-    "DisplayName": "English (United States)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "244"
-  },
-  {
-    "Id": "en-VU",
-    "DisplayName": "English (Vanuatu)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "174"
-  },
-  {
-    "Id": "en-001",
-    "DisplayName": "English (World)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": null
-  },
-  {
-    "Id": "en-ZM",
-    "DisplayName": "English (Zambia)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "263"
-  },
-  {
-    "Id": "en-ZW",
-    "DisplayName": "English (Zimbabwe)",
-    "KeyboardLayout": "0409:00000409",
-    "GeoLocation": "264"
-  },
-  {
-    "Id": "eo-001",
-    "DisplayName": "Esperanto (World)",
-    "KeyboardLayout": null,
-    "GeoLocation": null
-  },
-  {
-    "Id": "et-EE",
-    "DisplayName": "Estonian (Estonia)",
-    "KeyboardLayout": "0425:00000425",
-    "GeoLocation": "70"
-  },
-  {
-    "Id": "ee-GH",
-    "DisplayName": "Ewe (Ghana)",
-    "KeyboardLayout": null,
-    "GeoLocation": "89"
-  },
-  {
-    "Id": "ee-TG",
-    "DisplayName": "Ewe (Togo)",
-    "KeyboardLayout": null,
-    "GeoLocation": "232"
-  },
-  {
-    "Id": "ewo-CM",
-    "DisplayName": "Ewondo (Cameroon)",
-    "KeyboardLayout": null,
-    "GeoLocation": "49"
-  },
-  {
-    "Id": "fo-DK",
-    "DisplayName": "Faroese (Denmark)",
-    "KeyboardLayout": "0438:00000438",
-    "GeoLocation": "61"
-  },
-  {
-    "Id": "fo-FO",
-    "DisplayName": "Faroese (Faroe Islands)",
-    "KeyboardLayout": "0438:00000438",
-    "GeoLocation": "81"
-  },
-  {
-    "Id": "fil-PH",
-    "DisplayName": "Filipino (Philippines)",
-    "KeyboardLayout": null,
-    "GeoLocation": "201"
-  },
-  {
-    "Id": "fi-FI",
-    "DisplayName": "Finnish (Finland)",
-    "KeyboardLayout": "040b:0000040b",
-    "GeoLocation": "77"
-  },
-  {
-    "Id": "fr-DZ",
-    "DisplayName": "French (Algeria)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "4"
-  },
-  {
-    "Id": "fr-BE",
-    "DisplayName": "French (Belgium)",
-    "KeyboardLayout": "080c:0000080c",
-    "GeoLocation": "21"
-  },
-  {
-    "Id": "fr-BJ",
-    "DisplayName": "French (Benin)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "28"
-  },
-  {
-    "Id": "fr-BF",
-    "DisplayName": "French (Burkina Faso)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "245"
-  },
-  {
-    "Id": "fr-BI",
-    "DisplayName": "French (Burundi)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "38"
-  },
-  {
-    "Id": "fr-CM",
-    "DisplayName": "French (Cameroon)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "49"
-  },
-  {
-    "Id": "fr-CA",
-    "DisplayName": "French (Canada)",
-    "KeyboardLayout": "0c0c:00000c0c",
-    "GeoLocation": "39"
-  },
-  {
-    "Id": "fr-CF",
-    "DisplayName": "French (Central African Republic)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "55"
-  },
-  {
-    "Id": "fr-TD",
-    "DisplayName": "French (Chad)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "41"
-  },
-  {
-    "Id": "fr-KM",
-    "DisplayName": "French (Comoros)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "50"
-  },
-  {
-    "Id": "fr-CD",
-    "DisplayName": "French (Congo [DRC])",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "44"
-  },
-  {
-    "Id": "fr-CG",
-    "DisplayName": "French (Congo)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "43"
-  },
-  {
-    "Id": "fr-CI",
-    "DisplayName": "French (Côte d’Ivoire)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "119"
-  },
-  {
-    "Id": "fr-DJ",
-    "DisplayName": "French (Djibouti)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "62"
-  },
-  {
-    "Id": "fr-GQ",
-    "DisplayName": "French (Equatorial Guinea)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "69"
-  },
-  {
-    "Id": "fr-FR",
-    "DisplayName": "French (France)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "84"
-  },
-  {
-    "Id": "fr-GF",
-    "DisplayName": "French (French Guiana)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "317"
-  },
-  {
-    "Id": "fr-PF",
-    "DisplayName": "French (French Polynesia)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "318"
-  },
-  {
-    "Id": "fr-GA",
-    "DisplayName": "French (Gabon)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "87"
-  },
-  {
-    "Id": "fr-GP",
-    "DisplayName": "French (Guadeloupe)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "321"
-  },
-  {
-    "Id": "fr-GN",
-    "DisplayName": "French (Guinea)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "100"
-  },
-  {
-    "Id": "fr-HT",
-    "DisplayName": "French (Haiti)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "103"
-  },
-  {
-    "Id": "fr-LU",
-    "DisplayName": "French (Luxembourg)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "147"
-  },
-  {
-    "Id": "fr-MG",
-    "DisplayName": "French (Madagascar)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "149"
-  },
-  {
-    "Id": "fr-ML",
-    "DisplayName": "French (Mali)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "157"
-  },
-  {
-    "Id": "fr-MQ",
-    "DisplayName": "French (Martinique)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "330"
-  },
-  {
-    "Id": "fr-MR",
-    "DisplayName": "French (Mauritania)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "162"
-  },
-  {
-    "Id": "fr-MU",
-    "DisplayName": "French (Mauritius)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "160"
-  },
-  {
-    "Id": "fr-YT",
-    "DisplayName": "French (Mayotte)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "331"
-  },
-  {
-    "Id": "fr-MC",
-    "DisplayName": "French (Monaco)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "158"
-  },
-  {
-    "Id": "fr-MA",
-    "DisplayName": "French (Morocco)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "159"
-  },
-  {
-    "Id": "fr-NC",
-    "DisplayName": "French (New Caledonia)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "334"
-  },
-  {
-    "Id": "fr-NE",
-    "DisplayName": "French (Niger)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "173"
-  },
-  {
-    "Id": "fr-RE",
-    "DisplayName": "French (Réunion)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "198"
-  },
-  {
-    "Id": "fr-RW",
-    "DisplayName": "French (Rwanda)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "204"
-  },
-  {
-    "Id": "fr-SN",
-    "DisplayName": "French (Senegal)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "210"
-  },
-  {
-    "Id": "fr-SC",
-    "DisplayName": "French (Seychelles)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "208"
-  },
-  {
-    "Id": "fr-BL",
-    "DisplayName": "French (St. Barthélemy)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "161832015"
-  },
-  {
-    "Id": "fr-MF",
-    "DisplayName": "French (St. Martin)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "31706"
-  },
-  {
-    "Id": "fr-PM",
-    "DisplayName": "French (St. Pierre & Miquelon)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "206"
-  },
-  {
-    "Id": "fr-CH",
-    "DisplayName": "French (Switzerland)",
-    "KeyboardLayout": "100c:0000100c",
-    "GeoLocation": "223"
-  },
-  {
-    "Id": "fr-SY",
-    "DisplayName": "French (Syria)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "222"
-  },
-  {
-    "Id": "fr-TG",
-    "DisplayName": "French (Togo)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "232"
-  },
-  {
-    "Id": "fr-TN",
-    "DisplayName": "French (Tunisia)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "234"
-  },
-  {
-    "Id": "fr-VU",
-    "DisplayName": "French (Vanuatu)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "174"
-  },
-  {
-    "Id": "fr-WF",
-    "DisplayName": "French (Wallis & Futuna)",
-    "KeyboardLayout": "040c:0000040c",
-    "GeoLocation": "352"
-  },
-  {
-    "Id": "fur-IT",
-    "DisplayName": "Friulian (Italy)",
-    "KeyboardLayout": null,
-    "GeoLocation": "118"
-  },
-  {
-    "Id": "ff-Latn-BF",
-    "DisplayName": "Fulah (Latin, Burkina Faso)",
-    "KeyboardLayout": null,
-    "GeoLocation": "245"
-  },
-  {
-    "Id": "ff-Latn-CM",
-    "DisplayName": "Fulah (Latin, Cameroon)",
-    "KeyboardLayout": null,
-    "GeoLocation": "49"
-  },
-  {
-    "Id": "ff-Latn-GM",
-    "DisplayName": "Fulah (Latin, Gambia)",
-    "KeyboardLayout": null,
-    "GeoLocation": "86"
-  },
-  {
-    "Id": "ff-Latn-GH",
-    "DisplayName": "Fulah (Latin, Ghana)",
-    "KeyboardLayout": null,
-    "GeoLocation": "89"
-  },
-  {
-    "Id": "ff-Latn-GW",
-    "DisplayName": "Fulah (Latin, Guinea-Bissau)",
-    "KeyboardLayout": null,
-    "GeoLocation": "196"
-  },
-  {
-    "Id": "ff-Latn-GN",
-    "DisplayName": "Fulah (Latin, Guinea)",
-    "KeyboardLayout": null,
-    "GeoLocation": "100"
-  },
-  {
-    "Id": "ff-Latn-LR",
-    "DisplayName": "Fulah (Latin, Liberia)",
-    "KeyboardLayout": null,
-    "GeoLocation": "142"
-  },
-  {
-    "Id": "ff-Latn-MR",
-    "DisplayName": "Fulah (Latin, Mauritania)",
-    "KeyboardLayout": null,
-    "GeoLocation": "162"
-  },
-  {
-    "Id": "ff-Latn-NE",
-    "DisplayName": "Fulah (Latin, Niger)",
-    "KeyboardLayout": null,
-    "GeoLocation": "173"
-  },
-  {
-    "Id": "ff-Latn-NG",
-    "DisplayName": "Fulah (Latin, Nigeria)",
-    "KeyboardLayout": null,
-    "GeoLocation": "175"
-  },
-  {
-    "Id": "ff-Latn-SN",
-    "DisplayName": "Fulah (Latin, Senegal)",
-    "KeyboardLayout": null,
-    "GeoLocation": "210"
-  },
-  {
-    "Id": "ff-Latn-SL",
-    "DisplayName": "Fulah (Latin, Sierra Leone)",
-    "KeyboardLayout": null,
-    "GeoLocation": "213"
-  },
-  {
-    "Id": "gl-ES",
-    "DisplayName": "Galician (Spain)",
-    "KeyboardLayout": null,
-    "GeoLocation": "217"
-  },
-  {
-    "Id": "lg-UG",
-    "DisplayName": "Ganda (Uganda)",
-    "KeyboardLayout": null,
-    "GeoLocation": "240"
-  },
-  {
-    "Id": "ka-GE",
-    "DisplayName": "Georgian (Georgia)",
-    "KeyboardLayout": "0437:00000437",
-    "GeoLocation": "88"
   },
   {
     "Id": "de-AT",
     "DisplayName": "German (Austria)",
-    "KeyboardLayout": "0407:00000407",
+    "LCID": "0c07",
+    "KeyboardLayout": null,
     "GeoLocation": "14"
   },
   {
     "Id": "de-BE",
     "DisplayName": "German (Belgium)",
-    "KeyboardLayout": "0407:00000407",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "21"
+  },
+  {
+    "Id": "de-CH",
+    "DisplayName": "German (Switzerland)",
+    "LCID": "0807",
+    "KeyboardLayout": "00000807",
+    "GeoLocation": "223"
   },
   {
     "Id": "de-DE",
     "DisplayName": "German (Germany)",
-    "KeyboardLayout": "0407:00000407",
+    "LCID": "0407",
+    "KeyboardLayout": "00000407",
     "GeoLocation": "94"
   },
   {
     "Id": "de-IT",
     "DisplayName": "German (Italy)",
-    "KeyboardLayout": "0407:00000407",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "118"
   },
   {
     "Id": "de-LI",
     "DisplayName": "German (Liechtenstein)",
-    "KeyboardLayout": "0407:00000407",
+    "LCID": "1407",
+    "KeyboardLayout": null,
     "GeoLocation": "145"
   },
   {
     "Id": "de-LU",
     "DisplayName": "German (Luxembourg)",
-    "KeyboardLayout": "0407:00000407",
+    "LCID": "1007",
+    "KeyboardLayout": null,
     "GeoLocation": "147"
   },
   {
-    "Id": "de-CH",
-    "DisplayName": "German (Switzerland)",
-    "KeyboardLayout": "0807:00000807",
-    "GeoLocation": "223"
+    "Id": "dje",
+    "DisplayName": "Zarma",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "dje-NE",
+    "DisplayName": "Zarma (Niger)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "173"
+  },
+  {
+    "Id": "dsb",
+    "DisplayName": "Lower Sorbian",
+    "LCID": "7c2e",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "dsb-DE",
+    "DisplayName": "Lower Sorbian (Germany)",
+    "LCID": "082e",
+    "KeyboardLayout": null,
+    "GeoLocation": "94"
+  },
+  {
+    "Id": "dua",
+    "DisplayName": "Duala",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "dua-CM",
+    "DisplayName": "Duala (Cameroon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "49"
+  },
+  {
+    "Id": "dv-MV",
+    "DisplayName": "Divehi (Maldives)",
+    "LCID": "0465",
+    "KeyboardLayout": "00000465",
+    "GeoLocation": "165"
+  },
+  {
+    "Id": "dyo",
+    "DisplayName": "Jola-Fonyi",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "dyo-SN",
+    "DisplayName": "Jola-Fonyi (Senegal)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "210"
+  },
+  {
+    "Id": "dz",
+    "DisplayName": "Dzongkha",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "dz-BT",
+    "DisplayName": "Dzongkha (Bhutan)",
+    "LCID": "0c51",
+    "KeyboardLayout": "00000c51",
+    "GeoLocation": "34"
+  },
+  {
+    "Id": "ebu",
+    "DisplayName": "Embu",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ebu-KE",
+    "DisplayName": "Embu (Kenya)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "129"
+  },
+  {
+    "Id": "ee",
+    "DisplayName": "Ewe",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ee-GH",
+    "DisplayName": "Ewe (Ghana)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "89"
+  },
+  {
+    "Id": "ee-TG",
+    "DisplayName": "Ewe (Togo)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "232"
   },
   {
     "Id": "el-CY",
     "DisplayName": "Greek (Cyprus)",
-    "KeyboardLayout": "0408:00000408",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "59"
   },
   {
     "Id": "el-GR",
     "DisplayName": "Greek (Greece)",
-    "KeyboardLayout": "0408:00000408",
+    "LCID": "0408",
+    "KeyboardLayout": "00000408",
     "GeoLocation": "98"
   },
   {
-    "Id": "gn-PY",
-    "DisplayName": "Guarani (Paraguay)",
-    "KeyboardLayout": "0474:00000474",
-    "GeoLocation": "185"
-  },
-  {
-    "Id": "gu-IN",
-    "DisplayName": "Gujarati (India)",
-    "KeyboardLayout": "0447:00000447",
-    "GeoLocation": "113"
-  },
-  {
-    "Id": "guz-KE",
-    "DisplayName": "Gusii (Kenya)",
-    "KeyboardLayout": null,
-    "GeoLocation": "129"
-  },
-  {
-    "Id": "ha-Latn-GH",
-    "DisplayName": "Hausa (Latin, Ghana)",
-    "KeyboardLayout": "0468:00000468",
-    "GeoLocation": "89"
-  },
-  {
-    "Id": "ha-Latn-NE",
-    "DisplayName": "Hausa (Latin, Niger)",
-    "KeyboardLayout": "0468:00000468",
-    "GeoLocation": "173"
-  },
-  {
-    "Id": "ha-Latn-NG",
-    "DisplayName": "Hausa (Latin, Nigeria)",
-    "KeyboardLayout": "0468:00000468",
-    "GeoLocation": "175"
-  },
-  {
-    "Id": "haw-US",
-    "DisplayName": "Hawaiian (United States)",
-    "KeyboardLayout": "0475:00000475",
-    "GeoLocation": "244"
-  },
-  {
-    "Id": "he-IL",
-    "DisplayName": "Hebrew (Israel)",
-    "KeyboardLayout": "040d:0000040d",
-    "GeoLocation": "117"
-  },
-  {
-    "Id": "hi-IN",
-    "DisplayName": "Hindi (India)",
-    "KeyboardLayout": "0439:00000439",
-    "GeoLocation": "113"
-  },
-  {
-    "Id": "hu-HU",
-    "DisplayName": "Hungarian (Hungary)",
-    "KeyboardLayout": "040e:0000040e",
-    "GeoLocation": "109"
-  },
-  {
-    "Id": "is-IS",
-    "DisplayName": "Icelandic (Iceland)",
-    "KeyboardLayout": "040f:0000040f",
-    "GeoLocation": "110"
-  },
-  {
-    "Id": "ig-NG",
-    "DisplayName": "Igbo (Nigeria)",
-    "KeyboardLayout": "0470:00000470",
-    "GeoLocation": "175"
-  },
-  {
-    "Id": "smn-FI",
-    "DisplayName": "Inari Sami (Finland)",
-    "KeyboardLayout": null,
-    "GeoLocation": "77"
-  },
-  {
-    "Id": "id-ID",
-    "DisplayName": "Indonesian (Indonesia)",
-    "KeyboardLayout": null,
-    "GeoLocation": "111"
-  },
-  {
-    "Id": "ia-001",
-    "DisplayName": "Interlingua (World)",
-    "KeyboardLayout": null,
+    "Id": "en-001",
+    "DisplayName": "English (World)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": null
   },
   {
-    "Id": "iu-CA",
-    "DisplayName": "Inuktitut (Canada)",
+    "Id": "en-150",
+    "DisplayName": "English (Europe)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "en-AE",
+    "DisplayName": "English (United Arab Emirates)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "224"
+  },
+  {
+    "Id": "en-AG",
+    "DisplayName": "English (Antigua & Barbuda)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "2"
+  },
+  {
+    "Id": "en-AI",
+    "DisplayName": "English (Anguilla)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "300"
+  },
+  {
+    "Id": "en-AS",
+    "DisplayName": "English (American Samoa)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "10"
+  },
+  {
+    "Id": "en-AT",
+    "DisplayName": "English (Austria)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "14"
+  },
+  {
+    "Id": "en-AU",
+    "DisplayName": "English (Australia)",
+    "LCID": "0c09",
     "KeyboardLayout": null,
+    "GeoLocation": "12"
+  },
+  {
+    "Id": "en-BB",
+    "DisplayName": "English (Barbados)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "18"
+  },
+  {
+    "Id": "en-BE",
+    "DisplayName": "English (Belgium)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "21"
+  },
+  {
+    "Id": "en-BI",
+    "DisplayName": "English (Burundi)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "38"
+  },
+  {
+    "Id": "en-BM",
+    "DisplayName": "English (Bermuda)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "20"
+  },
+  {
+    "Id": "en-BS",
+    "DisplayName": "English (Bahamas)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "22"
+  },
+  {
+    "Id": "en-BW",
+    "DisplayName": "English (Botswana)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "19"
+  },
+  {
+    "Id": "en-BZ",
+    "DisplayName": "English (Belize)",
+    "LCID": "2809",
+    "KeyboardLayout": null,
+    "GeoLocation": "24"
+  },
+  {
+    "Id": "en-CA",
+    "DisplayName": "English (Canada)",
+    "LCID": "1009",
+    "KeyboardLayout": "00001009",
     "GeoLocation": "39"
   },
   {
-    "Id": "iu-Latn-CA",
-    "DisplayName": "Inuktitut (Latin, Canada)",
-    "KeyboardLayout": "085d:0000085d",
-    "GeoLocation": "39"
+    "Id": "en-CC",
+    "DisplayName": "English (Cocos [Keeling] Islands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "311"
   },
   {
-    "Id": "ga-IE",
-    "DisplayName": "Irish (Ireland)",
-    "KeyboardLayout": null,
-    "GeoLocation": "68"
-  },
-  {
-    "Id": "xh-ZA",
-    "DisplayName": "isiXhosa (South Africa)",
-    "KeyboardLayout": null,
-    "GeoLocation": "209"
-  },
-  {
-    "Id": "zu-ZA",
-    "DisplayName": "isiZulu (South Africa)",
-    "KeyboardLayout": null,
-    "GeoLocation": "209"
-  },
-  {
-    "Id": "it-IT",
-    "DisplayName": "Italian (Italy)",
-    "KeyboardLayout": "0410:00000410",
-    "GeoLocation": "118"
-  },
-  {
-    "Id": "it-SM",
-    "DisplayName": "Italian (San Marino)",
-    "KeyboardLayout": "0410:00000410",
-    "GeoLocation": "214"
-  },
-  {
-    "Id": "it-CH",
-    "DisplayName": "Italian (Switzerland)",
-    "KeyboardLayout": "0410:00000410",
+    "Id": "en-CH",
+    "DisplayName": "English (Switzerland)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "223"
   },
   {
-    "Id": "it-VA",
-    "DisplayName": "Italian (Vatican City)",
-    "KeyboardLayout": "0410:00000410",
-    "GeoLocation": "253"
+    "Id": "en-CK",
+    "DisplayName": "English (Cook Islands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "312"
   },
   {
-    "Id": "ja-JP",
-    "DisplayName": "Japanese (Japan)",
-    "KeyboardLayout": "0411:00000411",
-    "GeoLocation": "122"
-  },
-  {
-    "Id": "jv-Latn-ID",
-    "DisplayName": "Javanese (Latin, Indonesia)",
-    "KeyboardLayout": null,
-    "GeoLocation": "111"
-  },
-  {
-    "Id": "dyo-SN",
-    "DisplayName": "Jola-Fonyi (Senegal)",
-    "KeyboardLayout": null,
-    "GeoLocation": "210"
-  },
-  {
-    "Id": "kea-CV",
-    "DisplayName": "Kabuverdianu (Cabo Verde)",
-    "KeyboardLayout": null,
-    "GeoLocation": "57"
-  },
-  {
-    "Id": "kab-DZ",
-    "DisplayName": "Kabyle (Algeria)",
-    "KeyboardLayout": null,
-    "GeoLocation": "4"
-  },
-  {
-    "Id": "kkj-CM",
-    "DisplayName": "Kako (Cameroon)",
-    "KeyboardLayout": null,
+    "Id": "en-CM",
+    "DisplayName": "English (Cameroon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "49"
   },
   {
-    "Id": "kl-GL",
-    "DisplayName": "Kalaallisut (Greenland)",
-    "KeyboardLayout": "046f:0000046f",
-    "GeoLocation": "93"
+    "Id": "en-CX",
+    "DisplayName": "English (Christmas Island)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "309"
   },
   {
-    "Id": "kln-KE",
-    "DisplayName": "Kalenjin (Kenya)",
-    "KeyboardLayout": null,
-    "GeoLocation": "129"
+    "Id": "en-CY",
+    "DisplayName": "English (Cyprus)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "59"
   },
   {
-    "Id": "kam-KE",
-    "DisplayName": "Kamba (Kenya)",
-    "KeyboardLayout": null,
-    "GeoLocation": "129"
-  },
-  {
-    "Id": "kn-IN",
-    "DisplayName": "Kannada (India)",
-    "KeyboardLayout": "044b:0000044b",
-    "GeoLocation": "113"
-  },
-  {
-    "Id": "ks-Arab-IN",
-    "DisplayName": "Kashmiri (Arabic, India)",
-    "KeyboardLayout": null,
-    "GeoLocation": "113"
-  },
-  {
-    "Id": "kk-KZ",
-    "DisplayName": "Kazakh (Kazakhstan)",
-    "KeyboardLayout": "043f:0000043f",
-    "GeoLocation": "137"
-  },
-  {
-    "Id": "km-KH",
-    "DisplayName": "Khmer (Cambodia)",
-    "KeyboardLayout": "0453:00000453",
-    "GeoLocation": "40"
-  },
-  {
-    "Id": "ki-KE",
-    "DisplayName": "Kikuyu (Kenya)",
-    "KeyboardLayout": null,
-    "GeoLocation": "129"
-  },
-  {
-    "Id": "rw-RW",
-    "DisplayName": "Kinyarwanda (Rwanda)",
-    "KeyboardLayout": null,
-    "GeoLocation": "204"
-  },
-  {
-    "Id": "sw-CD",
-    "DisplayName": "Kiswahili (Congo [DRC])",
-    "KeyboardLayout": null,
-    "GeoLocation": "44"
-  },
-  {
-    "Id": "sw-KE",
-    "DisplayName": "Kiswahili (Kenya)",
-    "KeyboardLayout": null,
-    "GeoLocation": "129"
-  },
-  {
-    "Id": "sw-TZ",
-    "DisplayName": "Kiswahili (Tanzania)",
-    "KeyboardLayout": null,
-    "GeoLocation": "239"
-  },
-  {
-    "Id": "sw-UG",
-    "DisplayName": "Kiswahili (Uganda)",
-    "KeyboardLayout": null,
-    "GeoLocation": "240"
-  },
-  {
-    "Id": "kok-IN",
-    "DisplayName": "Konkani (India)",
-    "KeyboardLayout": null,
-    "GeoLocation": "113"
-  },
-  {
-    "Id": "ko-KR",
-    "DisplayName": "Korean (Korea)",
-    "KeyboardLayout": "0412:00000412",
-    "GeoLocation": "134"
-  },
-  {
-    "Id": "ko-KP",
-    "DisplayName": "Korean (North Korea)",
-    "KeyboardLayout": "0412:00000412",
-    "GeoLocation": "131"
-  },
-  {
-    "Id": "khq-ML",
-    "DisplayName": "Koyra Chiini (Mali)",
-    "KeyboardLayout": null,
-    "GeoLocation": "157"
-  },
-  {
-    "Id": "ses-ML",
-    "DisplayName": "Koyraboro Senni (Mali)",
-    "KeyboardLayout": null,
-    "GeoLocation": "157"
-  },
-  {
-    "Id": "ku-Arab-IR",
-    "DisplayName": "Kurdish (Arabic, Iran)",
-    "KeyboardLayout": "0492:00000492",
-    "GeoLocation": "116"
-  },
-  {
-    "Id": "ku-Arab-IQ",
-    "DisplayName": "Kurdish (Arabic, Iraq)",
-    "KeyboardLayout": "0492:00000492",
-    "GeoLocation": "121"
-  },
-  {
-    "Id": "nmg-CM",
-    "DisplayName": "Kwasio (Cameroon)",
-    "KeyboardLayout": null,
-    "GeoLocation": "49"
-  },
-  {
-    "Id": "ky-KG",
-    "DisplayName": "Kyrgyz (Kyrgyzstan)",
-    "KeyboardLayout": "0440:00000440",
-    "GeoLocation": "130"
-  },
-  {
-    "Id": "quc-GT",
-    "DisplayName": "Kʼicheʼ (Guatemala)",
-    "KeyboardLayout": null,
-    "GeoLocation": "99"
-  },
-  {
-    "Id": "lkt-US",
-    "DisplayName": "Lakota (United States)",
-    "KeyboardLayout": null,
-    "GeoLocation": "244"
-  },
-  {
-    "Id": "lag-TZ",
-    "DisplayName": "Langi (Tanzania)",
-    "KeyboardLayout": null,
-    "GeoLocation": "239"
-  },
-  {
-    "Id": "lo-LA",
-    "DisplayName": "Lao (Laos)",
-    "KeyboardLayout": "0454:00000454",
-    "GeoLocation": "138"
-  },
-  {
-    "Id": "lv-LV",
-    "DisplayName": "Latvian (Latvia)",
-    "KeyboardLayout": "0426:00000426",
-    "GeoLocation": "140"
-  },
-  {
-    "Id": "ln-AO",
-    "DisplayName": "Lingala (Angola)",
-    "KeyboardLayout": null,
-    "GeoLocation": "9"
-  },
-  {
-    "Id": "ln-CF",
-    "DisplayName": "Lingala (Central African Republic)",
-    "KeyboardLayout": null,
-    "GeoLocation": "55"
-  },
-  {
-    "Id": "ln-CD",
-    "DisplayName": "Lingala (Congo [DRC])",
-    "KeyboardLayout": null,
-    "GeoLocation": "44"
-  },
-  {
-    "Id": "ln-CG",
-    "DisplayName": "Lingala (Congo)",
-    "KeyboardLayout": null,
-    "GeoLocation": "43"
-  },
-  {
-    "Id": "lt-LT",
-    "DisplayName": "Lithuanian (Lithuania)",
-    "KeyboardLayout": "0427:00000427",
-    "GeoLocation": "141"
-  },
-  {
-    "Id": "nds-DE",
-    "DisplayName": "Low German (Germany)",
-    "KeyboardLayout": null,
+    "Id": "en-DE",
+    "DisplayName": "English (Germany)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "94"
   },
   {
-    "Id": "nds-NL",
-    "DisplayName": "Low German (Netherlands)",
-    "KeyboardLayout": null,
-    "GeoLocation": "176"
+    "Id": "en-DK",
+    "DisplayName": "English (Denmark)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "61"
   },
   {
-    "Id": "dsb-DE",
-    "DisplayName": "Lower Sorbian (Germany)",
-    "KeyboardLayout": null,
-    "GeoLocation": "94"
+    "Id": "en-DM",
+    "DisplayName": "English (Dominica)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "63"
   },
   {
-    "Id": "lu-CD",
-    "DisplayName": "Luba-Katanga (Congo [DRC])",
-    "KeyboardLayout": null,
-    "GeoLocation": "44"
+    "Id": "en-ER",
+    "DisplayName": "English (Eritrea)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "71"
   },
   {
-    "Id": "smj-NO",
-    "DisplayName": "Lule Sami (Norway)",
-    "KeyboardLayout": null,
-    "GeoLocation": "177"
+    "Id": "en-FI",
+    "DisplayName": "English (Finland)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "77"
   },
   {
-    "Id": "smj-SE",
-    "DisplayName": "Lule Sami (Sweden)",
-    "KeyboardLayout": null,
-    "GeoLocation": "221"
+    "Id": "en-FJ",
+    "DisplayName": "English (Fiji)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "78"
   },
   {
-    "Id": "luo-KE",
-    "DisplayName": "Luo (Kenya)",
+    "Id": "en-FK",
+    "DisplayName": "English (Falkland Islands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "315"
+  },
+  {
+    "Id": "en-FM",
+    "DisplayName": "English (Micronesia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "80"
+  },
+  {
+    "Id": "en-GB",
+    "DisplayName": "English (United Kingdom)",
+    "LCID": "0809",
+    "KeyboardLayout": "00000809",
+    "GeoLocation": "242"
+  },
+  {
+    "Id": "en-GD",
+    "DisplayName": "English (Grenada)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "91"
+  },
+  {
+    "Id": "en-GG",
+    "DisplayName": "English (Guernsey)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "324"
+  },
+  {
+    "Id": "en-GH",
+    "DisplayName": "English (Ghana)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "89"
+  },
+  {
+    "Id": "en-GI",
+    "DisplayName": "English (Gibraltar)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "90"
+  },
+  {
+    "Id": "en-GM",
+    "DisplayName": "English (Gambia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "86"
+  },
+  {
+    "Id": "en-GU",
+    "DisplayName": "English (Guam)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "322"
+  },
+  {
+    "Id": "en-GY",
+    "DisplayName": "English (Guyana)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "101"
+  },
+  {
+    "Id": "en-HK",
+    "DisplayName": "English (Hong Kong SAR)",
+    "LCID": "3c09",
     "KeyboardLayout": null,
+    "GeoLocation": "104"
+  },
+  {
+    "Id": "en-IE",
+    "DisplayName": "English (Ireland)",
+    "LCID": "1809",
+    "KeyboardLayout": "00001809",
+    "GeoLocation": "68"
+  },
+  {
+    "Id": "en-IL",
+    "DisplayName": "English (Israel)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "117"
+  },
+  {
+    "Id": "en-IM",
+    "DisplayName": "English (Isle of Man)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "15126"
+  },
+  {
+    "Id": "en-IN",
+    "DisplayName": "English (India)",
+    "LCID": "4009",
+    "KeyboardLayout": "00004009",
+    "GeoLocation": "113"
+  },
+  {
+    "Id": "en-IO",
+    "DisplayName": "English (British Indian Ocean Territory)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "114"
+  },
+  {
+    "Id": "en-JE",
+    "DisplayName": "English (Jersey)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "328"
+  },
+  {
+    "Id": "en-JM",
+    "DisplayName": "English (Jamaica)",
+    "LCID": "2009",
+    "KeyboardLayout": null,
+    "GeoLocation": "124"
+  },
+  {
+    "Id": "en-KE",
+    "DisplayName": "English (Kenya)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "129"
   },
   {
-    "Id": "lb-LU",
-    "DisplayName": "Luxembourgish (Luxembourg)",
-    "KeyboardLayout": "046e:0000046e",
-    "GeoLocation": "147"
+    "Id": "en-KI",
+    "DisplayName": "English (Kiribati)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "133"
   },
   {
-    "Id": "luy-KE",
-    "DisplayName": "Luyia (Kenya)",
-    "KeyboardLayout": null,
-    "GeoLocation": "129"
+    "Id": "en-KN",
+    "DisplayName": "English (St. Kitts & Nevis)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "207"
   },
   {
-    "Id": "mk-MK",
-    "DisplayName": "Macedonian (North Macedonia)",
-    "KeyboardLayout": "042f:0000042f",
-    "GeoLocation": "19618"
+    "Id": "en-KY",
+    "DisplayName": "English (Cayman Islands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "307"
   },
   {
-    "Id": "jmc-TZ",
-    "DisplayName": "Machame (Tanzania)",
-    "KeyboardLayout": null,
-    "GeoLocation": "239"
+    "Id": "en-LC",
+    "DisplayName": "English (St. Lucia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "218"
   },
   {
-    "Id": "mgh-MZ",
-    "DisplayName": "Makhuwa-Meetto (Mozambique)",
-    "KeyboardLayout": null,
-    "GeoLocation": "168"
+    "Id": "en-LR",
+    "DisplayName": "English (Liberia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "142"
   },
   {
-    "Id": "kde-TZ",
-    "DisplayName": "Makonde (Tanzania)",
-    "KeyboardLayout": null,
-    "GeoLocation": "239"
+    "Id": "en-LS",
+    "DisplayName": "English (Lesotho)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "146"
   },
   {
-    "Id": "mg-MG",
-    "DisplayName": "Malagasy (Madagascar)",
-    "KeyboardLayout": null,
+    "Id": "en-MG",
+    "DisplayName": "English (Madagascar)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "149"
   },
   {
-    "Id": "ms-BN",
-    "DisplayName": "Malay (Brunei)",
-    "KeyboardLayout": null,
-    "GeoLocation": "37"
+    "Id": "en-MH",
+    "DisplayName": "English (Marshall Islands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "199"
   },
   {
-    "Id": "ms-MY",
-    "DisplayName": "Malay (Malaysia)",
+    "Id": "en-MO",
+    "DisplayName": "English (Macao SAR)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "151"
+  },
+  {
+    "Id": "en-MP",
+    "DisplayName": "English (Northern Mariana Islands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "337"
+  },
+  {
+    "Id": "en-MS",
+    "DisplayName": "English (Montserrat)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "332"
+  },
+  {
+    "Id": "en-MT",
+    "DisplayName": "English (Malta)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "163"
+  },
+  {
+    "Id": "en-MU",
+    "DisplayName": "English (Mauritius)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "160"
+  },
+  {
+    "Id": "en-MW",
+    "DisplayName": "English (Malawi)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "156"
+  },
+  {
+    "Id": "en-MY",
+    "DisplayName": "English (Malaysia)",
+    "LCID": "4409",
     "KeyboardLayout": null,
     "GeoLocation": "167"
   },
   {
-    "Id": "ms-SG",
-    "DisplayName": "Malay (Singapore)",
+    "Id": "en-NA",
+    "DisplayName": "English (Namibia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "254"
+  },
+  {
+    "Id": "en-NF",
+    "DisplayName": "English (Norfolk Island)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "336"
+  },
+  {
+    "Id": "en-NG",
+    "DisplayName": "English (Nigeria)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "175"
+  },
+  {
+    "Id": "en-NL",
+    "DisplayName": "English (Netherlands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "176"
+  },
+  {
+    "Id": "en-NR",
+    "DisplayName": "English (Nauru)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "180"
+  },
+  {
+    "Id": "en-NU",
+    "DisplayName": "English (Niue)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "335"
+  },
+  {
+    "Id": "en-NZ",
+    "DisplayName": "English (New Zealand)",
+    "LCID": "1409",
+    "KeyboardLayout": "00001409",
+    "GeoLocation": "183"
+  },
+  {
+    "Id": "en-PG",
+    "DisplayName": "English (Papua New Guinea)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "194"
+  },
+  {
+    "Id": "en-PH",
+    "DisplayName": "English (Philippines)",
+    "LCID": "3409",
+    "KeyboardLayout": null,
+    "GeoLocation": "201"
+  },
+  {
+    "Id": "en-PK",
+    "DisplayName": "English (Pakistan)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "190"
+  },
+  {
+    "Id": "en-PN",
+    "DisplayName": "English (Pitcairn Islands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "339"
+  },
+  {
+    "Id": "en-PR",
+    "DisplayName": "English (Puerto Rico)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "202"
+  },
+  {
+    "Id": "en-PW",
+    "DisplayName": "English (Palau)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "195"
+  },
+  {
+    "Id": "en-RW",
+    "DisplayName": "English (Rwanda)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "204"
+  },
+  {
+    "Id": "en-SB",
+    "DisplayName": "English (Solomon Islands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "30"
+  },
+  {
+    "Id": "en-SC",
+    "DisplayName": "English (Seychelles)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "208"
+  },
+  {
+    "Id": "en-SD",
+    "DisplayName": "English (Sudan)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "219"
+  },
+  {
+    "Id": "en-SE",
+    "DisplayName": "English (Sweden)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "221"
+  },
+  {
+    "Id": "en-SG",
+    "DisplayName": "English (Singapore)",
+    "LCID": "4809",
     "KeyboardLayout": null,
     "GeoLocation": "215"
   },
   {
-    "Id": "ml-IN",
-    "DisplayName": "Malayalam (India)",
-    "KeyboardLayout": "044c:0000044c",
-    "GeoLocation": "113"
+    "Id": "en-SH",
+    "DisplayName": "English (St Helena, Ascension, Tristan da Cunha)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "343"
   },
   {
-    "Id": "mt-MT",
-    "DisplayName": "Maltese (Malta)",
-    "KeyboardLayout": "043a:0000043a",
-    "GeoLocation": "163"
+    "Id": "en-SI",
+    "DisplayName": "English (Slovenia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "212"
   },
   {
-    "Id": "gv-IM",
-    "DisplayName": "Manx (Isle of Man)",
+    "Id": "en-SL",
+    "DisplayName": "English (Sierra Leone)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "213"
+  },
+  {
+    "Id": "en-SS",
+    "DisplayName": "English (South Sudan)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "276"
+  },
+  {
+    "Id": "en-SX",
+    "DisplayName": "English (Sint Maarten)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "30967"
+  },
+  {
+    "Id": "en-SZ",
+    "DisplayName": "English (Eswatini)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "260"
+  },
+  {
+    "Id": "en-TC",
+    "DisplayName": "English (Turks & Caicos Islands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "349"
+  },
+  {
+    "Id": "en-TK",
+    "DisplayName": "English (Tokelau)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "347"
+  },
+  {
+    "Id": "en-TO",
+    "DisplayName": "English (Tonga)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "231"
+  },
+  {
+    "Id": "en-TT",
+    "DisplayName": "English (Trinidad & Tobago)",
+    "LCID": "2c09",
     "KeyboardLayout": null,
-    "GeoLocation": "15126"
+    "GeoLocation": "225"
   },
   {
-    "Id": "mi-NZ",
-    "DisplayName": "Maori (New Zealand)",
-    "KeyboardLayout": "0481:00000481",
-    "GeoLocation": "183"
+    "Id": "en-TV",
+    "DisplayName": "English (Tuvalu)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "236"
   },
   {
-    "Id": "arn-CL",
-    "DisplayName": "Mapuche (Chile)",
-    "KeyboardLayout": null,
-    "GeoLocation": "46"
-  },
-  {
-    "Id": "mr-IN",
-    "DisplayName": "Marathi (India)",
-    "KeyboardLayout": "044e:0000044e",
-    "GeoLocation": "113"
-  },
-  {
-    "Id": "mas-KE",
-    "DisplayName": "Masai (Kenya)",
-    "KeyboardLayout": null,
-    "GeoLocation": "129"
-  },
-  {
-    "Id": "mas-TZ",
-    "DisplayName": "Masai (Tanzania)",
-    "KeyboardLayout": null,
+    "Id": "en-TZ",
+    "DisplayName": "English (Tanzania)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "239"
   },
   {
-    "Id": "mzn-IR",
-    "DisplayName": "Mazanderani (Iran)",
+    "Id": "en-UG",
+    "DisplayName": "English (Uganda)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "240"
+  },
+  {
+    "Id": "en-UM",
+    "DisplayName": "English (U.S. Outlying Islands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "en-US",
+    "DisplayName": "English (United States)",
+    "LCID": "0409",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "244"
+  },
+  {
+    "Id": "en-US-POSIX",
+    "DisplayName": "English (United States, Computer)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "en-VC",
+    "DisplayName": "English (St. Vincent & Grenadines)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "248"
+  },
+  {
+    "Id": "en-VG",
+    "DisplayName": "English (British Virgin Islands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "351"
+  },
+  {
+    "Id": "en-VI",
+    "DisplayName": "English (U.S. Virgin Islands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "252"
+  },
+  {
+    "Id": "en-VU",
+    "DisplayName": "English (Vanuatu)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "174"
+  },
+  {
+    "Id": "en-WS",
+    "DisplayName": "English (Samoa)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "259"
+  },
+  {
+    "Id": "en-ZA",
+    "DisplayName": "English (South Africa)",
+    "LCID": "1c09",
     "KeyboardLayout": null,
-    "GeoLocation": "116"
+    "GeoLocation": "209"
   },
   {
-    "Id": "mer-KE",
-    "DisplayName": "Meru (Kenya)",
-    "KeyboardLayout": null,
-    "GeoLocation": "129"
+    "Id": "en-ZM",
+    "DisplayName": "English (Zambia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "263"
   },
   {
-    "Id": "mgo-CM",
-    "DisplayName": "Metaʼ (Cameroon)",
-    "KeyboardLayout": null,
-    "GeoLocation": "49"
-  },
-  {
-    "Id": "moh-CA",
-    "DisplayName": "Mohawk (Canada)",
-    "KeyboardLayout": null,
-    "GeoLocation": "39"
-  },
-  {
-    "Id": "mn-MN",
-    "DisplayName": "Mongolian (Mongolia)",
-    "KeyboardLayout": "0450:00000450",
-    "GeoLocation": "154"
-  },
-  {
-    "Id": "mn-Mong-CN",
-    "DisplayName": "Mongolian (Mongolian, China)",
-    "KeyboardLayout": "0850:00000850",
-    "GeoLocation": "45"
-  },
-  {
-    "Id": "mn-Mong-MN",
-    "DisplayName": "Mongolian (Mongolian, Mongolia)",
-    "KeyboardLayout": "0850:00000850",
-    "GeoLocation": "154"
-  },
-  {
-    "Id": "mfe-MU",
-    "DisplayName": "Morisyen (Mauritius)",
-    "KeyboardLayout": null,
-    "GeoLocation": "160"
-  },
-  {
-    "Id": "mua-CM",
-    "DisplayName": "Mundang (Cameroon)",
-    "KeyboardLayout": null,
-    "GeoLocation": "49"
-  },
-  {
-    "Id": "nqo-GN",
-    "DisplayName": "N’Ko (Guinea)",
-    "KeyboardLayout": null,
-    "GeoLocation": "100"
-  },
-  {
-    "Id": "naq-NA",
-    "DisplayName": "Nama (Namibia)",
-    "KeyboardLayout": null,
-    "GeoLocation": "254"
-  },
-  {
-    "Id": "ne-IN",
-    "DisplayName": "Nepali (India)",
-    "KeyboardLayout": "0461:00000461",
-    "GeoLocation": "113"
-  },
-  {
-    "Id": "ne-NP",
-    "DisplayName": "Nepali (Nepal)",
-    "KeyboardLayout": "0461:00000461",
-    "GeoLocation": "178"
-  },
-  {
-    "Id": "nnh-CM",
-    "DisplayName": "Ngiemboon (Cameroon)",
-    "KeyboardLayout": null,
-    "GeoLocation": "49"
-  },
-  {
-    "Id": "jgo-CM",
-    "DisplayName": "Ngomba (Cameroon)",
-    "KeyboardLayout": null,
-    "GeoLocation": "49"
-  },
-  {
-    "Id": "nd-ZW",
-    "DisplayName": "North Ndebele (Zimbabwe)",
+    "Id": "en-ZW",
+    "DisplayName": "English (Zimbabwe)",
+    "LCID": "3009",
     "KeyboardLayout": null,
     "GeoLocation": "264"
   },
   {
-    "Id": "lrc-IR",
-    "DisplayName": "Northern Luri (Iran)",
-    "KeyboardLayout": null,
-    "GeoLocation": "116"
+    "Id": "eo",
+    "DisplayName": "Esperanto",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
-    "Id": "lrc-IQ",
-    "DisplayName": "Northern Luri (Iraq)",
-    "KeyboardLayout": null,
-    "GeoLocation": "121"
+    "Id": "eo-001",
+    "DisplayName": "Esperanto (World)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
-    "Id": "se-FI",
-    "DisplayName": "Northern Sami (Finland)",
-    "KeyboardLayout": "043b:0000043b",
-    "GeoLocation": "77"
-  },
-  {
-    "Id": "se-NO",
-    "DisplayName": "Northern Sami (Norway)",
-    "KeyboardLayout": "043b:0000043b",
-    "GeoLocation": "177"
-  },
-  {
-    "Id": "se-SE",
-    "DisplayName": "Northern Sami (Sweden)",
-    "KeyboardLayout": "083b:0000083b",
-    "GeoLocation": "221"
-  },
-  {
-    "Id": "nb-NO",
-    "DisplayName": "Norwegian Bokmål (Norway)",
-    "KeyboardLayout": "0414:00000414",
-    "GeoLocation": "177"
-  },
-  {
-    "Id": "nb-SJ",
-    "DisplayName": "Norwegian Bokmål (Svalbard & Jan Mayen)",
-    "KeyboardLayout": "0414:00000414",
-    "GeoLocation": "220"
-  },
-  {
-    "Id": "nn-NO",
-    "DisplayName": "Norwegian Nynorsk (Norway)",
-    "KeyboardLayout": null,
-    "GeoLocation": "177"
-  },
-  {
-    "Id": "nus-SS",
-    "DisplayName": "Nuer (South Sudan)",
-    "KeyboardLayout": null,
-    "GeoLocation": "276"
-  },
-  {
-    "Id": "nyn-UG",
-    "DisplayName": "Nyankole (Uganda)",
-    "KeyboardLayout": null,
-    "GeoLocation": "240"
-  },
-  {
-    "Id": "oc-FR",
-    "DisplayName": "Occitan (France)",
-    "KeyboardLayout": null,
-    "GeoLocation": "84"
-  },
-  {
-    "Id": "or-IN",
-    "DisplayName": "Odia (India)",
-    "KeyboardLayout": "0448:00000448",
-    "GeoLocation": "113"
-  },
-  {
-    "Id": "om-ET",
-    "DisplayName": "Oromo (Ethiopia)",
-    "KeyboardLayout": null,
-    "GeoLocation": "73"
-  },
-  {
-    "Id": "om-KE",
-    "DisplayName": "Oromo (Kenya)",
-    "KeyboardLayout": null,
-    "GeoLocation": "129"
-  },
-  {
-    "Id": "os-GE",
-    "DisplayName": "Ossetic (Georgia)",
-    "KeyboardLayout": null,
-    "GeoLocation": "88"
-  },
-  {
-    "Id": "os-RU",
-    "DisplayName": "Ossetic (Russia)",
-    "KeyboardLayout": null,
-    "GeoLocation": "203"
-  },
-  {
-    "Id": "ps-AF",
-    "DisplayName": "Pashto (Afghanistan)",
-    "KeyboardLayout": "0463:00000463",
-    "GeoLocation": "3"
-  },
-  {
-    "Id": "ps-PK",
-    "DisplayName": "Pashto (Pakistan)",
-    "KeyboardLayout": "0463:00000463",
-    "GeoLocation": "190"
-  },
-  {
-    "Id": "fa-IR",
-    "DisplayName": "Persian (Iran)",
-    "KeyboardLayout": "0429:00000429",
-    "GeoLocation": "116"
-  },
-  {
-    "Id": "pl-PL",
-    "DisplayName": "Polish (Poland)",
-    "KeyboardLayout": "0415:00000415",
-    "GeoLocation": "191"
-  },
-  {
-    "Id": "pt-AO",
-    "DisplayName": "Portuguese (Angola)",
-    "KeyboardLayout": "0416:00000416",
-    "GeoLocation": "9"
-  },
-  {
-    "Id": "pt-BR",
-    "DisplayName": "Portuguese (Brazil)",
-    "KeyboardLayout": "0416:00000416",
-    "GeoLocation": "32"
-  },
-  {
-    "Id": "pt-CV",
-    "DisplayName": "Portuguese (Cabo Verde)",
-    "KeyboardLayout": "0416:00000416",
-    "GeoLocation": "57"
-  },
-  {
-    "Id": "pt-GQ",
-    "DisplayName": "Portuguese (Equatorial Guinea)",
-    "KeyboardLayout": "0416:00000416",
-    "GeoLocation": "69"
-  },
-  {
-    "Id": "pt-GW",
-    "DisplayName": "Portuguese (Guinea-Bissau)",
-    "KeyboardLayout": "0416:00000416",
-    "GeoLocation": "196"
-  },
-  {
-    "Id": "pt-LU",
-    "DisplayName": "Portuguese (Luxembourg)",
-    "KeyboardLayout": "0416:00000416",
-    "GeoLocation": "147"
-  },
-  {
-    "Id": "pt-MO",
-    "DisplayName": "Portuguese (Macao SAR)",
-    "KeyboardLayout": "0416:00000416",
-    "GeoLocation": "151"
-  },
-  {
-    "Id": "pt-MZ",
-    "DisplayName": "Portuguese (Mozambique)",
-    "KeyboardLayout": "0416:00000416",
-    "GeoLocation": "168"
-  },
-  {
-    "Id": "pt-PT",
-    "DisplayName": "Portuguese (Portugal)",
-    "KeyboardLayout": "0816:00000816",
-    "GeoLocation": "193"
-  },
-  {
-    "Id": "pt-ST",
-    "DisplayName": "Portuguese (São Tomé & Príncipe)",
-    "KeyboardLayout": "0416:00000416",
-    "GeoLocation": "233"
-  },
-  {
-    "Id": "pt-CH",
-    "DisplayName": "Portuguese (Switzerland)",
-    "KeyboardLayout": "0416:00000416",
-    "GeoLocation": "223"
-  },
-  {
-    "Id": "pt-TL",
-    "DisplayName": "Portuguese (Timor-Leste)",
-    "KeyboardLayout": "0416:00000416",
-    "GeoLocation": "7299303"
-  },
-  {
-    "Id": "prs-AF",
-    "DisplayName": "prs (Afghanistan)",
-    "KeyboardLayout": null,
-    "GeoLocation": "3"
-  },
-  {
-    "Id": "prg-001",
-    "DisplayName": "Prussian (World)",
+    "Id": "es-419",
+    "DisplayName": "Spanish (Latin America)",
+    "LCID": "580a",
     "KeyboardLayout": null,
     "GeoLocation": null
   },
   {
-    "Id": "pa-Arab-PK",
-    "DisplayName": "Punjabi (Arabic, Pakistan)",
-    "KeyboardLayout": null,
-    "GeoLocation": "190"
-  },
-  {
-    "Id": "pa-IN",
-    "DisplayName": "Punjabi (India)",
-    "KeyboardLayout": "0446:00000446",
-    "GeoLocation": "113"
-  },
-  {
-    "Id": "quz-BO",
-    "DisplayName": "Quechua (Bolivia)",
-    "KeyboardLayout": null,
-    "GeoLocation": "26"
-  },
-  {
-    "Id": "quz-EC",
-    "DisplayName": "Quechua (Ecuador)",
-    "KeyboardLayout": null,
-    "GeoLocation": "66"
-  },
-  {
-    "Id": "quz-PE",
-    "DisplayName": "Quechua (Peru)",
-    "KeyboardLayout": null,
-    "GeoLocation": "187"
-  },
-  {
-    "Id": "ro-MD",
-    "DisplayName": "Romanian (Moldova)",
-    "KeyboardLayout": "0418:00000418",
-    "GeoLocation": "152"
-  },
-  {
-    "Id": "ro-RO",
-    "DisplayName": "Romanian (Romania)",
-    "KeyboardLayout": "0418:00000418",
-    "GeoLocation": "200"
-  },
-  {
-    "Id": "rm-CH",
-    "DisplayName": "Romansh (Switzerland)",
-    "KeyboardLayout": null,
-    "GeoLocation": "223"
-  },
-  {
-    "Id": "rof-TZ",
-    "DisplayName": "Rombo (Tanzania)",
-    "KeyboardLayout": null,
-    "GeoLocation": "239"
-  },
-  {
-    "Id": "rn-BI",
-    "DisplayName": "Rundi (Burundi)",
-    "KeyboardLayout": null,
-    "GeoLocation": "38"
-  },
-  {
-    "Id": "ru-BY",
-    "DisplayName": "Russian (Belarus)",
-    "KeyboardLayout": "0419:00000419",
-    "GeoLocation": "29"
-  },
-  {
-    "Id": "ru-KZ",
-    "DisplayName": "Russian (Kazakhstan)",
-    "KeyboardLayout": "0419:00000419",
-    "GeoLocation": "137"
-  },
-  {
-    "Id": "ru-KG",
-    "DisplayName": "Russian (Kyrgyzstan)",
-    "KeyboardLayout": "0419:00000419",
-    "GeoLocation": "130"
-  },
-  {
-    "Id": "ru-MD",
-    "DisplayName": "Russian (Moldova)",
-    "KeyboardLayout": "0419:00000419",
-    "GeoLocation": "152"
-  },
-  {
-    "Id": "ru-RU",
-    "DisplayName": "Russian (Russia)",
-    "KeyboardLayout": "0419:00000419",
-    "GeoLocation": "203"
-  },
-  {
-    "Id": "ru-UA",
-    "DisplayName": "Russian (Ukraine)",
-    "KeyboardLayout": "0419:00000419",
-    "GeoLocation": "241"
-  },
-  {
-    "Id": "rwk-TZ",
-    "DisplayName": "Rwa (Tanzania)",
-    "KeyboardLayout": null,
-    "GeoLocation": "239"
-  },
-  {
-    "Id": "ssy-ER",
-    "DisplayName": "Saho (Eritrea)",
-    "KeyboardLayout": null,
-    "GeoLocation": "71"
-  },
-  {
-    "Id": "sah-RU",
-    "DisplayName": "Sakha (Russia)",
-    "KeyboardLayout": "0485:00000485",
-    "GeoLocation": "203"
-  },
-  {
-    "Id": "saq-KE",
-    "DisplayName": "Samburu (Kenya)",
-    "KeyboardLayout": null,
-    "GeoLocation": "129"
-  },
-  {
-    "Id": "sg-CF",
-    "DisplayName": "Sango (Central African Republic)",
-    "KeyboardLayout": null,
-    "GeoLocation": "55"
-  },
-  {
-    "Id": "sbp-TZ",
-    "DisplayName": "Sangu (Tanzania)",
-    "KeyboardLayout": null,
-    "GeoLocation": "239"
-  },
-  {
-    "Id": "sa-IN",
-    "DisplayName": "Sanskrit (India)",
-    "KeyboardLayout": null,
-    "GeoLocation": "113"
-  },
-  {
-    "Id": "gd-GB",
-    "DisplayName": "Scottish Gaelic (United Kingdom)",
-    "KeyboardLayout": null,
-    "GeoLocation": "242"
-  },
-  {
-    "Id": "seh-MZ",
-    "DisplayName": "Sena (Mozambique)",
-    "KeyboardLayout": null,
-    "GeoLocation": "168"
-  },
-  {
-    "Id": "sr-Cyrl-BA",
-    "DisplayName": "Serbian (Cyrillic, Bosnia & Herzegovina)",
-    "KeyboardLayout": "281a:00000c1a",
-    "GeoLocation": "25"
-  },
-  {
-    "Id": "sr-Cyrl-XK",
-    "DisplayName": "Serbian (Cyrillic, Kosovo)",
-    "KeyboardLayout": "281a:00000c1a",
-    "GeoLocation": "9914689"
-  },
-  {
-    "Id": "sr-Cyrl-ME",
-    "DisplayName": "Serbian (Cyrillic, Montenegro)",
-    "KeyboardLayout": "281a:00000c1a",
-    "GeoLocation": "270"
-  },
-  {
-    "Id": "sr-Cyrl-RS",
-    "DisplayName": "Serbian (Cyrillic, Serbia)",
-    "KeyboardLayout": "281a:00000c1a",
-    "GeoLocation": "269"
-  },
-  {
-    "Id": "sr-Latn-BA",
-    "DisplayName": "Serbian (Latin, Bosnia & Herzegovina)",
-    "KeyboardLayout": "241a:0000081a",
-    "GeoLocation": "25"
-  },
-  {
-    "Id": "sr-Latn-XK",
-    "DisplayName": "Serbian (Latin, Kosovo)",
-    "KeyboardLayout": "241a:0000081a",
-    "GeoLocation": "9914689"
-  },
-  {
-    "Id": "sr-Latn-ME",
-    "DisplayName": "Serbian (Latin, Montenegro)",
-    "KeyboardLayout": "241a:0000081a",
-    "GeoLocation": "270"
-  },
-  {
-    "Id": "sr-Latn-RS",
-    "DisplayName": "Serbian (Latin, Serbia)",
-    "KeyboardLayout": "241a:0000081a",
-    "GeoLocation": "269"
-  },
-  {
-    "Id": "st-LS",
-    "DisplayName": "Sesotho (Lesotho)",
-    "KeyboardLayout": null,
-    "GeoLocation": "146"
-  },
-  {
-    "Id": "st-ZA",
-    "DisplayName": "Sesotho (South Africa)",
-    "KeyboardLayout": null,
-    "GeoLocation": "209"
-  },
-  {
-    "Id": "nso-ZA",
-    "DisplayName": "Sesotho sa Leboa (South Africa)",
-    "KeyboardLayout": "046c:0000046c",
-    "GeoLocation": "209"
-  },
-  {
-    "Id": "tn-BW",
-    "DisplayName": "Setswana (Botswana)",
-    "KeyboardLayout": "0432:00000432",
-    "GeoLocation": "19"
-  },
-  {
-    "Id": "tn-ZA",
-    "DisplayName": "Setswana (South Africa)",
-    "KeyboardLayout": "0432:00000432",
-    "GeoLocation": "209"
-  },
-  {
-    "Id": "ksb-TZ",
-    "DisplayName": "Shambala (Tanzania)",
-    "KeyboardLayout": null,
-    "GeoLocation": "239"
-  },
-  {
-    "Id": "sn-Latn-ZW",
-    "DisplayName": "Shona (Latin, Zimbabwe)",
-    "KeyboardLayout": null,
-    "GeoLocation": "264"
-  },
-  {
-    "Id": "sd-Arab-PK",
-    "DisplayName": "Sindhi (Arabic, Pakistan)",
-    "KeyboardLayout": null,
-    "GeoLocation": "190"
-  },
-  {
-    "Id": "si-LK",
-    "DisplayName": "Sinhala (Sri Lanka)",
-    "KeyboardLayout": "045b:0000045b",
-    "GeoLocation": "42"
-  },
-  {
-    "Id": "ss-SZ",
-    "DisplayName": "siSwati (Eswatini)",
-    "KeyboardLayout": null,
-    "GeoLocation": "260"
-  },
-  {
-    "Id": "ss-ZA",
-    "DisplayName": "siSwati (South Africa)",
-    "KeyboardLayout": null,
-    "GeoLocation": "209"
-  },
-  {
-    "Id": "sms-FI",
-    "DisplayName": "Skolt Sami (Finland)",
-    "KeyboardLayout": null,
-    "GeoLocation": "77"
-  },
-  {
-    "Id": "sk-SK",
-    "DisplayName": "Slovak (Slovakia)",
-    "KeyboardLayout": "041b:0000041b",
-    "GeoLocation": "143"
-  },
-  {
-    "Id": "sl-SI",
-    "DisplayName": "Slovenian (Slovenia)",
-    "KeyboardLayout": "0424:00000424",
-    "GeoLocation": "212"
-  },
-  {
-    "Id": "xog-UG",
-    "DisplayName": "Soga (Uganda)",
-    "KeyboardLayout": null,
-    "GeoLocation": "240"
-  },
-  {
-    "Id": "so-DJ",
-    "DisplayName": "Somali (Djibouti)",
-    "KeyboardLayout": null,
-    "GeoLocation": "62"
-  },
-  {
-    "Id": "so-ET",
-    "DisplayName": "Somali (Ethiopia)",
-    "KeyboardLayout": null,
-    "GeoLocation": "73"
-  },
-  {
-    "Id": "so-KE",
-    "DisplayName": "Somali (Kenya)",
-    "KeyboardLayout": null,
-    "GeoLocation": "129"
-  },
-  {
-    "Id": "so-SO",
-    "DisplayName": "Somali (Somalia)",
-    "KeyboardLayout": null,
-    "GeoLocation": "216"
-  },
-  {
-    "Id": "nr-ZA",
-    "DisplayName": "South Ndebele (South Africa)",
-    "KeyboardLayout": null,
-    "GeoLocation": "209"
-  },
-  {
-    "Id": "sma-NO",
-    "DisplayName": "Southern Sami (Norway)",
-    "KeyboardLayout": null,
-    "GeoLocation": "177"
-  },
-  {
-    "Id": "sma-SE",
-    "DisplayName": "Southern Sami (Sweden)",
-    "KeyboardLayout": null,
-    "GeoLocation": "221"
-  },
-  {
     "Id": "es-AR",
     "DisplayName": "Spanish (Argentina)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "2c0a",
+    "KeyboardLayout": null,
     "GeoLocation": "11"
-  },
-  {
-    "Id": "es-BZ",
-    "DisplayName": "Spanish (Belize)",
-    "KeyboardLayout": "080a:0000080a",
-    "GeoLocation": "24"
   },
   {
     "Id": "es-BO",
     "DisplayName": "Spanish (Bolivia)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "400a",
+    "KeyboardLayout": null,
     "GeoLocation": "26"
   },
   {
     "Id": "es-BR",
     "DisplayName": "Spanish (Brazil)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "32"
+  },
+  {
+    "Id": "es-BZ",
+    "DisplayName": "Spanish (Belize)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "24"
   },
   {
     "Id": "es-CL",
     "DisplayName": "Spanish (Chile)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "340a",
+    "KeyboardLayout": null,
     "GeoLocation": "46"
   },
   {
     "Id": "es-CO",
     "DisplayName": "Spanish (Colombia)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "240a",
+    "KeyboardLayout": null,
     "GeoLocation": "51"
   },
   {
     "Id": "es-CR",
     "DisplayName": "Spanish (Costa Rica)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "140a",
+    "KeyboardLayout": null,
     "GeoLocation": "54"
   },
   {
     "Id": "es-CU",
     "DisplayName": "Spanish (Cuba)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "5c0a",
+    "KeyboardLayout": null,
     "GeoLocation": "56"
   },
   {
     "Id": "es-DO",
     "DisplayName": "Spanish (Dominican Republic)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "1c0a",
+    "KeyboardLayout": null,
     "GeoLocation": "65"
   },
   {
     "Id": "es-EC",
     "DisplayName": "Spanish (Ecuador)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "300a",
+    "KeyboardLayout": null,
     "GeoLocation": "66"
   },
   {
-    "Id": "es-SV",
-    "DisplayName": "Spanish (El Salvador)",
-    "KeyboardLayout": "080a:0000080a",
-    "GeoLocation": "72"
+    "Id": "es-ES",
+    "DisplayName": "Spanish (Spain)",
+    "LCID": "0c0a",
+    "KeyboardLayout": null,
+    "GeoLocation": "217"
   },
   {
     "Id": "es-GQ",
     "DisplayName": "Spanish (Equatorial Guinea)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "69"
   },
   {
     "Id": "es-GT",
     "DisplayName": "Spanish (Guatemala)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "100a",
+    "KeyboardLayout": null,
     "GeoLocation": "99"
   },
   {
     "Id": "es-HN",
     "DisplayName": "Spanish (Honduras)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "480a",
+    "KeyboardLayout": null,
     "GeoLocation": "106"
-  },
-  {
-    "Id": "es-419",
-    "DisplayName": "Spanish (Latin America)",
-    "KeyboardLayout": "080a:0000080a",
-    "GeoLocation": null
   },
   {
     "Id": "es-MX",
     "DisplayName": "Spanish (Mexico)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "080a",
+    "KeyboardLayout": "0000080a",
     "GeoLocation": "166"
   },
   {
     "Id": "es-NI",
     "DisplayName": "Spanish (Nicaragua)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "4c0a",
+    "KeyboardLayout": null,
     "GeoLocation": "182"
   },
   {
     "Id": "es-PA",
     "DisplayName": "Spanish (Panama)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "180a",
+    "KeyboardLayout": null,
     "GeoLocation": "192"
-  },
-  {
-    "Id": "es-PY",
-    "DisplayName": "Spanish (Paraguay)",
-    "KeyboardLayout": "080a:0000080a",
-    "GeoLocation": "185"
   },
   {
     "Id": "es-PE",
     "DisplayName": "Spanish (Peru)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "280a",
+    "KeyboardLayout": null,
     "GeoLocation": "187"
   },
   {
     "Id": "es-PH",
     "DisplayName": "Spanish (Philippines)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "201"
   },
   {
     "Id": "es-PR",
     "DisplayName": "Spanish (Puerto Rico)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "500a",
+    "KeyboardLayout": null,
     "GeoLocation": "202"
   },
   {
-    "Id": "es-ES",
-    "DisplayName": "Spanish (Spain)",
-    "KeyboardLayout": "0c0a:0000040a",
-    "GeoLocation": "217"
+    "Id": "es-PY",
+    "DisplayName": "Spanish (Paraguay)",
+    "LCID": "3c0a",
+    "KeyboardLayout": null,
+    "GeoLocation": "185"
+  },
+  {
+    "Id": "es-SV",
+    "DisplayName": "Spanish (El Salvador)",
+    "LCID": "440a",
+    "KeyboardLayout": null,
+    "GeoLocation": "72"
   },
   {
     "Id": "es-US",
     "DisplayName": "Spanish (United States)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "540a",
+    "KeyboardLayout": null,
     "GeoLocation": "244"
   },
   {
     "Id": "es-UY",
     "DisplayName": "Spanish (Uruguay)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "380a",
+    "KeyboardLayout": null,
     "GeoLocation": "246"
   },
   {
     "Id": "es-VE",
     "DisplayName": "Spanish (Venezuela)",
-    "KeyboardLayout": "080a:0000080a",
+    "LCID": "200a",
+    "KeyboardLayout": null,
     "GeoLocation": "249"
   },
   {
-    "Id": "zgh-Tfng-MA",
-    "DisplayName": "Standard Moroccan Tamazight (Tifinagh, Morocco)",
+    "Id": "et-EE",
+    "DisplayName": "Estonian (Estonia)",
+    "LCID": "0425",
+    "KeyboardLayout": "00000425",
+    "GeoLocation": "70"
+  },
+  {
+    "Id": "eu-ES",
+    "DisplayName": "Basque (Spain)",
+    "LCID": "042d",
+    "KeyboardLayout": null,
+    "GeoLocation": "217"
+  },
+  {
+    "Id": "ewo",
+    "DisplayName": "Ewondo",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ewo-CM",
+    "DisplayName": "Ewondo (Cameroon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "49"
+  },
+  {
+    "Id": "fa-AF",
+    "DisplayName": "Persian (Afghanistan)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "3"
+  },
+  {
+    "Id": "fa-IR",
+    "DisplayName": "Persian (Iran)",
+    "LCID": "0429",
+    "KeyboardLayout": "00000429",
+    "GeoLocation": "116"
+  },
+  {
+    "Id": "ff-Latn",
+    "DisplayName": "Fulah (Latin)",
+    "LCID": "7c67",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "ff-Latn-BF",
+    "DisplayName": "Fulah (Latin, Burkina Faso)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "245"
+  },
+  {
+    "Id": "ff-Latn-CM",
+    "DisplayName": "Fulah (Latin, Cameroon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "49"
+  },
+  {
+    "Id": "ff-Latn-GH",
+    "DisplayName": "Fulah (Latin, Ghana)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "89"
+  },
+  {
+    "Id": "ff-Latn-GM",
+    "DisplayName": "Fulah (Latin, Gambia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "86"
+  },
+  {
+    "Id": "ff-Latn-GN",
+    "DisplayName": "Fulah (Latin, Guinea)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "100"
+  },
+  {
+    "Id": "ff-Latn-GW",
+    "DisplayName": "Fulah (Latin, Guinea-Bissau)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "196"
+  },
+  {
+    "Id": "ff-Latn-LR",
+    "DisplayName": "Fulah (Latin, Liberia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "142"
+  },
+  {
+    "Id": "ff-Latn-MR",
+    "DisplayName": "Fulah (Latin, Mauritania)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "162"
+  },
+  {
+    "Id": "ff-Latn-NE",
+    "DisplayName": "Fulah (Latin, Niger)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "173"
+  },
+  {
+    "Id": "ff-Latn-NG",
+    "DisplayName": "Fulah (Latin, Nigeria)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "175"
+  },
+  {
+    "Id": "ff-Latn-SL",
+    "DisplayName": "Fulah (Latin, Sierra Leone)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "213"
+  },
+  {
+    "Id": "ff-Latn-SN",
+    "DisplayName": "Fulah (Latin, Senegal)",
+    "LCID": "0867",
+    "KeyboardLayout": null,
+    "GeoLocation": "210"
+  },
+  {
+    "Id": "fi-FI",
+    "DisplayName": "Finnish (Finland)",
+    "LCID": "040b",
+    "KeyboardLayout": "0000040b",
+    "GeoLocation": "77"
+  },
+  {
+    "Id": "fil-PH",
+    "DisplayName": "Filipino (Philippines)",
+    "LCID": "0464",
+    "KeyboardLayout": null,
+    "GeoLocation": "201"
+  },
+  {
+    "Id": "fo-DK",
+    "DisplayName": "Faroese (Denmark)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "61"
+  },
+  {
+    "Id": "fo-FO",
+    "DisplayName": "Faroese (Faroe Islands)",
+    "LCID": "0438",
+    "KeyboardLayout": "00000438",
+    "GeoLocation": "81"
+  },
+  {
+    "Id": "fr-BE",
+    "DisplayName": "French (Belgium)",
+    "LCID": "080c",
+    "KeyboardLayout": "0000080c",
+    "GeoLocation": "21"
+  },
+  {
+    "Id": "fr-BF",
+    "DisplayName": "French (Burkina Faso)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "245"
+  },
+  {
+    "Id": "fr-BI",
+    "DisplayName": "French (Burundi)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "38"
+  },
+  {
+    "Id": "fr-BJ",
+    "DisplayName": "French (Benin)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "28"
+  },
+  {
+    "Id": "fr-BL",
+    "DisplayName": "French (St. Barthélemy)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "161832015"
+  },
+  {
+    "Id": "fr-CA",
+    "DisplayName": "French (Canada)",
+    "LCID": "0c0c",
+    "KeyboardLayout": "00000c0c",
+    "GeoLocation": "39"
+  },
+  {
+    "Id": "fr-CD",
+    "DisplayName": "French (Congo [DRC])",
+    "LCID": "240c",
+    "KeyboardLayout": null,
+    "GeoLocation": "44"
+  },
+  {
+    "Id": "fr-CF",
+    "DisplayName": "French (Central African Republic)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "55"
+  },
+  {
+    "Id": "fr-CG",
+    "DisplayName": "French (Congo)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "43"
+  },
+  {
+    "Id": "fr-CH",
+    "DisplayName": "French (Switzerland)",
+    "LCID": "100c",
+    "KeyboardLayout": "0000100c",
+    "GeoLocation": "223"
+  },
+  {
+    "Id": "fr-CI",
+    "DisplayName": "French (Côte d’Ivoire)",
+    "LCID": "300c",
+    "KeyboardLayout": null,
+    "GeoLocation": "119"
+  },
+  {
+    "Id": "fr-CM",
+    "DisplayName": "French (Cameroon)",
+    "LCID": "2c0c",
+    "KeyboardLayout": null,
+    "GeoLocation": "49"
+  },
+  {
+    "Id": "fr-DJ",
+    "DisplayName": "French (Djibouti)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "62"
+  },
+  {
+    "Id": "fr-DZ",
+    "DisplayName": "French (Algeria)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "4"
+  },
+  {
+    "Id": "fr-FR",
+    "DisplayName": "French (France)",
+    "LCID": "040c",
+    "KeyboardLayout": "0000040c",
+    "GeoLocation": "84"
+  },
+  {
+    "Id": "fr-GA",
+    "DisplayName": "French (Gabon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "87"
+  },
+  {
+    "Id": "fr-GF",
+    "DisplayName": "French (French Guiana)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "317"
+  },
+  {
+    "Id": "fr-GN",
+    "DisplayName": "French (Guinea)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "100"
+  },
+  {
+    "Id": "fr-GP",
+    "DisplayName": "French (Guadeloupe)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "321"
+  },
+  {
+    "Id": "fr-GQ",
+    "DisplayName": "French (Equatorial Guinea)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "69"
+  },
+  {
+    "Id": "fr-HT",
+    "DisplayName": "French (Haiti)",
+    "LCID": "3c0c",
+    "KeyboardLayout": null,
+    "GeoLocation": "103"
+  },
+  {
+    "Id": "fr-KM",
+    "DisplayName": "French (Comoros)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "50"
+  },
+  {
+    "Id": "fr-LU",
+    "DisplayName": "French (Luxembourg)",
+    "LCID": "140c",
+    "KeyboardLayout": null,
+    "GeoLocation": "147"
+  },
+  {
+    "Id": "fr-MA",
+    "DisplayName": "French (Morocco)",
+    "LCID": "380c",
     "KeyboardLayout": null,
     "GeoLocation": "159"
   },
   {
-    "Id": "sv-AX",
-    "DisplayName": "Swedish (Åland Islands)",
-    "KeyboardLayout": "041d:0000041d",
-    "GeoLocation": "10028789"
+    "Id": "fr-MC",
+    "DisplayName": "French (Monaco)",
+    "LCID": "180c",
+    "KeyboardLayout": null,
+    "GeoLocation": "158"
   },
   {
-    "Id": "sv-FI",
-    "DisplayName": "Swedish (Finland)",
-    "KeyboardLayout": "041d:0000041d",
-    "GeoLocation": "77"
+    "Id": "fr-MF",
+    "DisplayName": "French (St. Martin)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "31706"
   },
   {
-    "Id": "sv-SE",
-    "DisplayName": "Swedish (Sweden)",
-    "KeyboardLayout": "041d:0000041d",
-    "GeoLocation": "221"
+    "Id": "fr-MG",
+    "DisplayName": "French (Madagascar)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "149"
+  },
+  {
+    "Id": "fr-ML",
+    "DisplayName": "French (Mali)",
+    "LCID": "340c",
+    "KeyboardLayout": null,
+    "GeoLocation": "157"
+  },
+  {
+    "Id": "fr-MQ",
+    "DisplayName": "French (Martinique)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "330"
+  },
+  {
+    "Id": "fr-MR",
+    "DisplayName": "French (Mauritania)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "162"
+  },
+  {
+    "Id": "fr-MU",
+    "DisplayName": "French (Mauritius)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "160"
+  },
+  {
+    "Id": "fr-NC",
+    "DisplayName": "French (New Caledonia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "334"
+  },
+  {
+    "Id": "fr-NE",
+    "DisplayName": "French (Niger)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "173"
+  },
+  {
+    "Id": "fr-PF",
+    "DisplayName": "French (French Polynesia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "318"
+  },
+  {
+    "Id": "fr-PM",
+    "DisplayName": "French (St. Pierre & Miquelon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "206"
+  },
+  {
+    "Id": "fr-RE",
+    "DisplayName": "French (Réunion)",
+    "LCID": "200c",
+    "KeyboardLayout": null,
+    "GeoLocation": "198"
+  },
+  {
+    "Id": "fr-RW",
+    "DisplayName": "French (Rwanda)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "204"
+  },
+  {
+    "Id": "fr-SC",
+    "DisplayName": "French (Seychelles)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "208"
+  },
+  {
+    "Id": "fr-SN",
+    "DisplayName": "French (Senegal)",
+    "LCID": "280c",
+    "KeyboardLayout": null,
+    "GeoLocation": "210"
+  },
+  {
+    "Id": "fr-SY",
+    "DisplayName": "French (Syria)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "222"
+  },
+  {
+    "Id": "fr-TD",
+    "DisplayName": "French (Chad)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "41"
+  },
+  {
+    "Id": "fr-TG",
+    "DisplayName": "French (Togo)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "232"
+  },
+  {
+    "Id": "fr-TN",
+    "DisplayName": "French (Tunisia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "234"
+  },
+  {
+    "Id": "fr-VU",
+    "DisplayName": "French (Vanuatu)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "174"
+  },
+  {
+    "Id": "fr-WF",
+    "DisplayName": "French (Wallis & Futuna)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "352"
+  },
+  {
+    "Id": "fr-YT",
+    "DisplayName": "French (Mayotte)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "331"
+  },
+  {
+    "Id": "fur",
+    "DisplayName": "Friulian",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "fur-IT",
+    "DisplayName": "Friulian (Italy)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "118"
+  },
+  {
+    "Id": "fy-NL",
+    "DisplayName": "Western Frisian (Netherlands)",
+    "LCID": "0462",
+    "KeyboardLayout": null,
+    "GeoLocation": "176"
+  },
+  {
+    "Id": "ga-IE",
+    "DisplayName": "Irish (Ireland)",
+    "LCID": "083c",
+    "KeyboardLayout": null,
+    "GeoLocation": "68"
+  },
+  {
+    "Id": "gd-GB",
+    "DisplayName": "Scottish Gaelic (United Kingdom)",
+    "LCID": "0491",
+    "KeyboardLayout": null,
+    "GeoLocation": "242"
+  },
+  {
+    "Id": "gl-ES",
+    "DisplayName": "Galician (Spain)",
+    "LCID": "0456",
+    "KeyboardLayout": null,
+    "GeoLocation": "217"
+  },
+  {
+    "Id": "gn-PY",
+    "DisplayName": "Guarani (Paraguay)",
+    "LCID": "0474",
+    "KeyboardLayout": "00000474",
+    "GeoLocation": "185"
+  },
+  {
+    "Id": "gsw-CH",
+    "DisplayName": "Swiss German (Switzerland)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "223"
   },
   {
     "Id": "gsw-FR",
     "DisplayName": "Swiss German (France)",
+    "LCID": "0484",
     "KeyboardLayout": null,
     "GeoLocation": "84"
   },
   {
     "Id": "gsw-LI",
     "DisplayName": "Swiss German (Liechtenstein)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "145"
   },
   {
-    "Id": "gsw-CH",
-    "DisplayName": "Swiss German (Switzerland)",
+    "Id": "gu-IN",
+    "DisplayName": "Gujarati (India)",
+    "LCID": "0447",
+    "KeyboardLayout": "00000447",
+    "GeoLocation": "113"
+  },
+  {
+    "Id": "guz",
+    "DisplayName": "Gusii",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "guz-KE",
+    "DisplayName": "Gusii (Kenya)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "129"
+  },
+  {
+    "Id": "gv",
+    "DisplayName": "Manx",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "gv-IM",
+    "DisplayName": "Manx (Isle of Man)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "15126"
+  },
+  {
+    "Id": "ha-GH",
+    "DisplayName": "Hausa (Ghana)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "89"
+  },
+  {
+    "Id": "ha-NE",
+    "DisplayName": "Hausa (Niger)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "173"
+  },
+  {
+    "Id": "ha-NG",
+    "DisplayName": "Hausa (Nigeria)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "175"
+  },
+  {
+    "Id": "haw-US",
+    "DisplayName": "Hawaiian (United States)",
+    "LCID": "0475",
+    "KeyboardLayout": "00000475",
+    "GeoLocation": "244"
+  },
+  {
+    "Id": "he-IL",
+    "DisplayName": "Hebrew (Israel)",
+    "LCID": "040d",
+    "KeyboardLayout": "0000040d",
+    "GeoLocation": "117"
+  },
+  {
+    "Id": "hi-IN",
+    "DisplayName": "Hindi (India)",
+    "LCID": "0439",
+    "KeyboardLayout": "00000439",
+    "GeoLocation": "113"
+  },
+  {
+    "Id": "hr-BA",
+    "DisplayName": "Croatian (Bosnia & Herzegovina)",
+    "LCID": "101a",
+    "KeyboardLayout": null,
+    "GeoLocation": "25"
+  },
+  {
+    "Id": "hr-HR",
+    "DisplayName": "Croatian (Croatia)",
+    "LCID": "041a",
+    "KeyboardLayout": "0000041a",
+    "GeoLocation": "108"
+  },
+  {
+    "Id": "hsb-DE",
+    "DisplayName": "Upper Sorbian (Germany)",
+    "LCID": "042e",
+    "KeyboardLayout": "0000042e",
+    "GeoLocation": "94"
+  },
+  {
+    "Id": "hu-HU",
+    "DisplayName": "Hungarian (Hungary)",
+    "LCID": "040e",
+    "KeyboardLayout": "0000040e",
+    "GeoLocation": "109"
+  },
+  {
+    "Id": "hy-AM",
+    "DisplayName": "Armenian (Armenia)",
+    "LCID": "042b",
+    "KeyboardLayout": "0000042b",
+    "GeoLocation": "7"
+  },
+  {
+    "Id": "ia",
+    "DisplayName": "Interlingua",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ia-001",
+    "DisplayName": "Interlingua (World)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "id-ID",
+    "DisplayName": "Indonesian (Indonesia)",
+    "LCID": "0421",
+    "KeyboardLayout": null,
+    "GeoLocation": "111"
+  },
+  {
+    "Id": "ig-NG",
+    "DisplayName": "Igbo (Nigeria)",
+    "LCID": "0470",
+    "KeyboardLayout": "00000470",
+    "GeoLocation": "175"
+  },
+  {
+    "Id": "ii-CN",
+    "DisplayName": "Yi (China)",
+    "LCID": "0478",
+    "KeyboardLayout": null,
+    "GeoLocation": "45"
+  },
+  {
+    "Id": "is-IS",
+    "DisplayName": "Icelandic (Iceland)",
+    "LCID": "040f",
+    "KeyboardLayout": "0000040f",
+    "GeoLocation": "110"
+  },
+  {
+    "Id": "it-CH",
+    "DisplayName": "Italian (Switzerland)",
+    "LCID": "0810",
     "KeyboardLayout": null,
     "GeoLocation": "223"
   },
   {
-    "Id": "syr-SY",
-    "DisplayName": "Syriac (Syria)",
-    "KeyboardLayout": "045a:0000045a",
-    "GeoLocation": "222"
+    "Id": "it-IT",
+    "DisplayName": "Italian (Italy)",
+    "LCID": "0410",
+    "KeyboardLayout": "00000410",
+    "GeoLocation": "118"
+  },
+  {
+    "Id": "it-SM",
+    "DisplayName": "Italian (San Marino)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "214"
+  },
+  {
+    "Id": "it-VA",
+    "DisplayName": "Italian (Vatican City)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "253"
+  },
+  {
+    "Id": "iu-CA",
+    "DisplayName": "Inuktitut (Canada)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "39"
+  },
+  {
+    "Id": "iu-Latn",
+    "DisplayName": "Inuktitut (Latin)",
+    "LCID": "7c5d",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "iu-Latn-CA",
+    "DisplayName": "Inuktitut (Latin, Canada)",
+    "LCID": "085d",
+    "KeyboardLayout": "0000085d",
+    "GeoLocation": "39"
+  },
+  {
+    "Id": "ja-JP",
+    "DisplayName": "Japanese (Japan)",
+    "LCID": "0411",
+    "KeyboardLayout": "00000411",
+    "GeoLocation": "122"
+  },
+  {
+    "Id": "jgo",
+    "DisplayName": "Ngomba",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "jgo-CM",
+    "DisplayName": "Ngomba (Cameroon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "49"
+  },
+  {
+    "Id": "jmc",
+    "DisplayName": "Machame",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "jmc-TZ",
+    "DisplayName": "Machame (Tanzania)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "239"
+  },
+  {
+    "Id": "jv",
+    "DisplayName": "Javanese",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "jv-ID",
+    "DisplayName": "Javanese (Indonesia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "111"
+  },
+  {
+    "Id": "ka-GE",
+    "DisplayName": "Georgian (Georgia)",
+    "LCID": "0437",
+    "KeyboardLayout": "00000437",
+    "GeoLocation": "88"
+  },
+  {
+    "Id": "kab",
+    "DisplayName": "Kabyle",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "kab-DZ",
+    "DisplayName": "Kabyle (Algeria)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "4"
+  },
+  {
+    "Id": "kam",
+    "DisplayName": "Kamba",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "kam-KE",
+    "DisplayName": "Kamba (Kenya)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "129"
+  },
+  {
+    "Id": "kde",
+    "DisplayName": "Makonde",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "kde-TZ",
+    "DisplayName": "Makonde (Tanzania)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "239"
+  },
+  {
+    "Id": "kea",
+    "DisplayName": "Kabuverdianu",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "kea-CV",
+    "DisplayName": "Kabuverdianu (Cabo Verde)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "57"
+  },
+  {
+    "Id": "khq",
+    "DisplayName": "Koyra Chiini",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "khq-ML",
+    "DisplayName": "Koyra Chiini (Mali)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "157"
+  },
+  {
+    "Id": "ki",
+    "DisplayName": "Kikuyu",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ki-KE",
+    "DisplayName": "Kikuyu (Kenya)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "129"
+  },
+  {
+    "Id": "kk-KZ",
+    "DisplayName": "Kazakh (Kazakhstan)",
+    "LCID": "043f",
+    "KeyboardLayout": "0000043f",
+    "GeoLocation": "137"
+  },
+  {
+    "Id": "kkj",
+    "DisplayName": "Kako",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "kkj-CM",
+    "DisplayName": "Kako (Cameroon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "49"
+  },
+  {
+    "Id": "kl-GL",
+    "DisplayName": "Kalaallisut (Greenland)",
+    "LCID": "046f",
+    "KeyboardLayout": "0000046f",
+    "GeoLocation": "93"
+  },
+  {
+    "Id": "kln",
+    "DisplayName": "Kalenjin",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "kln-KE",
+    "DisplayName": "Kalenjin (Kenya)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "129"
+  },
+  {
+    "Id": "km-KH",
+    "DisplayName": "Khmer (Cambodia)",
+    "LCID": "0453",
+    "KeyboardLayout": "00000453",
+    "GeoLocation": "40"
+  },
+  {
+    "Id": "kn-IN",
+    "DisplayName": "Kannada (India)",
+    "LCID": "044b",
+    "KeyboardLayout": "0000044b",
+    "GeoLocation": "113"
+  },
+  {
+    "Id": "ko-KP",
+    "DisplayName": "Korean (North Korea)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "131"
+  },
+  {
+    "Id": "ko-KR",
+    "DisplayName": "Korean (Korea)",
+    "LCID": "0412",
+    "KeyboardLayout": "00000412",
+    "GeoLocation": "134"
+  },
+  {
+    "Id": "kok-IN",
+    "DisplayName": "Konkani (India)",
+    "LCID": "0457",
+    "KeyboardLayout": null,
+    "GeoLocation": "113"
+  },
+  {
+    "Id": "ks-IN",
+    "DisplayName": "Kashmiri (India)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "113"
+  },
+  {
+    "Id": "ksb",
+    "DisplayName": "Shambala",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ksb-TZ",
+    "DisplayName": "Shambala (Tanzania)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "239"
+  },
+  {
+    "Id": "ksf",
+    "DisplayName": "Bafia",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ksf-CM",
+    "DisplayName": "Bafia (Cameroon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "49"
+  },
+  {
+    "Id": "ksh",
+    "DisplayName": "Colognian",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ksh-DE",
+    "DisplayName": "Colognian (Germany)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "94"
+  },
+  {
+    "Id": "kw",
+    "DisplayName": "Cornish",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "kw-GB",
+    "DisplayName": "Cornish (United Kingdom)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "242"
+  },
+  {
+    "Id": "ky-KG",
+    "DisplayName": "Kyrgyz (Kyrgyzstan)",
+    "LCID": "0440",
+    "KeyboardLayout": "00000440",
+    "GeoLocation": "130"
+  },
+  {
+    "Id": "lag",
+    "DisplayName": "Langi",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "lag-TZ",
+    "DisplayName": "Langi (Tanzania)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "239"
+  },
+  {
+    "Id": "lb-LU",
+    "DisplayName": "Luxembourgish (Luxembourg)",
+    "LCID": "046e",
+    "KeyboardLayout": "0000046e",
+    "GeoLocation": "147"
+  },
+  {
+    "Id": "lg",
+    "DisplayName": "Ganda",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "lg-UG",
+    "DisplayName": "Ganda (Uganda)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "240"
+  },
+  {
+    "Id": "lkt",
+    "DisplayName": "Lakota",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "lkt-US",
+    "DisplayName": "Lakota (United States)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "244"
+  },
+  {
+    "Id": "ln",
+    "DisplayName": "Lingala",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ln-AO",
+    "DisplayName": "Lingala (Angola)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "9"
+  },
+  {
+    "Id": "ln-CD",
+    "DisplayName": "Lingala (Congo [DRC])",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "44"
+  },
+  {
+    "Id": "ln-CF",
+    "DisplayName": "Lingala (Central African Republic)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "55"
+  },
+  {
+    "Id": "ln-CG",
+    "DisplayName": "Lingala (Congo)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "43"
+  },
+  {
+    "Id": "lo-LA",
+    "DisplayName": "Lao (Laos)",
+    "LCID": "0454",
+    "KeyboardLayout": "00000454",
+    "GeoLocation": "138"
+  },
+  {
+    "Id": "lrc",
+    "DisplayName": "Northern Luri",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "lrc-IQ",
+    "DisplayName": "Northern Luri (Iraq)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "121"
+  },
+  {
+    "Id": "lrc-IR",
+    "DisplayName": "Northern Luri (Iran)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "116"
+  },
+  {
+    "Id": "lt-LT",
+    "DisplayName": "Lithuanian (Lithuania)",
+    "LCID": "0427",
+    "KeyboardLayout": "00000427",
+    "GeoLocation": "141"
+  },
+  {
+    "Id": "lu",
+    "DisplayName": "Luba-Katanga",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "lu-CD",
+    "DisplayName": "Luba-Katanga (Congo [DRC])",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "44"
+  },
+  {
+    "Id": "luo",
+    "DisplayName": "Luo",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "luo-KE",
+    "DisplayName": "Luo (Kenya)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "129"
+  },
+  {
+    "Id": "luy",
+    "DisplayName": "Luyia",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "luy-KE",
+    "DisplayName": "Luyia (Kenya)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "129"
+  },
+  {
+    "Id": "lv-LV",
+    "DisplayName": "Latvian (Latvia)",
+    "LCID": "0426",
+    "KeyboardLayout": "00000426",
+    "GeoLocation": "140"
+  },
+  {
+    "Id": "mas",
+    "DisplayName": "Masai",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "mas-KE",
+    "DisplayName": "Masai (Kenya)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "129"
+  },
+  {
+    "Id": "mas-TZ",
+    "DisplayName": "Masai (Tanzania)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "239"
+  },
+  {
+    "Id": "mer",
+    "DisplayName": "Meru",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "mer-KE",
+    "DisplayName": "Meru (Kenya)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "129"
+  },
+  {
+    "Id": "mfe",
+    "DisplayName": "Morisyen",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "mfe-MU",
+    "DisplayName": "Morisyen (Mauritius)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "160"
+  },
+  {
+    "Id": "mg",
+    "DisplayName": "Malagasy",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "mg-MG",
+    "DisplayName": "Malagasy (Madagascar)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "149"
+  },
+  {
+    "Id": "mgh",
+    "DisplayName": "Makhuwa-Meetto",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "mgh-MZ",
+    "DisplayName": "Makhuwa-Meetto (Mozambique)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "168"
+  },
+  {
+    "Id": "mgo",
+    "DisplayName": "Metaʼ",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "mgo-CM",
+    "DisplayName": "Metaʼ (Cameroon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "49"
+  },
+  {
+    "Id": "mi-NZ",
+    "DisplayName": "Maori (New Zealand)",
+    "LCID": "0481",
+    "KeyboardLayout": "00000481",
+    "GeoLocation": "183"
+  },
+  {
+    "Id": "mk-MK",
+    "DisplayName": "Macedonian (North Macedonia)",
+    "LCID": "042f",
+    "KeyboardLayout": "0000042f",
+    "GeoLocation": "19618"
+  },
+  {
+    "Id": "ml-IN",
+    "DisplayName": "Malayalam (India)",
+    "LCID": "044c",
+    "KeyboardLayout": "0000044c",
+    "GeoLocation": "113"
+  },
+  {
+    "Id": "mn-MN",
+    "DisplayName": "Mongolian (Mongolia)",
+    "LCID": "0450",
+    "KeyboardLayout": "00000450",
+    "GeoLocation": "154"
+  },
+  {
+    "Id": "mn-Mong",
+    "DisplayName": "Mongolian (Mongolian)",
+    "LCID": "7c50",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "mn-Mong-CN",
+    "DisplayName": "Mongolian (Mongolian, China)",
+    "LCID": "0850",
+    "KeyboardLayout": "00000850",
+    "GeoLocation": "45"
+  },
+  {
+    "Id": "mn-Mong-MN",
+    "DisplayName": "Mongolian (Mongolian, Mongolia)",
+    "LCID": "0c50",
+    "KeyboardLayout": null,
+    "GeoLocation": "154"
+  },
+  {
+    "Id": "moh-CA",
+    "DisplayName": "Mohawk (Canada)",
+    "LCID": "047c",
+    "KeyboardLayout": null,
+    "GeoLocation": "39"
+  },
+  {
+    "Id": "mr-IN",
+    "DisplayName": "Marathi (India)",
+    "LCID": "044e",
+    "KeyboardLayout": "0000044e",
+    "GeoLocation": "113"
+  },
+  {
+    "Id": "ms-BN",
+    "DisplayName": "Malay (Brunei)",
+    "LCID": "083e",
+    "KeyboardLayout": null,
+    "GeoLocation": "37"
+  },
+  {
+    "Id": "ms-MY",
+    "DisplayName": "Malay (Malaysia)",
+    "LCID": "043e",
+    "KeyboardLayout": null,
+    "GeoLocation": "167"
+  },
+  {
+    "Id": "ms-SG",
+    "DisplayName": "Malay (Singapore)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "215"
+  },
+  {
+    "Id": "mt-MT",
+    "DisplayName": "Maltese (Malta)",
+    "LCID": "043a",
+    "KeyboardLayout": "0000043a",
+    "GeoLocation": "163"
+  },
+  {
+    "Id": "mua",
+    "DisplayName": "Mundang",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "mua-CM",
+    "DisplayName": "Mundang (Cameroon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "49"
+  },
+  {
+    "Id": "my-MM",
+    "DisplayName": "Burmese (Myanmar)",
+    "LCID": "0455",
+    "KeyboardLayout": null,
+    "GeoLocation": "27"
+  },
+  {
+    "Id": "mzn",
+    "DisplayName": "Mazanderani",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "mzn-IR",
+    "DisplayName": "Mazanderani (Iran)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "116"
+  },
+  {
+    "Id": "naq",
+    "DisplayName": "Nama",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "naq-NA",
+    "DisplayName": "Nama (Namibia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "254"
+  },
+  {
+    "Id": "nb",
+    "DisplayName": "Norwegian Bokmål",
+    "LCID": "7c14",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "nb-NO",
+    "DisplayName": "Norwegian Bokmål (Norway)",
+    "LCID": "0414",
+    "KeyboardLayout": "00000414",
+    "GeoLocation": "177"
+  },
+  {
+    "Id": "nb-SJ",
+    "DisplayName": "Norwegian Bokmål (Svalbard & Jan Mayen)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "220"
+  },
+  {
+    "Id": "nd",
+    "DisplayName": "North Ndebele",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "nd-ZW",
+    "DisplayName": "North Ndebele (Zimbabwe)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "264"
+  },
+  {
+    "Id": "nds",
+    "DisplayName": "Low German",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "nds-DE",
+    "DisplayName": "Low German (Germany)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "94"
+  },
+  {
+    "Id": "nds-NL",
+    "DisplayName": "Low German (Netherlands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "176"
+  },
+  {
+    "Id": "ne-IN",
+    "DisplayName": "Nepali (India)",
+    "LCID": "0861",
+    "KeyboardLayout": null,
+    "GeoLocation": "113"
+  },
+  {
+    "Id": "ne-NP",
+    "DisplayName": "Nepali (Nepal)",
+    "LCID": "0461",
+    "KeyboardLayout": "00000461",
+    "GeoLocation": "178"
+  },
+  {
+    "Id": "nl-AW",
+    "DisplayName": "Dutch (Aruba)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "302"
+  },
+  {
+    "Id": "nl-BE",
+    "DisplayName": "Dutch (Belgium)",
+    "LCID": "0813",
+    "KeyboardLayout": "00000813",
+    "GeoLocation": "21"
+  },
+  {
+    "Id": "nl-BQ",
+    "DisplayName": "Dutch (Bonaire, Sint Eustatius and Saba)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "161832258"
+  },
+  {
+    "Id": "nl-CW",
+    "DisplayName": "Dutch (Curaçao)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "273"
+  },
+  {
+    "Id": "nl-NL",
+    "DisplayName": "Dutch (Netherlands)",
+    "LCID": "0413",
+    "KeyboardLayout": "00000413",
+    "GeoLocation": "176"
+  },
+  {
+    "Id": "nl-SR",
+    "DisplayName": "Dutch (Suriname)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "181"
+  },
+  {
+    "Id": "nl-SX",
+    "DisplayName": "Dutch (Sint Maarten)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "30967"
+  },
+  {
+    "Id": "nmg",
+    "DisplayName": "Kwasio",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "nmg-CM",
+    "DisplayName": "Kwasio (Cameroon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "49"
+  },
+  {
+    "Id": "nn",
+    "DisplayName": "Norwegian Nynorsk",
+    "LCID": "7814",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "nn-NO",
+    "DisplayName": "Norwegian Nynorsk (Norway)",
+    "LCID": "0814",
+    "KeyboardLayout": null,
+    "GeoLocation": "177"
+  },
+  {
+    "Id": "nnh",
+    "DisplayName": "Ngiemboon",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "nnh-CM",
+    "DisplayName": "Ngiemboon (Cameroon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "49"
+  },
+  {
+    "Id": "nqo",
+    "DisplayName": "N’Ko",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "nqo-GN",
+    "DisplayName": "N’Ko (Guinea)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "100"
+  },
+  {
+    "Id": "nr",
+    "DisplayName": "South Ndebele",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "nr-ZA",
+    "DisplayName": "South Ndebele (South Africa)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "209"
+  },
+  {
+    "Id": "nso-ZA",
+    "DisplayName": "Sesotho sa Leboa (South Africa)",
+    "LCID": "046c",
+    "KeyboardLayout": "0000046c",
+    "GeoLocation": "209"
+  },
+  {
+    "Id": "nus",
+    "DisplayName": "Nuer",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "nus-SS",
+    "DisplayName": "Nuer (South Sudan)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "276"
+  },
+  {
+    "Id": "nyn",
+    "DisplayName": "Nyankole",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "nyn-UG",
+    "DisplayName": "Nyankole (Uganda)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "240"
+  },
+  {
+    "Id": "oc-FR",
+    "DisplayName": "Occitan (France)",
+    "LCID": "0482",
+    "KeyboardLayout": null,
+    "GeoLocation": "84"
+  },
+  {
+    "Id": "om-ET",
+    "DisplayName": "Oromo (Ethiopia)",
+    "LCID": "0472",
+    "KeyboardLayout": null,
+    "GeoLocation": "73"
+  },
+  {
+    "Id": "om-KE",
+    "DisplayName": "Oromo (Kenya)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "129"
+  },
+  {
+    "Id": "or-IN",
+    "DisplayName": "Odia (India)",
+    "LCID": "0448",
+    "KeyboardLayout": "00000448",
+    "GeoLocation": "113"
+  },
+  {
+    "Id": "os",
+    "DisplayName": "Ossetic",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "os-GE",
+    "DisplayName": "Ossetic (Georgia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "88"
+  },
+  {
+    "Id": "os-RU",
+    "DisplayName": "Ossetic (Russia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "203"
+  },
+  {
+    "Id": "pa-Arab",
+    "DisplayName": "Punjabi (Arabic)",
+    "LCID": "7c46",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "pa-Arab-PK",
+    "DisplayName": "Punjabi (Arabic, Pakistan)",
+    "LCID": "0846",
+    "KeyboardLayout": null,
+    "GeoLocation": "190"
+  },
+  {
+    "Id": "pa-Guru",
+    "DisplayName": "Punjabi (Gurmukhi)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "pa-Guru-IN",
+    "DisplayName": "Punjabi (Gurmukhi, India)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "pl-PL",
+    "DisplayName": "Polish (Poland)",
+    "LCID": "0415",
+    "KeyboardLayout": "00000415",
+    "GeoLocation": "191"
+  },
+  {
+    "Id": "prg",
+    "DisplayName": "Prussian",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "prg-001",
+    "DisplayName": "Prussian (World)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ps-AF",
+    "DisplayName": "Pashto (Afghanistan)",
+    "LCID": "0463",
+    "KeyboardLayout": "00000463",
+    "GeoLocation": "3"
+  },
+  {
+    "Id": "ps-PK",
+    "DisplayName": "Pashto (Pakistan)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "190"
+  },
+  {
+    "Id": "pt-AO",
+    "DisplayName": "Portuguese (Angola)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "9"
+  },
+  {
+    "Id": "pt-BR",
+    "DisplayName": "Portuguese (Brazil)",
+    "LCID": "0416",
+    "KeyboardLayout": "00000416",
+    "GeoLocation": "32"
+  },
+  {
+    "Id": "pt-CH",
+    "DisplayName": "Portuguese (Switzerland)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "223"
+  },
+  {
+    "Id": "pt-CV",
+    "DisplayName": "Portuguese (Cabo Verde)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "57"
+  },
+  {
+    "Id": "pt-GQ",
+    "DisplayName": "Portuguese (Equatorial Guinea)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "69"
+  },
+  {
+    "Id": "pt-GW",
+    "DisplayName": "Portuguese (Guinea-Bissau)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "196"
+  },
+  {
+    "Id": "pt-LU",
+    "DisplayName": "Portuguese (Luxembourg)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "147"
+  },
+  {
+    "Id": "pt-MO",
+    "DisplayName": "Portuguese (Macao SAR)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "151"
+  },
+  {
+    "Id": "pt-MZ",
+    "DisplayName": "Portuguese (Mozambique)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "168"
+  },
+  {
+    "Id": "pt-PT",
+    "DisplayName": "Portuguese (Portugal)",
+    "LCID": "0816",
+    "KeyboardLayout": "00000816",
+    "GeoLocation": "193"
+  },
+  {
+    "Id": "pt-ST",
+    "DisplayName": "Portuguese (São Tomé & Príncipe)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "233"
+  },
+  {
+    "Id": "pt-TL",
+    "DisplayName": "Portuguese (Timor-Leste)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "7299303"
+  },
+  {
+    "Id": "qu",
+    "DisplayName": "Quechua",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "qu-BO",
+    "DisplayName": "Quechua (Bolivia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "26"
+  },
+  {
+    "Id": "qu-EC",
+    "DisplayName": "Quechua (Ecuador)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "66"
+  },
+  {
+    "Id": "qu-PE",
+    "DisplayName": "Quechua (Peru)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "187"
+  },
+  {
+    "Id": "quc-GT",
+    "DisplayName": "Kʼicheʼ (Guatemala)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "99"
+  },
+  {
+    "Id": "rm-CH",
+    "DisplayName": "Romansh (Switzerland)",
+    "LCID": "0417",
+    "KeyboardLayout": null,
+    "GeoLocation": "223"
+  },
+  {
+    "Id": "rn",
+    "DisplayName": "Rundi",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "rn-BI",
+    "DisplayName": "Rundi (Burundi)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "38"
+  },
+  {
+    "Id": "ro-MD",
+    "DisplayName": "Romanian (Moldova)",
+    "LCID": "0818",
+    "KeyboardLayout": null,
+    "GeoLocation": "152"
+  },
+  {
+    "Id": "ro-RO",
+    "DisplayName": "Romanian (Romania)",
+    "LCID": "0418",
+    "KeyboardLayout": "00000418",
+    "GeoLocation": "200"
+  },
+  {
+    "Id": "rof",
+    "DisplayName": "Rombo",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "rof-TZ",
+    "DisplayName": "Rombo (Tanzania)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "239"
+  },
+  {
+    "Id": "ru-BY",
+    "DisplayName": "Russian (Belarus)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "29"
+  },
+  {
+    "Id": "ru-KG",
+    "DisplayName": "Russian (Kyrgyzstan)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "130"
+  },
+  {
+    "Id": "ru-KZ",
+    "DisplayName": "Russian (Kazakhstan)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "137"
+  },
+  {
+    "Id": "ru-MD",
+    "DisplayName": "Russian (Moldova)",
+    "LCID": "0819",
+    "KeyboardLayout": null,
+    "GeoLocation": "152"
+  },
+  {
+    "Id": "ru-RU",
+    "DisplayName": "Russian (Russia)",
+    "LCID": "0419",
+    "KeyboardLayout": "00000419",
+    "GeoLocation": "203"
+  },
+  {
+    "Id": "ru-UA",
+    "DisplayName": "Russian (Ukraine)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "241"
+  },
+  {
+    "Id": "rw-RW",
+    "DisplayName": "Kinyarwanda (Rwanda)",
+    "LCID": "0487",
+    "KeyboardLayout": null,
+    "GeoLocation": "204"
+  },
+  {
+    "Id": "rwk",
+    "DisplayName": "Rwa",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "rwk-TZ",
+    "DisplayName": "Rwa (Tanzania)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "239"
+  },
+  {
+    "Id": "sa-IN",
+    "DisplayName": "Sanskrit (India)",
+    "LCID": "044f",
+    "KeyboardLayout": null,
+    "GeoLocation": "113"
+  },
+  {
+    "Id": "sah-RU",
+    "DisplayName": "Sakha (Russia)",
+    "LCID": "0485",
+    "KeyboardLayout": "00000485",
+    "GeoLocation": "203"
+  },
+  {
+    "Id": "saq",
+    "DisplayName": "Samburu",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "saq-KE",
+    "DisplayName": "Samburu (Kenya)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "129"
+  },
+  {
+    "Id": "sbp",
+    "DisplayName": "Sangu",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "sbp-TZ",
+    "DisplayName": "Sangu (Tanzania)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "239"
+  },
+  {
+    "Id": "sd-PK",
+    "DisplayName": "Sindhi (Pakistan)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "190"
+  },
+  {
+    "Id": "se-FI",
+    "DisplayName": "Northern Sami (Finland)",
+    "LCID": "0c3b",
+    "KeyboardLayout": null,
+    "GeoLocation": "77"
+  },
+  {
+    "Id": "se-NO",
+    "DisplayName": "Northern Sami (Norway)",
+    "LCID": "043b",
+    "KeyboardLayout": "0000043b",
+    "GeoLocation": "177"
+  },
+  {
+    "Id": "se-SE",
+    "DisplayName": "Northern Sami (Sweden)",
+    "LCID": "083b",
+    "KeyboardLayout": "0000083b",
+    "GeoLocation": "221"
+  },
+  {
+    "Id": "seh",
+    "DisplayName": "Sena",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "seh-MZ",
+    "DisplayName": "Sena (Mozambique)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "168"
+  },
+  {
+    "Id": "ses",
+    "DisplayName": "Koyraboro Senni",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ses-ML",
+    "DisplayName": "Koyraboro Senni (Mali)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "157"
+  },
+  {
+    "Id": "sg",
+    "DisplayName": "Sango",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "sg-CF",
+    "DisplayName": "Sango (Central African Republic)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "55"
+  },
+  {
+    "Id": "shi",
+    "DisplayName": "Tachelhit",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "shi-Latn",
+    "DisplayName": "Tachelhit (Latin)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
     "Id": "shi-Latn-MA",
     "DisplayName": "Tachelhit (Latin, Morocco)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "159"
+  },
+  {
+    "Id": "shi-Tfng",
+    "DisplayName": "Tachelhit (Tifinagh)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
     "Id": "shi-Tfng-MA",
     "DisplayName": "Tachelhit (Tifinagh, Morocco)",
-    "KeyboardLayout": null,
-    "GeoLocation": "159"
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
-    "Id": "dav-KE",
-    "DisplayName": "Taita (Kenya)",
+    "Id": "si-LK",
+    "DisplayName": "Sinhala (Sri Lanka)",
+    "LCID": "045b",
+    "KeyboardLayout": "0000045b",
+    "GeoLocation": "42"
+  },
+  {
+    "Id": "sk-SK",
+    "DisplayName": "Slovak (Slovakia)",
+    "LCID": "041b",
+    "KeyboardLayout": "0000041b",
+    "GeoLocation": "143"
+  },
+  {
+    "Id": "sl-SI",
+    "DisplayName": "Slovenian (Slovenia)",
+    "LCID": "0424",
+    "KeyboardLayout": "00000424",
+    "GeoLocation": "212"
+  },
+  {
+    "Id": "sma",
+    "DisplayName": "Southern Sami",
+    "LCID": "783b",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "sma-NO",
+    "DisplayName": "Southern Sami (Norway)",
+    "LCID": "183b",
+    "KeyboardLayout": null,
+    "GeoLocation": "177"
+  },
+  {
+    "Id": "sma-SE",
+    "DisplayName": "Southern Sami (Sweden)",
+    "LCID": "1c3b",
+    "KeyboardLayout": null,
+    "GeoLocation": "221"
+  },
+  {
+    "Id": "smj",
+    "DisplayName": "Lule Sami",
+    "LCID": "7c3b",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "smj-NO",
+    "DisplayName": "Lule Sami (Norway)",
+    "LCID": "103b",
+    "KeyboardLayout": null,
+    "GeoLocation": "177"
+  },
+  {
+    "Id": "smj-SE",
+    "DisplayName": "Lule Sami (Sweden)",
+    "LCID": "143b",
+    "KeyboardLayout": null,
+    "GeoLocation": "221"
+  },
+  {
+    "Id": "smn",
+    "DisplayName": "Inari Sami",
+    "LCID": "703b",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "smn-FI",
+    "DisplayName": "Inari Sami (Finland)",
+    "LCID": "243b",
+    "KeyboardLayout": null,
+    "GeoLocation": "77"
+  },
+  {
+    "Id": "sms",
+    "DisplayName": "Skolt Sami",
+    "LCID": "743b",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "sms-FI",
+    "DisplayName": "Skolt Sami (Finland)",
+    "LCID": "203b",
+    "KeyboardLayout": null,
+    "GeoLocation": "77"
+  },
+  {
+    "Id": "sn",
+    "DisplayName": "Shona",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "sn-ZW",
+    "DisplayName": "Shona (Zimbabwe)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "264"
+  },
+  {
+    "Id": "so-DJ",
+    "DisplayName": "Somali (Djibouti)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "62"
+  },
+  {
+    "Id": "so-ET",
+    "DisplayName": "Somali (Ethiopia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "73"
+  },
+  {
+    "Id": "so-KE",
+    "DisplayName": "Somali (Kenya)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "129"
+  },
+  {
+    "Id": "so-SO",
+    "DisplayName": "Somali (Somalia)",
+    "LCID": "0477",
+    "KeyboardLayout": null,
+    "GeoLocation": "216"
+  },
+  {
+    "Id": "sq-AL",
+    "DisplayName": "Albanian (Albania)",
+    "LCID": "041c",
+    "KeyboardLayout": "0000041c",
+    "GeoLocation": "6"
+  },
+  {
+    "Id": "sq-MK",
+    "DisplayName": "Albanian (North Macedonia)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "19618"
+  },
+  {
+    "Id": "sq-XK",
+    "DisplayName": "Albanian (Kosovo)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "9914689"
+  },
+  {
+    "Id": "sr",
+    "DisplayName": "Serbian",
+    "LCID": "7c1a",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "sr-Cyrl",
+    "DisplayName": "Serbian (Cyrillic)",
+    "LCID": "6c1a",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "sr-Cyrl-BA",
+    "DisplayName": "Serbian (Cyrillic, Bosnia & Herzegovina)",
+    "LCID": "1c1a",
+    "KeyboardLayout": null,
+    "GeoLocation": "25"
+  },
+  {
+    "Id": "sr-Cyrl-ME",
+    "DisplayName": "Serbian (Cyrillic, Montenegro)",
+    "LCID": "301a",
+    "KeyboardLayout": null,
+    "GeoLocation": "270"
+  },
+  {
+    "Id": "sr-Cyrl-RS",
+    "DisplayName": "Serbian (Cyrillic, Serbia)",
+    "LCID": "281a",
+    "KeyboardLayout": null,
+    "GeoLocation": "271"
+  },
+  {
+    "Id": "sr-Cyrl-XK",
+    "DisplayName": "Serbian (Cyrillic, Kosovo)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "9914689"
+  },
+  {
+    "Id": "sr-Latn",
+    "DisplayName": "Serbian (Latin)",
+    "LCID": "701a",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "sr-Latn-BA",
+    "DisplayName": "Serbian (Latin, Bosnia & Herzegovina)",
+    "LCID": "181a",
+    "KeyboardLayout": null,
+    "GeoLocation": "25"
+  },
+  {
+    "Id": "sr-Latn-ME",
+    "DisplayName": "Serbian (Latin, Montenegro)",
+    "LCID": "2c1a",
+    "KeyboardLayout": null,
+    "GeoLocation": "270"
+  },
+  {
+    "Id": "sr-Latn-RS",
+    "DisplayName": "Serbian (Latin, Serbia)",
+    "LCID": "241a",
+    "KeyboardLayout": null,
+    "GeoLocation": "271"
+  },
+  {
+    "Id": "sr-Latn-XK",
+    "DisplayName": "Serbian (Latin, Kosovo)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "9914689"
+  },
+  {
+    "Id": "ss",
+    "DisplayName": "siSwati",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ss-SZ",
+    "DisplayName": "siSwati (Eswatini)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "260"
+  },
+  {
+    "Id": "ss-ZA",
+    "DisplayName": "siSwati (South Africa)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "209"
+  },
+  {
+    "Id": "ssy",
+    "DisplayName": "Saho",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "ssy-ER",
+    "DisplayName": "Saho (Eritrea)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "71"
+  },
+  {
+    "Id": "st-LS",
+    "DisplayName": "Sesotho (Lesotho)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "146"
+  },
+  {
+    "Id": "st-ZA",
+    "DisplayName": "Sesotho (South Africa)",
+    "LCID": "0430",
+    "KeyboardLayout": null,
+    "GeoLocation": "209"
+  },
+  {
+    "Id": "sv-AX",
+    "DisplayName": "Swedish (Åland Islands)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "10028789"
+  },
+  {
+    "Id": "sv-FI",
+    "DisplayName": "Swedish (Finland)",
+    "LCID": "081d",
+    "KeyboardLayout": null,
+    "GeoLocation": "77"
+  },
+  {
+    "Id": "sv-SE",
+    "DisplayName": "Swedish (Sweden)",
+    "LCID": "041d",
+    "KeyboardLayout": "0000041d",
+    "GeoLocation": "221"
+  },
+  {
+    "Id": "sw-CD",
+    "DisplayName": "Kiswahili (Congo [DRC])",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "44"
+  },
+  {
+    "Id": "sw-KE",
+    "DisplayName": "Kiswahili (Kenya)",
+    "LCID": "0441",
     "KeyboardLayout": null,
     "GeoLocation": "129"
   },
   {
-    "Id": "tg-Cyrl-TJ",
-    "DisplayName": "Tajik (Cyrillic, Tajikistan)",
-    "KeyboardLayout": "0428:00000428",
-    "GeoLocation": "228"
+    "Id": "sw-TZ",
+    "DisplayName": "Kiswahili (Tanzania)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "239"
+  },
+  {
+    "Id": "sw-UG",
+    "DisplayName": "Kiswahili (Uganda)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "240"
+  },
+  {
+    "Id": "syr-SY",
+    "DisplayName": "Syriac (Syria)",
+    "LCID": "045a",
+    "KeyboardLayout": "0000045a",
+    "GeoLocation": "222"
   },
   {
     "Id": "ta-IN",
     "DisplayName": "Tamil (India)",
-    "KeyboardLayout": "0449:00000449",
+    "LCID": "0449",
+    "KeyboardLayout": "00000449",
     "GeoLocation": "113"
+  },
+  {
+    "Id": "ta-LK",
+    "DisplayName": "Tamil (Sri Lanka)",
+    "LCID": "0849",
+    "KeyboardLayout": null,
+    "GeoLocation": "42"
   },
   {
     "Id": "ta-MY",
     "DisplayName": "Tamil (Malaysia)",
-    "KeyboardLayout": "0449:00000449",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "167"
   },
   {
     "Id": "ta-SG",
     "DisplayName": "Tamil (Singapore)",
-    "KeyboardLayout": "0449:00000449",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "215"
-  },
-  {
-    "Id": "ta-LK",
-    "DisplayName": "Tamil (Sri Lanka)",
-    "KeyboardLayout": "0449:00000449",
-    "GeoLocation": "42"
-  },
-  {
-    "Id": "twq-NE",
-    "DisplayName": "Tasawaq (Niger)",
-    "KeyboardLayout": null,
-    "GeoLocation": "173"
-  },
-  {
-    "Id": "tt-RU",
-    "DisplayName": "Tatar (Russia)",
-    "KeyboardLayout": "0444:00000444",
-    "GeoLocation": "203"
   },
   {
     "Id": "te-IN",
     "DisplayName": "Telugu (India)",
-    "KeyboardLayout": "044a:0000044a",
+    "LCID": "044a",
+    "KeyboardLayout": "0000044a",
     "GeoLocation": "113"
+  },
+  {
+    "Id": "teo",
+    "DisplayName": "Teso",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
     "Id": "teo-KE",
     "DisplayName": "Teso (Kenya)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "129"
   },
   {
     "Id": "teo-UG",
     "DisplayName": "Teso (Uganda)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "240"
+  },
+  {
+    "Id": "tg-TJ",
+    "DisplayName": "Tajik (Tajikistan)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "228"
   },
   {
     "Id": "th-TH",
     "DisplayName": "Thai (Thailand)",
-    "KeyboardLayout": "041e:0000041e",
+    "LCID": "041e",
+    "KeyboardLayout": "0000041e",
     "GeoLocation": "227"
-  },
-  {
-    "Id": "bo-CN",
-    "DisplayName": "Tibetan (China)",
-    "KeyboardLayout": "0451:00000451",
-    "GeoLocation": "45"
-  },
-  {
-    "Id": "bo-IN",
-    "DisplayName": "Tibetan (India)",
-    "KeyboardLayout": "0451:00000451",
-    "GeoLocation": "113"
-  },
-  {
-    "Id": "tig-ER",
-    "DisplayName": "Tigre (Eritrea)",
-    "KeyboardLayout": null,
-    "GeoLocation": "71"
   },
   {
     "Id": "ti-ER",
     "DisplayName": "Tigrinya (Eritrea)",
+    "LCID": "0873",
     "KeyboardLayout": null,
     "GeoLocation": "71"
   },
   {
     "Id": "ti-ET",
     "DisplayName": "Tigrinya (Ethiopia)",
+    "LCID": "0473",
     "KeyboardLayout": null,
     "GeoLocation": "73"
   },
   {
+    "Id": "tig",
+    "DisplayName": "Tigre",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "tig-ER",
+    "DisplayName": "Tigre (Eritrea)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "71"
+  },
+  {
+    "Id": "tk-TM",
+    "DisplayName": "Turkmen (Turkmenistan)",
+    "LCID": "0442",
+    "KeyboardLayout": "00000442",
+    "GeoLocation": "238"
+  },
+  {
+    "Id": "tn-BW",
+    "DisplayName": "Setswana (Botswana)",
+    "LCID": "0832",
+    "KeyboardLayout": null,
+    "GeoLocation": "19"
+  },
+  {
+    "Id": "tn-ZA",
+    "DisplayName": "Setswana (South Africa)",
+    "LCID": "0432",
+    "KeyboardLayout": "00000432",
+    "GeoLocation": "209"
+  },
+  {
+    "Id": "to",
+    "DisplayName": "Tongan",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
     "Id": "to-TO",
     "DisplayName": "Tongan (Tonga)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "231"
   },
   {
     "Id": "tr-CY",
     "DisplayName": "Turkish (Cyprus)",
-    "KeyboardLayout": "041f:0000041f",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "59"
   },
   {
     "Id": "tr-TR",
     "DisplayName": "Turkish (Turkey)",
-    "KeyboardLayout": "041f:0000041f",
+    "LCID": "041f",
+    "KeyboardLayout": "0000041f",
     "GeoLocation": "235"
   },
   {
-    "Id": "tk-TM",
-    "DisplayName": "Turkmen (Turkmenistan)",
-    "KeyboardLayout": "0442:00000442",
-    "GeoLocation": "238"
+    "Id": "ts-ZA",
+    "DisplayName": "Xitsonga (South Africa)",
+    "LCID": "0431",
+    "KeyboardLayout": null,
+    "GeoLocation": "209"
+  },
+  {
+    "Id": "tt-RU",
+    "DisplayName": "Tatar (Russia)",
+    "LCID": "0444",
+    "KeyboardLayout": "00000444",
+    "GeoLocation": "203"
+  },
+  {
+    "Id": "twq",
+    "DisplayName": "Tasawaq",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "twq-NE",
+    "DisplayName": "Tasawaq (Niger)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "173"
+  },
+  {
+    "Id": "tzm-MA",
+    "DisplayName": "Central Atlas Tamazight (Morocco)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "159"
+  },
+  {
+    "Id": "ug-CN",
+    "DisplayName": "Uyghur (China)",
+    "LCID": "0480",
+    "KeyboardLayout": "00000480",
+    "GeoLocation": "45"
   },
   {
     "Id": "uk-UA",
     "DisplayName": "Ukrainian (Ukraine)",
-    "KeyboardLayout": "0422:00000422",
+    "LCID": "0422",
+    "KeyboardLayout": "00000422",
     "GeoLocation": "241"
-  },
-  {
-    "Id": "hsb-DE",
-    "DisplayName": "Upper Sorbian (Germany)",
-    "KeyboardLayout": "042e:0000042e",
-    "GeoLocation": "94"
   },
   {
     "Id": "ur-IN",
     "DisplayName": "Urdu (India)",
-    "KeyboardLayout": "0420:00000420",
+    "LCID": "0820",
+    "KeyboardLayout": null,
     "GeoLocation": "113"
   },
   {
     "Id": "ur-PK",
     "DisplayName": "Urdu (Pakistan)",
-    "KeyboardLayout": "0420:00000420",
+    "LCID": "0420",
+    "KeyboardLayout": "00000420",
     "GeoLocation": "190"
   },
   {
-    "Id": "ug-CN",
-    "DisplayName": "Uyghur (China)",
-    "KeyboardLayout": "0480:00000480",
-    "GeoLocation": "45"
+    "Id": "uz-Arab",
+    "DisplayName": "Uzbek (Arabic)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
     "Id": "uz-Arab-AF",
     "DisplayName": "Uzbek (Arabic, Afghanistan)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "3"
+  },
+  {
+    "Id": "uz-Cyrl",
+    "DisplayName": "Uzbek (Cyrillic)",
+    "LCID": "7843",
+    "KeyboardLayout": null,
+    "GeoLocation": null
   },
   {
     "Id": "uz-Cyrl-UZ",
     "DisplayName": "Uzbek (Cyrillic, Uzbekistan)",
-    "KeyboardLayout": "0843:00000843",
+    "LCID": "0843",
+    "KeyboardLayout": "00000843",
     "GeoLocation": "247"
+  },
+  {
+    "Id": "uz-Latn",
+    "DisplayName": "Uzbek (Latin)",
+    "LCID": "7c43",
+    "KeyboardLayout": null,
+    "GeoLocation": null
   },
   {
     "Id": "uz-Latn-UZ",
     "DisplayName": "Uzbek (Latin, Uzbekistan)",
+    "LCID": "0443",
     "KeyboardLayout": null,
     "GeoLocation": "247"
   },
   {
+    "Id": "vai",
+    "DisplayName": "Vai",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "vai-Latn",
+    "DisplayName": "Vai (Latin)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
     "Id": "vai-Latn-LR",
     "DisplayName": "Vai (Latin, Liberia)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "142"
+  },
+  {
+    "Id": "vai-Vaii",
+    "DisplayName": "Vai (Vai)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
     "Id": "vai-Vaii-LR",
     "DisplayName": "Vai (Vai, Liberia)",
-    "KeyboardLayout": null,
-    "GeoLocation": "142"
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
     "Id": "ve-ZA",
     "DisplayName": "Venda (South Africa)",
+    "LCID": "0433",
     "KeyboardLayout": null,
     "GeoLocation": "209"
   },
   {
     "Id": "vi-VN",
     "DisplayName": "Vietnamese (Vietnam)",
-    "KeyboardLayout": "042a:0000042a",
+    "LCID": "042a",
+    "KeyboardLayout": "0000042a",
     "GeoLocation": "251"
+  },
+  {
+    "Id": "vo",
+    "DisplayName": "Volapük",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
     "Id": "vo-001",
     "DisplayName": "Volapük (World)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "vun",
+    "DisplayName": "Vunjo",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": null
   },
   {
     "Id": "vun-TZ",
     "DisplayName": "Vunjo (Tanzania)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "239"
+  },
+  {
+    "Id": "wae",
+    "DisplayName": "Walser",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
     "Id": "wae-CH",
     "DisplayName": "Walser (Switzerland)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "223"
   },
   {
-    "Id": "cy-GB",
-    "DisplayName": "Welsh (United Kingdom)",
-    "KeyboardLayout": "0452:00000452",
-    "GeoLocation": "242"
-  },
-  {
-    "Id": "fy-NL",
-    "DisplayName": "Western Frisian (Netherlands)",
-    "KeyboardLayout": null,
-    "GeoLocation": "176"
+    "Id": "wal",
+    "DisplayName": "Wolaytta",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
     "Id": "wal-ET",
     "DisplayName": "Wolaytta (Ethiopia)",
-    "KeyboardLayout": null,
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "73"
   },
   {
     "Id": "wo-SN",
     "DisplayName": "Wolof (Senegal)",
-    "KeyboardLayout": "0488:00000488",
+    "LCID": "0488",
+    "KeyboardLayout": "00000488",
     "GeoLocation": "210"
   },
   {
-    "Id": "ts-ZA",
-    "DisplayName": "Xitsonga (South Africa)",
+    "Id": "xh-ZA",
+    "DisplayName": "isiXhosa (South Africa)",
+    "LCID": "0434",
     "KeyboardLayout": null,
     "GeoLocation": "209"
   },
   {
-    "Id": "yav-CM",
-    "DisplayName": "Yangben (Cameroon)",
-    "KeyboardLayout": null,
-    "GeoLocation": "49"
+    "Id": "xog",
+    "DisplayName": "Soga",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
   },
   {
-    "Id": "ii-CN",
-    "DisplayName": "Yi (China)",
-    "KeyboardLayout": null,
-    "GeoLocation": "45"
+    "Id": "xog-UG",
+    "DisplayName": "Soga (Uganda)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "240"
+  },
+  {
+    "Id": "yav",
+    "DisplayName": "Yangben",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "yav-CM",
+    "DisplayName": "Yangben (Cameroon)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "49"
   },
   {
     "Id": "yi-001",
     "DisplayName": "Yiddish (World)",
+    "LCID": "043d",
     "KeyboardLayout": null,
     "GeoLocation": null
   },
   {
     "Id": "yo-BJ",
     "DisplayName": "Yoruba (Benin)",
-    "KeyboardLayout": "046a:0000046a",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
     "GeoLocation": "28"
   },
   {
     "Id": "yo-NG",
     "DisplayName": "Yoruba (Nigeria)",
-    "KeyboardLayout": "046a:0000046a",
+    "LCID": "046a",
+    "KeyboardLayout": "0000046a",
     "GeoLocation": "175"
   },
   {
-    "Id": "dje-NE",
-    "DisplayName": "Zarma (Niger)",
+    "Id": "zgh",
+    "DisplayName": "Standard Moroccan Tamazight",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": null
+  },
+  {
+    "Id": "zgh-MA",
+    "DisplayName": "Standard Moroccan Tamazight (Morocco)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "159"
+  },
+  {
+    "Id": "zh",
+    "DisplayName": "Chinese",
+    "LCID": "7804",
     "KeyboardLayout": null,
-    "GeoLocation": "173"
+    "GeoLocation": null
+  },
+  {
+    "Id": "zh-Hans-CN",
+    "DisplayName": "Chinese (Simplified, China)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "45"
+  },
+  {
+    "Id": "zh-Hans-HK",
+    "DisplayName": "Chinese (Simplified, Hong Kong SAR)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "104"
+  },
+  {
+    "Id": "zh-Hans-MO",
+    "DisplayName": "Chinese (Simplified, Macao SAR)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "151"
+  },
+  {
+    "Id": "zh-Hans-SG",
+    "DisplayName": "Chinese (Simplified, Singapore)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "215"
+  },
+  {
+    "Id": "zh-Hant",
+    "DisplayName": "Chinese (Traditional)",
+    "LCID": "7c04",
+    "KeyboardLayout": null,
+    "GeoLocation": null
+  },
+  {
+    "Id": "zh-Hant-HK",
+    "DisplayName": "Chinese (Traditional, Hong Kong SAR)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "104"
+  },
+  {
+    "Id": "zh-Hant-MO",
+    "DisplayName": "Chinese (Traditional, Macao SAR)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "151"
+  },
+  {
+    "Id": "zh-Hant-TW",
+    "DisplayName": "Chinese (Traditional, Taiwan)",
+    "LCID": "1000",
+    "KeyboardLayout": "00000409",
+    "GeoLocation": "237"
+  },
+  {
+    "Id": "zu-ZA",
+    "DisplayName": "isiZulu (South Africa)",
+    "LCID": "0435",
+    "KeyboardLayout": null,
+    "GeoLocation": "209"
   }
 ]

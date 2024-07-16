@@ -521,12 +521,15 @@ public class UserLocale(
   string id,
   string displayName,
   KeyboardIdentifier? keyboardLayout,
+  string lcid,
   GeoLocation? geoLocation
 ) : IKeyed
 {
   public string Id { get; } = id;
 
   public string DisplayName { get; } = displayName;
+
+  public string LCID { get; } = lcid;
 
   public KeyboardIdentifier? KeyboardLayout { get; } = keyboardLayout;
 

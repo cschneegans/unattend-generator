@@ -1,742 +1,838 @@
 [
   {
-    "Id": "041c:0000041c",
+    "Id": "00140c00",
+    "DisplayName": "ADLaM"
+  },
+  {
+    "Id": "0000041c",
     "DisplayName": "Albanian"
   },
   {
-    "Id": "0401:00000401",
+    "Id": "00000401",
     "DisplayName": "Arabic (101)"
   },
   {
-    "Id": "0401:00010401",
+    "Id": "00010401",
     "DisplayName": "Arabic (102)"
   },
   {
-    "Id": "0401:00020401",
+    "Id": "00020401",
     "DisplayName": "Arabic (102) AZERTY"
   },
   {
-    "Id": "042b:0000042b",
-    "DisplayName": "Armenian Eastern"
+    "Id": "0000042b",
+    "DisplayName": "Armenian Eastern (Legacy)"
   },
   {
-    "Id": "042b:0002042b",
+    "Id": "0002042b",
     "DisplayName": "Armenian Phonetic"
   },
   {
-    "Id": "042b:0003042b",
+    "Id": "0003042b",
     "DisplayName": "Armenian Typewriter"
   },
   {
-    "Id": "042b:0001042b",
-    "DisplayName": "Armenian Western"
+    "Id": "0001042b",
+    "DisplayName": "Armenian Western (Legacy)"
   },
   {
-    "Id": "044d:0000044d",
-    "DisplayName": "Assamese InScript"
+    "Id": "0000044d",
+    "DisplayName": "Assamese - INSCRIPT"
   },
   {
-    "Id": "042c:0001042c",
+    "Id": "0001042c",
     "DisplayName": "Azerbaijani (Standard)"
   },
   {
-    "Id": "082c:0000082c",
-    "DisplayName": "Azerbaijani/Azeri Cyrillic"
+    "Id": "0000082c",
+    "DisplayName": "Azerbaijani Cyrillic"
   },
   {
-    "Id": "042c:0000042c",
-    "DisplayName": "Azerbaijani/Azeri Latin"
+    "Id": "0000042c",
+    "DisplayName": "Azerbaijani Latin"
   },
   {
-    "Id": "046d:0000046d",
+    "Id": "00000445",
+    "DisplayName": "Bangla"
+  },
+  {
+    "Id": "00020445",
+    "DisplayName": "Bangla - INSCRIPT"
+  },
+  {
+    "Id": "00010445",
+    "DisplayName": "Bangla - INSCRIPT (Legacy)"
+  },
+  {
+    "Id": "0000046d",
     "DisplayName": "Bashkir"
   },
   {
-    "Id": "0423:00000423",
+    "Id": "00000423",
     "DisplayName": "Belarusian"
   },
   {
-    "Id": "0813:0001080c",
+    "Id": "0001080c",
     "DisplayName": "Belgian (Comma)"
   },
   {
-    "Id": "0813:00000813",
+    "Id": "00000813",
     "DisplayName": "Belgian (Period)"
   },
   {
-    "Id": "080c:0000080c",
+    "Id": "0000080c",
     "DisplayName": "Belgian French"
   },
   {
-    "Id": "0445:00000445",
-    "DisplayName": "Bengali/Bangla (Bangladesh)"
-  },
-  {
-    "Id": "0445:00020445",
-    "DisplayName": "Bengali/Bangla InScript"
-  },
-  {
-    "Id": "0445:00010445",
-    "DisplayName": "Bengali/Bangla InScript (Legacy)"
-  },
-  {
-    "Id": "201a:0000201a",
+    "Id": "0000201a",
     "DisplayName": "Bosnian (Cyrillic)"
   },
   {
-    "Id": "0402:00030402",
+    "Id": "000b0c00",
+    "DisplayName": "Buginese"
+  },
+  {
+    "Id": "00030402",
     "DisplayName": "Bulgarian"
   },
   {
-    "Id": "0402:00010402",
+    "Id": "00010402",
     "DisplayName": "Bulgarian (Latin)"
   },
   {
-    "Id": "0402:00040402",
+    "Id": "00040402",
     "DisplayName": "Bulgarian (Phonetic Traditional)"
   },
   {
-    "Id": "0402:00020402",
+    "Id": "00020402",
     "DisplayName": "Bulgarian (Phonetic)"
   },
   {
-    "Id": "0402:00000402",
+    "Id": "00000402",
     "DisplayName": "Bulgarian (Typewriter)"
   },
   {
-    "Id": "1009:00001009",
+    "Id": "00001009",
     "DisplayName": "Canadian French"
   },
   {
-    "Id": "0c0c:00000c0c",
+    "Id": "00000c0c",
     "DisplayName": "Canadian French (Legacy)"
   },
   {
-    "Id": "1009:00011009",
+    "Id": "00011009",
     "DisplayName": "Canadian Multilingual Standard"
   },
   {
-    "Id": "0492:00000492",
+    "Id": "0000085f",
+    "DisplayName": "Central Atlas Tamazight"
+  },
+  {
+    "Id": "00000492",
     "DisplayName": "Central Kurdish"
   },
   {
-    "Id": "045c:0000045c",
+    "Id": "0000045c",
     "DisplayName": "Cherokee Nation"
   },
   {
-    "Id": "045c:0001045c",
-    "DisplayName": "Cherokee Nation Phonetic"
+    "Id": "0001045c",
+    "DisplayName": "Cherokee Phonetic"
   },
   {
-    "Id": "1004:00001004",
-    "DisplayName": "Chinese (Simplified, Singapore) - US Keyboard"
+    "Id": "00000804",
+    "DisplayName": "Chinese (Simplified) - US"
   },
   {
-    "Id": "0804:00000804",
-    "DisplayName": "Chinese (Simplified) - US Keyboard"
+    "Id": "00001004",
+    "DisplayName": "Chinese (Simplified, Singapore) - US"
   },
   {
-    "Id": "0c04:00000c04",
-    "DisplayName": "Chinese (Traditional, Hong Kong S.A.R.) - US Keyboard"
+    "Id": "00000404",
+    "DisplayName": "Chinese (Traditional) - US"
   },
   {
-    "Id": "1404:00001404",
-    "DisplayName": "Chinese (Traditional, Macao S.A.R.) - US Keyboard"
+    "Id": "00000c04",
+    "DisplayName": "Chinese (Traditional, Hong Kong S.A.R.) - US"
   },
   {
-    "Id": "0404:00000404",
-    "DisplayName": "Chinese (Traditional) - US Keyboard"
+    "Id": "00001404",
+    "DisplayName": "Chinese (Traditional, Macao S.A.R.) - US"
   },
   {
-    "Id": "041a:0000041a",
-    "DisplayName": "Croatian"
-  },
-  {
-    "Id": "0405:00000405",
+    "Id": "00000405",
     "DisplayName": "Czech"
   },
   {
-    "Id": "0405:00010405",
+    "Id": "00010405",
     "DisplayName": "Czech (QWERTY)"
   },
   {
-    "Id": "0405:00020405",
+    "Id": "00020405",
     "DisplayName": "Czech Programmers"
   },
   {
-    "Id": "0406:00000406",
+    "Id": "00000406",
     "DisplayName": "Danish"
   },
   {
-    "Id": "0439:00000439",
-    "DisplayName": "Devanagari InScript"
+    "Id": "00000439",
+    "DisplayName": "Devanagari - INSCRIPT"
   },
   {
-    "Id": "0465:00000465",
+    "Id": "00000465",
     "DisplayName": "Divehi Phonetic"
   },
   {
-    "Id": "0465:00010465",
+    "Id": "00010465",
     "DisplayName": "Divehi Typewriter"
   },
   {
-    "Id": "0413:00000413",
+    "Id": "00000413",
     "DisplayName": "Dutch"
   },
   {
-    "Id": "0409:00010409",
-    "DisplayName": "Dvorak - United States"
-  },
-  {
-    "Id": "0409:00030409",
-    "DisplayName": "Dvorak for left hand - United States"
-  },
-  {
-    "Id": "0409:00040409",
-    "DisplayName": "Dvorak for right hand - United States"
-  },
-  {
-    "Id": "0c51:00000c51",
+    "Id": "00000c51",
     "DisplayName": "Dzongkha"
   },
   {
-    "Id": "0425:00000425",
+    "Id": "00004009",
+    "DisplayName": "English (India)"
+  },
+  {
+    "Id": "00000425",
     "DisplayName": "Estonian"
   },
   {
-    "Id": "0438:00000438",
-    "DisplayName": "Faroese"
+    "Id": "00000438",
+    "DisplayName": "Faeroese"
   },
   {
-    "Id": "040b:0000040b",
+    "Id": "0000040b",
     "DisplayName": "Finnish"
   },
   {
-    "Id": "083b:0001083b",
+    "Id": "0001083b",
     "DisplayName": "Finnish with Sami"
   },
   {
-    "Id": "040c:0000040c",
+    "Id": "0000040c",
     "DisplayName": "French"
   },
   {
-    "Id": "0437:00000437",
-    "DisplayName": "Georgian"
+    "Id": "00120c00",
+    "DisplayName": "Futhark"
   },
   {
-    "Id": "0437:00020437",
+    "Id": "00020437",
     "DisplayName": "Georgian (Ergonomic)"
   },
   {
-    "Id": "0437:00040437",
+    "Id": "00000437",
+    "DisplayName": "Georgian (Legacy)"
+  },
+  {
+    "Id": "00030437",
+    "DisplayName": "Georgian (MES)"
+  },
+  {
+    "Id": "00040437",
     "DisplayName": "Georgian (Old Alphabets)"
   },
   {
-    "Id": "0437:00010437",
+    "Id": "00010437",
     "DisplayName": "Georgian (QWERTY)"
   },
   {
-    "Id": "0437:00030437",
-    "DisplayName": "Georgian Ministry of Education and Science Schools"
-  },
-  {
-    "Id": "0407:00000407",
+    "Id": "00000407",
     "DisplayName": "German"
   },
   {
-    "Id": "0407:00010407",
+    "Id": "00010407",
     "DisplayName": "German (IBM)"
   },
   {
-    "Id": "0408:00000408",
+    "Id": "000c0c00",
+    "DisplayName": "Gothic"
+  },
+  {
+    "Id": "00000408",
     "DisplayName": "Greek"
   },
   {
-    "Id": "0408:00010408",
+    "Id": "00010408",
     "DisplayName": "Greek (220)"
   },
   {
-    "Id": "0408:00030408",
+    "Id": "00030408",
     "DisplayName": "Greek (220) Latin"
   },
   {
-    "Id": "0408:00020408",
+    "Id": "00020408",
     "DisplayName": "Greek (319)"
   },
   {
-    "Id": "0408:00040408",
+    "Id": "00040408",
     "DisplayName": "Greek (319) Latin"
   },
   {
-    "Id": "0408:00050408",
+    "Id": "00050408",
     "DisplayName": "Greek Latin"
   },
   {
-    "Id": "0408:00060408",
+    "Id": "00060408",
     "DisplayName": "Greek Polytonic"
   },
   {
-    "Id": "046f:0000046f",
+    "Id": "0000046f",
     "DisplayName": "Greenlandic"
   },
   {
-    "Id": "0474:00000474",
+    "Id": "00000474",
     "DisplayName": "Guarani"
   },
   {
-    "Id": "0447:00000447",
+    "Id": "00000447",
     "DisplayName": "Gujarati"
   },
   {
-    "Id": "0468:00000468",
+    "Id": "00000468",
     "DisplayName": "Hausa"
   },
   {
-    "Id": "0475:00000475",
+    "Id": "00000475",
     "DisplayName": "Hawaiian"
   },
   {
-    "Id": "040d:0000040d",
+    "Id": "0000040d",
     "DisplayName": "Hebrew"
   },
   {
-    "Id": "040d:0002040d",
+    "Id": "0002040d",
     "DisplayName": "Hebrew (Standard)"
   },
   {
-    "Id": "0439:00010439",
+    "Id": "00010439",
     "DisplayName": "Hindi Traditional"
   },
   {
-    "Id": "040e:0000040e",
+    "Id": "0000040e",
     "DisplayName": "Hungarian"
   },
   {
-    "Id": "040e:0001040e",
+    "Id": "0001040e",
     "DisplayName": "Hungarian 101-key"
   },
   {
-    "Id": "040f:0000040f",
+    "Id": "0000040f",
     "DisplayName": "Icelandic"
   },
   {
-    "Id": "0470:00000470",
+    "Id": "00000470",
     "DisplayName": "Igbo"
   },
   {
-    "Id": "4009:00004009",
-    "DisplayName": "India"
-  },
-  {
-    "Id": "085d:0000085d",
+    "Id": "0000085d",
     "DisplayName": "Inuktitut - Latin"
   },
   {
-    "Id": "1809:00001809",
+    "Id": "0001045d",
+    "DisplayName": "Inuktitut - Naqittaut"
+  },
+  {
+    "Id": "00001809",
     "DisplayName": "Irish"
   },
   {
-    "Id": "0410:00000410",
+    "Id": "00000410",
     "DisplayName": "Italian"
   },
   {
-    "Id": "0410:00010410",
+    "Id": "00010410",
     "DisplayName": "Italian (142)"
   },
   {
-    "Id": "0411:00000411",
+    "Id": "00000411",
     "DisplayName": "Japanese"
   },
   {
-    "Id": "044b:0000044b",
+    "Id": "00110c00",
+    "DisplayName": "Javanese"
+  },
+  {
+    "Id": "0000044b",
     "DisplayName": "Kannada"
   },
   {
-    "Id": "043f:0000043f",
+    "Id": "0000043f",
     "DisplayName": "Kazakh"
   },
   {
-    "Id": "0453:00000453",
+    "Id": "00000453",
     "DisplayName": "Khmer"
   },
   {
-    "Id": "0453:00010453",
+    "Id": "00010453",
     "DisplayName": "Khmer (NIDA)"
   },
   {
-    "Id": "0412:00000412",
+    "Id": "00000412",
     "DisplayName": "Korean"
   },
   {
-    "Id": "0440:00000440",
+    "Id": "00000440",
     "DisplayName": "Kyrgyz Cyrillic"
   },
   {
-    "Id": "0454:00000454",
+    "Id": "00000454",
     "DisplayName": "Lao"
   },
   {
-    "Id": "080a:0000080a",
+    "Id": "0000080a",
     "DisplayName": "Latin American"
   },
   {
-    "Id": "0426:00000426",
+    "Id": "00000426",
     "DisplayName": "Latvian"
   },
   {
-    "Id": "0426:00010426",
-    "DisplayName": "Latvian (QWERTY, Legacy)"
+    "Id": "00010426",
+    "DisplayName": "Latvian (QWERTY)"
   },
   {
-    "Id": "0426:00020426",
+    "Id": "00020426",
     "DisplayName": "Latvian (Standard)"
   },
   {
-    "Id": "0427:00010427",
+    "Id": "00070c00",
+    "DisplayName": "Lisu (Basic)"
+  },
+  {
+    "Id": "00080c00",
+    "DisplayName": "Lisu (Standard)"
+  },
+  {
+    "Id": "00010427",
     "DisplayName": "Lithuanian"
   },
   {
-    "Id": "0427:00000427",
+    "Id": "00000427",
     "DisplayName": "Lithuanian IBM"
   },
   {
-    "Id": "0427:00020427",
+    "Id": "00020427",
     "DisplayName": "Lithuanian Standard"
   },
   {
-    "Id": "046e:0000046e",
+    "Id": "0000046e",
     "DisplayName": "Luxembourgish"
   },
   {
-    "Id": "042f:0000042f",
-    "DisplayName": "Macedonian (FYROM)"
+    "Id": "0000042f",
+    "DisplayName": "Macedonian"
   },
   {
-    "Id": "042f:0001042f",
-    "DisplayName": "Macedonian (FYROM) - Standard"
+    "Id": "0001042f",
+    "DisplayName": "Macedonian - Standard"
   },
   {
-    "Id": "044c:0000044c",
+    "Id": "0000044c",
     "DisplayName": "Malayalam"
   },
   {
-    "Id": "043a:0000043a",
+    "Id": "0000043a",
     "DisplayName": "Maltese 47-Key"
   },
   {
-    "Id": "043a:0001043a",
+    "Id": "0001043a",
     "DisplayName": "Maltese 48-Key"
   },
   {
-    "Id": "0481:00000481",
+    "Id": "00000481",
     "DisplayName": "Maori"
   },
   {
-    "Id": "044e:0000044e",
+    "Id": "0000044e",
     "DisplayName": "Marathi"
   },
   {
-    "Id": "0850:00020850",
-    "DisplayName": "Mongolian (Mongolian Script - Standard)"
-  },
-  {
-    "Id": "0850:00000850",
+    "Id": "00000850",
     "DisplayName": "Mongolian (Mongolian Script)"
   },
   {
-    "Id": "0450:00000450",
+    "Id": "00000450",
     "DisplayName": "Mongolian Cyrillic"
   },
   {
-    "Id": "0461:00000461",
+    "Id": "00010c00",
+    "DisplayName": "Myanmar (Phonetic order)"
+  },
+  {
+    "Id": "00130c00",
+    "DisplayName": "Myanmar (Visual order)"
+  },
+  {
+    "Id": "00001409",
+    "DisplayName": "NZ Aotearoa"
+  },
+  {
+    "Id": "00000461",
     "DisplayName": "Nepali"
   },
   {
-    "Id": "0414:00000414",
+    "Id": "00020c00",
+    "DisplayName": "New Tai Lue"
+  },
+  {
+    "Id": "00000414",
     "DisplayName": "Norwegian"
   },
   {
-    "Id": "043b:0000043b",
+    "Id": "0000043b",
     "DisplayName": "Norwegian with Sami"
   },
   {
-    "Id": "0448:00000448",
-    "DisplayName": "Odia, Oriya"
+    "Id": "00090c00",
+    "DisplayName": "N’Ko"
   },
   {
-    "Id": "0463:00000463",
+    "Id": "00000448",
+    "DisplayName": "Odia"
+  },
+  {
+    "Id": "00040c00",
+    "DisplayName": "Ogham"
+  },
+  {
+    "Id": "000d0c00",
+    "DisplayName": "Ol Chiki"
+  },
+  {
+    "Id": "000f0c00",
+    "DisplayName": "Old Italic"
+  },
+  {
+    "Id": "00150c00",
+    "DisplayName": "Osage"
+  },
+  {
+    "Id": "000e0c00",
+    "DisplayName": "Osmanya"
+  },
+  {
+    "Id": "00000463",
     "DisplayName": "Pashto (Afghanistan)"
   },
   {
-    "Id": "0429:00000429",
+    "Id": "00000429",
     "DisplayName": "Persian"
   },
   {
-    "Id": "0429:00050429",
+    "Id": "00050429",
     "DisplayName": "Persian (Standard)"
   },
   {
-    "Id": "0415:00010415",
+    "Id": "000a0c00",
+    "DisplayName": "Phags-pa"
+  },
+  {
+    "Id": "00010415",
     "DisplayName": "Polish (214)"
   },
   {
-    "Id": "0415:00000415",
+    "Id": "00000415",
     "DisplayName": "Polish (Programmers)"
   },
   {
-    "Id": "0816:00000816",
+    "Id": "00000816",
     "DisplayName": "Portuguese"
   },
   {
-    "Id": "0416:00000416",
-    "DisplayName": "Portuguese (Brazilian ABNT)"
+    "Id": "00000416",
+    "DisplayName": "Portuguese (Brazil ABNT)"
   },
   {
-    "Id": "0416:00010416",
-    "DisplayName": "Portuguese (Brazilian ABNT2)"
+    "Id": "00010416",
+    "DisplayName": "Portuguese (Brazil ABNT2)"
   },
   {
-    "Id": "0446:00000446",
+    "Id": "00000446",
     "DisplayName": "Punjabi"
   },
   {
-    "Id": "0418:00000418",
+    "Id": "00000418",
     "DisplayName": "Romanian (Legacy)"
   },
   {
-    "Id": "0418:00020418",
+    "Id": "00020418",
     "DisplayName": "Romanian (Programmers)"
   },
   {
-    "Id": "0418:00010418",
+    "Id": "00010418",
     "DisplayName": "Romanian (Standard)"
   },
   {
-    "Id": "0419:00000419",
+    "Id": "00000419",
     "DisplayName": "Russian"
   },
   {
-    "Id": "0419:00020419",
-    "DisplayName": "Russian - Mnemonic"
-  },
-  {
-    "Id": "0419:00010419",
+    "Id": "00010419",
     "DisplayName": "Russian (Typewriter)"
   },
   {
-    "Id": "0485:00000485",
-    "DisplayName": "Sakha, Yakut"
+    "Id": "00020419",
+    "DisplayName": "Russian - Mnemonic"
   },
   {
-    "Id": "083b:0002083b",
+    "Id": "00000485",
+    "DisplayName": "Sakha"
+  },
+  {
+    "Id": "0002083b",
     "DisplayName": "Sami Extended Finland-Sweden"
   },
   {
-    "Id": "043b:0001043b",
+    "Id": "0001043b",
     "DisplayName": "Sami Extended Norway"
   },
   {
-    "Id": "1809:00011809",
+    "Id": "00011809",
     "DisplayName": "Scottish Gaelic"
   },
   {
-    "Id": "281a:00000c1a",
+    "Id": "00000c1a",
     "DisplayName": "Serbian (Cyrillic)"
   },
   {
-    "Id": "241a:0000081a",
+    "Id": "0000081a",
     "DisplayName": "Serbian (Latin)"
   },
   {
-    "Id": "046c:0000046c",
+    "Id": "0000046c",
     "DisplayName": "Sesotho sa Leboa"
   },
   {
-    "Id": "0432:00000432",
+    "Id": "00000432",
     "DisplayName": "Setswana"
   },
   {
-    "Id": "045b:0000045b",
+    "Id": "0000045b",
     "DisplayName": "Sinhala"
   },
   {
-    "Id": "045b:0001045b",
+    "Id": "0001045b",
     "DisplayName": "Sinhala - Wij 9"
   },
   {
-    "Id": "041b:0000041b",
+    "Id": "0000041b",
     "DisplayName": "Slovak"
   },
   {
-    "Id": "041b:0001041b",
+    "Id": "0001041b",
     "DisplayName": "Slovak (QWERTY)"
   },
   {
-    "Id": "0424:00000424",
+    "Id": "00000424",
     "DisplayName": "Slovenian"
   },
   {
-    "Id": "042e:0001042e",
+    "Id": "00100c00",
+    "DisplayName": "Sora"
+  },
+  {
+    "Id": "0001042e",
     "DisplayName": "Sorbian Extended"
   },
   {
-    "Id": "042e:0002042e",
+    "Id": "0002042e",
     "DisplayName": "Sorbian Standard"
   },
   {
-    "Id": "042e:0000042e",
+    "Id": "0000042e",
     "DisplayName": "Sorbian Standard (Legacy)"
   },
   {
-    "Id": "0c0a:0000040a",
+    "Id": "0000040a",
     "DisplayName": "Spanish"
   },
   {
-    "Id": "0c0a:0001040a",
+    "Id": "0001040a",
     "DisplayName": "Spanish Variation"
   },
   {
-    "Id": "041d:0000041d",
+    "Id": "0000041a",
+    "DisplayName": "Standard"
+  },
+  {
+    "Id": "0000041d",
     "DisplayName": "Swedish"
   },
   {
-    "Id": "083b:0000083b",
+    "Id": "0000083b",
     "DisplayName": "Swedish with Sami"
   },
   {
-    "Id": "100c:0000100c",
+    "Id": "0000100c",
     "DisplayName": "Swiss French"
   },
   {
-    "Id": "0807:00000807",
+    "Id": "00000807",
     "DisplayName": "Swiss German"
   },
   {
-    "Id": "045a:0000045a",
+    "Id": "0000045a",
     "DisplayName": "Syriac"
   },
   {
-    "Id": "045a:0001045a",
+    "Id": "0001045a",
     "DisplayName": "Syriac Phonetic"
   },
   {
-    "Id": "0428:00000428",
+    "Id": "00030c00",
+    "DisplayName": "Tai Le"
+  },
+  {
+    "Id": "00000428",
     "DisplayName": "Tajik"
   },
   {
-    "Id": "0449:00000449",
+    "Id": "00000449",
     "DisplayName": "Tamil"
   },
   {
-    "Id": "0449:00020449",
+    "Id": "00020449",
     "DisplayName": "Tamil 99"
   },
   {
-    "Id": "0444:00010444",
+    "Id": "00030449",
+    "DisplayName": "Tamil Anjal"
+  },
+  {
+    "Id": "00010444",
     "DisplayName": "Tatar"
   },
   {
-    "Id": "0444:00000444",
+    "Id": "00000444",
     "DisplayName": "Tatar (Legacy)"
   },
   {
-    "Id": "044a:0000044a",
+    "Id": "0000044a",
     "DisplayName": "Telugu"
   },
   {
-    "Id": "041e:0000041e",
+    "Id": "0000041e",
     "DisplayName": "Thai Kedmanee"
   },
   {
-    "Id": "041e:0002041e",
+    "Id": "0002041e",
     "DisplayName": "Thai Kedmanee (non-ShiftLock)"
   },
   {
-    "Id": "041e:0001041e",
+    "Id": "0001041e",
     "DisplayName": "Thai Pattachote"
   },
   {
-    "Id": "041e:0003041e",
+    "Id": "0003041e",
     "DisplayName": "Thai Pattachote (non-ShiftLock)"
   },
   {
-    "Id": "0451:00000451",
-    "DisplayName": "Tibetan (PRC - Legacy)"
+    "Id": "00000451",
+    "DisplayName": "Tibetan (PRC)"
   },
   {
-    "Id": "0451:00010451",
-    "DisplayName": "Tibetan (PRC - Standard/Updated)"
+    "Id": "00010451",
+    "DisplayName": "Tibetan (PRC) - Updated"
   },
   {
-    "Id": "0850:00010850",
+    "Id": "0000105f",
+    "DisplayName": "Tifinagh (Basic)"
+  },
+  {
+    "Id": "0001105f",
+    "DisplayName": "Tifinagh (Extended)"
+  },
+  {
+    "Id": "00010850",
     "DisplayName": "Traditional Mongolian (Standard)"
   },
   {
-    "Id": "041f:0001041f",
+    "Id": "0001041f",
     "DisplayName": "Turkish F"
   },
   {
-    "Id": "041f:0000041f",
+    "Id": "0000041f",
     "DisplayName": "Turkish Q"
   },
   {
-    "Id": "0442:00000442",
+    "Id": "00000442",
     "DisplayName": "Turkmen"
   },
   {
-    "Id": "0422:00000422",
-    "DisplayName": "Ukrainian"
+    "Id": "00000409",
+    "DisplayName": "US"
   },
   {
-    "Id": "0422:00020422",
-    "DisplayName": "Ukrainian (Enhanced)"
-  },
-  {
-    "Id": "0809:00000809",
-    "DisplayName": "United Kingdom"
-  },
-  {
-    "Id": "0452:00000452",
-    "DisplayName": "United Kingdom Extended"
-  },
-  {
-    "Id": "0409:00000409",
-    "DisplayName": "United States - English"
-  },
-  {
-    "Id": "0409:00020409",
-    "DisplayName": "United States - International"
-  },
-  {
-    "Id": "0420:00000420",
-    "DisplayName": "Urdu"
-  },
-  {
-    "Id": "0409:00050409",
+    "Id": "00050409",
     "DisplayName": "US English Table for IBM Arabic 238_L"
   },
   {
-    "Id": "0480:00010480",
+    "Id": "00000422",
+    "DisplayName": "Ukrainian"
+  },
+  {
+    "Id": "00020422",
+    "DisplayName": "Ukrainian (Enhanced)"
+  },
+  {
+    "Id": "00000809",
+    "DisplayName": "United Kingdom"
+  },
+  {
+    "Id": "00000452",
+    "DisplayName": "United Kingdom Extended"
+  },
+  {
+    "Id": "00010409",
+    "DisplayName": "United States-Dvorak"
+  },
+  {
+    "Id": "00030409",
+    "DisplayName": "United States-Dvorak for left hand"
+  },
+  {
+    "Id": "00040409",
+    "DisplayName": "United States-Dvorak for right hand"
+  },
+  {
+    "Id": "00020409",
+    "DisplayName": "United States-International"
+  },
+  {
+    "Id": "00000420",
+    "DisplayName": "Urdu"
+  },
+  {
+    "Id": "00010480",
     "DisplayName": "Uyghur"
   },
   {
-    "Id": "0480:00000480",
+    "Id": "00000480",
     "DisplayName": "Uyghur (Legacy)"
   },
   {
-    "Id": "0843:00000843",
+    "Id": "00000843",
     "DisplayName": "Uzbek Cyrillic"
   },
   {
-    "Id": "042a:0000042a",
+    "Id": "0000042a",
     "DisplayName": "Vietnamese"
   },
   {
-    "Id": "0488:00000488",
+    "Id": "00000488",
     "DisplayName": "Wolof"
   },
   {
-    "Id": "046a:0000046a",
+    "Id": "0000046a",
     "DisplayName": "Yoruba"
   }
 ]
