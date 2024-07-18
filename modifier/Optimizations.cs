@@ -68,7 +68,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     if (Configuration.EnableRemoteDesktop)
     {
       appender.Append([
-        CommandBuilder.Raw(@"netsh.exe advfirewall firewall set rule group=""Remote Desktop"" new enable=Yes"),
+        CommandBuilder.Raw(@"netsh.exe advfirewall firewall set rule group=""@FirewallAPI.dll,-28752"" new enable=Yes"),
         CommandBuilder.RegistryCommand(@"add ""HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server"" /v fDenyTSConnections /t REG_DWORD /d 0 /f"),
       ]);
     }
