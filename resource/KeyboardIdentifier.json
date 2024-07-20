@@ -1,838 +1,1187 @@
 [
   {
     "Id": "00140c00",
-    "DisplayName": "ADLaM"
+    "DisplayName": "ADLaM",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000041c",
-    "DisplayName": "Albanian"
+    "DisplayName": "Albanian",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000401",
-    "DisplayName": "Arabic (101)"
+    "DisplayName": "Arabic (101)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010401",
-    "DisplayName": "Arabic (102)"
+    "DisplayName": "Arabic (102)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00020401",
-    "DisplayName": "Arabic (102) AZERTY"
+    "DisplayName": "Arabic (102) AZERTY",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000042b",
-    "DisplayName": "Armenian Eastern (Legacy)"
+    "DisplayName": "Armenian Eastern (Legacy)",
+    "Type": "Keyboard"
   },
   {
     "Id": "0002042b",
-    "DisplayName": "Armenian Phonetic"
+    "DisplayName": "Armenian Phonetic",
+    "Type": "Keyboard"
   },
   {
     "Id": "0003042b",
-    "DisplayName": "Armenian Typewriter"
+    "DisplayName": "Armenian Typewriter",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001042b",
-    "DisplayName": "Armenian Western (Legacy)"
+    "DisplayName": "Armenian Western (Legacy)",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000044d",
-    "DisplayName": "Assamese - INSCRIPT"
+    "DisplayName": "Assamese - INSCRIPT",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001042c",
-    "DisplayName": "Azerbaijani/Azeri (Standard)"
+    "DisplayName": "Azerbaijani/Azeri (Standard)",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000082c",
-    "DisplayName": "Azerbaijani/Azeri Cyrillic"
+    "DisplayName": "Azerbaijani/Azeri Cyrillic",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000042c",
-    "DisplayName": "Azerbaijani/Azeri Latin"
+    "DisplayName": "Azerbaijani/Azeri Latin",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000445",
-    "DisplayName": "Bengali/Bangla"
+    "DisplayName": "Bengali/Bangla",
+    "Type": "Keyboard"
   },
   {
     "Id": "00020445",
-    "DisplayName": "Bengali/Bangla - INSCRIPT"
+    "DisplayName": "Bengali/Bangla - INSCRIPT",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010445",
-    "DisplayName": "Bengali/Bangla - INSCRIPT (Legacy)"
+    "DisplayName": "Bengali/Bangla - INSCRIPT (Legacy)",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000046d",
-    "DisplayName": "Bashkir"
+    "DisplayName": "Bashkir",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000423",
-    "DisplayName": "Belarusian"
+    "DisplayName": "Belarusian",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001080c",
-    "DisplayName": "Belgian (Comma)"
+    "DisplayName": "Belgian (Comma)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000813",
-    "DisplayName": "Belgian (Period)"
+    "DisplayName": "Belgian (Period)",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000080c",
-    "DisplayName": "Belgian French"
+    "DisplayName": "Belgian French",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000201a",
-    "DisplayName": "Bosnian (Cyrillic)"
+    "DisplayName": "Bosnian (Cyrillic)",
+    "Type": "Keyboard"
   },
   {
     "Id": "000b0c00",
-    "DisplayName": "Buginese"
+    "DisplayName": "Buginese",
+    "Type": "Keyboard"
   },
   {
     "Id": "00030402",
-    "DisplayName": "Bulgarian"
+    "DisplayName": "Bulgarian",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010402",
-    "DisplayName": "Bulgarian (Latin)"
+    "DisplayName": "Bulgarian (Latin)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00040402",
-    "DisplayName": "Bulgarian (Phonetic Traditional)"
+    "DisplayName": "Bulgarian (Phonetic Traditional)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00020402",
-    "DisplayName": "Bulgarian (Phonetic)"
+    "DisplayName": "Bulgarian (Phonetic)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000402",
-    "DisplayName": "Bulgarian (Typewriter)"
+    "DisplayName": "Bulgarian (Typewriter)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00001009",
-    "DisplayName": "Canadian French"
+    "DisplayName": "Canadian French",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000c0c",
-    "DisplayName": "Canadian French (Legacy)"
+    "DisplayName": "Canadian French (Legacy)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00011009",
-    "DisplayName": "Canadian Multilingual Standard"
+    "DisplayName": "Canadian Multilingual Standard",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000085f",
-    "DisplayName": "Central Atlas Tamazight"
+    "DisplayName": "Central Atlas Tamazight",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000492",
-    "DisplayName": "Central Kurdish"
+    "DisplayName": "Central Kurdish",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000045c",
-    "DisplayName": "Cherokee Nation"
+    "DisplayName": "Cherokee Nation",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001045c",
-    "DisplayName": "Cherokee Phonetic"
+    "DisplayName": "Cherokee Phonetic",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000804",
-    "DisplayName": "Chinese (Simplified) - US"
+    "DisplayName": "Chinese (Simplified) - US",
+    "Type": "Keyboard"
   },
   {
     "Id": "00001004",
-    "DisplayName": "Chinese (Simplified, Singapore) - US"
+    "DisplayName": "Chinese (Simplified, Singapore) - US",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000404",
-    "DisplayName": "Chinese (Traditional) - US"
+    "DisplayName": "Chinese (Traditional) - US",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000c04",
-    "DisplayName": "Chinese (Traditional, Hong Kong S.A.R.) - US"
+    "DisplayName": "Chinese (Traditional, Hong Kong S.A.R.) - US",
+    "Type": "Keyboard"
   },
   {
     "Id": "00001404",
-    "DisplayName": "Chinese (Traditional, Macao S.A.R.) - US"
+    "DisplayName": "Chinese (Traditional, Macao S.A.R.) - US",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000405",
-    "DisplayName": "Czech"
+    "DisplayName": "Czech",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010405",
-    "DisplayName": "Czech (QWERTY)"
+    "DisplayName": "Czech (QWERTY)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00020405",
-    "DisplayName": "Czech Programmers"
+    "DisplayName": "Czech Programmers",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000406",
-    "DisplayName": "Danish"
+    "DisplayName": "Danish",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000439",
-    "DisplayName": "Devanagari - INSCRIPT"
+    "DisplayName": "Devanagari - INSCRIPT",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000465",
-    "DisplayName": "Divehi Phonetic"
+    "DisplayName": "Divehi Phonetic",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010465",
-    "DisplayName": "Divehi Typewriter"
+    "DisplayName": "Divehi Typewriter",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000413",
-    "DisplayName": "Dutch"
+    "DisplayName": "Dutch",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000c51",
-    "DisplayName": "Dzongkha"
+    "DisplayName": "Dzongkha",
+    "Type": "Keyboard"
   },
   {
     "Id": "00004009",
-    "DisplayName": "English (India)"
+    "DisplayName": "English (India)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000425",
-    "DisplayName": "Estonian"
+    "DisplayName": "Estonian",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000438",
-    "DisplayName": "Faroese"
+    "DisplayName": "Faroese",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000040b",
-    "DisplayName": "Finnish"
+    "DisplayName": "Finnish",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001083b",
-    "DisplayName": "Finnish with Sami"
+    "DisplayName": "Finnish with Sami",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000040c",
-    "DisplayName": "French"
+    "DisplayName": "French",
+    "Type": "Keyboard"
   },
   {
     "Id": "00120c00",
-    "DisplayName": "Futhark"
+    "DisplayName": "Futhark",
+    "Type": "Keyboard"
   },
   {
     "Id": "00020437",
-    "DisplayName": "Georgian (Ergonomic)"
+    "DisplayName": "Georgian (Ergonomic)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000437",
-    "DisplayName": "Georgian (Legacy)"
+    "DisplayName": "Georgian (Legacy)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00030437",
-    "DisplayName": "Georgian (MES)"
+    "DisplayName": "Georgian (MES)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00040437",
-    "DisplayName": "Georgian (Old Alphabets)"
+    "DisplayName": "Georgian (Old Alphabets)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010437",
-    "DisplayName": "Georgian (QWERTY)"
+    "DisplayName": "Georgian (QWERTY)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000407",
-    "DisplayName": "German"
+    "DisplayName": "German",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010407",
-    "DisplayName": "German (IBM)"
+    "DisplayName": "German (IBM)",
+    "Type": "Keyboard"
   },
   {
     "Id": "000c0c00",
-    "DisplayName": "Gothic"
+    "DisplayName": "Gothic",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000408",
-    "DisplayName": "Greek"
+    "DisplayName": "Greek",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010408",
-    "DisplayName": "Greek (220)"
+    "DisplayName": "Greek (220)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00030408",
-    "DisplayName": "Greek (220) Latin"
+    "DisplayName": "Greek (220) Latin",
+    "Type": "Keyboard"
   },
   {
     "Id": "00020408",
-    "DisplayName": "Greek (319)"
+    "DisplayName": "Greek (319)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00040408",
-    "DisplayName": "Greek (319) Latin"
+    "DisplayName": "Greek (319) Latin",
+    "Type": "Keyboard"
   },
   {
     "Id": "00050408",
-    "DisplayName": "Greek Latin"
+    "DisplayName": "Greek Latin",
+    "Type": "Keyboard"
   },
   {
     "Id": "00060408",
-    "DisplayName": "Greek Polytonic"
+    "DisplayName": "Greek Polytonic",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000046f",
-    "DisplayName": "Greenlandic"
+    "DisplayName": "Greenlandic",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000474",
-    "DisplayName": "Guarani"
+    "DisplayName": "Guarani",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000447",
-    "DisplayName": "Gujarati"
+    "DisplayName": "Gujarati",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000468",
-    "DisplayName": "Hausa"
+    "DisplayName": "Hausa",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000475",
-    "DisplayName": "Hawaiian"
+    "DisplayName": "Hawaiian",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000040d",
-    "DisplayName": "Hebrew"
+    "DisplayName": "Hebrew",
+    "Type": "Keyboard"
   },
   {
     "Id": "0002040d",
-    "DisplayName": "Hebrew (Standard)"
+    "DisplayName": "Hebrew (Standard)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010439",
-    "DisplayName": "Hindi Traditional"
+    "DisplayName": "Hindi Traditional",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000040e",
-    "DisplayName": "Hungarian"
+    "DisplayName": "Hungarian",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001040e",
-    "DisplayName": "Hungarian 101-key"
+    "DisplayName": "Hungarian 101-key",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000040f",
-    "DisplayName": "Icelandic"
+    "DisplayName": "Icelandic",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000470",
-    "DisplayName": "Igbo"
+    "DisplayName": "Igbo",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000085d",
-    "DisplayName": "Inuktitut - Latin"
+    "DisplayName": "Inuktitut - Latin",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001045d",
-    "DisplayName": "Inuktitut - Naqittaut"
+    "DisplayName": "Inuktitut - Naqittaut",
+    "Type": "Keyboard"
   },
   {
     "Id": "00001809",
-    "DisplayName": "Irish"
+    "DisplayName": "Irish",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000410",
-    "DisplayName": "Italian"
+    "DisplayName": "Italian",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010410",
-    "DisplayName": "Italian (142)"
+    "DisplayName": "Italian (142)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000411",
-    "DisplayName": "Japanese"
+    "DisplayName": "Japanese",
+    "Type": "Keyboard"
   },
   {
     "Id": "00110c00",
-    "DisplayName": "Javanese"
+    "DisplayName": "Javanese",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000044b",
-    "DisplayName": "Kannada"
+    "DisplayName": "Kannada",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000043f",
-    "DisplayName": "Kazakh"
+    "DisplayName": "Kazakh",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000453",
-    "DisplayName": "Khmer"
+    "DisplayName": "Khmer",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010453",
-    "DisplayName": "Khmer (NIDA)"
+    "DisplayName": "Khmer (NIDA)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000412",
-    "DisplayName": "Korean"
+    "DisplayName": "Korean",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000440",
-    "DisplayName": "Kyrgyz Cyrillic"
+    "DisplayName": "Kyrgyz Cyrillic",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000454",
-    "DisplayName": "Lao"
+    "DisplayName": "Lao",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000080a",
-    "DisplayName": "Latin American"
+    "DisplayName": "Latin American",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000426",
-    "DisplayName": "Latvian"
+    "DisplayName": "Latvian",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010426",
-    "DisplayName": "Latvian (QWERTY)"
+    "DisplayName": "Latvian (QWERTY)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00020426",
-    "DisplayName": "Latvian (Standard)"
+    "DisplayName": "Latvian (Standard)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00070c00",
-    "DisplayName": "Lisu (Basic)"
+    "DisplayName": "Lisu (Basic)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00080c00",
-    "DisplayName": "Lisu (Standard)"
+    "DisplayName": "Lisu (Standard)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010427",
-    "DisplayName": "Lithuanian"
+    "DisplayName": "Lithuanian",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000427",
-    "DisplayName": "Lithuanian IBM"
+    "DisplayName": "Lithuanian IBM",
+    "Type": "Keyboard"
   },
   {
     "Id": "00020427",
-    "DisplayName": "Lithuanian Standard"
+    "DisplayName": "Lithuanian Standard",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000046e",
-    "DisplayName": "Luxembourgish"
+    "DisplayName": "Luxembourgish",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000042f",
-    "DisplayName": "Macedonian"
+    "DisplayName": "Macedonian",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001042f",
-    "DisplayName": "Macedonian - Standard"
+    "DisplayName": "Macedonian - Standard",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000044c",
-    "DisplayName": "Malayalam"
+    "DisplayName": "Malayalam",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000043a",
-    "DisplayName": "Maltese 47-Key"
+    "DisplayName": "Maltese 47-Key",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001043a",
-    "DisplayName": "Maltese 48-Key"
+    "DisplayName": "Maltese 48-Key",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000481",
-    "DisplayName": "Maori"
+    "DisplayName": "Maori",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000044e",
-    "DisplayName": "Marathi"
+    "DisplayName": "Marathi",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000850",
-    "DisplayName": "Mongolian (Mongolian Script)"
+    "DisplayName": "Mongolian (Mongolian Script)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000450",
-    "DisplayName": "Mongolian Cyrillic"
+    "DisplayName": "Mongolian Cyrillic",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010c00",
-    "DisplayName": "Myanmar (Phonetic order)"
+    "DisplayName": "Myanmar (Phonetic order)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00130c00",
-    "DisplayName": "Myanmar (Visual order)"
+    "DisplayName": "Myanmar (Visual order)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00001409",
-    "DisplayName": "NZ Aotearoa"
+    "DisplayName": "NZ Aotearoa",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000461",
-    "DisplayName": "Nepali"
+    "DisplayName": "Nepali",
+    "Type": "Keyboard"
   },
   {
     "Id": "00020c00",
-    "DisplayName": "New Tai Lue"
+    "DisplayName": "New Tai Lue",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000414",
-    "DisplayName": "Norwegian"
+    "DisplayName": "Norwegian",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000043b",
-    "DisplayName": "Norwegian with Sami"
+    "DisplayName": "Norwegian with Sami",
+    "Type": "Keyboard"
   },
   {
     "Id": "00090c00",
-    "DisplayName": "N’Ko"
+    "DisplayName": "N’Ko",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000448",
-    "DisplayName": "Odia"
+    "DisplayName": "Odia",
+    "Type": "Keyboard"
   },
   {
     "Id": "00040c00",
-    "DisplayName": "Ogham"
+    "DisplayName": "Ogham",
+    "Type": "Keyboard"
   },
   {
     "Id": "000d0c00",
-    "DisplayName": "Ol Chiki"
+    "DisplayName": "Ol Chiki",
+    "Type": "Keyboard"
   },
   {
     "Id": "000f0c00",
-    "DisplayName": "Old Italic"
+    "DisplayName": "Old Italic",
+    "Type": "Keyboard"
   },
   {
     "Id": "00150c00",
-    "DisplayName": "Osage"
+    "DisplayName": "Osage",
+    "Type": "Keyboard"
   },
   {
     "Id": "000e0c00",
-    "DisplayName": "Osmanya"
+    "DisplayName": "Osmanya",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000463",
-    "DisplayName": "Pashto (Afghanistan)"
+    "DisplayName": "Pashto (Afghanistan)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000429",
-    "DisplayName": "Persian"
+    "DisplayName": "Persian",
+    "Type": "Keyboard"
   },
   {
     "Id": "00050429",
-    "DisplayName": "Persian (Standard)"
+    "DisplayName": "Persian (Standard)",
+    "Type": "Keyboard"
   },
   {
     "Id": "000a0c00",
-    "DisplayName": "Phags-pa"
+    "DisplayName": "Phags-pa",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010415",
-    "DisplayName": "Polish (214)"
+    "DisplayName": "Polish (214)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000415",
-    "DisplayName": "Polish (Programmers)"
+    "DisplayName": "Polish (Programmers)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000816",
-    "DisplayName": "Portuguese"
+    "DisplayName": "Portuguese",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000416",
-    "DisplayName": "Portuguese (Brazil ABNT)"
+    "DisplayName": "Portuguese (Brazil ABNT)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010416",
-    "DisplayName": "Portuguese (Brazil ABNT2)"
+    "DisplayName": "Portuguese (Brazil ABNT2)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000446",
-    "DisplayName": "Punjabi"
+    "DisplayName": "Punjabi",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000418",
-    "DisplayName": "Romanian (Legacy)"
+    "DisplayName": "Romanian (Legacy)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00020418",
-    "DisplayName": "Romanian (Programmers)"
+    "DisplayName": "Romanian (Programmers)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010418",
-    "DisplayName": "Romanian (Standard)"
+    "DisplayName": "Romanian (Standard)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000419",
-    "DisplayName": "Russian"
+    "DisplayName": "Russian",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010419",
-    "DisplayName": "Russian (Typewriter)"
+    "DisplayName": "Russian (Typewriter)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00020419",
-    "DisplayName": "Russian - Mnemonic"
+    "DisplayName": "Russian - Mnemonic",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000485",
-    "DisplayName": "Sakha"
+    "DisplayName": "Sakha",
+    "Type": "Keyboard"
   },
   {
     "Id": "0002083b",
-    "DisplayName": "Sami Extended Finland-Sweden"
+    "DisplayName": "Sami Extended Finland-Sweden",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001043b",
-    "DisplayName": "Sami Extended Norway"
+    "DisplayName": "Sami Extended Norway",
+    "Type": "Keyboard"
   },
   {
     "Id": "00011809",
-    "DisplayName": "Scottish Gaelic"
+    "DisplayName": "Scottish Gaelic",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000c1a",
-    "DisplayName": "Serbian (Cyrillic)"
+    "DisplayName": "Serbian (Cyrillic)",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000081a",
-    "DisplayName": "Serbian (Latin)"
+    "DisplayName": "Serbian (Latin)",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000046c",
-    "DisplayName": "Sesotho sa Leboa"
+    "DisplayName": "Sesotho sa Leboa",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000432",
-    "DisplayName": "Setswana"
+    "DisplayName": "Setswana",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000045b",
-    "DisplayName": "Sinhala"
+    "DisplayName": "Sinhala",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001045b",
-    "DisplayName": "Sinhala - Wij 9"
+    "DisplayName": "Sinhala - Wij 9",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000041b",
-    "DisplayName": "Slovak"
+    "DisplayName": "Slovak",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001041b",
-    "DisplayName": "Slovak (QWERTY)"
+    "DisplayName": "Slovak (QWERTY)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000424",
-    "DisplayName": "Slovenian"
+    "DisplayName": "Slovenian",
+    "Type": "Keyboard"
   },
   {
     "Id": "00100c00",
-    "DisplayName": "Sora"
+    "DisplayName": "Sora",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001042e",
-    "DisplayName": "Sorbian Extended"
+    "DisplayName": "Sorbian Extended",
+    "Type": "Keyboard"
   },
   {
     "Id": "0002042e",
-    "DisplayName": "Sorbian Standard"
+    "DisplayName": "Sorbian Standard",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000042e",
-    "DisplayName": "Sorbian Standard (Legacy)"
+    "DisplayName": "Sorbian Standard (Legacy)",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000040a",
-    "DisplayName": "Spanish"
+    "DisplayName": "Spanish",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001040a",
-    "DisplayName": "Spanish Variation"
+    "DisplayName": "Spanish Variation",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000041a",
-    "DisplayName": "Standard"
+    "DisplayName": "Standard",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000041d",
-    "DisplayName": "Swedish"
+    "DisplayName": "Swedish",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000083b",
-    "DisplayName": "Swedish with Sami"
+    "DisplayName": "Swedish with Sami",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000100c",
-    "DisplayName": "Swiss French"
+    "DisplayName": "Swiss French",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000807",
-    "DisplayName": "Swiss German"
+    "DisplayName": "Swiss German",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000045a",
-    "DisplayName": "Syriac"
+    "DisplayName": "Syriac",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001045a",
-    "DisplayName": "Syriac Phonetic"
+    "DisplayName": "Syriac Phonetic",
+    "Type": "Keyboard"
   },
   {
     "Id": "00030c00",
-    "DisplayName": "Tai Le"
+    "DisplayName": "Tai Le",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000428",
-    "DisplayName": "Tajik"
+    "DisplayName": "Tajik",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000449",
-    "DisplayName": "Tamil"
+    "DisplayName": "Tamil",
+    "Type": "Keyboard"
   },
   {
     "Id": "00020449",
-    "DisplayName": "Tamil 99"
+    "DisplayName": "Tamil 99",
+    "Type": "Keyboard"
   },
   {
     "Id": "00030449",
-    "DisplayName": "Tamil Anjal"
+    "DisplayName": "Tamil Anjal",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010444",
-    "DisplayName": "Tatar"
+    "DisplayName": "Tatar",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000444",
-    "DisplayName": "Tatar (Legacy)"
+    "DisplayName": "Tatar (Legacy)",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000044a",
-    "DisplayName": "Telugu"
+    "DisplayName": "Telugu",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000041e",
-    "DisplayName": "Thai Kedmanee"
+    "DisplayName": "Thai Kedmanee",
+    "Type": "Keyboard"
   },
   {
     "Id": "0002041e",
-    "DisplayName": "Thai Kedmanee (non-ShiftLock)"
+    "DisplayName": "Thai Kedmanee (non-ShiftLock)",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001041e",
-    "DisplayName": "Thai Pattachote"
+    "DisplayName": "Thai Pattachote",
+    "Type": "Keyboard"
   },
   {
     "Id": "0003041e",
-    "DisplayName": "Thai Pattachote (non-ShiftLock)"
+    "DisplayName": "Thai Pattachote (non-ShiftLock)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000451",
-    "DisplayName": "Tibetan (PRC)"
+    "DisplayName": "Tibetan (PRC)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010451",
-    "DisplayName": "Tibetan (PRC) - Updated"
+    "DisplayName": "Tibetan (PRC) - Updated",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000105f",
-    "DisplayName": "Tifinagh (Basic)"
+    "DisplayName": "Tifinagh (Basic)",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001105f",
-    "DisplayName": "Tifinagh (Extended)"
+    "DisplayName": "Tifinagh (Extended)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010850",
-    "DisplayName": "Traditional Mongolian (Standard)"
+    "DisplayName": "Traditional Mongolian (Standard)",
+    "Type": "Keyboard"
   },
   {
     "Id": "0001041f",
-    "DisplayName": "Turkish F"
+    "DisplayName": "Turkish F",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000041f",
-    "DisplayName": "Turkish Q"
+    "DisplayName": "Turkish Q",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000442",
-    "DisplayName": "Turkmen"
+    "DisplayName": "Turkmen",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000409",
-    "DisplayName": "US"
+    "DisplayName": "US",
+    "Type": "Keyboard"
   },
   {
     "Id": "00050409",
-    "DisplayName": "US English Table for IBM Arabic 238_L"
+    "DisplayName": "US English Table for IBM Arabic 238_L",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000422",
-    "DisplayName": "Ukrainian"
+    "DisplayName": "Ukrainian",
+    "Type": "Keyboard"
   },
   {
     "Id": "00020422",
-    "DisplayName": "Ukrainian (Enhanced)"
+    "DisplayName": "Ukrainian (Enhanced)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000809",
-    "DisplayName": "United Kingdom"
+    "DisplayName": "United Kingdom",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000452",
-    "DisplayName": "United Kingdom Extended"
+    "DisplayName": "United Kingdom Extended",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010409",
-    "DisplayName": "United States-Dvorak"
+    "DisplayName": "United States-Dvorak",
+    "Type": "Keyboard"
   },
   {
     "Id": "00030409",
-    "DisplayName": "United States-Dvorak for left hand"
+    "DisplayName": "United States-Dvorak for left hand",
+    "Type": "Keyboard"
   },
   {
     "Id": "00040409",
-    "DisplayName": "United States-Dvorak for right hand"
+    "DisplayName": "United States-Dvorak for right hand",
+    "Type": "Keyboard"
   },
   {
     "Id": "00020409",
-    "DisplayName": "United States-International"
+    "DisplayName": "United States-International",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000420",
-    "DisplayName": "Urdu"
+    "DisplayName": "Urdu",
+    "Type": "Keyboard"
   },
   {
     "Id": "00010480",
-    "DisplayName": "Uyghur"
+    "DisplayName": "Uyghur",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000480",
-    "DisplayName": "Uyghur (Legacy)"
+    "DisplayName": "Uyghur (Legacy)",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000843",
-    "DisplayName": "Uzbek Cyrillic"
+    "DisplayName": "Uzbek Cyrillic",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000042a",
-    "DisplayName": "Vietnamese"
+    "DisplayName": "Vietnamese",
+    "Type": "Keyboard"
   },
   {
     "Id": "00000488",
-    "DisplayName": "Wolof"
+    "DisplayName": "Wolof",
+    "Type": "Keyboard"
   },
   {
     "Id": "0000046a",
-    "DisplayName": "Yoruba"
+    "DisplayName": "Yoruba",
+    "Type": "Keyboard"
+  },
+  {
+    "Id": "045e:{7c472071-36a7-4709-88cc-859513e583a9}{9a4e8fc7-76bf-4a63-980d-faddadf7e987}",
+    "DisplayName": "Amharic (Ethiopia) IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0445:{81ea0a17-aa39-455b-ba20-ea79a8f98966}{c7f2f349-36a2-4f2e-977b-5c18baf1ae7d}",
+    "DisplayName": "Bengali/Bangla (India) Phonetic IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0404:{e429b25a-e5d3-4d1f-9be3-0c608477e3a1}{d38eff65-aa46-4fd5-91a7-67845fb02f5b}",
+    "DisplayName": "Chinese (Traditional, Taiwan) Array IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0404:{e429b25a-e5d3-4d1f-9be3-0c608477e3a1}{037b2c25-480c-4d7f-b027-d6ca6b69788a}",
+    "DisplayName": "Chinese (Traditional, Taiwan) DaYi IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0447:{81ea0a17-aa39-455b-ba20-ea79a8f98966}{cdb41983-c911-4685-98cc-fc720bbf8fc8}",
+    "DisplayName": "Gujarati (India) Phonetic IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0461:{81ea0a17-aa39-455b-ba20-ea79a8f98966}{7912a487-286c-4825-a608-f676c630b733}",
+    "DisplayName": "Nepali (Nepal) Phonetic IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0439:{81ea0a17-aa39-455b-ba20-ea79a8f98966}{26fa8ebd-97db-4f65-bf35-5e219ebd0079}",
+    "DisplayName": "Hindi (India) Phonetic IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "044b:{81ea0a17-aa39-455b-ba20-ea79a8f98966}{0f420707-90f7-4e1b-b9f2-91ff3ca9d990}",
+    "DisplayName": "Kannada (India) Phonetic IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "044c:{81ea0a17-aa39-455b-ba20-ea79a8f98966}{6346f0dc-2fe4-40e6-99d5-7362723c3780}",
+    "DisplayName": "Malayalam (India) Phonetic IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "044e:{81ea0a17-aa39-455b-ba20-ea79a8f98966}{dbeb227a-4ef6-45a6-85b5-b1a03d95bb66}",
+    "DisplayName": "Marathi (India) Phonetic IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0404:{b115690a-ea02-48d5-a231-e3578d2fdf80}{b2f9c502-1742-11d4-9790-0080c882687e}",
+    "DisplayName": "Chinese (Traditional, Taiwan) Microsoft Bopomofo IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0404:{531fdebf-9b4c-4a43-a2aa-960e8fcdc732}{4bdf9f03-c7d3-11d4-b2ab-0080c882687e}",
+    "DisplayName": "Chinese (Traditional, Taiwan) Microsoft Changjie IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0412:{a028ae76-01b1-46c2-99c4-acd9858ae02f}{b5fe1f02-d5f2-4445-9c03-c568f23c99a1}",
+    "DisplayName": "Korean (Korea) Microsoft IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0411:{03b5835f-f03c-411b-9ce2-aa23e1171e36}{a76c93d9-5523-4e90-aafa-4db112f9ac76}",
+    "DisplayName": "Japanese (Japan) Microsoft IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0412:{a1e2b86b-924a-4d43-80f6-8a820df7190f}{b60af051-257a-46bc-b9d3-84dad819bafb}",
+    "DisplayName": "Korean (Korea) Microsoft Old Hangul IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0804:{81d4e9c9-1d3b-41bc-9e6c-4b40bf79e35e}{fa550b04-5ad7-411f-a5ac-ca038ec515d7}",
+    "DisplayName": "Chinese (Simplified, China) Microsoft Pinyin IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0404:{531fdebf-9b4c-4a43-a2aa-960e8fcdc732}{6024b45f-5c54-11d4-b921-0080c882687e}",
+    "DisplayName": "Chinese (Traditional, Taiwan) Microsoft Quick IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0804:{6a498709-e00b-4c45-a018-8f9e4081ae40}{82590c13-f4dd-44f4-ba1d-8667246fdf8e}",
+    "DisplayName": "Chinese (Simplified, China) Microsoft Wubi IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0448:{81ea0a17-aa39-455b-ba20-ea79a8f98966}{607ebd43-ea66-4cac-a0b1-40f1d147364b}",
+    "DisplayName": "Odia (India) Phonetic IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0446:{81ea0a17-aa39-455b-ba20-ea79a8f98966}{59139512-9763-4e5d-b8e5-0ac1c3bae1ae}",
+    "DisplayName": "Punjabi (India) Phonetic IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0449:{81ea0a17-aa39-455b-ba20-ea79a8f98966}{02e8fc61-6a42-4749-8124-68e28105c20e}",
+    "DisplayName": "Tamil (India) Anjal IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0849:{81ea0a17-aa39-455b-ba20-ea79a8f98966}{02e8fc61-6a42-4749-8124-68e28105c20e}",
+    "DisplayName": "Tamil (Sri Lanka) Anjal IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0449:{81ea0a17-aa39-455b-ba20-ea79a8f98966}{045cba61-4228-4f62-ac0c-f725470d7bfc}",
+    "DisplayName": "Tamil (India) Phonetic IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "044a:{81ea0a17-aa39-455b-ba20-ea79a8f98966}{9f0cdc2b-12b2-4776-a144-f79901a9f8da}",
+    "DisplayName": "Telugu (India) Phonetic IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0473:{e429b25a-e5d3-4d1f-9be3-0c608477e3a1}{3cab88b7-cc3e-46a6-9765-b772ad7761ff}",
+    "DisplayName": "Tigrinya (Ethiopia) IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "042a:{c2cb2cf0-af47-413e-9780-8bc3a3c16068}{591ae943-56be-48f6-8966-06b43915cc5a}",
+    "DisplayName": "Vietnamese (Vietnam) Number Key-Based IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "042a:{c2cb2cf0-af47-413e-9780-8bc3a3c16068}{5fb02ec5-0a77-4684-b4fa-def8a2195628}",
+    "DisplayName": "Vietnamese (Vietnam) Telex IME",
+    "Type": "IME"
+  },
+  {
+    "Id": "0478:{e429b25a-e5d3-4d1f-9be3-0c608477e3a1}{409c8376-007b-4357-ae8e-26316ee3fb0d}",
+    "DisplayName": "Yi (China) IME",
+    "Type": "IME"
   }
 ]

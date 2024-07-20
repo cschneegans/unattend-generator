@@ -443,14 +443,22 @@ public class ImageLanguage(
   public string DisplayName { get; } = displayName;
 }
 
+public enum InputType
+{
+  Keyboard, IME
+}
+
 public class KeyboardIdentifier(
   string id,
-  string displayName
+  string displayName,
+  InputType type
 ) : IKeyed
 {
   public string Id { get; } = id;
 
   public string DisplayName { get; } = displayName;
+
+  public InputType Type { get; } = type;
 }
 
 public class TimeOffset(

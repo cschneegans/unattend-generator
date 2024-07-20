@@ -52,7 +52,18 @@ class LocalesModifier(ModifierContext context) : Modifier(context)
           }
           .SelectMany<LocaleAndKeyboard?, string>(pair =>
           {
-            return pair == null ? ([]) : ([pair.Combined]);
+            if (pair == null)
+            {
+              return [];
+            }
+            else if (pair.Keyboard.Type == InputType.IME)
+            {
+              return [pair.Keyboard.Id];
+            }
+            else
+            {
+              return [pair.Combined];
+            }
           }
         ));
 
