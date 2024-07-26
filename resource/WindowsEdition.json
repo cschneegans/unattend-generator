@@ -12,6 +12,12 @@
     "Visible": true
   },
   {
+    "Id": "home_single",
+    "DisplayName": "Home Single Language",
+    "ProductKey": "BT79Q-G7N6G-PGBYW-4YWX6-6F4BT",
+    "Visible": true
+  },
+  {
     "Id": "education",
     "DisplayName": "Education",
     "ProductKey": "YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY",
