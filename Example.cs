@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Immutable;
+using System.Text;
 using System.Xml;
 
 namespace Schneegans.Unattend;
@@ -16,7 +17,7 @@ class Example
           ImageLanguage: generator.Lookup<ImageLanguage>("en-US"),
           LocaleAndKeyboard: new LocaleAndKeyboard(
             generator.Lookup<UserLocale>("en-US"),
-            generator.Lookup<KeyboardIdentifier>("0409:00000409")
+            generator.Lookup<KeyboardIdentifier>("00000409")
           ),
           LocaleAndKeyboard2: null,
           LocaleAndKeyboard3: null,
@@ -30,11 +31,16 @@ class Example
         ),
       }
     );
-    using XmlWriter writer = XmlWriter.Create(Console.Out, new XmlWriterSettings()
+
+    string path = Environment.ExpandEnvironmentVariables(@"%TEMP%\autounattend.xml");
+    using var writer = XmlWriter.Create(path, new XmlWriterSettings()
     {
-      CloseOutput = false,
+      Encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false),
+      CloseOutput = true,
       Indent = true,
+      IndentChars = "\t",
+      NewLineChars = "\r\n",
     });
-    xml.WriteTo(writer);
+    xml.Save(writer);
   }
 }
