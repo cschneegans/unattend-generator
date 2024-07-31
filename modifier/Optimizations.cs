@@ -149,7 +149,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           AddTextFile(script, ps1File);
           return [
             CommandBuilder.InvokePowerShellScript(ps1File),
-            CommandBuilder.UserRunOnceCommand("NoSounds", @"C:\Windows\System32\reg.exe add ""HKCU\AppEvents\Schemes"" /ve /t REG_SZ /d "".None"" /f", rootKey, subKey),
+            CommandBuilder.UserRunOnceCommand(rootKey, subKey, "NoSounds", CommandBuilder.RegistryCommand(@"add ""HKCU\AppEvents\Schemes"" /ve /t REG_SZ /d "".None"" /f")),
           ];
         }));
       appender.Append([
@@ -236,7 +236,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       appender.Append(
         CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
         {
-          return [CommandBuilder.UserRunOnceCommand("ClassicContextMenu", CommandBuilder.RegistryCommand(@$"add ""HKCU\Software\Classes\CLSID\{{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}}\InprocServer32"" /ve /f"), rootKey, subKey)];
+          return [CommandBuilder.UserRunOnceCommand(rootKey, subKey, "ClassicContextMenu", CommandBuilder.RegistryCommand(@$"add ""HKCU\Software\Classes\CLSID\{{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}}\InprocServer32"" /ve /f"))];
         })
       );
     }

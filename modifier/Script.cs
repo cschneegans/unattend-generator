@@ -172,7 +172,7 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
         appender.Append(
           CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
           {
-            return [CommandBuilder.UserRunOnceCommand(info.Key, command, rootKey, subKey)];
+            return [CommandBuilder.UserRunOnceCommand(rootKey, subKey, info.Key, command)];
           })
         );
         break;

@@ -150,14 +150,14 @@ static class CommandBuilder
     return $"reg.exe {value}";
   }
 
-  public static string UserRunOnceCommand(string name, string value, string rootKey, string subKey)
+  public static string UserRunOnceCommand(string rootKey, string subKey, string name, string command)
   {
     static string Escape(string s)
     {
       return s.Replace(@"""", @"\""");
     }
 
-    return RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\Runonce"" /v ""{Escape(name)}"" /t REG_SZ /d ""{Escape(value)}"" /f");
+    return RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\Runonce"" /v ""{Escape(name)}"" /t REG_SZ /d ""{Escape(command)}"" /f");
   }
 
   public delegate IEnumerable<string> RegistryDefaultUserAction(string rootKey, string subKey);

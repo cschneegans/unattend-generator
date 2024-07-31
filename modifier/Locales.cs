@@ -84,7 +84,7 @@ class LocalesModifier(ModifierContext context) : Modifier(context)
         appender.Append(
           CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
           {
-            return [CommandBuilder.UserRunOnceCommand("GeoLocation", CommandBuilder.PowerShellCommand($"Set-WinHomeLocation -GeoId {settings.GeoLocation.Id};"), rootKey, subKey)];
+            return [CommandBuilder.UserRunOnceCommand(rootKey, subKey, "GeoLocation", CommandBuilder.PowerShellCommand($"Set-WinHomeLocation -GeoId {settings.GeoLocation.Id};"))];
           }
          ));
       }
