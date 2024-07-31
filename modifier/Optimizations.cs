@@ -10,6 +10,11 @@ public record class EnabledProcessAuditSettings(
   bool IncludeCommandLine
 ) : IProcessAuditSettings;
 
+public enum HideModes
+{
+  None, HiddenSystem, Hidden
+}
+
 public class DisabledProcessAuditSettings : IProcessAuditSettings;
 
 class OptimizationsModifier(ModifierContext context) : Modifier(context)
@@ -17,6 +22,30 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
   public override void Process()
   {
     CommandAppender appender = GetAppender(CommandConfig.Specialize);
+
+    {
+      IEnumerable<string> SetExplorerOptions(string rootKey, string subKey)
+      {
+        if (Configuration.ShowFileExtensions)
+        {
+          yield return CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""HideFileExt"" /t REG_DWORD /d 0 /f");
+        }
+
+        switch (Configuration.HideFiles)
+        {
+          case HideModes.None:
+            yield return CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""Hidden"" /t REG_DWORD /d 1 /f");
+            yield return CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""ShowSuperHidden"" /t REG_DWORD /d 1 /f");
+            break;
+          case HideModes.HiddenSystem:
+            yield return CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""Hidden"" /t REG_DWORD /d 1 /f");
+            break;
+          case HideModes.Hidden:
+            break;
+        }
+      }
+      appender.Append(CommandBuilder.RegistryDefaultUserCommand(SetExplorerOptions));
+    }
 
     if (Configuration.DisableDefender)
     {
@@ -58,7 +87,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       );
     }
 
-    if(Configuration.DisableSac)
+    if (Configuration.DisableSac)
     {
       appender.Append(
         CommandBuilder.RegistryCommand(@"add ""HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy"" /v VerifiedAndReputablePolicyState /t REG_DWORD /d 0 /f")

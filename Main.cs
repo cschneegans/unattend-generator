@@ -273,7 +273,9 @@ public record class Configuration(
   bool VMwareTools,
   bool VirtIoGuestTools,
   bool PreventDeviceEncryption,
-  bool ClassicContextMenu
+  bool ClassicContextMenu,
+  bool ShowFileExtensions,
+  HideModes HideFiles
 )
 {
   public static Configuration Default => new(
@@ -312,7 +314,9 @@ public record class Configuration(
     VMwareTools: false,
     VirtIoGuestTools: false,
     PreventDeviceEncryption: false,
-    ClassicContextMenu: false
+    ClassicContextMenu: false,
+    ShowFileExtensions: false,
+    HideFiles: HideModes.Hidden
   );
 }
 
