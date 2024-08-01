@@ -166,11 +166,21 @@ static class CommandBuilder
   {
     string rootKey = "HKU";
     string subKey = "DefaultUser";
-    return [
-      RegistryCommand(@$"load ""{rootKey}\{subKey}"" ""C:\Users\Default\NTUSER.DAT"""),
-      .. action.Invoke(rootKey, subKey),
-      RegistryCommand(@$"unload ""{rootKey}\{subKey}"""),
-    ];
+
+    IEnumerable<string> content = action.Invoke(rootKey, subKey);
+
+    if (content.Any())
+    {
+      return [
+        RegistryCommand(@$"load ""{rootKey}\{subKey}"" ""C:\Users\Default\NTUSER.DAT"""),
+        .. content,
+        RegistryCommand(@$"unload ""{rootKey}\{subKey}"""),
+      ];
+    }
+    else
+    {
+      return [];
+    }
   }
 
   public static string PowerShellCommand(string value)
