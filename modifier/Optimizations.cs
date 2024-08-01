@@ -153,6 +153,13 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       ]);
     }
 
+    if (Configuration.DisableFastStartup)
+    {
+      appender.Append(
+        CommandBuilder.RegistryCommand(@"add ""HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power"" /v HiberbootEnabled /t REG_DWORD /d 0 /f")
+      );
+    }
+
     if (Configuration.DisableSystemRestore)
     {
       CommandAppender oobe = GetAppender(CommandConfig.Oobe);
