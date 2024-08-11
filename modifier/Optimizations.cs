@@ -94,6 +94,13 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       );
     }
 
+    if (Configuration.DisableUac)
+    {
+      appender.Append(
+        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"" /v EnableLUA /t REG_DWORD /d 0 /f")
+      );
+    }
+
     if (Configuration.EnableLongPaths)
     {
       appender.Append(
