@@ -152,12 +152,22 @@ static class CommandBuilder
 
   public static string UserRunOnceCommand(string rootKey, string subKey, string name, string command)
   {
+    return UserRunCommand(rootKey, subKey, "RunOnce", name, command);
+  }
+
+  public static string RunAtLogonCommand(string rootKey, string subKey, string name, string command)
+  {
+    return UserRunCommand(rootKey, subKey, "Run", name, command);
+  }
+
+  private static string UserRunCommand(string rootKey, string subKey, string runKey, string name, string command)
+  {
     static string Escape(string s)
     {
       return s.Replace(@"""", @"\""");
     }
 
-    return RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\Runonce"" /v ""{Escape(name)}"" /t REG_SZ /d ""{Escape(command)}"" /f");
+    return RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\{runKey}"" /v ""{Escape(name)}"" /t REG_SZ /d ""{Escape(command)}"" /f");
   }
 
   public delegate IEnumerable<string> RegistryDefaultUserAction(string rootKey, string subKey);
@@ -287,6 +297,7 @@ public record class Configuration(
   bool PreventDeviceEncryption,
   bool ClassicContextMenu,
   bool ShowFileExtensions,
+  bool ShowAllTrayIcons,
   HideModes HideFiles
 )
 {
@@ -330,6 +341,7 @@ public record class Configuration(
     PreventDeviceEncryption: false,
     ClassicContextMenu: false,
     ShowFileExtensions: false,
+    ShowAllTrayIcons: false,
     HideFiles: HideModes.Hidden
   );
 }
