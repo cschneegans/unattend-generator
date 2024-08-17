@@ -66,7 +66,6 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableDefender)
     {
-      if (Configuration.DisableDefenderPE)
       {
         CommandAppender pe = GetAppender(CommandConfig.WindowsPE);
         const string path = @"X:\disable-defender.cmd";
