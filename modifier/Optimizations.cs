@@ -52,15 +52,8 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       string ps1File = @"C:\Windows\Setup\Scripts\ShowAllTrayIcons.ps1";
       string script = Util.StringFromResource("ShowAllTrayIcons.ps1");
       AddTextFile(script, ps1File);
-
       appender.Append(
-        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-        {
-          return [
-            CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\Explorer"" /v EnableAutoTray /t REG_DWORD /d 0 /f"),
-            CommandBuilder.RunAtLogonCommand(rootKey, subKey, "ShowAllTrayIcons", CommandBuilder.InvokePowerShellScript(ps1File)),
-           ];
-        })
+        CommandBuilder.InvokePowerShellScript(ps1File)
       );
     }
 
