@@ -59,40 +59,16 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableDefender)
     {
+      CommandAppender pe = GetAppender(CommandConfig.WindowsPE);
+      const string path = @"X:\disable-defender.vbs";
+      foreach (string line in Util.SplitLines(Util.StringFromResource("disable-defender.vbs")))
       {
-        CommandAppender pe = GetAppender(CommandConfig.WindowsPE);
-        const string path = @"X:\disable-defender.cmd";
-        foreach (string line in Util.SplitLines(Util.StringFromResource("disable-defender-pe.cmd")))
-        {
-          pe.Append(
-            CommandBuilder.WriteToFile(path, line)
-          );
-        }
         pe.Append(
-          CommandBuilder.ShellCommand($"start /MIN {path}")
+          CommandBuilder.WriteToFile(path, line)
         );
       }
-
-      // https://lazyadmin.nl/win-11/turn-off-windows-defender-windows-11-permanently/
-      string filename = @"%TEMP%\disable-defender.ini";
-      StringWriter sw = new();
-      foreach (string service in (string[])[
-        "Sense",
-        "WdBoot",
-        "WdFilter",
-        "WdNisDrv",
-        "WdNisSvc",
-        "WinDefend",
-      ])
-      {
-        sw.WriteLine($"""
-          HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\{service}
-              "Start" = REG_DWORD 4
-          """);
-      }
-      AddTextFile(sw.ToString(), filename);
-      appender.Append(
-        CommandBuilder.Raw(@$"regini.exe ""{filename}""")
+      pe.Append(
+        CommandBuilder.ShellCommand($"start /MIN cscript.exe //E:vbscript {path}")
       );
     }
 
