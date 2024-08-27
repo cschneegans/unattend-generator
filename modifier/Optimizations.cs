@@ -307,5 +307,12 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         })
       );
     }
+
+    if (Configuration.HideEdgeFre)
+    {
+      appender.Append(
+        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Policies\Microsoft\Edge"" /v HideFirstRunExperience /t REG_DWORD /d 1 /f")
+      );
+    }
   }
 }

@@ -300,7 +300,8 @@ public record class Configuration(
   bool DeleteTaskbarIcons,
   bool ShowFileExtensions,
   bool ShowAllTrayIcons,
-  HideModes HideFiles
+  HideModes HideFiles,
+  bool HideEdgeFre
 )
 {
   public static Configuration Default => new(
@@ -346,7 +347,8 @@ public record class Configuration(
     DeleteTaskbarIcons: false,
     ShowFileExtensions: false,
     ShowAllTrayIcons: false,
-    HideFiles: HideModes.Hidden
+    HideFiles: HideModes.Hidden,
+    HideEdgeFre: false
   );
 }
 
