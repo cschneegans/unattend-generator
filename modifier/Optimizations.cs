@@ -57,6 +57,16 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       );
     }
 
+    if (Configuration.DeleteTaskbarIcons)
+    {
+      string ps1File = @"C:\Windows\Setup\Scripts\DeleteTaskbarIcons.ps1";
+      string script = Util.StringFromResource("DeleteTaskbarIcons.ps1");
+      AddTextFile(script, ps1File);
+      appender.Append(
+        CommandBuilder.InvokePowerShellScript(ps1File)
+      );
+    }
+
     if (Configuration.DisableDefender)
     {
       CommandAppender pe = GetAppender(CommandConfig.WindowsPE);
@@ -285,6 +295,16 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
         {
           return [CommandBuilder.UserRunOnceCommand(rootKey, subKey, "ClassicContextMenu", CommandBuilder.RegistryCommand(@$"add ""HKCU\Software\Classes\CLSID\{{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}}\InprocServer32"" /ve /f"))];
+        })
+      );
+    }
+
+    if (Configuration.LeftTaskbar)
+    {
+      appender.Append(
+        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
+        {
+          return [CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v TaskbarAl /t REG_DWORD /d 0 /f")];
         })
       );
     }

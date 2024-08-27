@@ -296,6 +296,8 @@ public record class Configuration(
   bool VirtIoGuestTools,
   bool PreventDeviceEncryption,
   bool ClassicContextMenu,
+  bool LeftTaskbar,
+  bool DeleteTaskbarIcons,
   bool ShowFileExtensions,
   bool ShowAllTrayIcons,
   HideModes HideFiles
@@ -340,6 +342,8 @@ public record class Configuration(
     VirtIoGuestTools: false,
     PreventDeviceEncryption: false,
     ClassicContextMenu: false,
+    LeftTaskbar: false,
+    DeleteTaskbarIcons: false,
     ShowFileExtensions: false,
     ShowAllTrayIcons: false,
     HideFiles: HideModes.Hidden

@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resource\DeleteTaskbarIcons.ps1" />
     <None Remove="resource\disable-defender.vbs" />
     <None Remove="resource\RemoveBloatware.ps1" />
     <None Remove="resource\RemoveCapabilities.ps1" />
@@ -28,6 +29,7 @@
     <EmbeddedResource Include="resource\KeyboardIdentifier.json" />
     <EmbeddedResource Include="resource\Bloatware.json" />
     <EmbeddedResource Include="resource\known-writeable-folders.txt" />
+    <EmbeddedResource Include="resource\DeleteTaskbarIcons.ps1" />
     <EmbeddedResource Include="resource\ShowAllTrayIcons.ps1" />
     <EmbeddedResource Include="resource\RemoveBloatware.ps1" />
     <EmbeddedResource Include="resource\TimeOffset.json" />
