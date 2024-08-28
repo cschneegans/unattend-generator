@@ -709,5 +709,17 @@
         ]
       }
     ]
+  },
+  {
+    "DisplayName": "Mixed Reality",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.PackageBloatwareStep, UnattendGenerator",
+        "Selector": "Microsoft.MixedReality.Portal",
+        "AppliesTo": [
+          "Windows 10"
+        ]
+      }
+    ]
   }
 ]
