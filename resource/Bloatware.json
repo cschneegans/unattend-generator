@@ -61,7 +61,13 @@
         "$type": "Schneegans.Unattend.CapabilityBloatwareStep, UnattendGenerator",
         "Selector": "Microsoft.Windows.Notepad",
         "AppliesTo": [
-          "Windows 10",
+          "Windows 10"
+        ]
+      },
+      {
+        "$type": "Schneegans.Unattend.CapabilityBloatwareStep, UnattendGenerator",
+        "Selector": "Microsoft.Windows.Notepad.System",
+        "AppliesTo": [
           "Windows 11"
         ]
       }
