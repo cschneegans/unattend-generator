@@ -727,5 +727,31 @@
         ]
       }
     ]
+  },
+  {
+    "DisplayName": "Recall",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.OptionalFeatureBloatwareStep, UnattendGenerator",
+        "Selector": "Recall",
+        "AppliesTo": [
+          "Windows 11 24H2"
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Remote Desktop Client",
+    "Token": "RdpClient",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.OptionalFeatureBloatwareStep, UnattendGenerator",
+        "Selector": "Microsoft-RemoteDesktopConnection",
+        "AppliesTo": [
+          "Windows 10",
+          "Windows 11"
+        ]
+      }
+    ]
   }
 ]
