@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Schneegans.Unattend;
@@ -15,6 +17,31 @@ public enum HideModes
 }
 
 public class DisabledProcessAuditSettings : IProcessAuditSettings;
+
+public interface IKeySettings;
+
+public class SkipKeySettings : IKeySettings;
+
+public enum KeyInitial
+{
+  Off, On
+}
+
+public enum KeyBehavior
+{
+  Toggle, Ignore
+}
+
+public record class KeySetting(
+  KeyInitial Initial,
+  KeyBehavior Behavior
+);
+
+public record class ConfigureKeySettings(
+  KeySetting CapsLock,
+  KeySetting NumLock,
+  KeySetting ScrollLock
+) : IKeySettings;
 
 class OptimizationsModifier(ModifierContext context) : Modifier(context)
 {
@@ -313,6 +340,81 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       appender.Append(
         CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Policies\Microsoft\Edge"" /v HideFirstRunExperience /t REG_DWORD /d 1 /f")
       );
+    }
+    {
+      if (Configuration.KeySettings is ConfigureKeySettings settings)
+      {
+        {
+          uint indicators = 0;
+
+          if (settings.CapsLock.Initial == KeyInitial.On)
+          {
+            indicators |= 1;
+          }
+          if (settings.NumLock.Initial == KeyInitial.On)
+          {
+            indicators |= 2;
+          }
+          if (settings.ScrollLock.Initial == KeyInitial.On)
+          {
+            indicators |= 4;
+          }
+          appender.Append(
+            CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
+              {
+                return [
+                  CommandBuilder.RegistryCommand(@$"add ""HKU\.DEFAULT\Control Panel\Keyboard"" /v InitialKeyboardIndicators /t REG_SZ /d ""{indicators}"" /f"),
+                  CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Control Panel\Keyboard"" /v InitialKeyboardIndicators /t REG_SZ /d ""{indicators}"" /f")
+                ];
+              }
+            )
+          );
+        }
+        {
+          bool ignoreCapsLock = settings.CapsLock.Behavior == KeyBehavior.Ignore;
+          bool ignoreNumLock = settings.NumLock.Behavior == KeyBehavior.Ignore;
+          bool ignoreScrollLock = settings.ScrollLock.Behavior == KeyBehavior.Ignore;
+
+          uint count = 0;
+          if (ignoreCapsLock)
+          {
+            count++;
+          }
+          if (ignoreNumLock)
+          {
+            count++;
+          }
+          if (ignoreScrollLock)
+          {
+            count++;
+          }
+          if (count > 0)
+          {
+            MemoryStream mstr = new();
+            mstr.Write(new byte[4]); // Version
+            mstr.Write(new byte[4]); // Flags
+            mstr.Write(BitConverter.GetBytes(count + 1)); // Count
+            if (ignoreCapsLock)
+            {
+              mstr.Write([0, 0, 0x3A, 0]);
+            }
+            if (ignoreNumLock)
+            {
+              mstr.Write([0, 0, 0x45, 0]);
+            }
+            if (ignoreScrollLock)
+            {
+              mstr.Write([0, 0, 0x46, 0]);
+            }
+            mstr.Write(new byte[4]); // Footer
+            string base64 = Convert.ToBase64String(mstr.ToArray());
+
+            appender.Append(
+              CommandBuilder.PowerShellCommand(@$"Set-ItemProperty -LiteralPath 'Registry::HKLM\SYSTEM\CurrentControlSet\Control\Keyboard Layout' -Name 'Scancode Map' -Type 'Binary' -Value([convert]::FromBase64String('{base64}'));")
+            );
+          }
+        }
+      }
     }
   }
 }
