@@ -15,6 +15,7 @@
     <None Remove="resource\RemoveCapabilities.ps1" />
     <None Remove="resource\RemoveFeatures.ps1" />
     <None Remove="resource\RemovePackages.ps1" />
+    <None Remove="resource\SetWallpaper.ps1" />
     <None Remove="resource\ShowAllTrayIcons.ps1" />
   </ItemGroup>
 
@@ -30,6 +31,7 @@
     <EmbeddedResource Include="resource\Bloatware.json" />
     <EmbeddedResource Include="resource\known-writeable-folders.txt" />
     <EmbeddedResource Include="resource\DeleteTaskbarIcons.ps1" />
+    <EmbeddedResource Include="resource\SetWallpaper.ps1" />
     <EmbeddedResource Include="resource\ShowAllTrayIcons.ps1" />
     <EmbeddedResource Include="resource\RemoveBloatware.ps1" />
     <EmbeddedResource Include="resource\TimeOffset.json" />
