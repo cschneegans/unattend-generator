@@ -604,6 +604,13 @@
       },
       {
         "$type": "Schneegans.Unattend.PackageBloatwareStep, UnattendGenerator",
+        "Selector": "MicrosoftTeams",
+        "AppliesTo": [
+          "Windows 11 23H2"
+        ]
+      },
+      {
+        "$type": "Schneegans.Unattend.PackageBloatwareStep, UnattendGenerator",
         "Selector": "MSTeams",
         "AppliesTo": [
           "Windows 11 24H2"
