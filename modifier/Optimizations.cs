@@ -90,6 +90,8 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       appender.Append(
         CommandBuilder.InvokePowerShellScript(ps1File)
       );
+      AddXmlFile(Util.XmlDocumentFromResource("ShowAllTrayIcons.xml"), @"C:\Windows\Setup\Scripts\ShowAllTrayIcons.xml");
+      AddTextFile(Util.StringFromResource("ShowAllTrayIcons.vbs"), @"C:\Windows\Setup\Scripts\ShowAllTrayIcons.vbs");
     }
 
     if (Configuration.DeleteTaskbarIcons)
