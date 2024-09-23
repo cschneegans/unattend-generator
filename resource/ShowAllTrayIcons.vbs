@@ -1,10 +1,10 @@
-Set shell = CreateObject( "WScript.Shell" )
-Set exec = shell.Exec( "reg.exe QUERY ""HKCU\Control Panel\NotifyIconSettings""" )
-Set re = New RegExp
-re.Pattern = "^HKEY_CURRENT_USER\\Control Panel\\NotifyIconSettings\\\d+$"
-While Not exec.StdOut.AtEndOfStream
-	line = exec.StdOut.ReadLine
-	If re.Test( line ) Then
-		shell.RegWrite line + "\IsPromoted", 1, "REG_DWORD"
+HKCU = &H80000001
+key = "Control Panel\NotifyIconSettings"
+Set reg = GetObject("winmgmts://./root/default:StdRegProv")
+If reg.EnumKey(HKCU, key, names) = 0 Then
+	If Not IsNull(names) Then
+		For Each name In names
+			reg.SetDWORDValue HKCU, key + "\" + name, "IsPromoted", 1
+		Next
 	End If
-Wend
+End If
