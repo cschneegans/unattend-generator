@@ -303,7 +303,8 @@ public record class Configuration(
   bool ShowFileExtensions,
   bool ShowAllTrayIcons,
   HideModes HideFiles,
-  bool HideEdgeFre
+  bool HideEdgeFre,
+  bool MakeEdgeUninstallable
 )
 {
   public static Configuration Default => new(
@@ -352,7 +353,8 @@ public record class Configuration(
     ShowFileExtensions: false,
     ShowAllTrayIcons: false,
     HideFiles: HideModes.Hidden,
-    HideEdgeFre: false
+    HideEdgeFre: false,
+    MakeEdgeUninstallable: false
   );
 }
 

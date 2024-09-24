@@ -446,5 +446,14 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         );
       }
     }
+    if (Configuration.MakeEdgeUninstallable)
+    {
+      string ps1File = @"C:\Windows\Setup\Scripts\MakeEdgeUninstallable.ps1";
+      string script = Util.StringFromResource("MakeEdgeUninstallable.ps1");
+      AddTextFile(script, ps1File);
+      appender.Append(
+        CommandBuilder.InvokePowerShellScript(ps1File)
+      );
+    }
   }
 }

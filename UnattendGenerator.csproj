@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="resource\DeleteTaskbarIcons.ps1" />
     <None Remove="resource\disable-defender.vbs" />
+    <None Remove="resource\MakeEdgeUninstallable.ps1" />
     <None Remove="resource\RemoveBloatware.ps1" />
     <None Remove="resource\RemoveCapabilities.ps1" />
     <None Remove="resource\RemoveFeatures.ps1" />
@@ -33,6 +34,7 @@
     <EmbeddedResource Include="resource\Bloatware.json" />
     <EmbeddedResource Include="resource\known-writeable-folders.txt" />
     <EmbeddedResource Include="resource\DeleteTaskbarIcons.ps1" />
+    <EmbeddedResource Include="resource\MakeEdgeUninstallable.ps1" />
     <EmbeddedResource Include="resource\SetWallpaper.ps1" />
     <EmbeddedResource Include="resource\ShowAllTrayIcons.vbs" />
     <EmbeddedResource Include="resource\ShowAllTrayIcons.ps1" />
