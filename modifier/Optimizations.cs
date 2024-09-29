@@ -455,5 +455,15 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         CommandBuilder.InvokePowerShellScript(ps1File)
       );
     }
+    {
+      appender.Append(
+        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
+        {
+          return [
+            CommandBuilder.UserRunOnceCommand(rootKey, subKey, "SearchboxTaskbarMode", CommandBuilder.RegistryCommand(@$"add HKCU\Software\Microsoft\Windows\CurrentVersion\Search /v SearchboxTaskbarMode /t REG_DWORD /d {Configuration.TaskbarSearch:D} /f")),
+          ];
+        })
+      );
+    }
   }
 }

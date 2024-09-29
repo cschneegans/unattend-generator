@@ -40,6 +40,13 @@ public enum ExpressSettingsMode
   Interactive, EnableAll, DisableAll
 }
 
+public enum TaskbarSearchMode
+{
+  Hide = 0,
+  Icon = 1,
+  Box = 2
+}
+
 abstract class CommandConfig
 {
   public readonly static CommandConfig WindowsPE = new WindowsPECommandConfig();
@@ -304,7 +311,8 @@ public record class Configuration(
   bool ShowAllTrayIcons,
   HideModes HideFiles,
   bool HideEdgeFre,
-  bool MakeEdgeUninstallable
+  bool MakeEdgeUninstallable,
+  TaskbarSearchMode TaskbarSearch
 )
 {
   public static Configuration Default => new(
@@ -354,7 +362,8 @@ public record class Configuration(
     ShowAllTrayIcons: false,
     HideFiles: HideModes.Hidden,
     HideEdgeFre: false,
-    MakeEdgeUninstallable: false
+    MakeEdgeUninstallable: false,
+    TaskbarSearch: TaskbarSearchMode.Box
   );
 }
 
