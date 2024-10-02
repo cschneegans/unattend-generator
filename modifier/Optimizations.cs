@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -51,6 +52,16 @@ public class DefaultWallpaperSettings : IWallpaperSettings;
 public record class SolidWallpaperSettings(
   Color Color
 ) : IWallpaperSettings;
+
+public interface IStartPinsSettings;
+
+public class DefaultStartPinsSettings : IStartPinsSettings;
+
+public class EmptyStartPinsSettings : IStartPinsSettings;
+
+public record class CustomStartPinsSettings(
+  string Json
+) : IStartPinsSettings;
 
 class OptimizationsModifier(ModifierContext context) : Modifier(context)
 {
@@ -464,6 +475,46 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           ];
         })
       );
+    }
+    {
+      void SetStartPins(string json)
+      {
+        string ps1File = @"C:\Windows\Setup\Scripts\SetStartPins.ps1";
+        string script = Util.StringFromResource("SetStartPins.ps1");
+        StringWriter writer = new();
+        writer.WriteLine($"$json = '{json.Replace("'", "''")}';");
+        writer.WriteLine(script);
+        AddTextFile(writer.ToString(), ps1File);
+        appender.Append(
+          CommandBuilder.InvokePowerShellScript(ps1File)
+        );
+      }
+
+      switch (Configuration.StartPinsSetting)
+      {
+        case DefaultStartPinsSettings:
+          break;
+
+        case EmptyStartPinsSettings:
+          SetStartPins(@"{""pinnedList"":[]}");
+          break;
+
+        case CustomStartPinsSettings settings:
+          try
+          {
+            using JsonTextReader reader = new(new StringReader(settings.Json));
+            while (reader.Read()) { }
+          }
+          catch
+          {
+            throw new ConfigurationException($"The string '{settings.Json}' is not valid JSON.");
+          }
+          SetStartPins(settings.Json.Trim());
+          break;
+
+        default:
+          throw new NotSupportedException();
+      }
     }
   }
 }

@@ -231,26 +231,6 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
           """);
         AddXmlFile(xml, @"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml");
       }
-      {
-        // Windows 11
-        string json = @"""{ \""pinnedList\"": [] }""";
-        string guid = "B5292708-1619-419B-9923-E5D9F3925E71";
-        {
-          string key = @"HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start";
-          appender.Append([
-            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins /t REG_SZ /d {json} /f"),
-            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_ProviderSet /t REG_DWORD /d 1 /f"),
-            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_WinningProvider /t REG_SZ /d {guid} /f"),
-          ]);
-        }
-        {
-          string key = $@"HKLM\SOFTWARE\Microsoft\PolicyManager\providers\{guid}\default\Device\Start";
-          appender.Append([
-            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins /t REG_SZ /d {json} /f"),
-            CommandBuilder.RegistryCommand($@"add ""{key}"" /v ConfigureStartPins_LastWrite /t REG_DWORD /d 1 /f"),
-          ]);
-        }
-      }
     }
   }
 }

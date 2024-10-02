@@ -312,7 +312,8 @@ public record class Configuration(
   HideModes HideFiles,
   bool HideEdgeFre,
   bool MakeEdgeUninstallable,
-  TaskbarSearchMode TaskbarSearch
+  TaskbarSearchMode TaskbarSearch,
+  IStartPinsSettings StartPinsSetting
 )
 {
   public static Configuration Default => new(
@@ -363,7 +364,8 @@ public record class Configuration(
     HideFiles: HideModes.Hidden,
     HideEdgeFre: false,
     MakeEdgeUninstallable: false,
-    TaskbarSearch: TaskbarSearchMode.Box
+    TaskbarSearch: TaskbarSearchMode.Box,
+    StartPinsSetting: new DefaultStartPinsSettings()
   );
 }
 
