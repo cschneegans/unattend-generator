@@ -313,7 +313,8 @@ public record class Configuration(
   bool HideEdgeFre,
   bool MakeEdgeUninstallable,
   TaskbarSearchMode TaskbarSearch,
-  IStartPinsSettings StartPinsSetting
+  IStartPinsSettings StartPinsSettings,
+  IStartTilesSettings StartTilesSettings
 )
 {
   public static Configuration Default => new(
@@ -365,7 +366,8 @@ public record class Configuration(
     HideEdgeFre: false,
     MakeEdgeUninstallable: false,
     TaskbarSearch: TaskbarSearchMode.Box,
-    StartPinsSetting: new DefaultStartPinsSettings()
+    StartPinsSettings: new DefaultStartPinsSettings(),
+    StartTilesSettings: new DefaultStartTilesSettings()
   );
 }
 

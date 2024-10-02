@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Xml;
 
 namespace Schneegans.Unattend;
 
@@ -62,6 +63,16 @@ public class EmptyStartPinsSettings : IStartPinsSettings;
 public record class CustomStartPinsSettings(
   string Json
 ) : IStartPinsSettings;
+
+public interface IStartTilesSettings;
+
+public class DefaultStartTilesSettings : IStartTilesSettings;
+
+public class EmptyStartTilesSettings : IStartTilesSettings;
+
+public record class CustomStartTilesSettings(
+  string Xml
+) : IStartTilesSettings;
 
 class OptimizationsModifier(ModifierContext context) : Modifier(context)
 {
@@ -490,7 +501,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         );
       }
 
-      switch (Configuration.StartPinsSetting)
+      switch (Configuration.StartPinsSettings)
       {
         case DefaultStartPinsSettings:
           break;
@@ -516,5 +527,41 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           throw new NotSupportedException();
       }
     }
+    {
+      void SetStartTiles(string xml)
+      {
+        XmlDocument doc = new();
+        doc.LoadXml(xml);
+        AddXmlFile(doc, @"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml");
+      }
+
+      switch (Configuration.StartTilesSettings)
+      {
+        case DefaultStartTilesSettings:
+          break;
+
+        case EmptyStartTilesSettings:
+          string xml = """
+          <LayoutModificationTemplate Version='1' xmlns='http://schemas.microsoft.com/Start/2014/LayoutModification'>
+            <LayoutOptions StartTileGroupCellWidth='6' />
+            <DefaultLayoutOverride>
+              <StartLayoutCollection>
+                <StartLayout GroupCellWidth='6' xmlns='http://schemas.microsoft.com/Start/2014/FullDefaultLayout' />
+              </StartLayoutCollection>
+            </DefaultLayoutOverride>
+          </LayoutModificationTemplate>
+          """;
+          SetStartTiles(xml);
+          break;
+
+        case CustomStartTilesSettings settings:
+          SetStartTiles(settings.Xml);
+          break;
+
+        default:
+          throw new NotSupportedException();
+      }
+    }
   }
 }
+

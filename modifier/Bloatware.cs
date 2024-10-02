@@ -213,24 +213,5 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
     packageRemover.Save(this);
     capabilityRemover.Save(this);
     featureRemover.Save(this);
-
-    if (!Configuration.Bloatwares.IsEmpty)
-    {
-      {
-        // Windows 10
-        XmlDocument xml = new();
-        xml.LoadXml("""
-          <LayoutModificationTemplate Version='1' xmlns='http://schemas.microsoft.com/Start/2014/LayoutModification'>
-            <LayoutOptions StartTileGroupCellWidth='6' />
-            <DefaultLayoutOverride>
-              <StartLayoutCollection>
-                <StartLayout GroupCellWidth='6' xmlns='http://schemas.microsoft.com/Start/2014/FullDefaultLayout' />
-              </StartLayoutCollection>
-            </DefaultLayoutOverride>
-          </LayoutModificationTemplate>
-          """);
-        AddXmlFile(xml, @"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml");
-      }
-    }
   }
 }
