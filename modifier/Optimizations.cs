@@ -118,11 +118,14 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DeleteTaskbarIcons)
     {
-      string ps1File = @"C:\Windows\Setup\Scripts\DeleteTaskbarIcons.ps1";
-      string script = Util.StringFromResource("DeleteTaskbarIcons.ps1");
+      string ps1File = @"C:\Windows\Setup\Scripts\TaskbarIcons.ps1";
+      string script = Util.StringFromResource("TaskbarIcons.ps1");
       AddTextFile(script, ps1File);
       appender.Append(
-        CommandBuilder.InvokePowerShellScript(ps1File)
+        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
+        {
+          return [CommandBuilder.UserRunOnceCommand(rootKey, subKey, "TaskbarIcons", CommandBuilder.InvokePowerShellScript(ps1File))];
+        })
       );
     }
 
@@ -564,4 +567,3 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     }
   }
 }
-
