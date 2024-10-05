@@ -314,7 +314,8 @@ public record class Configuration(
   bool MakeEdgeUninstallable,
   TaskbarSearchMode TaskbarSearch,
   IStartPinsSettings StartPinsSettings,
-  IStartTilesSettings StartTilesSettings
+  IStartTilesSettings StartTilesSettings,
+  CompactOsModes CompactOsMode
 )
 {
   public static Configuration Default => new(
@@ -367,7 +368,8 @@ public record class Configuration(
     MakeEdgeUninstallable: false,
     TaskbarSearch: TaskbarSearchMode.Box,
     StartPinsSettings: new DefaultStartPinsSettings(),
-    StartTilesSettings: new DefaultStartTilesSettings()
+    StartTilesSettings: new DefaultStartTilesSettings(),
+    CompactOsMode: CompactOsModes.Default
   );
 }
 

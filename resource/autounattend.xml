@@ -14,6 +14,7 @@
 		<component name="Microsoft-Windows-Setup" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<ImageInstall>
 				<OSImage>
+					<Compact>false</Compact>
 					<InstallTo>
 						<DiskID>0</DiskID>
 						<PartitionID>1</PartitionID>
