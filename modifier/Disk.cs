@@ -60,7 +60,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     {
       case InteractivePartitionSettings:
         {
-          Document.SelectSingleNodeOrThrow("//u:ImageInstall", NamespaceManager).RemoveSelf();
+          Document.SelectSingleNodeOrThrow("//u:InstallTo", NamespaceManager).RemoveSelf();
           break;
         }
       case UnattendedPartitionSettings settings:
