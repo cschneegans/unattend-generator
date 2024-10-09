@@ -760,5 +760,17 @@
         ]
       }
     ]
+  },
+  {
+    "DisplayName": "Wallet",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.PackageBloatwareStep, UnattendGenerator",
+        "Selector": "Microsoft.Wallet",
+        "AppliesTo": [
+          "Windows 10"
+        ]
+      }
+    ]
   }
 ]
