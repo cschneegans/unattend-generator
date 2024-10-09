@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -45,14 +44,6 @@ public record class ConfigureKeySettings(
   KeySetting NumLock,
   KeySetting ScrollLock
 ) : IKeySettings;
-
-public interface IWallpaperSettings;
-
-public class DefaultWallpaperSettings : IWallpaperSettings;
-
-public record class SolidWallpaperSettings(
-  Color Color
-) : IWallpaperSettings;
 
 public interface IStartPinsSettings;
 
@@ -450,25 +441,6 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
             );
           }
         }
-      }
-    }
-    {
-      if (Configuration.WallpaperSettings is SolidWallpaperSettings settings)
-      {
-        string ps1File = @"C:\Windows\Setup\Scripts\SetWallpaper.ps1";
-        string script = Util.StringFromResource("SetWallpaper.ps1");
-        StringWriter writer = new();
-        writer.WriteLine($"$htmlColor = '{ColorTranslator.ToHtml(settings.Color)}';");
-        writer.WriteLine(script);
-        AddTextFile(writer.ToString(), ps1File);
-        appender.Append(
-          CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-          {
-            return [
-              CommandBuilder.UserRunOnceCommand(rootKey, subKey, "SetWallpaper", CommandBuilder.InvokePowerShellScript(ps1File)),
-            ];
-          })
-        );
       }
     }
     if (Configuration.MakeEdgeUninstallable)

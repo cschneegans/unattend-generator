@@ -15,6 +15,7 @@
     <None Remove="resource\RemoveCapabilities.ps1" />
     <None Remove="resource\RemoveFeatures.ps1" />
     <None Remove="resource\RemovePackages.ps1" />
+    <None Remove="resource\SetColorTheme.ps1" />
     <None Remove="resource\SetStartPins.ps1" />
     <None Remove="resource\SetWallpaper.ps1" />
     <None Remove="resource\ShowAllTrayIcons.ps1" />
@@ -34,6 +35,7 @@
     <EmbeddedResource Include="resource\KeyboardIdentifier.json" />
     <EmbeddedResource Include="resource\Bloatware.json" />
     <EmbeddedResource Include="resource\known-writeable-folders.txt" />
+    <EmbeddedResource Include="resource\SetColorTheme.ps1" />
     <EmbeddedResource Include="resource\TaskbarIcons.ps1" />
     <EmbeddedResource Include="resource\MakeEdgeUninstallable.ps1" />
     <EmbeddedResource Include="resource\SetWallpaper.ps1" />
