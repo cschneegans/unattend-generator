@@ -321,7 +321,7 @@ public record class Configuration(
 {
   public static Configuration Default => new(
     LanguageSettings: new InteractiveLanguageSettings(),
-    AccountSettings: new InteractiveAccountSettings(),
+    AccountSettings: new InteractiveMicrosoftAccountSettings(),
     PartitionSettings: new InteractivePartitionSettings(),
     EditionSettings: new InteractiveEditionSettings(),
     LockoutSettings: new DefaultLockoutSettings(),

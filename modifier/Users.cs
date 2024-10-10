@@ -8,7 +8,11 @@ namespace Schneegans.Unattend;
 
 public interface IAccountSettings;
 
-public class InteractiveAccountSettings : IAccountSettings;
+public abstract class InteractiveAccountSettings : IAccountSettings;
+
+public class InteractiveMicrosoftAccountSettings : InteractiveAccountSettings;
+
+public class InteractiveLocalAccountSettings : InteractiveAccountSettings;
 
 public class UnattendedAccountSettings : IAccountSettings
 {
@@ -152,9 +156,13 @@ class UsersModifier(ModifierContext context) : Modifier(context)
         AddAutoLogon((XmlElement)Document.SelectSingleNodeOrThrow("//u:AutoLogon", NamespaceManager), settings);
         AddUserAccounts((XmlElement)Document.SelectSingleNodeOrThrow("//u:UserAccounts", NamespaceManager), settings);
         break;
-      case InteractiveAccountSettings:
+      case InteractiveAccountSettings settings:
         Document.SelectSingleNodeOrThrow("//u:AutoLogon", NamespaceManager).RemoveSelf();
         Document.SelectSingleNodeOrThrow("//u:UserAccounts", NamespaceManager).RemoveSelf();
+        if (settings is InteractiveLocalAccountSettings)
+        {
+          Document.SelectSingleNodeOrThrow("//u:HideOnlineAccountScreens", NamespaceManager).InnerText = "true";
+        }
         break;
       default:
         throw new NotSupportedException();
