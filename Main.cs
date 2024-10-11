@@ -787,6 +787,7 @@ public class UnattendGenerator
     );
 
     new List<Modifier> {
+      new ComputerNameModifier(context),
       new DiskModifier(context),
       new BypassModifier(context),
       new ProductKeyModifier(context),
@@ -801,7 +802,6 @@ public class UnattendGenerator
       new OptimizationsModifier(context),
       new PersonalizationModifier(context),
       new ComponentsModifier(context),
-      new ComputerNameModifier(context),
       new TimeZoneModifier(context),
       new WdacModifier(context),
       new ScriptModifier(context),
