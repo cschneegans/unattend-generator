@@ -129,38 +129,6 @@ internal static class Util
     return element;
   }
 
-  public static string ToPrettyString(XmlDocument doc)
-  {
-    using var sw = new StringWriter();
-    using var writer = XmlWriter.Create(sw, new XmlWriterSettings()
-    {
-      CloseOutput = true,
-      OmitXmlDeclaration = true,
-      Indent = true,
-      IndentChars = "\t",
-      NewLineChars = "\r\n",
-    });
-    doc.Save(writer);
-    writer.Close();
-    return sw.ToString();
-  }
-
-  public static byte[] ToPrettyBytes(XmlDocument doc)
-  {
-    using var mstr = new MemoryStream();
-    using var writer = XmlWriter.Create(mstr, new XmlWriterSettings()
-    {
-      Encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false),
-      CloseOutput = true,
-      Indent = true,
-      IndentChars = "\t",
-      NewLineChars = "\r\n",
-    });
-    doc.Save(writer);
-    writer.Close();
-    return mstr.ToArray();
-  }
-
   public static string Indent(string value)
   {
     return $"\r\n{value.Trim()}\r\n\t\t";

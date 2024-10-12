@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 
@@ -818,9 +820,32 @@ public class UnattendGenerator
     return doc;
   }
 
-  public byte[] GenerateBytes(Configuration config)
+  /// <summary>
+  /// Serializes an <c>autounattend.xml</c> document such that it can be reliably processed. Windows Setup expects 
+  /// the document to have an <c>encoding="utf-8"</c> encoding declaration, but actually only supports ASCII characters.
+  /// </summary>
+  public static byte[] Serialize(XmlDocument doc)
   {
-    return Util.ToPrettyBytes(GenerateXml(config));
+    using var mstr = new MemoryStream();
+    {
+      using StreamWriter sw = new(mstr, encoding: Encoding.ASCII, leaveOpen: true);
+      sw.WriteLine(@"<?xml version=""1.0"" encoding=""utf-8""?>");
+      sw.Close();
+    }
+    {
+      using var writer = XmlWriter.Create(mstr, new XmlWriterSettings()
+      {
+        Encoding = Encoding.ASCII,
+        OmitXmlDeclaration = true,
+        CloseOutput = true,
+        Indent = true,
+        IndentChars = "\t",
+        NewLineChars = "\r\n",
+      });
+      doc.Save(writer);
+      writer.Close();
+    }
+    return mstr.ToArray();
   }
 }
 
@@ -860,15 +885,31 @@ abstract class Modifier(ModifierContext context)
 
   public void AddXmlFile(XmlDocument xml, string path)
   {
-    AddFile(Util.ToPrettyString(xml), useCDataSection: true, path);
+    string ToPrettyString()
+    {
+      using var sw = new StringWriter();
+      using var writer = XmlWriter.Create(sw, new XmlWriterSettings()
+      {
+        CloseOutput = true,
+        OmitXmlDeclaration = true,
+        Indent = true,
+        IndentChars = "\t",
+        NewLineChars = "\r\n",
+      });
+      xml.Save(writer);
+      writer.Close();
+      return sw.ToString();
+    }
+
+    AddFile(ToPrettyString(), path);
   }
 
   public void AddTextFile(string content, string path)
   {
-    AddFile(content, useCDataSection: false, path);
+    AddFile(content, path);
   }
 
-  private void AddFile(string content, bool useCDataSection, string path)
+  private void AddFile(string content, string path)
   {
     {
       XmlNode root = Document.SelectSingleNodeOrThrow("/u:unattend", NamespaceManager);
@@ -897,15 +938,7 @@ abstract class Modifier(ModifierContext context)
       XmlElement file = Document.CreateElement("File", Constants.MyNamespaceUri);
       file.SetAttribute("path", path);
       extensions.AppendChild(file);
-
-      if (useCDataSection)
-      {
-        file.AppendChild(Document.CreateCDataSection(Util.Indent(content)));
-      }
-      else
-      {
-        file.AppendChild(Document.CreateTextNode(Util.Indent(content)));
-      }
+      file.AppendChild(Document.CreateTextNode(Util.Indent(content)));
     }
   }
 }

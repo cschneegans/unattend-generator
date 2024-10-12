@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Immutable;
-using System.Text;
 using System.Xml;
+using System.IO;
 
 namespace Schneegans.Unattend;
 
@@ -33,14 +33,6 @@ class Example
     );
 
     string path = Environment.ExpandEnvironmentVariables(@"%TEMP%\autounattend.xml");
-    using var writer = XmlWriter.Create(path, new XmlWriterSettings()
-    {
-      Encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false),
-      CloseOutput = true,
-      Indent = true,
-      IndentChars = "\t",
-      NewLineChars = "\r\n",
-    });
-    xml.Save(writer);
+    File.WriteAllBytes(path, UnattendGenerator.Serialize(xml));
   }
 }
