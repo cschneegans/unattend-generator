@@ -829,7 +829,8 @@ public class UnattendGenerator
     using var mstr = new MemoryStream();
     {
       using StreamWriter sw = new(mstr, encoding: Encoding.ASCII, leaveOpen: true);
-      sw.WriteLine(@"<?xml version=""1.0"" encoding=""utf-8""?>");
+      sw.Write(@"<?xml version=""1.0"" encoding=""utf-8""?>");
+      sw.Write("\r\n");
       sw.Close();
     }
     {
