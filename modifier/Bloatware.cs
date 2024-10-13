@@ -194,11 +194,11 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
             );
             break;
           case CustomBloatwareStep when bw.Id == "RemoveCopilot":
+            UserOnceScript.Append("Get-AppxPackage -Name 'Microsoft.Windows.Ai.Copilot.Provider' | Remove-AppxPackage;");
             appender.Append(
               CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
               {
                 return [
-                  CommandBuilder.UserRunOnceCommand(rootKey, subKey, "UninstallCopilot", CommandBuilder.PowerShellCommand("Get-AppxPackage -Name 'Microsoft.Windows.Ai.Copilot.Provider' | Remove-AppxPackage;")),
                   CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Policies\Microsoft\Windows\WindowsCopilot"" /v TurnOffWindowsCopilot /t REG_DWORD /d 1 /f")
                 ];
               })

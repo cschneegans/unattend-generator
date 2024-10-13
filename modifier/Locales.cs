@@ -81,12 +81,7 @@ class LocalesModifier(ModifierContext context) : Modifier(context)
       if (settings.GeoLocation.Id != settings.LocaleAndKeyboard.Locale.GeoLocation?.Id)
       {
         CommandAppender appender = GetAppender(CommandConfig.Specialize);
-        appender.Append(
-          CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-          {
-            return [CommandBuilder.UserRunOnceCommand(rootKey, subKey, "GeoLocation", CommandBuilder.PowerShellCommand($"Set-WinHomeLocation -GeoId {settings.GeoLocation.Id};"))];
-          }
-         ));
+        UserOnceScript.Append($"Set-WinHomeLocation -GeoId {settings.GeoLocation.Id};");
       }
     }
     else if (Configuration.LanguageSettings is InteractiveLanguageSettings)

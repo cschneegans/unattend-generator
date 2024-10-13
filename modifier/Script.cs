@@ -169,12 +169,14 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
         );
         break;
       case ScriptPhase.UserOnce:
-        appender.Append(
-          CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-          {
-            return [CommandBuilder.UserRunOnceCommand(rootKey, subKey, info.Key, command)];
-          })
-        );
+        if (info.Script.Type == ScriptType.Ps1)
+        {
+          UserOnceScript.InvokeFile(info.ScriptPath);
+        }
+        else
+        {
+          UserOnceScript.Append(command + ";");
+        }
         break;
       case ScriptPhase.DefaultUser:
         appender.Append(

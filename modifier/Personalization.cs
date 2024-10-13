@@ -54,10 +54,11 @@ class PersonalizationModifier(ModifierContext context) : Modifier(context)
           {
             return [
               CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\SOFTWARE\Microsoft\Windows\DWM"" /v ColorPrevalence /t REG_DWORD /d {(settings.AccentColorOnBorders ? 1 : 0)} /f"),
-              CommandBuilder.UserRunOnceCommand(rootKey, subKey, "SetColorTheme", CommandBuilder.InvokePowerShellScript(ps1File)),
             ];
           })
         );
+        UserOnceScript.InvokeFile(ps1File);
+        UserOnceScript.RestartExplorer();
       }
     }
     {
@@ -69,14 +70,7 @@ class PersonalizationModifier(ModifierContext context) : Modifier(context)
         writer.WriteLine($"$htmlColor = '{ColorTranslator.ToHtml(settings.Color)}';");
         writer.WriteLine(script);
         AddTextFile(writer.ToString(), ps1File);
-        appender.Append(
-          CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-          {
-            return [
-              CommandBuilder.UserRunOnceCommand(rootKey, subKey, "SetWallpaper", CommandBuilder.InvokePowerShellScript(ps1File)),
-            ];
-          })
-        );
+        UserOnceScript.InvokeFile(ps1File);
       }
     }
   }

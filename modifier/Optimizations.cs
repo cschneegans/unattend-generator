@@ -112,12 +112,8 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       string ps1File = @"C:\Windows\Setup\Scripts\TaskbarIcons.ps1";
       string script = Util.StringFromResource("TaskbarIcons.ps1");
       AddTextFile(script, ps1File);
-      appender.Append(
-        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-        {
-          return [CommandBuilder.UserRunOnceCommand(rootKey, subKey, "TaskbarIcons", CommandBuilder.InvokePowerShellScript(ps1File))];
-        })
-      );
+      UserOnceScript.InvokeFile(ps1File);
+      UserOnceScript.RestartExplorer();
     }
 
     if (Configuration.DisableDefender)
@@ -255,14 +251,17 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       appender.Append(
         CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
         {
-          string script = $"$mountKey = '{subKey}';\r\n" + Util.StringFromResource("TurnOffSystemSounds.ps1");
-          string ps1File = @"%TEMP%\sounds.ps1";
-          AddTextFile(script, ps1File);
+          StringWriter writer = new();
+          writer.WriteLine(@$"$mountKey = '{rootKey}\{subKey}';");
+          writer.WriteLine(Util.StringFromResource("TurnOffSystemSounds.ps1"));
+          string ps1File = @"%TEMP%\TurnOffSystemSounds.ps1";
+          AddTextFile(writer.ToString(), ps1File);
           return [
             CommandBuilder.InvokePowerShellScript(ps1File),
-            CommandBuilder.UserRunOnceCommand(rootKey, subKey, "NoSounds", CommandBuilder.RegistryCommand(@"add ""HKCU\AppEvents\Schemes"" /ve /t REG_SZ /d "".None"" /f")),
           ];
         }));
+      UserOnceScript.Append(@"Set-ItemProperty -LiteralPath 'Registry::HKCU\AppEvents\Schemes' -Name '(Default)' -Type 'String' -Value '.None';");
+
       appender.Append([
         CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation"" /v DisableStartupSound /t REG_DWORD /d 1 /f"),
         CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides"" /v UserSetting_DisableStartupSound /t REG_DWORD /d 1 /f"),
@@ -344,12 +343,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.ClassicContextMenu)
     {
-      appender.Append(
-        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-        {
-          return [CommandBuilder.UserRunOnceCommand(rootKey, subKey, "ClassicContextMenu", CommandBuilder.RegistryCommand(@$"add ""HKCU\Software\Classes\CLSID\{{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}}\InprocServer32"" /ve /f"))];
-        })
-      );
+      UserOnceScript.Append(@"New-Item -Path 'Registry::HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32' -ErrorAction 'SilentlyContinue';");
     }
 
     if (Configuration.LeftTaskbar)
@@ -453,14 +447,13 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       );
     }
     {
-      appender.Append(
-        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-        {
-          return [
-            CommandBuilder.UserRunOnceCommand(rootKey, subKey, "SearchboxTaskbarMode", CommandBuilder.RegistryCommand(@$"add HKCU\Software\Microsoft\Windows\CurrentVersion\Search /v SearchboxTaskbarMode /t REG_DWORD /d {Configuration.TaskbarSearch:D} /f")),
-          ];
-        })
-      );
+      if (Configuration.LaunchToThisPC)
+      {
+        UserOnceScript.Append(@"Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'LaunchTo' -Type 'DWord' -Value 1;");
+      }
+    }
+    {
+      UserOnceScript.Append(@$"Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Type 'DWord' -Value {Configuration.TaskbarSearch:D};");
     }
     {
       void SetStartPins(string json)

@@ -159,26 +159,6 @@ static class CommandBuilder
     return $"reg.exe {value}";
   }
 
-  public static string UserRunOnceCommand(string rootKey, string subKey, string name, string command)
-  {
-    return UserRunCommand(rootKey, subKey, "RunOnce", name, command);
-  }
-
-  public static string RunAtLogonCommand(string rootKey, string subKey, string name, string command)
-  {
-    return UserRunCommand(rootKey, subKey, "Run", name, command);
-  }
-
-  private static string UserRunCommand(string rootKey, string subKey, string runKey, string name, string command)
-  {
-    static string Escape(string s)
-    {
-      return s.Replace(@"""", @"\""");
-    }
-
-    return RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\{runKey}"" /v ""{Escape(name)}"" /t REG_SZ /d ""{Escape(command)}"" /f");
-  }
-
   public delegate IEnumerable<string> RegistryDefaultUserAction(string rootKey, string subKey);
 
   public static IEnumerable<string> RegistryDefaultUserCommand(RegistryDefaultUserAction action)
@@ -315,6 +295,7 @@ public record class Configuration(
   HideModes HideFiles,
   bool HideEdgeFre,
   bool MakeEdgeUninstallable,
+  bool LaunchToThisPC,
   TaskbarSearchMode TaskbarSearch,
   IStartPinsSettings StartPinsSettings,
   IStartTilesSettings StartTilesSettings,
@@ -370,11 +351,54 @@ public record class Configuration(
     HideFiles: HideModes.Hidden,
     HideEdgeFre: false,
     MakeEdgeUninstallable: false,
+    LaunchToThisPC: false,
     TaskbarSearch: TaskbarSearchMode.Box,
     StartPinsSettings: new DefaultStartPinsSettings(),
     StartTilesSettings: new DefaultStartTilesSettings(),
     CompactOsMode: CompactOsModes.Default
   );
+}
+
+/// <summary>
+/// Collects PowerShell commands that will be run whenever a user logs on for the first time.
+/// </summary>
+public class UserOnceScript
+{
+  private bool needsExplorerRestart = false;
+  private readonly List<string> commands = [];
+
+  public void Append(string command)
+  {
+    commands.Add(command);
+  }
+
+  public void InvokeFile(string file)
+  {
+    Append($"Get-Content -LiteralPath '{file}' -Raw | Invoke-Expression;");
+  }
+
+  public void RestartExplorer()
+  {
+    needsExplorerRestart = true;
+  }
+
+  public string GetScript()
+  {
+    IEnumerable<string> Lines()
+    {
+      yield return "& {";
+      foreach (string command in commands)
+      {
+        yield return command;
+      }
+      if (needsExplorerRestart)
+      {
+        yield return Util.StringFromResource("RestartExplorer.ps1");
+      }
+      yield return @"} *>&1 >> ""$env:TEMP\UserOnce.log"";";
+    }
+    return string.Join("\r\n", Lines());
+  }
 }
 
 public interface IKeyed
@@ -785,7 +809,8 @@ public class UnattendGenerator
       Configuration: config,
       Document: doc,
       NamespaceManager: ns,
-      Generator: this
+      Generator: this,
+      UserOnceScript: new UserOnceScript()
     );
 
     new List<Modifier> {
@@ -807,6 +832,7 @@ public class UnattendGenerator
       new TimeZoneModifier(context),
       new WdacModifier(context),
       new ScriptModifier(context),
+      new UserOnceModifier(context),
       new OrderModifier(context),
       new ProcessorArchitectureModifier(context),
       new PrettyModifier(context),
@@ -853,7 +879,8 @@ public record class ModifierContext(
   XmlDocument Document,
   XmlNamespaceManager NamespaceManager,
   Configuration Configuration,
-  UnattendGenerator Generator
+  UnattendGenerator Generator,
+  UserOnceScript UserOnceScript
 );
 
 abstract class Modifier(ModifierContext context)
@@ -865,6 +892,8 @@ abstract class Modifier(ModifierContext context)
   public Configuration Configuration { get; } = context.Configuration;
 
   public UnattendGenerator Generator { get; } = context.Generator;
+
+  public UserOnceScript UserOnceScript { get; } = context.UserOnceScript;
 
   public XmlElement NewSimpleElement(string name, XmlElement parent, string innerText)
   {
