@@ -116,6 +116,18 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       UserOnceScript.RestartExplorer();
     }
 
+    if(Configuration.HideTaskViewButton)
+    {
+      appender.Append(
+        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
+        {
+          return [
+            CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ShowTaskViewButton /t REG_DWORD /d 0 /f"),
+          ];
+        })
+      );
+    }
+
     if (Configuration.DisableDefender)
     {
       CommandAppender pe = GetAppender(CommandConfig.WindowsPE);
