@@ -26,7 +26,8 @@ public record class CustomColorSettings(
   ColorTheme AppsTheme,
   bool EnableTransparency,
   bool AccentColorOnStart,
-  bool AccentColorOnBorders
+  bool AccentColorOnBorders,
+  Color AccentColor
 ) : IColorSettings;
 
 class PersonalizationModifier(ModifierContext context) : Modifier(context)
@@ -46,6 +47,7 @@ class PersonalizationModifier(ModifierContext context) : Modifier(context)
           $lightThemeApps = {settings.AppsTheme:D};
           $accentColorOnStart = {(settings.AccentColorOnStart ? 1 : 0)};
           $enableTransparency = {(settings.EnableTransparency ? 1 : 0)};
+          $htmlAccentColor = '{ColorTranslator.ToHtml(settings.AccentColor)}';
           """);
         writer.WriteLine(script);
         AddTextFile(writer.ToString(), ps1File);
