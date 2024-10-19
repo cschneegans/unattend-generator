@@ -772,5 +772,31 @@
         ]
       }
     ]
+  },
+  {
+    "DisplayName": "Windows Hello",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.CapabilityBloatwareStep, UnattendGenerator",
+        "Selector": "Hello.Face.18967",
+        "AppliesTo": [
+          "Windows 10"
+        ]
+      },
+      {
+        "$type": "Schneegans.Unattend.CapabilityBloatwareStep, UnattendGenerator",
+        "Selector": "Hello.Face.Migration.18967",
+        "AppliesTo": [
+          "Windows 10"
+        ]
+      },
+      {
+        "$type": "Schneegans.Unattend.CapabilityBloatwareStep, UnattendGenerator",
+        "Selector": "Hello.Face.20134",
+        "AppliesTo": [
+          "Windows 11"
+        ]
+      }
+    ]
   }
 ]
