@@ -41,6 +41,19 @@
     ]
   },
   {
+    "DisplayName": "Media Features",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.OptionalFeatureBloatwareStep, UnattendGenerator",
+        "Selector": "MediaPlayback",
+        "AppliesTo": [
+          "Windows 10",
+          "Windows 11"
+        ]
+      }
+    ]
+  },
+  {
     "DisplayName": "WordPad",
     "Steps": [
       {
