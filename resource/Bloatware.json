@@ -811,5 +811,19 @@
         ]
       }
     ]
+  },
+  {
+    "DisplayName": "PowerShell 2.0",
+    "Token": "PowerShell2",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.OptionalFeatureBloatwareStep, UnattendGenerator",
+        "Selector": "MicrosoftWindowsPowerShellV2Root",
+        "AppliesTo": [
+          "Windows 10",
+          "Windows 11"
+        ]
+      }
+    ]
   }
 ]
