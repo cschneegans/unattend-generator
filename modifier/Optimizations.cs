@@ -95,6 +95,21 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       appender.Append(CommandBuilder.RegistryDefaultUserCommand(SetExplorerOptions));
     }
 
+    if(Configuration.DisableWindowsUpdate)
+    {
+      AddTextFile(
+        Util.StringFromResource("PauseWindowsUpdate.ps1"),
+        @"C:\Windows\Setup\Scripts\PauseWindowsUpdate.ps1"
+      );
+      AddXmlFile(
+        Util.XmlDocumentFromResource("PauseWindowsUpdate.xml"),
+        @"C:\Windows\Setup\Scripts\PauseWindowsUpdate.xml"
+      );
+      appender.Append(
+        CommandBuilder.PowerShellCommand(@"Register-ScheduledTask -TaskName 'PauseWindowsUpdate' -Xml $( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\PauseWindowsUpdate.xml' -Raw );")
+      );
+    }
+
     if (Configuration.ShowAllTrayIcons)
     {
       string ps1File = @"C:\Windows\Setup\Scripts\ShowAllTrayIcons.ps1";
