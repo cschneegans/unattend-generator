@@ -343,10 +343,10 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.VMwareTools)
     {
-      string ps1File = @"%TEMP%\VMwareTools.ps1";
+      string ps1File = @"C:\Windows\Setup\Scripts\VMwareTools.ps1";
       string script = Util.StringFromResource("VMwareTools.ps1");
       AddTextFile(script, ps1File);
-      appender.Append(
+      (Configuration.DisableDefender ? GetAppender(CommandConfig.Specialize) : GetAppender(CommandConfig.Oobe)).Append(
         CommandBuilder.InvokePowerShellScript(ps1File)
       );
     }
