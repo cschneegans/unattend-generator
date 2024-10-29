@@ -12,10 +12,7 @@ public class InteractiveLanguageSettings : ILanguageSettings;
 public record class LocaleAndKeyboard(
   UserLocale Locale,
   KeyboardIdentifier Keyboard
-)
-{
-  public string Combined => $"{Locale.LCID}:{Keyboard.Id}";
-}
+);
 
 public record class UnattendedLanguageSettings(
   ImageLanguage ImageLanguage,
@@ -60,9 +57,32 @@ class LocalesModifier(ModifierContext context) : Modifier(context)
             {
               return [pair.Keyboard.Id];
             }
+            else if (pair.Locale.LCID == "1000")
+            {
+              UserLocale GetReplacementForUnspecifiedLocale()
+              {
+                if (Generator.UserLocales.TryGetValue(settings.ImageLanguage.Id, out UserLocale? found))
+                {
+                  return found;
+                }
+                else if (settings.ImageLanguage.Id == "zh-CN")
+                {
+                  return Generator.UserLocales["zh"];
+                }
+                else if (settings.ImageLanguage.Id == "zh-TW")
+                {
+                  return Generator.UserLocales["zh-Hant"];
+                }
+                else
+                {
+                  return pair.Locale;
+                }
+              }
+              return [$"{GetReplacementForUnspecifiedLocale().LCID}:{pair.Keyboard.Id}"];
+            }
             else
             {
-              return [pair.Combined];
+              return [$"{pair.Locale.LCID}:{pair.Keyboard.Id}"];
             }
           }
         ));
