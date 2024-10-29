@@ -825,5 +825,41 @@
         ]
       }
     ]
+  },
+  {
+    "DisplayName": "Handwriting (all languages)",
+    "Token": "Handwriting",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.CapabilityBloatwareStep, UnattendGenerator",
+        "Selector": "Language.Handwriting",
+        "AppliesTo": [
+          "Windows 10",
+          "Windows 11"
+        ]
+      }
+    ]
+  },
+  {
+    "DisplayName": "Speech (all languages)",
+    "Token": "Speech",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.CapabilityBloatwareStep, UnattendGenerator",
+        "Selector": "Language.Speech",
+        "AppliesTo": [
+          "Windows 10",
+          "Windows 11"
+        ]
+      },
+      {
+        "$type": "Schneegans.Unattend.CapabilityBloatwareStep, UnattendGenerator",
+        "Selector": "Language.TextToSpeech",
+        "AppliesTo": [
+          "Windows 10",
+          "Windows 11"
+        ]
+      }
+    ]
   }
 ]
