@@ -58,9 +58,17 @@ abstract class Remover<T> where T : SelectorBloatwareStep
 
 class PackageRemover : Remover<PackageBloatwareStep>
 {
-  protected override string GetCommand => "{ Get-AppxProvisionedPackage -Online; }";
+  protected override string GetCommand => """
+  {
+    Get-AppxProvisionedPackage -Online;
+  }
+  """;
 
-  protected override string FilterCommand => "{ $_.DisplayName -eq $selector; }";
+  protected override string FilterCommand => """
+  {
+    $_.DisplayName -eq $selector;
+  }
+  """;
 
   protected override string RemoveCommand =>
   """
@@ -83,9 +91,20 @@ class PackageRemover : Remover<PackageBloatwareStep>
 
 class CapabilityRemover : Remover<CapabilityBloatwareStep>
 {
-  protected override string GetCommand => "{ Get-WindowsCapability -Online; }";
+  protected override string GetCommand => """
+  {
+    Get-WindowsCapability -Online | Where-Object -Property 'State' -NotIn -Value @(
+      'NotPresent';
+      'Removed';
+    );
+  }
+  """;
 
-  protected override string FilterCommand => "{ ($_.Name -split '~')[0] -eq $selector; }";
+  protected override string FilterCommand => """
+  {
+    ($_.Name -split '~')[0] -eq $selector;
+  }
+  """;
 
   protected override string RemoveCommand =>
   """
@@ -108,9 +127,20 @@ class CapabilityRemover : Remover<CapabilityBloatwareStep>
 
 class FeatureRemover : Remover<OptionalFeatureBloatwareStep>
 {
-  protected override string GetCommand => "{ Get-WindowsOptionalFeature -Online; }";
+  protected override string GetCommand => """
+  {
+    Get-WindowsOptionalFeature -Online | Where-Object -Property 'State' -NotIn -Value @(
+      'Disabled';
+      'DisabledWithPayloadRemoved';
+    );
+  }
+  """;
 
-  protected override string FilterCommand => "{ $_.FeatureName -eq $selector; }";
+  protected override string FilterCommand => """
+  {
+    $_.FeatureName -eq $selector;
+  }
+  """;
 
   protected override string RemoveCommand =>
   """
