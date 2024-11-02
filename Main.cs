@@ -641,7 +641,7 @@ public static class Constants
 
   public const string AdministratorsGroup = "Administrators";
 
-  public const string DefaultPassword = "password";
+  public const string DefaultPassword = "";
 
   public const int RecoveryPartitionSize = 1000;
 
