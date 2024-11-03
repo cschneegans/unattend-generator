@@ -4,6 +4,10 @@ class UserOnceModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
+    if (UserOnceScript.IsEmpty)
+    {
+      return;
+    }
     CommandAppender appender = GetAppender(CommandConfig.Specialize);
     string script = UserOnceScript.GetScript();
     string ps1File = @"C:\Windows\Setup\Scripts\UserOnce.ps1";

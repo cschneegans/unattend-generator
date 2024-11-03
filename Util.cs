@@ -4,6 +4,7 @@ using System.Text;
 using System.Xml.Schema;
 using System.Xml;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Schneegans.Unattend;
 
@@ -71,18 +72,22 @@ internal static class Util
     }
   }
 
-  internal static IEnumerable<string> SplitLines(string s)
+  internal static List<string> SplitLines(string s)
   {
     return SplitLines(new StringReader(s));
   }
 
-  internal static IEnumerable<string> SplitLines(TextReader reader)
+  internal static List<string> SplitLines(TextReader reader)
   {
-    string? line;
-    while ((line = reader.ReadLine()) != null)
+    IEnumerable<string> Enumerate()
     {
-      yield return line;
+      string? line;
+      while ((line = reader.ReadLine()) != null)
+      {
+        yield return line;
+      }
     }
+    return Enumerate().ToList();
   }
 
   public static XmlElement GetOrCreateElement(Pass pass, string component, XmlDocument doc, XmlNamespaceManager ns)

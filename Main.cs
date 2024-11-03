@@ -386,22 +386,42 @@ public class UserOnceScript
     needsExplorerRestart = true;
   }
 
+  public bool IsEmpty => commands.Count == 0;
+
   public string GetScript()
   {
-    IEnumerable<string> Lines()
+    StringWriter writer = new();
+    void WriteScriptBlock(string command)
     {
-      yield return "& {";
-      foreach (string command in commands)
+      writer.WriteLine("\t{");
+      foreach (string line in Util.SplitLines(command))
       {
-        yield return command;
+        writer.WriteLine($"\t\t{line}");
       }
-      if (needsExplorerRestart)
-      {
-        yield return Util.StringFromResource("RestartExplorer.ps1");
-      }
-      yield return @"} *>&1 >> ""$env:TEMP\UserOnce.log"";";
+      writer.WriteLine("\t};");
     }
-    return string.Join("\r\n", Lines());
+    writer.WriteLine("$scripts = @(");
+    foreach (string command in commands)
+    {
+      WriteScriptBlock(command);
+    }
+    if (needsExplorerRestart)
+    {
+      WriteScriptBlock(Util.StringFromResource("RestartExplorer.ps1"));
+    }
+    writer.WriteLine(");");
+    writer.WriteLine();
+
+    writer.WriteLine("& {");
+    writer.WriteLine("\t[int] $complete = 0;");
+    writer.WriteLine("\tforeach( $script in $scripts ) {");
+    writer.WriteLine("\t\tWrite-Progress -Activity 'Running scripts to configure this user account. Do not close this window.' -PercentComplete $complete;");
+    writer.WriteLine("\t\t& $script;");
+    writer.WriteLine("\t\t$complete += 100 / $scripts.Count;");
+    writer.WriteLine("\t}");
+    writer.WriteLine(@"} *>&1 >> ""$env:TEMP\UserOnce.log"";");
+
+    return writer.ToString();
   }
 }
 

@@ -1,3 +1,3 @@
 Get-Process -Name 'explorer' -ErrorAction 'SilentlyContinue' | Where-Object -FilterScript {
-	$_.SI -eq ( Get-Process -Id $PID ).SI;
+	$_.SessionId -eq ( Get-Process -Id $PID ).SessionId;
 } | Stop-Process -Force;
