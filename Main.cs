@@ -359,7 +359,7 @@ public record class Configuration(
     Components: ImmutableDictionary.Create<string, ImmutableSortedSet<Pass>>(),
     Bloatwares: [],
     ExpressSettings: ExpressSettingsMode.DisableAll,
-    ScriptSettings: new ScriptSettings([]),
+    ScriptSettings: new ScriptSettings(Scripts: [], RestartExplorer: false),
     KeySettings: new SkipKeySettings(),
     WallpaperSettings: new DefaultWallpaperSettings(),
     ColorSettings: new DefaultColorSettings(),

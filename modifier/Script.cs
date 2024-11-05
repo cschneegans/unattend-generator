@@ -66,7 +66,8 @@ public static class ScriptExtensions
 }
 
 public record class ScriptSettings(
-  IEnumerable<Script> Scripts
+  IEnumerable<Script> Scripts,
+  bool RestartExplorer
 );
 
 public class Script
@@ -119,6 +120,11 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
+    if (Configuration.ScriptSettings.RestartExplorer)
+    {
+      UserOnceScript.RestartExplorer();
+    }
+
     var infos = Configuration.ScriptSettings.Scripts.Select(ScriptInfo.Create).ToImmutableList();
     if (infos.IsEmpty)
     {
