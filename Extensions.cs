@@ -46,4 +46,14 @@ public static class Extensions
       keyComparer: StringComparer.OrdinalIgnoreCase
     );
   }
+
+  public static string JoinString<T>(this IEnumerable<T> enumerable, string separator)
+  {
+    return string.Join(separator, enumerable);
+  }
+
+  public static string JoinString<T>(this IEnumerable<T> enumerable, char separator)
+  {
+    return string.Join(separator, enumerable);
+  }
 }

@@ -217,8 +217,43 @@ static class CommandBuilder
     return @$"cscript.exe //E:jscript ""{filepath}""";
   }
 
-  public static IEnumerable<string> WriteToFile(string path, string line)
+  public static List<string> WriteToFile(string path, IEnumerable<string> lines)
   {
+    static IEnumerable<string> Trim(IEnumerable<string> input)
+    {
+      return input
+        .Select(l => l.Trim())
+        .Where(e => e.Length > 0);
+    }
+
+    static IEnumerable<IEnumerable<string>> Join(IEnumerable<string> input)
+    {
+      int max = 200;
+      List<List<string>> output = [];
+      List<string> current = [];
+      foreach (string line in input)
+      {
+        if (current.Count == 0)
+        {
+          current.Add(line);
+        }
+        else if (current.Sum(e => e.Length + 10) + line.Length > max)
+        {
+          output.Add(current);
+          current = [line];
+        }
+        else
+        {
+          current.Add(line);
+        }
+      }
+      if (current.Count > 0)
+      {
+        output.Add(current);
+      }
+      return output;
+    }
+
     static string EscapeShell(string command)
     {
       return command
@@ -227,20 +262,24 @@ static class CommandBuilder
         .Replace("<", "^<")
         .Replace(">", "^>")
         .Replace("|", "^|")
-        .Replace("%", "^%");
+        .Replace("%", "^%")
+        .Replace(")", "^)");
     }
 
-    if (string.IsNullOrWhiteSpace(line))
+    IEnumerable<string> Enumerate()
     {
-      yield break;
+      foreach (IEnumerable<string> group in Join(Trim(lines)))
+      {
+        string echos = group.Select(l => $"echo {EscapeShell(l)}").JoinString('&');
+        string command = $@"cmd.exe /c "">>""{path}"" ({echos})""";
+        if (command.Length >= 255)
+        {
+          throw new ConfigurationException($"Line '{command}' is too long.");
+        }
+        yield return command;
+      }
     }
-
-    string command = $@"cmd.exe /c "">>""{path}"" echo {EscapeShell(line)}""";
-    if (command.Length >= 255)
-    {
-      throw new ConfigurationException($"Line '{line}' is too long.");
-    }
-    yield return command;
+    return Enumerate().ToList();
   }
 }
 

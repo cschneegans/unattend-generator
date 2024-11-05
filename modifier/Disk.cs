@@ -132,15 +132,10 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     string log = @"X:\diskpart.log";
 
     CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
-    foreach (string line in lines)
-    {
-      appender.Append(
-        CommandBuilder.WriteToFile(script, line)
-      );
-    }
-    appender.Append(
-      CommandBuilder.ShellCommand($@"diskpart.exe /s ""{script}"" >>""{log}"" || ( type ""{log}"" & echo diskpart encountered an error. & pause & exit /b 1 )")
-    );
+    appender.Append([
+      ..CommandBuilder.WriteToFile(script, lines),
+      CommandBuilder.ShellCommand($@"diskpart.exe /s ""{script}"" >>""{log}"" || ( type ""{log}"" & echo diskpart encountered an error. & pause & exit /b 1 )"),
+    ]);
   }
 
   public static string GetCustomDiskpartScript()

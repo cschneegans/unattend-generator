@@ -146,16 +146,11 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     if (Configuration.DisableDefender)
     {
       CommandAppender pe = GetAppender(CommandConfig.WindowsPE);
-      const string path = @"X:\disable-defender.vbs";
-      foreach (string line in Util.SplitLines(Util.StringFromResource("disable-defender.vbs")))
-      {
-        pe.Append(
-          CommandBuilder.WriteToFile(path, line)
-        );
-      }
-      pe.Append(
+      const string path = @"X:\defender.vbs";
+      pe.Append([
+        ..CommandBuilder.WriteToFile(path, Util.SplitLines(Util.StringFromResource("disable-defender.vbs"))),
         CommandBuilder.ShellCommand($"start /MIN cscript.exe //E:vbscript {path}")
-      );
+      ]);
     }
 
     if (Configuration.DisableSac)
