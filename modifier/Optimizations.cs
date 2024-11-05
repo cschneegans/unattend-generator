@@ -95,7 +95,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       appender.Append(CommandBuilder.RegistryDefaultUserCommand(SetExplorerOptions));
     }
 
-    if(Configuration.DisableWindowsUpdate)
+    if (Configuration.DisableWindowsUpdate)
     {
       AddTextFile(
         Util.StringFromResource("PauseWindowsUpdate.ps1"),
