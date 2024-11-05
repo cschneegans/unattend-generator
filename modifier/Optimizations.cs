@@ -148,7 +148,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       CommandAppender pe = GetAppender(CommandConfig.WindowsPE);
       const string path = @"X:\defender.vbs";
       pe.Append([
-        ..CommandBuilder.WriteToFile(path, Util.SplitLines(Util.StringFromResource("disable-defender.vbs"))),
+        ..CommandBuilder.WriteToFile(path, Util.SplitLines(Util.StringFromResource("DisableDefender.vbs"))),
         CommandBuilder.ShellCommand($"start /MIN cscript.exe //E:vbscript {path}")
       ]);
     }

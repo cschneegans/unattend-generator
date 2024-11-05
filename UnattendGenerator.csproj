@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <None Remove="resource\ClassicContextMenu.ps1" />
-    <None Remove="resource\disable-defender.vbs" />
+    <None Remove="resource\DisableDefender.vbs" />
     <None Remove="resource\MakeEdgeUninstallable.ps1" />
     <None Remove="resource\PauseWindowsUpdate.ps1" />
     <None Remove="resource\PauseWindowsUpdate.xml" />
@@ -33,7 +33,7 @@
     <EmbeddedResource Include="resource\autounattend.xml" />
     <EmbeddedResource Include="resource\autounattend.xsd" />
     <EmbeddedResource Include="resource\Component.json" />
-    <EmbeddedResource Include="resource\disable-defender.vbs" />
+    <EmbeddedResource Include="resource\DisableDefender.vbs" />
     <EmbeddedResource Include="resource\ExtractScripts.ps1" />
     <EmbeddedResource Include="resource\GeoId.json" />
     <EmbeddedResource Include="resource\ImageLanguage.json" />
