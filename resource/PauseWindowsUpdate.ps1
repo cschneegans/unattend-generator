@@ -14,6 +14,6 @@ $params = @{
 Set-ItemProperty @params -Name 'PauseFeatureUpdatesStartTime' -Value $start;
 Set-ItemProperty @params -Name 'PauseFeatureUpdatesEndTime' -Value $end;
 Set-ItemProperty @params -Name 'PauseQualityUpdatesStartTime' -Value $start;
-Set-ItemProperty @params -Name 'PauseQualityUpdatesEndTime' -Value $end;				
+Set-ItemProperty @params -Name 'PauseQualityUpdatesEndTime' -Value $end;
 Set-ItemProperty @params -Name 'PauseUpdatesStartTime' -Value $start;
 Set-ItemProperty @params -Name 'PauseUpdatesExpiryTime' -Value $end;
