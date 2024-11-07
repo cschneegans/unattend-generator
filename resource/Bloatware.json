@@ -861,5 +861,19 @@
         ]
       }
     ]
+  },
+  {
+    "DisplayName": "Windows Fax and Scan",
+    "Token": "FaxAndScan",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.CapabilityBloatwareStep, UnattendGenerator",
+        "Selector": "Print.Fax.Scan",
+        "AppliesTo": [
+          "Windows 10",
+          "Windows 11"
+        ]
+      }
+    ]
   }
 ]
