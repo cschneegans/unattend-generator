@@ -875,5 +875,18 @@
         ]
       }
     ]
+  },
+  {
+    "DisplayName": "OneSync",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.CapabilityBloatwareStep, UnattendGenerator",
+        "Selector": "OneCoreUAP.OneSync",
+        "AppliesTo": [
+          "Windows 10",
+          "Windows 11"
+        ]
+      }
+    ]
   }
 ]
