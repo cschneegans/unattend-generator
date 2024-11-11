@@ -12,6 +12,8 @@
     <None Remove="resource\ClassicContextMenu.ps1" />
     <None Remove="resource\DisableDefender.vbs" />
     <None Remove="resource\MakeEdgeUninstallable.ps1" />
+    <None Remove="resource\MoveActiveHours.vbs" />
+    <None Remove="resource\MoveActiveHours.xml" />
     <None Remove="resource\PauseWindowsUpdate.ps1" />
     <None Remove="resource\PauseWindowsUpdate.xml" />
     <None Remove="resource\RemoveBloatware.ps1" />
@@ -40,12 +42,14 @@
     <EmbeddedResource Include="resource\KeyboardIdentifier.json" />
     <EmbeddedResource Include="resource\Bloatware.json" />
     <EmbeddedResource Include="resource\known-writeable-folders.txt" />
+    <EmbeddedResource Include="resource\MoveActiveHours.xml" />
     <EmbeddedResource Include="resource\PauseWindowsUpdate.xml" />
     <EmbeddedResource Include="resource\RestartExplorer.ps1" />
     <EmbeddedResource Include="resource\SetComputerName.ps1" />
     <EmbeddedResource Include="resource\SetColorTheme.ps1" />
     <EmbeddedResource Include="resource\PauseWindowsUpdate.ps1" />
     <EmbeddedResource Include="resource\ClassicContextMenu.ps1" />
+    <EmbeddedResource Include="resource\MoveActiveHours.vbs" />
     <EmbeddedResource Include="resource\TaskbarIcons.ps1" />
     <EmbeddedResource Include="resource\MakeEdgeUninstallable.ps1" />
     <EmbeddedResource Include="resource\SetWallpaper.ps1" />

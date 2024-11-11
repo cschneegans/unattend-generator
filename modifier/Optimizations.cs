@@ -238,12 +238,18 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       );
     }
 
-    if (Configuration.NoAutoRebootWithLoggedOnUsers)
+    if (Configuration.PreventAutomaticReboot)
     {
       appender.Append([
         CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" /v AUOptions /t REG_DWORD /d 4 /f"),
         CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" /v NoAutoRebootWithLoggedOnUsers /t REG_DWORD /d 1 /f"),
       ]);
+
+      AddTextFile(Util.StringFromResource("MoveActiveHours.vbs"), @"C:\Windows\Setup\Scripts\MoveActiveHours.vbs");
+      AddXmlFile(Util.XmlDocumentFromResource("MoveActiveHours.xml"), @"C:\Windows\Setup\Scripts\MoveActiveHours.xml");
+      appender.Append(
+        CommandBuilder.PowerShellCommand(@"Register-ScheduledTask -TaskName 'MoveActiveHours' -Xml $( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\MoveActiveHours.xml' -Raw );")
+      );
     }
 
     if (Configuration.DisableFastStartup)
