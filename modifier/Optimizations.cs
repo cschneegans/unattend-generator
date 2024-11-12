@@ -561,5 +561,8 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           throw new NotSupportedException();
       }
     }
+    {
+      FirstLogonScript.Append(CommandBuilder.ShellCommand(@"rmdir C:\Windows.old") + ';');
+    }
   }
 }
