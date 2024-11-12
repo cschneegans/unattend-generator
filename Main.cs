@@ -403,12 +403,16 @@ public record class Configuration(
 }
 
 /// <summary>
-/// Collects PowerShell commands that will be run whenever a user logs on for the first time.
+/// Collects PowerShell commands that will be executed sequentially.
 /// </summary>
-public class UserOnceScript
+public abstract class PowerShellSequence
 {
   private bool needsExplorerRestart = false;
   private readonly List<string> commands = [];
+
+  protected abstract string Activity();
+
+  protected abstract string LogFile();
 
   public void Append(string command)
   {
@@ -454,13 +458,45 @@ public class UserOnceScript
     writer.WriteLine("& {");
     writer.WriteLine("\t[int] $complete = 0;");
     writer.WriteLine("\tforeach( $script in $scripts ) {");
-    writer.WriteLine("\t\tWrite-Progress -Activity 'Running scripts to configure this user account. Do not close this window.' -PercentComplete $complete;");
+    writer.WriteLine($"\t\tWrite-Progress -Activity '{Activity()} Do not close this window.' -PercentComplete $complete;");
     writer.WriteLine("\t\t& $script;");
     writer.WriteLine("\t\t$complete += 100 / $scripts.Count;");
     writer.WriteLine("\t}");
-    writer.WriteLine(@"} *>&1 >> ""$env:TEMP\UserOnce.log"";");
+    writer.WriteLine(@$"}} *>&1 >> ""{LogFile()}"";");
 
     return writer.ToString();
+  }
+}
+
+/// <summary>
+/// Collects PowerShell commands that will be run whenever a user logs on for the first time.
+/// </summary>
+public class UserOnceScriptSequence : PowerShellSequence
+{
+  protected override string Activity()
+  {
+    return "Running scripts to configure this user account.";
+  }
+
+  protected override string LogFile()
+  {
+    return @"$env:TEMP\UserOnce.log";
+  }
+}
+
+/// <summary>
+/// Collects PowerShell commands that will be run when the first user logs on after Windows has been installed.
+/// </summary>
+public class FirstLogonSequence : PowerShellSequence
+{
+  protected override string Activity()
+  {
+    return "Running scripts to finalize your Windows installation.";
+  }
+
+  protected override string LogFile()
+  {
+    return @"C:\Windows\Setup\Scripts\FirstLogon.log";
   }
 }
 
@@ -873,7 +909,8 @@ public class UnattendGenerator
       Document: doc,
       NamespaceManager: ns,
       Generator: this,
-      UserOnceScript: new UserOnceScript()
+      FirstLogonScript: new FirstLogonSequence(),
+      UserOnceScript: new UserOnceScriptSequence()
     );
 
     new List<Modifier> {
@@ -895,6 +932,7 @@ public class UnattendGenerator
       new TimeZoneModifier(context),
       new WdacModifier(context),
       new ScriptModifier(context),
+      new FirstLogonModifier(context),
       new UserOnceModifier(context),
       new OrderModifier(context),
       new ProcessorArchitectureModifier(context),
@@ -943,7 +981,8 @@ public record class ModifierContext(
   XmlNamespaceManager NamespaceManager,
   Configuration Configuration,
   UnattendGenerator Generator,
-  UserOnceScript UserOnceScript
+  FirstLogonSequence FirstLogonScript,
+  UserOnceScriptSequence UserOnceScript
 );
 
 abstract class Modifier(ModifierContext context)
@@ -956,7 +995,9 @@ abstract class Modifier(ModifierContext context)
 
   public UnattendGenerator Generator { get; } = context.Generator;
 
-  public UserOnceScript UserOnceScript { get; } = context.UserOnceScript;
+  public FirstLogonSequence FirstLogonScript { get; } = context.FirstLogonScript;
+
+  public UserOnceScriptSequence UserOnceScript { get; } = context.UserOnceScript;
 
   public XmlElement NewSimpleElement(string name, XmlElement parent, string innerText)
   {

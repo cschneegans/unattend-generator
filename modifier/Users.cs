@@ -212,13 +212,7 @@ class UsersModifier(ModifierContext context) : Modifier(context)
     NewSimpleElement("Enabled", container, "true");
     NewSimpleElement("LogonCount", container, "1");
     NewPasswordElement(container, "Password", password, settings.ObscurePasswords);
-
-    {
-      CommandAppender appender = GetAppender(CommandConfig.Oobe);
-      appender.Append(
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"" /v AutoLogonCount /t REG_DWORD /d 0 /f")
-      );
-    }
+    FirstLogonScript.Append(@"Set-ItemProperty -LiteralPath 'Registry::HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name 'AutoLogonCount' -Type 'DWord' -Force -Value 0;");
   }
 
   private void NewPasswordElement(XmlElement parent, string element, string password, bool obscurePasswords)

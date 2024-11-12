@@ -261,10 +261,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableSystemRestore)
     {
-      CommandAppender oobe = GetAppender(CommandConfig.Oobe);
-      oobe.Append(
-        CommandBuilder.PowerShellCommand(@"Disable-ComputerRestore -Drive 'C:\';")
-      );
+      FirstLogonScript.Append(@"Disable-ComputerRestore -Drive 'C:\';");
     }
 
     if (Configuration.DisableWidgets)
@@ -347,9 +344,14 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       string ps1File = @"C:\Windows\Setup\Scripts\VMwareTools.ps1";
       string script = Util.StringFromResource("VMwareTools.ps1");
       AddTextFile(script, ps1File);
-      (Configuration.DisableDefender ? GetAppender(CommandConfig.Specialize) : GetAppender(CommandConfig.Oobe)).Append(
-        CommandBuilder.InvokePowerShellScript(ps1File)
-      );
+      if (Configuration.DisableDefender)
+      {
+        appender.Append(CommandBuilder.InvokePowerShellScript(ps1File));
+      }
+      else
+      {
+        FirstLogonScript.InvokeFile(ps1File);
+      }
     }
 
     if (Configuration.VirtIoGuestTools)

@@ -158,31 +158,31 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
 
   private void CallScript(ScriptInfo info)
   {
-    CommandAppender appender = GetAppender(info.Script.Phase switch
-    {
-      ScriptPhase.FirstLogon => CommandConfig.Oobe,
-      _ => CommandConfig.Specialize,
-    });
-
+    CommandAppender appender = GetAppender(CommandConfig.Specialize);
     string command = CommandHelper.GetCommand(info);
+
+    void AppendPowerShellSequence(PowerShellSequence sequence)
+    {
+      if (info.Script.Type == ScriptType.Ps1)
+      {
+        sequence.InvokeFile(info.ScriptPath);
+      }
+      else
+      {
+        sequence.Append(command + ";");
+      }
+    }
 
     switch (info.Script.Phase)
     {
       case ScriptPhase.System:
+        appender.Append(command);
+        break;
       case ScriptPhase.FirstLogon:
-        appender.Append(
-          command
-        );
+        AppendPowerShellSequence(FirstLogonScript);
         break;
       case ScriptPhase.UserOnce:
-        if (info.Script.Type == ScriptType.Ps1)
-        {
-          UserOnceScript.InvokeFile(info.ScriptPath);
-        }
-        else
-        {
-          UserOnceScript.Append(command + ";");
-        }
+        AppendPowerShellSequence(UserOnceScript);
         break;
       case ScriptPhase.DefaultUser:
         appender.Append(
