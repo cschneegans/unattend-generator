@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -192,12 +193,7 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
               CommandBuilder.ShellCommand(@"del ""C:\Windows\System32\OneDriveSetup.exe"""),
               CommandBuilder.ShellCommand(@"del ""C:\Windows\SysWOW64\OneDriveSetup.exe"""),
             ]);
-            appender.Append(
-              CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-              {
-                return [CommandBuilder.RegistryCommand(@$"delete ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\Run"" /v OneDriveSetup /f")];
-              })
-            );
+            DefaultUserScript.Append(@"Remove-ItemProperty -LiteralPath 'Registry::HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'OneDriveSetup' -Force -ErrorAction 'Continue';");
             break;
           case CustomBloatwareStep when bw.Id == "RemoveTeams":
             appender.Append(
@@ -205,12 +201,7 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
             );
             break;
           case CustomBloatwareStep when bw.Id == "RemoveNotepad":
-            appender.Append(
-              CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-              {
-                return [CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Notepad"" /v ShowStoreBanner /t REG_DWORD /d 0 /f")];
-              })
-            );
+            DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Notepad"" /v ShowStoreBanner /t REG_DWORD /d 0 /f;");
             break;
           case CustomBloatwareStep when bw.Id == "RemoveOutlook":
             appender.Append(
@@ -224,14 +215,7 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
             break;
           case CustomBloatwareStep when bw.Id == "RemoveCopilot":
             UserOnceScript.Append("Get-AppxPackage -Name 'Microsoft.Windows.Ai.Copilot.Provider' | Remove-AppxPackage;");
-            appender.Append(
-              CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-              {
-                return [
-                  CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Policies\Microsoft\Windows\WindowsCopilot"" /v TurnOffWindowsCopilot /t REG_DWORD /d 1 /f")
-                ];
-              })
-            );
+            DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Policies\Microsoft\Windows\WindowsCopilot"" /v TurnOffWindowsCopilot /t REG_DWORD /d 1 /f;");
             break;
           default:
             throw new NotSupportedException();

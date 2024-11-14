@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Xml;
 
 namespace Schneegans.Unattend;
@@ -71,28 +69,22 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
   {
     CommandAppender appender = GetAppender(CommandConfig.Specialize);
 
+    if (Configuration.ShowFileExtensions)
     {
-      IEnumerable<string> SetExplorerOptions(string rootKey, string subKey)
-      {
-        if (Configuration.ShowFileExtensions)
-        {
-          yield return CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""HideFileExt"" /t REG_DWORD /d 0 /f");
-        }
+      DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""HideFileExt"" /t REG_DWORD /d 0 /f;");
+    }
 
-        switch (Configuration.HideFiles)
-        {
-          case HideModes.None:
-            yield return CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""Hidden"" /t REG_DWORD /d 1 /f");
-            yield return CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""ShowSuperHidden"" /t REG_DWORD /d 1 /f");
-            break;
-          case HideModes.HiddenSystem:
-            yield return CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""Hidden"" /t REG_DWORD /d 1 /f");
-            break;
-          case HideModes.Hidden:
-            break;
-        }
-      }
-      appender.Append(CommandBuilder.RegistryDefaultUserCommand(SetExplorerOptions));
+    switch (Configuration.HideFiles)
+    {
+      case HideModes.None:
+        DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""Hidden"" /t REG_DWORD /d 1 /f;");
+        DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""ShowSuperHidden"" /t REG_DWORD /d 1 /f;");
+        break;
+      case HideModes.HiddenSystem:
+        DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""Hidden"" /t REG_DWORD /d 1 /f;");
+        break;
+      case HideModes.Hidden:
+        break;
     }
 
     if (Configuration.DisableWindowsUpdate)
@@ -115,9 +107,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       string ps1File = @"C:\Windows\Setup\Scripts\ShowAllTrayIcons.ps1";
       string script = Util.StringFromResource("ShowAllTrayIcons.ps1");
       AddTextFile(script, ps1File);
-      appender.Append(
-        CommandBuilder.InvokePowerShellScript(ps1File)
-      );
+      DefaultUserScript.InvokeFile(ps1File);
       AddXmlFile(Util.XmlDocumentFromResource("ShowAllTrayIcons.xml"), @"C:\Windows\Setup\Scripts\ShowAllTrayIcons.xml");
       AddTextFile(Util.StringFromResource("ShowAllTrayIcons.vbs"), @"C:\Windows\Setup\Scripts\ShowAllTrayIcons.vbs");
     }
@@ -133,14 +123,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.HideTaskViewButton)
     {
-      appender.Append(
-        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-        {
-          return [
-            CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ShowTaskViewButton /t REG_DWORD /d 0 /f"),
-          ];
-        })
-      );
+      DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ShowTaskViewButton /t REG_DWORD /d 0 /f;");
     }
 
     if (Configuration.DisableDefender)
@@ -168,16 +151,11 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components"" /v NotifyMalicious /t REG_DWORD /d 0 /f"),
         CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components"" /v NotifyPasswordReuse /t REG_DWORD /d 0 /f"),
         CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components"" /v NotifyUnsafeApp /t REG_DWORD /d 0 /f"),
-        ..CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-        {
-          return [
-            CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Edge\SmartScreenEnabled"" /ve /t REG_DWORD /d 0 /f"),
-            CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Edge\SmartScreenPuaEnabled"" /ve /t REG_DWORD /d 0 /f"),
-            CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\AppHost"" /v EnableWebContentEvaluation /t REG_DWORD /d 0 /f"),
-            CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\AppHost"" /v PreventOverride /t REG_DWORD /d 0 /f"),
-          ];
-        })
       ]);
+      DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Edge\SmartScreenEnabled"" /ve /t REG_DWORD /d 0 /f;");
+      DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Edge\SmartScreenPuaEnabled"" /ve /t REG_DWORD /d 0 /f;");
+      DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\AppHost"" /v EnableWebContentEvaluation /t REG_DWORD /d 0 /f;");
+      DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\AppHost"" /v PreventOverride /t REG_DWORD /d 0 /f;");
     }
 
     if (Configuration.DisableUac)
@@ -273,18 +251,10 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.TurnOffSystemSounds)
     {
-      appender.Append(
-        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-        {
-          StringWriter writer = new();
-          writer.WriteLine(@$"$mountKey = '{rootKey}\{subKey}';");
-          writer.WriteLine(Util.StringFromResource("TurnOffSystemSounds.ps1"));
-          string ps1File = @"%TEMP%\TurnOffSystemSounds.ps1";
-          AddTextFile(writer.ToString(), ps1File);
-          return [
-            CommandBuilder.InvokePowerShellScript(ps1File),
-          ];
-        }));
+      string ps1File = @"C:\Windows\Setup\Scripts\TurnOffSystemSounds.ps1";
+      string script = Util.StringFromResource("TurnOffSystemSounds.ps1");
+      AddTextFile(script, ps1File);
+      DefaultUserScript.InvokeFile(ps1File);
       UserOnceScript.Append(@"Set-ItemProperty -LiteralPath 'Registry::HKCU\AppEvents\Schemes' -Name '(Default)' -Type 'String' -Value '.None';");
 
       appender.Append([
@@ -297,33 +267,29 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     {
       // https://skanthak.homepage.t-online.de/ten.html#eighth
 
-      appender.Append(
-        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-        {
-          return new List<string>()
-          {
-            "ContentDeliveryAllowed",
-            "FeatureManagementEnabled",
-            "OEMPreInstalledAppsEnabled",
-            "PreInstalledAppsEnabled",
-            "PreInstalledAppsEverEnabled",
-            "SilentInstalledAppsEnabled",
-            "SoftLandingEnabled",
-            "SubscribedContentEnabled",
-            "SubscribedContent-310093Enabled",
-            "SubscribedContent-338387Enabled",
-            "SubscribedContent-338388Enabled",
-            "SubscribedContent-338389Enabled",
-            "SubscribedContent-338393Enabled",
-            "SubscribedContent-353698Enabled",
-            "SystemPaneSuggestionsEnabled",
-          }.Select(value =>
-          {
-            return CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"" /v ""{value}"" /t REG_DWORD /d 0 /f");
-          });
-        })
-      );
+      DefaultUserScript.Append("""
+        $names = @(
+          'ContentDeliveryAllowed';
+          'FeatureManagementEnabled';
+          'OEMPreInstalledAppsEnabled';
+          'PreInstalledAppsEnabled';
+          'PreInstalledAppsEverEnabled';
+          'SilentInstalledAppsEnabled';
+          'SoftLandingEnabled';
+          'SubscribedContentEnabled';
+          'SubscribedContent-310093Enabled';
+          'SubscribedContent-338387Enabled';
+          'SubscribedContent-338388Enabled';
+          'SubscribedContent-338389Enabled';
+          'SubscribedContent-338393Enabled';
+          'SubscribedContent-353698Enabled';
+          'SystemPaneSuggestionsEnabled';
+        );
 
+        foreach( $name in $names ) {
+          reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v $name /t REG_DWORD /d 0 /f;
+        }
+        """);
       appender.Append(
         CommandBuilder.RegistryCommand(@"add ""HKLM\Software\Policies\Microsoft\Windows\CloudContent"" /v ""DisableWindowsConsumerFeatures"" /t REG_DWORD /d 0 /f")
       );
@@ -379,12 +345,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.LeftTaskbar)
     {
-      appender.Append(
-        CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-        {
-          return [CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v TaskbarAl /t REG_DWORD /d 0 /f")];
-        })
-      );
+      DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v TaskbarAl /t REG_DWORD /d 0 /f;");
     }
 
     if (Configuration.HideEdgeFre)
@@ -411,16 +372,12 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           {
             indicators |= 4;
           }
-          appender.Append(
-            CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-              {
-                return [
-                  CommandBuilder.RegistryCommand(@$"add ""HKU\.DEFAULT\Control Panel\Keyboard"" /v InitialKeyboardIndicators /t REG_SZ /d ""{indicators}"" /f"),
-                  CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\Control Panel\Keyboard"" /v InitialKeyboardIndicators /t REG_SZ /d ""{indicators}"" /f")
-                ];
-              }
-            )
-          );
+
+          DefaultUserScript.Append($$"""
+          foreach( $root in 'Registry::HKU\.DEFAULT', 'Registry::HKU\DefaultUser' ) {
+            Set-ItemProperty -LiteralPath "$root\Control Panel\Keyboard" -Name 'InitialKeyboardIndicators' -Type 'String' -Value {{indicators}} -Force;
+          }
+          """);
         }
         {
           bool ignoreCapsLock = settings.CapsLock.Behavior == KeyBehavior.Ignore;

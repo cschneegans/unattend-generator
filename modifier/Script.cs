@@ -185,12 +185,7 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
         AppendPowerShellSequence(UserOnceScript);
         break;
       case ScriptPhase.DefaultUser:
-        appender.Append(
-          CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-          {
-            return [command];
-          })
-        );
+        AppendPowerShellSequence(DefaultUserScript);
         break;
       default:
         throw new NotSupportedException();
@@ -212,13 +207,13 @@ public static class CommandHelper
       _ => throw new NotSupportedException(),
     };
 
-    if (info.Script.Phase == ScriptPhase.UserOnce)
+    if (info.Script.Phase == ScriptPhase.System)
     {
-      return inner;
+      return CommandBuilder.ShellCommand(inner, outFile: info.LogPath);
     }
     else
     {
-      return CommandBuilder.ShellCommand(inner, outFile: info.LogPath);
+      return inner;
     }
   }
 }

@@ -51,14 +51,7 @@ class PersonalizationModifier(ModifierContext context) : Modifier(context)
           """);
         writer.WriteLine(script);
         AddTextFile(writer.ToString(), ps1File);
-        appender.Append(
-          CommandBuilder.RegistryDefaultUserCommand((rootKey, subKey) =>
-          {
-            return [
-              CommandBuilder.RegistryCommand(@$"add ""{rootKey}\{subKey}\SOFTWARE\Microsoft\Windows\DWM"" /v ColorPrevalence /t REG_DWORD /d {(settings.AccentColorOnBorders ? 1 : 0)} /f"),
-            ];
-          })
-        );
+        DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\DWM"" /v ColorPrevalence /t REG_DWORD /d {(settings.AccentColorOnBorders ? 1 : 0)} /f;");
         UserOnceScript.InvokeFile(ps1File);
         UserOnceScript.RestartExplorer();
       }

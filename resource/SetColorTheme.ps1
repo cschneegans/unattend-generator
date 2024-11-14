@@ -12,7 +12,7 @@
 & {
 	Add-Type -AssemblyName 'System.Drawing';
 	$accentColor = [System.Drawing.ColorTranslator]::FromHtml( $htmlAccentColor );
-										
+
 	function ConvertTo-DWord {
 		param(
 			[System.Drawing.Color]
@@ -27,7 +27,7 @@
 		);
 		return [System.BitConverter]::ToUInt32( $bytes, 0); 
 	}
-					
+
 	$startColor = [System.Drawing.Color]::FromArgb( 0xD2, $accentColor );
 	Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent' -Name 'StartColorMenu' -Value( ConvertTo-DWord -Color $accentColor ) -Type 'DWord' -Force;
 	Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent' -Name 'AccentColorMenu' -Value( ConvertTo-DWord -Color $accentColor ) -Type 'DWord' -Force;

@@ -434,6 +434,7 @@ public abstract class PowerShellSequence
   public string GetScript()
   {
     StringWriter writer = new();
+
     void WriteScriptBlock(string command)
     {
       writer.WriteLine("\t{");
@@ -443,6 +444,7 @@ public abstract class PowerShellSequence
       }
       writer.WriteLine("\t};");
     }
+
     writer.WriteLine("$scripts = @(");
     foreach (string command in commands)
     {
@@ -471,7 +473,7 @@ public abstract class PowerShellSequence
 /// <summary>
 /// Collects PowerShell commands that will be run whenever a user logs on for the first time.
 /// </summary>
-public class UserOnceScriptSequence : PowerShellSequence
+public class UserOnceSequence : PowerShellSequence
 {
   protected override string Activity()
   {
@@ -497,6 +499,22 @@ public class FirstLogonSequence : PowerShellSequence
   protected override string LogFile()
   {
     return @"C:\Windows\Setup\Scripts\FirstLogon.log";
+  }
+}
+
+/// <summary>
+/// Collects PowerShell commands that modify the default user's registry hive.
+/// </summary>
+public class DefaultUserSequence : PowerShellSequence
+{
+  protected override string Activity()
+  {
+    return "Running scripts to modify the default user’’s registry hive.";
+  }
+
+  protected override string LogFile()
+  {
+    return @"C:\Windows\Setup\Scripts\DefaultUser.log";
   }
 }
 
@@ -910,7 +928,8 @@ public class UnattendGenerator
       NamespaceManager: ns,
       Generator: this,
       FirstLogonScript: new FirstLogonSequence(),
-      UserOnceScript: new UserOnceScriptSequence()
+      UserOnceScript: new UserOnceSequence(),
+      DefaultUserScript: new DefaultUserSequence()
     );
 
     new List<Modifier> {
@@ -932,8 +951,9 @@ public class UnattendGenerator
       new TimeZoneModifier(context),
       new WdacModifier(context),
       new ScriptModifier(context),
-      new FirstLogonModifier(context),
       new UserOnceModifier(context),
+      new DefaultUserModifier(context),
+      new FirstLogonModifier(context),
       new OrderModifier(context),
       new ProcessorArchitectureModifier(context),
       new PrettyModifier(context),
@@ -982,7 +1002,8 @@ public record class ModifierContext(
   Configuration Configuration,
   UnattendGenerator Generator,
   FirstLogonSequence FirstLogonScript,
-  UserOnceScriptSequence UserOnceScript
+  UserOnceSequence UserOnceScript,
+  DefaultUserSequence DefaultUserScript
 );
 
 abstract class Modifier(ModifierContext context)
@@ -997,7 +1018,9 @@ abstract class Modifier(ModifierContext context)
 
   public FirstLogonSequence FirstLogonScript { get; } = context.FirstLogonScript;
 
-  public UserOnceScriptSequence UserOnceScript { get; } = context.UserOnceScript;
+  public UserOnceSequence UserOnceScript { get; } = context.UserOnceScript;
+
+  public DefaultUserSequence DefaultUserScript { get; } = context.DefaultUserScript;
 
   public XmlElement NewSimpleElement(string name, XmlElement parent, string innerText)
   {
