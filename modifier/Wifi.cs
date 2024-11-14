@@ -204,9 +204,6 @@ class WifiModifier(ModifierContext context) : Modifier(context)
 
   void AddWifiProfile(IProfileWifiSettings settings)
   {
-    string xmlfile = @"%TEMP%\wifi.xml";
-    string logfile = @"%TEMP%\wifi.log";
-
     XmlDocument profile = settings.ProfileXml;
     try
     {
@@ -217,19 +214,16 @@ class WifiModifier(ModifierContext context) : Modifier(context)
       throw new ConfigurationException($"WLAN profile XML is invalid: {e.Message}");
     }
 
+    string xmlfile = @"C:\Windows\Setup\Scripts\wifi.xml";
     AddXmlFile(profile, xmlfile);
 
-    CommandAppender appender = GetAppender(CommandConfig.Specialize);
-    appender.Append([
-      CommandBuilder.ShellCommand($@"netsh.exe wlan add profile filename=""{xmlfile}"" user=all", logfile),
-      CommandBuilder.ShellCommand($@"del ""{xmlfile}"""),
-    ]);
-
+    SpecializeScript.Append($"""
+      netsh.exe wlan add profile filename="{xmlfile}" user=all";
+      Remove-Item -LiteralPath '{xmlfile}';
+      """);
     if (settings.ConnectAutomatically)
     {
-      appender.Append(
-        CommandBuilder.ShellCommand($@"netsh.exe wlan connect name=""{settings.Name}"" ssid=""{settings.Name}""", logfile)
-      );
+      SpecializeScript.Append($@"netsh.exe wlan connect name=""{settings.Name}"" ssid=""{settings.Name}"";");
     }
   }
 }

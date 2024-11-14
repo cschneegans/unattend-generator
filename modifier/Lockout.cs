@@ -33,21 +33,15 @@ class LockoutModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
-    CommandAppender appender = GetAppender(CommandConfig.Specialize);
-
     switch (Configuration.LockoutSettings)
     {
       case DefaultLockoutSettings:
         return;
       case DisableLockoutSettings:
-        appender.Append(
-          CommandBuilder.Raw("net.exe accounts /lockoutthreshold:0")
-        );
+        SpecializeScript.Append("net.exe accounts /lockoutthreshold:0;");
         break;
       case CustomLockoutSettings settings:
-        appender.Append(
-          CommandBuilder.Raw($"net.exe accounts /lockoutthreshold:{settings.LockoutThreshold} /lockoutduration:{settings.LockoutDuration} /lockoutwindow:{settings.LockoutWindow}")
-        );
+        SpecializeScript.Append($"net.exe accounts /lockoutthreshold:{settings.LockoutThreshold} /lockoutduration:{settings.LockoutDuration} /lockoutwindow:{settings.LockoutWindow};");
         break;
       default:
         throw new NotSupportedException();

@@ -67,8 +67,6 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
-    CommandAppender appender = GetAppender(CommandConfig.Specialize);
-
     if (Configuration.ShowFileExtensions)
     {
       DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""HideFileExt"" /t REG_DWORD /d 0 /f;");
@@ -97,9 +95,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         Util.XmlDocumentFromResource("PauseWindowsUpdate.xml"),
         @"C:\Windows\Setup\Scripts\PauseWindowsUpdate.xml"
       );
-      appender.Append(
-        CommandBuilder.PowerShellCommand(@"Register-ScheduledTask -TaskName 'PauseWindowsUpdate' -Xml $( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\PauseWindowsUpdate.xml' -Raw );")
-      );
+      SpecializeScript.Append(@"Register-ScheduledTask -TaskName 'PauseWindowsUpdate' -Xml $( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\PauseWindowsUpdate.xml' -Raw );");
     }
 
     if (Configuration.ShowAllTrayIcons)
@@ -138,103 +134,84 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableSac)
     {
-      appender.Append(
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy"" /v VerifiedAndReputablePolicyState /t REG_DWORD /d 0 /f")
-      );
+      SpecializeScript.Append(@"reg.exe add ""HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy"" /v VerifiedAndReputablePolicyState /t REG_DWORD /d 0 /f;");
     }
 
     if (Configuration.DisableSmartScreen)
     {
-      appender.Append([
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer"" /v SmartScreenEnabled /t REG_SZ /d ""Off"" /f"),
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components"" /v ServiceEnabled /t REG_DWORD /d 0 /f"),
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components"" /v NotifyMalicious /t REG_DWORD /d 0 /f"),
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components"" /v NotifyPasswordReuse /t REG_DWORD /d 0 /f"),
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components"" /v NotifyUnsafeApp /t REG_DWORD /d 0 /f"),
-      ]);
-      DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Edge\SmartScreenEnabled"" /ve /t REG_DWORD /d 0 /f;");
-      DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Edge\SmartScreenPuaEnabled"" /ve /t REG_DWORD /d 0 /f;");
-      DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\AppHost"" /v EnableWebContentEvaluation /t REG_DWORD /d 0 /f;");
-      DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\AppHost"" /v PreventOverride /t REG_DWORD /d 0 /f;");
+      SpecializeScript.Append("""
+        reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SmartScreenEnabled /t REG_SZ /d "Off" /f;
+        reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components" /v ServiceEnabled /t REG_DWORD /d 0 /f;
+        reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components" /v NotifyMalicious /t REG_DWORD /d 0 /f;
+        reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components" /v NotifyPasswordReuse /t REG_DWORD /d 0 /f;
+        reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components" /v NotifyUnsafeApp /t REG_DWORD /d 0 /f;
+        """);
+      DefaultUserScript.Append("""
+        reg.exe add "HKU\DefaultUser\Software\Microsoft\Edge\SmartScreenEnabled" /ve /t REG_DWORD /d 0 /f;
+        reg.exe add "HKU\DefaultUser\Software\Microsoft\Edge\SmartScreenPuaEnabled" /ve /t REG_DWORD /d 0 /f;
+        reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\AppHost" /v EnableWebContentEvaluation /t REG_DWORD /d 0 /f;
+        reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\AppHost" /v PreventOverride /t REG_DWORD /d 0 /f;
+        """);
     }
 
     if (Configuration.DisableUac)
     {
-      appender.Append(
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"" /v EnableLUA /t REG_DWORD /d 0 /f")
-      );
+      SpecializeScript.Append(@"reg.exe add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"" /v EnableLUA /t REG_DWORD /d 0 /f");
     }
 
     if (Configuration.EnableLongPaths)
     {
-      appender.Append(
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SYSTEM\CurrentControlSet\Control\FileSystem"" /v LongPathsEnabled /t REG_DWORD /d 1 /f")
-      );
+      SpecializeScript.Append(@"reg.exe add ""HKLM\SYSTEM\CurrentControlSet\Control\FileSystem"" /v LongPathsEnabled /t REG_DWORD /d 1 /f");
     }
 
     if (Configuration.EnableRemoteDesktop)
     {
-      appender.Append([
-        CommandBuilder.Raw(@"netsh.exe advfirewall firewall set rule group=""@FirewallAPI.dll,-28752"" new enable=Yes"),
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server"" /v fDenyTSConnections /t REG_DWORD /d 0 /f"),
-      ]);
+      SpecializeScript.Append("""
+        netsh.exe advfirewall firewall set rule group="@FirewallAPI.dll,-28752" new enable=Yes;
+        reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f;
+        """);
     }
 
     if (Configuration.HardenSystemDriveAcl)
     {
-      appender.Append(
-        CommandBuilder.Raw(@"icacls.exe C:\ /remove:g ""*S-1-5-11""") // Group »Authenticated Users«
-      );
+      SpecializeScript.Append(@"icacls.exe C:\ /remove:g ""*S-1-5-11""");
     }
 
     {
       if (Configuration.ProcessAuditSettings is EnabledProcessAuditSettings settings)
       {
-        appender.Append(
-          CommandBuilder.Raw(@"auditpol.exe /set /subcategory:""Process Creation"" /success:enable /failure:enable")
-        );
+        SpecializeScript.Append(@"auditpol.exe /set /subcategory:""Process Creation"" /success:enable /failure:enable;");
         if (settings.IncludeCommandLine)
         {
-          appender.Append(
-            CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit"" /v ProcessCreationIncludeCmdLine_Enabled /t REG_DWORD /d 1 /f")
-          );
+          SpecializeScript.Append(@"reg.exe add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit"" /v ProcessCreationIncludeCmdLine_Enabled /t REG_DWORD /d 1 /f;");
         }
       }
     }
 
     if (Configuration.AllowPowerShellScripts)
     {
-      appender.Append(
-        CommandBuilder.PowerShellCommand(@"Set-ExecutionPolicy -Scope 'LocalMachine' -ExecutionPolicy 'RemoteSigned' -Force;")
-      );
+      SpecializeScript.Append("Set-ExecutionPolicy -Scope 'LocalMachine' -ExecutionPolicy 'RemoteSigned' -Force;");
     }
 
     if (Configuration.DisableLastAccess)
     {
-      appender.Append(
-        CommandBuilder.Raw(@"fsutil.exe behavior set disableLastAccess 1")
-      );
+      SpecializeScript.Append(@"fsutil.exe behavior set disableLastAccess 1;");
     }
 
     if (Configuration.PreventAutomaticReboot)
     {
-      appender.Append([
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" /v AUOptions /t REG_DWORD /d 4 /f"),
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" /v NoAutoRebootWithLoggedOnUsers /t REG_DWORD /d 1 /f"),
-      ]);
-
+      SpecializeScript.Append("""
+        reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v AUOptions /t REG_DWORD /d 4 /f;
+        reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoRebootWithLoggedOnUsers /t REG_DWORD /d 1 /f;
+        """);
       AddTextFile(Util.StringFromResource("MoveActiveHours.vbs"), @"C:\Windows\Setup\Scripts\MoveActiveHours.vbs");
       AddXmlFile(Util.XmlDocumentFromResource("MoveActiveHours.xml"), @"C:\Windows\Setup\Scripts\MoveActiveHours.xml");
-      appender.Append(
-        CommandBuilder.PowerShellCommand(@"Register-ScheduledTask -TaskName 'MoveActiveHours' -Xml $( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\MoveActiveHours.xml' -Raw );")
-      );
+      SpecializeScript.Append(@"Register-ScheduledTask -TaskName 'MoveActiveHours' -Xml $( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\MoveActiveHours.xml' -Raw );");
     }
 
     if (Configuration.DisableFastStartup)
     {
-      appender.Append(
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power"" /v HiberbootEnabled /t REG_DWORD /d 0 /f")
-      );
+      SpecializeScript.Append(@"reg.exe add ""HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power"" /v HiberbootEnabled /t REG_DWORD /d 0 /f;");
     }
 
     if (Configuration.DisableSystemRestore)
@@ -244,9 +221,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableWidgets)
     {
-      appender.Append(
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Policies\Microsoft\Dsh"" /v AllowNewsAndInterests /t REG_DWORD /d 0 /f")
-      );
+      SpecializeScript.Append(@"reg.exe add ""HKLM\SOFTWARE\Policies\Microsoft\Dsh"" /v AllowNewsAndInterests /t REG_DWORD /d 0 /f;");
     }
 
     if (Configuration.TurnOffSystemSounds)
@@ -256,11 +231,10 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       AddTextFile(script, ps1File);
       DefaultUserScript.InvokeFile(ps1File);
       UserOnceScript.Append(@"Set-ItemProperty -LiteralPath 'Registry::HKCU\AppEvents\Schemes' -Name '(Default)' -Type 'String' -Value '.None';");
-
-      appender.Append([
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation"" /v DisableStartupSound /t REG_DWORD /d 1 /f"),
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides"" /v UserSetting_DisableStartupSound /t REG_DWORD /d 1 /f"),
-      ]);
+      SpecializeScript.Append("""
+        reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation" /v DisableStartupSound /t REG_DWORD /d 1 /f;
+        reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides" /v UserSetting_DisableStartupSound /t REG_DWORD /d 1 /f;
+        """);
     }
 
     if (Configuration.DisableAppSuggestions)
@@ -290,19 +264,15 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v $name /t REG_DWORD /d 0 /f;
         }
         """);
-      appender.Append(
-        CommandBuilder.RegistryCommand(@"add ""HKLM\Software\Policies\Microsoft\Windows\CloudContent"" /v ""DisableWindowsConsumerFeatures"" /t REG_DWORD /d 0 /f")
-      );
+      SpecializeScript.Append(@"reg.exe add ""HKLM\Software\Policies\Microsoft\Windows\CloudContent"" /v ""DisableWindowsConsumerFeatures"" /t REG_DWORD /d 0 /f;");
     }
 
     if (Configuration.VBoxGuestAdditions)
     {
-      string ps1File = @"%TEMP%\VBoxGuestAdditions.ps1";
+      string ps1File = @"C:\Windows\Setup\Scripts\VBoxGuestAdditions.ps1";
       string script = Util.StringFromResource("VBoxGuestAdditions.ps1");
       AddTextFile(script, ps1File);
-      appender.Append(
-        CommandBuilder.InvokePowerShellScript(ps1File)
-      );
+      SpecializeScript.InvokeFile(ps1File);
     }
 
     if (Configuration.VMwareTools)
@@ -312,7 +282,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       AddTextFile(script, ps1File);
       if (Configuration.DisableDefender)
       {
-        appender.Append(CommandBuilder.InvokePowerShellScript(ps1File));
+        SpecializeScript.InvokeFile(ps1File);
       }
       else
       {
@@ -322,19 +292,15 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.VirtIoGuestTools)
     {
-      string ps1File = @"%TEMP%\VirtIoGuestTools.ps1";
+      string ps1File = @"C:\Windows\Setup\Scripts\VirtIoGuestTools.ps1";
       string script = Util.StringFromResource("VirtIoGuestTools.ps1");
       AddTextFile(script, ps1File);
-      appender.Append(
-        CommandBuilder.InvokePowerShellScript(ps1File)
-      );
+      SpecializeScript.InvokeFile(ps1File);
     }
 
     if (Configuration.PreventDeviceEncryption)
     {
-      appender.Append(
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SYSTEM\CurrentControlSet\Control\BitLocker"" /v ""PreventDeviceEncryption"" /t REG_DWORD /d 1 /f")
-      );
+      SpecializeScript.Append(@"reg.exe add ""HKLM\SYSTEM\CurrentControlSet\Control\BitLocker"" /v ""PreventDeviceEncryption"" /t REG_DWORD /d 1 /f;");
     }
 
     if (Configuration.ClassicContextMenu)
@@ -350,9 +316,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.HideEdgeFre)
     {
-      appender.Append(
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Policies\Microsoft\Edge"" /v HideFirstRunExperience /t REG_DWORD /d 1 /f")
-      );
+      SpecializeScript.Append(@"reg.exe add ""HKLM\SOFTWARE\Policies\Microsoft\Edge"" /v HideFirstRunExperience /t REG_DWORD /d 1 /f;");
     }
     {
       if (Configuration.KeySettings is ConfigureKeySettings settings)
@@ -374,10 +338,10 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           }
 
           DefaultUserScript.Append($$"""
-          foreach( $root in 'Registry::HKU\.DEFAULT', 'Registry::HKU\DefaultUser' ) {
-            Set-ItemProperty -LiteralPath "$root\Control Panel\Keyboard" -Name 'InitialKeyboardIndicators' -Type 'String' -Value {{indicators}} -Force;
-          }
-          """);
+            foreach( $root in 'Registry::HKU\.DEFAULT', 'Registry::HKU\DefaultUser' ) {
+              Set-ItemProperty -LiteralPath "$root\Control Panel\Keyboard" -Name 'InitialKeyboardIndicators' -Type 'String' -Value {{indicators}} -Force;
+            }
+            """);
         }
         {
           bool ignoreCapsLock = settings.CapsLock.Behavior == KeyBehavior.Ignore;
@@ -417,10 +381,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
             }
             mstr.Write(new byte[4]); // Footer
             string base64 = Convert.ToBase64String(mstr.ToArray());
-
-            appender.Append(
-              CommandBuilder.PowerShellCommand(@$"Set-ItemProperty -LiteralPath 'Registry::HKLM\SYSTEM\CurrentControlSet\Control\Keyboard Layout' -Name 'Scancode Map' -Type 'Binary' -Value([convert]::FromBase64String('{base64}'));")
-            );
+            SpecializeScript.Append(@$"Set-ItemProperty -LiteralPath 'Registry::HKLM\SYSTEM\CurrentControlSet\Control\Keyboard Layout' -Name 'Scancode Map' -Type 'Binary' -Value([convert]::FromBase64String('{base64}'));");
           }
         }
       }
@@ -430,9 +391,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       string ps1File = @"C:\Windows\Setup\Scripts\MakeEdgeUninstallable.ps1";
       string script = Util.StringFromResource("MakeEdgeUninstallable.ps1");
       AddTextFile(script, ps1File);
-      appender.Append(
-        CommandBuilder.InvokePowerShellScript(ps1File)
-      );
+      SpecializeScript.InvokeFile(ps1File);
     }
     {
       if (Configuration.LaunchToThisPC)
@@ -452,9 +411,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         writer.WriteLine($"$json = '{json.Replace("'", "''")}';");
         writer.WriteLine(script);
         AddTextFile(writer.ToString(), ps1File);
-        appender.Append(
-          CommandBuilder.InvokePowerShellScript(ps1File)
-        );
+        SpecializeScript.InvokeFile(ps1File);
       }
 
       switch (Configuration.StartPinsSettings)
@@ -498,15 +455,15 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
         case EmptyStartTilesSettings:
           string xml = """
-          <LayoutModificationTemplate Version='1' xmlns='http://schemas.microsoft.com/Start/2014/LayoutModification'>
-            <LayoutOptions StartTileGroupCellWidth='6' />
-            <DefaultLayoutOverride>
-              <StartLayoutCollection>
-                <StartLayout GroupCellWidth='6' xmlns='http://schemas.microsoft.com/Start/2014/FullDefaultLayout' />
-              </StartLayoutCollection>
-            </DefaultLayoutOverride>
-          </LayoutModificationTemplate>
-          """;
+            <LayoutModificationTemplate Version='1' xmlns='http://schemas.microsoft.com/Start/2014/LayoutModification'>
+              <LayoutOptions StartTileGroupCellWidth='6' />
+              <DefaultLayoutOverride>
+                <StartLayoutCollection>
+                  <StartLayout GroupCellWidth='6' xmlns='http://schemas.microsoft.com/Start/2014/FullDefaultLayout' />
+                </StartLayoutCollection>
+              </DefaultLayoutOverride>
+            </LayoutModificationTemplate>
+            """;
           SetStartTiles(xml);
           break;
 

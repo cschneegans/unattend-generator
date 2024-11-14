@@ -100,7 +100,6 @@ class LocalesModifier(ModifierContext context) : Modifier(context)
 
       if (settings.GeoLocation.Id != settings.LocaleAndKeyboard.Locale.GeoLocation?.Id)
       {
-        CommandAppender appender = GetAppender(CommandConfig.Specialize);
         UserOnceScript.Append($"Set-WinHomeLocation -GeoId {settings.GeoLocation.Id};");
       }
     }

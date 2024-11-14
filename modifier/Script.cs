@@ -158,7 +158,6 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
 
   private void CallScript(ScriptInfo info)
   {
-    CommandAppender appender = GetAppender(CommandConfig.Specialize);
     string command = CommandHelper.GetCommand(info);
 
     void AppendPowerShellSequence(PowerShellSequence sequence)
@@ -176,7 +175,7 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
     switch (info.Script.Phase)
     {
       case ScriptPhase.System:
-        appender.Append(command);
+        AppendPowerShellSequence(SpecializeScript);
         break;
       case ScriptPhase.FirstLogon:
         AppendPowerShellSequence(FirstLogonScript);
@@ -197,7 +196,7 @@ public static class CommandHelper
 {
   public static string GetCommand(ScriptInfo info)
   {
-    string inner = info.Script.Type switch
+    return info.Script.Type switch
     {
       ScriptType.Cmd => CommandBuilder.Raw(info.ScriptPath),
       ScriptType.Ps1 => CommandBuilder.InvokePowerShellScript(info.ScriptPath),
@@ -206,14 +205,5 @@ public static class CommandHelper
       ScriptType.Js => CommandBuilder.InvokeJScript(info.ScriptPath),
       _ => throw new NotSupportedException(),
     };
-
-    if (info.Script.Phase == ScriptPhase.System)
-    {
-      return CommandBuilder.ShellCommand(inner, outFile: info.LogPath);
-    }
-    else
-    {
-      return inner;
-    }
   }
 }

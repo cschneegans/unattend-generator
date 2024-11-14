@@ -24,10 +24,7 @@ class BypassModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.BypassNetworkCheck)
     {
-      CommandAppender appender = GetAppender(CommandConfig.Specialize);
-      appender.Append(
-        CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE"" /v BypassNRO /t REG_DWORD /d 1 /f")
-      );
+      SpecializeScript.Append(@"reg.exe add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE"" /v BypassNRO /t REG_DWORD /d 1 /f;");
     }
   }
 }

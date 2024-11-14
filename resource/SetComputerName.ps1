@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop';
 Set-StrictMode -Version 'Latest';
 & {
-	$newName = $newName.Trim();
+	$newName = ( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\ComputerName.txt' -Raw ).Trim();
 	if( [string]::IsNullOrWhitespace( $newName ) ) {
 		throw "No computer name was provided.";
 	}

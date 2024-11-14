@@ -458,11 +458,12 @@ public abstract class PowerShellSequence
     writer.WriteLine();
 
     writer.WriteLine("& {");
-    writer.WriteLine("\t[int] $complete = 0;");
+    writer.WriteLine("\t[float] $complete = 0;");
+    writer.WriteLine("\t[float] $increment = 100 / $scripts.Count;");
     writer.WriteLine("\tforeach( $script in $scripts ) {");
     writer.WriteLine($"\t\tWrite-Progress -Activity '{Activity()} Do not close this window.' -PercentComplete $complete;");
     writer.WriteLine("\t\t& $script;");
-    writer.WriteLine("\t\t$complete += 100 / $scripts.Count;");
+    writer.WriteLine("\t\t$complete += $increment;");
     writer.WriteLine("\t}");
     writer.WriteLine(@$"}} *>&1 >> ""{LogFile()}"";");
 
@@ -515,6 +516,19 @@ public class DefaultUserSequence : PowerShellSequence
   protected override string LogFile()
   {
     return @"C:\Windows\Setup\Scripts\DefaultUser.log";
+  }
+}
+
+public class SpecializeSequence : PowerShellSequence
+{
+  protected override string Activity()
+  {
+    return "Running scripts to customize your Windows installation.";
+  }
+
+  protected override string LogFile()
+  {
+    return @"C:\Windows\Setup\Scripts\Specialize.log";
   }
 }
 
@@ -927,6 +941,7 @@ public class UnattendGenerator
       Document: doc,
       NamespaceManager: ns,
       Generator: this,
+      SpecializeScript: new SpecializeSequence(),
       FirstLogonScript: new FirstLogonSequence(),
       UserOnceScript: new UserOnceSequence(),
       DefaultUserScript: new DefaultUserSequence()
@@ -951,6 +966,7 @@ public class UnattendGenerator
       new TimeZoneModifier(context),
       new WdacModifier(context),
       new ScriptModifier(context),
+      new SpecializeModifier(context),
       new UserOnceModifier(context),
       new DefaultUserModifier(context),
       new FirstLogonModifier(context),
@@ -1001,6 +1017,7 @@ public record class ModifierContext(
   XmlNamespaceManager NamespaceManager,
   Configuration Configuration,
   UnattendGenerator Generator,
+  SpecializeSequence SpecializeScript,
   FirstLogonSequence FirstLogonScript,
   UserOnceSequence UserOnceScript,
   DefaultUserSequence DefaultUserScript
@@ -1015,6 +1032,8 @@ abstract class Modifier(ModifierContext context)
   public Configuration Configuration { get; } = context.Configuration;
 
   public UnattendGenerator Generator { get; } = context.Generator;
+
+  public SpecializeSequence SpecializeScript { get; } = context.SpecializeScript;
 
   public FirstLogonSequence FirstLogonScript { get; } = context.FirstLogonScript;
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -23,10 +22,7 @@ abstract class Remover<T> where T : SelectorBloatwareStep
     }
     string scriptPath = @$"C:\Windows\Temp\{BaseName}.ps1";
     parent.AddTextFile(GetRemoveCommand(), scriptPath);
-    CommandAppender appender = parent.GetAppender(CommandConfig.Specialize);
-    appender.Append(
-      CommandBuilder.InvokePowerShellScript(scriptPath)
-    );
+    parent.SpecializeScript.InvokeFile(scriptPath);
   }
 
   private string GetRemoveCommand()
@@ -60,30 +56,29 @@ abstract class Remover<T> where T : SelectorBloatwareStep
 class PackageRemover : Remover<PackageBloatwareStep>
 {
   protected override string GetCommand => """
-  {
-    Get-AppxProvisionedPackage -Online;
-  }
-  """;
+    {
+      Get-AppxProvisionedPackage -Online;
+    }
+    """;
 
   protected override string FilterCommand => """
-  {
-    $_.DisplayName -eq $selector;
-  }
-  """;
-
-  protected override string RemoveCommand =>
-  """
-  {
-    [CmdletBinding()]
-    param(
-      [Parameter( Mandatory, ValueFromPipeline )]
-      $InputObject
-    );
-    process {
-      $InputObject | Remove-AppxProvisionedPackage -AllUsers -Online -ErrorAction 'Continue';
+    {
+      $_.DisplayName -eq $selector;
     }
-  }
-  """;
+    """;
+
+  protected override string RemoveCommand => """
+    {
+      [CmdletBinding()]
+      param(
+        [Parameter( Mandatory, ValueFromPipeline )]
+        $InputObject
+      );
+      process {
+        $InputObject | Remove-AppxProvisionedPackage -AllUsers -Online -ErrorAction 'Continue';
+      }
+    }
+    """;
 
   protected override string BaseName => "remove-packages";
 
@@ -93,33 +88,32 @@ class PackageRemover : Remover<PackageBloatwareStep>
 class CapabilityRemover : Remover<CapabilityBloatwareStep>
 {
   protected override string GetCommand => """
-  {
-    Get-WindowsCapability -Online | Where-Object -Property 'State' -NotIn -Value @(
-      'NotPresent';
-      'Removed';
-    );
-  }
-  """;
+    {
+      Get-WindowsCapability -Online | Where-Object -Property 'State' -NotIn -Value @(
+        'NotPresent';
+        'Removed';
+      );
+    }
+    """;
 
   protected override string FilterCommand => """
-  {
-    ($_.Name -split '~')[0] -eq $selector;
-  }
-  """;
-
-  protected override string RemoveCommand =>
-  """
-  {
-    [CmdletBinding()]
-    param(
-      [Parameter( Mandatory, ValueFromPipeline )]
-      $InputObject
-    );
-    process {
-      $InputObject | Remove-WindowsCapability -Online -ErrorAction 'Continue';
+    {
+      ($_.Name -split '~')[0] -eq $selector;
     }
-  }
-  """;
+    """;
+
+  protected override string RemoveCommand => """
+    {
+      [CmdletBinding()]
+      param(
+        [Parameter( Mandatory, ValueFromPipeline )]
+        $InputObject
+      );
+      process {
+        $InputObject | Remove-WindowsCapability -Online -ErrorAction 'Continue';
+      }
+    }
+    """;
 
   protected override string BaseName => "remove-caps";
 
@@ -129,33 +123,32 @@ class CapabilityRemover : Remover<CapabilityBloatwareStep>
 class FeatureRemover : Remover<OptionalFeatureBloatwareStep>
 {
   protected override string GetCommand => """
-  {
-    Get-WindowsOptionalFeature -Online | Where-Object -Property 'State' -NotIn -Value @(
-      'Disabled';
-      'DisabledWithPayloadRemoved';
-    );
-  }
-  """;
+    {
+      Get-WindowsOptionalFeature -Online | Where-Object -Property 'State' -NotIn -Value @(
+        'Disabled';
+        'DisabledWithPayloadRemoved';
+      );
+    }
+    """;
 
   protected override string FilterCommand => """
-  {
-    $_.FeatureName -eq $selector;
-  }
-  """;
-
-  protected override string RemoveCommand =>
-  """
-  {
-    [CmdletBinding()]
-    param(
-      [Parameter( Mandatory, ValueFromPipeline )]
-      $InputObject
-    );
-    process {
-      $InputObject | Disable-WindowsOptionalFeature -Online -Remove -NoRestart -ErrorAction 'Continue';
+    {
+      $_.FeatureName -eq $selector;
     }
-  }
-  """;
+    """;
+
+  protected override string RemoveCommand => """
+    {
+      [CmdletBinding()]
+      param(
+        [Parameter( Mandatory, ValueFromPipeline )]
+        $InputObject
+      );
+      process {
+        $InputObject | Disable-WindowsOptionalFeature -Online -Remove -NoRestart -ErrorAction 'Continue';
+      }
+    }
+    """;
 
   protected override string BaseName => "remove-features";
 
@@ -166,8 +159,6 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
-    CommandAppender appender = GetAppender(CommandConfig.Specialize);
-
     var packageRemover = new PackageRemover();
     var capabilityRemover = new CapabilityRemover();
     var featureRemover = new FeatureRemover();
@@ -188,30 +179,20 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
             featureRemover.Add(feature);
             break;
           case CustomBloatwareStep when bw.Id == "RemoveOneDrive":
-            appender.Append([
-              CommandBuilder.ShellCommand(@"del ""C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk"""),
-              CommandBuilder.ShellCommand(@"del ""C:\Windows\System32\OneDriveSetup.exe"""),
-              CommandBuilder.ShellCommand(@"del ""C:\Windows\SysWOW64\OneDriveSetup.exe"""),
-            ]);
+            SpecializeScript.Append(@"Remove-Item -LiteralPath 'C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk', 'C:\Windows\System32\OneDriveSetup.exe', 'C:\Windows\SysWOW64\OneDriveSetup.exe' -ErrorAction 'Continue';");
             DefaultUserScript.Append(@"Remove-ItemProperty -LiteralPath 'Registry::HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'OneDriveSetup' -Force -ErrorAction 'Continue';");
             break;
           case CustomBloatwareStep when bw.Id == "RemoveTeams":
-            appender.Append(
-              CommandBuilder.RegistryCommand(@"add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications"" /v ConfigureChatAutoInstall /t REG_DWORD /d 0 /f")
-            );
+            SpecializeScript.Append(@"reg.exe add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications"" /v ConfigureChatAutoInstall /t REG_DWORD /d 0 /f;");
             break;
           case CustomBloatwareStep when bw.Id == "RemoveNotepad":
             DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Notepad"" /v ShowStoreBanner /t REG_DWORD /d 0 /f;");
             break;
           case CustomBloatwareStep when bw.Id == "RemoveOutlook":
-            appender.Append(
-              CommandBuilder.RegistryCommand(@"delete ""HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\OutlookUpdate"" /f")
-            );
+            SpecializeScript.Append(@"Remove-Item -LiteralPath 'Registry::HKLM\Software\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\OutlookUpdate' -Force -ErrorAction 'SilentlyContinue';");
             break;
           case CustomBloatwareStep when bw.Id == "RemoveDevHome":
-            appender.Append(
-              CommandBuilder.RegistryCommand(@"delete ""HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\DevHomeUpdate"" /f")
-            );
+            SpecializeScript.Append(@"Remove-Item -LiteralPath 'Registry::HKLM\Software\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\DevHomeUpdate' -Force -ErrorAction 'SilentlyContinue';");
             break;
           case CustomBloatwareStep when bw.Id == "RemoveCopilot":
             UserOnceScript.Append("Get-AppxPackage -Name 'Microsoft.Windows.Ai.Copilot.Provider' | Remove-AppxPackage;");

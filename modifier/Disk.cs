@@ -78,13 +78,11 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
           if (settings.RecoveryMode == RecoveryMode.None)
           {
-            CommandAppender appender = GetAppender(CommandConfig.Specialize);
-            appender.Append([
-              CommandBuilder.Raw(@"ReAgentc.exe /disable"),
-              CommandBuilder.ShellCommand(@"del /a /f ""C:\Windows\System32\Recovery\Winre.wim"""),
-            ]);
+            SpecializeScript.Append("""
+              ReAgentc.exe /disable;
+              Remove-Item -LiteralPath 'C:\Windows\System32\Recovery\Winre.wim' -Force -ErrorAction 'SilentlyContinue';
+              """);
           }
-
           break;
         }
 

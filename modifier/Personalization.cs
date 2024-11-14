@@ -34,8 +34,6 @@ class PersonalizationModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
-    CommandAppender appender = GetAppender(CommandConfig.Specialize);
-
     {
       if (Configuration.ColorSettings is CustomColorSettings settings)
       {
