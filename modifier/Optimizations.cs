@@ -400,7 +400,10 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
     {
-      UserOnceScript.Append(@$"Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Type 'DWord' -Value {Configuration.TaskbarSearch:D};");
+      if (Configuration.TaskbarSearch != TaskbarSearchMode.Box)
+      {
+        UserOnceScript.Append(@$"Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Type 'DWord' -Value {Configuration.TaskbarSearch:D};");
+      }
     }
     {
       void SetStartPins(string json)
