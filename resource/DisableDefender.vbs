@@ -29,6 +29,7 @@ Function FindHiveFiles
 End Function
 
 For Each file In FindHiveFiles
+    WScript.Echo "Will ignore file at '" + file + "' because it was already present when Windows Setup started."
     existing.Add file, Nothing
 Next
 
@@ -44,7 +45,7 @@ Do
                 ret = Execute("reg.exe ADD HKLM\mount\ControlSet001\Services\" + service + " /v Start /t REG_DWORD /d 4 /f")
             Next
             ret = Execute("reg.exe UNLOAD HKLM\mount")
-            WScript.Echo "Found SYSTEM registry hive file at '" + file + "'. This window will now close."
+            WScript.Echo "Found and successfully modified SYSTEM registry hive file at '" + file + "'. This window will now close."
             WScript.Sleep 5000
             Exit Do
         End If
