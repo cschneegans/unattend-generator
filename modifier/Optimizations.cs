@@ -221,7 +221,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableWidgets)
     {
-      UserOnceScript.Append(@"Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'TaskbarDa' -Type 'DWord' -Value 0 -Force;");
+      UserOnceScript.Append(@"New-ItemProperty 'HKLM:\Default\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'TaskbarDa' -Value '0' -PropertyType Dword -Force;");
     }
 
     if (Configuration.TurnOffSystemSounds)
