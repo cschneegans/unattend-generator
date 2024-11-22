@@ -481,5 +481,21 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     {
       FirstLogonScript.Append(CommandBuilder.ShellCommand(@"rmdir C:\Windows.old") + ';');
     }
+    {
+      if(Configuration.DisablePointerPrecision)
+      {
+        DefaultUserScript.Append("""
+          $params = @{
+            LiteralPath = 'Registry::HKU\DefaultUser\Control Panel\Mouse';
+            Type = 'String';
+            Value = 0;
+            Force = $true;
+          };
+          Set-ItemProperty @params -Name 'MouseSpeed';
+          Set-ItemProperty @params -Name 'MouseThreshold1';
+          Set-ItemProperty @params -Name 'MouseThreshold2';
+          """);
+      }
+    }
   }
 }
