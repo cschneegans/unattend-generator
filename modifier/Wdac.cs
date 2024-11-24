@@ -130,10 +130,10 @@ class WdacModifier(ModifierContext context) : Modifier(context)
           } catch {
             $_;
           }
-        ) *>&1 | Out-File -Append -FilePath "$env:TEMP\wdac.log";
+        ) *>&1 | Out-File -Append -FilePath 'C:\Windows\Setup\Scripts\Wdac.log"';
         """);
 
-      string ps1File = @"C:\Windows\Setup\Scripts\wdac.ps1";
+      string ps1File = @"C:\Windows\Setup\Scripts\Wdac.ps1";
       AddTextFile(sw.ToString(), ps1File);
       SpecializeScript.InvokeFile(ps1File);
     }

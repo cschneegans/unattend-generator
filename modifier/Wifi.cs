@@ -214,7 +214,7 @@ class WifiModifier(ModifierContext context) : Modifier(context)
       throw new ConfigurationException($"WLAN profile XML is invalid: {e.Message}");
     }
 
-    string xmlfile = @"C:\Windows\Setup\Scripts\wifi.xml";
+    string xmlfile = @"C:\Windows\Setup\Scripts\Wifi.xml";
     AddXmlFile(profile, xmlfile);
 
     SpecializeScript.Append($"""

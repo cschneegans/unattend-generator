@@ -20,7 +20,7 @@ abstract class Remover<T> where T : SelectorBloatwareStep
     {
       return;
     }
-    string scriptPath = @$"C:\Windows\Temp\{BaseName}.ps1";
+    string scriptPath = @$"C:\Windows\Setup\Scripts\{BaseName}.ps1";
     parent.AddTextFile(GetRemoveCommand(), scriptPath);
     parent.SpecializeScript.InvokeFile(scriptPath);
   }
@@ -38,7 +38,7 @@ abstract class Remover<T> where T : SelectorBloatwareStep
     sw.WriteLine($"$filterCommand = {FilterCommand};");
     sw.WriteLine($"$removeCommand = {RemoveCommand};");
     sw.WriteLine($"$type = '{Type}';");
-    sw.WriteLine($@"$logfile = 'C:\Windows\Temp\{BaseName}.log';");
+    sw.WriteLine($@"$logfile = 'C:\Windows\Setup\Scripts\{BaseName}.log';");
     return sw.ToString() + Util.StringFromResource("RemoveBloatware.ps1");
   }
 
@@ -80,7 +80,7 @@ class PackageRemover : Remover<PackageBloatwareStep>
     }
     """;
 
-  protected override string BaseName => "remove-packages";
+  protected override string BaseName => "RemovePackages";
 
   protected override string Type => "Package";
 }
@@ -115,7 +115,7 @@ class CapabilityRemover : Remover<CapabilityBloatwareStep>
     }
     """;
 
-  protected override string BaseName => "remove-caps";
+  protected override string BaseName => "RemoveCapabilities";
 
   protected override string Type => "Capability";
 }
@@ -150,7 +150,7 @@ class FeatureRemover : Remover<OptionalFeatureBloatwareStep>
     }
     """;
 
-  protected override string BaseName => "remove-features";
+  protected override string BaseName => "RemoveFeatures";
 
   protected override string Type => "Feature";
 }

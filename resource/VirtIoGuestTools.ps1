@@ -7,4 +7,4 @@
 		}
 	}
 	'VirtIO Guest Tools image (virtio-win-*.iso) is not attached to this VM.';
-} *>&1 >> "$env:TEMP\VirtIoGuestTools.log";
+} *>&1 >> 'C:\Windows\Setup\Scripts\VirtIoGuestTools.log';
