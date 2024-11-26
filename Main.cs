@@ -1078,15 +1078,26 @@ abstract class Modifier(ModifierContext context)
       return sw.ToString();
     }
 
-    AddFile(ToPrettyString(), path);
+    AddFile(ToPrettyString(), path, ContentTransformation.Text);
   }
 
   public void AddTextFile(string content, string path)
   {
-    AddFile(content, path);
+    AddFile(content, path, ContentTransformation.Text);
   }
 
-  private void AddFile(string content, string path)
+  public void AddBinaryFile(byte[] content, string path)
+  {
+    AddFile(Convert.ToBase64String(content, Base64FormattingOptions.InsertLineBreaks), path, ContentTransformation.Base64);
+  }
+
+  private enum ContentTransformation
+  {
+    Text,
+    Base64
+  }
+
+  private void AddFile(string content, string path, ContentTransformation transformation)
   {
     {
       XmlNode root = Document.SelectSingleNodeOrThrow("/u:unattend", NamespaceManager);
@@ -1114,6 +1125,7 @@ abstract class Modifier(ModifierContext context)
 
       XmlElement file = Document.CreateElement("File", Constants.MyNamespaceUri);
       file.SetAttribute("path", path);
+      file.SetAttribute("transformation", transformation.ToString());
       extensions.AppendChild(file);
       file.AppendChild(Document.CreateTextNode(Util.Indent(content)));
     }

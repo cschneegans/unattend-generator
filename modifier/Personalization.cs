@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.IO;
 
 namespace Schneegans.Unattend;
@@ -9,6 +10,10 @@ public class DefaultWallpaperSettings : IWallpaperSettings;
 
 public record class SolidWallpaperSettings(
   Color Color
+) : IWallpaperSettings;
+
+public record class ImageWallpaperSettings(
+  byte[] Image
 ) : IWallpaperSettings;
 
 public interface IColorSettings;
@@ -55,15 +60,41 @@ class PersonalizationModifier(ModifierContext context) : Modifier(context)
       }
     }
     {
-      if (Configuration.WallpaperSettings is SolidWallpaperSettings settings)
+      void WriteWallpaperScript(Action<StringWriter> appender)
       {
-        string ps1File = @"C:\Windows\Setup\Scripts\SetWallpaper.ps1";
+        string ps1File = @"C:\Windows\Setup\Scripts\SetWallpaperImage.ps1";
         string script = Util.StringFromResource("SetWallpaper.ps1");
+
         StringWriter writer = new();
-        writer.WriteLine($"$htmlColor = '{ColorTranslator.ToHtml(settings.Color)}';");
         writer.WriteLine(script);
+        appender.Invoke(writer);
         AddTextFile(writer.ToString(), ps1File);
+
         UserOnceScript.InvokeFile(ps1File);
+      }
+
+
+      switch (Configuration.WallpaperSettings)
+      {
+        case ImageWallpaperSettings settings:
+          {
+            string file = @"C:\Windows\Setup\Scripts\Wallpaper";
+            AddBinaryFile(settings.Image, file);
+            WriteWallpaperScript(writer =>
+            {
+              writer.WriteLine(@$"Set-WallpaperImage -LiteralPath '{file}';");
+            });
+            break;
+          }
+
+        case SolidWallpaperSettings settings:
+          {
+            WriteWallpaperScript(writer =>
+            {
+              writer.WriteLine($"Set-WallpaperColor -HtmlColor '{ColorTranslator.ToHtml(settings.Color)}';");
+            });
+            break;
+          }
       }
     }
   }

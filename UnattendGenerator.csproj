@@ -24,7 +24,6 @@
     <None Remove="resource\SetColorTheme.ps1" />
     <None Remove="resource\SetComputerName.ps1" />
     <None Remove="resource\SetStartPins.ps1" />
-    <None Remove="resource\SetWallpaper.ps1" />
     <None Remove="resource\ShowAllTrayIcons.ps1" />
     <None Remove="resource\ShowAllTrayIcons.vbs" />
     <None Remove="resource\ShowAllTrayIcons.xml" />
@@ -50,9 +49,9 @@
     <EmbeddedResource Include="resource\PauseWindowsUpdate.ps1" />
     <EmbeddedResource Include="resource\ClassicContextMenu.ps1" />
     <EmbeddedResource Include="resource\MoveActiveHours.vbs" />
+    <EmbeddedResource Include="resource\SetWallpaper.ps1" />
     <EmbeddedResource Include="resource\TaskbarIcons.ps1" />
     <EmbeddedResource Include="resource\MakeEdgeUninstallable.ps1" />
-    <EmbeddedResource Include="resource\SetWallpaper.ps1" />
     <EmbeddedResource Include="resource\SetStartPins.ps1" />
     <EmbeddedResource Include="resource\ShowAllTrayIcons.vbs" />
     <EmbeddedResource Include="resource\ShowAllTrayIcons.ps1" />
