@@ -295,7 +295,14 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       string ps1File = @"C:\Windows\Setup\Scripts\VirtIoGuestTools.ps1";
       string script = Util.StringFromResource("VirtIoGuestTools.ps1");
       AddTextFile(script, ps1File);
-      SpecializeScript.InvokeFile(ps1File);
+      if (Configuration.DisableDefender)
+      {
+        SpecializeScript.InvokeFile(ps1File);
+      }
+      else
+      {
+        FirstLogonScript.InvokeFile(ps1File);
+      }
     }
 
     if (Configuration.PreventDeviceEncryption)
@@ -482,7 +489,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       FirstLogonScript.Append(CommandBuilder.ShellCommand(@"rmdir C:\Windows.old") + ';');
     }
     {
-      if(Configuration.DisablePointerPrecision)
+      if (Configuration.DisablePointerPrecision)
       {
         DefaultUserScript.Append("""
           $params = @{
