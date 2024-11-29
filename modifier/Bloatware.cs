@@ -20,9 +20,8 @@ abstract class Remover<T> where T : SelectorBloatwareStep
     {
       return;
     }
-    string scriptPath = @$"C:\Windows\Setup\Scripts\{BaseName}.ps1";
-    parent.AddTextFile(GetRemoveCommand(), scriptPath);
-    parent.SpecializeScript.InvokeFile(scriptPath);
+    string ps1File = parent.AddTextFile($"{BaseName}.ps1", GetRemoveCommand());
+    parent.SpecializeScript.InvokeFile(ps1File);
   }
 
   private string GetRemoveCommand()

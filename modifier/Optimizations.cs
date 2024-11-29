@@ -87,32 +87,22 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableWindowsUpdate)
     {
-      AddTextFile(
-        Util.StringFromResource("PauseWindowsUpdate.ps1"),
-        @"C:\Windows\Setup\Scripts\PauseWindowsUpdate.ps1"
-      );
-      AddXmlFile(
-        Util.XmlDocumentFromResource("PauseWindowsUpdate.xml"),
-        @"C:\Windows\Setup\Scripts\PauseWindowsUpdate.xml"
-      );
-      SpecializeScript.Append(@"Register-ScheduledTask -TaskName 'PauseWindowsUpdate' -Xml $( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\PauseWindowsUpdate.xml' -Raw );");
+      AddTextFile("PauseWindowsUpdate.ps1");
+      string xmlFile = AddXmlFile("PauseWindowsUpdate.xml");
+      SpecializeScript.Append($@"Register-ScheduledTask -TaskName 'PauseWindowsUpdate' -Xml $( Get-Content -LiteralPath '{xmlFile}' -Raw );");
     }
 
     if (Configuration.ShowAllTrayIcons)
     {
-      string ps1File = @"C:\Windows\Setup\Scripts\ShowAllTrayIcons.ps1";
-      string script = Util.StringFromResource("ShowAllTrayIcons.ps1");
-      AddTextFile(script, ps1File);
+      string ps1File = AddTextFile("ShowAllTrayIcons.ps1");
       DefaultUserScript.InvokeFile(ps1File);
-      AddXmlFile(Util.XmlDocumentFromResource("ShowAllTrayIcons.xml"), @"C:\Windows\Setup\Scripts\ShowAllTrayIcons.xml");
-      AddTextFile(Util.StringFromResource("ShowAllTrayIcons.vbs"), @"C:\Windows\Setup\Scripts\ShowAllTrayIcons.vbs");
+      AddXmlFile("ShowAllTrayIcons.xml");
+      AddTextFile("ShowAllTrayIcons.vbs");
     }
 
     if (Configuration.DeleteTaskbarIcons)
     {
-      string ps1File = @"C:\Windows\Setup\Scripts\TaskbarIcons.ps1";
-      string script = Util.StringFromResource("TaskbarIcons.ps1");
-      AddTextFile(script, ps1File);
+      string ps1File = AddTextFile("TaskbarIcons.ps1");
       UserOnceScript.InvokeFile(ps1File);
       UserOnceScript.RestartExplorer();
     }
@@ -204,9 +194,9 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v AUOptions /t REG_DWORD /d 4 /f;
         reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoRebootWithLoggedOnUsers /t REG_DWORD /d 1 /f;
         """);
-      AddTextFile(Util.StringFromResource("MoveActiveHours.vbs"), @"C:\Windows\Setup\Scripts\MoveActiveHours.vbs");
-      AddXmlFile(Util.XmlDocumentFromResource("MoveActiveHours.xml"), @"C:\Windows\Setup\Scripts\MoveActiveHours.xml");
-      SpecializeScript.Append(@"Register-ScheduledTask -TaskName 'MoveActiveHours' -Xml $( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\MoveActiveHours.xml' -Raw );");
+      AddTextFile("MoveActiveHours.vbs");
+      string xmlFile = AddXmlFile("MoveActiveHours.xml");
+      SpecializeScript.Append($@"Register-ScheduledTask -TaskName 'MoveActiveHours' -Xml $( Get-Content -LiteralPath '{xmlFile}' -Raw );");
     }
 
     if (Configuration.DisableFastStartup)
@@ -226,9 +216,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.TurnOffSystemSounds)
     {
-      string ps1File = @"C:\Windows\Setup\Scripts\TurnOffSystemSounds.ps1";
-      string script = Util.StringFromResource("TurnOffSystemSounds.ps1");
-      AddTextFile(script, ps1File);
+      string ps1File = AddTextFile("TurnOffSystemSounds.ps1");
       DefaultUserScript.InvokeFile(ps1File);
       UserOnceScript.Append(@"Set-ItemProperty -LiteralPath 'Registry::HKCU\AppEvents\Schemes' -Name '(Default)' -Type 'String' -Value '.None';");
       SpecializeScript.Append("""
@@ -269,17 +257,13 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.VBoxGuestAdditions)
     {
-      string ps1File = @"C:\Windows\Setup\Scripts\VBoxGuestAdditions.ps1";
-      string script = Util.StringFromResource("VBoxGuestAdditions.ps1");
-      AddTextFile(script, ps1File);
+      string ps1File = AddTextFile("VBoxGuestAdditions.ps1");
       SpecializeScript.InvokeFile(ps1File);
     }
 
     if (Configuration.VMwareTools)
     {
-      string ps1File = @"C:\Windows\Setup\Scripts\VMwareTools.ps1";
-      string script = Util.StringFromResource("VMwareTools.ps1");
-      AddTextFile(script, ps1File);
+      string ps1File = AddTextFile("VMwareTools.ps1");
       if (Configuration.DisableDefender)
       {
         SpecializeScript.InvokeFile(ps1File);
@@ -292,9 +276,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.VirtIoGuestTools)
     {
-      string ps1File = @"C:\Windows\Setup\Scripts\VirtIoGuestTools.ps1";
-      string script = Util.StringFromResource("VirtIoGuestTools.ps1");
-      AddTextFile(script, ps1File);
+      string ps1File = AddTextFile("VirtIoGuestTools.ps1");
       if (Configuration.DisableDefender)
       {
         SpecializeScript.InvokeFile(ps1File);
@@ -395,9 +377,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     }
     if (Configuration.MakeEdgeUninstallable)
     {
-      string ps1File = @"C:\Windows\Setup\Scripts\MakeEdgeUninstallable.ps1";
-      string script = Util.StringFromResource("MakeEdgeUninstallable.ps1");
-      AddTextFile(script, ps1File);
+      string ps1File = AddTextFile("MakeEdgeUninstallable.ps1");
       SpecializeScript.InvokeFile(ps1File);
     }
     {
@@ -415,12 +395,10 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     {
       void SetStartPins(string json)
       {
-        string ps1File = @"C:\Windows\Setup\Scripts\SetStartPins.ps1";
-        string script = Util.StringFromResource("SetStartPins.ps1");
-        StringWriter writer = new();
-        writer.WriteLine($"$json = '{json.Replace("'", "''")}';");
-        writer.WriteLine(script);
-        AddTextFile(writer.ToString(), ps1File);
+        string ps1File = AddTextFile("SetStartPins.ps1", before: writer =>
+        {
+          writer.WriteLine($"$json = '{json.Replace("'", "''")}';");
+        });
         SpecializeScript.InvokeFile(ps1File);
       }
 

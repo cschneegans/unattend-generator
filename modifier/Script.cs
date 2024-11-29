@@ -100,7 +100,7 @@ public class Script
   public ScriptType Type { get; }
 }
 
-public record class ScriptInfo(Script Script, string ScriptPath, string LogPath, string Key)
+public record class ScriptInfo(Script Script, string ScriptPath, string Key)
 {
   public static ScriptInfo Create(Script script, int index)
   {
@@ -110,7 +110,6 @@ public record class ScriptInfo(Script Script, string ScriptPath, string LogPath,
     return new ScriptInfo(
       Script: script,
       ScriptPath: @$"{folder}\{name}.{extension}",
-      LogPath: @$"{folder}\{name}.log",
       Key: name
     );
   }
@@ -153,7 +152,7 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
       return script.Content;
     }
 
-    AddTextFile(Clean(info.Script), info.ScriptPath);
+    AddTextFile(info.ScriptPath, Clean(info.Script));
   }
 
   private void CallScript(ScriptInfo info)

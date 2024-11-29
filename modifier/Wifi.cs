@@ -214,12 +214,12 @@ class WifiModifier(ModifierContext context) : Modifier(context)
       throw new ConfigurationException($"WLAN profile XML is invalid: {e.Message}");
     }
 
-    string xmlfile = @"C:\Windows\Setup\Scripts\Wifi.xml";
-    AddXmlFile(profile, xmlfile);
+    string xmlFile = @"C:\Windows\Setup\Scripts\Wifi.xml";
+    AddXmlFile(profile, xmlFile);
 
     SpecializeScript.Append($"""
-      netsh.exe wlan add profile filename="{xmlfile}" user=all;
-      Remove-Item -LiteralPath '{xmlfile}';
+      netsh.exe wlan add profile filename="{xmlFile}" user=all;
+      Remove-Item -LiteralPath '{xmlFile}';
       """);
     if (settings.ConnectAutomatically)
     {

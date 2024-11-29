@@ -9,9 +9,7 @@ class SpecializeModifier(ModifierContext context) : Modifier(context)
       return;
     }
     CommandAppender appender = GetAppender(CommandConfig.Specialize);
-    string script = SpecializeScript.GetScript();
-    string ps1File = @"C:\Windows\Setup\Scripts\Specialize.ps1";
-    AddTextFile(script, ps1File);
+    string ps1File = AddTextFile("Specialize.ps1", SpecializeScript.GetScript());
     appender.Append(CommandBuilder.InvokePowerShellScript(ps1File));
   }
 }

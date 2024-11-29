@@ -133,8 +133,7 @@ class WdacModifier(ModifierContext context) : Modifier(context)
         ) *>&1 | Out-File -Append -FilePath 'C:\Windows\Setup\Scripts\Wdac.log';
         """);
 
-      string ps1File = @"C:\Windows\Setup\Scripts\Wdac.ps1";
-      AddTextFile(sw.ToString(), ps1File);
+      string ps1File = AddTextFile("Wdac.ps1", sw.ToString());
       SpecializeScript.InvokeFile(ps1File);
     }
     else
