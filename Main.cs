@@ -1090,7 +1090,7 @@ abstract class Modifier(ModifierContext context)
 
   public string AddTextFile(string name, string content, Action<StringWriter>? before = null, Action<StringWriter>? after = null)
   {
-    string destination = Path.GetFullPath(name, @"C:\Windows\Setup\Scripts");
+    string destination = $@"C:\Windows\Setup\Scripts\{name}";
     StringWriter writer = new();
     before?.Invoke(writer);
     writer.WriteLine(content);

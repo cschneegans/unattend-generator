@@ -100,17 +100,19 @@ public class Script
   public ScriptType Type { get; }
 }
 
-public record class ScriptInfo(Script Script, string ScriptPath, string Key)
+public record class ScriptInfo(Script Script, string FilePath, string FileName, string Key)
 {
   public static ScriptInfo Create(Script script, int index)
   {
     const string folder = @"C:\Windows\Setup\Scripts";
-    string name = $"unattend-{index + 1:x2}";
+    string key = $"unattend-{index + 1:x2}";
     string extension = script.Type.ToString().ToLowerInvariant();
+    string fileName = $"{key}.{extension}";
     return new ScriptInfo(
       Script: script,
-      ScriptPath: @$"{folder}\{name}.{extension}",
-      Key: name
+      FilePath: @$"{folder}\{fileName}",
+      FileName: fileName,
+      Key: key
     );
   }
 }
@@ -152,7 +154,7 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
       return script.Content;
     }
 
-    AddTextFile(info.ScriptPath, Clean(info.Script));
+    AddTextFile(info.FileName, Clean(info.Script));
   }
 
   private void CallScript(ScriptInfo info)
@@ -163,7 +165,7 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
     {
       if (info.Script.Type == ScriptType.Ps1)
       {
-        sequence.InvokeFile(info.ScriptPath);
+        sequence.InvokeFile(info.FilePath);
       }
       else
       {
@@ -197,11 +199,11 @@ public static class CommandHelper
   {
     return info.Script.Type switch
     {
-      ScriptType.Cmd => CommandBuilder.Raw(info.ScriptPath),
-      ScriptType.Ps1 => CommandBuilder.InvokePowerShellScript(info.ScriptPath),
-      ScriptType.Reg => CommandBuilder.RegistryCommand(@$"import ""{info.ScriptPath}"""),
-      ScriptType.Vbs => CommandBuilder.InvokeVBScript(info.ScriptPath),
-      ScriptType.Js => CommandBuilder.InvokeJScript(info.ScriptPath),
+      ScriptType.Cmd => CommandBuilder.Raw(info.FilePath),
+      ScriptType.Ps1 => CommandBuilder.InvokePowerShellScript(info.FilePath),
+      ScriptType.Reg => CommandBuilder.RegistryCommand(@$"import ""{info.FilePath}"""),
+      ScriptType.Vbs => CommandBuilder.InvokeVBScript(info.FilePath),
+      ScriptType.Js => CommandBuilder.InvokeJScript(info.FilePath),
       _ => throw new NotSupportedException(),
     };
   }
