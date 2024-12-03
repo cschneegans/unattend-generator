@@ -20,6 +20,9 @@ class BypassModifier(ModifierContext context) : Modifier(context)
           CommandBuilder.RegistryCommand(@$"add ""HKLM\SYSTEM\Setup\LabConfig"" /v {value} /t REG_DWORD /d 1 /f")
         );
       }
+      appender.Append(
+        CommandBuilder.RegistryCommand(@$"add ""HKLM\SYSTEM\Setup\MoSetup"" /v AllowUpgradesWithUnsupportedTPMOrCPU /t REG_DWORD /d 1 /f")
+      );
     }
 
     if (Configuration.BypassNetworkCheck)
