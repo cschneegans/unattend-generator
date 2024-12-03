@@ -12,8 +12,8 @@ public record class SolidWallpaperSettings(
   Color Color
 ) : IWallpaperSettings;
 
-public record class ImageWallpaperSettings(
-  byte[] Image
+public record class ScriptWallpaperSettings(
+  string Script
 ) : IWallpaperSettings;
 
 public interface IColorSettings;
@@ -66,25 +66,29 @@ class PersonalizationModifier(ModifierContext context) : Modifier(context)
 
       switch (Configuration.WallpaperSettings)
       {
-        case ImageWallpaperSettings settings:
+        case ScriptWallpaperSettings settings:
+          string imageFile = @"C:\Windows\Setup\Scripts\Wallpaper";
+          string getterFile = AddTextFile("GetWallpaper.ps1", settings.Script);
+          SpecializeScript.Append($$"""
+            try {
+              $bytes = Get-Content -LiteralPath '{{getterFile}}' -Raw | Invoke-Expression;
+              [System.IO.File]::WriteAllBytes( '{{imageFile}}', $bytes );
+            } catch {
+              $_;
+            }
+            """);
+          WriteWallpaperScript(writer =>
           {
-            string file = @"C:\Windows\Setup\Scripts\Wallpaper";
-            AddBinaryFile(settings.Image, file);
-            WriteWallpaperScript(writer =>
-            {
-              writer.WriteLine(@$"Set-WallpaperImage -LiteralPath '{file}';");
-            });
-            break;
-          }
+            writer.WriteLine(@$"Set-WallpaperImage -LiteralPath '{imageFile}';");
+          });
+          break;
 
         case SolidWallpaperSettings settings:
+          WriteWallpaperScript(writer =>
           {
-            WriteWallpaperScript(writer =>
-            {
-              writer.WriteLine($"Set-WallpaperColor -HtmlColor '{ColorTranslator.ToHtml(settings.Color)}';");
-            });
-            break;
-          }
+            writer.WriteLine($"Set-WallpaperColor -HtmlColor '{ColorTranslator.ToHtml(settings.Color)}';");
+          });
+          break;
       }
     }
   }
