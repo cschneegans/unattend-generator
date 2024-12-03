@@ -21,7 +21,7 @@ class BypassModifier(ModifierContext context) : Modifier(context)
         );
       }
       appender.Append(
-        CommandBuilder.RegistryCommand(@$"add ""HKLM\SYSTEM\Setup\MoSetup"" /v AllowUpgradesWithUnsupportedTPMOrCPU /t REG_DWORD /d 1 /f")
+        CommandBuilder.RegistryCommand(@"add ""HKLM\SYSTEM\Setup\MoSetup"" /v AllowUpgradesWithUnsupportedTPMOrCPU /t REG_DWORD /d 1 /f")
       );
     }
 
