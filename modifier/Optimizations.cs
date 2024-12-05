@@ -482,5 +482,11 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           """);
       }
     }
+    {
+      if (Configuration.DisableBingResults)
+      {
+        DefaultUserScript.Append(@"reg.exe add ""HKU\DefaultUser\Software\Policies\Microsoft\Windows\Explorer"" /v DisableSearchBoxSuggestions /t REG_DWORD /d 1 /f;");
+      }
+    }
   }
 }
