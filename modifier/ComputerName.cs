@@ -83,6 +83,7 @@ class ComputerNameModifier(ModifierContext context) : Modifier(context)
         SpecializeScript.Append($$"""
             Get-Content -LiteralPath '{{getterFile}}' -Raw | Invoke-Expression > 'C:\Windows\Setup\Scripts\ComputerName.txt';
             Start-Process -FilePath ( Get-Process -Id $PID ).Path -ArgumentList '-NoProfile', '-Command', 'Get-Content -LiteralPath "{{setterFile}}" -Raw | Invoke-Expression;' -WindowStyle 'Hidden';
+            Start-Sleep -Seconds 10;
             """);
         break;
 
