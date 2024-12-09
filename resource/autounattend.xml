@@ -27,6 +27,7 @@
 				</ProductKey>
 				<AcceptEula>true</AcceptEula>
 			</UserData>
+			<UseConfigurationSet>false</UseConfigurationSet>
 		</component>
 	</settings>
 	<settings pass="generalize" />
