@@ -70,5 +70,11 @@
     "DisplayName": "Enterprise",
     "ProductKey": "XGVPP-NMH47-7TTHJ-W3FW7-8HV2C",
     "Visible": true
+  },
+  {
+    "Id": "enterprise_n",
+    "DisplayName": "Enterprise N",
+    "ProductKey": "WGGHN-J84D6-QYCPR-T7PJ7-X766F",
+    "Visible": true
   }
 ]

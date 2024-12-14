@@ -11,7 +11,7 @@ public record class UnattendedEditionSettings(
   WindowsEdition Edition
 ) : IEditionSettings;
 
-public class DirectEditionSettings(
+public class CustomEditionSettings(
   string productKey
 ) : IEditionSettings
 {
@@ -37,7 +37,7 @@ class ProductKeyModifier(ModifierContext context) : Modifier(context)
     Document.SelectSingleNodeOrThrow("//u:ProductKey/u:Key", NamespaceManager).InnerText = Configuration.EditionSettings switch
     {
       UnattendedEditionSettings settings => settings.Edition.ProductKey,
-      DirectEditionSettings settings => settings.ProductKey,
+      CustomEditionSettings settings => settings.ProductKey,
       InteractiveEditionSettings => "00000-00000-00000-00000-00000",
       _ => throw new NotSupportedException()
     };
