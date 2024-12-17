@@ -63,10 +63,59 @@ public record class CustomStartTilesSettings(
   string Xml
 ) : IStartTilesSettings;
 
+public interface ITaskbarIcons;
+
+public class DefaultTaskbarIcons : ITaskbarIcons;
+
+public class EmptyTaskbarIcons : ITaskbarIcons;
+
+public record class CustomTaskbarIcons(
+  string Xml
+) : ITaskbarIcons;
+
 class OptimizationsModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
+    {
+      void SetTaskbarIcons(string xml)
+      {
+        string path = AddTextFile("TaskbarLayoutModification.xml", xml);
+        SpecializeScript.Append($"""
+          reg.exe add "HKLM\Software\Policies\Microsoft\Windows\Explorer" /v "StartLayoutFile" /t REG_SZ /d "{path}" /f;
+          reg.exe add "HKLM\Software\Policies\Microsoft\Windows\Explorer" /v "LockedStartLayout" /t REG_DWORD /d 1 /f;
+          reg.exe add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableCloudOptimizedContent" /t REG_DWORD /d 1 /f;
+          """);
+      }
+
+      switch (Configuration.TaskbarIcons)
+      {
+        case DefaultTaskbarIcons:
+          break;
+
+        case EmptyTaskbarIcons:
+          SetTaskbarIcons("""
+            <LayoutModificationTemplate xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification" xmlns:defaultlayout="http://schemas.microsoft.com/Start/2014/FullDefaultLayout" xmlns:start="http://schemas.microsoft.com/Start/2014/StartLayout" xmlns:taskbar="http://schemas.microsoft.com/Start/2014/TaskbarLayout" Version="1">
+              <CustomTaskbarLayoutCollection PinListPlacement="Replace">
+                <defaultlayout:TaskbarLayout>
+                  <taskbar:TaskbarPinList>
+                    <taskbar:DesktopApp DesktopApplicationLinkPath="#leaveempty" />
+                  </taskbar:TaskbarPinList>
+                </defaultlayout:TaskbarLayout>
+              </CustomTaskbarLayoutCollection>
+            </LayoutModificationTemplate>
+            """);
+          break;
+
+        case CustomTaskbarIcons settings:
+          SetTaskbarIcons(settings.Xml);
+          break;
+
+        default:
+          throw new NotSupportedException();
+      }
+    }
+
     if (Configuration.ShowFileExtensions)
     {
       DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""HideFileExt"" /t REG_DWORD /d 0 /f;");
@@ -98,13 +147,6 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       DefaultUserScript.InvokeFile(ps1File);
       AddXmlFile("ShowAllTrayIcons.xml");
       AddTextFile("ShowAllTrayIcons.vbs");
-    }
-
-    if (Configuration.DeleteTaskbarIcons)
-    {
-      string ps1File = AddTextFile("TaskbarIcons.ps1");
-      UserOnceScript.InvokeFile(ps1File);
-      UserOnceScript.RestartExplorer();
     }
 
     if (Configuration.HideTaskViewButton)

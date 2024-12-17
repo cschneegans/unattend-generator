@@ -328,7 +328,6 @@ public record class Configuration(
   bool PreventDeviceEncryption,
   bool ClassicContextMenu,
   bool LeftTaskbar,
-  bool DeleteTaskbarIcons,
   bool HideTaskViewButton,
   bool ShowFileExtensions,
   bool ShowAllTrayIcons,
@@ -343,7 +342,8 @@ public record class Configuration(
   TaskbarSearchMode TaskbarSearch,
   IStartPinsSettings StartPinsSettings,
   IStartTilesSettings StartTilesSettings,
-  CompactOsModes CompactOsMode
+  CompactOsModes CompactOsMode,
+  ITaskbarIcons TaskbarIcons
 )
 {
   public static Configuration Default => new(
@@ -389,7 +389,6 @@ public record class Configuration(
     PreventDeviceEncryption: false,
     ClassicContextMenu: false,
     LeftTaskbar: false,
-    DeleteTaskbarIcons: false,
     HideTaskViewButton: false,
     ShowFileExtensions: false,
     ShowAllTrayIcons: false,
@@ -404,7 +403,8 @@ public record class Configuration(
     TaskbarSearch: TaskbarSearchMode.Box,
     StartPinsSettings: new DefaultStartPinsSettings(),
     StartTilesSettings: new DefaultStartTilesSettings(),
-    CompactOsMode: CompactOsModes.Default
+    CompactOsMode: CompactOsModes.Default,
+    TaskbarIcons: new DefaultTaskbarIcons()
   );
 }
 
