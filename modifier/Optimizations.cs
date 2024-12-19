@@ -511,7 +511,10 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
     {
-      FirstLogonScript.Append(CommandBuilder.ShellCommand(@"rmdir C:\Windows.old") + ';');
+      if (Configuration.DeleteWindowsOld)
+      {
+        FirstLogonScript.Append(CommandBuilder.ShellCommand(@"rmdir C:\Windows.old") + ';');
+      }
     }
     {
       if (Configuration.DisablePointerPrecision)
