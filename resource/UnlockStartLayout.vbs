@@ -5,11 +5,10 @@ Set fso = CreateObject("Scripting.FileSystemObject")
 If reg.EnumKey(HKU, "", sids) = 0 Then
 	If Not IsNull(sids) Then
 		For Each sid In sids
-			If reg.GetStringValue(HKU, sid + "\Volatile Environment", "USERPROFILE", userprofile) = 0 Then
-				Set folder = fso.GetFolder(userprofile)
-				If DateDiff("s", folder.DateCreated, Now) > 30 Then
-					reg.SetDWORDValue HKU, sid + "\Software\Policies\Microsoft\Windows\Explorer", "LockedStartLayout", 0
-				End If
+			key = sid + "\Software\Policies\Microsoft\Windows\Explorer"
+			name = "LockedStartLayout"
+			If reg.GetDWORDValue(HKU, key, name, existing) = 0 Then
+				reg.SetDWORDValue HKU, key, name, 0
 			End If
 		Next
 	End If

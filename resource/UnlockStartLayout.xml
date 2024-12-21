@@ -1,19 +1,9 @@
 ﻿<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
 	<Triggers>
-		<BootTrigger>
-			<Repetition>
-				<Interval>PT2M</Interval>
-				<StopAtDurationEnd>false</StopAtDurationEnd>
-			</Repetition>
+		<EventTrigger>
 			<Enabled>true</Enabled>
-		</BootTrigger>
-		<RegistrationTrigger>
-			<Repetition>
-				<Interval>PT2M</Interval>
-				<StopAtDurationEnd>false</StopAtDurationEnd>
-			</Repetition>
-			<Enabled>true</Enabled>
-		</RegistrationTrigger>
+			<Subscription>&lt;QueryList&gt;&lt;Query Id="0" Path="Application"&gt;&lt;Select Path="Application"&gt;*[System[Provider[@Name='UnattendGenerator'] and EventID=1]]&lt;/Select&gt;&lt;/Query&gt;&lt;/QueryList&gt;</Subscription>
+		</EventTrigger>
 	</Triggers>
 	<Principals>
 		<Principal id="Author">
