@@ -1087,6 +1087,15 @@ abstract class Modifier(ModifierContext context)
     AddFile(ToPrettyString(), path, ContentTransformation.Text);
   }
 
+  public string AddXmlFile(string xml, string name)
+  {
+    string path = $@"C:\Windows\Setup\Scripts\{name}";
+    var doc = new XmlDocument();
+    doc.LoadXml(xml);
+    AddXmlFile(doc, path);
+    return path;
+  }
+
   public string AddXmlFile(string resourceName)
   {
     string path = $@"C:\Windows\Setup\Scripts\{resourceName}";

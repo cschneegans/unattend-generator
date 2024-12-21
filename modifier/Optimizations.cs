@@ -80,12 +80,21 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     {
       void SetTaskbarIcons(string xml)
       {
-        string path = AddTextFile("TaskbarLayoutModification.xml", xml);
-        SpecializeScript.Append($"""
-          reg.exe add "HKLM\Software\Policies\Microsoft\Windows\Explorer" /v "StartLayoutFile" /t REG_SZ /d "{path}" /f;
-          reg.exe add "HKLM\Software\Policies\Microsoft\Windows\Explorer" /v "LockedStartLayout" /t REG_DWORD /d 1 /f;
-          reg.exe add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableCloudOptimizedContent" /t REG_DWORD /d 1 /f;
-          """);
+        {
+          string path = AddXmlFile(xml, "TaskbarLayoutModification.xml");
+          SpecializeScript.Append($"""
+            reg.exe add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableCloudOptimizedContent" /t REG_DWORD /d 1 /f;
+            """);
+          DefaultUserScript.Append($$"""
+            reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\Explorer" /v "StartLayoutFile" /t REG_SZ /d "{{path}}" /f;
+            reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\Explorer" /v "LockedStartLayout" /t REG_DWORD /d 1 /f;
+            """);
+        }
+        {
+          AddTextFile("UnlockStartLayout.vbs");
+          string path = AddXmlFile("UnlockStartLayout.xml");
+          SpecializeScript.Append($@"Register-ScheduledTask -TaskName 'UnlockStartLayout' -Xml $( Get-Content -LiteralPath '{path}' -Raw );");
+        }
       }
 
       switch (Configuration.TaskbarIcons)

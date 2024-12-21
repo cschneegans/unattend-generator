@@ -40,6 +40,7 @@
     <EmbeddedResource Include="resource\KeyboardIdentifier.json" />
     <EmbeddedResource Include="resource\Bloatware.json" />
     <EmbeddedResource Include="resource\known-writeable-folders.txt" />
+    <EmbeddedResource Include="resource\UnlockStartLayout.xml" />
     <EmbeddedResource Include="resource\MoveActiveHours.xml" />
     <EmbeddedResource Include="resource\PauseWindowsUpdate.xml" />
     <EmbeddedResource Include="resource\RestartExplorer.ps1" />
@@ -51,6 +52,7 @@
     <EmbeddedResource Include="resource\SetWallpaper.ps1" />
     <EmbeddedResource Include="resource\MakeEdgeUninstallable.ps1" />
     <EmbeddedResource Include="resource\SetStartPins.ps1" />
+    <EmbeddedResource Include="resource\UnlockStartLayout.vbs" />
     <EmbeddedResource Include="resource\ShowAllTrayIcons.vbs" />
     <EmbeddedResource Include="resource\ShowAllTrayIcons.ps1" />
     <EmbeddedResource Include="resource\RemoveBloatware.ps1" />
