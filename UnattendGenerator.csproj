@@ -3,7 +3,7 @@
   <PropertyGroup>
 	<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 	<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>Schneegans.Unattend</RootNamespace>
     <Nullable>enable</Nullable>
   </PropertyGroup>

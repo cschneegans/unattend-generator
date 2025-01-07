@@ -1,5 +1,5 @@
 using namespace Schneegans.Unattend;
-Import-Module -Name "${env:USERPROFILE}\Downloads\UnattendGenerator.dll";
+Import-Module -Name "${env:USERPROFILE}\Downloads\net8.0\UnattendGenerator.dll";
 $generator = [UnattendGenerator]::new();
 $config = & {
     $o = [Configuration]::Default;
