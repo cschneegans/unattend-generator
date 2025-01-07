@@ -26,3 +26,7 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        path: ${{ github.workspace }}/**/*.dll
