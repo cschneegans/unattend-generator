@@ -197,6 +197,9 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
             UserOnceScript.Append("Get-AppxPackage -Name 'Microsoft.Windows.Ai.Copilot.Provider' | Remove-AppxPackage;");
             DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Policies\Microsoft\Windows\WindowsCopilot"" /v TurnOffWindowsCopilot /t REG_DWORD /d 1 /f;");
             break;
+          case CustomBloatwareStep when bw.Id == "RemoveXboxApps":
+            DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\GameDVR"" /v AppCaptureEnabled /t REG_DWORD /d 0 /f;");
+            break;
           default:
             throw new NotSupportedException();
         }
