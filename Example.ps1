@@ -1,3 +1,7 @@
+# This file demonstrates how to use the library in PowerShell 7.4.x.
+# Download a recent build artifact from GitHub and unzip it, or build the library yourself in Visual Studio.
+# Note that you cannot use this library in Windows PowerShell 5.x.
+
 using namespace Schneegans.Unattend;
 Import-Module -Name "${env:USERPROFILE}\Downloads\net8.0\UnattendGenerator.dll";
 $generator = [UnattendGenerator]::new();
