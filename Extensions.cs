@@ -32,7 +32,7 @@ public static class Extensions
 
   public static void RemoveSelf(this XmlNode node)
   {
-    node.ParentNode.RemoveChild(node);
+    node.ParentNode!.RemoveChild(node);
   }
 
   public static IImmutableDictionary<string, T> ToKeyedDictionary<T>(this IEnumerable<T>? enumerable) where T : IKeyed

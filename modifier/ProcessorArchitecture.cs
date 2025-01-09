@@ -25,7 +25,7 @@ class ProcessorArchitectureModifier(ModifierContext context) : Modifier(context)
       {
         var copy = (XmlElement)component.CloneNode(true);
         SetAttribute(copy);
-        component.ParentNode.InsertAfter(copy, component);
+        component.ParentNode!.InsertAfter(copy, component);
       }
     }
   }
