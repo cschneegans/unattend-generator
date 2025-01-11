@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Immutable;
 using System.IO;
+using System.Text;
 using System.Xml;
 
 namespace Schneegans.Unattend;
@@ -72,6 +74,39 @@ public class EmptyTaskbarIcons : ITaskbarIcons;
 public record class CustomTaskbarIcons(
   string Xml
 ) : ITaskbarIcons;
+
+public interface IEffects;
+
+public record class DefaultEffects : IEffects;
+
+public record class BestPerformanceEffects : IEffects;
+
+public record class BestAppearanceEffects : IEffects;
+
+public record class CustomEffects(
+  ImmutableDictionary<Effect, bool> Settings
+) : IEffects;
+
+public enum Effect
+{
+  ControlAnimations,
+  AnimateMinMax,
+  TaskbarAnimations,
+  DWMAeroPeekEnabled,
+  MenuAnimation,
+  TooltipAnimation,
+  SelectionFade,
+  DWMSaveThumbnailEnabled,
+  CursorShadow,
+  ListviewShadow,
+  ThumbnailsOrIcon,
+  ListviewAlphaSelect,
+  DragFullWindows,
+  ComboBoxAnimation,
+  FontSmoothing,
+  ListBoxSmoothScrolling,
+  DropShadow
+}
 
 class OptimizationsModifier(ModifierContext context) : Modifier(context)
 {
@@ -553,6 +588,46 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       if (Configuration.DisableBingResults)
       {
         DefaultUserScript.Append(@"reg.exe add ""HKU\DefaultUser\Software\Policies\Microsoft\Windows\Explorer"" /v DisableSearchBoxSuggestions /t REG_DWORD /d 1 /f;");
+      }
+    }
+    {
+      static ImmutableDictionary<Effect, bool> MakeEffectsDictionary(bool value)
+      {
+        var builder = ImmutableDictionary.CreateBuilder<Effect, bool>();
+        foreach (var key in Enum.GetValues<Effect>())
+        {
+          builder.Add(key, value);
+        }
+        return builder.ToImmutable();
+      }
+
+      void SetEffects(CustomEffects effects, int setting)
+      {
+        StringBuilder sb = new();
+        foreach (var pair in effects.Settings)
+        {
+          sb.AppendLine(@$"Set-ItemProperty -LiteralPath ""Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects\{pair.Key}"" -Name 'DefaultValue' -Value {(pair.Value ? 1 : 0)} -Type 'DWord' -Force;");
+        }
+        SpecializeScript.Append(sb.ToString());
+        UserOnceScript.Append($@"Set-ItemProperty -LiteralPath 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects' -Name 'VisualFXSetting' -Type 'DWord' -Value {setting} -Force;");
+      }
+
+      switch (Configuration.Effects)
+      {
+        case DefaultEffects:
+          break;
+
+        case BestAppearanceEffects:
+          SetEffects(new CustomEffects(MakeEffectsDictionary(true)), 1);
+          break;
+
+        case BestPerformanceEffects:
+          SetEffects(new CustomEffects(MakeEffectsDictionary(false)), 2);
+          break;
+
+        case CustomEffects effects:
+          SetEffects(effects, 3);
+          break;
       }
     }
   }

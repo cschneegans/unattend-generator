@@ -344,7 +344,8 @@ public record class Configuration(
   IStartPinsSettings StartPinsSettings,
   IStartTilesSettings StartTilesSettings,
   CompactOsModes CompactOsMode,
-  ITaskbarIcons TaskbarIcons
+  ITaskbarIcons TaskbarIcons,
+  IEffects Effects
 )
 {
   public static Configuration Default => new(
@@ -406,7 +407,8 @@ public record class Configuration(
     StartPinsSettings: new DefaultStartPinsSettings(),
     StartTilesSettings: new DefaultStartTilesSettings(),
     CompactOsMode: CompactOsModes.Default,
-    TaskbarIcons: new DefaultTaskbarIcons()
+    TaskbarIcons: new DefaultTaskbarIcons(),
+    Effects: new DefaultEffects()
   );
 }
 
