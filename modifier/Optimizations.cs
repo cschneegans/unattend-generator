@@ -269,7 +269,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     {
       if (Configuration.ProcessAuditSettings is EnabledProcessAuditSettings settings)
       {
-        SpecializeScript.Append(@"auditpol.exe /set /subcategory:""Process Creation"" /success:enable /failure:enable;");
+        SpecializeScript.Append(@"auditpol.exe /set /subcategory:""{0CCE922B-69AE-11D9-BED3-505054503030}"" /success:enable /failure:enable;");
         if (settings.IncludeCommandLine)
         {
           SpecializeScript.Append(@"reg.exe add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit"" /v ProcessCreationIncludeCmdLine_Enabled /t REG_DWORD /d 1 /f;");
