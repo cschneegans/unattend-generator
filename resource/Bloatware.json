@@ -483,7 +483,8 @@
     ]
   },
   {
-    "DisplayName": "Your Phone",
+    "DisplayName": "Your Phone\u2009/\u2009Phone Link",
+    "Token": "YourPhone",
     "Steps": [
       {
         "$type": "Schneegans.Unattend.PackageBloatwareStep, UnattendGenerator",
