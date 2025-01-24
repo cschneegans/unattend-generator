@@ -219,7 +219,6 @@ class WifiModifier(ModifierContext context) : Modifier(context)
 
     SpecializeScript.Append($"""
       netsh.exe wlan add profile filename="{xmlFile}" user=all;
-      Remove-Item -LiteralPath '{xmlFile}';
       """);
     if (settings.ConnectAutomatically)
     {
