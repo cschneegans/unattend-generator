@@ -138,7 +138,8 @@ public class Account
         "defaultaccount",
         "system",
         "network service",
-        "local service"
+        "local service",
+        "none"
       ];
 
       if (existing.Contains(Name, StringComparer.OrdinalIgnoreCase))
