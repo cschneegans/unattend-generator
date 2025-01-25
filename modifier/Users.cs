@@ -84,17 +84,21 @@ public class Account
 {
   public Account(
     string name,
+    string displayName,
     string password,
     string group
   )
   {
     Name = name;
+    DisplayName = displayName;
     Password = password;
     Group = group;
     ValidateUsername();
   }
 
   public string Name { get; }
+
+  public string DisplayName { get; }
 
   public string Password { get; }
 
@@ -239,6 +243,7 @@ class UsersModifier(ModifierContext context) : Modifier(context)
         XmlElement localAccount = NewElement("LocalAccount", localAccounts);
         localAccount.SetAttribute("action", NamespaceManager.LookupNamespace("wcm"), "add");
         NewSimpleElement("Name", localAccount, account.Name);
+        NewSimpleElement("DisplayName", localAccount, account.DisplayName);
         NewSimpleElement("Group", localAccount, account.Group);
         NewPasswordElement(localAccount, "Password", account.Password, settings.ObscurePasswords);
       }
