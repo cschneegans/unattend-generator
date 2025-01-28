@@ -108,6 +108,14 @@ public enum Effect
   DropShadow
 }
 
+public interface IDesktopIconSettings;
+
+public record class DefaultDesktopIconSettings : IDesktopIconSettings;
+
+public record class CustomDesktopIconSettings(
+  ImmutableDictionary<DesktopIcon, bool> Settings
+) : IDesktopIconSettings;
+
 class OptimizationsModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
@@ -628,6 +636,32 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         case CustomEffects effects:
           SetEffects(effects, 3);
           break;
+
+        default:
+          throw new NotSupportedException();
+      }
+    }
+    {
+      switch (Configuration.DesktopIcons)
+      {
+        case DefaultDesktopIconSettings:
+          break;
+        case CustomDesktopIconSettings icons:
+          StringBuilder sb = new();
+          foreach (string key in new string[] { "ClassicStartMenu", "NewStartPanel" })
+          {
+            string path = @$"Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\{key}";
+            sb.AppendLine(@$"New-Item -Path '{path}' -Force;");
+            foreach (var pair in icons.Settings)
+            {
+              sb.AppendLine(@$"Set-ItemProperty -Path '{path}' -Name '{pair.Key.Guid}' -Value {(pair.Value ? 0 : 1)} -Type 'DWord';");
+            }
+          }
+          UserOnceScript.Append(sb.ToString());
+          UserOnceScript.RestartExplorer();
+          break;
+        default:
+          throw new NotSupportedException();
       }
     }
   }

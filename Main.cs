@@ -345,7 +345,8 @@ public record class Configuration(
   IStartTilesSettings StartTilesSettings,
   CompactOsModes CompactOsMode,
   ITaskbarIcons TaskbarIcons,
-  IEffects Effects
+  IEffects Effects,
+  IDesktopIconSettings DesktopIcons
 )
 {
   public static Configuration Default => new(
@@ -408,7 +409,8 @@ public record class Configuration(
     StartTilesSettings: new DefaultStartTilesSettings(),
     CompactOsMode: CompactOsModes.Default,
     TaskbarIcons: new DefaultTaskbarIcons(),
-    Effects: new DefaultEffects()
+    Effects: new DefaultEffects(),
+    DesktopIcons: new DefaultDesktopIconSettings()
   );
 }
 
@@ -689,6 +691,19 @@ public class KeyboardIdentifier(
   public InputType Type { get; } = type;
 }
 
+public class DesktopIcon(
+  string id,
+  string displayName,
+  string guid
+) : IKeyed
+{
+  public string Id { get; } = id;
+
+  public string DisplayName { get; } = displayName;
+
+  public string Guid { get; } = guid;
+}
+
 public class TimeOffset(
   string id,
   string displayName
@@ -830,6 +845,10 @@ public class UnattendGenerator
       string json = Util.StringFromResource("TimeOffset.json");
       TimeOffsets = JsonConvert.DeserializeObject<TimeOffset[]>(json).ToKeyedDictionary();
     }
+    {
+      string json = Util.StringFromResource("DesktopIcon.json");
+      DesktopIcons = JsonConvert.DeserializeObject<DesktopIcon[]>(json).ToKeyedDictionary();
+    }
 
     {
       VerifyUniqueKeys(Components.Values, e => e.Id);
@@ -855,6 +874,11 @@ public class UnattendGenerator
       VerifyUniqueKeys(TimeOffsets.Values, e => e.Id);
       VerifyUniqueKeys(TimeOffsets.Values, e => e.DisplayName);
     }
+    {
+      VerifyUniqueKeys(DesktopIcons.Values, e => e.Id);
+      VerifyUniqueKeys(DesktopIcons.Values, e => e.Guid);
+      VerifyUniqueKeys(DesktopIcons.Values, e => e.DisplayName);
+    }
   }
 
   private static void VerifyUniqueKeys<T>(IEnumerable<T> items, Func<T, object> keySelector)
@@ -874,6 +898,8 @@ public class UnattendGenerator
       TimeZone: Lookup<TimeOffset>(id)
     );
   }
+
+  public IImmutableDictionary<string, DesktopIcon> DesktopIcons { get; }
 
   public IImmutableDictionary<string, TimeOffset> TimeOffsets { get; }
 
@@ -934,6 +960,10 @@ public class UnattendGenerator
     if (typeof(T) == typeof(GeoLocation))
     {
       return (T)(object)Lookup(GeoLocations, key);
+    }
+    if (typeof(T) == typeof(DesktopIcon))
+    {
+      return (T)(object)Lookup(DesktopIcons, key);
     }
     throw new NotSupportedException();
   }
@@ -1120,7 +1150,7 @@ abstract class Modifier(ModifierContext context)
   {
     return AddTextFile(resourceName, content: Util.StringFromResource(resourceName), before: before, after: after);
   }
-    
+
   private void AddFile(string content, string path)
   {
     {
