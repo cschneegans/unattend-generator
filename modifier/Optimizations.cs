@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Text;
@@ -112,9 +113,15 @@ public interface IDesktopIconSettings;
 
 public record class DefaultDesktopIconSettings : IDesktopIconSettings;
 
-public record class CustomDesktopIconSettings(
-  ImmutableDictionary<DesktopIcon, bool> Settings
-) : IDesktopIconSettings;
+public record class CustomDesktopIconSettings : IDesktopIconSettings
+{
+  public CustomDesktopIconSettings(IDictionary<DesktopIcon, bool> settings)
+  {
+    Settings = ImmutableSortedDictionary.CreateRange(settings);
+  }
+
+  public ImmutableSortedDictionary<DesktopIcon, bool> Settings { get; init; }
+}
 
 class OptimizationsModifier(ModifierContext context) : Modifier(context)
 {

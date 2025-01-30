@@ -695,13 +695,18 @@ public class DesktopIcon(
   string id,
   string displayName,
   string guid
-) : IKeyed
+) : IKeyed, IComparable<DesktopIcon>
 {
   public string Id { get; } = id;
 
   public string DisplayName { get; } = displayName;
 
   public string Guid { get; } = guid;
+
+  public int CompareTo(DesktopIcon? other)
+  {
+    return Id.CompareTo(other?.Id);
+  }
 }
 
 public class TimeOffset(
