@@ -24,6 +24,7 @@
 			<UserData>
 				<ProductKey>
 					<Key />
+					<WillShowUI />
 				</ProductKey>
 				<AcceptEula>true</AcceptEula>
 			</UserData>

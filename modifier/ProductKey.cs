@@ -7,6 +7,8 @@ public interface IEditionSettings;
 
 public class InteractiveEditionSettings : IEditionSettings;
 
+public record class FirmwareEditionSettings : IEditionSettings;
+
 public record class UnattendedEditionSettings(
   WindowsEdition Edition
 ) : IEditionSettings;
@@ -34,12 +36,17 @@ class ProductKeyModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
-    Document.SelectSingleNodeOrThrow("//u:ProductKey/u:Key", NamespaceManager).InnerText = Configuration.EditionSettings switch
+    const string zero = "00000-00000-00000-00000-00000";
+    (string key, string ui) = Configuration.EditionSettings switch
     {
-      UnattendedEditionSettings settings => settings.Edition.ProductKey,
-      CustomEditionSettings settings => settings.ProductKey,
-      InteractiveEditionSettings => "00000-00000-00000-00000-00000",
+      UnattendedEditionSettings settings => (settings.Edition.ProductKey, "OnError"),
+      CustomEditionSettings settings => (settings.ProductKey, "OnError"),
+      InteractiveEditionSettings => (zero, "Always"),
+      FirmwareEditionSettings => (zero, "OnError"),
       _ => throw new NotSupportedException()
     };
+
+    Document.SelectSingleNodeOrThrow("//u:ProductKey/u:Key", NamespaceManager).InnerText = key;
+    Document.SelectSingleNodeOrThrow("//u:ProductKey/u:WillShowUI", NamespaceManager).InnerText = ui;
   }
 }
