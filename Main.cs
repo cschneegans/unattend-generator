@@ -46,7 +46,8 @@ public enum TaskbarSearchMode
 {
   Hide = 0,
   Icon = 1,
-  Box = 2
+  Box = 2,
+  Label = 3
 }
 
 abstract class CommandConfig
