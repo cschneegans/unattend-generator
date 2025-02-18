@@ -135,55 +135,24 @@ class CommandAppender(XmlDocument doc, XmlNamespaceManager ns, CommandConfig con
   }
 }
 
-static class CommandBuilder
+public class CommandBuilder(bool hidePowerShellWindows)
 {
-  public static string Raw(string command)
+  public string Raw(string command)
   {
     return command;
   }
 
-  public static string ShellCommand(string command)
+  public string ShellCommand(string command)
   {
     return $@"cmd.exe /c ""{command}""";
   }
 
-  /// <summary>
-  /// Runs a command and redirects its <c>stdout</c> and <c>stderr</c> to a file.
-  /// </summary>
-  public static string ShellCommand(string command, string outFile)
-  {
-    return $@"cmd.exe /c ""{command} >>""{outFile}"" 2>&1""";
-  }
-
-  public static string RegistryCommand(string value)
+  public string RegistryCommand(string value)
   {
     return $"reg.exe {value}";
   }
 
-  public delegate IEnumerable<string> RegistryDefaultUserAction(string rootKey, string subKey);
-
-  public static IEnumerable<string> RegistryDefaultUserCommand(RegistryDefaultUserAction action)
-  {
-    string rootKey = "HKU";
-    string subKey = "DefaultUser";
-
-    IEnumerable<string> content = action.Invoke(rootKey, subKey);
-
-    if (content.Any())
-    {
-      return [
-        RegistryCommand(@$"load ""{rootKey}\{subKey}"" ""C:\Users\Default\NTUSER.DAT"""),
-        .. content,
-        RegistryCommand(@$"unload ""{rootKey}\{subKey}"""),
-      ];
-    }
-    else
-    {
-      return [];
-    }
-  }
-
-  public static string PowerShellCommand(string value)
+  public string PowerShellCommand(string value)
   {
     {
       const char quote = '"';
@@ -200,25 +169,25 @@ static class CommandBuilder
         throw new ArgumentException($"PowerShell command '{value}' must end with either '{semicolon}' or '{brace}'.");
       }
     }
-    return @$"powershell.exe -NoProfile -Command ""{value}""";
+    return @$"powershell.exe -WindowStyle {(hidePowerShellWindows ? "Hidden" : "Normal")} -NoProfile -Command ""{value}""";
   }
 
-  public static string InvokePowerShellScript(string filepath)
+  public string InvokePowerShellScript(string filepath)
   {
     return PowerShellCommand($"Get-Content -LiteralPath '{filepath}' -Raw | Invoke-Expression;");
   }
 
-  public static string InvokeVBScript(string filepath)
+  public string InvokeVBScript(string filepath)
   {
     return @$"cscript.exe //E:vbscript ""{filepath}""";
   }
 
-  public static string InvokeJScript(string filepath)
+  public string InvokeJScript(string filepath)
   {
     return @$"cscript.exe //E:jscript ""{filepath}""";
   }
 
-  public static List<string> WriteToFile(string path, IEnumerable<string> lines)
+  public List<string> WriteToFile(string path, IEnumerable<string> lines)
   {
     static IEnumerable<string> Trim(IEnumerable<string> input)
     {
@@ -341,6 +310,7 @@ public record class Configuration(
   bool DeleteWindowsOld,
   bool DisableBingResults,
   bool UseConfigurationSet,
+  bool HidePowerShellWindows,
   TaskbarSearchMode TaskbarSearch,
   IStartPinsSettings StartPinsSettings,
   IStartTilesSettings StartTilesSettings,
@@ -405,6 +375,7 @@ public record class Configuration(
     DeleteWindowsOld: false,
     DisableBingResults: false,
     UseConfigurationSet: false,
+    HidePowerShellWindows: false,
     TaskbarSearch: TaskbarSearchMode.Box,
     StartPinsSettings: new DefaultStartPinsSettings(),
     StartTilesSettings: new DefaultStartTilesSettings(),
@@ -1078,6 +1049,8 @@ abstract class Modifier(ModifierContext context)
   public Configuration Configuration { get; } = context.Configuration;
 
   public UnattendGenerator Generator { get; } = context.Generator;
+
+  public CommandBuilder CommandBuilder { get; } = new CommandBuilder(hidePowerShellWindows: context.Configuration.HidePowerShellWindows);
 
   public SpecializeSequence SpecializeScript { get; } = context.SpecializeScript;
 

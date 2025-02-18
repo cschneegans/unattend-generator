@@ -159,7 +159,7 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
 
   private void CallScript(ScriptInfo info)
   {
-    string command = CommandHelper.GetCommand(info);
+    string command = CommandHelper.GetCommand(info, CommandBuilder);
 
     void AppendPowerShellSequence(PowerShellSequence sequence)
     {
@@ -195,15 +195,15 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
 
 public static class CommandHelper
 {
-  public static string GetCommand(ScriptInfo info)
+  public static string GetCommand(ScriptInfo info, CommandBuilder builder)
   {
     return info.Script.Type switch
     {
-      ScriptType.Cmd => CommandBuilder.Raw(info.FilePath),
-      ScriptType.Ps1 => CommandBuilder.InvokePowerShellScript(info.FilePath),
-      ScriptType.Reg => CommandBuilder.RegistryCommand(@$"import ""{info.FilePath}"""),
-      ScriptType.Vbs => CommandBuilder.InvokeVBScript(info.FilePath),
-      ScriptType.Js => CommandBuilder.InvokeJScript(info.FilePath),
+      ScriptType.Cmd => builder.Raw(info.FilePath),
+      ScriptType.Ps1 => builder.InvokePowerShellScript(info.FilePath),
+      ScriptType.Reg => builder.RegistryCommand(@$"import ""{info.FilePath}"""),
+      ScriptType.Vbs => builder.InvokeVBScript(info.FilePath),
+      ScriptType.Js => builder.InvokeJScript(info.FilePath),
       _ => throw new NotSupportedException(),
     };
   }
