@@ -508,6 +508,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       if (Configuration.TaskbarSearch != TaskbarSearchMode.Box)
       {
         UserOnceScript.Append(@$"Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Type 'DWord' -Value {Configuration.TaskbarSearch:D};");
+        UserOnceScript.RestartExplorer();
       }
     }
     {
