@@ -676,5 +676,13 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           throw new NotSupportedException();
       }
     }
+    {
+      if(Configuration.ShowEndTask)
+      {
+        DefaultUserScript.Append("""
+          reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings" /v TaskbarEndTask /t REG_DWORD /d 1 /f;
+          """);
+      }
+    }
   }
 }
