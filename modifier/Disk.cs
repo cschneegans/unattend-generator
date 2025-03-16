@@ -38,9 +38,47 @@ public enum CompactOsModes
   Default, Always, Never
 }
 
+public interface IDiskAssertionSettings;
+
+public class SkipDiskAssertionSettings : IDiskAssertionSettings;
+
+public record class ScriptDiskAssertionsSettings(
+  string Script
+) : IDiskAssertionSettings;
+
 class DiskModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
+  {
+    AssertDisk();
+    SetCompactMode();
+    SetPartitions();
+  }
+
+  private void AssertDisk()
+  {
+    switch (Configuration.DiskAssertionSettings)
+    {
+      case SkipDiskAssertionSettings:
+        break;
+      case ScriptDiskAssertionsSettings settings:
+        WriteScript(Util.SplitLines(settings.Script));
+        break;
+    }
+
+    void WriteScript(IEnumerable<string> lines)
+    {
+      string file = @"X:\assert.vbs";
+
+      CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
+      appender.Append([
+        ..CommandBuilder.WriteToFile(file, lines),
+        CommandBuilder.InvokeVBScript(file)
+      ]);
+    }
+  }
+
+  private void SetCompactMode()
   {
     var target = Document.SelectSingleNodeOrThrow("//u:Compact", NamespaceManager);
     switch (Configuration.CompactOsMode)
@@ -55,7 +93,10 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         target.InnerText = "false";
         break;
     }
+  }
 
+  private void SetPartitions()
+  {
     switch (Configuration.PartitionSettings)
     {
       case InteractivePartitionSettings:
@@ -116,24 +157,24 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           throw new NotSupportedException();
         }
     }
+
+    void WriteScript(IEnumerable<string> lines)
+    {
+      string script = @"X:\diskpart.txt";
+      string log = @"X:\diskpart.log";
+
+      CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
+      appender.Append([
+        ..CommandBuilder.WriteToFile(script, lines),
+        CommandBuilder.ShellCommand($@"diskpart.exe /s ""{script}"" >>""{log}"" || ( type ""{log}"" & echo diskpart encountered an error. & pause & exit /b 1 )"),
+      ]);
+    }
   }
 
   private void InstallTo(int disk, int partition)
   {
     Document.SelectSingleNodeOrThrow("//u:ImageInstall/u:OSImage/u:InstallTo/u:DiskID", NamespaceManager).InnerText = disk.ToString();
     Document.SelectSingleNodeOrThrow("//u:ImageInstall/u:OSImage/u:InstallTo/u:PartitionID", NamespaceManager).InnerText = partition.ToString();
-  }
-
-  private void WriteScript(IEnumerable<string> lines)
-  {
-    string script = @"X:\diskpart.txt";
-    string log = @"X:\diskpart.log";
-
-    CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
-    appender.Append([
-      ..CommandBuilder.WriteToFile(script, lines),
-      CommandBuilder.ShellCommand($@"diskpart.exe /s ""{script}"" >>""{log}"" || ( type ""{log}"" & echo diskpart encountered an error. & pause & exit /b 1 )"),
-    ]);
   }
 
   public static string GetCustomDiskpartScript()
