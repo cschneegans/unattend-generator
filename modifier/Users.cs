@@ -139,7 +139,8 @@ public class Account
         "system",
         "network service",
         "local service",
-        "none"
+        "none",
+        "wdagutilityaccount"
       ];
 
       if (existing.Contains(Name, StringComparer.OrdinalIgnoreCase))
