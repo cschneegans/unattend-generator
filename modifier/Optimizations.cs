@@ -423,8 +423,14 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.HideEdgeFre)
     {
-      SpecializeScript.Append(@"reg.exe add ""HKLM\SOFTWARE\Policies\Microsoft\Edge"" /v HideFirstRunExperience /t REG_DWORD /d 1 /f;");
+      SpecializeScript.Append(@"reg.exe add ""HKLM\Software\Policies\Microsoft\Edge"" /v HideFirstRunExperience /t REG_DWORD /d 1 /f;");
     }
+
+    if (Configuration.DisableEdgeStartupBoost)
+    {
+      SpecializeScript.Append(@"reg.exe add ""HKLM\Software\Policies\Microsoft\Edge"" /v StartupBoostEnabled /t REG_DWORD /d 0 /f;");
+    }
+
     {
       if (Configuration.KeySettings is ConfigureKeySettings settings)
       {
@@ -677,7 +683,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
     {
-      if(Configuration.ShowEndTask)
+      if (Configuration.ShowEndTask)
       {
         DefaultUserScript.Append("""
           reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings" /v TaskbarEndTask /t REG_DWORD /d 1 /f;

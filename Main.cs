@@ -249,7 +249,7 @@ public class CommandBuilder(bool hidePowerShellWindows)
         yield return command;
       }
     }
-    return Enumerate().ToList();
+    return [.. Enumerate()];
   }
 }
 
@@ -304,6 +304,7 @@ public record class Configuration(
   bool ShowAllTrayIcons,
   HideModes HideFiles,
   bool HideEdgeFre,
+  bool DisableEdgeStartupBoost,
   bool MakeEdgeUninstallable,
   bool LaunchToThisPC,
   bool DisableWindowsUpdate,
@@ -371,6 +372,7 @@ public record class Configuration(
     ShowAllTrayIcons: false,
     HideFiles: HideModes.Hidden,
     HideEdgeFre: false,
+    DisableEdgeStartupBoost: false,
     MakeEdgeUninstallable: false,
     LaunchToThisPC: false,
     DisableWindowsUpdate: false,
@@ -543,7 +545,7 @@ public abstract class BloatwareStep(
   string[] appliesTo
 )
 {
-  public ImmutableSortedSet<string> AppliesTo { get; } = ImmutableSortedSet.CreateRange(appliesTo);
+  public ImmutableSortedSet<string> AppliesTo { get; } = [.. appliesTo];
 }
 
 public class SelectorBloatwareStep(
