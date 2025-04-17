@@ -428,6 +428,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableEdgeStartupBoost)
     {
+      SpecializeScript.Append(@"reg.exe add ""HKLM\Software\Policies\Microsoft\Edge\Recommended"" /v BackgroundModeEnabled /t REG_DWORD /d 0 /f;");
       SpecializeScript.Append(@"reg.exe add ""HKLM\Software\Policies\Microsoft\Edge\Recommended"" /v StartupBoostEnabled /t REG_DWORD /d 0 /f;");
     }
 
