@@ -50,6 +50,11 @@ public enum TaskbarSearchMode
   Label = 3
 }
 
+public record struct ComponentAndPass(
+  string Component,
+  Pass Pass
+);
+
 abstract class CommandConfig
 {
   public readonly static CommandConfig WindowsPE = new WindowsPECommandConfig();
@@ -269,7 +274,7 @@ public record class Configuration(
   IWifiSettings WifiSettings,
   IWdacSettings WdacSettings,
   ImmutableHashSet<ProcessorArchitecture> ProcessorArchitectures,
-  ImmutableDictionary<string, ImmutableSortedSet<Pass>> Components,
+  ImmutableDictionary<ComponentAndPass, string> Components,
   ImmutableList<Bloatware> Bloatwares,
   ExpressSettingsMode ExpressSettings,
   ScriptSettings ScriptSettings,
@@ -337,7 +342,7 @@ public record class Configuration(
     WifiSettings: new InteractiveWifiSettings(),
     WdacSettings: new SkipWdacSettings(),
     ProcessorArchitectures: [ProcessorArchitecture.amd64],
-    Components: ImmutableDictionary.Create<string, ImmutableSortedSet<Pass>>(),
+    Components: ImmutableDictionary.Create<ComponentAndPass, string>(),
     Bloatwares: [],
     ExpressSettings: ExpressSettingsMode.DisableAll,
     ScriptSettings: new ScriptSettings(Scripts: [], RestartExplorer: false),
@@ -961,6 +966,10 @@ public class UnattendGenerator
     if (typeof(T) == typeof(DesktopIcon))
     {
       return (T)(object)Lookup(DesktopIcons, key);
+    }
+    if (typeof(T) == typeof(Component))
+    {
+      return (T)(object)Lookup(Components, key);
     }
     throw new NotSupportedException();
   }

@@ -1,27 +1,48 @@
-﻿namespace Schneegans.Unattend;
+﻿using System.Xml;
+
+namespace Schneegans.Unattend;
 
 class ComponentsModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
-    foreach (var pair in Configuration.Components)
+    foreach (var item in Configuration.Components)
     {
-      string component = pair.Key;
-      foreach (var pass in pair.Value)
+      var setting = Document.SelectSingleNodeOrThrow($"/u:unattend/u:settings[@pass='{item.Key.Pass}']", NamespaceManager);
+      var component = (XmlElement?)setting.SelectSingleNode($"u:component[@name='{item.Key.Component}']", NamespaceManager);
+
+      if (component == null)
       {
-        var setting = Document.SelectSingleNodeOrThrow($"/u:unattend/u:settings[@pass='{pass}']", NamespaceManager);
-        if (setting.SelectSingleNode($"u:component[@name='{component}']", NamespaceManager) == null)
-        {
-          var elem = Document.CreateElement("component", NamespaceManager.LookupNamespace("u"));
-          elem.SetAttribute("name", component);
-          elem.SetAttribute("processorArchitecture", "x86");
-          elem.SetAttribute("publicKeyToken", "31bf3856ad364e35");
-          elem.SetAttribute("language", "neutral");
-          elem.SetAttribute("versionScope", "nonSxS");
-          elem.AppendChild(Document.CreateComment("Placeholder"));
-          setting.AppendChild(elem);
-        }
+        component = Document.CreateElement("component", NamespaceManager.LookupNamespace("u"));
+        component.SetAttribute("name", item.Key.Component);
+        component.SetAttribute("processorArchitecture", "x86");
+        component.SetAttribute("publicKeyToken", "31bf3856ad364e35");
+        component.SetAttribute("language", "neutral");
+        component.SetAttribute("versionScope", "nonSxS");
       }
+      else
+      {
+        component.InnerXml = "";
+      }
+
+      var newDoc = new XmlDocument();
+      try
+      {
+        newDoc.LoadXml($"<root xmlns='urn:schemas-microsoft-com:unattend'>{item.Value}</root>");
+      }
+      catch (XmlException)
+      {
+        static string Escape(string str)
+        {
+          return str.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
+        }
+        throw new ConfigurationException($"Your XML markup '{Escape(item.Value)}' is not well-formed.");
+      }
+      foreach (XmlNode node in newDoc.DocumentElement!.ChildNodes)
+      {
+        component.AppendChild(Document.ImportNode(node, deep: true));
+      }
+      setting.AppendChild(component);
     }
   }
 }

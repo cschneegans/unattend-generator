@@ -69,6 +69,12 @@
     ]
   },
   {
+    "Id": "Microsoft-Windows-Devices-Lights-WinRT",
+    "Passes": [
+      "offlineServicing"
+    ]
+  },
+  {
     "Id": "Microsoft-Windows-DiagCpl",
     "Passes": [
       "offlineServicing",
@@ -278,6 +284,14 @@
     "Id": "Microsoft-Windows-Printing-Spooler-Core",
     "Passes": [
       "specialize"
+    ]
+  },
+  {
+    "Id": "Microsoft-Windows-Sensors-Core",
+    "Passes": [
+      "offlineServicing",
+      "specialize",
+      "oobeSystem"
     ]
   },
   {
