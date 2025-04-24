@@ -28,7 +28,7 @@ class ComponentsModifier(ModifierContext context) : Modifier(context)
       var newDoc = new XmlDocument();
       try
       {
-        newDoc.LoadXml($"<root xmlns='urn:schemas-microsoft-com:unattend'>{item.Value}</root>");
+        newDoc.LoadXml($"<root xmlns='urn:schemas-microsoft-com:unattend' xmlns:wcm='http://schemas.microsoft.com/WMIConfig/2002/State'>{item.Value}</root>");
       }
       catch (XmlException)
       {
