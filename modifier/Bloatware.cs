@@ -200,6 +200,12 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
           case CustomBloatwareStep when bw.Id == "RemoveXboxApps":
             DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\GameDVR"" /v AppCaptureEnabled /t REG_DWORD /d 0 /f;");
             break;
+          case CustomBloatwareStep when bw.Id == "RemoveSnippingTool":
+            DefaultUserScript.Append("""
+              reg.exe add "HKU\DefaultUser\Control Panel\Keyboard" /v PrintScreenKeyForSnippingEnabled /t REG_DWORD /d 0 /f;
+              reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v DisabledHotkeys /t REG_SZ /d "RS" /f;
+              """);
+            break;
           default:
             throw new NotSupportedException();
         }
