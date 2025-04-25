@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Linq;
+using System.Xml;
 
 namespace Schneegans.Unattend;
 
@@ -33,6 +34,10 @@ class ComponentsModifier(ModifierContext context) : Modifier(context)
       catch (XmlException)
       {
         throw new ConfigurationException($"Your XML markup '{item.Value}' is not well-formed.");
+      }
+      if (newDoc.DocumentElement!.SelectNodesOrEmpty("//*[local-name()='settings' or local-name()='component']").Any())
+      {
+        throw new ConfigurationException($"You must not include elements 'settings' or 'component' with your XML markup '{item.Value}'.");
       }
       foreach (XmlNode node in newDoc.DocumentElement!.ChildNodes)
       {
