@@ -32,11 +32,7 @@ class ComponentsModifier(ModifierContext context) : Modifier(context)
       }
       catch (XmlException)
       {
-        static string Escape(string str)
-        {
-          return str.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
-        }
-        throw new ConfigurationException($"Your XML markup '{Escape(item.Value)}' is not well-formed.");
+        throw new ConfigurationException($"Your XML markup '{item.Value}' is not well-formed.");
       }
       foreach (XmlNode node in newDoc.DocumentElement!.ChildNodes)
       {
