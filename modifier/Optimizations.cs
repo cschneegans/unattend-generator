@@ -373,35 +373,26 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       SpecializeScript.Append(@"reg.exe add ""HKLM\Software\Policies\Microsoft\Windows\CloudContent"" /v ""DisableWindowsConsumerFeatures"" /t REG_DWORD /d 1 /f;");
     }
 
-    if (Configuration.VBoxGuestAdditions)
     {
-      string ps1File = AddTextFile("VBoxGuestAdditions.ps1");
-      SpecializeScript.InvokeFile(ps1File);
-    }
+      void InstallVmSoftware(string resourceName)
+      {
+        PowerShellSequence target = Configuration.DisableDefender ? SpecializeScript : FirstLogonScript;
+        target.InvokeFile(AddTextFile(resourceName));
+      }
 
-    if (Configuration.VMwareTools)
-    {
-      string ps1File = AddTextFile("VMwareTools.ps1");
-      if (Configuration.DisableDefender)
+      if (Configuration.VBoxGuestAdditions)
       {
-        SpecializeScript.InvokeFile(ps1File);
+        InstallVmSoftware("VBoxGuestAdditions.ps1");
       }
-      else
-      {
-        FirstLogonScript.InvokeFile(ps1File);
-      }
-    }
 
-    if (Configuration.VirtIoGuestTools)
-    {
-      string ps1File = AddTextFile("VirtIoGuestTools.ps1");
-      if (Configuration.DisableDefender)
+      if (Configuration.VMwareTools)
       {
-        SpecializeScript.InvokeFile(ps1File);
+        InstallVmSoftware("VMwareTools.ps1");
       }
-      else
+
+      if (Configuration.VirtIoGuestTools)
       {
-        FirstLogonScript.InvokeFile(ps1File);
+        InstallVmSoftware("VirtIoGuestTools.ps1");
       }
     }
 
