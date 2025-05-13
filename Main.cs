@@ -325,7 +325,8 @@ public record class Configuration(
   CompactOsModes CompactOsMode,
   ITaskbarIcons TaskbarIcons,
   IEffects Effects,
-  IDesktopIconSettings DesktopIcons
+  IDesktopIconSettings DesktopIcons,
+  IStickyKeysSettings StickyKeysSettings
 )
 {
   public static Configuration Default => new(
@@ -393,7 +394,8 @@ public record class Configuration(
     CompactOsMode: CompactOsModes.Default,
     TaskbarIcons: new DefaultTaskbarIcons(),
     Effects: new DefaultEffects(),
-    DesktopIcons: new DefaultDesktopIconSettings()
+    DesktopIcons: new DefaultDesktopIconSettings(),
+    StickyKeysSettings: new DefaultStickyKeysSettings()
   );
 }
 

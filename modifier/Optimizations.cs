@@ -8,6 +8,32 @@ using System.Xml;
 
 namespace Schneegans.Unattend;
 
+public enum StickyKeys
+{
+  HotKeyActive = 0x00000004,
+  Indicator = 0x00000020,
+  TriState = 0x00000080,
+  TwoKeysOff = 0x00000100,
+  AudibleFeedback = 0x00000040,
+  HotKeySound = 0x00000010,
+}
+
+public interface IStickyKeysSettings;
+
+public class DefaultStickyKeysSettings : IStickyKeysSettings;
+
+public class DisabledStickyKeysSettings : IStickyKeysSettings;
+
+public record class CustomStickyKeysSettings : IStickyKeysSettings
+{
+  public CustomStickyKeysSettings(ISet<StickyKeys> flags)
+  {
+    Flags = [.. flags];
+  }
+
+  public ImmutableHashSet<StickyKeys> Flags { get; init; }
+}
+
 public interface IProcessAuditSettings;
 
 public record class EnabledProcessAuditSettings(
@@ -682,6 +708,36 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         DefaultUserScript.Append("""
           reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings" /v TaskbarEndTask /t REG_DWORD /d 1 /f;
           """);
+      }
+    }
+    {
+      void SetStickyKeys(ISet<StickyKeys> flags)
+      {
+        int result = 0x00000002 | 0x00000008; // SKF_AVAILABLE | SKF_CONFIRMHOTKEY
+        foreach (StickyKeys flag in flags)
+        {
+          result |= (int)flag;
+        }
+        DefaultUserScript.Append($"""
+          reg.exe add "HKU\DefaultUser\Control Panel\Accessibility\StickyKeys" /v Flags /t REG_SZ /d {result} /f;
+          """);
+        SpecializeScript.Append($"""
+          reg.exe add "HKU\.DEFAULT\Control Panel\Accessibility\StickyKeys" /v Flags /t REG_SZ /d {result} /f;
+          """);
+      }
+
+      switch (Configuration.StickyKeysSettings)
+      {
+        case DefaultStickyKeysSettings:
+          break;
+        case DisabledStickyKeysSettings:
+          SetStickyKeys((HashSet<StickyKeys>)[]);
+          break;
+        case CustomStickyKeysSettings settings:
+          SetStickyKeys(settings.Flags);
+          break;
+        default:
+          throw new NotSupportedException();
       }
     }
   }
