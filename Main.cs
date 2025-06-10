@@ -249,7 +249,7 @@ public class CommandBuilder(bool hidePowerShellWindows)
         string command = $@"cmd.exe /c "">>""{path}"" ({echos})""";
         if (command.Length >= 255)
         {
-          throw new ConfigurationException($"Line '{command}' is too long.");
+          throw new ConfigurationException($"Line '{command}' is too long. You need to add line breaks to make it shorter.");
         }
         yield return command;
       }
