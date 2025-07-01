@@ -6,6 +6,8 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Schneegans.Unattend</RootNamespace>
     <Nullable>enable</Nullable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
   </PropertyGroup>
 
   <ItemGroup>

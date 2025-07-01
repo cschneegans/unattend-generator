@@ -1,0 +1,51 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build UnattendGenerator DLL",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["build", "-c", "${input:buildConfiguration}"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build Example.exe",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["build", "-c", "${input:buildConfiguration}"],
+      "options": {
+        "cwd": "${workspaceFolder}/Example"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+    "label": "run Example.exe",
+    "type": "shell",
+    "command": "${workspaceFolder}\\Example\\bin\\Release\\net9.0\\Example.exe",
+    "options": {
+      "cwd": "${workspaceFolder}\\Example\\bin\\Release\\net9.0"
+    },
+    "group": {
+      "kind": "test",
+      "isDefault": false
+    }
+  }
+  ],
+  "inputs": [
+    {
+      "id": "buildConfiguration",
+      "type": "pickString",
+      "description": "Select build configuration",
+      "options": ["Debug", "Release"],
+      "default": "Release"
+    }
+  ]
+}
