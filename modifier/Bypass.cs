@@ -6,19 +6,22 @@ class BypassModifier(ModifierContext context) : Modifier(context)
   {
     if (Configuration.BypassRequirementsCheck)
     {
-      CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
-
-      string[] values = [
-        "BypassTPMCheck",
-        "BypassSecureBootCheck",
-        "BypassRAMCheck"
-      ];
-
-      foreach (string value in values)
+      if (Configuration.PESettings is not ScriptPESetttings)
       {
-        appender.Append(
-          CommandBuilder.RegistryCommand(@$"add ""HKLM\SYSTEM\Setup\LabConfig"" /v {value} /t REG_DWORD /d 1 /f")
-        );
+        CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
+
+        string[] values = [
+          "BypassTPMCheck",
+          "BypassSecureBootCheck",
+          "BypassRAMCheck"
+        ];
+
+        foreach (string value in values)
+        {
+          appender.Append(
+            CommandBuilder.RegistryCommand(@$"add ""HKLM\SYSTEM\Setup\LabConfig"" /v {value} /t REG_DWORD /d 1 /f")
+          );
+        }
       }
       SpecializeScript.Append(@"reg.exe add ""HKLM\SYSTEM\Setup\MoSetup"" /v AllowUpgradesWithUnsupportedTPMOrCPU /t REG_DWORD /d 1 /f;");
     }
