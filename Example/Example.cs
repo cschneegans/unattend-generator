@@ -9,6 +9,7 @@ namespace Schneegans.Unattend;
 /// This file demonstrates how to use the generator as a stand-alone application. To run this code, change the project's 
 /// output type from ‘Class Library’ to ‘Console Application’ in Visual Studio.
 /// </summary>
+
 class Example
 {
   public static void Main(string[] args)
