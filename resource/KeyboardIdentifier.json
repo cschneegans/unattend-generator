@@ -965,6 +965,11 @@
     "Type": "Keyboard"
   },
   {
+    "Id": "d0010409",
+    "DisplayName": "Colemak",
+    "Type":"Keyboard"
+  },
+  {
     "Id": "00050409",
     "DisplayName": "US English Table for IBM Arabic 238_L",
     "Type": "Keyboard"
