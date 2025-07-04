@@ -46,10 +46,30 @@ public record class ScriptDiskAssertionsSettings(
   string Script
 ) : IDiskAssertionSettings;
 
+public interface IPESettings;
+
+public class DefaultPESettings : IPESettings;
+
+public record class ScriptPESetttings(
+  string Script
+) : IPESettings;
+
 class DiskModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
+    if (Configuration.PESettings is ScriptPESetttings settings)
+    {
+      string file = @"X:\pe.cmd";
+
+      CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
+      appender.Append([
+        ..CommandBuilder.WriteToFile(file, Util.SplitLines(settings.Script)),
+        CommandBuilder.ShellCommand(file)
+      ]);
+      return;
+    }
+
     AssertDisk();
     SetCompactMode();
     SetPartitions();
