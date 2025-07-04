@@ -51,32 +51,32 @@
   },
   {
     "Id": "0001042c",
-    "DisplayName": "Azerbaijani (Standard)",
+    "DisplayName": "Azerbaijani/Azeri (Standard)",
     "Type": "Keyboard"
   },
   {
     "Id": "0000082c",
-    "DisplayName": "Azerbaijani Cyrillic",
+    "DisplayName": "Azerbaijani/Azeri Cyrillic",
     "Type": "Keyboard"
   },
   {
     "Id": "0000042c",
-    "DisplayName": "Azerbaijani Latin",
+    "DisplayName": "Azerbaijani/Azeri Latin",
     "Type": "Keyboard"
   },
   {
     "Id": "00000445",
-    "DisplayName": "Bangla",
+    "DisplayName": "Bengali/Bangla",
     "Type": "Keyboard"
   },
   {
     "Id": "00020445",
-    "DisplayName": "Bangla - INSCRIPT",
+    "DisplayName": "Bengali/Bangla - INSCRIPT",
     "Type": "Keyboard"
   },
   {
     "Id": "00010445",
-    "DisplayName": "Bangla - INSCRIPT (Legacy)",
+    "DisplayName": "Bengali/Bangla - INSCRIPT (Legacy)",
     "Type": "Keyboard"
   },
   {
@@ -200,11 +200,6 @@
     "Type": "Keyboard"
   },
   {
-    "Id": "00060409",
-    "DisplayName": "Colemak",
-    "Type": "Keyboard"
-  },
-  {
     "Id": "00000405",
     "DisplayName": "Czech",
     "Type": "Keyboard"
@@ -261,7 +256,7 @@
   },
   {
     "Id": "00000438",
-    "DisplayName": "Faeroese",
+    "DisplayName": "Faroese",
     "Type": "Keyboard"
   },
   {
@@ -276,17 +271,7 @@
   },
   {
     "Id": "0000040c",
-    "DisplayName": "French (Legacy, AZERTY)",
-    "Type": "Keyboard"
-  },
-  {
-    "Id": "0001040c",
-    "DisplayName": "French (Standard, AZERTY)",
-    "Type": "Keyboard"
-  },
-  {
-    "Id": "0002040c",
-    "DisplayName": "French (Standard, BÉPO)",
+    "DisplayName": "French",
     "Type": "Keyboard"
   },
   {
@@ -327,16 +312,6 @@
   {
     "Id": "00010407",
     "DisplayName": "German (IBM)",
-    "Type": "Keyboard"
-  },
-  {
-    "Id": "00020407",
-    "DisplayName": "German Extended (E1)",
-    "Type": "Keyboard"
-  },
-  {
-    "Id": "00030407",
-    "DisplayName": "German Extended (E2)",
     "Type": "Keyboard"
   },
   {
@@ -412,11 +387,6 @@
   {
     "Id": "0002040d",
     "DisplayName": "Hebrew (Standard)",
-    "Type": "Keyboard"
-  },
-  {
-    "Id": "0003040d",
-    "DisplayName": "Hebrew (Standard, 2018)",
     "Type": "Keyboard"
   },
   {
@@ -566,12 +536,12 @@
   },
   {
     "Id": "0000042f",
-    "DisplayName": "Macedonian (North Macedonia)",
+    "DisplayName": "Macedonian",
     "Type": "Keyboard"
   },
   {
     "Id": "0001042f",
-    "DisplayName": "Macedonian (North Macedonia) - Standard",
+    "DisplayName": "Macedonian - Standard",
     "Type": "Keyboard"
   },
   {
@@ -620,6 +590,11 @@
     "Type": "Keyboard"
   },
   {
+    "Id": "00001409",
+    "DisplayName": "NZ Aotearoa",
+    "Type": "Keyboard"
+  },
+  {
     "Id": "00000461",
     "DisplayName": "Nepali",
     "Type": "Keyboard"
@@ -627,11 +602,6 @@
   {
     "Id": "00020c00",
     "DisplayName": "New Tai Lue",
-    "Type": "Keyboard"
-  },
-  {
-    "Id": "00090c00",
-    "DisplayName": "N’Ko",
     "Type": "Keyboard"
   },
   {
@@ -645,8 +615,8 @@
     "Type": "Keyboard"
   },
   {
-    "Id": "00001409",
-    "DisplayName": "NZ Aotearoa",
+    "Id": "00090c00",
+    "DisplayName": "N’Ko",
     "Type": "Keyboard"
   },
   {
@@ -750,13 +720,13 @@
     "Type": "Keyboard"
   },
   {
-    "Id": "00020419",
-    "DisplayName": "Russian - Mnemonic",
+    "Id": "00010419",
+    "DisplayName": "Russian (Typewriter)",
     "Type": "Keyboard"
   },
   {
-    "Id": "00010419",
-    "DisplayName": "Russian (Typewriter)",
+    "Id": "00020419",
+    "DisplayName": "Russian - Mnemonic",
     "Type": "Keyboard"
   },
   {
@@ -990,6 +960,16 @@
     "Type": "Keyboard"
   },
   {
+    "Id": "00000409",
+    "DisplayName": "US",
+    "Type": "Keyboard"
+  },
+  {
+    "Id": "00050409",
+    "DisplayName": "US English Table for IBM Arabic 238_L",
+    "Type": "Keyboard"
+  },
+  {
     "Id": "00000422",
     "DisplayName": "Ukrainian",
     "Type": "Keyboard"
@@ -1032,16 +1012,6 @@
   {
     "Id": "00000420",
     "DisplayName": "Urdu",
-    "Type": "Keyboard"
-  },
-  {
-    "Id": "00000409",
-    "DisplayName": "US",
-    "Type": "Keyboard"
-  },
-  {
-    "Id": "00050409",
-    "DisplayName": "US English Table for IBM Arabic 238_L",
     "Type": "Keyboard"
   },
   {
