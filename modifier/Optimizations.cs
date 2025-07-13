@@ -408,6 +408,8 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           'SubscribedContent-338388Enabled';
           'SubscribedContent-338389Enabled';
           'SubscribedContent-338393Enabled';
+          'SubscribedContent-353694Enabled';
+          'SubscribedContent-353696Enabled';
           'SubscribedContent-353698Enabled';
           'SystemPaneSuggestionsEnabled';
         );
