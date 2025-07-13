@@ -391,7 +391,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableAppSuggestions)
     {
-      // https://skanthak.homepage.t-online.de/ten.html#eighth
+      // https://skanthak.hier-im-netz.de/ten.html#eight
 
       DefaultUserScript.Append("""
         $names = @(
