@@ -109,10 +109,10 @@ class PersonalizationModifier(ModifierContext context) : Modifier(context)
             try {
               $bytes = Get-Content -LiteralPath '{{getterFile}}' -Raw | Invoke-Expression;
               [System.IO.File]::WriteAllBytes( '{{imageFile}}', $bytes );
+              reg.exe add "HKLM\Software\Microsoft\Windows\CurrentVersion\PersonalizationCSP" /v LockScreenImagePath /t REG_SZ /d "{{imageFile}}" /f;
             } catch {
               $_;
             }
-            reg.exe add "HKLM\Software\Microsoft\Windows\CurrentVersion\PersonalizationCSP" /v LockScreenImagePath /t REG_SZ /d "{{imageFile}}" /f;
             """);
           break;
       }
