@@ -391,7 +391,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableAppSuggestions)
     {
-      // https://skanthak.homepage.t-online.de/ten.html#eighth
+      // https://skanthak.hier-im-netz.de/ten.html#eight
 
       DefaultUserScript.Append("""
         $names = @(
@@ -408,6 +408,8 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           'SubscribedContent-338388Enabled';
           'SubscribedContent-338389Enabled';
           'SubscribedContent-338393Enabled';
+          'SubscribedContent-353694Enabled';
+          'SubscribedContent-353696Enabled';
           'SubscribedContent-353698Enabled';
           'SystemPaneSuggestionsEnabled';
         );
