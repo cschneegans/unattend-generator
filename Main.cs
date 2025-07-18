@@ -563,7 +563,7 @@ public abstract class BloatwareStep(
   public ImmutableSortedSet<string> AppliesTo { get; } = [.. appliesTo];
 }
 
-public class SelectorBloatwareStep(
+public abstract class SelectorBloatwareStep(
   string[] appliesTo,
   string selector
 ) : BloatwareStep(appliesTo)
