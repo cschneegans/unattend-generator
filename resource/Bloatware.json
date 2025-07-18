@@ -895,5 +895,17 @@
         ]
       }
     ]
+  },
+  {
+    "DisplayName": "Game Assist",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.PackageBloatwareStep, UnattendGenerator",
+        "Selector": "Microsoft.Edge.GameAssist",
+        "AppliesTo": [
+          "Windows 11 27902.1000"
+        ]
+      }
+    ]
   }
 ]
