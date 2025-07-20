@@ -192,69 +192,71 @@ public class CommandBuilder(bool hidePowerShellWindows)
     return @$"cscript.exe //E:jscript ""{filepath}""";
   }
 
-  public List<string> WriteToFile(string path, IEnumerable<string> lines)
+  public List<string> WriteToFilePE(string path, IEnumerable<string> lines)
   {
     static IEnumerable<string> Trim(IEnumerable<string> input)
     {
       return input
         .Select(l => l.Trim())
-        .Where(e => e.Length > 0);
+        .Where(l => l.Length > 0);
     }
 
-    static IEnumerable<IEnumerable<string>> Join(IEnumerable<string> input)
+    static IEnumerable<string> Escape(IEnumerable<string> input)
     {
-      int max = 200;
-      List<List<string>> output = [];
-      List<string> current = [];
-      foreach (string line in input)
-      {
-        if (current.Count == 0)
-        {
-          current.Add(line);
-        }
-        else if (current.Sum(e => e.Length + 10) + line.Length > max)
-        {
-          output.Add(current);
-          current = [line];
-        }
-        else
-        {
-          current.Add(line);
-        }
-      }
-      if (current.Count > 0)
-      {
-        output.Add(current);
-      }
-      return output;
-    }
-
-    static string EscapeShell(string command)
-    {
-      return command
+      return input.Select(l => l
         .Replace("^", "^^")
         .Replace("&", "^&")
         .Replace("<", "^<")
         .Replace(">", "^>")
         .Replace("|", "^|")
         .Replace("%", "^%")
-        .Replace(")", "^)");
+        .Replace(")", "^)")
+        .Replace(@"""", @"^""")
+      );
     }
 
-    IEnumerable<string> Enumerate()
+    static IEnumerable<string> Echo(IEnumerable<string> input)
     {
-      foreach (IEnumerable<string> group in Join(Trim(lines)))
+      return input.Select(l => $"echo:{l}");
+    }
+
+    const int maxLineLength = 255;
+    List<string> segments = [.. Echo(Escape(Trim(lines)))];
+    List<string> result = [];
+
+    while (segments.Count > 0)
+    {
+      string? prev = null, current = null;
+      for (int take = 1; take <= segments.Count; take++)
       {
-        string echos = group.Select(l => $"echo {EscapeShell(l)}").JoinString('&');
-        string command = $@"cmd.exe /c "">>""{path}"" ({echos})""";
-        if (command.Length >= 255)
+        current = $@"cmd.exe /c "">>""{path}"" ({segments.GetRange(0, take).JoinString('&')})""";
+        if (current.Length > maxLineLength)
         {
-          throw new ConfigurationException($"Line '{command}' is too long. You need to add line breaks to make it shorter.");
+          if (prev == null)
+          {
+            throw new ConfigurationException($"Line '{current}' is too long. You need to add line breaks to your input to make it shorter.");
+          }
+          else
+          {
+            result.Add(prev);
+            segments.RemoveRange(0, take - 1);
+            current = null;
+            break;
+          }
         }
-        yield return command;
+        else
+        {
+          prev = current;
+        }
+      }
+      if (current != null)
+      {
+        result.Add(current);
+        break;
       }
     }
-    return [.. Enumerate()];
+
+    return result;
   }
 }
 

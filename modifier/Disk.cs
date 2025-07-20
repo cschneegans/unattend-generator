@@ -64,7 +64,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
       CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
       appender.Append([
-        ..CommandBuilder.WriteToFile(file, Util.SplitLines(settings.Script)),
+        ..CommandBuilder.WriteToFilePE(file, Util.SplitLines(settings.Script)),
         CommandBuilder.ShellCommand(file)
       ]);
       return;
@@ -92,7 +92,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
       CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
       appender.Append([
-        ..CommandBuilder.WriteToFile(file, lines),
+        ..CommandBuilder.WriteToFilePE(file, lines),
         CommandBuilder.InvokeVBScript(file)
       ]);
     }
@@ -185,7 +185,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
       CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
       appender.Append([
-        ..CommandBuilder.WriteToFile(script, lines),
+        ..CommandBuilder.WriteToFilePE(script, lines),
         CommandBuilder.ShellCommand($@"diskpart.exe /s ""{script}"" >>""{log}"" || ( type ""{log}"" & echo diskpart encountered an error. & pause & exit /b 1 )"),
       ]);
     }
