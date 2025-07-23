@@ -451,7 +451,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.ClassicContextMenu)
     {
-      UserOnceScript.Append(Util.StringFromResource("ClassicContextMenu.ps1"));
+      UserOnceScript.Append(@"reg.exe add ""HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32"" /ve /f;");
       UserOnceScript.RestartExplorer();
     }
 
