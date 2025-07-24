@@ -185,6 +185,12 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
             SpecializeScript.Append(@"reg.exe add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications"" /v ConfigureChatAutoInstall /t REG_DWORD /d 0 /f;");
             break;
           case CustomBloatwareStep when bw.Id == "RemoveNotepad":
+            SpecializeScript.Append("""
+              reg.exe add "HKCR\.txt\ShellNew" /v ItemName /t REG_EXPAND_SZ /d "@C:\Windows\system32\notepad.exe,-470" /f;
+              reg.exe add "HKCR\.txt\ShellNew" /v NullFile /t REG_SZ /d "" /f;
+              reg.exe add "HKCR\txtfilelegacy" /v FriendlyTypeName /t REG_EXPAND_SZ /d "@C:\Windows\system32\notepad.exe,-469" /f;
+              reg.exe add "HKCR\txtfilelegacy" /ve /t REG_SZ /d "Text Document" /f;
+              """);
             DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Notepad"" /v ShowStoreBanner /t REG_DWORD /d 0 /f;");
             break;
           case CustomBloatwareStep when bw.Id == "RemoveOutlook":
