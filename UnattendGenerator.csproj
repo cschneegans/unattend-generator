@@ -61,6 +61,7 @@
     <EmbeddedResource Include="resource\TurnOffSystemSounds.ps1" />
     <EmbeddedResource Include="resource\UserLocale.json" />
     <EmbeddedResource Include="resource\VirtIoGuestTools.ps1" />
+    <EmbeddedResource Include="resource\ParallelsTools.ps1" />
     <EmbeddedResource Include="resource\StartFolder.json" />
     <EmbeddedResource Include="resource\VMwareTools.ps1" />
     <EmbeddedResource Include="resource\VBoxGuestAdditions.ps1" />

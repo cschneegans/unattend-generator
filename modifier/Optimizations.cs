@@ -442,6 +442,10 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       {
         InstallVmSoftware("VirtIoGuestTools.ps1");
       }
+      if (Configuration.ParallelsTools)
+      {
+        InstallVmSoftware("ParallelsTools.ps1");
+      }
     }
 
     if (Configuration.PreventDeviceEncryption)
