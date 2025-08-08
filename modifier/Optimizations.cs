@@ -48,30 +48,30 @@ public enum HideModes
 
 public class DisabledProcessAuditSettings : IProcessAuditSettings;
 
-public interface IKeySettings;
+public interface ILockKeySettings;
 
-public class SkipKeySettings : IKeySettings;
+public class SkipLockKeySettings : ILockKeySettings;
 
-public enum KeyInitial
+public enum LockKeyInitial
 {
   Off, On
 }
 
-public enum KeyBehavior
+public enum LockKeyBehavior
 {
   Toggle, Ignore
 }
 
-public record class KeySetting(
-  KeyInitial Initial,
-  KeyBehavior Behavior
+public record class LockKeySetting(
+  LockKeyInitial Initial,
+  LockKeyBehavior Behavior
 );
 
-public record class ConfigureKeySettings(
-  KeySetting CapsLock,
-  KeySetting NumLock,
-  KeySetting ScrollLock
-) : IKeySettings;
+public record class ConfigureLockKeySettings(
+  LockKeySetting CapsLock,
+  LockKeySetting NumLock,
+  LockKeySetting ScrollLock
+) : ILockKeySettings;
 
 public interface IStartPinsSettings;
 
@@ -478,20 +478,20 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     }
 
     {
-      if (Configuration.KeySettings is ConfigureKeySettings settings)
+      if (Configuration.LockKeySettings is ConfigureLockKeySettings settings)
       {
         {
           uint indicators = 0;
 
-          if (settings.CapsLock.Initial == KeyInitial.On)
+          if (settings.CapsLock.Initial == LockKeyInitial.On)
           {
             indicators |= 1;
           }
-          if (settings.NumLock.Initial == KeyInitial.On)
+          if (settings.NumLock.Initial == LockKeyInitial.On)
           {
             indicators |= 2;
           }
-          if (settings.ScrollLock.Initial == KeyInitial.On)
+          if (settings.ScrollLock.Initial == LockKeyInitial.On)
           {
             indicators |= 4;
           }
@@ -503,9 +503,9 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
             """);
         }
         {
-          bool ignoreCapsLock = settings.CapsLock.Behavior == KeyBehavior.Ignore;
-          bool ignoreNumLock = settings.NumLock.Behavior == KeyBehavior.Ignore;
-          bool ignoreScrollLock = settings.ScrollLock.Behavior == KeyBehavior.Ignore;
+          bool ignoreCapsLock = settings.CapsLock.Behavior == LockKeyBehavior.Ignore;
+          bool ignoreNumLock = settings.NumLock.Behavior == LockKeyBehavior.Ignore;
+          bool ignoreScrollLock = settings.ScrollLock.Behavior == LockKeyBehavior.Ignore;
 
           uint count = 0;
           if (ignoreCapsLock)
