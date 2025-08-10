@@ -49,10 +49,6 @@ public record class NameInstallFromSettings(
   string Name
 ) : KeyInstallFromSettings("/IMAGE/NAME", Name);
 
-public record class DescriptionInstallFromSettings(
-  string Description
-) : KeyInstallFromSettings("/IMAGE/DESCRIPTION", Description);
-
 class ProductKeyModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
