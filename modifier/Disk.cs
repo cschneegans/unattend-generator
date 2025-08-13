@@ -144,10 +144,10 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           switch (Configuration.PartitionSettings)
           {
             case InteractivePartitionSettings:
-              throw new ConfigurationException("Cannot create .cmd script when disk is partitioned interactively.");
+              throw new ConfigurationException("Cannot create .cmd script when disk is partitioned interactively. Select the ‘Let Windows Setup wipe, partition and format your hard drive’ setting instead.");
 
             case CustomPartitionSettings:
-              throw new ConfigurationException("Cannot create .cmd script when custom diskpart script is used.");
+              throw new ConfigurationException("Cannot create .cmd script when custom diskpart script is used. Select the ‘Let Windows Setup wipe, partition and format your hard drive’ setting instead.");
 
             case UnattendedPartitionSettings settings:
               var lines = GetDiskpartScript(settings, bootDrive: bootDrive, windowsDrive: windowsDrive, recoveryDrive: recoveryDrive);
