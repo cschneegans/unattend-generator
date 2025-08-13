@@ -1058,12 +1058,12 @@ public class UnattendGenerator
 
     new List<Modifier> {
       new ComputerNameModifier(context),
-      new DiskModifier(context),
       new BypassModifier(context),
       new ProductKeyModifier(context),
+      new LocalesModifier(context),
+      new DiskModifier(context),
       new UsersModifier(context),
       new BloatwareModifier(context),
-      new LocalesModifier(context),
       new ExpressSettingsModifier(context),
       new WifiModifier(context),
       new EmptyElementsModifier(context),

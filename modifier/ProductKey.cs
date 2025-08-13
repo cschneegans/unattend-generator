@@ -64,8 +64,15 @@ class ProductKeyModifier(ModifierContext context) : Modifier(context)
         _ => throw new NotSupportedException()
       };
 
-      Document.SelectSingleNodeOrThrow("//u:ProductKey/u:Key", NamespaceManager).InnerText = key;
-      Document.SelectSingleNodeOrThrow("//u:ProductKey/u:WillShowUI", NamespaceManager).InnerText = ui;
+      Document.SelectSingleNodeOrThrow("//u:UserData/u:ProductKey/u:Key", NamespaceManager).InnerText = key;
+      Document.SelectSingleNodeOrThrow("//u:UserData/u:ProductKey/u:WillShowUI", NamespaceManager).InnerText = ui;
+    }
+    {
+      if (Configuration.EditionSettings is CustomEditionSettings settings)
+      {
+        var elem = Util.GetOrCreateElement(Pass.specialize, "Microsoft-Windows-Shell-Setup", "ProductKey", Document, NamespaceManager);
+        elem.InnerText = settings.ProductKey;
+      }
     }
     {
       switch (Configuration.InstallFromSettings)

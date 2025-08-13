@@ -6,7 +6,7 @@ class BypassModifier(ModifierContext context) : Modifier(context)
   {
     if (Configuration.BypassRequirementsCheck)
     {
-      if (Configuration.PESettings is not ScriptPESetttings)
+      if (Configuration.PESettings is not ICmdPESettings)
       {
         CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
 

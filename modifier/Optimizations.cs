@@ -265,22 +265,22 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     {
       if (Configuration.DisableDefender)
       {
-        if (Configuration.PESettings is not ScriptPESetttings)
+        if (Configuration.PESettings is not ICmdPESettings)
         {
           CommandAppender pe = GetAppender(CommandConfig.WindowsPE);
           const string path = @"X:\defender.vbs";
           pe.Append([
             ..CommandBuilder.WriteToFilePE(path, Util.SplitLines(Util.StringFromResource("DisableDefender.vbs"))),
-        CommandBuilder.ShellCommand($"start /MIN cscript.exe //E:vbscript {path}")
+            CommandBuilder.ShellCommand($"start /MIN cscript.exe //E:vbscript {path}")
           ]);
         }
         SpecializeScript.Append("""
-        reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" /v DisableNotifications /t REG_DWORD /d 1 /f;
-        """);
+          reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" /v DisableNotifications /t REG_DWORD /d 1 /f;
+          """);
       }
     }
 
-    if (Configuration.UseConfigurationSet)
+    if (Configuration.UseConfigurationSet && Configuration.PESettings is not ICmdPESettings)
     {
       Document.SelectSingleNodeOrThrow("//u:UseConfigurationSet", NamespaceManager).InnerText = "true";
     }
