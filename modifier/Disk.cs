@@ -104,7 +104,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
           char[] letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
           const char bootDrive = 'S';
-          const char windowsDrive = 'C';
+          const char windowsDrive = 'W';
           const char recoveryDrive = 'R';
 
           {
@@ -156,17 +156,17 @@ class DiskModifier(ModifierContext context) : Modifier(context)
               {
                 var lines = Util.SplitLines(settings.Script);
                 {
-                  const string expected = "ASSIGN LETTER=C";
+                  string expected = $"ASSIGN LETTER={windowsDrive}";
                   if (!lines.Any(line => string.Equals(line.Trim(), expected, StringComparison.OrdinalIgnoreCase)))
                   {
-                    throw new ConfigurationException($"Your diskpart script must contain the line ‘{expected}’ to assign the drive letter ‘C’ to the Windows partition.");
+                    throw new ConfigurationException($"Your diskpart script must contain the line ‘{expected}’ to assign the drive letter ‘{windowsDrive}:’ to the Windows partition.");
                   }
                 }
                 {
-                  const string expected = "ASSIGN LETTER=S";
+                  string expected = $"ASSIGN LETTER={bootDrive}";
                   if (!lines.Any(line => string.Equals(line.Trim(), expected, StringComparison.OrdinalIgnoreCase)))
                   {
-                    throw new ConfigurationException($"Your diskpart script must contain the line ‘{expected}’ to assign the drive letter ‘S’ to the system partition.");
+                    throw new ConfigurationException($"Your diskpart script must contain the line ‘{expected}’ to assign the drive letter ‘{bootDrive}:’ to the system partition.");
                   }
                 }
                 WriteDiskpartScript(lines);
@@ -482,7 +482,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     return string.Join("\r\n", GetDiskpartScript(settings));
   }
 
-  internal static List<string> GetDiskpartScript(UnattendedPartitionSettings settings, char bootDrive = 'S', char windowsDrive = 'C', char recoveryDrive = 'R')
+  internal static List<string> GetDiskpartScript(UnattendedPartitionSettings settings, char bootDrive = 'S', char windowsDrive = 'W', char recoveryDrive = 'R')
   {
     List<string> lines = [];
 
