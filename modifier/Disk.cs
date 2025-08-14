@@ -141,19 +141,44 @@ class DiskModifier(ModifierContext context) : Modifier(context)
             @if not defined XML_FILE echo Could not locate autounattend.xml. & pause & exit /b 1
             """);
 
+          void WriteDiskpartScript(IEnumerable<string> lines)
+          {
+            CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
+            appender.Append(CommandBuilder.WriteToFilePE(Paths.DiskpartScript, lines));
+          }
+
           switch (Configuration.PartitionSettings)
           {
             case InteractivePartitionSettings:
               throw new ConfigurationException("Cannot create .cmd script when disk is partitioned interactively. Select the ‘Let Windows Setup wipe, partition and format your hard drive’ setting instead.");
 
-            case CustomPartitionSettings:
-              throw new ConfigurationException("Cannot create .cmd script when custom diskpart script is used. Select the ‘Let Windows Setup wipe, partition and format your hard drive’ setting instead.");
+            case CustomPartitionSettings settings:
+              {
+                var lines = Util.SplitLines(settings.Script);
+                {
+                  const string expected = "ASSIGN LETTER=C";
+                  if (!lines.Any(line => string.Equals(line.Trim(), expected, StringComparison.OrdinalIgnoreCase)))
+                  {
+                    throw new ConfigurationException($"Your diskpart script must contain the line ‘{expected}’ to assign the drive letter ‘C’ to the Windows partition.");
+                  }
+                }
+                {
+                  const string expected = "ASSIGN LETTER=S";
+                  if (!lines.Any(line => string.Equals(line.Trim(), expected, StringComparison.OrdinalIgnoreCase)))
+                  {
+                    throw new ConfigurationException($"Your diskpart script must contain the line ‘{expected}’ to assign the drive letter ‘S’ to the system partition.");
+                  }
+                }
+                WriteDiskpartScript(lines);
+                break;
+              }
 
             case UnattendedPartitionSettings settings:
-              var lines = GetDiskpartScript(settings, bootDrive: bootDrive, windowsDrive: windowsDrive, recoveryDrive: recoveryDrive);
-              CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
-              appender.Append(CommandBuilder.WriteToFilePE(Paths.DiskpartScript, lines));
-              break;
+              {
+                var lines = GetDiskpartScript(settings, bootDrive: bootDrive, windowsDrive: windowsDrive, recoveryDrive: recoveryDrive);
+                WriteDiskpartScript(lines);
+                break;
+              }
 
             default:
               throw new NotSupportedException();
@@ -211,24 +236,42 @@ class DiskModifier(ModifierContext context) : Modifier(context)
             """);
 
           {
-            if (Configuration.PartitionSettings is UnattendedPartitionSettings settings)
+            void DeleteWinRE()
             {
-              switch (settings.RecoveryMode)
-              {
-                case RecoveryMode.None:
-                  writer.WriteLine($"""
-                    rem Avoid creation of recovery partition
-                    del {windowsDrive}:\Windows\System32\Recovery\winre.wim
-                    """);
-                  break;
-                case RecoveryMode.Folder:
-                  throw new ConfigurationException($"Cannot create .cmd script when Windows RE is to be installed on {windowsDrive}:.");
-                case RecoveryMode.Partition:
-                  // Nothing to do – Windows will automatically install RE on the recovery partition
-                  break;
-                default:
-                  throw new NotSupportedException();
-              }
+              writer.WriteLine($"""
+                rem Avoid creation of recovery partition
+                del {windowsDrive}:\Windows\System32\Recovery\winre.wim
+                """);
+            }
+
+            switch (Configuration.PartitionSettings)
+            {
+              case UnattendedPartitionSettings settings:
+                switch (settings.RecoveryMode)
+                {
+                  case RecoveryMode.None:
+                    DeleteWinRE();
+                    break;
+                  case RecoveryMode.Folder:
+                    throw new ConfigurationException($"Cannot create .cmd script when Windows RE is to be installed on {windowsDrive}:.");
+                  case RecoveryMode.Partition:
+                    // Nothing to do – Windows will automatically install RE on the recovery partition
+                    break;
+                  default:
+                    throw new NotSupportedException();
+                }
+                break;
+              case CustomPartitionSettings settings:
+                string[] keywords = [
+                  "SET ID=27",
+                  @"LABEL=""Recovery""",
+                  @"SET ID=""de94bba4-06d1-4d40-a16a-bfd50179d6ac"""
+                ];
+                if (!keywords.Any(keyword => settings.Script.Contains(keyword, StringComparison.OrdinalIgnoreCase)))
+                {
+                  DeleteWinRE();
+                }
+                break;
             }
           }
 
@@ -252,7 +295,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
             writer.WriteLine($"""
               rem Disable Windows Defender
               reg.exe LOAD HKLM\mount {windowsDrive}:\Windows\System32\config\SYSTEM
-                  for %%s in (Sense WdBoot WdFilter WdNisDrv WdNisSvc WinDefend) do reg.exe ADD HKLM\mount\ControlSet001\Services\%%s /v Start /t REG_DWORD /d 4 /f
+              for %%s in (Sense WdBoot WdFilter WdNisDrv WdNisSvc WinDefend) do reg.exe ADD HKLM\mount\ControlSet001\Services\%%s /v Start /t REG_DWORD /d 4 /f
               reg.exe UNLOAD HKLM\mount
               """);
           }
