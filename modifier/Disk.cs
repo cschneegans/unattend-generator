@@ -150,7 +150,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           switch (Configuration.PartitionSettings)
           {
             case InteractivePartitionSettings:
-              throw new ConfigurationException("Cannot create .cmd script when disk is partitioned interactively. Select the ‘Let Windows Setup wipe, partition and format your hard drive’ setting instead.");
+              throw new ConfigurationException("Cannot create .cmd script when disk is partitioned interactively. Select ‘Let Windows Setup wipe, partition and format your hard drive’ or ‘Use a custom diskpart script’ instead.");
 
             case CustomPartitionSettings settings:
               {
