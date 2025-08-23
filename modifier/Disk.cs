@@ -136,6 +136,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
                 if exist %%d:\sources\install.swm set "IMAGE_FILE=%%d:\sources\install.swm" & set "SWM_PARAM=/SWMFile:%%d:\sources\install*.swm"
                 if exist %%d:\autounattend.xml set "XML_FILE=%%d:\autounattend.xml"
                 if exist %%d:\$OEM$ set "OEM_FOLDER=%%d:\$OEM$"
+                if exist %%d:\$WinPEDriver$ set "PEDRIVERS_FOLDER=%%d:\$WinPEDriver$"
             )
             @if not defined IMAGE_FILE echo Could not locate install.wim, install.esd or install.swm. & pause & exit /b 1
             @if not defined XML_FILE echo Could not locate autounattend.xml. & pause & exit /b 1
@@ -183,6 +184,13 @@ class DiskModifier(ModifierContext context) : Modifier(context)
             default:
               throw new NotSupportedException();
           }
+
+          writer.WriteLine("""
+            rem Install drivers from $WinPEDriver$ folder
+            if defined PEDRIVERS_FOLDER (
+                for /R %PEDRIVERS_FOLDER% %%f IN (*.inf) do drvload.exe "%%f"
+            )
+            """);
 
           if (peSettings.PauseBeforeFormatting)
           {
@@ -279,6 +287,12 @@ class DiskModifier(ModifierContext context) : Modifier(context)
             mkdir {windowsDrive}:\Windows\Panther
             copy %XML_FILE% {windowsDrive}:\Windows\Panther\unattend.xml
             copy %XML_FILE% {windowsDrive}:\Windows\Panther\unattend-original.xml
+            """);
+
+          writer.WriteLine($"""
+            if defined PEDRIVERS_FOLDER (
+                dism.exe /Add-Driver /Image:{windowsDrive}:\ /Driver:"%PEDRIVERS_FOLDER%" /Recurse
+            )
             """);
 
           if (peSettings.Disable8Dot3Names)
