@@ -3,13 +3,7 @@
 	<settings pass="offlineServicing" />
 	<settings pass="windowsPE">
 		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-			<SetupUILanguage>
-				<UILanguage>de-DE</UILanguage>
-			</SetupUILanguage>
-			<InputLocale>de-DE</InputLocale>
-			<SystemLocale>de-DE</SystemLocale>
 			<UILanguage>de-DE</UILanguage>
-			<UserLocale>de-DE</UserLocale>
 		</component>
 		<component name="Microsoft-Windows-Setup" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<ImageInstall>
