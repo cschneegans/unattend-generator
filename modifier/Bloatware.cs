@@ -206,6 +206,9 @@ class BloatwareModifier(ModifierContext context) : Modifier(context)
           case CustomBloatwareStep when bw.Id == "RemoveXboxApps":
             DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\GameDVR"" /v AppCaptureEnabled /t REG_DWORD /d 0 /f;");
             break;
+          case CustomBloatwareStep when bw.Id == "RemoveInternetExplorer":
+            DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Internet Explorer\LowRegistry\Audio\PolicyConfig\PropertyStore"" /f;");
+            break;
           default:
             throw new NotSupportedException();
         }

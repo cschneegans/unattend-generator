@@ -9,6 +9,13 @@
           "Windows 10",
           "Windows 11"
         ]
+      },
+      {
+        "$type": "Schneegans.Unattend.CustomBloatwareStep, UnattendGenerator",
+        "AppliesTo": [
+          "Windows 10",
+          "Windows 11"
+        ]
       }
     ]
   },
