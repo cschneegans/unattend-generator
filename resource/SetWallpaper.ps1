@@ -48,7 +48,11 @@ function Set-WallpaperImage {
 		$LiteralPath
 	);
 
-	[WallpaperSetter]::SetDesktopImage( $LiteralPath );
-	Set-ItemProperty -Path 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers' -Name 'BackgroundType' -Type 'DWord' -Value 0 -Force;
-	Set-ItemProperty -Path 'Registry::HKCU\Control Panel\Desktop' -Name 'WallPaper' -Type 'String' -Value $LiteralPath -Force;
+	if( $LiteralPath | Test-Path ) {
+		[WallpaperSetter]::SetDesktopImage( $LiteralPath );
+		Set-ItemProperty -Path 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers' -Name 'BackgroundType' -Type 'DWord' -Value 0 -Force;
+		Set-ItemProperty -Path 'Registry::HKCU\Control Panel\Desktop' -Name 'WallPaper' -Type 'String' -Value $LiteralPath -Force;
+	} else {
+		"Cannot use '$LiteralPath' as a desktop wallpaper because that file does not exist.";
+	}
 }

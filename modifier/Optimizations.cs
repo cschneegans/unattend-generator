@@ -3,10 +3,37 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml;
 
 namespace Schneegans.Unattend;
+
+public enum StickyKeys
+{
+  HotKeyActive = 0x00000004,
+  Indicator = 0x00000020,
+  TriState = 0x00000080,
+  TwoKeysOff = 0x00000100,
+  AudibleFeedback = 0x00000040,
+  HotKeySound = 0x00000010,
+}
+
+public interface IStickyKeysSettings;
+
+public class DefaultStickyKeysSettings : IStickyKeysSettings;
+
+public class DisabledStickyKeysSettings : IStickyKeysSettings;
+
+public record class CustomStickyKeysSettings : IStickyKeysSettings
+{
+  public CustomStickyKeysSettings(ISet<StickyKeys> flags)
+  {
+    Flags = [.. flags];
+  }
+
+  public ImmutableHashSet<StickyKeys> Flags { get; init; }
+}
 
 public interface IProcessAuditSettings;
 
@@ -21,30 +48,30 @@ public enum HideModes
 
 public class DisabledProcessAuditSettings : IProcessAuditSettings;
 
-public interface IKeySettings;
+public interface ILockKeySettings;
 
-public class SkipKeySettings : IKeySettings;
+public class SkipLockKeySettings : ILockKeySettings;
 
-public enum KeyInitial
+public enum LockKeyInitial
 {
   Off, On
 }
 
-public enum KeyBehavior
+public enum LockKeyBehavior
 {
   Toggle, Ignore
 }
 
-public record class KeySetting(
-  KeyInitial Initial,
-  KeyBehavior Behavior
+public record class LockKeySetting(
+  LockKeyInitial Initial,
+  LockKeyBehavior Behavior
 );
 
-public record class ConfigureKeySettings(
-  KeySetting CapsLock,
-  KeySetting NumLock,
-  KeySetting ScrollLock
-) : IKeySettings;
+public record class ConfigureLockKeySettings(
+  LockKeySetting CapsLock,
+  LockKeySetting NumLock,
+  LockKeySetting ScrollLock
+) : ILockKeySettings;
 
 public interface IStartPinsSettings;
 
@@ -121,6 +148,20 @@ public record class CustomDesktopIconSettings : IDesktopIconSettings
   }
 
   public ImmutableSortedDictionary<DesktopIcon, bool> Settings { get; init; }
+}
+
+public interface IStartFolderSettings;
+
+public record class DefaultStartFolderSettings : IStartFolderSettings;
+
+public record class CustomStartFolderSettings : IStartFolderSettings
+{
+  public CustomStartFolderSettings(IDictionary<StartFolder, bool> settings)
+  {
+    Settings = ImmutableSortedDictionary.CreateRange(settings);
+  }
+
+  public ImmutableSortedDictionary<StartFolder, bool> Settings { get; init; }
 }
 
 class OptimizationsModifier(ModifierContext context) : Modifier(context)
@@ -221,20 +262,25 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ShowTaskViewButton /t REG_DWORD /d 0 /f;");
     }
 
-    if (Configuration.DisableDefender)
     {
-      CommandAppender pe = GetAppender(CommandConfig.WindowsPE);
-      const string path = @"X:\defender.vbs";
-      pe.Append([
-        ..CommandBuilder.WriteToFile(path, Util.SplitLines(Util.StringFromResource("DisableDefender.vbs"))),
-        CommandBuilder.ShellCommand($"start /MIN cscript.exe //E:vbscript {path}")
-      ]);
-      SpecializeScript.Append("""
-        reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" /v DisableNotifications /t REG_DWORD /d 1 /f;
-        """);
+      if (Configuration.DisableDefender)
+      {
+        if (Configuration.PESettings is not ICmdPESettings)
+        {
+          CommandAppender pe = GetAppender(CommandConfig.WindowsPE);
+          const string path = @"X:\defender.vbs";
+          pe.Append([
+            ..CommandBuilder.WriteToFilePE(path, Util.SplitLines(Util.StringFromResource("DisableDefender.vbs"))),
+            CommandBuilder.ShellCommand($"start /MIN cscript.exe //E:vbscript {path}")
+          ]);
+        }
+        SpecializeScript.Append("""
+          reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" /v DisableNotifications /t REG_DWORD /d 1 /f;
+          """);
+      }
     }
 
-    if (Configuration.UseConfigurationSet)
+    if (Configuration.UseConfigurationSet && Configuration.PESettings is not ICmdPESettings)
     {
       Document.SelectSingleNodeOrThrow("//u:UseConfigurationSet", NamespaceManager).InnerText = "true";
     }
@@ -345,7 +391,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableAppSuggestions)
     {
-      // https://skanthak.homepage.t-online.de/ten.html#eighth
+      // https://skanthak.hier-im-netz.de/ten.html#eight
 
       DefaultUserScript.Append("""
         $names = @(
@@ -362,6 +408,8 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           'SubscribedContent-338388Enabled';
           'SubscribedContent-338389Enabled';
           'SubscribedContent-338393Enabled';
+          'SubscribedContent-353694Enabled';
+          'SubscribedContent-353696Enabled';
           'SubscribedContent-353698Enabled';
           'SystemPaneSuggestionsEnabled';
         );
@@ -373,35 +421,30 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       SpecializeScript.Append(@"reg.exe add ""HKLM\Software\Policies\Microsoft\Windows\CloudContent"" /v ""DisableWindowsConsumerFeatures"" /t REG_DWORD /d 1 /f;");
     }
 
-    if (Configuration.VBoxGuestAdditions)
     {
-      string ps1File = AddTextFile("VBoxGuestAdditions.ps1");
-      SpecializeScript.InvokeFile(ps1File);
-    }
+      void InstallVmSoftware(string resourceName)
+      {
+        PowerShellSequence target = Configuration.DisableDefender ? SpecializeScript : FirstLogonScript;
+        target.InvokeFile(AddTextFile(resourceName));
+      }
 
-    if (Configuration.VMwareTools)
-    {
-      string ps1File = AddTextFile("VMwareTools.ps1");
-      if (Configuration.DisableDefender)
+      if (Configuration.VBoxGuestAdditions)
       {
-        SpecializeScript.InvokeFile(ps1File);
+        InstallVmSoftware("VBoxGuestAdditions.ps1");
       }
-      else
-      {
-        FirstLogonScript.InvokeFile(ps1File);
-      }
-    }
 
-    if (Configuration.VirtIoGuestTools)
-    {
-      string ps1File = AddTextFile("VirtIoGuestTools.ps1");
-      if (Configuration.DisableDefender)
+      if (Configuration.VMwareTools)
       {
-        SpecializeScript.InvokeFile(ps1File);
+        InstallVmSoftware("VMwareTools.ps1");
       }
-      else
+
+      if (Configuration.VirtIoGuestTools)
       {
-        FirstLogonScript.InvokeFile(ps1File);
+        InstallVmSoftware("VirtIoGuestTools.ps1");
+      }
+      if (Configuration.ParallelsTools)
+      {
+        InstallVmSoftware("ParallelsTools.ps1");
       }
     }
 
@@ -412,7 +455,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.ClassicContextMenu)
     {
-      UserOnceScript.Append(Util.StringFromResource("ClassicContextMenu.ps1"));
+      UserOnceScript.Append(@"reg.exe add ""HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32"" /ve /f;");
       UserOnceScript.RestartExplorer();
     }
 
@@ -435,20 +478,20 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     }
 
     {
-      if (Configuration.KeySettings is ConfigureKeySettings settings)
+      if (Configuration.LockKeySettings is ConfigureLockKeySettings settings)
       {
         {
           uint indicators = 0;
 
-          if (settings.CapsLock.Initial == KeyInitial.On)
+          if (settings.CapsLock.Initial == LockKeyInitial.On)
           {
             indicators |= 1;
           }
-          if (settings.NumLock.Initial == KeyInitial.On)
+          if (settings.NumLock.Initial == LockKeyInitial.On)
           {
             indicators |= 2;
           }
-          if (settings.ScrollLock.Initial == KeyInitial.On)
+          if (settings.ScrollLock.Initial == LockKeyInitial.On)
           {
             indicators |= 4;
           }
@@ -460,9 +503,9 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
             """);
         }
         {
-          bool ignoreCapsLock = settings.CapsLock.Behavior == KeyBehavior.Ignore;
-          bool ignoreNumLock = settings.NumLock.Behavior == KeyBehavior.Ignore;
-          bool ignoreScrollLock = settings.ScrollLock.Behavior == KeyBehavior.Ignore;
+          bool ignoreCapsLock = settings.CapsLock.Behavior == LockKeyBehavior.Ignore;
+          bool ignoreNumLock = settings.NumLock.Behavior == LockKeyBehavior.Ignore;
+          bool ignoreScrollLock = settings.ScrollLock.Behavior == LockKeyBehavior.Ignore;
 
           uint count = 0;
           if (ignoreCapsLock)
@@ -686,11 +729,54 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
     {
+      switch (Configuration.StartFolderSettings)
+      {
+        case DefaultStartFolderSettings:
+          break;
+        case CustomStartFolderSettings folders:
+          IEnumerable<byte> bytes = folders.Settings.ToList().Where(pair => pair.Value).SelectMany(pair => pair.Key.Bytes);
+          UserOnceScript.Append(@$"Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start' -Name 'VisiblePlaces' -Value $( [convert]::FromBase64String('{Convert.ToBase64String(bytes.ToArray())}') ) -Type 'Binary';");
+          break;
+        default:
+          throw new NotSupportedException();
+      }
+    }
+    {
       if (Configuration.ShowEndTask)
       {
         DefaultUserScript.Append("""
           reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings" /v TaskbarEndTask /t REG_DWORD /d 1 /f;
           """);
+      }
+    }
+    {
+      void SetStickyKeys(ISet<StickyKeys> flags)
+      {
+        int result = 0x00000002 | 0x00000008; // SKF_AVAILABLE | SKF_CONFIRMHOTKEY
+        foreach (StickyKeys flag in flags)
+        {
+          result |= (int)flag;
+        }
+        DefaultUserScript.Append($"""
+          reg.exe add "HKU\DefaultUser\Control Panel\Accessibility\StickyKeys" /v Flags /t REG_SZ /d {result} /f;
+          """);
+        SpecializeScript.Append($"""
+          reg.exe add "HKU\.DEFAULT\Control Panel\Accessibility\StickyKeys" /v Flags /t REG_SZ /d {result} /f;
+          """);
+      }
+
+      switch (Configuration.StickyKeysSettings)
+      {
+        case DefaultStickyKeysSettings:
+          break;
+        case DisabledStickyKeysSettings:
+          SetStickyKeys((HashSet<StickyKeys>)[]);
+          break;
+        case CustomStickyKeysSettings settings:
+          SetStickyKeys(settings.Flags);
+          break;
+        default:
+          throw new NotSupportedException();
       }
     }
   }

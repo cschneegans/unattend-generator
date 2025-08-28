@@ -9,16 +9,11 @@ public interface IComputerNameSettings;
 
 public class RandomComputerNameSettings : IComputerNameSettings;
 
-public class CustomComputerNameSettings : IComputerNameSettings
+public record class CustomComputerNameSettings(string? ComputerName) : IComputerNameSettings
 {
-  public CustomComputerNameSettings(string? name)
-  {
-    ComputerName = Validate(name);
-  }
+  public string ComputerName { get; } = Validate(ComputerName);
 
-  public string ComputerName { get; }
-
-  private string Validate(string? name)
+  static string Validate(string? name)
   {
     if (string.IsNullOrWhiteSpace(name))
     {
@@ -45,13 +40,13 @@ public class CustomComputerNameSettings : IComputerNameSettings
       Throw();
     }
 
-    return name;
-  }
+    [DoesNotReturn]
+    void Throw()
+    {
+      throw new ConfigurationException($"Computer name '{name}' is invalid.");
+    }
 
-  [DoesNotReturn]
-  private void Throw()
-  {
-    throw new ConfigurationException($"Computer name '{ComputerName}' is invalid.");
+    return name;
   }
 }
 

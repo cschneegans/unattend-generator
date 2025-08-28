@@ -35,6 +35,14 @@ public record class CustomColorSettings(
   Color AccentColor
 ) : IColorSettings;
 
+public interface ILockScreenSettings;
+
+public class DefaultLockScreenSettings : ILockScreenSettings;
+
+public record class ScriptLockScreenSettings(
+  string Script
+) : ILockScreenSettings;
+
 class PersonalizationModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
@@ -88,6 +96,24 @@ class PersonalizationModifier(ModifierContext context) : Modifier(context)
           {
             writer.WriteLine($"Set-WallpaperColor -HtmlColor '{ColorTranslator.ToHtml(settings.Color)}';");
           });
+          break;
+      }
+    }
+    {
+      switch (Configuration.LockScreenSettings)
+      {
+        case ScriptLockScreenSettings settings:
+          string imageFile = @"C:\Windows\Setup\Scripts\LockScreenImage";
+          string getterFile = AddTextFile("GetLockScreenImage.ps1", settings.Script);
+          SpecializeScript.Append($$"""
+            try {
+              $bytes = Get-Content -LiteralPath '{{getterFile}}' -Raw | Invoke-Expression;
+              [System.IO.File]::WriteAllBytes( '{{imageFile}}', $bytes );
+              reg.exe add "HKLM\Software\Microsoft\Windows\CurrentVersion\PersonalizationCSP" /v LockScreenImagePath /t REG_SZ /d "{{imageFile}}" /f;
+            } catch {
+              $_;
+            }
+            """);
           break;
       }
     }

@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="resource\ClassicContextMenu.ps1" />
     <None Remove="resource\DesktopIcon.json" />
     <None Remove="resource\DisableDefender.vbs" />
     <None Remove="resource\MakeEdgeUninstallable.ps1" />
@@ -49,7 +48,6 @@
     <EmbeddedResource Include="resource\SetComputerName.ps1" />
     <EmbeddedResource Include="resource\SetColorTheme.ps1" />
     <EmbeddedResource Include="resource\PauseWindowsUpdate.ps1" />
-    <EmbeddedResource Include="resource\ClassicContextMenu.ps1" />
     <EmbeddedResource Include="resource\MoveActiveHours.vbs" />
     <EmbeddedResource Include="resource\SetWallpaper.ps1" />
     <EmbeddedResource Include="resource\MakeEdgeUninstallable.ps1" />
@@ -63,6 +61,8 @@
     <EmbeddedResource Include="resource\TurnOffSystemSounds.ps1" />
     <EmbeddedResource Include="resource\UserLocale.json" />
     <EmbeddedResource Include="resource\VirtIoGuestTools.ps1" />
+    <EmbeddedResource Include="resource\ParallelsTools.ps1" />
+    <EmbeddedResource Include="resource\StartFolder.json" />
     <EmbeddedResource Include="resource\VMwareTools.ps1" />
     <EmbeddedResource Include="resource\VBoxGuestAdditions.ps1" />
     <EmbeddedResource Include="resource\WindowsEdition.json" />

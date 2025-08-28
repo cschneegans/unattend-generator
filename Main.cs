@@ -192,69 +192,71 @@ public class CommandBuilder(bool hidePowerShellWindows)
     return @$"cscript.exe //E:jscript ""{filepath}""";
   }
 
-  public List<string> WriteToFile(string path, IEnumerable<string> lines)
+  public List<string> WriteToFilePE(string path, IEnumerable<string> lines)
   {
     static IEnumerable<string> Trim(IEnumerable<string> input)
     {
       return input
         .Select(l => l.Trim())
-        .Where(e => e.Length > 0);
+        .Where(l => l.Length > 0);
     }
 
-    static IEnumerable<IEnumerable<string>> Join(IEnumerable<string> input)
+    static IEnumerable<string> Escape(IEnumerable<string> input)
     {
-      int max = 200;
-      List<List<string>> output = [];
-      List<string> current = [];
-      foreach (string line in input)
-      {
-        if (current.Count == 0)
-        {
-          current.Add(line);
-        }
-        else if (current.Sum(e => e.Length + 10) + line.Length > max)
-        {
-          output.Add(current);
-          current = [line];
-        }
-        else
-        {
-          current.Add(line);
-        }
-      }
-      if (current.Count > 0)
-      {
-        output.Add(current);
-      }
-      return output;
-    }
-
-    static string EscapeShell(string command)
-    {
-      return command
+      return input.Select(l => l
         .Replace("^", "^^")
         .Replace("&", "^&")
         .Replace("<", "^<")
         .Replace(">", "^>")
         .Replace("|", "^|")
         .Replace("%", "^%")
-        .Replace(")", "^)");
+        .Replace(")", "^)")
+        .Replace(@"""", @"^""")
+      );
     }
 
-    IEnumerable<string> Enumerate()
+    static IEnumerable<string> Echo(IEnumerable<string> input)
     {
-      foreach (IEnumerable<string> group in Join(Trim(lines)))
+      return input.Select(l => $"echo:{l}");
+    }
+
+    const int maxLineLength = 255;
+    List<string> segments = [.. Echo(Escape(Trim(lines)))];
+    List<string> result = [];
+
+    while (segments.Count > 0)
+    {
+      string? prev = null, current = null;
+      for (int take = 1; take <= segments.Count; take++)
       {
-        string echos = group.Select(l => $"echo {EscapeShell(l)}").JoinString('&');
-        string command = $@"cmd.exe /c "">>""{path}"" ({echos})""";
-        if (command.Length >= 255)
+        current = $@"cmd.exe /c "">>""{path}"" ({segments.GetRange(0, take).JoinString('&')})""";
+        if (current.Length > maxLineLength)
         {
-          throw new ConfigurationException($"Line '{command}' is too long.");
+          if (prev == null)
+          {
+            throw new ConfigurationException($"Line '{current}' is too long. You need to add line breaks to your input to make it shorter.");
+          }
+          else
+          {
+            result.Add(prev);
+            segments.RemoveRange(0, take - 1);
+            current = null;
+            break;
+          }
         }
-        yield return command;
+        else
+        {
+          prev = current;
+        }
+      }
+      if (current != null)
+      {
+        result.Add(current);
+        break;
       }
     }
-    return [.. Enumerate()];
+
+    return result;
   }
 }
 
@@ -264,6 +266,7 @@ public record class Configuration(
   ILanguageSettings LanguageSettings,
   IAccountSettings AccountSettings,
   IPartitionSettings PartitionSettings,
+  IInstallFromSettings InstallFromSettings,
   IDiskAssertionSettings DiskAssertionSettings,
   IEditionSettings EditionSettings,
   ILockoutSettings LockoutSettings,
@@ -278,9 +281,11 @@ public record class Configuration(
   ImmutableList<Bloatware> Bloatwares,
   ExpressSettingsMode ExpressSettings,
   ScriptSettings ScriptSettings,
-  IKeySettings KeySettings,
+  ILockKeySettings LockKeySettings,
   IWallpaperSettings WallpaperSettings,
+  ILockScreenSettings LockScreenSettings,
   IColorSettings ColorSettings,
+  IPESettings PESettings,
   bool BypassRequirementsCheck,
   bool BypassNetworkCheck,
   bool EnableLongPaths,
@@ -301,6 +306,7 @@ public record class Configuration(
   bool VBoxGuestAdditions,
   bool VMwareTools,
   bool VirtIoGuestTools,
+  bool ParallelsTools,
   bool PreventDeviceEncryption,
   bool ClassicContextMenu,
   bool LeftTaskbar,
@@ -325,13 +331,16 @@ public record class Configuration(
   CompactOsModes CompactOsMode,
   ITaskbarIcons TaskbarIcons,
   IEffects Effects,
-  IDesktopIconSettings DesktopIcons
+  IDesktopIconSettings DesktopIcons,
+  IStickyKeysSettings StickyKeysSettings,
+  IStartFolderSettings StartFolderSettings
 )
 {
   public static Configuration Default => new(
     LanguageSettings: new InteractiveLanguageSettings(),
     AccountSettings: new InteractiveMicrosoftAccountSettings(),
     PartitionSettings: new InteractivePartitionSettings(),
+    InstallFromSettings: new AutomaticInstallFromSettings(),
     DiskAssertionSettings: new SkipDiskAssertionSettings(),
     EditionSettings: new InteractiveEditionSettings(),
     LockoutSettings: new DefaultLockoutSettings(),
@@ -346,9 +355,11 @@ public record class Configuration(
     Bloatwares: [],
     ExpressSettings: ExpressSettingsMode.DisableAll,
     ScriptSettings: new ScriptSettings(Scripts: [], RestartExplorer: false),
-    KeySettings: new SkipKeySettings(),
+    LockKeySettings: new SkipLockKeySettings(),
     WallpaperSettings: new DefaultWallpaperSettings(),
+    LockScreenSettings: new DefaultLockScreenSettings(),
     ColorSettings: new DefaultColorSettings(),
+    PESettings: new DefaultPESettings(),
     BypassRequirementsCheck: false,
     BypassNetworkCheck: false,
     EnableLongPaths: false,
@@ -369,6 +380,7 @@ public record class Configuration(
     VBoxGuestAdditions: false,
     VMwareTools: false,
     VirtIoGuestTools: false,
+    ParallelsTools: false,
     PreventDeviceEncryption: false,
     ClassicContextMenu: false,
     LeftTaskbar: false,
@@ -393,7 +405,9 @@ public record class Configuration(
     CompactOsMode: CompactOsModes.Default,
     TaskbarIcons: new DefaultTaskbarIcons(),
     Effects: new DefaultEffects(),
-    DesktopIcons: new DefaultDesktopIconSettings()
+    DesktopIcons: new DefaultDesktopIconSettings(),
+    StickyKeysSettings: new DefaultStickyKeysSettings(),
+    StartFolderSettings: new DefaultStartFolderSettings()
   );
 }
 
@@ -553,7 +567,7 @@ public abstract class BloatwareStep(
   public ImmutableSortedSet<string> AppliesTo { get; } = [.. appliesTo];
 }
 
-public class SelectorBloatwareStep(
+public abstract class SelectorBloatwareStep(
   string[] appliesTo,
   string selector
 ) : BloatwareStep(appliesTo)
@@ -706,6 +720,23 @@ public class DesktopIcon(
   }
 }
 
+public class StartFolder(
+  string displayName,
+  byte[] bytes
+) : IKeyed, IComparable<StartFolder>
+{
+  public string Id { get; } = displayName.Replace(" ", "");
+
+  public string DisplayName { get; } = displayName;
+
+  public byte[] Bytes { get; } = bytes;
+
+  public int CompareTo(StartFolder? other)
+  {
+    return Id.CompareTo(other?.Id);
+  }
+}
+
 public class TimeOffset(
   string id,
   string displayName
@@ -765,6 +796,26 @@ public class GeoLocationConverter(
   }
 
   public override void WriteJson(JsonWriter writer, GeoLocation? value, JsonSerializer serializer)
+  {
+    throw new NotImplementedException();
+  }
+}
+
+public class Base64Converter : JsonConverter<byte[]>
+{
+  public override bool CanWrite => false;
+
+  public override byte[]? ReadJson(JsonReader reader, Type objectType, byte[]? existingValue, bool hasExistingValue, JsonSerializer serializer)
+  {
+    return reader.TokenType switch
+    {
+      JsonToken.String => Convert.FromBase64String("" + reader.Value),
+      JsonToken.Null => null,
+      _ => throw new NotSupportedException(),
+    };
+  }
+
+  public override void WriteJson(JsonWriter writer, byte[]? value, JsonSerializer serializer)
   {
     throw new NotImplementedException();
   }
@@ -851,6 +902,11 @@ public class UnattendGenerator
       string json = Util.StringFromResource("DesktopIcon.json");
       DesktopIcons = JsonConvert.DeserializeObject<DesktopIcon[]>(json).ToKeyedDictionary();
     }
+    {
+      string json = Util.StringFromResource("StartFolder.json");
+      JsonConverter[] converters = [new Base64Converter()];
+      StartFolders = JsonConvert.DeserializeObject<StartFolder[]>(json, converters).ToKeyedDictionary();
+    }
 
     {
       VerifyUniqueKeys(Components.Values, e => e.Id);
@@ -881,6 +937,11 @@ public class UnattendGenerator
       VerifyUniqueKeys(DesktopIcons.Values, e => e.Guid);
       VerifyUniqueKeys(DesktopIcons.Values, e => e.DisplayName);
     }
+    {
+      VerifyUniqueKeys(StartFolders.Values, e => e.Id);
+      VerifyUniqueKeys(StartFolders.Values, e => e.DisplayName);
+      VerifyUniqueKeys(StartFolders.Values, e => Convert.ToBase64String(e.Bytes));
+    }
   }
 
   private static void VerifyUniqueKeys<T>(IEnumerable<T> items, Func<T, object> keySelector)
@@ -902,6 +963,8 @@ public class UnattendGenerator
   }
 
   public IImmutableDictionary<string, DesktopIcon> DesktopIcons { get; }
+
+  public IImmutableDictionary<string, StartFolder> StartFolders { get; }
 
   public IImmutableDictionary<string, TimeOffset> TimeOffsets { get; }
 
@@ -995,12 +1058,12 @@ public class UnattendGenerator
 
     new List<Modifier> {
       new ComputerNameModifier(context),
-      new DiskModifier(context),
       new BypassModifier(context),
       new ProductKeyModifier(context),
+      new LocalesModifier(context),
+      new DiskModifier(context),
       new UsersModifier(context),
       new BloatwareModifier(context),
-      new LocalesModifier(context),
       new ExpressSettingsModifier(context),
       new WifiModifier(context),
       new EmptyElementsModifier(context),
