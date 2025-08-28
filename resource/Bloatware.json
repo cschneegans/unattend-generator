@@ -801,7 +801,8 @@
     ]
   },
   {
-    "DisplayName": "Windows Hello",
+    "DisplayName": "Facial recognition (Windows Hello)",
+    "Token": "WindowsHello",
     "Steps": [
       {
         "$type": "Schneegans.Unattend.CapabilityBloatwareStep, UnattendGenerator",
