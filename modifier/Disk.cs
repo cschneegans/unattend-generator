@@ -269,7 +269,6 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           writer.WriteLine($"""
             mkdir {windowsDrive}:\Windows\Panther
             copy %XML_FILE% {windowsDrive}:\Windows\Panther\unattend.xml
-            copy %XML_FILE% {windowsDrive}:\Windows\Panther\unattend-original.xml
             """);
 
           writer.WriteLine($"""
