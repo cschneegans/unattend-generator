@@ -64,12 +64,6 @@ public record class ScriptPESetttings(
   string Script
 ) : ICmdPESettings;
 
-record class ImageSpec(
-  string Key,
-  string Value,
-  bool PrependOsVersion
-);
-
 static class Paths
 {
   static internal readonly string PEScript = @"X:\pe.cmd";
@@ -204,42 +198,31 @@ class DiskModifier(ModifierContext context) : Modifier(context)
             diskpart.exe /s {Paths.DiskpartScript} || ( echo diskpart.exe encountered an error. & pause & exit /b 1 )
             """);
 
-          ImageSpec GetImageSpec()
+          string GetIndexOrName()
           {
+            if (Configuration.InstallFromSettings is IndexInstallFromSettings indexSettings)
             {
-              if (Configuration.InstallFromSettings is IndexInstallFromSettings settings)
-              {
-                return new("Index", settings.Value, false);
-              }
+              return $"/Index:{indexSettings.Index}";
             }
+            if (Configuration.InstallFromSettings is NameInstallFromSettings nameSettings)
             {
-              if (Configuration.InstallFromSettings is NameInstallFromSettings settings)
-              {
-                return new("Name", settings.Value, false);
-              }
+              return $@"/Name:""{nameSettings.Name}""";
             }
+            if (Configuration.EditionSettings is UnattendedEditionSettings editionSettings)
             {
-              if (Configuration.EditionSettings is UnattendedEditionSettings settings)
-              {
-                return new("Name", settings.Edition.DisplayName, true);
-              }
+              writer.WriteLine("""
+              set "OS_VERSION=Windows 11"
+              for /f "tokens=3 delims=." %%v in ('ver') do (
+                  if %%v LSS 20000 set "OS_VERSION=Windows 10"
+              )
+              """);
+              return $@"/Name:""%OS_VERSION% {editionSettings.Edition.DisplayName}""";
             }
             throw new ConfigurationException("Cannot determine which Windows image to apply. Specify image name or index in the ‘Source image’ section.");
           }
 
-          var image = GetImageSpec();
-          if (image.PrependOsVersion)
-          {
-            writer.WriteLine("""
-              set "OS_VERSION=Windows 11 "
-              for /f "tokens=3 delims=." %%v in ('ver') do (
-                  if %%v LSS 20000 set "OS_VERSION=Windows 10 "
-              )
-              """);
-          }
-
           writer.WriteLine($"""
-            dism.exe /Apply-Image /ImageFile:%IMAGE_FILE% %SWM_PARAM% /{image.Key}:"%OS_VERSION%{image.Value}" /ApplyDir:{windowsDrive}:\ {(Configuration.CompactOsMode == CompactOsModes.Always ? "/Compact" : "")} || ( echo dism.exe encountered an error. & pause & exit /b 1 )
+            dism.exe /Apply-Image /ImageFile:%IMAGE_FILE% %SWM_PARAM% {GetIndexOrName()} /ApplyDir:{windowsDrive}:\ {(Configuration.CompactOsMode == CompactOsModes.Always ? "/Compact" : "")} || ( echo dism.exe encountered an error. & pause & exit /b 1 )
             bcdboot.exe {windowsDrive}:\Windows /s {bootDrive}: || ( echo bcdboot.exe encountered an error. & pause & exit /b 1 )
             """);
 
