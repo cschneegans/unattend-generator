@@ -542,6 +542,9 @@ public class DefaultUserSequence : PowerShellSequence
   }
 }
 
+/// <summary>
+/// Collects PowerShell commands that run in the system context, before user accounts are created.
+/// </summary>
 public class SpecializeSequence : PowerShellSequence
 {
   protected override string Activity()
