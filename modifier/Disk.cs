@@ -100,6 +100,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           const char bootDrive = 'S';
           const char windowsDrive = 'W';
           const char recoveryDrive = 'R';
+          char[] skippedDrives = ['A', 'B', 'X'];
 
           {
             string comp = "Microsoft-Windows-PnpCustomizationsWinPE";
@@ -124,7 +125,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           }
 
           writer.WriteLine($"""
-            @for %%d in ({letters.Except(['A', 'B', 'X', bootDrive, windowsDrive, recoveryDrive]).JoinString(' ')}) do @(
+            @for %%d in ({letters.Except([.. skippedDrives, bootDrive, windowsDrive, recoveryDrive]).JoinString(' ')}) do @(
                 if exist %%d:\sources\install.wim set "IMAGE_FILE=%%d:\sources\install.wim"
                 if exist %%d:\sources\install.esd set "IMAGE_FILE=%%d:\sources\install.esd"
                 if exist %%d:\sources\install.swm set "IMAGE_FILE=%%d:\sources\install.swm" & set "SWM_PARAM=/SWMFile:%%d:\sources\install*.swm"
@@ -304,7 +305,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
               if defined OEM_FOLDER (
                   if exist "%OEM_FOLDER%\$$" robocopy.exe "%OEM_FOLDER%\$$" {windowsDrive}:\Windows %ROBOCOPY_ARGS%
                   if exist "%OEM_FOLDER%\$1" robocopy.exe "%OEM_FOLDER%\$1" {windowsDrive}:\ %ROBOCOPY_ARGS%
-                  @for %%d in ({letters.Except(['A', 'B', 'X']).JoinString(' ')}) do @(
+                  @for %%d in ({letters.Except(skippedDrives).JoinString(' ')}) do @(
                       if exist "%OEM_FOLDER%\%%d" robocopy.exe "%OEM_FOLDER%\%%d" %%d:\ %ROBOCOPY_ARGS%
                   )
               )
