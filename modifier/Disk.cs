@@ -297,13 +297,15 @@ class DiskModifier(ModifierContext context) : Modifier(context)
               """);
           }
 
-          if (Configuration.LanguageSettings is UnattendedLanguageSettings languageSettings)
           {
-            writer.WriteLine($"""
+            if (Configuration.LanguageSettings is UnattendedLanguageSettings settings)
+            {
+              writer.WriteLine($"""
               reg.exe LOAD HKLM\mount {windowsDrive}:\Windows\System32\config\SOFTWARE
-              reg.exe add "HKLM\mount\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d {languageSettings.GeoLocation.Id} /f
+              reg.exe ADD "HKLM\mount\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d {settings.GeoLocation.Id} /f
               reg.exe UNLOAD HKLM\mount
               """);
+            }
           }
 
           if (Configuration.UseConfigurationSet)
