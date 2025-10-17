@@ -326,6 +326,7 @@ public record class Configuration(
   bool HidePowerShellWindows,
   bool ShowEndTask,
   bool KeepSensitiveFiles,
+  bool UseNarrator,
   TaskbarSearchMode TaskbarSearch,
   IStartPinsSettings StartPinsSettings,
   IStartTilesSettings StartTilesSettings,
@@ -401,6 +402,7 @@ public record class Configuration(
     HidePowerShellWindows: false,
     ShowEndTask: false,
     KeepSensitiveFiles: false,
+    UseNarrator: false,
     TaskbarSearch: TaskbarSearchMode.Box,
     StartPinsSettings: new DefaultStartPinsSettings(),
     StartTilesSettings: new DefaultStartTilesSettings(),
@@ -1062,6 +1064,7 @@ public class UnattendGenerator
     );
 
     new List<Modifier> {
+      new AccessibilityModifier(context),
       new ComputerNameModifier(context),
       new BypassModifier(context),
       new ProductKeyModifier(context),
