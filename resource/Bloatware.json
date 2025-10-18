@@ -731,6 +731,13 @@
     "DisplayName": "Copilot",
     "Steps": [
       {
+        "$type": "Schneegans.Unattend.PackageBloatwareStep, UnattendGenerator",
+        "Selector": "Microsoft.Copilot",
+        "AppliesTo": [
+          "Windows 11 25H2"
+        ]
+      },
+      {
         "$type": "Schneegans.Unattend.CustomBloatwareStep, UnattendGenerator",
         "AppliesTo": [
           "Windows 11"
