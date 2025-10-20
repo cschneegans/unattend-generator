@@ -15,4 +15,4 @@ $ErrorActionPreference = 'Stop';
 	} catch {
 		$_;
 	}
-} *>&1 >> 'C:\Windows\Setup\Scripts\MakeEdgeUninstallable.log';
+} *>&1 | Out-String >> 'C:\Windows\Setup\Scripts\MakeEdgeUninstallable.log';

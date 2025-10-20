@@ -27,4 +27,4 @@ Set-StrictMode -Version 'Latest';
 		}
 		Start-Sleep -Milliseconds 50;
 	}
-} *>&1 >> 'C:\Windows\Setup\Scripts\SetComputerName.log';
+} *>&1 | Out-String >> 'C:\Windows\Setup\Scripts\SetComputerName.log';

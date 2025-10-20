@@ -491,7 +491,7 @@ public abstract class PowerShellSequence
           "`r`n" * 3;
           $complete += $increment;
         }
-      } *>&1 >> "{{LogFile()}}";
+      } *>&1 | Out-String >> "{{LogFile()}}";
       """);
 
     return writer.ToString();
