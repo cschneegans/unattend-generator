@@ -48,14 +48,14 @@ public static class ScriptExtensions
     };
   }
 
-  public static string DefaultUserRequiredPrefix(this ScriptType type)
+  public static string DefaultUserKeyPrefix(this ScriptType type)
   {
     return type switch
     {
       ScriptType.Reg => @"[HKEY_USERS\DefaultUser\",
       ScriptType.Cmd => @"HKU\DefaultUser\",
       ScriptType.Ps1 => @"Registry::HKU\DefaultUser\",
-      _ => "",
+      _ => throw new NotSupportedException(),
     };
   }
 
@@ -77,15 +77,6 @@ public class Script
     if (!phase.GetAllowedTypes().Contains(type))
     {
       throw new ConfigurationException($"Scripts in phase '{phase}' must not have type '{type}'.");
-    }
-
-    if (phase == ScriptPhase.DefaultUser && !string.IsNullOrWhiteSpace(content))
-    {
-      string prefix = type.DefaultUserRequiredPrefix();
-      if (!content.Contains(prefix, StringComparison.OrdinalIgnoreCase))
-      {
-        throw new ConfigurationException($"{type.FileExtension()} script '{content}' does not contain required key prefix '{prefix}'.");
-      }
     }
 
     Content = content;
