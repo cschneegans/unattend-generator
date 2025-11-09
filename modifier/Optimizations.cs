@@ -196,7 +196,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         }
       }
 
-      switch (Configuration.TaskbarIcons)
+      switch (Configuration.Visual.TaskbarIcons)
       {
         case DefaultTaskbarIcons:
           break;
@@ -224,12 +224,12 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
 
-    if (Configuration.ShowFileExtensions)
+    if (Configuration.Visual.ShowFileExtensions)
     {
       DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""HideFileExt"" /t REG_DWORD /d 0 /f;");
     }
 
-    switch (Configuration.HideFiles)
+    switch (Configuration.Visual.HideFiles)
     {
       case HideModes.None:
         DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ""Hidden"" /t REG_DWORD /d 1 /f;");
@@ -242,14 +242,14 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         break;
     }
 
-    if (Configuration.DisableWindowsUpdate)
+    if (Configuration.System.DisableWindowsUpdate)
     {
       AddTextFile("PauseWindowsUpdate.ps1");
       string xmlFile = AddXmlFile("PauseWindowsUpdate.xml");
       SpecializeScript.Append($@"Register-ScheduledTask -TaskName 'PauseWindowsUpdate' -Xml $( Get-Content -LiteralPath '{xmlFile}' -Raw );");
     }
 
-    if (Configuration.ShowAllTrayIcons)
+    if (Configuration.Visual.ShowAllTrayIcons)
     {
       string ps1File = AddTextFile("ShowAllTrayIcons.ps1");
       DefaultUserScript.InvokeFile(ps1File);
@@ -257,13 +257,13 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       AddTextFile("ShowAllTrayIcons.vbs");
     }
 
-    if (Configuration.HideTaskViewButton)
+    if (Configuration.Visual.HideTaskViewButton)
     {
       DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ShowTaskViewButton /t REG_DWORD /d 0 /f;");
     }
 
     {
-      if (Configuration.DisableDefender)
+      if (Configuration.System.DisableDefender)
       {
         if (Configuration.PESettings is not ICmdPESettings)
         {
@@ -280,17 +280,17 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
 
-    if (Configuration.UseConfigurationSet && Configuration.PESettings is not ICmdPESettings)
+    if (Configuration.System.UseConfigurationSet && Configuration.PESettings is not ICmdPESettings)
     {
       Document.SelectSingleNodeOrThrow("//u:UseConfigurationSet", NamespaceManager).InnerText = "true";
     }
 
-    if (Configuration.DisableSac)
+    if (Configuration.System.DisableSac)
     {
       SpecializeScript.Append(@"reg.exe add ""HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy"" /v VerifiedAndReputablePolicyState /t REG_DWORD /d 0 /f;");
     }
 
-    if (Configuration.DisableSmartScreen)
+    if (Configuration.System.DisableSmartScreen)
     {
       SpecializeScript.Append("""
         reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SmartScreenEnabled /t REG_SZ /d "Off" /f;
@@ -308,17 +308,17 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         """);
     }
 
-    if (Configuration.DisableUac)
+    if (Configuration.System.DisableUac)
     {
       SpecializeScript.Append(@"reg.exe add ""HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"" /v EnableLUA /t REG_DWORD /d 0 /f");
     }
 
-    if (Configuration.EnableLongPaths)
+    if (Configuration.System.EnableLongPaths)
     {
       SpecializeScript.Append(@"reg.exe add ""HKLM\SYSTEM\CurrentControlSet\Control\FileSystem"" /v LongPathsEnabled /t REG_DWORD /d 1 /f");
     }
 
-    if (Configuration.EnableRemoteDesktop)
+    if (Configuration.System.EnableRemoteDesktop)
     {
       SpecializeScript.Append("""
         netsh.exe advfirewall firewall set rule group="@FirewallAPI.dll,-28752" new enable=Yes;
@@ -326,7 +326,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         """);
     }
 
-    if (Configuration.HardenSystemDriveAcl)
+    if (Configuration.System.HardenSystemDriveAcl)
     {
       SpecializeScript.Append(@"icacls.exe C:\ /remove:g ""*S-1-5-11""");
     }
@@ -342,17 +342,17 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
 
-    if (Configuration.AllowPowerShellScripts)
+    if (Configuration.System.AllowPowerShellScripts)
     {
       SpecializeScript.Append("Set-ExecutionPolicy -Scope 'LocalMachine' -ExecutionPolicy 'RemoteSigned' -Force;");
     }
 
-    if (Configuration.DisableLastAccess)
+    if (Configuration.System.DisableLastAccess)
     {
       SpecializeScript.Append(@"fsutil.exe behavior set disableLastAccess 1;");
     }
 
-    if (Configuration.PreventAutomaticReboot)
+    if (Configuration.System.PreventAutomaticReboot)
     {
       SpecializeScript.Append("""
         reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v AUOptions /t REG_DWORD /d 4 /f;
@@ -363,22 +363,22 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       SpecializeScript.Append($@"Register-ScheduledTask -TaskName 'MoveActiveHours' -Xml $( Get-Content -LiteralPath '{xmlFile}' -Raw );");
     }
 
-    if (Configuration.DisableFastStartup)
+    if (Configuration.System.DisableFastStartup)
     {
       SpecializeScript.Append(@"reg.exe add ""HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power"" /v HiberbootEnabled /t REG_DWORD /d 0 /f;");
     }
 
-    if (Configuration.DisableSystemRestore)
+    if (Configuration.System.DisableSystemRestore)
     {
       FirstLogonScript.Append(@"Disable-ComputerRestore -Drive 'C:\';");
     }
 
-    if (Configuration.DisableWidgets)
+    if (Configuration.Visual.DisableWidgets)
     {
       SpecializeScript.Append(@"reg.exe add ""HKLM\SOFTWARE\Policies\Microsoft\Dsh"" /v AllowNewsAndInterests /t REG_DWORD /d 0 /f;");
     }
 
-    if (Configuration.TurnOffSystemSounds)
+    if (Configuration.System.TurnOffSystemSounds)
     {
       string ps1File = AddTextFile("TurnOffSystemSounds.ps1");
       DefaultUserScript.InvokeFile(ps1File);
@@ -389,7 +389,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         """);
     }
 
-    if (Configuration.DisableAppSuggestions)
+    if (Configuration.System.DisableAppSuggestions)
     {
       // https://skanthak.hier-im-netz.de/ten.html#eight
 
@@ -428,48 +428,48 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         target.InvokeFile(AddTextFile(resourceName));
       }
 
-      if (Configuration.VBoxGuestAdditions)
+      if (Configuration.VirtualMachine.VBoxGuestAdditions)
       {
         InstallVmSoftware("VBoxGuestAdditions.ps1");
       }
 
-      if (Configuration.VMwareTools)
+      if (Configuration.VirtualMachine.VMwareTools)
       {
         InstallVmSoftware("VMwareTools.ps1");
       }
 
-      if (Configuration.VirtIoGuestTools)
+      if (Configuration.VirtualMachine.VirtIoGuestTools)
       {
         InstallVmSoftware("VirtIoGuestTools.ps1");
       }
-      if (Configuration.ParallelsTools)
+      if (Configuration.VirtualMachine.ParallelsTools)
       {
         InstallVmSoftware("ParallelsTools.ps1");
       }
     }
 
-    if (Configuration.PreventDeviceEncryption)
+    if (Configuration.System.PreventDeviceEncryption)
     {
       SpecializeScript.Append(@"reg.exe add ""HKLM\SYSTEM\CurrentControlSet\Control\BitLocker"" /v ""PreventDeviceEncryption"" /t REG_DWORD /d 1 /f;");
     }
 
-    if (Configuration.ClassicContextMenu)
+    if (Configuration.Visual.ClassicContextMenu)
     {
       UserOnceScript.Append(@"reg.exe add ""HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32"" /ve /f;");
       UserOnceScript.RestartExplorer();
     }
 
-    if (Configuration.LeftTaskbar)
+    if (Configuration.Visual.LeftTaskbar)
     {
       DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v TaskbarAl /t REG_DWORD /d 0 /f;");
     }
 
-    if (Configuration.HideEdgeFre)
+    if (Configuration.Visual.HideEdgeFre)
     {
       SpecializeScript.Append(@"reg.exe add ""HKLM\Software\Policies\Microsoft\Edge"" /v HideFirstRunExperience /t REG_DWORD /d 1 /f;");
     }
 
-    if (Configuration.DisableEdgeStartupBoost)
+    if (Configuration.Visual.DisableEdgeStartupBoost)
     {
       SpecializeScript.Append("""
         reg.exe add "HKLM\Software\Policies\Microsoft\Edge\Recommended" /v BackgroundModeEnabled /t REG_DWORD /d 0 /f;
@@ -478,7 +478,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     }
 
     {
-      if (Configuration.LockKeySettings is ConfigureLockKeySettings settings)
+      if (Configuration.Win32.LockKeySettings is ConfigureLockKeySettings settings)
       {
         {
           uint indicators = 0;
@@ -545,21 +545,21 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         }
       }
     }
-    if (Configuration.MakeEdgeUninstallable)
+    if (Configuration.Visual.MakeEdgeUninstallable)
     {
       string ps1File = AddTextFile("MakeEdgeUninstallable.ps1");
       SpecializeScript.InvokeFile(ps1File);
     }
     {
-      if (Configuration.LaunchToThisPC)
+      if (Configuration.Visual.LaunchToThisPC)
       {
         UserOnceScript.Append(@"Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'LaunchTo' -Type 'DWord' -Value 1;");
       }
     }
     {
-      if (Configuration.TaskbarSearch != TaskbarSearchMode.Box)
+      if (Configuration.Visual.TaskbarSearch != TaskbarSearchMode.Box)
       {
-        UserOnceScript.Append(@$"Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Type 'DWord' -Value {Configuration.TaskbarSearch:D};");
+        UserOnceScript.Append(@$"Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Type 'DWord' -Value {Configuration.Visual.TaskbarSearch:D};");
         UserOnceScript.RestartExplorer();
       }
     }
@@ -573,7 +573,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         SpecializeScript.InvokeFile(ps1File);
       }
 
-      switch (Configuration.StartPinsSettings)
+      switch (Configuration.Visual.StartPinsSettings)
       {
         case DefaultStartPinsSettings:
           break;
@@ -607,7 +607,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         AddXmlFile(doc, @"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml");
       }
 
-      switch (Configuration.StartTilesSettings)
+      switch (Configuration.Visual.StartTilesSettings)
       {
         case DefaultStartTilesSettings:
           break;
@@ -635,13 +635,13 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
     {
-      if (Configuration.DeleteWindowsOld)
+      if (Configuration.System.DeleteWindowsOld)
       {
         FirstLogonScript.Append(CommandBuilder.ShellCommand(@"rmdir C:\Windows.old") + ';');
       }
     }
     {
-      if (Configuration.DisablePointerPrecision)
+      if (Configuration.System.DisablePointerPrecision)
       {
         DefaultUserScript.Append("""
           $params = @{
@@ -657,7 +657,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
     {
-      if (Configuration.DisableBingResults)
+      if (Configuration.System.DisableBingResults)
       {
         DefaultUserScript.Append(@"reg.exe add ""HKU\DefaultUser\Software\Policies\Microsoft\Windows\Explorer"" /v DisableSearchBoxSuggestions /t REG_DWORD /d 1 /f;");
       }
@@ -684,7 +684,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         UserOnceScript.Append($@"Set-ItemProperty -LiteralPath 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects' -Name 'VisualFXSetting' -Type 'DWord' -Value {setting} -Force;");
       }
 
-      switch (Configuration.Effects)
+      switch (Configuration.Visual.Effects)
       {
         case DefaultEffects:
           break;
@@ -706,7 +706,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
     {
-      switch (Configuration.DesktopIcons)
+      switch (Configuration.Visual.DesktopIcons)
       {
         case DefaultDesktopIconSettings:
           break;
@@ -729,7 +729,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
     {
-      switch (Configuration.StartFolderSettings)
+      switch (Configuration.Visual.StartFolderSettings)
       {
         case DefaultStartFolderSettings:
           break;
@@ -742,7 +742,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
     {
-      if (Configuration.ShowEndTask)
+      if (Configuration.Visual.ShowEndTask)
       {
         DefaultUserScript.Append("""
           reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings" /v TaskbarEndTask /t REG_DWORD /d 1 /f;
@@ -765,7 +765,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           """);
       }
 
-      switch (Configuration.StickyKeysSettings)
+      switch (Configuration.Win32.StickyKeysSettings)
       {
         case DefaultStickyKeysSettings:
           break;
@@ -780,7 +780,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
     {
-      if (Configuration.DisableCoreIsolation)
+      if (Configuration.System.DisableCoreIsolation)
       {
         SpecializeScript.Append("""
             reg.exe add "HKLM\Software\Policies\Microsoft\Windows\DeviceGuard" /v "EnableVirtualizationBasedSecurity" /t REG_DWORD /d 0 /f;

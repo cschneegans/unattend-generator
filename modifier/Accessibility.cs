@@ -4,7 +4,7 @@ class AccessibilityModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
-    if (Configuration.UseNarrator)
+    if (Configuration.System.UseNarrator)
     {
       SpecializeScript.Append("""
         & 'C:\Windows\System32\Narrator.exe';
