@@ -27,10 +27,15 @@ class Example
           LocaleAndKeyboard3: null,
           GeoLocation: generator.Lookup<GeoLocation>("244")
         ),
-        Bloatwares = ImmutableList.CreateRange(
+        Bloatwares =
+        [
+          .. generator.Bloatwares.Values.Where(b => b.Id is "RemoveTeams" or "RemoveOutlook"),
+        ],
+        Winget = new WingetSettings(
+          Packages:
           [
-            generator.Lookup<Bloatware>("RemoveTeams"),
-            generator.Lookup<Bloatware>("RemoveOutlook"),
+            "Microsoft.PowerToys",
+            "7zip.7zip"
           ]
         ),
       }
