@@ -13,7 +13,7 @@ Whether you're a system administrator, a developer, or a tech enthusiast, Unatte
 
 ## 🚀 Getting Started
 
-To get started, you can use the `UnattendGenerator` as a standalone application or integrate it into your own .NET projects.
+This project is now a graphical application! 🖼️
 
 ### Prerequisites
 
@@ -31,45 +31,20 @@ To get started, you can use the `UnattendGenerator` as a standalone application 
 
 2.  **Open the project in Visual Studio:**
 
-    Change the project's output type from 'Class Library' to 'Console Application' in the project properties.
+    Open the `UnattendGenerator.csproj` file in Visual Studio.
 
-3.  **Customize your configuration:**
+3.  **Run the application:**
 
-    Open the `Example.cs` file and modify the `Configuration.Default` object to suit your needs. Here's an example that sets the language to US English, removes Teams and Outlook, and installs PowerToys and 7-Zip using Winget:
+    Press `F5` to build and run the application.
 
-    ```csharp
-    UnattendGenerator generator = new();
-    XmlDocument xml = generator.GenerateXml(
-      Configuration.Default with
-      {
-        LanguageSettings = new UnattendedLanguageSettings(
-          ImageLanguage: generator.Lookup<ImageLanguage>("en-US"),
-          LocaleAndKeyboard: new LocaleAndKeyboard(
-            generator.Lookup<UserLocale>("en-US"),
-            generator.Lookup<KeyboardIdentifier>("00000409")
-          ),
-          LocaleAndKeyboard2: null,
-          LocaleAndKeyboard3: null,
-          GeoLocation: generator.Lookup<GeoLocation>("244")
-        ),
-        Bloatwares =
-        [
-          .. generator.Bloatwares.Values.Where(b => b.Id is "RemoveTeams" or "RemoveOutlook"),
-        ],
-        Winget = new WingetSettings(
-          Packages:
-          [
-            "Microsoft.PowerToys",
-            "7zip.7zip"
-          ]
-        ),
-      }
-    );
-    ```
+4.  **Configure your installation:**
 
-4.  **Run the application:**
+    -   Use the **Winget** tab to add or remove programs to be installed automatically. The application will verify that the package exists.
+    -   Use the **Settings** tab to customize all other aspects of your Windows installation.
 
-    Press `F5` in Visual Studio to run the `Example.cs` and generate your `autounattend.xml` file. The file will be saved to your temporary directory (`%TEMP%`).
+5.  **Generate the `autounattend.xml` file:**
+
+    Click the "Générer le fichier autounattend.xml..." button to save the file to your desired location, for example, a USB drive.
 
 ## 🤝 Contributing
 
