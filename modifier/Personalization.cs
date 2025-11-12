@@ -48,7 +48,7 @@ class PersonalizationModifier(ModifierContext context) : Modifier(context)
   public override void Process()
   {
     {
-      if (Configuration.ColorSettings is CustomColorSettings settings)
+      if (Configuration.Win32.ColorSettings is CustomColorSettings settings)
       {
         string ps1File = AddTextFile("SetColorTheme.ps1", before: writer =>
         {
@@ -72,7 +72,7 @@ class PersonalizationModifier(ModifierContext context) : Modifier(context)
         UserOnceScript.InvokeFile(ps1File);
       }
 
-      switch (Configuration.WallpaperSettings)
+      switch (Configuration.Win32.WallpaperSettings)
       {
         case ScriptWallpaperSettings settings:
           string imageFile = @"C:\Windows\Setup\Scripts\Wallpaper";
@@ -100,7 +100,7 @@ class PersonalizationModifier(ModifierContext context) : Modifier(context)
       }
     }
     {
-      switch (Configuration.LockScreenSettings)
+      switch (Configuration.Win32.LockScreenSettings)
       {
         case ScriptLockScreenSettings settings:
           string imageFile = @"C:\Windows\Setup\Scripts\LockScreenImage";
