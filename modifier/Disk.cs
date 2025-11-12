@@ -82,6 +82,12 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       {
         node.RemoveSelf();
       }
+      if (Configuration.UseNarrator)
+      {
+        GetAppender(CommandConfig.WindowsPE).Append(
+          CommandBuilder.ShellCommand(@"start X:\Windows\System32\Narrator.exe")
+        );
+      }
     }
 
     AssertDisk();
