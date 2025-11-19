@@ -331,6 +331,28 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       SpecializeScript.Append(@"icacls.exe C:\ /remove:g ""*S-1-5-11""");
     }
 
+    if (Configuration.DeleteJunctions)
+    {
+      FirstLogonScript.Append("""
+        @(
+        	Get-ChildItem -LiteralPath 'C:\' -Force;
+        	Get-ChildItem -LiteralPath 'C:\Users' -Force;
+        	Get-ChildItem -LiteralPath 'C:\Users\Default' -Force -Recurse -Depth 2;
+        	Get-ChildItem -LiteralPath 'C:\Users\Public' -Force -Recurse -Depth 2;
+        	Get-ChildItem -LiteralPath 'C:\ProgramData' -Force;
+        ) | Where-Object -FilterScript {
+        	$_.Attributes.HasFlag( [System.IO.FileAttributes]::ReparsePoint );
+        } | Remove-Item -Force -Recurse -Verbose;
+        """);
+      UserOnceScript.Append("""
+        @(
+          Get-ChildItem -LiteralPath $env:USERPROFILE -Force -Recurse -Depth 2;
+        ) | Where-Object -FilterScript {
+        	$_.Attributes.HasFlag( [System.IO.FileAttributes]::ReparsePoint );
+        } | Remove-Item -Force -Recurse -Verbose;
+        """);
+    }
+
     {
       if (Configuration.ProcessAuditSettings is EnabledProcessAuditSettings settings)
       {
