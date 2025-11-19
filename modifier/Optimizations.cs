@@ -353,6 +353,16 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         """);
     }
 
+    if (Configuration.DeleteEdgeDesktopIcon)
+    {
+      SpecializeScript.Append("""
+        Remove-Item -LiteralPath 'C:\Users\Public\Desktop\Microsoft Edge.lnk' -ErrorAction 'SilentlyContinue' -Verbose;
+        """);
+      UserOnceScript.Append("""
+        Remove-Item -LiteralPath "${env:USERPROFILE}\Desktop\Microsoft Edge.lnk" -ErrorAction 'SilentlyContinue' -Verbose;
+        """);
+    }
+
     {
       if (Configuration.ProcessAuditSettings is EnabledProcessAuditSettings settings)
       {
