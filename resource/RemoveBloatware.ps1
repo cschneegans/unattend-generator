@@ -18,4 +18,4 @@
 		}
 		$result | ConvertTo-Json -Depth 3 -Compress;
 	}
-} *>&1 | Out-String -Stream >> $logfile;
+} *>&1 | Out-String -Width 1KB -Stream >> $logfile;

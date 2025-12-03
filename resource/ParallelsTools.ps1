@@ -12,4 +12,4 @@
 		}
 	}
 	'Parallels Tools image (prl-tools-win-*.iso) is not attached to this VM.';
-} *>&1 | Out-String -Stream >> 'C:\Windows\Setup\Scripts\ParallelsTools.log';
+} *>&1 | Out-String -Width 1KB -Stream >> 'C:\Windows\Setup\Scripts\ParallelsTools.log';

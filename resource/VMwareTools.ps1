@@ -7,4 +7,4 @@
 		}
 	}
 	'VMware Tools image (windows.iso) is not attached to this VM.';
-} *>&1 | Out-String -Stream >> 'C:\Windows\Setup\Scripts\VMwareTools.log';
+} *>&1 | Out-String -Width 1KB -Stream >> 'C:\Windows\Setup\Scripts\VMwareTools.log';

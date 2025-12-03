@@ -7,4 +7,4 @@
 		}
 	}
 	'VirtIO Guest Tools image (virtio-win-*.iso) is not attached to this VM.';
-} *>&1 | Out-String -Stream >> 'C:\Windows\Setup\Scripts\VirtIoGuestTools.log';
+} *>&1 | Out-String -Width 1KB -Stream >> 'C:\Windows\Setup\Scripts\VirtIoGuestTools.log';
