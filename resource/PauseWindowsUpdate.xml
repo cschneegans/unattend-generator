@@ -36,7 +36,7 @@
 	<Actions Context="Author">
 		<Exec>
 			<Command>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Command>
-			<Arguments>-Command "Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\PauseWindowsUpdate.ps1' -Raw | Invoke-Expression;"</Arguments>
+			<Arguments>-ExecutionPolicy "Unrestricted" -NoProfile -File "C:\Windows\Setup\Scripts\PauseWindowsUpdate.ps1"</Arguments>
 		</Exec>
 	</Actions>
 </Task>

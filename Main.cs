@@ -174,12 +174,12 @@ public class CommandBuilder(bool hidePowerShellWindows)
         throw new ArgumentException($"PowerShell command '{value}' must end with either '{semicolon}' or '{brace}'.");
       }
     }
-    return @$"powershell.exe -WindowStyle {(hidePowerShellWindows ? "Hidden" : "Normal")} -NoProfile -Command ""{value}""";
+    return @$"powershell.exe -WindowStyle ""{(hidePowerShellWindows ? "Hidden" : "Normal")}"" -NoProfile -Command ""{value}""";
   }
 
   public string InvokePowerShellScript(string filepath)
   {
-    return PowerShellCommand($"Get-Content -LiteralPath '{filepath}' -Raw | Invoke-Expression;");
+    return @$"powershell.exe -WindowStyle ""{(hidePowerShellWindows ? "Hidden" : "Normal")}"" -ExecutionPolicy ""Unrestricted"" -NoProfile -File ""{filepath}""";
   }
 
   public string InvokeVBScript(string filepath)
