@@ -74,9 +74,9 @@ class ComputerNameModifier(ModifierContext context) : Modifier(context)
         SetComputerName("TEMPNAME");
         string getterFile = AddTextFile("GetComputerName.ps1", settings.Script);
         string setterFile = AddTextFile("SetComputerName.ps1");
-        SpecializeScript.Append($$"""
-            Get-Content -LiteralPath '{{getterFile}}' -Raw | Invoke-Expression > 'C:\Windows\Setup\Scripts\ComputerName.txt';
-            Start-Process -FilePath ( Get-Process -Id $PID ).Path -ArgumentList '-NoProfile', '-Command', 'Get-Content -LiteralPath "{{setterFile}}" -Raw | Invoke-Expression;' -WindowStyle 'Hidden';
+        SpecializeScript.Append($"""
+            & '{getterFile}' > 'C:\Windows\Setup\Scripts\ComputerName.txt';
+            Start-Process -FilePath ( Get-Process -Id $PID ).Path -ArgumentList '-ExecutionPolicy "Unrestricted" -NoProfile -File "{setterFile}"' -WindowStyle 'Hidden';
             Start-Sleep -Seconds 10;
             """);
         break;

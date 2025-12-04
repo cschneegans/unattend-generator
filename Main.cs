@@ -440,7 +440,7 @@ public abstract class PowerShellSequence
 
   public void InvokeFile(string file)
   {
-    Append($"Get-Content -LiteralPath '{file}' -Raw | Invoke-Expression;");
+    Append($"& '{file}';");
   }
 
   public void RestartExplorer()

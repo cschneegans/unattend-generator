@@ -79,7 +79,7 @@ class PersonalizationModifier(ModifierContext context) : Modifier(context)
           string getterFile = AddTextFile("GetWallpaper.ps1", settings.Script);
           SpecializeScript.Append($$"""
             try {
-              $bytes = Get-Content -LiteralPath '{{getterFile}}' -Raw | Invoke-Expression;
+              $bytes = & '{{getterFile}}';
               [System.IO.File]::WriteAllBytes( '{{imageFile}}', $bytes );
             } catch {
               $_;
@@ -107,7 +107,7 @@ class PersonalizationModifier(ModifierContext context) : Modifier(context)
           string getterFile = AddTextFile("GetLockScreenImage.ps1", settings.Script);
           SpecializeScript.Append($$"""
             try {
-              $bytes = Get-Content -LiteralPath '{{getterFile}}' -Raw | Invoke-Expression;
+              $bytes = & '{{getterFile}}';
               [System.IO.File]::WriteAllBytes( '{{imageFile}}', $bytes );
               reg.exe add "HKLM\Software\Microsoft\Windows\CurrentVersion\PersonalizationCSP" /v LockScreenImagePath /t REG_SZ /d "{{imageFile}}" /f;
             } catch {
