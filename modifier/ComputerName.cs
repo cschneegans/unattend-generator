@@ -72,8 +72,8 @@ class ComputerNameModifier(ModifierContext context) : Modifier(context)
 
       case ScriptComputerNameSettings settings:
         SetComputerName("TEMPNAME");
-        string getterFile = AddTextFile("GetComputerName.ps1", settings.Script);
-        string setterFile = AddTextFile("SetComputerName.ps1");
+        string getterFile = EmbedTextFile("GetComputerName.ps1", settings.Script);
+        string setterFile = EmbedTextFileFromResource("SetComputerName.ps1");
         SpecializeScript.Append($"""
             & '{getterFile}' > 'C:\Windows\Setup\Scripts\ComputerName.txt';
             Start-Process -FilePath ( Get-Process -Id $PID ).Path -ArgumentList '-ExecutionPolicy "Unrestricted" -NoProfile -File "{setterFile}"' -WindowStyle 'Hidden';

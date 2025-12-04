@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace Schneegans.Unattend;
 
@@ -1187,7 +1188,7 @@ abstract class Modifier(ModifierContext context)
     return new CommandAppender(Document, NamespaceManager, config);
   }
 
-  public void AddXmlFile(XmlDocument xml, string path)
+  public string EmbedXmlFile(string name, XmlDocument xml)
   {
     string ToPrettyString()
     {
@@ -1205,71 +1206,66 @@ abstract class Modifier(ModifierContext context)
       return sw.ToString();
     }
 
-    AddFile(ToPrettyString(), path);
+    return EmbedFile(name, ToPrettyString());
   }
 
-  public string AddXmlFile(string xml, string name)
+  public string EmbedXmlFile(string name, string xml)
   {
-    string path = $@"C:\Windows\Setup\Scripts\{name}";
     var doc = new XmlDocument();
     doc.LoadXml(xml);
-    AddXmlFile(doc, path);
-    return path;
+    return EmbedXmlFile(name, doc);
   }
 
-  public string AddXmlFile(string resourceName)
+  public string EmbedXmlFileFromResource(string name)
   {
-    string path = $@"C:\Windows\Setup\Scripts\{resourceName}";
-    AddXmlFile(Util.XmlDocumentFromResource(resourceName), path);
-    return path;
+    return EmbedXmlFile(name, Util.XmlDocumentFromResource(name));
   }
 
-  public string AddTextFile(string name, string content, Action<StringWriter>? before = null, Action<StringWriter>? after = null)
+  public string EmbedTextFile(string name, string content, Action<StringWriter>? before = null, Action<StringWriter>? after = null)
   {
-    string destination = $@"C:\Windows\Setup\Scripts\{name}";
     StringWriter writer = new();
     before?.Invoke(writer);
     writer.WriteLine(content);
     after?.Invoke(writer);
-    AddFile(writer.ToString(), destination);
-    return destination;
+    return EmbedFile(name, writer.ToString());
   }
 
-  public string AddTextFile(string resourceName, Action<StringWriter>? before = null, Action<StringWriter>? after = null)
+  public string EmbedTextFileFromResource(string name, Action<StringWriter>? before = null, Action<StringWriter>? after = null)
   {
-    return AddTextFile(resourceName, content: Util.StringFromResource(resourceName), before: before, after: after);
+    return EmbedTextFile(name, content: Util.StringFromResource(name), before: before, after: after);
   }
 
-  private void AddFile(string content, string path)
+  private string EmbedFile(string name, string content)
   {
+    string path = name.Contains('\\') ? name : $@"C:\Windows\Setup\Scripts\{name}";
+
+    XmlNode root = Document.SelectSingleNodeOrThrow("/u:unattend", NamespaceManager);
+    XmlNode? extensions = root.SelectSingleNode("s:Extensions", NamespaceManager);
+    if (extensions == null)
     {
-      XmlNode root = Document.SelectSingleNodeOrThrow("/u:unattend", NamespaceManager);
-      XmlNode? extensions = root.SelectSingleNode("s:Extensions", NamespaceManager);
-      if (extensions == null)
-      {
-        extensions = Document.CreateElement("Extensions", Constants.MyNamespaceUri);
-        root.AppendChild(extensions);
+      extensions = Document.CreateElement("Extensions", Constants.MyNamespaceUri);
+      root.AppendChild(extensions);
 
-        XmlNode extractScript = Document.CreateElement("ExtractScript", Constants.MyNamespaceUri);
-        extensions.AppendChild(extractScript);
-        extractScript.AppendChild(
-          Document.CreateTextNode(
-            Util.Indent(
-              Util.StringFromResource("ExtractScripts.ps1")
-            )
+      XmlNode extractScript = Document.CreateElement("ExtractScript", Constants.MyNamespaceUri);
+      extensions.AppendChild(extractScript);
+      extractScript.AppendChild(
+        Document.CreateTextNode(
+          Util.Indent(
+            Util.StringFromResource("ExtractScripts.ps1")
           )
-        );
+        )
+      );
 
-        CommandAppender appender = GetAppender(CommandConfig.Specialize);
-        appender.Append(
-          CommandBuilder.PowerShellCommand(@"$xml = [xml]::new(); $xml.Load('C:\Windows\Panther\unattend.xml'); $sb = [scriptblock]::Create( $xml.unattend.Extensions.ExtractScript ); Invoke-Command -ScriptBlock $sb -ArgumentList $xml;")
-        );
-      }
-
-      XmlElement file = Document.CreateElement("File", Constants.MyNamespaceUri);
-      file.SetAttribute("path", path);
-      extensions.AppendChild(file);
-      file.AppendChild(Document.CreateTextNode(Util.Indent(content)));
+      CommandAppender appender = GetAppender(CommandConfig.Specialize);
+      appender.Append(
+        CommandBuilder.PowerShellCommand(@"$xml = [xml]::new(); $xml.Load('C:\Windows\Panther\unattend.xml'); $sb = [scriptblock]::Create( $xml.unattend.Extensions.ExtractScript ); Invoke-Command -ScriptBlock $sb -ArgumentList $xml;")
+      );
     }
+
+    XmlElement file = Document.CreateElement("File", Constants.MyNamespaceUri);
+    file.SetAttribute("path", path);
+    extensions.AppendChild(file);
+    file.AppendChild(Document.CreateTextNode(Util.Indent(content)));
+    return path;
   }
 }

@@ -9,7 +9,7 @@ class UserOnceModifier(ModifierContext context) : Modifier(context)
       return;
     }
 
-    string ps1File = AddTextFile("UserOnce.ps1", UserOnceScript.GetScript());
+    string ps1File = EmbedTextFile("UserOnce.ps1", UserOnceScript.GetScript());
     static string Escape(string s)
     {
       return s.Replace(@"""", @"\""""");

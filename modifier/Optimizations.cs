@@ -174,7 +174,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         string logName = "Application";
         string eventSource = "UnattendGenerator";
         {
-          string path = AddXmlFile(xml, "TaskbarLayoutModification.xml");
+          string path = EmbedXmlFile("TaskbarLayoutModification.xml", xml);
           SpecializeScript.Append($"""
             reg.exe add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableCloudOptimizedContent" /t REG_DWORD /d 1 /f;
             [System.Diagnostics.EventLog]::CreateEventSource( '{eventSource}', '{logName}' );
@@ -185,8 +185,8 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
             """);
         }
         {
-          AddTextFile("UnlockStartLayout.vbs");
-          string path = AddXmlFile("UnlockStartLayout.xml");
+          EmbedTextFileFromResource("UnlockStartLayout.vbs");
+          string path = EmbedXmlFileFromResource("UnlockStartLayout.xml");
           SpecializeScript.Append($@"Register-ScheduledTask -TaskName 'UnlockStartLayout' -Xml $( Get-Content -LiteralPath '{path}' -Raw );");
         }
         {
@@ -244,17 +244,17 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableWindowsUpdate)
     {
-      AddTextFile("PauseWindowsUpdate.ps1");
-      string xmlFile = AddXmlFile("PauseWindowsUpdate.xml");
+      EmbedTextFileFromResource("PauseWindowsUpdate.ps1");
+      string xmlFile = EmbedXmlFileFromResource("PauseWindowsUpdate.xml");
       SpecializeScript.Append($@"Register-ScheduledTask -TaskName 'PauseWindowsUpdate' -Xml $( Get-Content -LiteralPath '{xmlFile}' -Raw );");
     }
 
     if (Configuration.ShowAllTrayIcons)
     {
-      string ps1File = AddTextFile("ShowAllTrayIcons.ps1");
+      string ps1File = EmbedTextFileFromResource("ShowAllTrayIcons.ps1");
       DefaultUserScript.InvokeFile(ps1File);
-      AddXmlFile("ShowAllTrayIcons.xml");
-      AddTextFile("ShowAllTrayIcons.vbs");
+      EmbedXmlFileFromResource("ShowAllTrayIcons.xml");
+      EmbedTextFileFromResource("ShowAllTrayIcons.vbs");
     }
 
     if (Configuration.HideTaskViewButton)
@@ -390,8 +390,8 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v AUOptions /t REG_DWORD /d 4 /f;
         reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoRebootWithLoggedOnUsers /t REG_DWORD /d 1 /f;
         """);
-      AddTextFile("MoveActiveHours.vbs");
-      string xmlFile = AddXmlFile("MoveActiveHours.xml");
+      EmbedTextFileFromResource("MoveActiveHours.vbs");
+      string xmlFile = EmbedXmlFileFromResource("MoveActiveHours.xml");
       SpecializeScript.Append($@"Register-ScheduledTask -TaskName 'MoveActiveHours' -Xml $( Get-Content -LiteralPath '{xmlFile}' -Raw );");
     }
 
@@ -412,7 +412,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.TurnOffSystemSounds)
     {
-      string ps1File = AddTextFile("TurnOffSystemSounds.ps1");
+      string ps1File = EmbedTextFileFromResource("TurnOffSystemSounds.ps1");
       DefaultUserScript.InvokeFile(ps1File);
       UserOnceScript.Append(@"Set-ItemProperty -LiteralPath 'Registry::HKCU\AppEvents\Schemes' -Name '(Default)' -Type 'String' -Value '.None';");
       SpecializeScript.Append("""
@@ -457,7 +457,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       void InstallVmSoftware(string resourceName)
       {
         PowerShellSequence target = Configuration.DisableDefender ? SpecializeScript : FirstLogonScript;
-        target.InvokeFile(AddTextFile(resourceName));
+        target.InvokeFile(EmbedTextFileFromResource(resourceName));
       }
 
       if (Configuration.VBoxGuestAdditions)
@@ -579,7 +579,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     }
     if (Configuration.MakeEdgeUninstallable)
     {
-      string ps1File = AddTextFile("MakeEdgeUninstallable.ps1");
+      string ps1File = EmbedTextFileFromResource("MakeEdgeUninstallable.ps1");
       SpecializeScript.InvokeFile(ps1File);
     }
     {
@@ -598,7 +598,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     {
       void SetStartPins(string json)
       {
-        string ps1File = AddTextFile("SetStartPins.ps1", before: writer =>
+        string ps1File = EmbedTextFileFromResource("SetStartPins.ps1", before: writer =>
         {
           writer.WriteLine($"$json = '{json.Replace("'", "''")}';");
         });
@@ -636,7 +636,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       {
         XmlDocument doc = new();
         doc.LoadXml(xml);
-        AddXmlFile(doc, @"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml");
+        EmbedXmlFile(@"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml", doc);
       }
 
       switch (Configuration.StartTilesSettings)

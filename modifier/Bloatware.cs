@@ -20,7 +20,7 @@ abstract class Remover<T> where T : SelectorBloatwareStep
     {
       return;
     }
-    string ps1File = parent.AddTextFile($"{BaseName}.ps1", GetRemoveCommand());
+    string ps1File = parent.EmbedTextFile($"{BaseName}.ps1", GetRemoveCommand());
     parent.SpecializeScript.InvokeFile(ps1File);
   }
 

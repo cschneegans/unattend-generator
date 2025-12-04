@@ -9,7 +9,7 @@ class FirstLogonModifier(ModifierContext context) : Modifier(context)
       return;
     }
     CommandAppender appender = GetAppender(CommandConfig.Oobe);
-    string ps1File = AddTextFile("FirstLogon.ps1", FirstLogonScript.GetScript());
+    string ps1File = EmbedTextFile("FirstLogon.ps1", FirstLogonScript.GetScript());
     appender.Append(CommandBuilder.InvokePowerShellScript(ps1File));
   }
 }

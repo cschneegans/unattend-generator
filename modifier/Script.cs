@@ -145,7 +145,7 @@ class ScriptModifier(ModifierContext context) : Modifier(context)
       return script.Content;
     }
 
-    AddTextFile(info.FileName, Clean(info.Script));
+    EmbedTextFile(info.FileName, Clean(info.Script));
   }
 
   private void CallScript(ScriptInfo info)
