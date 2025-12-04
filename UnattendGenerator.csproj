@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resource\AppLocker.xsd" />
     <None Remove="resource\DesktopIcon.json" />
     <None Remove="resource\DisableDefender.vbs" />
     <None Remove="resource\MakeEdgeUninstallable.ps1" />
@@ -30,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="resource\AppLocker.xsd" />
     <EmbeddedResource Include="resource\autounattend.xml" />
     <EmbeddedResource Include="resource\autounattend.xsd" />
     <EmbeddedResource Include="resource\Component.json" />

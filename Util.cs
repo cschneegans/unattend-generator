@@ -54,8 +54,8 @@ internal static class Util
   {
     var schema = XmlSchemaFromResource(schemaName);
     {
-      string? expected = schema.TargetNamespace;
-      string? actual = doc.DocumentElement?.NamespaceURI;
+      string expected = schema.TargetNamespace ?? string.Empty;
+      string actual = doc.DocumentElement!.NamespaceURI;
       if (expected != actual)
       {
         throw new XmlSchemaValidationException($"Namespace URI of root element must be '{expected}', but was '{actual}'.");
