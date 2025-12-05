@@ -37,7 +37,16 @@ public class XmlWifiSettings : IProfileWifiSettings
     doc = new XmlDocument();
     ns = new XmlNamespaceManager(doc.NameTable);
     ns.AddNamespace("w", "http://www.microsoft.com/networking/WLAN/profile/v1");
-    doc.LoadXml(Xml);
+
+    try
+    {
+      doc.LoadXml(Xml);
+      Util.ValidateAgainstSchema(doc, "WLAN_profile_v1.xsd");
+    }
+    catch (Exception e) when (e is XmlException or XmlSchemaException)
+    {
+      throw new ConfigurationException($"WLAN profile XML is invalid: {e.Message}");
+    }
   }
 
   public bool ConnectAutomatically
@@ -204,17 +213,7 @@ class WifiModifier(ModifierContext context) : Modifier(context)
 
   void AddWifiProfile(IProfileWifiSettings settings)
   {
-    XmlDocument profile = settings.ProfileXml;
-    try
-    {
-      Util.ValidateAgainstSchema(profile, "WLAN_profile_v1.xsd");
-    }
-    catch (Exception e) when (e is XmlException or XmlSchemaException)
-    {
-      throw new ConfigurationException($"WLAN profile XML is invalid: {e.Message}");
-    }
-
-    string xmlFile = EmbedXmlFile("Wifi.xml", profile);
+    string xmlFile = EmbedXmlFile("Wifi.xml", settings.ProfileXml);
     SpecializeScript.Append($"""
       netsh.exe wlan add profile filename="{xmlFile}" user=all;
       """);
