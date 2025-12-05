@@ -1209,13 +1209,6 @@ abstract class Modifier(ModifierContext context)
     return EmbedFile(name, ToPrettyString());
   }
 
-  public string EmbedXmlFile(string name, string xml)
-  {
-    var doc = new XmlDocument();
-    doc.LoadXml(xml);
-    return EmbedXmlFile(name, doc);
-  }
-
   public string EmbedXmlFileFromResource(string name)
   {
     return EmbedXmlFile(name, Util.XmlDocumentFromResource(name));

@@ -174,7 +174,16 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         string logName = "Application";
         string eventSource = "UnattendGenerator";
         {
-          string path = EmbedXmlFile("TaskbarLayoutModification.xml", xml);
+          XmlDocument doc = new();
+          try
+          {
+            doc.LoadXml(xml);
+          }
+          catch (XmlException e)
+          {
+            throw new ConfigurationException($"Taskbar XML is not well-formed: {e.Message}");
+          }
+          string path = EmbedXmlFile("TaskbarLayoutModification.xml", doc);
           SpecializeScript.Append($"""
             reg.exe add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableCloudOptimizedContent" /t REG_DWORD /d 1 /f;
             [System.Diagnostics.EventLog]::CreateEventSource( '{eventSource}', '{logName}' );
@@ -634,9 +643,16 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     {
       void SetStartTiles(string xml)
       {
-        XmlDocument doc = new();
-        doc.LoadXml(xml);
-        EmbedXmlFile(@"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml", doc);
+        try
+        {
+          XmlDocument doc = new();
+          doc.LoadXml(xml);
+          EmbedXmlFile(@"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml", doc);
+        }
+        catch (XmlException e)
+        {
+          throw new ConfigurationException($"Start menu XML is not well-formed: {e.Message}");
+        }
       }
 
       switch (Configuration.StartTilesSettings)
