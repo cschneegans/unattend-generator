@@ -838,5 +838,13 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           """);
       }
     }
+    {
+      if (Configuration.DisableAutomaticRestartSignOn)
+      {
+        SpecializeScript.Append("""
+            reg.exe add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v "DisableAutomaticRestartSignOn" /t REG_DWORD /d 1 /f;
+          """);
+      }
+    }
   }
 }
