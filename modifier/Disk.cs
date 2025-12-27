@@ -139,7 +139,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
                 if exist %%d:\$OEM$ set "OEM_FOLDER=%%d:\$OEM$"
                 if exist %%d:\$WinPEDriver$ set "PEDRIVERS_FOLDER=%%d:\$WinPEDriver$"
             )
-            for /f "tokens=3" %%t in ('reg.exe query HKLM\System\Setup /v UnattendFile') do ( if exist %%t set "XML_FILE=%%t" )
+            for /f "tokens=3" %%t in ('reg.exe query HKLM\System\Setup /v UnattendFile 2^>nul') do ( if exist %%t set "XML_FILE=%%t" )
             @if not defined IMAGE_FILE echo Could not locate install.wim, install.esd or install.swm. & pause & exit /b 1
             @if not defined XML_FILE echo Could not locate autounattend.xml. & pause & exit /b 1
             """);
