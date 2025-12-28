@@ -1,32 +1,46 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
-name: .NET
+name: .NET Build & Publish
 
 on:
   push:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  # Добавляет кнопку для ручного запуска в интерфейсе GitHub
+  workflow_dispatch:
 
 jobs:
   build:
-
+    # Используем ubuntu, так как .NET Core кроссплатформенный.
+    # Если сборка упадет с ошибкой Windows-зависимостей, замените на: windows-latest
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 9
+        dotnet-version: 9.0.x
+
     - name: Restore dependencies
       run: dotnet restore
+
     - name: Build
-      run: dotnet build --no-restore
+      # Собираем в конфигурации Release (оптимизировано)
+      run: dotnet build --no-restore --configuration Release
+
     - name: Test
-      run: dotnet test --no-build --verbosity normal
-    - name: Upload artifacts
+      # Запуск тестов, если они есть
+      run: dotnet test --no-build --verbosity normal --configuration Release
+
+    - name: Publish
+      # Создаем готовую папку с файлами в ./published
+      run: dotnet publish --no-build --configuration Release --output ./published
+
+    - name: Upload Artifacts
+      # Загружаем содержимое папки ./published как артефакт
       uses: actions/upload-artifact@v4
       with:
-        path: ${{ github.workspace }}/bin/Debug/net*/*
+        name: UnattendGenerator-Build
+        path: ./published
