@@ -42,8 +42,8 @@
 	</Settings>
 	<Actions Context="Author">
 		<Exec>
-			<Command>C:\Windows\System32\wscript.exe</Command>
-			<Arguments>C:\Windows\Setup\Scripts\MoveActiveHours.vbs</Arguments>
+			<Command>%windir%\System32\conhost.exe</Command>
+			<Arguments>--headless %windir%\System32\WindowsPowerShell\v1.0\powershell.exe -WindowStyle Hidden -NoProfile -NonInteractive -Command "$p = @{ LiteralPath = 'Registry::HKLM\Software\Microsoft\WindowsUpdate\UX\Settings'; Type = 'DWord'; }; $h = [datetime]::Now.Hour; Set-ItemProperty @p -Name 'ActiveHoursStart' -Value (($h + 23) % 24); Set-ItemProperty @p -Name 'ActiveHoursEnd' -Value (($h + 11) % 24); Set-ItemProperty @p -Name 'SmartActiveHoursState' -Value 2;"</Arguments>
 		</Exec>
 	</Actions>
 </Task>
