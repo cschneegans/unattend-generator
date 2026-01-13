@@ -26,7 +26,6 @@
     <None Remove="resource\SetComputerName.ps1" />
     <None Remove="resource\SetStartPins.ps1" />
     <None Remove="resource\ShowAllTrayIcons.ps1" />
-    <None Remove="resource\ShowAllTrayIcons.vbs" />
     <None Remove="resource\ShowAllTrayIcons.xml" />
   </ItemGroup>
 
@@ -55,7 +54,6 @@
     <EmbeddedResource Include="resource\MakeEdgeUninstallable.ps1" />
     <EmbeddedResource Include="resource\SetStartPins.ps1" />
     <EmbeddedResource Include="resource\UnlockStartLayout.vbs" />
-    <EmbeddedResource Include="resource\ShowAllTrayIcons.vbs" />
     <EmbeddedResource Include="resource\ShowAllTrayIcons.ps1" />
     <EmbeddedResource Include="resource\RemoveBloatware.ps1" />
     <EmbeddedResource Include="resource\ShowAllTrayIcons.xml" />

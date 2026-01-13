@@ -260,10 +260,8 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.ShowAllTrayIcons)
     {
-      string ps1File = EmbedTextFileFromResource("ShowAllTrayIcons.ps1");
-      DefaultUserScript.InvokeFile(ps1File);
+      DefaultUserScript.Append(Util.StringFromResource("ShowAllTrayIcons.ps1"));
       EmbedXmlFileFromResource("ShowAllTrayIcons.xml");
-      EmbedTextFileFromResource("ShowAllTrayIcons.vbs");
     }
 
     if (Configuration.HideTaskViewButton)

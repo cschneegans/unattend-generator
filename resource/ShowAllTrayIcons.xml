@@ -35,8 +35,8 @@
 	</Settings>
 	<Actions Context="Author">
 		<Exec>
-			<Command>C:\Windows\System32\wscript.exe</Command>
-			<Arguments>C:\Windows\Setup\Scripts\ShowAllTrayIcons.vbs</Arguments>
+			<Command>%windir%\System32\conhost.exe</Command>
+			<Arguments>--headless %windir%\System32\WindowsPowerShell\v1.0\powershell.exe -WindowStyle Hidden -NoProfile -NonInteractive -Command "Set-ItemProperty -Path 'Registry::HKCU\Control Panel\NotifyIconSettings\*' -Name 'IsPromoted' -Value 1 -Type 'DWord';"</Arguments>
 		</Exec>
 	</Actions>
 </Task>
