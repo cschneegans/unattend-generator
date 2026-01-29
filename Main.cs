@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace Schneegans.Unattend;
 
@@ -195,6 +194,11 @@ public class CommandBuilder(bool hidePowerShellWindows)
 
   public List<string> WriteToFilePE(string path, IEnumerable<string> lines)
   {
+    if (path.Any(char.IsWhiteSpace))
+    {
+      throw new ArgumentException($"Path '{path}' must not contain whitespace characters.");
+    }
+
     static IEnumerable<string> Trim(IEnumerable<string> input)
     {
       return input
@@ -230,7 +234,7 @@ public class CommandBuilder(bool hidePowerShellWindows)
       string? prev = null, current = null;
       for (int take = 1; take <= segments.Count; take++)
       {
-        current = $@"cmd.exe /c "">>""{path}"" ({segments.GetRange(0, take).JoinString('&')})""";
+        current = $@"cmd.exe /c "">>{path} ({segments.GetRange(0, take).JoinString('&')})""";
         if (current.Length > maxLineLength)
         {
           if (prev == null)

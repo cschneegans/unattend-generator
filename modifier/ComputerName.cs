@@ -25,12 +25,12 @@ public record class CustomComputerNameSettings(string? ComputerName) : IComputer
       Throw();
     }
 
-    if (name.ToCharArray().Any(char.IsWhiteSpace))
+    if (name.Any(char.IsWhiteSpace))
     {
       Throw();
     }
 
-    if (name.ToCharArray().All(char.IsAsciiDigit))
+    if (name.All(char.IsAsciiDigit))
     {
       Throw();
     }
