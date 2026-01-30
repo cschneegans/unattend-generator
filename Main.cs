@@ -234,7 +234,7 @@ public class CommandBuilder(bool hidePowerShellWindows)
       string? prev = null, current = null;
       for (int take = 1; take <= segments.Count; take++)
       {
-        current = $@"cmd.exe /c "">>{path} ({segments.GetRange(0, take).JoinString('&')})""";
+        current = $@"cmd.exe /c >>{path} ({segments.GetRange(0, take).JoinString('&')})";
         if (current.Length > maxLineLength)
         {
           if (prev == null)
