@@ -230,7 +230,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           }
 
           writer.WriteLine($"""
-            dism.exe /Apply-Image /ImageFile:%IMAGE_FILE% %SWM_PARAM% {GetIndexOrName()} /ApplyDir:{windowsDrive}:\ {(Configuration.CompactOsMode == CompactOsModes.Always ? "/Compact" : "")} || ( echo dism.exe encountered an error. & pause & exit /b 1 )
+            dism.exe /Apply-Image /ImageFile:%IMAGE_FILE% %SWM_PARAM% {GetIndexOrName()} /ApplyDir:{windowsDrive}:\ {(Configuration.CompactOsMode == CompactOsModes.Always ? "/Compact" : "")} /CheckIntegrity /Verify || ( echo dism.exe encountered an error. & pause & exit /b 1 )
             bcdboot.exe {windowsDrive}:\Windows /s {bootDrive}: || ( echo bcdboot.exe encountered an error. & pause & exit /b 1 )
             """);
 
