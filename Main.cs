@@ -490,7 +490,7 @@ public abstract class PowerShellSequence
         [float] $complete = 0;
         [float] $increment = 100 / $scripts.Count;
         foreach( $script in $scripts ) {
-          Write-Progress -Activity '{{Activity()}} Do not close this window.' -PercentComplete $complete;
+          Write-Progress -Id 0 -Activity '{{Activity()}} Do not close this window.' -PercentComplete $complete;
           '*** Will now execute command «{0}».' -f $(
             $str = $script.ToString().Trim() -replace '\s+', ' ';
             $max = 100;

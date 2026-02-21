@@ -214,6 +214,32 @@ class WifiModifier(ModifierContext context) : Modifier(context)
   void AddWifiProfile(IProfileWifiSettings settings)
   {
     string xmlFile = EmbedXmlFile("Wifi.xml", settings.ProfileXml);
+    SpecializeScript.Append("""
+      $name = 'WlanSvc';
+      $start = [datetime]::Now;
+      $timeout = $start.AddMinutes( 1 );
+      $params = @{
+        Id = 1;
+        ParentId = 0;
+        Activity = "Waiting for service '${name}' to start.";
+      };
+      while( $true ) {
+      	if( $service = Get-Service -Name $name -ErrorAction 'SilentlyContinue' ) {
+      		if( $service.Status -eq 'Running' ) {
+      			break;
+      		}
+      	}
+      	if( [datetime]::Now -gt $timeout ) {
+      		"Service '${name}' did not start in time." | Write-Warning;
+      		break;
+      	}
+      	Write-Progress @params -PercentComplete $(
+      		100 * ( [datetime]::Now - $start ).Ticks / ( $timeout - $start ).Ticks
+      	);
+      	Start-Sleep -Seconds 5;
+      }
+      Write-Progress @params -Completed;
+      """);
     SpecializeScript.Append($"""
       netsh.exe wlan add profile filename="{xmlFile}" user=all;
       """);
