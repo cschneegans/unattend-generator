@@ -922,5 +922,27 @@
         ]
       }
     ]
+  },
+  {
+    "DisplayName": "Microsoft Store",
+    "Token": "Store",
+    "Steps": [
+      {
+        "$type": "Schneegans.Unattend.PackageBloatwareStep, UnattendGenerator",
+        "Selector": "Microsoft.WindowsStore",
+        "AppliesTo": [
+          "Windows 10",
+          "Windows 11"
+        ]
+      },
+      {
+        "$type": "Schneegans.Unattend.PackageBloatwareStep, UnattendGenerator",
+        "Selector": "Microsoft.StorePurchaseApp",
+        "AppliesTo": [
+          "Windows 10",
+          "Windows 11"
+        ]
+      }
+    ]
   }
 ]
