@@ -843,5 +843,13 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           """);
       }
     }
+    {
+      if(Configuration.HideInfoTip)
+      {
+        DefaultUserScript.Append("""
+          reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowInfoTip" /d 0 /t REG_DWORD /f;
+          """);
+      }
+    }
   }
 }
