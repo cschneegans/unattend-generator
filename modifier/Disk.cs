@@ -294,12 +294,27 @@ class DiskModifier(ModifierContext context) : Modifier(context)
               """);
           }
 
-          if (Configuration.DisableDefender)
+
+          if (Configuration.DisableDefender || Configuration.DisableWpbt)
           {
             writer.WriteLine($"""
-              rem Disable Windows Defender
               reg.exe LOAD HKLM\mount {windowsDrive}:\Windows\System32\config\SYSTEM
-              for %%s in (Sense WdBoot WdFilter WdNisDrv WdNisSvc WinDefend) do reg.exe ADD HKLM\mount\ControlSet001\Services\%%s /v Start /t REG_DWORD /d 4 /f
+              """);
+            if (Configuration.DisableDefender)
+            {
+              writer.WriteLine("""
+                rem Disable Windows Defender
+                for %%s in (Sense WdBoot WdFilter WdNisDrv WdNisSvc WinDefend) do reg.exe ADD HKLM\mount\ControlSet001\Services\%%s /v Start /t REG_DWORD /d 4 /f
+                """);
+            }
+            if (Configuration.DisableWpbt)
+            {
+              writer.WriteLine("""
+                rem Disable WPBT
+                reg.exe add "HKLM\mount\ControlSet001\Control\Session Manager" /v DisableWpbtExecution /t REG_DWORD /d 1 /f
+                """);
+            }
+            writer.WriteLine("""
               reg.exe UNLOAD HKLM\mount
               """);
           }

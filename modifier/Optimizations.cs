@@ -851,5 +851,13 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           """);
       }
     }
+    {
+      if(Configuration.DisableWpbt)
+      {
+        SpecializeScript.Append("""
+          reg.exe add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "DisableWpbtExecution" /t REG_DWORD /d 1 /f;
+          """);
+      }
+    }
   }
 }
