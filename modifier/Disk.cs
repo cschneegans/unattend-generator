@@ -206,31 +206,37 @@ class DiskModifier(ModifierContext context) : Modifier(context)
             diskpart.exe /s {Paths.DiskpartScript} || ( echo diskpart.exe encountered an error. & pause & exit /b 1 )
             """);
 
-          string GetIndexOrName()
           {
             if (Configuration.InstallFromSettings is IndexInstallFromSettings indexSettings)
             {
-              return $"/Index:{indexSettings.Index}";
+              writer.WriteLine($"""
+                set "IMG_PARAM=/Index:{indexSettings.Index}"
+                """);
             }
-            if (Configuration.InstallFromSettings is NameInstallFromSettings nameSettings)
+            else if (Configuration.InstallFromSettings is NameInstallFromSettings nameSettings)
             {
-              return $@"/Name:""{nameSettings.Name}""";
+              writer.WriteLine($"""
+                set "IMG_PARAM=/Name:"{nameSettings.Name}""
+                """);
             }
-            if (Configuration.EditionSettings is UnattendedEditionSettings editionSettings)
+            else if (Configuration.EditionSettings is UnattendedEditionSettings editionSettings)
             {
-              writer.WriteLine("""
-              set "OS_VERSION=Windows 11"
-              for /f "tokens=3 delims=." %%v in ('ver') do (
-                  if %%v LSS 20000 set "OS_VERSION=Windows 10"
-              )
-              """);
-              return $@"/Name:""%OS_VERSION% {editionSettings.Edition.DisplayName}""";
+              writer.WriteLine($"""
+                set "OS_VERSION=Windows 11"
+                for /f "tokens=3 delims=." %%v in ('ver') do (
+                    if %%v LSS 20000 set "OS_VERSION=Windows 10"
+                )
+                set "IMG_PARAM=/Name:"%OS_VERSION% {editionSettings.Edition.DisplayName}""
+                """);
             }
-            throw new ConfigurationException("Cannot determine which Windows image to apply. Specify image name or index in the ‘Source image’ section.");
+            else
+            {
+              throw new ConfigurationException("Cannot determine which Windows image to apply. Specify image name or index in the ‘Source image’ section.");
+            }
           }
 
           writer.WriteLine($"""
-            dism.exe /Apply-Image /ImageFile:%IMAGE_FILE% %SWM_PARAM% {GetIndexOrName()} /ApplyDir:{windowsDrive}:\ {(Configuration.CompactOsMode == CompactOsModes.Always ? "/Compact" : "")} /CheckIntegrity /Verify || ( echo dism.exe encountered an error. & pause & exit /b 1 )
+            dism.exe /Apply-Image /ImageFile:%IMAGE_FILE% %SWM_PARAM% %IMG_PARAM% /ApplyDir:{windowsDrive}:\ {(Configuration.CompactOsMode == CompactOsModes.Always ? "/Compact" : "")} /CheckIntegrity /Verify || ( echo dism.exe encountered an error. & pause & exit /b 1 )
             bcdboot.exe {windowsDrive}:\Windows /s {bootDrive}: || ( echo bcdboot.exe encountered an error. & pause & exit /b 1 )
             """);
 
