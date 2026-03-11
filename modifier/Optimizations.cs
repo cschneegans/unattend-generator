@@ -253,7 +253,6 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
     if (Configuration.DisableWindowsUpdate)
     {
-      EmbedTextFileFromResource("PauseWindowsUpdate.ps1");
       string xmlFile = EmbedXmlFileFromResource("PauseWindowsUpdate.xml");
       SpecializeScript.Append($@"Register-ScheduledTask -TaskName 'PauseWindowsUpdate' -Xml $( Get-Content -LiteralPath '{xmlFile}' -Raw );");
     }
