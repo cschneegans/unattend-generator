@@ -54,18 +54,34 @@ class ProductKeyModifier(ModifierContext context) : Modifier(context)
   public override void Process()
   {
     {
-      const string zero = "00000-00000-00000-00000-00000";
-      (string key, string ui) = Configuration.EditionSettings switch
+      void Delete()
       {
-        UnattendedEditionSettings settings => (settings.Edition.ProductKey, "OnError"),
-        CustomEditionSettings settings => (settings.ProductKey, "OnError"),
-        InteractiveEditionSettings => (zero, "Always"),
-        FirmwareEditionSettings => (zero, "OnError"),
-        _ => throw new NotSupportedException()
-      };
+        Document.SelectSingleNodeOrThrow("//u:UserData/u:ProductKey", NamespaceManager).RemoveSelf();
+      }
 
-      Document.SelectSingleNodeOrThrow("//u:UserData/u:ProductKey/u:Key", NamespaceManager).InnerText = key;
-      Document.SelectSingleNodeOrThrow("//u:UserData/u:ProductKey/u:WillShowUI", NamespaceManager).InnerText = ui;
+      void Set(string key, string ui)
+      {
+        Document.SelectSingleNodeOrThrow("//u:UserData/u:ProductKey/u:Key", NamespaceManager).InnerText = key;
+        Document.SelectSingleNodeOrThrow("//u:UserData/u:ProductKey/u:WillShowUI", NamespaceManager).InnerText = ui;
+      }
+
+      switch (Configuration.EditionSettings)
+      {
+        case UnattendedEditionSettings settings:
+          Set(settings.Edition.ProductKey, "OnError");
+          break;
+        case CustomEditionSettings settings:
+          Set(settings.ProductKey, "OnError");
+          break;
+        case InteractiveEditionSettings:
+          Set("00000-00000-00000-00000-00000", "Always");
+          break;
+        case FirmwareEditionSettings:
+          Delete();
+          break;
+        default:
+          throw new NotSupportedException();
+      }
     }
     {
       if (Configuration.EditionSettings is CustomEditionSettings settings)
