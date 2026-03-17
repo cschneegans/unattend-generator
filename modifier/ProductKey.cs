@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Xml;
 
 namespace Schneegans.Unattend;
 
@@ -54,15 +55,19 @@ class ProductKeyModifier(ModifierContext context) : Modifier(context)
   public override void Process()
   {
     {
-      void Delete()
+      XmlNode keyElement = Document.SelectSingleNodeOrThrow("//u:UserData/u:ProductKey/u:Key", NamespaceManager);
+      XmlNode uiElement = Document.SelectSingleNodeOrThrow("//u:UserData/u:ProductKey/u:WillShowUI", NamespaceManager);
+
+      void SetWithoutKey(string ui)
       {
-        Document.SelectSingleNodeOrThrow("//u:UserData/u:ProductKey", NamespaceManager).RemoveSelf();
+        keyElement.RemoveSelf();
+        uiElement.InnerText = ui;
       }
 
       void Set(string key, string ui)
       {
-        Document.SelectSingleNodeOrThrow("//u:UserData/u:ProductKey/u:Key", NamespaceManager).InnerText = key;
-        Document.SelectSingleNodeOrThrow("//u:UserData/u:ProductKey/u:WillShowUI", NamespaceManager).InnerText = ui;
+        keyElement.InnerText = key;
+        uiElement.InnerText = ui;
       }
 
       switch (Configuration.EditionSettings)
@@ -77,7 +82,7 @@ class ProductKeyModifier(ModifierContext context) : Modifier(context)
           Set("00000-00000-00000-00000-00000", "Always");
           break;
         case FirmwareEditionSettings:
-          Delete();
+          SetWithoutKey("Never");
           break;
         default:
           throw new NotSupportedException();
