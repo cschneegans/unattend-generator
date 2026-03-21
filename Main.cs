@@ -496,13 +496,7 @@ public abstract class PowerShellSequence
         foreach( $script in $scripts ) {
           Write-Progress -Id 0 -Activity '{{Activity()}} Do not close this window.' -PercentComplete $complete;
           '*** Will now execute command «{0}».' -f $(
-            $str = $script.ToString().Trim() -replace '\s+', ' ';
-            $max = 100;
-            if( $str.Length -le $max ) {
-              $str;
-            } else {
-              $str.Substring( 0, $max - 1 ) + '…';
-            }
+            $script.ToString().Trim() -replace '\s+', ' ' -replace '^(.{99})(.+)$', '$1…';
           );
           $start = [datetime]::Now;
           & $script;
