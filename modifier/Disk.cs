@@ -106,7 +106,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           const char bootDrive = 'S';
           const char windowsDrive = 'W';
           const char recoveryDrive = 'R';
-          char[] skippedDrives = ['A', 'B', 'X'];
+          char[] skippedDrives = ['A', 'B'];
 
           {
             string comp = "Microsoft-Windows-PnpCustomizationsWinPE";
