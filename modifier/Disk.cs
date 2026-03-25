@@ -300,27 +300,22 @@ class DiskModifier(ModifierContext context) : Modifier(context)
               """);
           }
 
-
-          if (Configuration.DisableDefender || Configuration.DisableWpbt)
+          if (Configuration.DisableDefender)
           {
             writer.WriteLine($"""
+              rem Disable Windows Defender
               reg.exe LOAD HKLM\mount {windowsDrive}:\Windows\System32\config\SYSTEM
+              for %%s in (Sense WdBoot WdFilter WdNisDrv WdNisSvc WinDefend) do reg.exe ADD HKLM\mount\ControlSet001\Services\%%s /v Start /t REG_DWORD /d 4 /f
+              reg.exe UNLOAD HKLM\mount
               """);
-            if (Configuration.DisableDefender)
-            {
-              writer.WriteLine("""
-                rem Disable Windows Defender
-                for %%s in (Sense WdBoot WdFilter WdNisDrv WdNisSvc WinDefend) do reg.exe ADD HKLM\mount\ControlSet001\Services\%%s /v Start /t REG_DWORD /d 4 /f
-                """);
-            }
-            if (Configuration.DisableWpbt)
-            {
-              writer.WriteLine("""
-                rem Disable WPBT
-                reg.exe add "HKLM\mount\ControlSet001\Control\Session Manager" /v DisableWpbtExecution /t REG_DWORD /d 1 /f
-                """);
-            }
-            writer.WriteLine("""
+          }
+
+          if (Configuration.DisableWpbt)
+          {
+            writer.WriteLine($"""
+              rem Disable WPBT
+              reg.exe LOAD HKLM\mount {windowsDrive}:\Windows\System32\config\SYSTEM
+              reg.exe add "HKLM\mount\ControlSet001\Control\Session Manager" /v DisableWpbtExecution /t REG_DWORD /d 1 /f
               reg.exe UNLOAD HKLM\mount
               """);
           }
@@ -328,12 +323,13 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           {
             if (Configuration.LanguageSettings is UnattendedLanguageSettings settings)
             {
+              GeoLocation location = settings.GeoLocation;
               writer.WriteLine($"""
-              rem Set device setup region
-              reg.exe LOAD HKLM\mount {windowsDrive}:\Windows\System32\config\SOFTWARE
-              reg.exe ADD "HKLM\mount\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d {settings.GeoLocation.Id} /f
-              reg.exe UNLOAD HKLM\mount
-              """);
+                rem Set device setup region to {location.DisplayName} (GeoID {location.Id})
+                reg.exe LOAD HKLM\mount {windowsDrive}:\Windows\System32\config\SOFTWARE
+                reg.exe ADD "HKLM\mount\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d {location.Id} /f
+                reg.exe UNLOAD HKLM\mount
+                """);
             }
           }
 

@@ -208,16 +208,20 @@ public class CommandBuilder(bool hidePowerShellWindows)
 
     static IEnumerable<string> Escape(IEnumerable<string> input)
     {
-      return input.Select(l => l
-        .Replace("^", "^^")
-        .Replace("&", "^&")
-        .Replace("<", "^<")
-        .Replace(">", "^>")
-        .Replace("|", "^|")
-        .Replace("%", "^%")
-        .Replace(")", "^)")
-        .Replace(@"""", @"^""")
-      );
+      HashSet<char> reserved = ['^', '&', '<', '>', '|', '%', ')', '"'];
+      return input.Select(l =>
+      {
+        StringBuilder sb = new(l.Length * 2);
+        foreach (char c in l)
+        {
+          if (reserved.Contains(c))
+          {
+            sb.Append('^');
+          }
+          sb.Append(c);
+        }
+        return sb.ToString();
+      });
     }
 
     static IEnumerable<string> Echo(IEnumerable<string> input)
