@@ -5,6 +5,7 @@ using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -1081,6 +1082,7 @@ public class UnattendGenerator
     );
 
     new List<Modifier> {
+      new BuildModifier(context),
       new AccessibilityModifier(context),
       new ComputerNameModifier(context),
       new BypassModifier(context),
@@ -1240,14 +1242,11 @@ abstract class Modifier(ModifierContext context)
   {
     string path = name.Contains('\\') ? name : $@"C:\Windows\Setup\Scripts\{name}";
 
-    XmlNode root = Document.SelectSingleNodeOrThrow("/u:unattend", NamespaceManager);
-    XmlNode? extensions = root.SelectSingleNode("s:Extensions", NamespaceManager);
-    if (extensions == null)
+    XmlNode extensions = Document.SelectSingleNodeOrThrow("/u:unattend/s:Extensions", NamespaceManager);
+    XmlNode? extractScript = extensions.SelectSingleNode("s:ExtractScript", NamespaceManager);
+    if (extractScript == null)
     {
-      extensions = Document.CreateElement("Extensions", Constants.MyNamespaceUri);
-      root.AppendChild(extensions);
-
-      XmlNode extractScript = Document.CreateElement("ExtractScript", Constants.MyNamespaceUri);
+      extractScript = Document.CreateElement("ExtractScript", Constants.MyNamespaceUri);
       extensions.AppendChild(extractScript);
       extractScript.AppendChild(
         Document.CreateTextNode(
