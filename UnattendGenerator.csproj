@@ -1,13 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
-	<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     <OutputType>Library</OutputType>
     <RootNamespace>Schneegans.Unattend</RootNamespace>
     <Nullable>enable</Nullable>
+    <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
+    <InformationalVersion>$([System.DateTime]::UtcNow.ToString('u'))</InformationalVersion>
   </PropertyGroup>
-
+ 
   <ItemGroup>
     <None Remove="resource\AppLocker.xsd" />
     <None Remove="resource\DesktopIcon.json" />
