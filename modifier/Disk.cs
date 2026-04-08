@@ -291,6 +291,15 @@ class DiskModifier(ModifierContext context) : Modifier(context)
             )
             """);
 
+          {
+            if (Configuration.TimeZoneSettings is ExplicitTimeZoneSettings settings)
+            {
+              writer.WriteLine($"""
+                dism.exe /Image:{windowsDrive}:\ /Set-TimeZone:"{settings.TimeZone.Id}"
+                """);
+            }
+          }
+
           if (peSettings.Disable8Dot3Names)
           {
             writer.WriteLine($"""
