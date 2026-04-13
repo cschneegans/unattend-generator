@@ -459,10 +459,25 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     }
 
     {
-      void InstallVmSoftware(string resourceName)
+
+      void InstallVmSoftware(string resourceName, bool alwaysAtFirstLogon = false)
       {
-        PowerShellSequence target = Configuration.DisableDefender ? SpecializeScript : FirstLogonScript;
-        target.InvokeFile(EmbedTextFileFromResource(resourceName));
+        PowerShellSequence GetTarget()
+        {
+          if (alwaysAtFirstLogon)
+          {
+            return FirstLogonScript;
+          }
+          else if (Configuration.DisableDefender)
+          {
+            return SpecializeScript;
+          }
+          else
+          {
+            return FirstLogonScript;
+          }
+        }
+        GetTarget().InvokeFile(EmbedTextFileFromResource(resourceName));
       }
 
       if (Configuration.VBoxGuestAdditions)
@@ -477,8 +492,9 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
 
       if (Configuration.VirtIoGuestTools)
       {
-        InstallVmSoftware("VirtIoGuestTools.ps1");
+        InstallVmSoftware("VirtIoGuestTools.ps1", alwaysAtFirstLogon: true);
       }
+
       if (Configuration.ParallelsTools)
       {
         InstallVmSoftware("ParallelsTools.ps1");
@@ -843,7 +859,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
     {
-      if(Configuration.HideInfoTip)
+      if (Configuration.HideInfoTip)
       {
         DefaultUserScript.Append("""
           reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowInfoTip" /d 0 /t REG_DWORD /f;
@@ -851,7 +867,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       }
     }
     {
-      if(Configuration.DisableWpbt)
+      if (Configuration.DisableWpbt)
       {
         SpecializeScript.Append("""
           reg.exe add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "DisableWpbtExecution" /t REG_DWORD /d 1 /f;

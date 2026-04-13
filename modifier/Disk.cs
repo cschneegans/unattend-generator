@@ -138,6 +138,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
                 if exist %%d:\autounattend.xml set "XML_FILE=%%d:\autounattend.xml"
                 if exist %%d:\$OEM$ set "OEM_FOLDER=%%d:\$OEM$"
                 if exist %%d:\$WinPEDriver$ set "PEDRIVERS_FOLDER=%%d:\$WinPEDriver$"
+                if exist %%d:\virtio-win-guest-tools.exe set "VIRTIO_DRIVE=%%d:"
             )
             for /f "tokens=3" %%t in ('reg.exe query HKLM\System\Setup /v UnattendFile 2^>nul') do ( if exist %%t set "XML_FILE=%%t" )
             @if not defined IMAGE_FILE echo Could not locate install.wim, install.esd or install.swm. & pause & exit /b 1
@@ -193,6 +194,21 @@ class DiskModifier(ModifierContext context) : Modifier(context)
                 for /R %PEDRIVERS_FOLDER% %%f IN (*.inf) do drvload.exe "%%f"
             )
             """);
+
+          if (Configuration.VirtIoGuestTools)
+          {
+            writer.WriteLine("""
+              rem Install VirtIO drivers
+              set "OS_SUBFOLDER=w11"
+              for /f "tokens=3 delims=." %%v in ('ver') do (
+                  if %%v LSS 20000 set "OS_SUBFOLDER=w10"
+              )
+              if defined VIRTIO_DRIVE (
+                  drvload.exe "%VIRTIO_DRIVE%\vioscsi\%OS_SUBFOLDER%\%PROCESSOR_ARCHITECTURE%\vioscsi.inf"
+                  drvload.exe "%VIRTIO_DRIVE%\NetKVM\%OS_SUBFOLDER%\%PROCESSOR_ARCHITECTURE%\netkvm.inf"
+              )
+              """);
+          }
 
           if (peSettings.PauseBeforeFormatting)
           {
@@ -290,6 +306,16 @@ class DiskModifier(ModifierContext context) : Modifier(context)
                 dism.exe /Add-Driver /Image:{windowsDrive}:\ /Driver:"%PEDRIVERS_FOLDER%" /Recurse
             )
             """);
+
+          if (Configuration.VirtIoGuestTools)
+          {
+            writer.WriteLine($"""
+              if defined VIRTIO_DRIVE (
+                  dism.exe /Add-Driver /Image:{windowsDrive}:\ /Driver:"%VIRTIO_DRIVE%\vioscsi\%OS_SUBFOLDER%\%PROCESSOR_ARCHITECTURE%\vioscsi.inf"
+                  dism.exe /Add-Driver /Image:{windowsDrive}:\ /Driver:"%VIRTIO_DRIVE%\NetKVM\%OS_SUBFOLDER%\%PROCESSOR_ARCHITECTURE%\netkvm.inf"
+              )
+              """);
+          }
 
           {
             if (Configuration.TimeZoneSettings is ExplicitTimeZoneSettings settings)
