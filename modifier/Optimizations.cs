@@ -459,25 +459,15 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     }
 
     {
-
       void InstallVmSoftware(string resourceName, bool alwaysAtFirstLogon = false)
       {
-        PowerShellSequence GetTarget()
+        PowerShellSequence target = (alwaysAtFirstLogon, Configuration.DisableDefender) switch
         {
-          if (alwaysAtFirstLogon)
-          {
-            return FirstLogonScript;
-          }
-          else if (Configuration.DisableDefender)
-          {
-            return SpecializeScript;
-          }
-          else
-          {
-            return FirstLogonScript;
-          }
-        }
-        GetTarget().InvokeFile(EmbedTextFileFromResource(resourceName));
+          (true, _) => FirstLogonScript,
+          (_, true) => SpecializeScript,
+          _ => FirstLogonScript
+        };
+        target.InvokeFile(EmbedTextFileFromResource(resourceName));
       }
 
       if (Configuration.VBoxGuestAdditions)
