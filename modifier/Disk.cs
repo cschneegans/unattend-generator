@@ -145,49 +145,6 @@ class DiskModifier(ModifierContext context) : Modifier(context)
             @if not defined XML_FILE echo Could not locate autounattend.xml. & pause & exit /b 1
             """);
 
-          void WriteDiskpartScript(IEnumerable<string> lines)
-          {
-            CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
-            appender.Append(CommandBuilder.WriteToFilePE(Paths.DiskpartScript, lines));
-          }
-
-          switch (Configuration.PartitionSettings)
-          {
-            case InteractivePartitionSettings:
-              throw new ConfigurationException("Cannot create .cmd script when disk is partitioned interactively. Select ‘Let Windows Setup wipe, partition and format your hard drive’ or ‘Use a custom diskpart script’ instead.");
-
-            case CustomPartitionSettings settings:
-              {
-                var lines = Util.SplitLines(settings.Script);
-                {
-                  string expected = $"ASSIGN LETTER={windowsDrive}";
-                  if (!lines.Any(line => string.Equals(line.Trim(), expected, StringComparison.OrdinalIgnoreCase)))
-                  {
-                    throw new ConfigurationException($"Your diskpart script must contain the line ‘{expected}’ to assign the drive letter ‘{windowsDrive}:’ to the Windows partition.");
-                  }
-                }
-                {
-                  string expected = $"ASSIGN LETTER={bootDrive}";
-                  if (!lines.Any(line => string.Equals(line.Trim(), expected, StringComparison.OrdinalIgnoreCase)))
-                  {
-                    throw new ConfigurationException($"Your diskpart script must contain the line ‘{expected}’ to assign the drive letter ‘{bootDrive}:’ to the system partition.");
-                  }
-                }
-                WriteDiskpartScript(lines);
-                break;
-              }
-
-            case UnattendedPartitionSettings settings:
-              {
-                var lines = GetDiskpartScript(settings, bootDrive: bootDrive, windowsDrive: windowsDrive, recoveryDrive: recoveryDrive);
-                WriteDiskpartScript(lines);
-                break;
-              }
-
-            default:
-              throw new NotSupportedException();
-          }
-
           writer.WriteLine("""
             rem Install drivers from $WinPEDriver$ folder
             if defined PEDRIVERS_FOLDER (
@@ -210,17 +167,47 @@ class DiskModifier(ModifierContext context) : Modifier(context)
               """);
           }
 
-          if (peSettings.PauseBeforeFormatting)
           {
-            writer.WriteLine("""
-              @echo diskpart will now partition and format your disk
-              pause
+            IEnumerable<string> diskpartScript = Configuration.PartitionSettings switch
+            {
+              InteractivePartitionSettings => throw new ConfigurationException("Cannot create .cmd script when disk is partitioned interactively. Select ‘Let Windows Setup wipe, partition and format your hard drive’ or ‘Use a custom diskpart script’ instead."),
+              CustomPartitionSettings settings => Util.SplitLines(settings.Script),
+              UnattendedPartitionSettings settings => GetDiskpartScript(settings, bootDrive: bootDrive, windowsDrive: windowsDrive, recoveryDrive: recoveryDrive),
+              _ => throw new NotSupportedException(),
+            };
+
+            {
+              string expected = $"ASSIGN LETTER={windowsDrive}";
+              if (!diskpartScript.Any(line => string.Equals(line.Trim(), expected, StringComparison.OrdinalIgnoreCase)))
+              {
+                throw new ConfigurationException($"Your diskpart script must contain the line ‘{expected}’ to assign the drive letter ‘{windowsDrive}:’ to the Windows partition.");
+              }
+            }
+            {
+              string expected = $"ASSIGN LETTER={bootDrive}";
+              if (!diskpartScript.Any(line => string.Equals(line.Trim(), expected, StringComparison.OrdinalIgnoreCase)))
+              {
+                throw new ConfigurationException($"Your diskpart script must contain the line ‘{expected}’ to assign the drive letter ‘{bootDrive}:’ to the system partition.");
+              }
+            }
+
+            writer.WriteLine($">{Paths.DiskpartScript} (");
+            foreach (string line in EchoProcessor.Process(diskpartScript))
+            {
+              writer.WriteLine(line);
+            }
+            writer.WriteLine(")");
+            if (peSettings.PauseBeforeFormatting)
+            {
+              writer.WriteLine("""
+                @echo diskpart will now partition and format your disk
+                pause
+                """);
+            }
+            writer.WriteLine($"""
+              diskpart.exe /s {Paths.DiskpartScript} || ( echo diskpart.exe encountered an error. & pause & exit /b 1 )
               """);
           }
-
-          writer.WriteLine($"""
-            diskpart.exe /s {Paths.DiskpartScript} || ( echo diskpart.exe encountered an error. & pause & exit /b 1 )
-            """);
 
           {
             if (Configuration.InstallFromSettings is IndexInstallFromSettings indexSettings)

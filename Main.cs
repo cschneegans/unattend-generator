@@ -199,38 +199,8 @@ public class CommandBuilder(bool hidePowerShellWindows)
       throw new ArgumentException($"Path '{path}' must not contain whitespace characters.");
     }
 
-    static IEnumerable<string> Trim(IEnumerable<string> input)
-    {
-      return input
-        .Select(l => l.Trim())
-        .Where(l => l.Length > 0);
-    }
-
-    static IEnumerable<string> Escape(IEnumerable<string> input)
-    {
-      HashSet<char> reserved = ['^', '&', '<', '>', '|', '%', ')', '"'];
-      return input.Select(l =>
-      {
-        StringBuilder sb = new(l.Length * 2);
-        foreach (char c in l)
-        {
-          if (reserved.Contains(c))
-          {
-            sb.Append('^');
-          }
-          sb.Append(c);
-        }
-        return sb.ToString();
-      });
-    }
-
-    static IEnumerable<string> Echo(IEnumerable<string> input)
-    {
-      return input.Select(l => $"echo:{l}");
-    }
-
     const int maxLineLength = 255;
-    List<string> segments = [.. Echo(Escape(Trim(lines)))];
+    List<string> segments = [.. EchoProcessor.Process(lines)];
     List<string> result = [];
 
     while (segments.Count > 0)
@@ -266,6 +236,48 @@ public class CommandBuilder(bool hidePowerShellWindows)
     }
 
     return result;
+  }
+}
+
+/// <summary>
+/// Safely transforms arbitrary strings to <c>echo</c> statements usable in a .cmd file.
+/// </summary>
+public static class EchoProcessor
+{
+  private static IEnumerable<string> Trim(IEnumerable<string> input)
+  {
+    return input
+      .Select(l => l.Trim())
+      .Where(l => l.Length > 0);
+  }
+
+  private static readonly HashSet<char> reserved = ['^', '&', '<', '>', '|', '%', ')', '"'];
+
+  private static IEnumerable<string> Escape(IEnumerable<string> input)
+  {
+    return input.Select(l =>
+    {
+      StringBuilder sb = new(l.Length * 2);
+      foreach (char c in l)
+      {
+        if (reserved.Contains(c))
+        {
+          sb.Append('^');
+        }
+        sb.Append(c);
+      }
+      return sb.ToString();
+    });
+  }
+
+  private static IEnumerable<string> Echo(IEnumerable<string> input)
+  {
+    return input.Select(l => $"echo:{l}");
+  }
+
+  public static IEnumerable<string> Process(IEnumerable<string> input)
+  {
+    return Echo(Escape(Trim(input)));
   }
 }
 
