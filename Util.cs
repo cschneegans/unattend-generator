@@ -4,7 +4,6 @@ using System.Text;
 using System.Xml.Schema;
 using System.Xml;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Schneegans.Unattend;
 
@@ -87,7 +86,7 @@ internal static class Util
         yield return line;
       }
     }
-    return Enumerate().ToList();
+    return [.. Enumerate()];
   }
 
   public static XmlElement GetOrCreateElement(Pass pass, string component, XmlDocument doc, XmlNamespaceManager ns)

@@ -24,7 +24,7 @@ public enum Pass
 
 public enum RecoveryMode
 {
-  None, Folder, Partition
+  None, Partition
 }
 
 public enum PartitionLayout
@@ -286,9 +286,6 @@ public class ConfigurationException(string? message) : Exception(message);
 public record class Configuration(
   ILanguageSettings LanguageSettings,
   IAccountSettings AccountSettings,
-  IPartitionSettings PartitionSettings,
-  IInstallFromSettings InstallFromSettings,
-  IDiskAssertionSettings DiskAssertionSettings,
   IEditionSettings EditionSettings,
   ILockoutSettings LockoutSettings,
   IPasswordExpirationSettings PasswordExpirationSettings,
@@ -308,7 +305,6 @@ public record class Configuration(
   ILockScreenSettings LockScreenSettings,
   IColorSettings ColorSettings,
   IPESettings PESettings,
-  bool BypassRequirementsCheck,
   bool BypassNetworkCheck,
   bool EnableLongPaths,
   bool EnableRemoteDesktop,
@@ -317,7 +313,6 @@ public record class Configuration(
   bool AllowPowerShellScripts,
   bool DisableLastAccess,
   bool PreventAutomaticReboot,
-  bool DisableDefender,
   bool DisableSac,
   bool DisableUac,
   bool DisableSmartScreen,
@@ -369,9 +364,6 @@ public record class Configuration(
   public static Configuration Default => new(
     LanguageSettings: new InteractiveLanguageSettings(),
     AccountSettings: new InteractiveMicrosoftAccountSettings(),
-    PartitionSettings: new InteractivePartitionSettings(),
-    InstallFromSettings: new AutomaticInstallFromSettings(),
-    DiskAssertionSettings: new SkipDiskAssertionSettings(),
     EditionSettings: new InteractiveEditionSettings(),
     LockoutSettings: new DefaultLockoutSettings(),
     PasswordExpirationSettings: new DefaultPasswordExpirationSettings(),
@@ -390,8 +382,9 @@ public record class Configuration(
     WallpaperSettings: new DefaultWallpaperSettings(),
     LockScreenSettings: new DefaultLockScreenSettings(),
     ColorSettings: new DefaultColorSettings(),
-    PESettings: new DefaultPESettings(),
-    BypassRequirementsCheck: false,
+    PESettings: new DefaultPESettings(
+      BypassRequirementsCheck: true
+    ),
     BypassNetworkCheck: false,
     EnableLongPaths: false,
     EnableRemoteDesktop: false,
@@ -400,7 +393,6 @@ public record class Configuration(
     AllowPowerShellScripts: false,
     DisableLastAccess: false,
     PreventAutomaticReboot: false,
-    DisableDefender: false,
     DisableSac: false,
     DisableUac: false,
     DisableSmartScreen: false,
@@ -448,6 +440,8 @@ public record class Configuration(
     StickyKeysSettings: new DefaultStickyKeysSettings(),
     StartFolderSettings: new DefaultStartFolderSettings()
   );
+
+  internal bool IsDefenderDisabled => PESettings is GeneratePESettings peSettings && peSettings.DisableDefender;
 }
 
 /// <summary>
@@ -888,9 +882,60 @@ public static class Constants
 
   public const int EspDefaultSize = 300;
 
-  public static readonly string DiskpartScript = DiskModifier.GetCustomDiskpartScript();
-
   public const string MyNamespaceUri = "https://schneegans.de/windows/unattend-generator/";
+
+  private static readonly UnattendedPartitionSettings partitionSettings = new(
+    TargetDisk: 0,
+    PartitionLayout: PartitionLayout.GPT,
+    RecoveryMode: RecoveryMode.Partition,
+    EspSize: EspDefaultSize,
+    RecoverySize: RecoveryPartitionSize
+  );
+
+  private static readonly NoPartitionsDiskAssertionsSettings assertionSettings = new();
+
+  public static string SampleDiskpartScript => DiskModifier.GetDiskpartScript(partitionSettings).JoinLines();
+
+  public static string SampleDiskAssertionScript => DiskModifier.GetDiskAssertionScript(assertionSettings, partitionSettings).JoinLines();
+
+  public static string SamplePEScript
+  {
+    get
+    {
+      UnattendGenerator generator = new();
+
+      GeneratePESettings pe = new(
+        Disable8Dot3Names: true,
+        PauseBeforeFormatting: false,
+        PauseBeforeReboot: false,
+        DisableDefender: true,
+        PartitionSettings: partitionSettings,
+        DiskAssertionSettings: assertionSettings,
+        InstallFromSettings: new AutomaticInstallFromSettings()
+      );
+
+      Configuration conf = Configuration.Default with
+      {
+        PESettings = pe,
+        LanguageSettings = new UnattendedLanguageSettings(
+          ImageLanguage: generator.Lookup<ImageLanguage>("en-US"),
+          LocaleAndKeyboard: new LocaleAndKeyboard(
+            generator.Lookup<UserLocale>("en-US"),
+            generator.Lookup<KeyboardIdentifier>("00000409")
+          ),
+          LocaleAndKeyboard2: null,
+          LocaleAndKeyboard3: null,
+          GeoLocation: generator.Lookup<GeoLocation>("244")
+        ),
+        UseConfigurationSet = true,
+        EditionSettings = new UnattendedEditionSettings(
+          Edition: generator.Lookup<WindowsEdition>("pro")
+        )
+      };
+
+      return DiskModifier.GetPEScript(conf, pe).JoinLines();
+    }
+  }
 }
 
 public class UnattendGenerator

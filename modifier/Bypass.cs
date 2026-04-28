@@ -4,26 +4,22 @@ class BypassModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
-    if (Configuration.BypassRequirementsCheck)
+    if (Configuration.PESettings is DefaultPESettings settings && settings.BypassRequirementsCheck)
     {
-      if (Configuration.PESettings is not ICmdPESettings)
+      CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
+
+      string[] values = [
+        "BypassTPMCheck",
+        "BypassSecureBootCheck",
+        "BypassRAMCheck"
+      ];
+
+      foreach (string value in values)
       {
-        CommandAppender appender = GetAppender(CommandConfig.WindowsPE);
-
-        string[] values = [
-          "BypassTPMCheck",
-          "BypassSecureBootCheck",
-          "BypassRAMCheck"
-        ];
-
-        foreach (string value in values)
-        {
-          appender.Append(
-            CommandBuilder.RegistryCommand(@$"add ""HKLM\SYSTEM\Setup\LabConfig"" /v {value} /t REG_DWORD /d 1 /f")
-          );
-        }
+        appender.Append(
+          CommandBuilder.RegistryCommand(@$"add ""HKLM\SYSTEM\Setup\LabConfig"" /v {value} /t REG_DWORD /d 1 /f")
+        );
       }
-      SpecializeScript.Append(@"reg.exe add ""HKLM\SYSTEM\Setup\MoSetup"" /v AllowUpgradesWithUnsupportedTPMOrCPU /t REG_DWORD /d 1 /f;");
     }
 
     if (Configuration.BypassNetworkCheck)

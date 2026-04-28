@@ -56,4 +56,9 @@ public static class Extensions
   {
     return string.Join(separator, enumerable);
   }
+
+  public static string JoinLines(this IEnumerable<string> enumerable)
+  {
+    return string.Join("\r\n", enumerable);
+  }
 }

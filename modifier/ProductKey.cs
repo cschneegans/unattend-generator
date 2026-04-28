@@ -33,23 +33,6 @@ public class CustomEditionSettings(
   }
 }
 
-public interface IInstallFromSettings;
-
-public class AutomaticInstallFromSettings : IInstallFromSettings;
-
-public abstract record class KeyInstallFromSettings(
-  string Key,
-  string Value
-) : IInstallFromSettings;
-
-public record class IndexInstallFromSettings(
-  int Index
-) : KeyInstallFromSettings("/IMAGE/INDEX", Index.ToString());
-
-public record class NameInstallFromSettings(
-  string Name
-) : KeyInstallFromSettings("/IMAGE/NAME", Name);
-
 class ProductKeyModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
@@ -93,20 +76,6 @@ class ProductKeyModifier(ModifierContext context) : Modifier(context)
       {
         var elem = Util.GetOrCreateElement(Pass.specialize, "Microsoft-Windows-Shell-Setup", "ProductKey", Document, NamespaceManager);
         elem.InnerText = settings.ProductKey;
-      }
-    }
-    {
-      switch (Configuration.InstallFromSettings)
-      {
-        case AutomaticInstallFromSettings:
-          Document.SelectSingleNodeOrThrow("//u:InstallFrom", NamespaceManager).RemoveSelf();
-          break;
-        case KeyInstallFromSettings settings:
-          Document.SelectSingleNodeOrThrow("//u:InstallFrom/u:MetaData/u:Key", NamespaceManager).InnerText = settings.Key;
-          Document.SelectSingleNodeOrThrow("//u:InstallFrom/u:MetaData/u:Value", NamespaceManager).InnerText = settings.Value;
-          break;
-        default:
-          throw new NotSupportedException();
       }
     }
   }

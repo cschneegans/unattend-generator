@@ -11,7 +11,6 @@
   <ItemGroup>
     <None Remove="resource\AppLocker.xsd" />
     <None Remove="resource\DesktopIcon.json" />
-    <None Remove="resource\DisableDefender.vbs" />
     <None Remove="resource\MakeEdgeUninstallable.ps1" />
     <None Remove="resource\MoveActiveHours.xml" />
     <None Remove="resource\PauseWindowsUpdate.xml" />
@@ -33,7 +32,6 @@
     <EmbeddedResource Include="resource\autounattend.xsd" />
     <EmbeddedResource Include="resource\Component.json" />
     <EmbeddedResource Include="resource\DesktopIcon.json" />
-    <EmbeddedResource Include="resource\DisableDefender.vbs" />
     <EmbeddedResource Include="resource\ExtractScripts.ps1" />
     <EmbeddedResource Include="resource\GeoId.json" />
     <EmbeddedResource Include="resource\ImageLanguage.json" />

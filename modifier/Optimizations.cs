@@ -268,22 +268,11 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       DefaultUserScript.Append(@$"reg.exe add ""HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"" /v ShowTaskViewButton /t REG_DWORD /d 0 /f;");
     }
 
+    if (Configuration.IsDefenderDisabled)
     {
-      if (Configuration.DisableDefender)
-      {
-        if (Configuration.PESettings is not ICmdPESettings)
-        {
-          CommandAppender pe = GetAppender(CommandConfig.WindowsPE);
-          const string path = @"X:\defender.vbs";
-          pe.Append([
-            ..CommandBuilder.WriteToFilePE(path, Util.SplitLines(Util.StringFromResource("DisableDefender.vbs"))),
-            CommandBuilder.ShellCommand($"start /MIN cscript.exe //E:vbscript {path}")
-          ]);
-        }
-        SpecializeScript.Append("""
-          reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" /v DisableNotifications /t REG_DWORD /d 1 /f;
-          """);
-      }
+      SpecializeScript.Append("""
+        reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" /v DisableNotifications /t REG_DWORD /d 1 /f;
+        """);
     }
 
     if (Configuration.UseConfigurationSet && Configuration.PESettings is not ICmdPESettings)
@@ -461,7 +450,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     {
       void InstallVmSoftware(string resourceName, bool alwaysAtFirstLogon = false)
       {
-        PowerShellSequence target = (alwaysAtFirstLogon, Configuration.DisableDefender) switch
+        PowerShellSequence target = (alwaysAtFirstLogon, Configuration.IsDefenderDisabled) switch
         {
           (true, _) => FirstLogonScript,
           (_, true) => SpecializeScript,
