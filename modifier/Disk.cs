@@ -20,11 +20,6 @@ public record class UnattendedPartitionSettings(
   int RecoverySize = Constants.RecoveryPartitionSize
 ) : IPartitionSettings;
 
-public enum CompactOsModes
-{
-  Default, Always, Never
-}
-
 public interface IDiskAssertionSettings;
 
 public class SkipDiskAssertionSettings : IDiskAssertionSettings;
@@ -94,7 +89,8 @@ public record class GeneratePESettings(
   bool DisableDefender,
   bool Disable8Dot3Names,
   bool PauseBeforeFormatting,
-  bool PauseBeforeReboot
+  bool PauseBeforeReboot,
+  bool CompactOs
 ) : ICmdPESettings;
 
 public record class ScriptPESetttings(
@@ -515,7 +511,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     }
 
     writer.WriteLine($"""
-      dism.exe /Apply-Image /ImageFile:%IMAGE_FILE% %SWM_PARAM% %IMG_PARAM% /ApplyDir:{windowsDrive}:\ {(configuration.CompactOsMode == CompactOsModes.Always ? "/Compact" : "")} /CheckIntegrity /Verify || ( echo dism.exe encountered an error. & pause & exit /b 1 )
+      dism.exe /Apply-Image /ImageFile:%IMAGE_FILE% %SWM_PARAM% %IMG_PARAM% /ApplyDir:{windowsDrive}:\ {(pe.CompactOs ? "/Compact " : " ")}/CheckIntegrity /Verify || ( echo dism.exe encountered an error. & pause & exit /b 1 )
     
       bcdboot.exe {windowsDrive}:\Windows /s {bootDrive}: || ( echo bcdboot.exe encountered an error. & pause & exit /b 1 )
 
