@@ -237,10 +237,10 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           targetDisk = ups.TargetDisk;
           break;
         case CustomPartitionSettings cps:
-          MatchCollection matches = Regex.Matches(cps.Script, @"^(\s*)SELECT(\s+)DISK(\s+|\s*=\s*?)(?<disk>\d+)(\s*)$", RegexOptions.ExplicitCapture | RegexOptions.Multiline | RegexOptions.IgnoreCase);
-          if (matches.Count != 1)
+          MatchCollection matches = Regex.Matches(cps.Script, @"^(\s*)SELECT(\s+)DISK((\s+)|(\s*=\s*))(?<disk>\d+)(\s*)$", RegexOptions.ExplicitCapture | RegexOptions.Multiline | RegexOptions.IgnoreCase);
+          if (matches.Count == 0)
           {
-            throw new ConfigurationException("Cannot determine target disk from diskpart script. Make sure to include statement such as ‘SELECT DISK=0’.");
+            throw new ConfigurationException("Cannot determine target disk from diskpart script. Make sure to include a statement such as ‘SELECT DISK=0’.");
           }
           targetDisk = int.Parse(matches[0].Groups["disk"].Value);
           break;
@@ -430,7 +430,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       {
         void CheckDriveLetterAssignment(char letter, string purpose)
         {
-          Regex regex = new(@$"^\s*ASSIGN\s+LETTER(\s+|(\s*=\s*))(({letter})|(""{letter}""))\s*$", RegexOptions.IgnoreCase);
+          Regex regex = new(@$"^\s*ASSIGN\s+LETTER((\s+)|(\s*=\s*))(({letter})|(""{letter}""))\s*$", RegexOptions.IgnoreCase);
           if (!diskpartScript.Any(regex.IsMatch))
           {
             throw new ConfigurationException($"Your diskpart script must contain a line such as ‘ASSIGN LETTER={letter}’ to assign the drive letter ‘{letter}:’ to the {purpose} partition.");
