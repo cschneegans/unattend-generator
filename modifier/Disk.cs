@@ -493,7 +493,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         switch (GetEdition())
         {
           case null:
-            throw new ConfigurationException("Cannot determine which Windows image to apply. Specify image name or index in the ‘Windows image to install’ section.");
+            throw new ConfigurationException("Cannot determine which Windows image to use for the ‘dism.exe /Apply-Image’ command. You need to specify the image name (e.g. ‘Windows 11 Pro’) or image index in the ‘Windows image to install’ section.");
           case string edition:
             writer.WriteLine($"""
               set "IMG_PARAM=/Name:"Windows %OS_VERSION% {edition}""
@@ -508,7 +508,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     }
 
     writer.WriteLine($"""
-      dism.exe /Apply-Image /ImageFile:%IMAGE_FILE% %SWM_PARAM% %IMG_PARAM% /ApplyDir:{windowsDrive}:\ {(pe.CompactOs ? "/Compact " : " ")}/CheckIntegrity /Verify || ( echo dism.exe encountered an error. & pause & exit /b 1 )
+      dism.exe /Apply-Image /ImageFile:%IMAGE_FILE% %SWM_PARAM% %IMG_PARAM% /ApplyDir:{windowsDrive}:\ {(pe.CompactOs ? "/Compact " : "")}/CheckIntegrity /Verify || ( echo dism.exe encountered an error. & pause & exit /b 1 )
     
       bcdboot.exe {windowsDrive}:\Windows /s {bootDrive}: || ( echo bcdboot.exe encountered an error. & pause & exit /b 1 )
 
