@@ -148,7 +148,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         break;
 
       case GeneratePESettings peSettings:
-        WritePeScript(GetPEScript(Configuration, peSettings));
+        WritePeScript(GetPEScript(Configuration, peSettings, Generator));
         break;
 
       case DefaultPESettings:
@@ -322,7 +322,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     return Util.SplitLines(writer.ToString());
   }
 
-  internal static List<string> GetPEScript(Configuration configuration, GeneratePESettings pe)
+  internal static List<string> GetPEScript(Configuration configuration, GeneratePESettings pe, UnattendGenerator generator)
   {
     StringWriter writer = new();
 
@@ -390,6 +390,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       for /f "tokens=3 delims=." %%v in ('ver') do (
           if %%v LSS 20000 set "OS_VERSION=10"
       )
+
       """);
 
     writer.WriteLine("""
@@ -475,15 +476,38 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         break;
 
       case AutomaticInstallFromSettings:
-        if (configuration.EditionSettings is UnattendedEditionSettings editionSettings)
+
+        string? GetEdition()
         {
-          writer.WriteLine($"""
-            set "IMG_PARAM=/Name:"Windows %OS_VERSION% {editionSettings.Edition.DisplayName}""
-            """);
+          if (configuration.EditionSettings is UnattendedEditionSettings ues)
+          {
+            return ues.Edition.DisplayName;
+          }
+          if (configuration.EditionSettings is CustomEditionSettings ces)
+          {
+            foreach (WindowsEdition we in generator.WindowsEditions.Values)
+            {
+              if (string.Equals(we.ProductKey, ces.ProductKey, StringComparison.OrdinalIgnoreCase))
+              {
+                return we.DisplayName;
+              }
+            }
+          }
+
+          return null;
         }
-        else
+
+        switch (GetEdition())
         {
-          throw new ConfigurationException("Cannot determine which Windows image to apply. Specify image name or index in the ‘Windows image to install’ section.");
+          case null:
+            throw new ConfigurationException("Cannot determine which Windows image to apply. Specify image name or index in the ‘Windows image to install’ section.");
+          case string edition:
+            writer.WriteLine($"""
+              set "IMG_PARAM=/Name:"Windows %OS_VERSION% {edition}""
+              """);
+            break;
+          default:
+            throw new NotSupportedException();
         }
         break;
       default:

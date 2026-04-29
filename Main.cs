@@ -933,7 +933,7 @@ public static class Constants
         )
       };
 
-      return DiskModifier.GetPEScript(conf, pe).JoinLines();
+      return DiskModifier.GetPEScript(conf, pe, generator).JoinLines();
     }
   }
 }
