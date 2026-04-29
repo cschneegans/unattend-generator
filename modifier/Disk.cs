@@ -421,26 +421,23 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     }
 
     {
-      IEnumerable<string> diskpartScript = pe.PartitionSettings switch
+      List<string> diskpartScript = pe.PartitionSettings switch
       {
         CustomPartitionSettings settings => Util.SplitLines(settings.Script),
         UnattendedPartitionSettings settings => GetDiskpartScript(settings, bootDrive: bootDrive, windowsDrive: windowsDrive, recoveryDrive: recoveryDrive),
         _ => throw new NotSupportedException(),
       };
-
       {
-        string expected = $"ASSIGN LETTER={windowsDrive}";
-        if (!diskpartScript.Any(line => string.Equals(line.Trim(), expected, StringComparison.OrdinalIgnoreCase)))
+        void CheckDriveLetterAssignment(char letter, string purpose)
         {
-          throw new ConfigurationException($"Your diskpart script must contain the line ‘{expected}’ to assign the drive letter ‘{windowsDrive}:’ to the Windows partition.");
+          Regex regex = new(@$"^\s*ASSIGN\s+LETTER(\s+|(\s*=\s*))(({letter})|(""{letter}""))\s*$", RegexOptions.IgnoreCase);
+          if (!diskpartScript.Any(regex.IsMatch))
+          {
+            throw new ConfigurationException($"Your diskpart script must contain a line such as ‘ASSIGN LETTER={letter}’ to assign the drive letter ‘{letter}:’ to the {purpose} partition.");
+          }
         }
-      }
-      {
-        string expected = $"ASSIGN LETTER={bootDrive}";
-        if (!diskpartScript.Any(line => string.Equals(line.Trim(), expected, StringComparison.OrdinalIgnoreCase)))
-        {
-          throw new ConfigurationException($"Your diskpart script must contain the line ‘{expected}’ to assign the drive letter ‘{bootDrive}:’ to the system partition.");
-        }
+        CheckDriveLetterAssignment(windowsDrive, "Windows");
+        CheckDriveLetterAssignment(bootDrive, "system");
       }
       IncludeSecondaryFile(Paths.DiskpartScript, diskpartScript);
 
