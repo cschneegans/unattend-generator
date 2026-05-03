@@ -25,38 +25,12 @@ public interface IDiskAssertionSettings;
 public class SkipDiskAssertionSettings : IDiskAssertionSettings;
 
 public record class GeneratedDiskAssertionsSettings(
-  int? MinSizeGiB,
-  int? MaxSizeGiB,
-  bool AssertNoPartitions,
-  bool AssertInterfaceType,
-  bool AssertMediaType
+  int? MinSizeGiB = Constants.DiskAssertionMinSizeGiB,
+  int? MaxSizeGiB = Constants.DiskAssertionMaxSizeGiB,
+  bool AssertNoPartitions = true,
+  bool AssertInterfaceType = false,
+  bool AssertMediaType = false
 ) : IDiskAssertionSettings;
-
-public record class NoPartitionsDiskAssertionsSettings : GeneratedDiskAssertionsSettings
-{
-  public NoPartitionsDiskAssertionsSettings() : base(
-    MinSizeGiB: null,
-    MaxSizeGiB: null,
-    AssertNoPartitions: true,
-    AssertInterfaceType: false,
-    AssertMediaType: false
-  )
-  { }
-}
-
-public record class HardDiskAssertionsSettings : GeneratedDiskAssertionsSettings
-{
-  public const int DefaultMinSizeGiB = 100;
-
-  public HardDiskAssertionsSettings() : base(
-    MinSizeGiB: DefaultMinSizeGiB,
-    MaxSizeGiB: null,
-    AssertNoPartitions: false,
-    AssertInterfaceType: true,
-    AssertMediaType: true
-  )
-  { }
-}
 
 public record class ScriptDiskAssertionsSettings(
   string Script

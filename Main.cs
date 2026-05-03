@@ -882,6 +882,10 @@ public static class Constants
 
   public const string MyNamespaceUri = "https://schneegans.de/windows/unattend-generator/";
 
+  public const int DiskAssertionMinSizeGiB = 100;
+
+  public const int DiskAssertionMaxSizeGiB = 4000;
+
   private static readonly UnattendedPartitionSettings partitionSettings = new(
     TargetDisk: 0,
     PartitionLayout: PartitionLayout.GPT,
@@ -890,7 +894,7 @@ public static class Constants
     RecoverySize: RecoveryPartitionSize
   );
 
-  private static readonly NoPartitionsDiskAssertionsSettings assertionSettings = new();
+  private static readonly GeneratedDiskAssertionsSettings assertionSettings = new();
 
   public static string SampleDiskpartScript => DiskModifier.GetDiskpartScript(partitionSettings).JoinLines();
 
