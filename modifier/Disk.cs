@@ -78,7 +78,6 @@ static class Paths
 {
   static internal readonly string PEScript = @"X:\pe.cmd";
   static internal readonly string DiskpartScript = @"X:\diskpart.txt";
-  static internal readonly string DiskpartLog = @"X:\diskpart.log";
   static internal readonly string AssertScript = @"X:\assert.vbs";
 }
 
@@ -305,12 +304,13 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     {
       if (lines.Any())
       {
-        writer.WriteLine($"@>{path} (");
+        writer.WriteLine($">{path} (");
         foreach (string line in EchoProcessor.Process(lines))
         {
           writer.WriteLine($"\t{line}");
         }
         writer.WriteLine(")");
+        writer.WriteLine();
         return true;
       }
       else
@@ -319,7 +319,10 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       }
     }
 
-    writer.WriteLine("@echo off");
+    writer.WriteLine("""
+      @echo off
+
+      """);
 
     {
       if (configuration.LanguageSettings is UnattendedLanguageSettings settings)
@@ -344,11 +347,11 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       """);
     if (configuration.VirtIoGuestTools)
     {
-      writer.WriteLine($"""
+      writer.WriteLine("""
         if exist %%d:\virtio-win-guest-tools.exe set "VIRTIO_DRIVE=%%d:"
         """);
     }
-    writer.WriteLine($"""
+    writer.WriteLine("""
       )
       for /f "tokens=3" %%t in ('reg.exe query HKLM\System\Setup /v UnattendFile 2^>nul') do ( if exist %%t set "XML_FILE=%%t" )
       if not defined IMAGE_FILE call :fail "Could not locate install.wim, install.esd or install.swm."
@@ -417,10 +420,14 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       }
       IncludeSecondaryFile(Paths.DiskpartScript, diskpartScript);
 
-      writer.WriteLine($"""
-        
+      writer.WriteLine("""
         call :print "diskpart will now partition and format your disk"
-        {(pe.PauseBeforeFormatting ? "pause" : "")}
+        """);
+      if (pe.PauseBeforeFormatting)
+      {
+        writer.WriteLine("pause");
+      }
+      writer.WriteLine($"""
         diskpart.exe /s {Paths.DiskpartScript} || call :fail "diskpart.exe encountered an error."
       
         """);
@@ -441,11 +448,11 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         break;
 
       case InteractiveInstallFromSettings:
-        writer.WriteLine($"""
+        writer.WriteLine("""
           dism.exe /Get-WimInfo /WimFile:"%IMAGE_FILE%"
           echo:
           :choice
-          set /p "CHOICE=Enter index of the image you want to install:" || goto :choice
+          set /p "CHOICE=Enter index of the image you want to install: " || goto :choice
           set "IMG_PARAM=/Index:%CHOICE%"
           """);
         break;
@@ -638,9 +645,14 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         """);
     }
 
-    writer.WriteLine($"""
+    writer.WriteLine("""
       call :print "Computer will now reboot"
-      {(pe.PauseBeforeReboot ? "pause" : "")}
+      """);
+    if (pe.PauseBeforeReboot)
+    {
+      writer.WriteLine("pause");
+    }
+    writer.WriteLine("""
       wpeutil.exe reboot
       goto :eof
 
