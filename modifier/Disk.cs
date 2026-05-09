@@ -489,12 +489,13 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         throw new NotSupportedException();
     }
 
-    writer.WriteLine($"""
+    writer.WriteLine($$"""
       call :print "Applying Windows image to target disk"
-      dism.exe /Apply-Image /ImageFile:%IMAGE_FILE% %SWM_PARAM% %IMG_PARAM% /ApplyDir:{windowsDrive}:\{(pe.CompactOs ? " /Compact" : "")}{(pe.SkipIntegrityCheck ? "" : " /CheckIntegrity /Verify")} || call :fail "dism.exe encountered an error."
+      dism.exe /Apply-Image /ImageFile:%IMAGE_FILE% %SWM_PARAM% %IMG_PARAM% /ApplyDir:{{windowsDrive}}:\{{(pe.CompactOs ? " /Compact" : "")}}{{(pe.SkipIntegrityCheck ? "" : " /CheckIntegrity /Verify")}} || call :fail "dism.exe encountered an error."
 
       call :print "Making system partition bootable"
-      bcdboot.exe {windowsDrive}:\Windows /s {bootDrive}: || call :fail "bcdboot.exe encountered an error."
+      bcdboot.exe {{windowsDrive}}:\Windows /s {{bootDrive}}: || call :fail "bcdboot.exe encountered an error."
+      bcdedit.exe /set {fwbootmgr} bootsequence {bootmgr}
       """);
 
     {
