@@ -450,9 +450,9 @@ public abstract class PowerShellSequence
   private bool needsExplorerRestart = false;
   private readonly List<string> commands = [];
 
-  protected abstract string Activity();
+  protected abstract string Activity { get; }
 
-  protected abstract string LogFile();
+  protected abstract string LogFile { get; }
 
   public void Append(string command)
   {
@@ -502,7 +502,7 @@ public abstract class PowerShellSequence
         [float] $complete = 0;
         [float] $increment = 100 / $scripts.Count;
         foreach( $script in $scripts ) {
-          Write-Progress -Id 0 -Activity '{{Activity()}} Do not close this window.' -PercentComplete $complete;
+          Write-Progress -Id 0 -Activity '{{Activity}} Do not close this window.' -PercentComplete $complete;
           '*** Will now execute command «{0}».' -f $(
             $script.ToString().Trim() -replace '\s+', ' ' -replace '^(.{99})(.+)$', '$1…';
           );
@@ -512,7 +512,7 @@ public abstract class PowerShellSequence
           "`r`n" * 3;
           $complete += $increment;
         }
-      } *>&1 | Out-String -Width 1KB -Stream >> "{{LogFile()}}";
+      } *>&1 | Out-String -Width 1KB -Stream >> "{{LogFile}}";
       """);
 
     return writer.ToString();
@@ -524,15 +524,9 @@ public abstract class PowerShellSequence
 /// </summary>
 public class UserOnceSequence : PowerShellSequence
 {
-  protected override string Activity()
-  {
-    return "Running scripts to configure this user account.";
-  }
+  protected override string Activity => "Running scripts to configure this user account.";
 
-  protected override string LogFile()
-  {
-    return @"$env:TEMP\UserOnce.log";
-  }
+  protected override string LogFile => @"$env:TEMP\UserOnce.log";
 }
 
 /// <summary>
@@ -540,15 +534,9 @@ public class UserOnceSequence : PowerShellSequence
 /// </summary>
 public class FirstLogonSequence : PowerShellSequence
 {
-  protected override string Activity()
-  {
-    return "Running scripts to finalize your Windows installation.";
-  }
+  protected override string Activity => "Running scripts to finalize your Windows installation.";
 
-  protected override string LogFile()
-  {
-    return @"C:\Windows\Setup\Scripts\FirstLogon.log";
-  }
+  protected override string LogFile => @"C:\Windows\Setup\Scripts\FirstLogon.log";
 }
 
 /// <summary>
@@ -556,15 +544,9 @@ public class FirstLogonSequence : PowerShellSequence
 /// </summary>
 public class DefaultUserSequence : PowerShellSequence
 {
-  protected override string Activity()
-  {
-    return "Running scripts to modify the default user’’s registry hive.";
-  }
+  protected override string Activity => "Running scripts to modify the default user’’s registry hive.";
 
-  protected override string LogFile()
-  {
-    return @"C:\Windows\Setup\Scripts\DefaultUser.log";
-  }
+  protected override string LogFile => @"C:\Windows\Setup\Scripts\DefaultUser.log";
 }
 
 /// <summary>
@@ -572,15 +554,9 @@ public class DefaultUserSequence : PowerShellSequence
 /// </summary>
 public class SpecializeSequence : PowerShellSequence
 {
-  protected override string Activity()
-  {
-    return "Running scripts to customize your Windows installation.";
-  }
+  protected override string Activity => "Running scripts to customize your Windows installation.";
 
-  protected override string LogFile()
-  {
-    return @"C:\Windows\Setup\Scripts\Specialize.log";
-  }
+  protected override string LogFile => @"C:\Windows\Setup\Scripts\Specialize.log";
 }
 
 public interface IKeyed
