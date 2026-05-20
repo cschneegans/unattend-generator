@@ -29,7 +29,7 @@ public enum RecoveryMode
 
 public enum PartitionLayout
 {
-  MBR, GPT
+  MBR, GPT, Automatic
 }
 
 public enum ProcessorArchitecture
@@ -852,7 +852,7 @@ public static class Constants
 
   public const int RecoveryPartitionSize = 1000;
 
-  public const int EspDefaultSize = 300;
+  public const int SystemPartitionSize = 300;
 
   public const string MyNamespaceUri = "https://schneegans.de/windows/unattend-generator/";
 
@@ -864,7 +864,7 @@ public static class Constants
     TargetDisk: 0,
     PartitionLayout: PartitionLayout.GPT,
     RecoveryMode: RecoveryMode.Partition,
-    EspSize: EspDefaultSize,
+    SystemSize: SystemPartitionSize,
     RecoverySize: RecoveryPartitionSize
   );
 
@@ -887,7 +887,7 @@ public static class Constants
         CompactOs: false,
         SkipIntegrityCheck: false,
         DisableDefender: true,
-        PartitionSettings: partitionSettings,
+        PartitionSettings: partitionSettings with { PartitionLayout = PartitionLayout.Automatic },
         DiskAssertionSettings: assertionSettings,
         InstallFromSettings: new AutomaticInstallFromSettings()
       );

@@ -16,7 +16,7 @@ public record class UnattendedPartitionSettings(
   int TargetDisk,
   PartitionLayout PartitionLayout,
   RecoveryMode RecoveryMode,
-  int EspSize = Constants.EspDefaultSize,
+  int SystemSize = Constants.SystemPartitionSize,
   int RecoverySize = Constants.RecoveryPartitionSize
 ) : IPartitionSettings;
 
@@ -76,9 +76,16 @@ public record class ScriptPESetttings(
 
 static class Paths
 {
-  static internal readonly string PEScript = @"X:\pe.cmd";
-  static internal readonly string DiskpartScript = @"X:\diskpart.txt";
-  static internal readonly string AssertScript = @"X:\assert.vbs";
+  internal const string PEScript = @"X:\pe.cmd";
+  internal const string DiskpartScript = @"X:\diskpart.txt";
+  internal const string AssertScript = @"X:\assert.vbs";
+}
+
+static class DriveLetters
+{
+  internal const char System = 'S';
+  internal const char Windows = 'W';
+  internal const char Recovery = 'R';
 }
 
 class DiskModifier(ModifierContext context) : Modifier(context)
@@ -138,7 +145,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     ]);
   }
 
-  internal static List<string> GetDiskpartScript(UnattendedPartitionSettings settings, char bootDrive = 'S', char windowsDrive = 'W', char recoveryDrive = 'R')
+  internal static List<string> GetDiskpartScript(UnattendedPartitionSettings settings)
   {
     string IfRecovery(string line)
     {
@@ -151,17 +158,17 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       [
         $"SELECT DISK={settings.TargetDisk}",
         "CLEAN",
-        "CREATE PARTITION PRIMARY SIZE=100",
-        @"FORMAT QUICK FS=NTFS LABEL=""System Reserved""",
-        $"ASSIGN LETTER={bootDrive}",
+        $"CREATE PARTITION PRIMARY SIZE={settings.SystemSize}",
+        @"FORMAT QUICK FS=NTFS LABEL=""System""",
+        $"ASSIGN LETTER={DriveLetters.System}",
         "ACTIVE",
         "CREATE PARTITION PRIMARY",
         (IfRecovery($"SHRINK MINIMUM={settings.RecoverySize}")),
         @"FORMAT QUICK FS=NTFS LABEL=""Windows""",
-        $"ASSIGN LETTER={windowsDrive}",
+        $"ASSIGN LETTER={DriveLetters.Windows}",
         (IfRecovery("CREATE PARTITION PRIMARY")),
         (IfRecovery(@"FORMAT QUICK FS=NTFS LABEL=""Recovery""")),
-        (IfRecovery($"ASSIGN LETTER={recoveryDrive}")),
+        (IfRecovery($"ASSIGN LETTER={DriveLetters.Recovery}")),
         (IfRecovery("SET ID=27"))
       ],
       PartitionLayout.GPT =>
@@ -169,17 +176,17 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         $"SELECT DISK={settings.TargetDisk}",
         "CLEAN",
         "CONVERT GPT",
-        $"CREATE PARTITION EFI SIZE={settings.EspSize}",
+        $"CREATE PARTITION EFI SIZE={settings.SystemSize}",
         @"FORMAT QUICK FS=FAT32 LABEL=""System""",
-        $"ASSIGN LETTER={bootDrive}",
+        $"ASSIGN LETTER={DriveLetters.System}",
         "CREATE PARTITION MSR SIZE=16",
         "CREATE PARTITION PRIMARY",
         (IfRecovery($"SHRINK MINIMUM={settings.RecoverySize}")),
         @"FORMAT QUICK FS=NTFS LABEL=""Windows""",
-        $"ASSIGN LETTER={windowsDrive}",
+        $"ASSIGN LETTER={DriveLetters.Windows}",
         (IfRecovery("CREATE PARTITION PRIMARY")),
         (IfRecovery(@"FORMAT QUICK FS=NTFS LABEL=""Recovery""")),
-        (IfRecovery($"ASSIGN LETTER={recoveryDrive}")),
+        (IfRecovery($"ASSIGN LETTER={DriveLetters.Recovery}")),
         (IfRecovery(@"SET ID=""de94bba4-06d1-4d40-a16a-bfd50179d6ac""")),
         (IfRecovery("GPT ATTRIBUTES=0x8000000000000001"))
       ],
@@ -295,9 +302,6 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     StringWriter writer = new();
 
     char[] letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-    const char bootDrive = 'S';
-    const char windowsDrive = 'W';
-    const char recoveryDrive = 'R';
     char[] skippedDrives = ['A', 'B'];
 
     bool IncludeSecondaryFile(string path, IEnumerable<string> lines)
@@ -337,7 +341,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     }
 
     writer.WriteLine($"""
-      for %%d in ({letters.Except([.. skippedDrives, bootDrive, windowsDrive, recoveryDrive]).JoinString(' ')}) do (
+      for %%d in ({letters.Except([.. skippedDrives, DriveLetters.System, DriveLetters.Windows, DriveLetters.Recovery]).JoinString(' ')}) do (
           if exist %%d:\sources\install.wim set "IMAGE_FILE=%%d:\sources\install.wim"
           if exist %%d:\sources\install.esd set "IMAGE_FILE=%%d:\sources\install.esd"
           if exist %%d:\sources\install.swm set "IMAGE_FILE=%%d:\sources\install.swm" & set "SWM_PARAM=/SWMFile:%%d:\sources\install*.swm"
@@ -400,37 +404,84 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     }
 
     {
-      List<string> diskpartScript = pe.PartitionSettings switch
-      {
-        CustomPartitionSettings settings => Util.SplitLines(settings.Script),
-        UnattendedPartitionSettings settings => GetDiskpartScript(settings, bootDrive: bootDrive, windowsDrive: windowsDrive, recoveryDrive: recoveryDrive),
-        _ => throw new NotSupportedException(),
-      };
+      void CheckDriveLetterAssignments(IEnumerable<string> lines)
       {
         void CheckDriveLetterAssignment(char letter, string purpose)
         {
           Regex regex = new(@$"^\s*ASSIGN\s+LETTER((\s+)|(\s*=\s*))(({letter})|(""{letter}""))\s*$", RegexOptions.IgnoreCase);
-          if (!diskpartScript.Any(regex.IsMatch))
+          if (!lines.Any(regex.IsMatch))
           {
             throw new ConfigurationException($"Your diskpart script must contain a line such as ‘ASSIGN LETTER={letter}’ to assign the drive letter ‘{letter}:’ to the {purpose} partition.");
           }
         }
-        CheckDriveLetterAssignment(windowsDrive, "Windows");
-        CheckDriveLetterAssignment(bootDrive, "system");
+        CheckDriveLetterAssignment(DriveLetters.Windows, "Windows");
+        CheckDriveLetterAssignment(DriveLetters.System, "system");
       }
-      IncludeSecondaryFile(Paths.DiskpartScript, diskpartScript);
 
-      writer.WriteLine("""
-        call :print "diskpart will now partition and format your disk"
-        """);
-      if (pe.PauseBeforeFormatting)
+      void IncludeDiskpartScript(string path, IEnumerable<string> lines)
       {
-        writer.WriteLine("pause");
+        CheckDriveLetterAssignments(lines);
+        IncludeSecondaryFile(path, lines);
       }
-      writer.WriteLine($"""
-        diskpart.exe /s {Paths.DiskpartScript} || call :fail "diskpart.exe encountered an error."
+
+      void Execute(string path)
+      {
+        writer.WriteLine("""
+          call :print "diskpart will now partition and format your disk"
+          """);
+        if (pe.PauseBeforeFormatting)
+        {
+          writer.WriteLine("pause");
+        }
+        writer.WriteLine($"""
+          diskpart.exe /s {path} || call :fail "diskpart.exe encountered an error."
       
-        """);
+          """);
+      }
+
+      switch (pe.PartitionSettings)
+      {
+        case CustomPartitionSettings settings:
+          {
+            IncludeDiskpartScript(Paths.DiskpartScript, Util.SplitLines(settings.Script));
+            Execute(Paths.DiskpartScript);
+            break;
+          }
+
+        case UnattendedPartitionSettings { PartitionLayout: PartitionLayout.GPT or PartitionLayout.MBR } settings:
+          {
+            IncludeDiskpartScript(Paths.DiskpartScript, GetDiskpartScript(settings));
+            Execute(Paths.DiskpartScript);
+            break;
+          }
+
+        case UnattendedPartitionSettings { PartitionLayout: PartitionLayout.Automatic } settings:
+          {
+            foreach (PartitionLayout layout in new PartitionLayout[] { PartitionLayout.GPT, PartitionLayout.MBR })
+            {
+              IncludeDiskpartScript($@"X:\{layout}.txt", GetDiskpartScript(settings with { PartitionLayout = layout }));
+            }
+
+            writer.WriteLine("""
+              wpeutil.exe UpdateBootInfo
+              for /f "tokens=3" %%t in ('reg.exe query HKLM\System\CurrentControlSet\Control /v PEFirmwareType') do (
+                if %%t == 0x1 (
+                  set "LAYOUT=MBR"
+                ) else if %%t == 0x2 (
+                  set "LAYOUT=GPT"
+                ) else (
+                  call :fail "Unexpected value %%t."
+                )
+              )
+              call :print "The target disk will be configured with the %LAYOUT% partition layout"
+              """);
+            Execute(@"X:\%LAYOUT%.txt");
+            break;
+          }
+
+        default:
+          throw new NotSupportedException();
+      }
     }
 
     switch (pe.InstallFromSettings)
@@ -498,10 +549,10 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
     writer.WriteLine($$"""
       call :print "Applying Windows image to target disk"
-      dism.exe /Apply-Image /ImageFile:%IMAGE_FILE% %SWM_PARAM% %IMG_PARAM% /ApplyDir:{{windowsDrive}}:\{{(pe.CompactOs ? " /Compact" : "")}}{{(pe.SkipIntegrityCheck ? "" : " /CheckIntegrity /Verify")}} || call :fail "dism.exe encountered an error."
+      dism.exe /Apply-Image /ImageFile:%IMAGE_FILE% %SWM_PARAM% %IMG_PARAM% /ApplyDir:{{DriveLetters.Windows}}:\{{(pe.CompactOs ? " /Compact" : "")}}{{(pe.SkipIntegrityCheck ? "" : " /CheckIntegrity /Verify")}} || call :fail "dism.exe encountered an error."
 
       call :print "Making system partition bootable"
-      bcdboot.exe {{windowsDrive}}:\Windows /s {{bootDrive}}: || call :fail "bcdboot.exe encountered an error."
+      bcdboot.exe {{DriveLetters.Windows}}:\Windows /s {{DriveLetters.System}}: || call :fail "bcdboot.exe encountered an error."
       bcdedit.exe /set {fwbootmgr} bootsequence {bootmgr}
 
       """);
@@ -511,7 +562,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       {
         writer.WriteLine($"""
         call :print "Deleting winre.wim file to avoid creation of recovery partition"
-        del {windowsDrive}:\Windows\System32\Recovery\winre.wim
+        del {DriveLetters.Windows}:\Windows\System32\Recovery\winre.wim
         
         """);
       }
@@ -547,15 +598,15 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
     writer.WriteLine($"""
       call :print "Copying answer file to target disk"
-      mkdir {windowsDrive}:\Windows\Panther
-      copy %XML_FILE% {windowsDrive}:\Windows\Panther\unattend.xml
+      mkdir {DriveLetters.Windows}:\Windows\Panther
+      copy %XML_FILE% {DriveLetters.Windows}:\Windows\Panther\unattend.xml
     
       """);
 
     writer.WriteLine($"""
       if defined PEDRIVERS_FOLDER (
           call :print "Adding drivers from $WinPEDriver$ folder to new installation"
-          dism.exe /Add-Driver /Image:{windowsDrive}:\ /Driver:"%PEDRIVERS_FOLDER%" /Recurse
+          dism.exe /Add-Driver /Image:{DriveLetters.Windows}:\ /Driver:"%PEDRIVERS_FOLDER%" /Recurse
       )
 
       """);
@@ -565,8 +616,8 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       writer.WriteLine($"""
         if defined VIRTIO_DRIVE (
           call :print "Adding VirtIO drivers to new installation"
-          dism.exe /Add-Driver /Image:{windowsDrive}:\ /Driver:"%VIRTIO_DRIVE%\vioscsi\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\vioscsi.inf"
-          dism.exe /Add-Driver /Image:{windowsDrive}:\ /Driver:"%VIRTIO_DRIVE%\NetKVM\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\netkvm.inf"
+          dism.exe /Add-Driver /Image:{DriveLetters.Windows}:\ /Driver:"%VIRTIO_DRIVE%\vioscsi\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\vioscsi.inf"
+          dism.exe /Add-Driver /Image:{DriveLetters.Windows}:\ /Driver:"%VIRTIO_DRIVE%\NetKVM\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\netkvm.inf"
         )
 
         """);
@@ -577,7 +628,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       {
         writer.WriteLine($"""
           call :print "Setting time zone" 
-          dism.exe /Image:{windowsDrive}:\ /Set-TimeZone:"{settings.TimeZone.Id}"
+          dism.exe /Image:{DriveLetters.Windows}:\ /Set-TimeZone:"{settings.TimeZone.Id}"
 
           """);
       }
@@ -587,8 +638,8 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     {
       writer.WriteLine($"""
         call :print "Disabling 8.3 file names"
-        fsutil.exe 8dot3name set {windowsDrive}: 1
-        fsutil.exe 8dot3name strip /s /f {windowsDrive}:\
+        fsutil.exe 8dot3name set {DriveLetters.Windows}: 1
+        fsutil.exe 8dot3name strip /s /f {DriveLetters.Windows}:\
 
         """);
     }
@@ -597,7 +648,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     {
       writer.WriteLine($"""
         call :print "Disabling Windows Defender"
-        reg.exe LOAD HKLM\mount {windowsDrive}:\Windows\System32\config\SYSTEM
+        reg.exe LOAD HKLM\mount {DriveLetters.Windows}:\Windows\System32\config\SYSTEM
         for %%s in (Sense WdBoot WdFilter WdNisDrv WdNisSvc WinDefend) do reg.exe ADD HKLM\mount\ControlSet001\Services\%%s /v Start /t REG_DWORD /d 4 /f
         reg.exe UNLOAD HKLM\mount
 
@@ -608,7 +659,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     {
       writer.WriteLine($"""
         call :print "Disabling WPBT"
-        reg.exe LOAD HKLM\mount {windowsDrive}:\Windows\System32\config\SYSTEM
+        reg.exe LOAD HKLM\mount {DriveLetters.Windows}:\Windows\System32\config\SYSTEM
         reg.exe add "HKLM\mount\ControlSet001\Control\Session Manager" /v DisableWpbtExecution /t REG_DWORD /d 1 /f
         reg.exe UNLOAD HKLM\mount
 
@@ -621,7 +672,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         GeoLocation location = settings.GeoLocation;
         writer.WriteLine($"""
           call :print "Setting device setup region to {location.DisplayName} (GeoID {location.Id})"
-          reg.exe LOAD HKLM\mount {windowsDrive}:\Windows\System32\config\SOFTWARE
+          reg.exe LOAD HKLM\mount {DriveLetters.Windows}:\Windows\System32\config\SOFTWARE
           reg.exe ADD "HKLM\mount\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d {location.Id} /f
           reg.exe UNLOAD HKLM\mount
 
@@ -635,8 +686,8 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         set "ROBOCOPY_ARGS=/E /XX /COPY:DAT /DCOPY:DAT /R:0"
         if defined OEM_FOLDER (
             call :print "Copying contents of $OEM$ folder"
-            if exist "%OEM_FOLDER%\$$" robocopy.exe "%OEM_FOLDER%\$$" {windowsDrive}:\Windows %ROBOCOPY_ARGS%
-            if exist "%OEM_FOLDER%\$1" robocopy.exe "%OEM_FOLDER%\$1" {windowsDrive}:\ %ROBOCOPY_ARGS%
+            if exist "%OEM_FOLDER%\$$" robocopy.exe "%OEM_FOLDER%\$$" {DriveLetters.Windows}:\Windows %ROBOCOPY_ARGS%
+            if exist "%OEM_FOLDER%\$1" robocopy.exe "%OEM_FOLDER%\$1" {DriveLetters.Windows}:\ %ROBOCOPY_ARGS%
             for %%d in ({letters.Except(skippedDrives).JoinString(' ')}) do (
                 if exist "%OEM_FOLDER%\%%d" robocopy.exe "%OEM_FOLDER%\%%d" %%d:\ %ROBOCOPY_ARGS%
             )
