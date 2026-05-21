@@ -157,6 +157,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       PartitionLayout.MBR =>
       [
         $"SELECT DISK={settings.TargetDisk}",
+        "ONLINE DISK NOERR",
         "CLEAN",
         $"CREATE PARTITION PRIMARY SIZE={settings.SystemSize}",
         @"FORMAT QUICK FS=NTFS LABEL=""System""",
@@ -174,6 +175,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       PartitionLayout.GPT =>
       [
         $"SELECT DISK={settings.TargetDisk}",
+        "ONLINE DISK NOERR",
         "CLEAN",
         "CONVERT GPT",
         $"CREATE PARTITION EFI SIZE={settings.SystemSize}",
