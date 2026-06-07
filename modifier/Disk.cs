@@ -640,6 +640,9 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         call :print "Disabling 8.3 file names"
         fsutil.exe 8dot3name set {DriveLetters.Windows}: 1
         fsutil.exe 8dot3name strip /s /f {DriveLetters.Windows}:\
+        reg.exe LOAD HKLM\mount {DriveLetters.Windows}:\Windows\System32\config\SYSTEM
+        reg.exe ADD HKLM\mount\ControlSet001\Control\FileSystem /v NtfsDisable8dot3NameCreation /t REG_DWORD /d 1 /f
+        reg.exe UNLOAD HKLM\mount
 
         """);
     }
