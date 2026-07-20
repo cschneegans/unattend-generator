@@ -853,5 +853,13 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           """);
       }
     }
+    {
+      if (Configuration.PreventDeviceApps)
+      {
+        SpecializeScript.Append("""
+          reg.exe add "HKLM\Software\Policies\Microsoft\Windows\Device Metadata" /v "PreventDeviceMetadataFromNetwork" /t REG_DWORD /d 1 /f;
+          """);
+      }
+    }
   }
 }
