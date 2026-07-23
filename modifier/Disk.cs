@@ -385,6 +385,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         if defined VIRTIO_DRIVE (
             call :print "Loading VirtIO drivers"
             drvload.exe "%VIRTIO_DRIVE%\vioscsi\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\vioscsi.inf"
+            drvload.exe "%VIRTIO_DRIVE%\viostor\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\viostor.inf"
             drvload.exe "%VIRTIO_DRIVE%\NetKVM\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\netkvm.inf"
         )
 
@@ -617,6 +618,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         if defined VIRTIO_DRIVE (
           call :print "Adding VirtIO drivers to new installation"
           dism.exe /Add-Driver /Image:{DriveLetters.Windows}:\ /Driver:"%VIRTIO_DRIVE%\vioscsi\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\vioscsi.inf"
+          dism.exe /Add-Driver /Image:{DriveLetters.Windows}:\ /Driver:"%VIRTIO_DRIVE%\viostor\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\viostor.inf"
           dism.exe /Add-Driver /Image:{DriveLetters.Windows}:\ /Driver:"%VIRTIO_DRIVE%\NetKVM\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\netkvm.inf"
         )
 
