@@ -20,6 +20,8 @@ public record class UnattendedPartitionSettings(
   int RecoverySize = Constants.RecoveryPartitionSize
 ) : IPartitionSettings;
 
+public class InteractivePartitionSettings : IPartitionSettings;
+
 public interface IDiskAssertionSettings;
 
 public class SkipDiskAssertionSettings : IDiskAssertionSettings;
@@ -196,6 +198,11 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
   private static List<string> GetDiskAssertionScript(IDiskAssertionSettings assertSettings, IPartitionSettings partitionSettings)
   {
+    if (partitionSettings is InteractivePartitionSettings && assertSettings is not SkipDiskAssertionSettings)
+    {
+      throw new ConfigurationException("Cannot use disk assertion script when diskpart is run interactively.");
+    }
+
     return assertSettings switch
     {
       SkipDiskAssertionSettings => [],
@@ -477,6 +484,16 @@ class DiskModifier(ModifierContext context) : Modifier(context)
               call :print "The target disk will be configured with the %LAYOUT% partition layout"
               """);
             Execute(@"X:\%LAYOUT%.txt");
+            break;
+          }
+
+        case InteractivePartitionSettings settings:
+          {
+            writer.WriteLine($"""
+              call :print ^"Press Shift+F10 to open a new console window, then use diskpart to partition and format the disk manually. Make sure to assign the drive letters {DriveLetters.Windows} and {DriveLetters.System} ^
+              to the Windows and system partitions, respectively. When finished, continue with Windows Setup in this window.^"
+              pause
+              """);
             break;
           }
 
