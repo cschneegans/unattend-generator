@@ -894,7 +894,8 @@ public static class Constants
         DiskAssertionSettings: assertionSettings,
         InstallFromSettings: new EditionInstallFromSettings(
           Edition: generator.Lookup<WindowsEdition>("pro")
-        )
+        ),
+        PagingFileSettings: new AutomaticPagingFileSettings()
       );
 
       Configuration conf = Configuration.Default with

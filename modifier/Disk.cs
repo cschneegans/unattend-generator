@@ -67,6 +67,7 @@ public record class GeneratePESettings(
   IPartitionSettings PartitionSettings,
   IDiskAssertionSettings DiskAssertionSettings,
   IInstallFromSettings InstallFromSettings,
+  IPagingFileSettings PagingFileSettings,
   bool DisableDefender,
   bool Disable8Dot3Names,
   bool PauseBeforeFormatting,
@@ -78,6 +79,17 @@ public record class GeneratePESettings(
 public record class ScriptPESetttings(
   string Script
 ) : ICmdPESettings;
+
+public interface IPagingFileSettings;
+
+public class AutomaticPagingFileSettings : IPagingFileSettings;
+
+public record class CustomPagingFileSettings(
+  int InitialSizeMiB,
+  int MaxSizeMiB
+) : IPagingFileSettings;
+
+public class NoPagingFileSettings : IPagingFileSettings;
 
 static class Paths
 {
@@ -660,7 +672,30 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
         """);
     }
+    {
+      void ConfigurePagingFile(string data)
+      {
+        writer.WriteLine($"""
+          call :print "Configuring paging file"
+          reg.exe LOAD HKLM\mount {DriveLetters.Windows}:\Windows\System32\config\SYSTEM
+          reg.exe add "HKLM\mount\ControlSet001\Control\Session Manager\Memory Management" /v PagingFiles /t REG_MULTI_SZ /f {data}
+          reg.exe UNLOAD HKLM\mount
 
+          """);
+      }
+
+      switch (pe.PagingFileSettings)
+      {
+        case AutomaticPagingFileSettings:
+          break;
+        case NoPagingFileSettings:
+          ConfigurePagingFile("");
+          break;
+        case CustomPagingFileSettings pfs:
+          ConfigurePagingFile(@$"/d ""C:\pagefile.sys {pfs.InitialSizeMiB} {pfs.MaxSizeMiB}""");
+          break;
+      }
+    }
     {
       if (configuration.LanguageSettings is UnattendedLanguageSettings settings)
       {
