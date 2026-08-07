@@ -14,24 +14,31 @@ public record class UnattendedEditionSettings(
   WindowsEdition Edition
 ) : IEditionSettings;
 
-public class CustomEditionSettings(
-  string productKey
-) : IEditionSettings
+public record class ProductKey(string Value)
 {
-  public string ProductKey { get; } = Validate(productKey);
+  public string Value { get; } = Initialize(Value);
 
-  private static string Validate(string key)
+  private static string Initialize(string value)
   {
-    if (Regex.IsMatch(key, "^([A-Z0-9]{5}-){4}[A-Z0-9]{5}$"))
+    if (Regex.IsMatch(value, "^([A-Z0-9]{5}-){4}[A-Z0-9]{5}$", RegexOptions.IgnoreCase))
     {
-      return key;
+      return value.ToUpperInvariant();
     }
     else
     {
-      throw new ConfigurationException($"Product key {key} is ill-formed.");
+      throw new ConfigurationException($"Product key '{value}' is ill-formed.");
     }
   }
+
+  public override string ToString()
+  {
+    return Value;
+  }
 }
+
+public record class CustomEditionSettings(
+  ProductKey ProductKey
+) : IEditionSettings;
 
 class ProductKeyModifier(ModifierContext context) : Modifier(context)
 {
@@ -53,29 +60,44 @@ class ProductKeyModifier(ModifierContext context) : Modifier(context)
         uiElement.InnerText = ui;
       }
 
-      switch (Configuration.EditionSettings)
+      if (Configuration.PESettings is DefaultPESettings dps)
       {
-        case UnattendedEditionSettings settings:
-          Set(settings.Edition.ProductKey, "OnError");
-          break;
-        case CustomEditionSettings settings:
-          Set(settings.ProductKey, "OnError");
-          break;
-        case InteractiveEditionSettings:
-          Set("00000-00000-00000-00000-00000", "Always");
-          break;
-        case FirmwareEditionSettings:
-          SetWithoutKey("Never");
-          break;
-        default:
-          throw new NotSupportedException();
+        switch (dps.EditionSettings)
+        {
+          case UnattendedEditionSettings settings:
+            Set(settings.Edition.ProductKey, "OnError");
+            break;
+          case CustomEditionSettings settings:
+            Set(settings.ProductKey.Value, "OnError");
+            break;
+          case InteractiveEditionSettings:
+            Set("00000-00000-00000-00000-00000", "Always");
+            break;
+          case FirmwareEditionSettings:
+            SetWithoutKey("Never");
+            break;
+          default:
+            throw new NotSupportedException();
+        }
       }
     }
     {
-      if (Configuration.EditionSettings is CustomEditionSettings settings)
+      ProductKey? GetKeyForActivation()
+      {
+        if (Configuration.ActivationKey != null)
+        {
+          return Configuration.ActivationKey;
+        }
+        if (Configuration.PESettings is DefaultPESettings dps && dps.EditionSettings is CustomEditionSettings ces)
+        {
+          return ces.ProductKey;
+        }
+        return null;
+      }
+      if (GetKeyForActivation() is ProductKey key)
       {
         var elem = Util.GetOrCreateElement(Pass.specialize, "Microsoft-Windows-Shell-Setup", "ProductKey", Document, NamespaceManager);
-        elem.InnerText = settings.ProductKey;
+        elem.InnerText = key.Value;
       }
     }
   }

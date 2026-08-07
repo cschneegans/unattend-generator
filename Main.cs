@@ -286,7 +286,6 @@ public class ConfigurationException(string? message) : Exception(message);
 public record class Configuration(
   ILanguageSettings LanguageSettings,
   IAccountSettings AccountSettings,
-  IEditionSettings EditionSettings,
   ILockoutSettings LockoutSettings,
   IPasswordExpirationSettings PasswordExpirationSettings,
   IProcessAuditSettings ProcessAuditSettings,
@@ -304,6 +303,7 @@ public record class Configuration(
   ILockScreenSettings LockScreenSettings,
   IColorSettings ColorSettings,
   IPESettings PESettings,
+  ProductKey? ActivationKey,
   bool BypassNetworkCheck,
   bool EnableLongPaths,
   bool EnableRemoteDesktop,
@@ -363,7 +363,6 @@ public record class Configuration(
   public static Configuration Default => new(
     LanguageSettings: new InteractiveLanguageSettings(),
     AccountSettings: new InteractiveMicrosoftAccountSettings(),
-    EditionSettings: new InteractiveEditionSettings(),
     LockoutSettings: new DefaultLockoutSettings(),
     PasswordExpirationSettings: new DefaultPasswordExpirationSettings(),
     ProcessAuditSettings: new DisabledProcessAuditSettings(),
@@ -381,8 +380,10 @@ public record class Configuration(
     LockScreenSettings: new DefaultLockScreenSettings(),
     ColorSettings: new DefaultColorSettings(),
     PESettings: new DefaultPESettings(
+      EditionSettings: new InteractiveEditionSettings(),
       BypassRequirementsCheck: true
     ),
+    ActivationKey: null,
     BypassNetworkCheck: false,
     EnableLongPaths: false,
     EnableRemoteDesktop: false,
@@ -891,7 +892,9 @@ public static class Constants
         DisableDefender: true,
         PartitionSettings: partitionSettings with { PartitionLayout = PartitionLayout.Automatic },
         DiskAssertionSettings: assertionSettings,
-        InstallFromSettings: new AutomaticInstallFromSettings()
+        InstallFromSettings: new EditionInstallFromSettings(
+          Edition: generator.Lookup<WindowsEdition>("pro")
+        )
       );
 
       Configuration conf = Configuration.Default with
@@ -908,9 +911,6 @@ public static class Constants
           GeoLocation: generator.Lookup<GeoLocation>("244")
         ),
         UseConfigurationSet = true,
-        EditionSettings = new UnattendedEditionSettings(
-          Edition: generator.Lookup<WindowsEdition>("pro")
-        )
       };
 
       return DiskModifier.GetPEScript(conf, pe, generator).JoinLines();

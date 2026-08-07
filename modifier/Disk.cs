@@ -40,7 +40,9 @@ public record class ScriptDiskAssertionsSettings(
 
 public interface IInstallFromSettings;
 
-public class AutomaticInstallFromSettings : IInstallFromSettings;
+public record class EditionInstallFromSettings(
+  WindowsEdition Edition
+) : IInstallFromSettings;
 
 public record class IndexInstallFromSettings(
   int Index
@@ -55,6 +57,7 @@ public class InteractiveInstallFromSettings : IInstallFromSettings;
 public interface IPESettings;
 
 public record class DefaultPESettings(
+  IEditionSettings EditionSettings,
   bool BypassRequirementsCheck
 ) : IPESettings;
 
@@ -526,40 +529,10 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           """);
         break;
 
-      case AutomaticInstallFromSettings:
-
-        string? GetEdition()
-        {
-          if (configuration.EditionSettings is UnattendedEditionSettings ues)
-          {
-            return ues.Edition.DisplayName;
-          }
-          if (configuration.EditionSettings is CustomEditionSettings ces)
-          {
-            foreach (WindowsEdition we in generator.WindowsEditions.Values)
-            {
-              if (string.Equals(we.ProductKey, ces.ProductKey, StringComparison.OrdinalIgnoreCase))
-              {
-                return we.DisplayName;
-              }
-            }
-          }
-
-          return null;
-        }
-
-        switch (GetEdition())
-        {
-          case null:
-            throw new ConfigurationException("Cannot determine which Windows image to use for the ‘dism.exe /Apply-Image’ command. You need to specify the image name (e.g. ‘Windows 11 Pro’) or image index in the ‘Windows image to install’ section.");
-          case string edition:
-            writer.WriteLine($"""
-              set "IMG_PARAM=/Name:"Windows %OS_VERSION% {edition}""
-              """);
-            break;
-          default:
-            throw new NotSupportedException();
-        }
+      case EditionInstallFromSettings editionSettings:
+        writer.WriteLine($"""
+          set "IMG_PARAM=/Name:"Windows %OS_VERSION% {editionSettings.Edition.DisplayName}""
+          """);
         break;
       default:
         throw new NotSupportedException();
