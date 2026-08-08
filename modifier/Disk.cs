@@ -273,7 +273,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     if (settings.MinSizeGiB != null)
     {
       writer.WriteLine($"""
-        actual = CInt( drive.Size / 1024 / 1024 / 1024 )
+        actual = CInt(drive.Size / 1024 / 1024 / 1024)
         expected = {settings.MinSizeGiB}
         If actual < expected Then
           Fail "Size of disk {targetDisk} is expected to be at least " & expected & " GiB, but actually is " & actual & " GiB."
@@ -283,7 +283,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     if (settings.MaxSizeGiB != null)
     {
       writer.WriteLine($"""
-        actual = CInt( drive.Size / 1024 / 1024 / 1024 )
+        actual = CInt(drive.Size / 1024 / 1024 / 1024)
         expected = {settings.MaxSizeGiB}
         If actual > expected Then
           Fail "Size of disk {targetDisk} is expected to be at most " & expected & " GiB, but actually is " & actual & " GiB."
