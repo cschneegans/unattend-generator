@@ -858,6 +858,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
       {
         SpecializeScript.Append("""
           reg.exe add "HKLM\Software\Microsoft\Windows\CurrentVersion\Device Metadata" /v "PreventDeviceMetadataFromNetwork" /t REG_DWORD /d 1 /f;
+          reg.exe add "HKLM\Software\Microsoft\Windows\CurrentVersion\Device Installer" /v "DisableCoInstallers" /t REG_DWORD /d 1 /f;
           """);
       }
     }
