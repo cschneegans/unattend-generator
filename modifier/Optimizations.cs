@@ -456,7 +456,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
           (_, true) => SpecializeScript,
           _ => FirstLogonScript
         };
-        target.Append(Util.StringFromResource(resourceName));
+        target.InvokeFile(EmbedTextFileFromResource(resourceName));
       }
 
       if (Configuration.VBoxGuestAdditions)
@@ -579,7 +579,7 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
     }
     if (Configuration.MakeEdgeUninstallable)
     {
-      SpecializeScript.InvokeFile(Util.StringFromResource("MakeEdgeUninstallable.ps1"));
+      SpecializeScript.InvokeFile(EmbedTextFileFromResource("MakeEdgeUninstallable.ps1"));
     }
     {
       if (Configuration.LaunchToThisPC)

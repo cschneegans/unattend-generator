@@ -18,14 +18,13 @@ abstract class Remover<T> where T : SelectorBloatwareStep
   {
     if (selectors.Count > 0)
     {
-      parent.SpecializeScript.Append(GetRemoveCommand());
+      parent.SpecializeScript.InvokeFile(parent.EmbedTextFile($"Remove{Type}.ps1", GetRemoveCommand()));
     }
   }
 
   private string GetRemoveCommand()
   {
     StringWriter sw = new();
-    sw.WriteLine($"$type = '{Type}';");
     sw.WriteLine("$selectors = @(");
     foreach (string selector in selectors)
     {
@@ -35,6 +34,7 @@ abstract class Remover<T> where T : SelectorBloatwareStep
     sw.WriteLine($"$getCommand = {GetCommand};");
     sw.WriteLine($"$filterCommand = {FilterCommand};");
     sw.WriteLine($"$removeCommand = {RemoveCommand};");
+    sw.WriteLine($"$type = '{Type}';");
     return sw.ToString() + Util.StringFromResource("RemoveBloatware.ps1");
   }
 
