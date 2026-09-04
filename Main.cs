@@ -247,18 +247,18 @@ public static class EchoProcessor
   private static IEnumerable<string> Trim(IEnumerable<string> input)
   {
     return input
-      .Select(l => l.Trim())
-      .Where(l => l.Length > 0);
+      .Select(line => line.Trim())
+      .Where(line => line.Length > 0);
   }
 
   private static readonly HashSet<char> reserved = ['^', '&', '<', '>', '|', '%', ')', '"'];
 
   private static IEnumerable<string> Escape(IEnumerable<string> input)
   {
-    return input.Select(l =>
+    return input.Select(line =>
     {
-      StringBuilder sb = new(l.Length * 2);
-      foreach (char c in l)
+      StringBuilder sb = new(line.Length * 2);
+      foreach (char c in line)
       {
         if (reserved.Contains(c))
         {
@@ -272,12 +272,12 @@ public static class EchoProcessor
 
   private static IEnumerable<string> Echo(IEnumerable<string> input)
   {
-    return input.Select(l => $"echo:{l}");
+    return input.Select(line => $"echo:{line}");
   }
 
-  public static IEnumerable<string> Process(IEnumerable<string> input)
+  public static IEnumerable<string> Process(IEnumerable<string> input, bool escape = true)
   {
-    return Echo(Escape(Trim(input)));
+    return escape ? Echo(Escape(Trim(input))) : Echo(Trim(input));
   }
 }
 
@@ -863,19 +863,29 @@ public static class Constants
 
   public const int DiskAssertionMaxSizeGiB = 4000;
 
+  public const int TargetDiskMinSizeGiB = DiskAssertionMinSizeGiB;
+
+  public const int TargetDiskMaxSizeGiB = DiskAssertionMaxSizeGiB;
+
   private static readonly UnattendedPartitionSettings partitionSettings = new(
-    TargetDisk: 0,
+    TargetDiskSettings: new GeneratedTargetDiskSettings(),
     PartitionLayout: PartitionLayout.GPT,
     RecoveryMode: RecoveryMode.Partition,
     SystemSize: SystemPartitionSize,
     RecoverySize: RecoveryPartitionSize
   );
 
+  private static readonly UnattendedPartitionSettings fixedPartitionSettings = partitionSettings with { TargetDiskSettings = new FixedTargetDiskSettings(Index: 0) };
+
   private static readonly GeneratedDiskAssertionsSettings assertionSettings = new();
 
-  public static string SampleDiskpartScript => DiskModifier.GetDiskpartScript(partitionSettings).JoinLines();
+  private static readonly GeneratedTargetDiskSettings targetDiskSettings = new();
 
-  public static string SampleDiskAssertionScript => DiskModifier.GetDiskAssertionScript(assertionSettings, partitionSettings).JoinLines();
+  public static string SampleTargetDiskScript => DiskModifier.GetTargetDiskScript(targetDiskSettings).JoinLines();
+
+  public static string SampleDiskpartScript => DiskModifier.GetDiskpartScript(fixedPartitionSettings).JoinLines();
+
+  public static string SampleDiskAssertionScript => DiskModifier.GetDiskAssertionScript(assertionSettings, fixedPartitionSettings).JoinLines();
 
   public static string SamplePEScript
   {
@@ -891,7 +901,7 @@ public static class Constants
         SkipIntegrityCheck: false,
         DisableDefender: true,
         PartitionSettings: partitionSettings with { PartitionLayout = PartitionLayout.Automatic },
-        DiskAssertionSettings: assertionSettings,
+        DiskAssertionSettings: new SkipDiskAssertionSettings(),
         InstallFromSettings: new EditionInstallFromSettings(
           Edition: generator.Lookup<WindowsEdition>("pro")
         ),

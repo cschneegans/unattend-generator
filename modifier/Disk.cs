@@ -6,6 +6,27 @@ using System.Text.RegularExpressions;
 
 namespace Schneegans.Unattend;
 
+public interface ITargetDiskSettings;
+
+public record class InteractiveTargetDiskSettings : ITargetDiskSettings;
+
+public record class ScriptTargetDiskSettings(
+  string Script
+) : ITargetDiskSettings;
+
+public record class FixedTargetDiskSettings(
+  int Index
+) : ITargetDiskSettings;
+
+public record class GeneratedTargetDiskSettings(
+  int? MinSizeGiB = Constants.TargetDiskMinSizeGiB,
+  int? MaxSizeGiB = Constants.TargetDiskMaxSizeGiB,
+  int? Index = 0,
+  bool AssertNoPartitions = true,
+  bool AssertInterfaceType = false,
+  bool AssertMediaType = false
+) : ITargetDiskSettings;
+
 public interface IPartitionSettings;
 
 public record class CustomPartitionSettings(
@@ -13,7 +34,7 @@ public record class CustomPartitionSettings(
 ) : IPartitionSettings;
 
 public record class UnattendedPartitionSettings(
-  int TargetDisk,
+  ITargetDiskSettings TargetDiskSettings,
   PartitionLayout PartitionLayout,
   RecoveryMode RecoveryMode,
   int SystemSize = Constants.SystemPartitionSize,
@@ -96,6 +117,8 @@ static class Paths
   internal const string PEScript = @"X:\pe.cmd";
   internal const string DiskpartScript = @"X:\diskpart.txt";
   internal const string AssertScript = @"X:\assert.vbs";
+  internal const string TargetDiskScript = @"X:\target.vbs";
+  internal const string TargetDiskOutput = @"X:\target.out";
 }
 
 static class DriveLetters
@@ -104,6 +127,15 @@ static class DriveLetters
   internal const char Windows = 'W';
   internal const char Recovery = 'R';
 }
+
+/// <summary>
+/// A file that is created from within the pe.cmd script.
+/// </summary>
+record class EmbeddedScript(
+  string Path,
+  IEnumerable<string> Lines,
+  bool Escape
+);
 
 class DiskModifier(ModifierContext context) : Modifier(context)
 {
@@ -162,6 +194,110 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     ]);
   }
 
+  internal static List<string> GetTargetDiskScript(GeneratedTargetDiskSettings g)
+  {
+    StringWriter writer2 = new();
+    writer2.WriteLine($"""
+      Function Fail(message)
+        WScript.Echo message
+        WScript.Quit 1
+      End Function
+
+      On Error Resume Next
+      Set wmi = GetObject("winmgmts:\\.\root\cimv2")
+      Set drives = wmi.InstancesOf("Win32_DiskDrive")
+      If Err.Number <> 0 Then
+        Fail "Could not enumerate disks: " & Err.Description
+      End If
+      Set accepted = CreateObject("Scripting.Dictionary")
+
+      For Each drive In drives
+        accept = True
+
+      """
+    );
+    if (g.AssertInterfaceType)
+    {
+      writer2.WriteLine($"""
+          actual = drive.InterfaceType
+          If actual <> "IDE" And actual <> "SCSI" Then
+            accept = False
+          End If
+
+        """);
+    }
+    if (g.AssertMediaType)
+    {
+      writer2.WriteLine($"""
+          actual = drive.MediaType
+          If actual <> "Fixed hard disk media" Then
+            accept = False
+          End If
+
+        """);
+    }
+    if (g.MinSizeGiB != null)
+    {
+      writer2.WriteLine($"""
+          actual = CInt(drive.Size / 1024 / 1024 / 1024)
+          expected = {g.MinSizeGiB}
+          If actual < expected Then
+            accept = False
+          End If
+
+        """);
+    }
+    if (g.MaxSizeGiB != null)
+    {
+      writer2.WriteLine($"""
+          actual = CInt(drive.Size / 1024 / 1024 / 1024)
+          expected = {g.MaxSizeGiB}
+          If actual > expected Then
+            accept = False
+          End If
+
+        """);
+    }
+    if (g.Index != null)
+    {
+      writer2.WriteLine($"""
+          actual = drive.Index
+          expected = {g.Index}
+          If actual <> expected Then
+            accept = False
+          End If
+
+        """);
+    }
+    if (g.AssertNoPartitions)
+    {
+      writer2.WriteLine($"""
+          actual = drive.Partitions
+          If actual > 0 Then
+            accept = False
+          End If
+
+        """);
+    }
+    writer2.WriteLine("""
+        If accept Then
+          accepted.Add drive.Index, ""
+        End If
+      Next
+
+      If accepted.Count = 0 Then
+        Fail "No disk satisfied the given criteria."
+      ElseIf accepted.Count > 1 Then
+        Fail "Several disks (" & Join(accepted.Keys, ", ") & ") satisfied the given criteria."
+      Else
+        WScript.Echo Join(accepted.Keys)
+        WScript.Quit 0
+      End If
+      """);
+
+    return Util.SplitLines(writer2.ToString());
+  }
+
   internal static List<string> GetDiskpartScript(UnattendedPartitionSettings settings)
   {
     string IfRecovery(string line)
@@ -169,11 +305,18 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       return settings.RecoveryMode == RecoveryMode.Partition ? line : "";
     }
 
+    string targetDisk = settings.TargetDiskSettings switch
+    {
+      FixedTargetDiskSettings f => f.Index.ToString(),
+      GeneratedTargetDiskSettings or ScriptTargetDiskSettings or InteractiveTargetDiskSettings => "%TARGET_DISK%",
+      _ => throw new NotSupportedException(),
+    };
+
     return settings.PartitionLayout switch
     {
       PartitionLayout.MBR =>
       [
-        $"SELECT DISK={settings.TargetDisk}",
+        $"SELECT DISK={targetDisk}",
         "CLEAN",
         $"CREATE PARTITION PRIMARY SIZE={settings.SystemSize}",
         @"FORMAT QUICK FS=NTFS LABEL=""System""",
@@ -190,7 +333,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       ],
       PartitionLayout.GPT =>
       [
-        $"SELECT DISK={settings.TargetDisk}",
+        $"SELECT DISK={targetDisk}",
         "CLEAN",
         "CONVERT GPT",
         $"CREATE PARTITION EFI SIZE={settings.SystemSize}",
@@ -234,7 +377,13 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       switch (partitionSettings)
       {
         case UnattendedPartitionSettings ups:
-          targetDisk = ups.TargetDisk;
+          targetDisk = ups.TargetDiskSettings switch
+          {
+            GeneratedTargetDiskSettings g => g.Index ?? throw new ConfigurationException("Cannot create disk assertion script when target disk is not selected via index number. Select ‘Make no assertions about the target disk’ in the form."),
+            InteractiveTargetDiskSettings => throw new ConfigurationException("Cannot create disk assertion script when target disk is selected interactively. Select ‘Make no assertions about the target disk’ in the form."),
+            FixedTargetDiskSettings f => f.Index,
+            _ => throw new NotSupportedException(),
+          };
           break;
         case CustomPartitionSettings cps:
           MatchCollection matches = Regex.Matches(cps.Script, @"^(\s*)SELECT(\s+)DISK((\s+)|(\s*=\s*))(?<disk>\d+)(\s*)$", RegexOptions.ExplicitCapture | RegexOptions.Multiline | RegexOptions.IgnoreCase);
@@ -326,12 +475,12 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     char[] letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
     char[] skippedDrives = ['A', 'B'];
 
-    bool IncludeSecondaryFile(string path, IEnumerable<string> lines)
+    bool Include(EmbeddedScript script)
     {
-      if (lines.Any())
+      if (script.Lines.Any())
       {
-        writer.WriteLine($">{path} (");
-        foreach (string line in EchoProcessor.Process(lines))
+        writer.WriteLine($">{script.Path} (");
+        foreach (string line in EchoProcessor.Process(script.Lines, script.Escape))
         {
           writer.WriteLine($"\t{line}");
         }
@@ -415,8 +564,51 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     }
 
     {
-      List<string> assertScript = GetDiskAssertionScript(pe.DiskAssertionSettings, pe.PartitionSettings);
-      if (IncludeSecondaryFile(Paths.AssertScript, assertScript))
+      void RunTargetDiskScript(IEnumerable<string> lines)
+      {
+        Include(new EmbeddedScript(Paths.TargetDiskScript, lines, Escape: true));
+        writer.WriteLine($"""
+          call :print "Determining target disk"
+          (cscript.exe //E:vbscript "{Paths.TargetDiskScript}" //Nologo >{Paths.TargetDiskOutput}) || (type {Paths.TargetDiskOutput} & call :fail "Could not determine target disk. Windows Setup will halt to avoid potential data loss.")
+          for /f %%t in ({Paths.TargetDiskOutput}) do set "TARGET_DISK=%%t"
+
+          """);
+      }
+
+      if (pe.PartitionSettings is UnattendedPartitionSettings ups)
+      {
+        switch (ups.TargetDiskSettings)
+        {
+          case InteractiveTargetDiskSettings:
+            writer.WriteLine("""
+              echo list disk | diskpart.exe
+              echo:
+              :choice
+              set /p "CHOICE=Enter index of the disk you want to install Windows to: " || goto :choice
+              set "TARGET_DISK=%CHOICE%"
+
+              """);
+            break;
+
+          case ScriptTargetDiskSettings stds:
+            RunTargetDiskScript(Util.SplitLines(stds.Script));
+            break;
+
+          case GeneratedTargetDiskSettings gtds:
+            RunTargetDiskScript(GetTargetDiskScript(gtds));
+            break;
+
+          case FixedTargetDiskSettings:
+            break;
+
+          default:
+            throw new NotSupportedException();
+        }
+      }
+    }
+
+    {
+      if (Include(new EmbeddedScript(Paths.AssertScript, GetDiskAssertionScript(pe.DiskAssertionSettings, pe.PartitionSettings), Escape: true)))
       {
         writer.WriteLine($"""
           call :print "Running disk assertions"
@@ -441,16 +633,16 @@ class DiskModifier(ModifierContext context) : Modifier(context)
         CheckDriveLetterAssignment(DriveLetters.System, "system");
       }
 
-      void IncludeDiskpartScript(string path, IEnumerable<string> lines)
+      void IncludeDiskpartScript(EmbeddedScript script)
       {
-        CheckDriveLetterAssignments(lines);
-        IncludeSecondaryFile(path, lines);
+        CheckDriveLetterAssignments(script.Lines);
+        Include(script);
       }
 
-      void Execute(string path)
+      void Execute(string path, string message)
       {
-        writer.WriteLine("""
-          call :print "diskpart will now partition and format your disk"
+        writer.WriteLine($"""
+          call :print "{message}"
           """);
         if (pe.PauseBeforeFormatting)
         {
@@ -466,23 +658,18 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       {
         case CustomPartitionSettings settings:
           {
-            IncludeDiskpartScript(Paths.DiskpartScript, Util.SplitLines(settings.Script));
-            Execute(Paths.DiskpartScript);
+            IncludeDiskpartScript(new EmbeddedScript(Paths.DiskpartScript, Util.SplitLines(settings.Script), Escape: true));
+            Execute(Paths.DiskpartScript, "diskpart will now execute your script");
             break;
           }
 
-        case UnattendedPartitionSettings { PartitionLayout: PartitionLayout.GPT or PartitionLayout.MBR } settings:
-          {
-            IncludeDiskpartScript(Paths.DiskpartScript, GetDiskpartScript(settings));
-            Execute(Paths.DiskpartScript);
-            break;
-          }
-
-        case UnattendedPartitionSettings { PartitionLayout: PartitionLayout.Automatic } settings:
+        case UnattendedPartitionSettings settings:
+          string message = "diskpart will now wipe, partition and format disk %TARGET_DISK%";
+          if (settings.PartitionLayout == PartitionLayout.Automatic)
           {
             foreach (PartitionLayout layout in new PartitionLayout[] { PartitionLayout.GPT, PartitionLayout.MBR })
             {
-              IncludeDiskpartScript($@"X:\{layout}.txt", GetDiskpartScript(settings with { PartitionLayout = layout }));
+              IncludeDiskpartScript(new EmbeddedScript($@"X:\{layout}.txt", GetDiskpartScript(settings with { PartitionLayout = layout }), Escape: false));
             }
 
             writer.WriteLine("""
@@ -498,9 +685,14 @@ class DiskModifier(ModifierContext context) : Modifier(context)
               )
               call :print "The target disk will be configured with the %LAYOUT% partition layout"
               """);
-            Execute(@"X:\%LAYOUT%.txt");
-            break;
+            Execute(@"X:\%LAYOUT%.txt", message);
           }
+          else
+          {
+            IncludeDiskpartScript(new EmbeddedScript(Paths.DiskpartScript, GetDiskpartScript(settings), Escape: false));
+            Execute(Paths.DiskpartScript, message);
+          }
+          break;
 
         case InteractivePartitionSettings settings:
           {
