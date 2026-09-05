@@ -1135,6 +1135,7 @@ public class UnattendGenerator
       new BypassModifier(context),
       new ProductKeyModifier(context),
       new LocalesModifier(context),
+      new LocaleDispatcherModifier(context),
       new DiskModifier(context),
       new UsersModifier(context),
       new BloatwareModifier(context),
