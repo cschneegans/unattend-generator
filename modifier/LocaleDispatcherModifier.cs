@@ -7,8 +7,15 @@ namespace Schneegans.Unattend;
 /// <summary>
 /// 選択されたロケール/キーボードに応じて適切な LocaleSpecificModifier を自動呼出するディスパッチャー
 /// </summary>
-class LocaleDispatcherModifier(ModifierContext context) : Modifier(context)
+class LocaleDispatcherModifier : Modifier
 {
+  private readonly ModifierContext context;
+
+  public LocaleDispatcherModifier(ModifierContext context) : base(context)
+  {
+    this.context = context;
+  }
+
   public override void Process()
   {
     if (Configuration.LanguageSettings is not UnattendedLanguageSettings settings)
