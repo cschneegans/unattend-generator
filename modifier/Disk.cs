@@ -43,22 +43,6 @@ public record class UnattendedPartitionSettings(
 
 public class InteractivePartitionSettings : IPartitionSettings;
 
-public interface IDiskAssertionSettings;
-
-public class SkipDiskAssertionSettings : IDiskAssertionSettings;
-
-public record class GeneratedDiskAssertionsSettings(
-  int? MinSizeGiB = Constants.DiskAssertionMinSizeGiB,
-  int? MaxSizeGiB = Constants.DiskAssertionMaxSizeGiB,
-  bool AssertNoPartitions = true,
-  bool AssertInterfaceType = false,
-  bool AssertMediaType = false
-) : IDiskAssertionSettings;
-
-public record class ScriptDiskAssertionsSettings(
-  string Script
-) : IDiskAssertionSettings;
-
 public interface IInstallFromSettings;
 
 public record class EditionInstallFromSettings(
@@ -86,7 +70,6 @@ public interface ICmdPESettings : IPESettings;
 
 public record class GeneratePESettings(
   IPartitionSettings PartitionSettings,
-  IDiskAssertionSettings DiskAssertionSettings,
   IInstallFromSettings InstallFromSettings,
   IPagingFileSettings PagingFileSettings,
   bool DisableDefender,
@@ -116,7 +99,6 @@ static class Paths
 {
   internal const string PEScript = @"X:\pe.cmd";
   internal const string DiskpartScript = @"X:\diskpart.txt";
-  internal const string AssertScript = @"X:\assert.vbs";
   internal const string TargetDiskScript = @"X:\target.vbs";
   internal const string TargetDiskOutput = @"X:\target.out";
 }
@@ -196,8 +178,8 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
   internal static List<string> GetTargetDiskScript(GeneratedTargetDiskSettings g)
   {
-    StringWriter writer2 = new();
-    writer2.WriteLine($"""
+    StringWriter writer = new();
+    writer.WriteLine($"""
       Function Fail(message)
         WScript.Echo message
         WScript.Quit 1
@@ -218,7 +200,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     );
     if (g.AssertInterfaceType)
     {
-      writer2.WriteLine($"""
+      writer.WriteLine($"""
           actual = drive.InterfaceType
           If actual <> "IDE" And actual <> "SCSI" Then
             accept = False
@@ -228,7 +210,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     }
     if (g.AssertMediaType)
     {
-      writer2.WriteLine($"""
+      writer.WriteLine($"""
           actual = drive.MediaType
           If actual <> "Fixed hard disk media" Then
             accept = False
@@ -238,7 +220,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     }
     if (g.MinSizeGiB != null)
     {
-      writer2.WriteLine($"""
+      writer.WriteLine($"""
           actual = CInt(drive.Size / 1024 / 1024 / 1024)
           expected = {g.MinSizeGiB}
           If actual < expected Then
@@ -249,7 +231,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     }
     if (g.MaxSizeGiB != null)
     {
-      writer2.WriteLine($"""
+      writer.WriteLine($"""
           actual = CInt(drive.Size / 1024 / 1024 / 1024)
           expected = {g.MaxSizeGiB}
           If actual > expected Then
@@ -260,7 +242,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     }
     if (g.Index != null)
     {
-      writer2.WriteLine($"""
+      writer.WriteLine($"""
           actual = drive.Index
           expected = {g.Index}
           If actual <> expected Then
@@ -271,7 +253,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     }
     if (g.AssertNoPartitions)
     {
-      writer2.WriteLine($"""
+      writer.WriteLine($"""
           actual = drive.Partitions
           If actual > 0 Then
             accept = False
@@ -279,7 +261,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
         """);
     }
-    writer2.WriteLine("""
+    writer.WriteLine("""
         If accept Then
           accepted.Add drive.Index, ""
         End If
@@ -295,7 +277,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       End If
       """);
 
-    return Util.SplitLines(writer2.ToString());
+    return Util.SplitLines(writer.ToString());
   }
 
   internal static List<string> GetDiskpartScript(UnattendedPartitionSettings settings)
@@ -352,120 +334,6 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       ],
       _ => throw new NotSupportedException()
     };
-  }
-
-  private static List<string> GetDiskAssertionScript(IDiskAssertionSettings assertSettings, IPartitionSettings partitionSettings)
-  {
-    if (partitionSettings is InteractivePartitionSettings && assertSettings is not SkipDiskAssertionSettings)
-    {
-      throw new ConfigurationException("Cannot use disk assertion script when diskpart is run interactively.");
-    }
-
-    return assertSettings switch
-    {
-      SkipDiskAssertionSettings => [],
-      ScriptDiskAssertionsSettings script => Util.SplitLines(script.Script),
-      GeneratedDiskAssertionsSettings generated => GetDiskAssertionScript(generated, partitionSettings),
-      _ => throw new NotSupportedException()
-    };
-  }
-
-  internal static List<string> GetDiskAssertionScript(GeneratedDiskAssertionsSettings settings, IPartitionSettings partitionSettings)
-  {
-    int targetDisk;
-    {
-      switch (partitionSettings)
-      {
-        case UnattendedPartitionSettings ups:
-          targetDisk = ups.TargetDiskSettings switch
-          {
-            GeneratedTargetDiskSettings g => g.Index ?? throw new ConfigurationException("Cannot create disk assertion script when target disk is not selected via index number. Select ‘Make no assertions about the target disk’ in the form."),
-            InteractiveTargetDiskSettings => throw new ConfigurationException("Cannot create disk assertion script when target disk is selected interactively. Select ‘Make no assertions about the target disk’ in the form."),
-            FixedTargetDiskSettings f => f.Index,
-            _ => throw new NotSupportedException(),
-          };
-          break;
-        case CustomPartitionSettings cps:
-          MatchCollection matches = Regex.Matches(cps.Script, @"^(\s*)SELECT(\s+)DISK((\s+)|(\s*=\s*))(?<disk>\d+)(\s*)$", RegexOptions.ExplicitCapture | RegexOptions.Multiline | RegexOptions.IgnoreCase);
-          if (matches.Count == 0)
-          {
-            throw new ConfigurationException("Cannot determine target disk from diskpart script. Make sure to include a statement such as ‘SELECT DISK=0’.");
-          }
-          targetDisk = int.Parse(matches[0].Groups["disk"].Value);
-          break;
-        default:
-          throw new NotSupportedException();
-      }
-    }
-
-    StringWriter writer = new();
-    writer.WriteLine($"""
-      Function Fail(message)
-        WScript.Echo message
-        WScript.Quit 1
-      End Function
-
-      On Error Resume Next
-      Set wmi = GetObject("winmgmts:\\.\root\cimv2")
-      Set drive = wmi.Get("Win32_DiskDrive.DeviceID='\\.\PHYSICALDRIVE{targetDisk}'")
-      If Err.Number <> 0 Then
-        Fail "Could not locate disk {targetDisk} (" & Err.Description & ")."
-      End If
-      """
-    );
-    if (settings.AssertInterfaceType)
-    {
-      writer.WriteLine($"""
-        actual = drive.InterfaceType
-        If actual <> "IDE" And actual <> "SCSI" Then
-          Fail "InterfaceType '" & actual & "' of disk {targetDisk} is unexpected."
-        End If
-        """);
-    }
-    if (settings.AssertMediaType)
-    {
-      writer.WriteLine($"""
-        actual = drive.MediaType
-        If actual <> "Fixed hard disk media" Then
-          Fail "MediaType '" & actual & "' of disk {targetDisk} is unexpected."
-        End If
-        """);
-    }
-    if (settings.MinSizeGiB != null)
-    {
-      writer.WriteLine($"""
-        actual = CInt(drive.Size / 1024 / 1024 / 1024)
-        expected = {settings.MinSizeGiB}
-        If actual < expected Then
-          Fail "Size of disk {targetDisk} is expected to be at least " & expected & " GiB, but actually is " & actual & " GiB."
-        End If
-        """);
-    }
-    if (settings.MaxSizeGiB != null)
-    {
-      writer.WriteLine($"""
-        actual = CInt(drive.Size / 1024 / 1024 / 1024)
-        expected = {settings.MaxSizeGiB}
-        If actual > expected Then
-          Fail "Size of disk {targetDisk} is expected to be at most " & expected & " GiB, but actually is " & actual & " GiB."
-        End If
-        """);
-    }
-    if (settings.AssertNoPartitions)
-    {
-      writer.WriteLine($"""
-        actual = drive.Partitions
-        If actual > 0 Then
-          Fail "There are already " & actual & " partitions on disk {targetDisk}."
-        End If
-        """);
-    }
-    writer.WriteLine("""
-      WScript.Echo "Disk assertions were satisfied."
-      WScript.Quit 0
-      """);
-
-    return Util.SplitLines(writer.ToString());
   }
 
   internal static List<string> GetPEScript(Configuration configuration, GeneratePESettings pe, UnattendGenerator generator)
@@ -604,17 +472,6 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           default:
             throw new NotSupportedException();
         }
-      }
-    }
-
-    {
-      if (Include(new EmbeddedScript(Paths.AssertScript, GetDiskAssertionScript(pe.DiskAssertionSettings, pe.PartitionSettings), Escape: true)))
-      {
-        writer.WriteLine($"""
-          call :print "Running disk assertions"
-          cscript.exe //E:vbscript "{Paths.AssertScript}" //Nologo || call :fail "Disk assertion failed. Windows Setup will halt to avoid potential data loss."
-
-          """);
       }
     }
 

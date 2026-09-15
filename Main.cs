@@ -859,13 +859,9 @@ public static class Constants
 
   public const string MyNamespaceUri = "https://schneegans.de/windows/unattend-generator/";
 
-  public const int DiskAssertionMinSizeGiB = 100;
+  public const int TargetDiskMinSizeGiB = 100;
 
-  public const int DiskAssertionMaxSizeGiB = 4000;
-
-  public const int TargetDiskMinSizeGiB = DiskAssertionMinSizeGiB;
-
-  public const int TargetDiskMaxSizeGiB = DiskAssertionMaxSizeGiB;
+  public const int TargetDiskMaxSizeGiB = 4000;
 
   private static readonly UnattendedPartitionSettings partitionSettings = new(
     TargetDiskSettings: new GeneratedTargetDiskSettings(),
@@ -877,15 +873,11 @@ public static class Constants
 
   private static readonly UnattendedPartitionSettings fixedPartitionSettings = partitionSettings with { TargetDiskSettings = new FixedTargetDiskSettings(Index: 0) };
 
-  private static readonly GeneratedDiskAssertionsSettings assertionSettings = new();
-
   private static readonly GeneratedTargetDiskSettings targetDiskSettings = new();
 
   public static string SampleTargetDiskScript => DiskModifier.GetTargetDiskScript(targetDiskSettings).JoinLines();
 
   public static string SampleDiskpartScript => DiskModifier.GetDiskpartScript(fixedPartitionSettings).JoinLines();
-
-  public static string SampleDiskAssertionScript => DiskModifier.GetDiskAssertionScript(assertionSettings, fixedPartitionSettings).JoinLines();
 
   public static string SamplePEScript
   {
@@ -901,7 +893,6 @@ public static class Constants
         SkipIntegrityCheck: false,
         DisableDefender: true,
         PartitionSettings: partitionSettings with { PartitionLayout = PartitionLayout.Automatic },
-        DiskAssertionSettings: new SkipDiskAssertionSettings(),
         InstallFromSettings: new EditionInstallFromSettings(
           Edition: generator.Lookup<WindowsEdition>("pro")
         ),
