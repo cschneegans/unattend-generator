@@ -605,7 +605,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
       call :print "Making system partition bootable"
       bcdboot.exe {{DriveLetters.Windows}}:\Windows /s {{DriveLetters.System}}: || call :fail "bcdboot.exe encountered an error."
-      bcdedit.exe /set {fwbootmgr} bootsequence {bootmgr}
+      bcdedit.exe /set {fwbootmgr} bootsequence {bootmgr} || call :fail "bcdedit.exe encountered an error."
 
       """);
 
