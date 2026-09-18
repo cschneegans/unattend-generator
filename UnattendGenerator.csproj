@@ -67,4 +67,22 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 
+  <Target Name="SetRepositoryMetadata" BeforeTargets="PrepareForBuild">
+    <Exec Command="git config --get remote.origin.url" ConsoleToMSBuild="true" StandardOutputImportance="low" IgnoreExitCode="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="GitRemoteUrl" />
+    </Exec>
+    <PropertyGroup>
+      <NormalizedRepoUrl Condition="'$(GitRemoteUrl)' != ''">$([System.Text.RegularExpressions.Regex]::Replace('$(GitRemoteUrl)', '^git@github\.com:([^.]+)(\.git)?$', 'https://github.com/$1'))</NormalizedRepoUrl>
+      <NormalizedRepoUrl Condition="'$(GitRemoteUrl)' != ''">$([System.Text.RegularExpressions.Regex]::Replace('$(NormalizedRepoUrl)', '^https://github\.com/([^.]+)(\.git)?$', 'https://github.com/$1'))</NormalizedRepoUrl>
+      <FinalRepoUrl Condition="'$(NormalizedRepoUrl)' != ''">$(NormalizedRepoUrl)</FinalRepoUrl>
+      <FinalRepoUrl Condition="'$(FinalRepoUrl)' == ''">https://github.com/cschneegans/unattend-generator</FinalRepoUrl>
+    </PropertyGroup>
+    <ItemGroup>
+      <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+        <_Parameter1>RepositoryUrl</_Parameter1>
+        <_Parameter2>$(FinalRepoUrl)</_Parameter2>
+      </AssemblyAttribute>
+    </ItemGroup>
+  </Target>
+
 </Project>
