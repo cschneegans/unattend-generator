@@ -686,7 +686,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       if (configuration.TimeZoneSettings is ExplicitTimeZoneSettings settings)
       {
         writer.WriteLine($"""
-          call :print "Setting time zone" 
+          call :print "Setting time zone"
           dism.exe /Image:{DriveLetters.Windows}:\ /Set-TimeZone:"{settings.TimeZone.Id}"
 
           """);
@@ -799,7 +799,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       pause
       exit 1
 
-      :print 
+      :print
       echo:
       echo:*** %~1 ***
       echo:
