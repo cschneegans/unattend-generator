@@ -44,6 +44,7 @@
         <Hash />
         <GitHubUrl />
       </Commit>
+      <PEScriptCopy />
     </Build>
   </Extensions>
 </unattend>
