@@ -511,6 +511,22 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           """);
       }
 
+      writer.WriteLine("""
+        wpeutil.exe UpdateBootInfo
+        for /f "tokens=3" %%t in ('reg.exe query HKLM\System\CurrentControlSet\Control /v PEFirmwareType') do (
+          if %%t == 0x1 (
+            set "LAYOUT=MBR"
+            set "FIRMWARE=BIOS"
+          ) else if %%t == 0x2 (
+            set "LAYOUT=GPT"
+            set "FIRMWARE=UEFI"
+          ) else (
+            call :fail "Unexpected PEFirmwareType value %%t."
+          )
+        )
+        call :print "The computer is booted in %FIRMWARE% mode, hence the target disk must be configured with the %LAYOUT% partition layout"
+        """);
+
       switch (pe.PartitionSettings)
       {
         case CustomPartitionSettings settings:
@@ -528,20 +544,6 @@ class DiskModifier(ModifierContext context) : Modifier(context)
             {
               IncludeDiskpartScript(new EmbeddedScript($@"X:\{layout}.txt", GetDiskpartScript(settings with { PartitionLayout = layout }), Escape: false));
             }
-
-            writer.WriteLine("""
-              wpeutil.exe UpdateBootInfo
-              for /f "tokens=3" %%t in ('reg.exe query HKLM\System\CurrentControlSet\Control /v PEFirmwareType') do (
-                if %%t == 0x1 (
-                  set "LAYOUT=MBR"
-                ) else if %%t == 0x2 (
-                  set "LAYOUT=GPT"
-                ) else (
-                  call :fail "Unexpected value %%t."
-                )
-              )
-              call :print "The target disk will be configured with the %LAYOUT% partition layout"
-              """);
             Execute(@"X:\%LAYOUT%.txt", message);
           }
           else
@@ -605,7 +607,9 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
       call :print "Making system partition bootable"
       bcdboot.exe {{DriveLetters.Windows}}:\Windows /s {{DriveLetters.System}}: || call :fail "bcdboot.exe encountered an error."
-      bcdedit.exe /set {fwbootmgr} bootsequence {bootmgr} || call :fail "bcdedit.exe encountered an error."
+      if %LAYOUT% == GPT (
+        bcdedit.exe /set {fwbootmgr} bootsequence {bootmgr} || call :fail "bcdedit.exe encountered an error."
+      )
 
       """);
 
