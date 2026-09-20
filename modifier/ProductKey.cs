@@ -14,21 +14,21 @@ public record class UnattendedEditionSettings(
   WindowsEdition Edition
 ) : IEditionSettings;
 
-public record class ProductKey(string Value)
+public class ProductKey
 {
-  public string Value { get; } = Initialize(Value);
-
-  private static string Initialize(string value)
+  public ProductKey(string value)
   {
     if (Regex.IsMatch(value, "^([A-Z0-9]{5}-){4}[A-Z0-9]{5}$", RegexOptions.IgnoreCase))
     {
-      return value.ToUpperInvariant();
+      Value = value.ToUpperInvariant();
     }
     else
     {
       throw new ConfigurationException($"Product key '{value}' is ill-formed.");
     }
   }
+
+  public string Value { get; }
 
   public override string ToString()
   {

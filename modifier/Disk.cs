@@ -19,14 +19,42 @@ public record class FixedTargetDiskSettings(
   int Index
 ) : ITargetDiskSettings;
 
-public record class GeneratedTargetDiskSettings(
-  int? MinSizeGiB = Constants.TargetDiskMinSizeGiB,
-  int? MaxSizeGiB = Constants.TargetDiskMaxSizeGiB,
-  int? Index = 0,
-  bool AssertNoPartitions = true,
-  bool AssertInterfaceType = false,
-  bool AssertMediaType = false
-) : ITargetDiskSettings;
+public class GeneratedTargetDiskSettings : ITargetDiskSettings
+{
+  public GeneratedTargetDiskSettings(
+    int? minSizeGiB = Constants.TargetDiskMinSizeGiB,
+    int? maxSizeGiB = Constants.TargetDiskMaxSizeGiB,
+    int? index = 0,
+    bool assertNoPartitions = true,
+    bool assertInterfaceType = false,
+    bool assertMediaType = false
+  )
+  {
+    if (minSizeGiB != null && maxSizeGiB != null && minSizeGiB > maxSizeGiB)
+    {
+      throw new ConfigurationException($"Value of '{nameof(minSizeGiB)}' ({minSizeGiB}) must be less than or equal to value of '{nameof(maxSizeGiB)}' ({maxSizeGiB}).");
+    }
+
+    MinSizeGiB = minSizeGiB;
+    MaxSizeGiB = maxSizeGiB;
+    Index = index;
+    AssertNoPartitions = assertNoPartitions;
+    AssertInterfaceType = assertInterfaceType;
+    AssertMediaType = assertMediaType;
+  }
+
+  public int? MinSizeGiB { get; }
+
+  public int? MaxSizeGiB { get; }
+
+  public int? Index { get; }
+
+  public bool AssertNoPartitions { get; }
+
+  public bool AssertInterfaceType { get; }
+
+  public bool AssertMediaType { get; }
+}
 
 public interface IPartitionSettings;
 

@@ -18,7 +18,7 @@ public class CustomLockoutSettings : ILockoutSettings
 
     if (LockoutWindow > LockoutDuration)
     {
-      throw new ConfigurationException($"Value of '{nameof(LockoutWindow)}' ({LockoutWindow}) must be less or equal to value of '{nameof(LockoutDuration)}' ({LockoutDuration}).");
+      throw new ConfigurationException($"Value of '{nameof(LockoutWindow)}' ({LockoutWindow}) must be less than or equal to value of '{nameof(LockoutDuration)}' ({LockoutDuration}).");
     }
   }
 
