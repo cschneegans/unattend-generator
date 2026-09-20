@@ -5,7 +5,7 @@ using System.Linq;
 namespace Schneegans.Unattend;
 
 /// <summary>
-/// 対象とするロケールやキーボードを宣言する属性
+/// Attribute declaring target locales and keyboards.
 /// </summary>
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 public class TargetLocaleAttribute(string localeId) : Attribute
@@ -15,13 +15,13 @@ public class TargetLocaleAttribute(string localeId) : Attribute
 }
 
 /// <summary>
-/// ロケール特化 Modifier の基底クラス
+/// Base class for locale-specific modifiers.
 /// </summary>
 abstract class LocaleSpecificModifier(ModifierContext context) : Modifier(context)
 {
   /// <summary>
-  /// 現在の構成（言語・キーボード設定）に対して本 Modifier を適用すべきかを判定する。
-  /// 既定では TargetLocale 属性に基づいて自動判定する。
+  /// Determines whether this modifier should be applied to the current configuration (language/keyboard settings).
+  /// By default, automatically determines based on <see cref="TargetLocaleAttribute"/> attributes.
   /// </summary>
   public virtual bool IsApplicable(UnattendedLanguageSettings settings)
   {
@@ -53,13 +53,13 @@ abstract class LocaleSpecificModifier(ModifierContext context) : Modifier(contex
 
     foreach (var attr in attrs)
     {
-      // 言語/ロケールの一致確認
+      // Check for language/locale match
       if (locales.Any(l => attr.LocaleId.Equals(l, StringComparison.OrdinalIgnoreCase)))
       {
         return true;
       }
 
-      // キーボードIDの一致確認
+      // Check for keyboard ID match
       if (attr.KeyboardIds.Any(k =>
           keyboardIds.Any(kid => kid.Equals(k, StringComparison.OrdinalIgnoreCase) ||
                                  kid.StartsWith(k + ":", StringComparison.OrdinalIgnoreCase))))

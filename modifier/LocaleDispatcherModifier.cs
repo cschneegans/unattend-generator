@@ -5,7 +5,7 @@ using System.Reflection;
 namespace Schneegans.Unattend;
 
 /// <summary>
-/// 選択されたロケール/キーボードに応じて適切な LocaleSpecificModifier を自動呼出するディスパッチャー
+/// Dispatcher that automatically invokes appropriate <see cref="LocaleSpecificModifier"/> instances based on the selected locale/keyboard.
 /// </summary>
 class LocaleDispatcherModifier : Modifier
 {
@@ -23,7 +23,7 @@ class LocaleDispatcherModifier : Modifier
       return;
     }
 
-    // アセンブリ内から LocaleSpecificModifier を継承した具象クラスを自動検出
+    // Automatically discover concrete classes in the assembly that inherit from LocaleSpecificModifier
     var modifierTypes = Assembly.GetExecutingAssembly().GetTypes()
       .Where(t => !t.IsAbstract && typeof(LocaleSpecificModifier).IsAssignableFrom(t));
 
@@ -31,7 +31,7 @@ class LocaleDispatcherModifier : Modifier
     {
       try
       {
-        // インスタンス化して適用条件を判定
+        // Instantiate and determine applicability
         var instance = Activator.CreateInstance(
           type,
           BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic,
