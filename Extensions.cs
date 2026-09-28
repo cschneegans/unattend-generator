@@ -35,6 +35,12 @@ public static class Extensions
     node.ParentNode!.RemoveChild(node);
   }
 
+  public static void InsertTextWithIndentation(this XmlElement element, string text)
+  {
+    int level = element.SelectNodesOrEmpty("ancestor::*").Count();
+    element.AppendChild(element.OwnerDocument.CreateTextNode($"\r\n{text.Trim()}\r\n{new string('\t', level)}"));
+  }
+
   public static IImmutableDictionary<string, T> ToKeyedDictionary<T>(this IEnumerable<T>? enumerable) where T : IKeyed
   {
     if (enumerable == null)

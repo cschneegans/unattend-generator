@@ -182,11 +182,11 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       DefaultPESettings => [],
       _ => throw new NotSupportedException(),
     };
-    XmlNode copy = Document.SelectSingleNodeOrThrow("//s:PEScriptCopy", NamespaceManager);
+    var copy = (XmlElement)Document.SelectSingleNodeOrThrow("//s:PEScriptCopy", NamespaceManager);
     if (lines.Count > 0)
     {
       WritePeScript(lines);
-      copy.AppendChild(Document.CreateTextNode(Util.Indent(lines.JoinLines())));
+      copy.InsertTextWithIndentation(lines.JoinLines());
     }
     else
     {

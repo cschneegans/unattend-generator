@@ -132,9 +132,4 @@ internal static class Util
     parent.AppendChild(element);
     return element;
   }
-
-  public static string Indent(string value)
-  {
-    return $"\r\n{value.Trim()}\r\n\t\t";
-  }
 }

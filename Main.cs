@@ -1280,18 +1280,12 @@ abstract class Modifier(ModifierContext context)
     string path = name.Contains('\\') ? name : $@"C:\Windows\Setup\Scripts\{name}";
 
     XmlNode extensions = Document.SelectSingleNodeOrThrow("/u:unattend/s:Extensions", NamespaceManager);
-    XmlNode? extractScript = extensions.SelectSingleNode("s:ExtractScript", NamespaceManager);
+    var extractScript = (XmlElement?)extensions.SelectSingleNode("s:ExtractScript", NamespaceManager);
     if (extractScript == null)
     {
       extractScript = Document.CreateElement("ExtractScript", Constants.MyNamespaceUri);
       extensions.AppendChild(extractScript);
-      extractScript.AppendChild(
-        Document.CreateTextNode(
-          Util.Indent(
-            Util.StringFromResource("ExtractScripts.ps1")
-          )
-        )
-      );
+      extractScript.InsertTextWithIndentation(Util.StringFromResource("ExtractScripts.ps1"));
 
       CommandAppender appender = GetAppender(CommandConfig.Specialize);
       appender.Append(
@@ -1302,7 +1296,7 @@ abstract class Modifier(ModifierContext context)
     XmlElement file = Document.CreateElement("File", Constants.MyNamespaceUri);
     file.SetAttribute("path", path);
     extensions.AppendChild(file);
-    file.AppendChild(Document.CreateTextNode(Util.Indent(content)));
+    file.InsertTextWithIndentation(content);
     return path;
   }
 }
