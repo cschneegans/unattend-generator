@@ -442,7 +442,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
     writer.WriteLine("""
       if defined PEDRIVERS_FOLDER (
-          call :print "Loading drivers from $WinPEDriver$ folder"
+          call :print "Loading drivers from %PEDRIVERS_FOLDER%"
           for /R %PEDRIVERS_FOLDER% %%f IN (*.inf) do drvload.exe "%%f"
       )
 
@@ -452,7 +452,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     {
       writer.WriteLine("""
         if defined VIRTIO_DRIVE (
-            call :print "Loading VirtIO drivers"
+            call :print "Loading VirtIO drivers from %VIRTIO_DRIVE%"
             drvload.exe "%VIRTIO_DRIVE%\vioscsi\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\vioscsi.inf"
             drvload.exe "%VIRTIO_DRIVE%\viostor\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\viostor.inf"
             drvload.exe "%VIRTIO_DRIVE%\NetKVM\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\netkvm.inf"
@@ -691,7 +691,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 
     writer.WriteLine($"""
       if defined PEDRIVERS_FOLDER (
-          call :print "Adding drivers from $WinPEDriver$ folder to new installation"
+          call :print "Adding drivers from %PEDRIVERS_FOLDER% to new installation"
           dism.exe /Add-Driver /Image:{DriveLetters.Windows}:\ /Driver:"%PEDRIVERS_FOLDER%" /Recurse
       )
 
@@ -701,7 +701,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
     {
       writer.WriteLine($"""
         if defined VIRTIO_DRIVE (
-            call :print "Adding VirtIO drivers to new installation"
+            call :print "Adding VirtIO drivers from %VIRTIO_DRIVE% to new installation"
             dism.exe /Add-Driver /Image:{DriveLetters.Windows}:\ /Driver:"%VIRTIO_DRIVE%\vioscsi\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\vioscsi.inf"
             dism.exe /Add-Driver /Image:{DriveLetters.Windows}:\ /Driver:"%VIRTIO_DRIVE%\viostor\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\viostor.inf"
             dism.exe /Add-Driver /Image:{DriveLetters.Windows}:\ /Driver:"%VIRTIO_DRIVE%\NetKVM\w%OS_VERSION%\%PROCESSOR_ARCHITECTURE%\netkvm.inf"
@@ -798,7 +798,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       writer.WriteLine($"""
         set "ROBOCOPY_ARGS=/E /XX /COPY:DAT /DCOPY:DAT /R:0"
         if defined OEM_FOLDER (
-            call :print "Copying contents of $OEM$ folder"
+            call :print "Copying contents of %OEM_FOLDER%"
             if exist "%OEM_FOLDER%\$$" robocopy.exe "%OEM_FOLDER%\$$" {DriveLetters.Windows}:\Windows %ROBOCOPY_ARGS%
             if exist "%OEM_FOLDER%\$1" robocopy.exe "%OEM_FOLDER%\$1" {DriveLetters.Windows}:\ %ROBOCOPY_ARGS%
             for %%d in ({letters.Except(skippedDrives).JoinString(' ')}) do (
