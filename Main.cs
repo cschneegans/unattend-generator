@@ -545,7 +545,7 @@ public class FirstLogonSequence : PowerShellSequence
 /// </summary>
 public class DefaultUserSequence : PowerShellSequence
 {
-  protected override string Activity => "Running scripts to modify the default user’’s registry hive.";
+  protected override string Activity => "Running scripts to modify default user registry hive.";
 
   protected override string LogFile => @"C:\Windows\Setup\Scripts\DefaultUser.log";
 }
@@ -1126,6 +1126,7 @@ public class UnattendGenerator
       new BypassModifier(context),
       new ProductKeyModifier(context),
       new LocalesModifier(context),
+      new LocaleDispatcherModifier(context),
       new DiskModifier(context),
       new UsersModifier(context),
       new BloatwareModifier(context),
