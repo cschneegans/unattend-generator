@@ -37,15 +37,7 @@ public static class ScriptExtensions
 {
   public static IEnumerable<ScriptType> GetAllowedTypes(this ScriptPhase phase)
   {
-    return phase switch
-    {
-      ScriptPhase.DefaultUser => [
-        ScriptType.Reg,
-        ScriptType.Cmd,
-        ScriptType.Ps1,
-      ],
-      _ => Enum.GetValues<ScriptType>(),
-    };
+    return Enum.GetValues<ScriptType>().Where(t => !(phase == ScriptPhase.DefaultUser && t == ScriptType.Vbs));
   }
 
   public static string DefaultUserKeyPrefix(this ScriptType type)
