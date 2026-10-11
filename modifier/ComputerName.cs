@@ -54,6 +54,13 @@ public record class ScriptComputerNameSettings(
   string Script
 ) : IComputerNameSettings;
 
+public record class PromptComputerNameSettings : ScriptComputerNameSettings
+{
+  public PromptComputerNameSettings() : base(Util.StringFromResource("ComputerNamePrompt.ps1"))
+  {
+  }
+}
+
 class ComputerNameModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()

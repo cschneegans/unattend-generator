@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Remove="resource\AppLocker.xsd" />
+    <None Remove="resource\ComputerNamePrompt.ps1" />
     <None Remove="resource\DesktopIcon.json" />
     <None Remove="resource\MakeEdgeUninstallable.ps1" />
     <None Remove="resource\MoveActiveHours.xml" />
@@ -31,6 +32,7 @@
     <EmbeddedResource Include="resource\autounattend.xml" />
     <EmbeddedResource Include="resource\autounattend.xsd" />
     <EmbeddedResource Include="resource\Component.json" />
+    <EmbeddedResource Include="resource\ComputerNamePrompt.ps1" />
     <EmbeddedResource Include="resource\DesktopIcon.json" />
     <EmbeddedResource Include="resource\ExtractScripts.ps1" />
     <EmbeddedResource Include="resource\GeoId.json" />
