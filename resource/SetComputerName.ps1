@@ -5,6 +5,9 @@ Set-StrictMode -Version 'Latest';
 	if( [string]::IsNullOrWhitespace( $newName ) ) {
 		throw "No computer name was provided.";
 	}
+	if ( $newName.Length -gt 15 ) {
+		throw "Computer name is longer than 15 characters."
+	}
 
 	$keys = @(
 		@{
