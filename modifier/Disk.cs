@@ -792,8 +792,6 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           """);
       }
     }
-
-    if (configuration.UseConfigurationSet)
     {
       writer.WriteLine($"""
         set "ROBOCOPY_ARGS=/E /XX /COPY:DAT /DCOPY:DAT /R:0"

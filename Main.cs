@@ -335,7 +335,6 @@ public record class Configuration(
   bool DisablePointerPrecision,
   bool DeleteWindowsOld,
   bool DisableBingResults,
-  bool UseConfigurationSet,
   bool HidePowerShellWindows,
   bool ShowEndTask,
   bool KeepSensitiveFiles,
@@ -415,7 +414,6 @@ public record class Configuration(
     DisablePointerPrecision: false,
     DeleteWindowsOld: false,
     DisableBingResults: false,
-    UseConfigurationSet: false,
     HidePowerShellWindows: false,
     ShowEndTask: false,
     KeepSensitiveFiles: false,
@@ -906,8 +904,7 @@ public static class Constants
           LocaleAndKeyboard2: null,
           LocaleAndKeyboard3: null,
           GeoLocation: generator.Lookup<GeoLocation>("244")
-        ),
-        UseConfigurationSet = true,
+        )
       };
 
       return DiskModifier.GetPEScript(conf, pe, generator).JoinLines();

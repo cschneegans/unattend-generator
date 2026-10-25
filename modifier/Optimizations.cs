@@ -275,11 +275,6 @@ class OptimizationsModifier(ModifierContext context) : Modifier(context)
         """);
     }
 
-    if (Configuration.UseConfigurationSet && Configuration.PESettings is not ICmdPESettings)
-    {
-      Document.SelectSingleNodeOrThrow("//u:UseConfigurationSet", NamespaceManager).InnerText = "true";
-    }
-
     if (Configuration.DisableSac)
     {
       SpecializeScript.Append(@"reg.exe add ""HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy"" /v VerifiedAndReputablePolicyState /t REG_DWORD /d 0 /f;");
