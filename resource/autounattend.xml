@@ -13,7 +13,7 @@
         </ProductKey>
         <AcceptEula>true</AcceptEula>
       </UserData>
-      <UseConfigurationSet>true</UseConfigurationSet>
+      <UseConfigurationSet>false</UseConfigurationSet>
     </component>
   </settings>
   <settings pass="generalize" />
