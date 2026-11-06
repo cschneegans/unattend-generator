@@ -92,7 +92,8 @@ public interface IPESettings;
 
 public record class DefaultPESettings(
   IEditionSettings EditionSettings,
-  bool BypassRequirementsCheck
+  bool BypassRequirementsCheck,
+  bool UseConfigurationSet
 ) : IPESettings;
 
 public interface ICmdPESettings : IPESettings;
@@ -152,6 +153,11 @@ class DiskModifier(ModifierContext context) : Modifier(context)
 {
   public override void Process()
   {
+    if (Configuration.PESettings is DefaultPESettings d && d.UseConfigurationSet)
+    {
+      Document.SelectSingleNodeOrThrow("//u:UseConfigurationSet", NamespaceManager).InnerText = "true";
+    }
+
     if (Configuration.PESettings is ICmdPESettings)
     {
       {
@@ -793,7 +799,6 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       }
     }
 
-    if (configuration.UseConfigurationSet)
     {
       writer.WriteLine($"""
         set "ROBOCOPY_ARGS=/E /XX /COPY:DAT /DCOPY:DAT /R:0"
