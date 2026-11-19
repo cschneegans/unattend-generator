@@ -423,6 +423,7 @@ class DiskModifier(ModifierContext context) : Modifier(context)
           if exist %%d:\autounattend.xml set "XML_FILE=%%d:\autounattend.xml"
           if exist %%d:\$OEM$ set "OEM_FOLDER=%%d:\$OEM$"
           if exist %%d:\$WinPEDriver$ set "PEDRIVERS_FOLDER=%%d:\$WinPEDriver$"
+          if exist %%d:\$WinPEPackage$ set "MSU_FOLDER=%%d:\$WinPEPackage$"
       """);
     if (configuration.VirtIoGuestTools)
     {
@@ -645,6 +646,14 @@ class DiskModifier(ModifierContext context) : Modifier(context)
       bcdboot.exe {{DriveLetters.Windows}}:\Windows /s {{DriveLetters.System}}: || call :fail "bcdboot.exe encountered an error."
       if %LAYOUT% == GPT (
           bcdedit.exe /set {fwbootmgr} bootsequence {bootmgr} || call :fail "bcdedit.exe encountered an error."
+      )
+
+      """);
+
+    writer.WriteLine($"""
+      if defined MSU_FOLDER (
+          call :print "Adding packages from %MSU_FOLDER% to new installation"
+          dism.exe /Add-Package /Image:{DriveLetters.Windows}:\ /PackagePath:%MSU_FOLDER% /ScratchDir:{DriveLetters.Windows}:\Windows\Temp || call :fail "dism.exe encountered an error."
       )
 
       """);
