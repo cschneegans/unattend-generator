@@ -28,6 +28,10 @@
     "DisplayName": "(UTC-09:00) Coordinated Universal Time-09"
   },
   {
+    "Id": "British Columbia Standard Time",
+    "DisplayName": "(UTC-07:00) Pacific Time (British Columbia)"
+  },
+  {
     "Id": "Pacific Standard Time (Mexico)",
     "DisplayName": "(UTC-08:00) Baja California"
   },
@@ -38,6 +42,10 @@
   {
     "Id": "Pacific Standard Time",
     "DisplayName": "(UTC-08:00) Pacific Time (US & Canada)"
+  },
+  {
+    "Id": "Alberta Standard Time",
+    "DisplayName": "(UTC-06:00) Mountain Time (Alberta)"
   },
   {
     "Id": "US Mountain Standard Time",
@@ -54,6 +62,10 @@
   {
     "Id": "Yukon Standard Time",
     "DisplayName": "(UTC-07:00) Yukon"
+  },
+  {
+    "Id": "Manitoba Standard Time",
+    "DisplayName": "(UTC-05:00) Manitoba"
   },
   {
     "Id": "Central America Standard Time",
@@ -104,10 +116,6 @@
     "DisplayName": "(UTC-05:00) Turks and Caicos"
   },
   {
-    "Id": "Paraguay Standard Time",
-    "DisplayName": "(UTC-04:00) Asuncion"
-  },
-  {
     "Id": "Atlantic Standard Time",
     "DisplayName": "(UTC-04:00) Atlantic Time (Canada)"
   },
@@ -136,6 +144,10 @@
     "DisplayName": "(UTC-03:00) Araguaina"
   },
   {
+    "Id": "Paraguay Standard Time",
+    "DisplayName": "(UTC-03:00) Asuncion"
+  },
+  {
     "Id": "E. South America Standard Time",
     "DisplayName": "(UTC-03:00) Brasilia"
   },
@@ -146,10 +158,6 @@
   {
     "Id": "Argentina Standard Time",
     "DisplayName": "(UTC-03:00) City of Buenos Aires"
-  },
-  {
-    "Id": "Greenland Standard Time",
-    "DisplayName": "(UTC-03:00) Greenland"
   },
   {
     "Id": "Montevideo Standard Time",
@@ -172,6 +180,14 @@
     "DisplayName": "(UTC-02:00) Coordinated Universal Time-02"
   },
   {
+    "Id": "Greenland Standard Time",
+    "DisplayName": "(UTC-02:00) Greenland"
+  },
+  {
+    "Id": "Mid-Atlantic Standard Time",
+    "DisplayName": "(UTC-02:00) Mid-Atlantic - Old"
+  },
+  {
     "Id": "Azores Standard Time",
     "DisplayName": "(UTC-01:00) Azores"
   },
@@ -184,6 +200,10 @@
     "DisplayName": "(UTC) Coordinated Universal Time"
   },
   {
+    "Id": "Morocco Standard Time",
+    "DisplayName": "(UTC+00:00) Casablanca"
+  },
+  {
     "Id": "GMT Standard Time",
     "DisplayName": "(UTC+00:00) Dublin, Edinburgh, Lisbon, London"
   },
@@ -194,10 +214,6 @@
   {
     "Id": "Sao Tome Standard Time",
     "DisplayName": "(UTC+00:00) Sao Tome"
-  },
-  {
-    "Id": "Morocco Standard Time",
-    "DisplayName": "(UTC+01:00) Casablanca"
   },
   {
     "Id": "W. Europe Standard Time",
@@ -234,10 +250,6 @@
   {
     "Id": "E. Europe Standard Time",
     "DisplayName": "(UTC+02:00) Chisinau"
-  },
-  {
-    "Id": "Syria Standard Time",
-    "DisplayName": "(UTC+02:00) Damascus"
   },
   {
     "Id": "West Bank Standard Time",
@@ -282,6 +294,10 @@
   {
     "Id": "Arabic Standard Time",
     "DisplayName": "(UTC+03:00) Baghdad"
+  },
+  {
+    "Id": "Syria Standard Time",
+    "DisplayName": "(UTC+03:00) Damascus"
   },
   {
     "Id": "Turkey Standard Time",
@@ -352,16 +368,16 @@
     "DisplayName": "(UTC+05:00) Ashgabat, Tashkent"
   },
   {
+    "Id": "Qyzylorda Standard Time",
+    "DisplayName": "(UTC+05:00) Astana"
+  },
+  {
     "Id": "Ekaterinburg Standard Time",
     "DisplayName": "(UTC+05:00) Ekaterinburg"
   },
   {
     "Id": "Pakistan Standard Time",
     "DisplayName": "(UTC+05:00) Islamabad, Karachi"
-  },
-  {
-    "Id": "Qyzylorda Standard Time",
-    "DisplayName": "(UTC+05:00) Qyzylorda"
   },
   {
     "Id": "India Standard Time",
@@ -377,7 +393,7 @@
   },
   {
     "Id": "Central Asia Standard Time",
-    "DisplayName": "(UTC+06:00) Astana"
+    "DisplayName": "(UTC+06:00) Bishkek"
   },
   {
     "Id": "Bangladesh Standard Time",
@@ -534,6 +550,10 @@
   {
     "Id": "Fiji Standard Time",
     "DisplayName": "(UTC+12:00) Fiji"
+  },
+  {
+    "Id": "Kamchatka Standard Time",
+    "DisplayName": "(UTC+12:00) Petropavlovsk-Kamchatsky - Old"
   },
   {
     "Id": "Chatham Islands Standard Time",
