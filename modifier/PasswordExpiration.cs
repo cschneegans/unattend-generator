@@ -26,7 +26,37 @@ class PasswordExpirationModifier(ModifierContext context) : Modifier(context)
         break;
 
       case UnlimitedPasswordExpirationSettings:
-        SpecializeScript.Append("net.exe accounts /maxpwage:UNLIMITED;");
+        SpecializeScript.Append("""
+          Add-Type -TypeDefinition '
+          	using System.Runtime.InteropServices;
+
+          	public static class PasswordExpirationSetter {
+          		[StructLayout(LayoutKind.Sequential)]
+          		private struct USER_MODALS_INFO_1002 {
+          			public uint usrmod1002_max_passwd_age;
+          		}
+
+          		[DllImport("netapi32.dll", CharSet = CharSet.Unicode)]
+          		private static extern int NetUserModalsSet(
+          			string servername,
+          			int level,
+          			ref USER_MODALS_INFO_1002 buf,
+          			out uint parm_err
+          		);
+
+          		public static void SetUnlimited() {
+          			USER_MODALS_INFO_1002 info = new USER_MODALS_INFO_1002();
+          			info.usrmod1002_max_passwd_age = uint.MaxValue;
+          			uint parmErr;
+          			int result = NetUserModalsSet(null, 1002, ref info, out parmErr);
+          			if (result != 0) {
+          				throw new System.ComponentModel.Win32Exception(result);
+          			}
+          		}
+          	}
+          ';
+          [PasswordExpirationSetter]::SetUnlimited();
+          """);
         break;
 
       case CustomPasswordExpirationSettings settings:
